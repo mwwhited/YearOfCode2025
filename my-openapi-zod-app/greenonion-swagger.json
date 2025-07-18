@@ -3790,7 +3790,7 @@
           }
         },
         "x-permissions": {
-          "anonymous": false
+          "anonymous": true
         },
         "x-query-set": "GreenOnion.Common.Models.QueryRoleModel"
       }

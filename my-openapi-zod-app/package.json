@@ -29,6 +29,10 @@
     "build:pipeline": "./scripts/build-pipeline.sh",
     "deploy:staging": "./scripts/deploy-pipeline.sh staging",
     "deploy:production": "./scripts/deploy-pipeline.sh production",
+    "e2e": "playwright test",
+    "e2e:headed": "playwright test --headed",
+    "e2e:ui": "playwright test --ui",
+    "e2e:report": "playwright show-report",
     "prepare": "husky"
   },
   "dependencies": {
@@ -38,6 +42,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "@playwright/test": "^1.54.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
@@ -53,6 +58,7 @@
     "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
     "openapi-zod-client": "^1.18.3",
+    "playwright": "^1.54.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4",

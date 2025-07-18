@@ -3,26 +3,30 @@
 # Generate OpenAPI client with Zod schemas
 # Usage: ./scripts/generate-client.sh [swagger-url]
 
-SWAGGER_URL="${1:-https://localhost:7443/swagger/v1/swagger.json}"
+# SWAGGER_URL="${1:-https://localhost:7443/swagger/v1/swagger.json}"
+SWAGGER_URL="${1:-https://host.docker.internal:7443/swagger/all/swagger.json}"
 OUTPUT_DIR="src/api"
+OUTPUT_FILE="GreenOnionClient.ts"
+TEMPLATE_DIR="$OUTPUT_DIR/templates"
+TEMPLATE_FILE="custom-datetime.hbs"
 
 echo "🚀 Generating OpenAPI client from: $SWAGGER_URL"
 
 # Download swagger spec
 echo "📥 Downloading OpenAPI specification..."
-curl -k -o greenonion-swagger.json "$SWAGGER_URL"
+curl --insecure --output greenonion-swagger.json "$SWAGGER_URL"
 
 if [ $? -ne 0 ]; then
     echo "❌ Failed to download OpenAPI spec"
-    exit 1
+    echo "Using previous swagger file"
 fi
 
 # Generate client
 echo "🔧 Generating TypeScript client with Zod schemas..."
 npx openapi-zod-client \
-    --input ./greenonion-swagger.json \
-    --output-dir "$OUTPUT_DIR" \
-    --template-dir "$OUTPUT_DIR/templates" \
+    ./greenonion-swagger.json \
+    --output "$OUTPUT_DIR/$OUTPUT_FILE" \
+    --template "$TEMPLATE_DIR/$TEMPLATE_FILE" \
     --with-alias
 
 if [ $? -eq 0 ]; then

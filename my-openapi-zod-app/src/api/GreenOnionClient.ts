@@ -1,6 +1,17 @@
 import { makeApi, Zodios, type ZodiosOptions } from "@zodios/core";
 import { z } from "zod";
 
+// Custom datetime schema that handles non-standard formats
+const customDatetimeSchema = z.preprocess((val) => {
+  if (typeof val === "string") {
+    // Handle various datetime formats including "2023-07-26T04:32:01.69"
+    const cleaned = val.replace(/\.\d{1,2}$/, "").replace(/\.\d{3}$/, "");
+    const date = new Date(cleaned);
+    return isNaN(date.getTime()) ? val : date.toISOString();
+  }
+  return val;
+}, z.string().datetime());
+
 const Eliassen_System_Linq_Search_FilterParameter = z
   .object({
     eq: z.unknown().nullable(),
@@ -2609,4 +2620,52 @@ export const api = new Zodios(endpoints);
 
 export function createApiClient(baseUrl: string, options?: ZodiosOptions) {
   return new Zodios(baseUrl, endpoints, options);
+}
+
+// Custom client factory with datetime preprocessing
+export function createCustomApiClient(
+  baseUrl: string,
+  options?: ZodiosOptions
+) {
+  // Transform schemas to use custom datetime handling
+  const transformedEndpoints = endpoints.map((endpoint) => {
+    const transformSchema = (schema: any): any => {
+      if (typeof schema === "object" && schema !== null) {
+        if (
+          schema._def?.typeName === "ZodString" &&
+          schema._def?.checks?.some((check: any) => check.kind === "datetime")
+        ) {
+          return customDatetimeSchema;
+        }
+        if (schema._def?.typeName === "ZodObject") {
+          const transformedShape = {};
+          for (const [key, value] of Object.entries(schema.shape || {})) {
+            transformedShape[key] = transformSchema(value);
+          }
+          return z.object(transformedShape);
+        }
+        if (schema._def?.typeName === "ZodArray") {
+          return z.array(transformSchema(schema.element));
+        }
+        if (schema._def?.typeName === "ZodOptional") {
+          return z.optional(transformSchema(schema.unwrap()));
+        }
+        if (schema._def?.typeName === "ZodNullable") {
+          return z.nullable(transformSchema(schema.unwrap()));
+        }
+      }
+      return schema;
+    };
+
+    return {
+      ...endpoint,
+      response: transformSchema(endpoint.response),
+      parameters: endpoint.parameters?.map((param) => ({
+        ...param,
+        schema: transformSchema(param.schema),
+      })),
+    };
+  });
+
+  return new Zodios(baseUrl, transformedEndpoints, options);
 }

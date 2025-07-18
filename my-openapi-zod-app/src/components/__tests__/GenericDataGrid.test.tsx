@@ -19,7 +19,7 @@ const testUsers: User[] = [
 
 describe('GenericDataGrid [unit] [component]', () => {
   it('renders table with correct headers', () => {
-    render(<GenericDataGrid<User, typeof userSchema.shape> data={testUsers} schema={userSchema} />)
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} />)
     
     expect(screen.getByText('Id')).toBeInTheDocument()
     expect(screen.getByText('Name')).toBeInTheDocument()
@@ -27,7 +27,7 @@ describe('GenericDataGrid [unit] [component]', () => {
   })
 
   it('renders table data correctly', () => {
-    render(<GenericDataGrid<User, typeof userSchema.shape> data={testUsers} schema={userSchema} />)
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} />)
     
     expect(screen.getByText('John Doe')).toBeInTheDocument()
     expect(screen.getByText('jane@example.com')).toBeInTheDocument()
@@ -36,7 +36,7 @@ describe('GenericDataGrid [unit] [component]', () => {
   })
 
   it('renders empty table when no data provided', () => {
-    render(<GenericDataGrid<User, typeof userSchema.shape> data={[]} schema={userSchema} />)
+    render(<GenericDataGrid<User> data={[]} schema={userSchema} />)
     
     expect(screen.getByText('Id')).toBeInTheDocument()
     expect(screen.getByText('Name')).toBeInTheDocument()
@@ -56,5 +56,53 @@ describe('GenericDataGrid [unit] [component]', () => {
     
     expect(screen.getByText('John')).toBeInTheDocument()
     expect(screen.getByText('test@example.com')).toBeInTheDocument()
+  })
+
+  it('renders global search input when filtering enabled', () => {
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} enableFiltering={true} />)
+    
+    expect(screen.getByPlaceholderText('Search all columns...')).toBeInTheDocument()
+    expect(screen.getByText('Showing 3 of 3 rows')).toBeInTheDocument()
+  })
+
+  it('filters data based on global search', () => {
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} enableFiltering={true} />)
+    
+    const searchInput = screen.getByPlaceholderText('Search all columns...')
+    fireEvent.change(searchInput, { target: { value: 'John' } })
+    
+    expect(screen.getByText('John Doe')).toBeInTheDocument()
+    expect(screen.queryByText('Jane Smith')).not.toBeInTheDocument()
+    expect(screen.getByText('Showing 1 of 3 rows')).toBeInTheDocument()
+  })
+
+  it('shows sorting buttons when sorting enabled', () => {
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} enableSorting={true} />)
+    
+    const nameButton = screen.getByText('Name')
+    expect(nameButton).toBeInTheDocument()
+    
+    // Should show sorting indicator
+    expect(screen.getByText(/Name.*↕/)).toBeInTheDocument()
+  })
+
+  it('can disable sorting and filtering', () => {
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} enableSorting={false} enableFiltering={false} />)
+    
+    expect(screen.queryByPlaceholderText('Search all columns...')).not.toBeInTheDocument()
+    expect(screen.queryByText('Showing')).not.toBeInTheDocument()
+    
+    // Headers should not be buttons when sorting is disabled
+    expect(screen.getByText('Name')).toBeInTheDocument()
+  })
+
+  it('shows no data message when filtered results are empty', () => {
+    render(<GenericDataGrid<User> data={testUsers} schema={userSchema} enableFiltering={true} />)
+    
+    const searchInput = screen.getByPlaceholderText('Search all columns...')
+    fireEvent.change(searchInput, { target: { value: 'nonexistent' } })
+    
+    expect(screen.getByText('No data matches your filters')).toBeInTheDocument()
+    expect(screen.getByText('Showing 0 of 3 rows')).toBeInTheDocument()
   })
 })
