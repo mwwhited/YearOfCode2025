@@ -13,29 +13,26 @@ type Role = z.infer<typeof schemas.GreenOnion_Common_Models_QueryRoleModel>;
 function App() {
   const [count, setCount] = useState(0)
   const [data, setData] = useState<Role[]>([]);
-
-  const client = createApiClient('https://localhost:7443');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const client = createApiClient('https://localhost:7443');
     const fetchData = async () => {
-      const result : RolePagedResult = await client.Role_Query({});
-      setData(result.rows ?? []);
+      try {
+        setLoading(true);
+        setError(null);
+        const result : RolePagedResult = await client.Role_Query({});
+        setData(result.rows ?? []);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
-  });
+  }, []);
 
-  //   const userSchema = z.object({
-  //   id: z.number(),
-  //   name: z.string(),
-  //   age: z.number(),
-  // });
-
-  // type User = z.infer<typeof userSchema>;
-
-  // const users: User[] = [
-  //   { id: 1, name: "Alice", age: 25 },
-  //   { id: 2, name: "Bob", age: 30 },
-  // ];
 
   return (
     <>
@@ -60,31 +57,13 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      <GenericDataGrid<Role> data={data} schema={schemas.GreenOnion_Common_Models_QueryRoleModelPagedQueryResult} />
+      {loading && <p>Loading roles...</p>}
+      {error && <p style={{color: 'red'}}>Error: {error}</p>}
+      {!loading && !error && <GenericDataGrid<Role, typeof schemas.GreenOnion_Common_Models_QueryRoleModel.shape> data={data} schema={schemas.GreenOnion_Common_Models_QueryRoleModel} />}
     </>
   )
 }
 
 export default App
 
-// createApiClient
-
-// // Usage example
-
-// const userSchema = z.object({
-//   id: z.number(),
-//   name: z.string(),
-//   age: z.number(),
-// });
-
-// type User = z.infer<typeof userSchema>;
-
-// const users: User[] = [
-//   { id: 1, name: "Alice", age: 25 },
-//   { id: 2, name: "Bob", age: 30 },
-// ];
-
-// export default function App() {
-//   return <GenericDataGrid<User> data={users} schema={userSchema} />;
-// }
 

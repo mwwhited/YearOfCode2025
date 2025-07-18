@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(ls:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run test:run:*)",
+      "Bash(npm run check-types:*)",
+      "Bash(npm run test:unit:*)",
+      "Bash(npm run test:integration:*)",
+      "Bash(npm run test:devtool:*)"
     ],
     "deny": []
   }

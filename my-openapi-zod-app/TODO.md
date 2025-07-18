@@ -1,15 +1,22 @@
 # TODO List
 
 ## High Priority
-- [ ] Fix useEffect dependency array issue in App.tsx to prevent infinite re-renders
+- [x] Fix useEffect dependency array issue in App.tsx to prevent infinite re-renders
 
 ## Medium Priority  
-- [ ] Add error handling for API calls in App.tsx
-- [ ] Improve GenericDataGrid schema parameter type inference
+- [x] Add error handling for API calls in App.tsx
+- [x] Improve GenericDataGrid schema parameter type inference
 
 ## Low Priority
-- [ ] Add loading states to the application
-- [ ] Create unit tests for components
+- [x] Add loading states to the application
+- [x] Create unit tests for components
+
+## New Tasks
+- [ ] Add more comprehensive error boundaries
+- [ ] Implement pagination in GenericDataGrid
+- [ ] Add sorting and filtering capabilities
+- [ ] Add more API endpoints and forms
+- [ ] Add integration tests
 
 ## Completed
 - [x] Create comprehensive README.md
