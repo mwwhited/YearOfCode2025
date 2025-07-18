@@ -36,27 +36,18 @@ function GenericDataGrid<T extends Record<string, unknown>>({
     header: ({ column }) => {
       const displayName = key.charAt(0).toUpperCase() + key.slice(1);
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-1">
             {enableSorting ? (
               <button
                 onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  fontSize: 'inherit',
-                  fontWeight: 'bold'
-                }}
+                className="bg-transparent border-none cursor-pointer flex items-center gap-1 text-inherit font-bold hover:text-blue-600 transition-colors"
               >
                 {displayName}
                 {column.getIsSorted() === 'asc' ? ' ↑' : column.getIsSorted() === 'desc' ? ' ↓' : ' ↕'}
               </button>
             ) : (
-              <span style={{ fontWeight: 'bold' }}>{displayName}</span>
+              <span className="font-bold">{displayName}</span>
             )}
           </div>
           {enableFiltering && (
@@ -65,13 +56,7 @@ function GenericDataGrid<T extends Record<string, unknown>>({
               placeholder={`Filter ${displayName}...`}
               value={column.getFilterValue() as string ?? ''}
               onChange={(e) => column.setFilterValue(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '2px 4px',
-                fontSize: '12px',
-                border: '1px solid #ccc',
-                borderRadius: '2px'
-              }}
+              className="w-full px-1 py-0.5 text-xs border border-gray-300 rounded"
             />
           )}
         </div>
@@ -116,39 +101,27 @@ function GenericDataGrid<T extends Record<string, unknown>>({
   });
 
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div className="overflow-x-auto">
       {enableFiltering && (
-        <div style={{ marginBottom: '16px' }}>
+        <div className="mb-4">
           <input
             type="text"
             placeholder="Search all columns..."
             value={globalFilter}
             onChange={(e) => setGlobalFilter(e.target.value)}
-            style={{
-              width: '300px',
-              padding: '8px',
-              fontSize: '14px',
-              border: '1px solid #ccc',
-              borderRadius: '4px'
-            }}
+            className="w-72 p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
-          <span style={{ marginLeft: '16px', fontSize: '14px', color: '#666' }}>
+          <span className="ml-4 text-sm text-gray-600">
             Showing {table.getFilteredRowModel().rows.length} of {data.length} rows
           </span>
         </div>
       )}
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <table className="w-full border-collapse bg-white rounded-lg overflow-hidden shadow-lg">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id} style={{ 
-                  border: '1px solid #ccc', 
-                  padding: '8px', 
-                  backgroundColor: '#f5f5f5',
-                  minWidth: '120px',
-                  verticalAlign: 'top'
-                }}>
+                <th key={header.id} className="border border-gray-300 p-2 bg-gray-50 min-w-[120px] align-top font-semibold text-gray-700">
                   {flexRender(
                     header.column.columnDef.header,
                     header.getContext()
@@ -160,11 +133,9 @@ function GenericDataGrid<T extends Record<string, unknown>>({
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} style={{ 
-              backgroundColor: row.index % 2 === 0 ? '#fff' : '#f9f9f9'
-            }}>
+            <tr key={row.id} className={`${row.index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors`}>
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} style={{ border: '1px solid #ccc', padding: '8px' }}>
+                <td key={cell.id} className="border border-gray-300 p-2 text-gray-800">
                   {flexRender(
                     cell.column.columnDef.cell,
                     cell.getContext()
@@ -176,12 +147,7 @@ function GenericDataGrid<T extends Record<string, unknown>>({
         </tbody>
       </table>
       {table.getFilteredRowModel().rows.length === 0 && (
-        <div style={{ 
-          textAlign: 'center', 
-          padding: '20px', 
-          color: '#666',
-          fontStyle: 'italic'
-        }}>
+        <div className="text-center p-5 text-gray-600 italic bg-gray-50 rounded-lg">
           No data matches your filters
         </div>
       )}

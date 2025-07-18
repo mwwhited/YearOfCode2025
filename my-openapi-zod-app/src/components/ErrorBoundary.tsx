@@ -25,10 +25,13 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '20px', border: '1px solid #ff0000', borderRadius: '4px' }}>
-          <h2>Something went wrong.</h2>
-          <p>{this.state.error?.message}</p>
-          <button onClick={() => this.setState({ hasError: false, error: undefined })}>
+        <div className="p-5 border border-red-500 rounded-lg bg-red-50">
+          <h2 className="text-xl font-bold text-red-700 mb-2">Something went wrong.</h2>
+          <p className="text-red-600 mb-4">{this.state.error?.message}</p>
+          <button 
+            onClick={() => this.setState({ hasError: false, error: undefined })}
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+          >
             Try again
           </button>
         </div>

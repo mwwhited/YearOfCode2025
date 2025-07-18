@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import { z } from "zod";
 
 import GenericDataGrid from './components/GenericDataGrid';
@@ -105,17 +104,10 @@ function App() {
   if (showDemo) {
     return (
       <div>
-        <div style={{ padding: '20px', borderBottom: '1px solid #eee' }}>
+        <div className="p-5 border-b border-gray-200">
           <button
             onClick={() => setShowDemo(false)}
-            style={{
-              backgroundColor: '#6c757d',
-              color: 'white',
-              border: 'none',
-              padding: '8px 16px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-            }}
+            className="bg-gray-500 text-white border-none py-2 px-4 rounded cursor-pointer hover:bg-gray-600 transition-colors"
           >
             ← Back to Main App
           </button>
@@ -126,54 +118,59 @@ function App() {
   }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-8">
+      <div className="flex gap-6 mb-8">
+        <a href="https://vite.dev" target="_blank" className="block">
+          <img 
+            src={viteLogo} 
+            className="h-24 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#646cffaa] animate-spin" 
+            alt="Vite logo" 
+          />
         </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="https://react.dev" target="_blank" className="block">
+          <img 
+            src={reactLogo} 
+            className="h-24 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa]" 
+            alt="React logo" 
+          />
         </a>
       </div>
-      <h1>React + TypeScript + Zod + OpenAPI PoC</h1>
+      <h1 className="text-5xl font-bold leading-tight mb-8 text-center">React + TypeScript + Zod + OpenAPI PoC</h1>
       
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <button 
-          onClick={() => {
-            monitoring.trackUserAction('view_demo_clicked', 'App');
-            setShowDemo(true);
-          }}
-          style={{
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            padding: '8px 16px',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            marginLeft: '10px',
-          }}
-        >
-          View Component Demo
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+      <div className="bg-gray-800 p-8 rounded-lg mb-8">
+        <div className="flex gap-4 mb-4">
+          <button 
+            onClick={() => setCount((count) => count + 1)}
+            className="bg-gray-700 text-white border border-transparent py-3 px-6 rounded-lg font-medium cursor-pointer transition-colors hover:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+          >
+            count is {count}
+          </button>
+          <button 
+            onClick={() => {
+              monitoring.trackUserAction('view_demo_clicked', 'App');
+              setShowDemo(true);
+            }}
+            className="bg-blue-600 text-white border-none py-2 px-4 rounded cursor-pointer hover:bg-blue-700 transition-colors"
+          >
+            View Component Demo
+          </button>
+        </div>
+        <p className="text-gray-300">
+          Edit <code className="bg-gray-700 px-2 py-1 rounded text-yellow-300">src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
+      <p className="text-gray-500 mb-8">
         Click on the Vite and React logos to learn more
       </p>
 
       <ErrorBoundary>
         {loading && <Loading message="Loading roles..." />}
-        {error && <p style={{color: 'red'}}>Error: {error}</p>}
+        {error && <p className="text-red-500 mb-4">Error: {error}</p>}
         {!loading && !error && <GenericDataGrid<Role> data={data} schema={customRoleSchema} />}
       </ErrorBoundary>
       
       <MonitoringDashboard />
-    </>
+    </div>
   )
 }
 

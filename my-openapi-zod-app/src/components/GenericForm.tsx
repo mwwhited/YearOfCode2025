@@ -78,13 +78,7 @@ function GenericForm<T extends Record<string, unknown>>({
       value: value as string,
       onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => 
         handleChange(fieldName, e.target.value),
-      style: {
-        width: '100%',
-        padding: '8px',
-        border: error ? '1px solid #ff0000' : '1px solid #ccc',
-        borderRadius: '4px',
-        fontSize: '14px',
-      },
+      className: `w-full p-2 text-sm rounded-md border ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'} focus:ring-2 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed`,
       disabled: disabled || isSubmitting,
     };
 
@@ -107,7 +101,7 @@ function GenericForm<T extends Record<string, unknown>>({
             type="checkbox"
             checked={Boolean(value)}
             onChange={(e) => handleChange(fieldName, e.target.checked)}
-            style={{ ...commonProps.style, width: 'auto' }}
+            className="w-auto p-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
           />
         );
         break;
@@ -126,25 +120,16 @@ function GenericForm<T extends Record<string, unknown>>({
     }
 
     return (
-      <div key={fieldName} style={{ marginBottom: '16px' }}>
+      <div key={fieldName} className="mb-4">
         <label 
           htmlFor={fieldName}
-          style={{ 
-            display: 'block', 
-            marginBottom: '4px', 
-            fontWeight: 'bold',
-            fontSize: '14px' 
-          }}
+          className="block mb-1 font-bold text-sm text-gray-700"
         >
           {fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}
         </label>
         {inputElement}
         {error && (
-          <div style={{ 
-            color: '#ff0000', 
-            fontSize: '12px', 
-            marginTop: '4px' 
-          }}>
+          <div className="text-red-500 text-xs mt-1">
             {error}
           </div>
         )}
@@ -155,7 +140,7 @@ function GenericForm<T extends Record<string, unknown>>({
   const shape = schema.shape;
   
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+    <form onSubmit={handleSubmit} className="max-w-md">
       {Object.entries(shape).map(([fieldName, fieldSchema]) => 
         renderField(fieldName, fieldSchema as z.ZodTypeAny)
       )}
@@ -163,16 +148,11 @@ function GenericForm<T extends Record<string, unknown>>({
       <button
         type="submit"
         disabled={disabled || isSubmitting}
-        style={{
-          backgroundColor: disabled || isSubmitting ? '#ccc' : '#007bff',
-          color: 'white',
-          border: 'none',
-          padding: '10px 20px',
-          borderRadius: '4px',
-          fontSize: '16px',
-          cursor: disabled || isSubmitting ? 'not-allowed' : 'pointer',
-          width: '100%',
-        }}
+        className={`w-full py-2.5 px-5 text-white border-none rounded text-base font-medium transition-colors ${
+          disabled || isSubmitting 
+            ? 'bg-gray-400 cursor-not-allowed' 
+            : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'
+        }`}
       >
         {isSubmitting ? 'Submitting...' : submitText}
       </button>

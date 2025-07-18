@@ -16,7 +16,13 @@
       "Bash(./scripts/refactor-components.sh:*)",
       "Bash(npm run dev:*)",
       "Bash(./scripts/generate-client.sh:*)",
-      "Bash(npx openapi-zod-client:*)"
+      "Bash(npx openapi-zod-client:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(npm exec:*)",
+      "Bash(npm ls:*)",
+      "Bash(rm:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx vite build:*)"
     ],
     "deny": []
   }

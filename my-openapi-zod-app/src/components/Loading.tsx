@@ -9,38 +9,18 @@ const Loading: React.FC<LoadingProps> = ({
   message = 'Loading...', 
   size = 'medium' 
 }) => {
-  const sizeStyles = {
-    small: { width: '20px', height: '20px' },
-    medium: { width: '40px', height: '40px' },
-    large: { width: '60px', height: '60px' }
+  const sizeClasses = {
+    small: 'w-5 h-5',
+    medium: 'w-10 h-10',
+    large: 'w-15 h-15'
   };
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      gap: '10px',
-      padding: '20px' 
-    }}>
+    <div className="flex flex-col items-center gap-2.5 p-5">
       <div
-        style={{
-          ...sizeStyles[size],
-          border: '3px solid #f3f3f3',
-          borderTop: '3px solid #3498db',
-          borderRadius: '50%',
-          animation: 'spin 1s linear infinite'
-        }}
+        className={`${sizeClasses[size]} border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin`}
       />
-      <p>{message}</p>
-      <style>
-        {`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}
-      </style>
+      <p className="text-gray-600">{message}</p>
     </div>
   );
 };

@@ -25,34 +25,20 @@ const MonitoringDashboard = () => {
     return new Date(timestamp).toLocaleTimeString();
   };
 
-  const getEventColor = (level: string) => {
+  const getEventColorClass = (level: string) => {
     switch (level) {
-      case 'error': return '#dc3545';
-      case 'warn': return '#ffc107';
-      default: return '#28a745';
+      case 'error': return 'border-red-500';
+      case 'warn': return 'border-yellow-500';
+      default: return 'border-green-500';
     }
   };
 
   if (!isVisible) {
     return (
-      <div style={{ 
-        position: 'fixed', 
-        bottom: '20px', 
-        right: '20px', 
-        zIndex: 1000 
-      }}>
+      <div className="fixed bottom-5 right-5 z-50">
         <button
           onClick={() => setIsVisible(true)}
-          style={{
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            padding: '10px 15px',
-            borderRadius: '50px',
-            cursor: 'pointer',
-            fontSize: '12px',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
-          }}
+          className="bg-blue-600 text-white border-none py-2.5 px-4 rounded-full cursor-pointer text-xs shadow-lg hover:bg-blue-700 transition-colors"
         >
           📊 Monitoring
         </button>
@@ -61,44 +47,18 @@ const MonitoringDashboard = () => {
   }
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px',
-      width: '400px',
-      height: '500px',
-      backgroundColor: 'white',
-      border: '1px solid #ddd',
-      borderRadius: '8px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-      zIndex: 1000,
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column'
-    }}>
-      <div style={{
-        padding: '10px 15px',
-        backgroundColor: '#f8f9fa',
-        borderBottom: '1px solid #ddd',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-        <h3 style={{ margin: 0, fontSize: '16px' }}>Monitoring Dashboard</h3>
+    <div className="fixed bottom-5 right-5 w-96 h-[500px] bg-white border border-gray-300 rounded-lg shadow-xl z-50 overflow-hidden flex flex-col">
+      <div className="py-2.5 px-4 bg-gray-50 border-b border-gray-300 flex justify-between items-center">
+        <h3 className="m-0 text-base font-semibold text-gray-800">Monitoring Dashboard</h3>
         <button
           onClick={() => setIsVisible(false)}
-          style={{
-            background: 'none',
-            border: 'none',
-            fontSize: '18px',
-            cursor: 'pointer'
-          }}
+          className="bg-transparent border-none text-lg cursor-pointer text-gray-600 hover:text-gray-800"
         >
           ×
         </button>
       </div>
 
-      <div style={{ flex: 1, overflow: 'auto', padding: '10px' }}>
+      <div className="flex-1 overflow-auto p-2.5">
         {summary && (
           <div style={{ marginBottom: '15px' }}>
             <h4 style={{ margin: '0 0 10px 0', fontSize: '14px' }}>Summary</h4>
@@ -123,19 +83,12 @@ const MonitoringDashboard = () => {
           <h4 style={{ margin: '0 0 10px 0', fontSize: '14px' }}>Recent Events</h4>
           <div style={{ maxHeight: '150px', overflow: 'auto' }}>
             {events.slice(-10).reverse().map((event, index) => (
-              <div key={index} style={{
-                fontSize: '11px',
-                padding: '4px 8px',
-                margin: '2px 0',
-                backgroundColor: '#f8f9fa',
-                borderRadius: '4px',
-                borderLeft: `3px solid ${getEventColor(event.level)}`
-              }}>
-                <div style={{ fontWeight: 'bold' }}>
+              <div key={index} className={`text-xs p-1 px-2 my-0.5 bg-gray-50 rounded border-l-4 ${getEventColorClass(event.level)}`}>
+                <div className="font-bold text-gray-700">
                   {formatTimestamp(event.timestamp)} - {event.name}
                 </div>
                 {event.data && (
-                  <div style={{ color: '#666', marginTop: '2px' }}>
+                  <div className="text-gray-600 mt-0.5">
                     {JSON.stringify(event.data, null, 2).slice(0, 100)}...
                   </div>
                 )}
