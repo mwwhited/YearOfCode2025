@@ -8,7 +8,11 @@
       "Bash(npm run check-types:*)",
       "Bash(npm run test:unit:*)",
       "Bash(npm run test:integration:*)",
-      "Bash(npm run test:devtool:*)"
+      "Bash(npm run test:devtool:*)",
+      "Bash(npx husky:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(npm run test:coverage:*)"
     ],
     "deny": []
   }
