@@ -2,9 +2,25 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {z} from "zod";
+
+import GenericDataGrid from '@/components/GenericDataGrid';
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const userSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  age: z.number(),
+});
+
+type User = z.infer<typeof userSchema>;
+
+const users: User[] = [
+  { id: 1, name: "Alice", age: 25 },
+  { id: 2, name: "Bob", age: 30 },
+];
 
   return (
     <>
@@ -28,8 +44,30 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <GenericDataGrid<User> data={users} schema={userSchema} />
     </>
   )
 }
 
 export default App
+
+// // Usage example
+
+// const userSchema = z.object({
+//   id: z.number(),
+//   name: z.string(),
+//   age: z.number(),
+// });
+
+// type User = z.infer<typeof userSchema>;
+
+// const users: User[] = [
+//   { id: 1, name: "Alice", age: 25 },
+//   { id: 2, name: "Bob", age: 30 },
+// ];
+
+// export default function App() {
+//   return <GenericDataGrid<User> data={users} schema={userSchema} />;
+// }
+
