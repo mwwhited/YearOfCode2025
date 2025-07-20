@@ -1,0 +1,15 @@
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\bin\Debug\net9.0\DataToBinary.exe
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\bin\Debug\net9.0\DataToBinary.deps.json
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\bin\Debug\net9.0\DataToBinary.runtimeconfig.json
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\bin\Debug\net9.0\DataToBinary.dll
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\bin\Debug\net9.0\DataToBinary.pdb
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.AssemblyInfoInputs.cache
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.AssemblyInfo.cs
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.csproj.CoreCompileInputs.cache
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.sourcelink.json
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.dll
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\refint\DataToBinary.dll
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.pdb
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\DataToBinary.genruntimeconfig.cache
+C:\Repos\mwwhited\YearOfCode2025\toys\throwaway\DataToBinary\obj\Debug\net9.0\ref\DataToBinary.dll
