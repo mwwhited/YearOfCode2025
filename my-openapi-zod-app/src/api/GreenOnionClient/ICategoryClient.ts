@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryCategoryModelSearchQuery } from "./IQueryCategoryModelSearchQuery";
-import type { IQueryCategoryModelPagedQueryResult } from "./IQueryCategoryModelPagedQueryResult";
-import type { IQueryCategoryModel } from "./IQueryCategoryModel";
-import type { ISaveCategoryModel } from "./ISaveCategoryModel";
+import type { IQueryCategoryModelSearchQuery } from "./Models/IQueryCategoryModelSearchQuery";
+import type { IQueryCategoryModelPagedQueryResult } from "./Models/IQueryCategoryModelPagedQueryResult";
+import type { IQueryCategoryModel } from "./Models/IQueryCategoryModel";
+import type { ISaveCategoryModel } from "./Models/ISaveCategoryModel";
 
 export type { IQueryCategoryModelSearchQuery };
 export type { IQueryCategoryModelPagedQueryResult };

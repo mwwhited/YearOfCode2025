@@ -8,7 +8,7 @@
 //
 
 // Models 
-import type { IDataMigrationThroughApiResponseModel } from "./IDataMigrationThroughApiResponseModel";
+import type { IDataMigrationThroughApiResponseModel } from "./Models/IDataMigrationThroughApiResponseModel";
 
 export type { IDataMigrationThroughApiResponseModel };
 

@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { ISuggestedProductRequestModel } from "./ISuggestedProductRequestModel";
-import type { ISuggestedProductResponseModel } from "./ISuggestedProductResponseModel";
+import type { ISuggestedProductRequestModel } from "./Models/ISuggestedProductRequestModel";
+import type { ISuggestedProductResponseModel } from "./Models/ISuggestedProductResponseModel";
 
 export type { ISuggestedProductRequestModel };
 export type { ISuggestedProductResponseModel };

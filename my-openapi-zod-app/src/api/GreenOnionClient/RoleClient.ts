@@ -14,10 +14,10 @@ import type { IRoleClient } from "./IRoleClient";
 type integer = number;
 
 // Models 
-import { QueryRoleModelSearchQuery } from "./QueryRoleModelSearchQuery";
-import type { IQueryRoleModelSearchQuery } from "./IQueryRoleModelSearchQuery";
-import { QueryRoleModelPagedQueryResult } from "./QueryRoleModelPagedQueryResult";
-import type { IQueryRoleModelPagedQueryResult } from "./IQueryRoleModelPagedQueryResult";
+import { QueryRoleModelSearchQuery } from "./Models/QueryRoleModelSearchQuery";
+import type { IQueryRoleModelSearchQuery } from "./Models/IQueryRoleModelSearchQuery";
+import { QueryRoleModelPagedQueryResult } from "./Models/QueryRoleModelPagedQueryResult";
+import type { IQueryRoleModelPagedQueryResult } from "./Models/IQueryRoleModelPagedQueryResult";
 
 // Exports
 export type { IRoleClient };

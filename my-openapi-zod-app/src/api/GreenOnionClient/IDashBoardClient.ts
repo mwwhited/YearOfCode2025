@@ -8,7 +8,7 @@
 //
 
 // Models 
-import type { IDashBoardResponseModel } from "./IDashBoardResponseModel";
+import type { IDashBoardResponseModel } from "./Models/IDashBoardResponseModel";
 
 export type { IDashBoardResponseModel };
 

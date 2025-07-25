@@ -14,10 +14,10 @@ import type { IStateClient } from "./IStateClient";
 type integer = number;
 
 // Models 
-import { QueryStateModelSearchQuery } from "./QueryStateModelSearchQuery";
-import type { IQueryStateModelSearchQuery } from "./IQueryStateModelSearchQuery";
-import { QueryStateModelPagedQueryResult } from "./QueryStateModelPagedQueryResult";
-import type { IQueryStateModelPagedQueryResult } from "./IQueryStateModelPagedQueryResult";
+import { QueryStateModelSearchQuery } from "./Models/QueryStateModelSearchQuery";
+import type { IQueryStateModelSearchQuery } from "./Models/IQueryStateModelSearchQuery";
+import { QueryStateModelPagedQueryResult } from "./Models/QueryStateModelPagedQueryResult";
+import type { IQueryStateModelPagedQueryResult } from "./Models/IQueryStateModelPagedQueryResult";
 
 // Exports
 export type { IStateClient };

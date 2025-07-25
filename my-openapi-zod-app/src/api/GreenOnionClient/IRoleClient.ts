@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { IQueryRoleModelSearchQuery } from "./IQueryRoleModelSearchQuery";
-import type { IQueryRoleModelPagedQueryResult } from "./IQueryRoleModelPagedQueryResult";
+import type { IQueryRoleModelSearchQuery } from "./Models/IQueryRoleModelSearchQuery";
+import type { IQueryRoleModelPagedQueryResult } from "./Models/IQueryRoleModelPagedQueryResult";
 
 export type { IQueryRoleModelSearchQuery };
 export type { IQueryRoleModelPagedQueryResult };

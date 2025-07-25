@@ -14,14 +14,14 @@ import type { IManufacturerClient } from "./IManufacturerClient";
 type integer = number;
 
 // Models 
-import { QueryManufacturerModelSearchQuery } from "./QueryManufacturerModelSearchQuery";
-import type { IQueryManufacturerModelSearchQuery } from "./IQueryManufacturerModelSearchQuery";
-import { QueryManufacturerModelPagedQueryResult } from "./QueryManufacturerModelPagedQueryResult";
-import type { IQueryManufacturerModelPagedQueryResult } from "./IQueryManufacturerModelPagedQueryResult";
-import { QueryManufacturerModel } from "./QueryManufacturerModel";
-import type { IQueryManufacturerModel } from "./IQueryManufacturerModel";
-import { SaveManufacturerModel } from "./SaveManufacturerModel";
-import type { ISaveManufacturerModel } from "./ISaveManufacturerModel";
+import { QueryManufacturerModelSearchQuery } from "./Models/QueryManufacturerModelSearchQuery";
+import type { IQueryManufacturerModelSearchQuery } from "./Models/IQueryManufacturerModelSearchQuery";
+import { QueryManufacturerModelPagedQueryResult } from "./Models/QueryManufacturerModelPagedQueryResult";
+import type { IQueryManufacturerModelPagedQueryResult } from "./Models/IQueryManufacturerModelPagedQueryResult";
+import { QueryManufacturerModel } from "./Models/QueryManufacturerModel";
+import type { IQueryManufacturerModel } from "./Models/IQueryManufacturerModel";
+import { SaveManufacturerModel } from "./Models/SaveManufacturerModel";
+import type { ISaveManufacturerModel } from "./Models/ISaveManufacturerModel";
 
 // Exports
 export type { IManufacturerClient };

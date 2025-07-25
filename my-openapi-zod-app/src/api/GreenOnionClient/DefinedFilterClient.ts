@@ -14,14 +14,14 @@ import type { IDefinedFilterClient } from "./IDefinedFilterClient";
 type integer = number;
 
 // Models 
-import { QueryDefinedFilterModelSearchQuery } from "./QueryDefinedFilterModelSearchQuery";
-import type { IQueryDefinedFilterModelSearchQuery } from "./IQueryDefinedFilterModelSearchQuery";
-import { QueryDefinedFilterModelPagedQueryResult } from "./QueryDefinedFilterModelPagedQueryResult";
-import type { IQueryDefinedFilterModelPagedQueryResult } from "./IQueryDefinedFilterModelPagedQueryResult";
-import { QueryDefinedFilterModel } from "./QueryDefinedFilterModel";
-import type { IQueryDefinedFilterModel } from "./IQueryDefinedFilterModel";
-import { SaveDefinedFilterModel } from "./SaveDefinedFilterModel";
-import type { ISaveDefinedFilterModel } from "./ISaveDefinedFilterModel";
+import { QueryDefinedFilterModelSearchQuery } from "./Models/QueryDefinedFilterModelSearchQuery";
+import type { IQueryDefinedFilterModelSearchQuery } from "./Models/IQueryDefinedFilterModelSearchQuery";
+import { QueryDefinedFilterModelPagedQueryResult } from "./Models/QueryDefinedFilterModelPagedQueryResult";
+import type { IQueryDefinedFilterModelPagedQueryResult } from "./Models/IQueryDefinedFilterModelPagedQueryResult";
+import { QueryDefinedFilterModel } from "./Models/QueryDefinedFilterModel";
+import type { IQueryDefinedFilterModel } from "./Models/IQueryDefinedFilterModel";
+import { SaveDefinedFilterModel } from "./Models/SaveDefinedFilterModel";
+import type { ISaveDefinedFilterModel } from "./Models/ISaveDefinedFilterModel";
 
 // Exports
 export type { IDefinedFilterClient };

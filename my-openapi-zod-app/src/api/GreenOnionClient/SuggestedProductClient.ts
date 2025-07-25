@@ -14,10 +14,10 @@ import type { ISuggestedProductClient } from "./ISuggestedProductClient";
 type integer = number;
 
 // Models 
-import { SuggestedProductRequestModel } from "./SuggestedProductRequestModel";
-import type { ISuggestedProductRequestModel } from "./ISuggestedProductRequestModel";
-import { SuggestedProductResponseModel } from "./SuggestedProductResponseModel";
-import type { ISuggestedProductResponseModel } from "./ISuggestedProductResponseModel";
+import { SuggestedProductRequestModel } from "./Models/SuggestedProductRequestModel";
+import type { ISuggestedProductRequestModel } from "./Models/ISuggestedProductRequestModel";
+import { SuggestedProductResponseModel } from "./Models/SuggestedProductResponseModel";
+import type { ISuggestedProductResponseModel } from "./Models/ISuggestedProductResponseModel";
 
 // Exports
 export type { ISuggestedProductClient };

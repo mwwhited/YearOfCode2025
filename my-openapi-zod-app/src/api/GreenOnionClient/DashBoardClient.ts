@@ -14,8 +14,8 @@ import type { IDashBoardClient } from "./IDashBoardClient";
 type integer = number;
 
 // Models 
-import { DashBoardResponseModel } from "./DashBoardResponseModel";
-import type { IDashBoardResponseModel } from "./IDashBoardResponseModel";
+import { DashBoardResponseModel } from "./Models/DashBoardResponseModel";
+import type { IDashBoardResponseModel } from "./Models/IDashBoardResponseModel";
 
 // Exports
 export type { IDashBoardClient };

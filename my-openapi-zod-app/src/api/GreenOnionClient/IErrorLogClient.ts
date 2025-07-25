@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { IQueryErrorLogModelSearchQuery } from "./IQueryErrorLogModelSearchQuery";
-import type { IQueryErrorLogModelPagedQueryResult } from "./IQueryErrorLogModelPagedQueryResult";
+import type { IQueryErrorLogModelSearchQuery } from "./Models/IQueryErrorLogModelSearchQuery";
+import type { IQueryErrorLogModelPagedQueryResult } from "./Models/IQueryErrorLogModelPagedQueryResult";
 
 export type { IQueryErrorLogModelSearchQuery };
 export type { IQueryErrorLogModelPagedQueryResult };

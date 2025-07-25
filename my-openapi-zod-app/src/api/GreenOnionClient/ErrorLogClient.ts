@@ -14,10 +14,10 @@ import type { IErrorLogClient } from "./IErrorLogClient";
 type integer = number;
 
 // Models 
-import { QueryErrorLogModelSearchQuery } from "./QueryErrorLogModelSearchQuery";
-import type { IQueryErrorLogModelSearchQuery } from "./IQueryErrorLogModelSearchQuery";
-import { QueryErrorLogModelPagedQueryResult } from "./QueryErrorLogModelPagedQueryResult";
-import type { IQueryErrorLogModelPagedQueryResult } from "./IQueryErrorLogModelPagedQueryResult";
+import { QueryErrorLogModelSearchQuery } from "./Models/QueryErrorLogModelSearchQuery";
+import type { IQueryErrorLogModelSearchQuery } from "./Models/IQueryErrorLogModelSearchQuery";
+import { QueryErrorLogModelPagedQueryResult } from "./Models/QueryErrorLogModelPagedQueryResult";
+import type { IQueryErrorLogModelPagedQueryResult } from "./Models/IQueryErrorLogModelPagedQueryResult";
 
 // Exports
 export type { IErrorLogClient };

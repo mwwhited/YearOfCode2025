@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryOneWorldSyncProductModelSearchQuery } from "./IQueryOneWorldSyncProductModelSearchQuery";
-import type { IQueryOneWorldSyncProductModelPagedQueryResult } from "./IQueryOneWorldSyncProductModelPagedQueryResult";
-import type { IQueryOneWorldSyncProductModel } from "./IQueryOneWorldSyncProductModel";
-import type { ISaveOneWorldSyncProductModel } from "./ISaveOneWorldSyncProductModel";
+import type { IQueryOneWorldSyncProductModelSearchQuery } from "./Models/IQueryOneWorldSyncProductModelSearchQuery";
+import type { IQueryOneWorldSyncProductModelPagedQueryResult } from "./Models/IQueryOneWorldSyncProductModelPagedQueryResult";
+import type { IQueryOneWorldSyncProductModel } from "./Models/IQueryOneWorldSyncProductModel";
+import type { ISaveOneWorldSyncProductModel } from "./Models/ISaveOneWorldSyncProductModel";
 
 export type { IQueryOneWorldSyncProductModelSearchQuery };
 export type { IQueryOneWorldSyncProductModelPagedQueryResult };

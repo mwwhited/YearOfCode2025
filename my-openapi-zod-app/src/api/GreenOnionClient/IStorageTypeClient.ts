@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryStorageTypeModelSearchQuery } from "./IQueryStorageTypeModelSearchQuery";
-import type { IQueryStorageTypeModelPagedQueryResult } from "./IQueryStorageTypeModelPagedQueryResult";
-import type { IQueryStorageTypeModel } from "./IQueryStorageTypeModel";
-import type { ISaveStorageTypeModel } from "./ISaveStorageTypeModel";
+import type { IQueryStorageTypeModelSearchQuery } from "./Models/IQueryStorageTypeModelSearchQuery";
+import type { IQueryStorageTypeModelPagedQueryResult } from "./Models/IQueryStorageTypeModelPagedQueryResult";
+import type { IQueryStorageTypeModel } from "./Models/IQueryStorageTypeModel";
+import type { ISaveStorageTypeModel } from "./Models/ISaveStorageTypeModel";
 
 export type { IQueryStorageTypeModelSearchQuery };
 export type { IQueryStorageTypeModelPagedQueryResult };

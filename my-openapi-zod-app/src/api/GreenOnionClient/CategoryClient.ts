@@ -14,14 +14,14 @@ import type { ICategoryClient } from "./ICategoryClient";
 type integer = number;
 
 // Models 
-import { QueryCategoryModelSearchQuery } from "./QueryCategoryModelSearchQuery";
-import type { IQueryCategoryModelSearchQuery } from "./IQueryCategoryModelSearchQuery";
-import { QueryCategoryModelPagedQueryResult } from "./QueryCategoryModelPagedQueryResult";
-import type { IQueryCategoryModelPagedQueryResult } from "./IQueryCategoryModelPagedQueryResult";
-import { QueryCategoryModel } from "./QueryCategoryModel";
-import type { IQueryCategoryModel } from "./IQueryCategoryModel";
-import { SaveCategoryModel } from "./SaveCategoryModel";
-import type { ISaveCategoryModel } from "./ISaveCategoryModel";
+import { QueryCategoryModelSearchQuery } from "./Models/QueryCategoryModelSearchQuery";
+import type { IQueryCategoryModelSearchQuery } from "./Models/IQueryCategoryModelSearchQuery";
+import { QueryCategoryModelPagedQueryResult } from "./Models/QueryCategoryModelPagedQueryResult";
+import type { IQueryCategoryModelPagedQueryResult } from "./Models/IQueryCategoryModelPagedQueryResult";
+import { QueryCategoryModel } from "./Models/QueryCategoryModel";
+import type { IQueryCategoryModel } from "./Models/IQueryCategoryModel";
+import { SaveCategoryModel } from "./Models/SaveCategoryModel";
+import type { ISaveCategoryModel } from "./Models/ISaveCategoryModel";
 
 // Exports
 export type { ICategoryClient };

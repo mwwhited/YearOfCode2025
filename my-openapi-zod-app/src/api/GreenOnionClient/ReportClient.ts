@@ -14,10 +14,10 @@ import type { IReportClient } from "./IReportClient";
 type integer = number;
 
 // Models 
-import { ProductActivityReportFilter } from "./ProductActivityReportFilter";
-import type { IProductActivityReportFilter } from "./IProductActivityReportFilter";
-import { UserResponseModel } from "./UserResponseModel";
-import type { IUserResponseModel } from "./IUserResponseModel";
+import { ProductActivityReportFilter } from "./Models/ProductActivityReportFilter";
+import type { IProductActivityReportFilter } from "./Models/IProductActivityReportFilter";
+import { UserResponseModel } from "./Models/UserResponseModel";
+import type { IUserResponseModel } from "./Models/IUserResponseModel";
 
 // Exports
 export type { IReportClient };

@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { IProductActivityReportFilter } from "./IProductActivityReportFilter";
-import type { IUserResponseModel } from "./IUserResponseModel";
+import type { IProductActivityReportFilter } from "./Models/IProductActivityReportFilter";
+import type { IUserResponseModel } from "./Models/IUserResponseModel";
 
 export type { IProductActivityReportFilter };
 export type { IUserResponseModel };

@@ -14,14 +14,14 @@ import type { IAllergenClient } from "./IAllergenClient";
 type integer = number;
 
 // Models 
-import { QueryAllergenModelSearchQuery } from "./QueryAllergenModelSearchQuery";
-import type { IQueryAllergenModelSearchQuery } from "./IQueryAllergenModelSearchQuery";
-import { QueryAllergenModelPagedQueryResult } from "./QueryAllergenModelPagedQueryResult";
-import type { IQueryAllergenModelPagedQueryResult } from "./IQueryAllergenModelPagedQueryResult";
-import { QueryAllergenModel } from "./QueryAllergenModel";
-import type { IQueryAllergenModel } from "./IQueryAllergenModel";
-import { SaveAllergenModel } from "./SaveAllergenModel";
-import type { ISaveAllergenModel } from "./ISaveAllergenModel";
+import { QueryAllergenModelSearchQuery } from "./Models/QueryAllergenModelSearchQuery";
+import type { IQueryAllergenModelSearchQuery } from "./Models/IQueryAllergenModelSearchQuery";
+import { QueryAllergenModelPagedQueryResult } from "./Models/QueryAllergenModelPagedQueryResult";
+import type { IQueryAllergenModelPagedQueryResult } from "./Models/IQueryAllergenModelPagedQueryResult";
+import { QueryAllergenModel } from "./Models/QueryAllergenModel";
+import type { IQueryAllergenModel } from "./Models/IQueryAllergenModel";
+import { SaveAllergenModel } from "./Models/SaveAllergenModel";
+import type { ISaveAllergenModel } from "./Models/ISaveAllergenModel";
 
 // Exports
 export type { IAllergenClient };

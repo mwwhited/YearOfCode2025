@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryManufacturerModelSearchQuery } from "./IQueryManufacturerModelSearchQuery";
-import type { IQueryManufacturerModelPagedQueryResult } from "./IQueryManufacturerModelPagedQueryResult";
-import type { IQueryManufacturerModel } from "./IQueryManufacturerModel";
-import type { ISaveManufacturerModel } from "./ISaveManufacturerModel";
+import type { IQueryManufacturerModelSearchQuery } from "./Models/IQueryManufacturerModelSearchQuery";
+import type { IQueryManufacturerModelPagedQueryResult } from "./Models/IQueryManufacturerModelPagedQueryResult";
+import type { IQueryManufacturerModel } from "./Models/IQueryManufacturerModel";
+import type { ISaveManufacturerModel } from "./Models/ISaveManufacturerModel";
 
 export type { IQueryManufacturerModelSearchQuery };
 export type { IQueryManufacturerModelPagedQueryResult };

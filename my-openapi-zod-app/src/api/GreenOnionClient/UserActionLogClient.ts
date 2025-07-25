@@ -14,10 +14,10 @@ import type { IUserActionLogClient } from "./IUserActionLogClient";
 type integer = number;
 
 // Models 
-import { QueryUserActionLogModelSearchQuery } from "./QueryUserActionLogModelSearchQuery";
-import type { IQueryUserActionLogModelSearchQuery } from "./IQueryUserActionLogModelSearchQuery";
-import { QueryUserActionLogModelPagedQueryResult } from "./QueryUserActionLogModelPagedQueryResult";
-import type { IQueryUserActionLogModelPagedQueryResult } from "./IQueryUserActionLogModelPagedQueryResult";
+import { QueryUserActionLogModelSearchQuery } from "./Models/QueryUserActionLogModelSearchQuery";
+import type { IQueryUserActionLogModelSearchQuery } from "./Models/IQueryUserActionLogModelSearchQuery";
+import { QueryUserActionLogModelPagedQueryResult } from "./Models/QueryUserActionLogModelPagedQueryResult";
+import type { IQueryUserActionLogModelPagedQueryResult } from "./Models/IQueryUserActionLogModelPagedQueryResult";
 
 // Exports
 export type { IUserActionLogClient };

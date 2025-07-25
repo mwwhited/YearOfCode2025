@@ -14,14 +14,14 @@ import type { ISubCategoryClient } from "./ISubCategoryClient";
 type integer = number;
 
 // Models 
-import { QuerySubCategoryModelSearchQuery } from "./QuerySubCategoryModelSearchQuery";
-import type { IQuerySubCategoryModelSearchQuery } from "./IQuerySubCategoryModelSearchQuery";
-import { QuerySubCategoryModelPagedQueryResult } from "./QuerySubCategoryModelPagedQueryResult";
-import type { IQuerySubCategoryModelPagedQueryResult } from "./IQuerySubCategoryModelPagedQueryResult";
-import { QuerySubCategoryModel } from "./QuerySubCategoryModel";
-import type { IQuerySubCategoryModel } from "./IQuerySubCategoryModel";
-import { SaveSubCategoryModel } from "./SaveSubCategoryModel";
-import type { ISaveSubCategoryModel } from "./ISaveSubCategoryModel";
+import { QuerySubCategoryModelSearchQuery } from "./Models/QuerySubCategoryModelSearchQuery";
+import type { IQuerySubCategoryModelSearchQuery } from "./Models/IQuerySubCategoryModelSearchQuery";
+import { QuerySubCategoryModelPagedQueryResult } from "./Models/QuerySubCategoryModelPagedQueryResult";
+import type { IQuerySubCategoryModelPagedQueryResult } from "./Models/IQuerySubCategoryModelPagedQueryResult";
+import { QuerySubCategoryModel } from "./Models/QuerySubCategoryModel";
+import type { IQuerySubCategoryModel } from "./Models/IQuerySubCategoryModel";
+import { SaveSubCategoryModel } from "./Models/SaveSubCategoryModel";
+import type { ISaveSubCategoryModel } from "./Models/ISaveSubCategoryModel";
 
 // Exports
 export type { ISubCategoryClient };

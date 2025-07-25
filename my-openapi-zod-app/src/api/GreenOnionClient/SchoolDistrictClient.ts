@@ -14,14 +14,14 @@ import type { ISchoolDistrictClient } from "./ISchoolDistrictClient";
 type integer = number;
 
 // Models 
-import { QuerySchoolDistrictModelSearchQuery } from "./QuerySchoolDistrictModelSearchQuery";
-import type { IQuerySchoolDistrictModelSearchQuery } from "./IQuerySchoolDistrictModelSearchQuery";
-import { QuerySchoolDistrictModelPagedQueryResult } from "./QuerySchoolDistrictModelPagedQueryResult";
-import type { IQuerySchoolDistrictModelPagedQueryResult } from "./IQuerySchoolDistrictModelPagedQueryResult";
-import { QuerySchoolDistrictModel } from "./QuerySchoolDistrictModel";
-import type { IQuerySchoolDistrictModel } from "./IQuerySchoolDistrictModel";
-import { SaveSchoolDistrictModel } from "./SaveSchoolDistrictModel";
-import type { ISaveSchoolDistrictModel } from "./ISaveSchoolDistrictModel";
+import { QuerySchoolDistrictModelSearchQuery } from "./Models/QuerySchoolDistrictModelSearchQuery";
+import type { IQuerySchoolDistrictModelSearchQuery } from "./Models/IQuerySchoolDistrictModelSearchQuery";
+import { QuerySchoolDistrictModelPagedQueryResult } from "./Models/QuerySchoolDistrictModelPagedQueryResult";
+import type { IQuerySchoolDistrictModelPagedQueryResult } from "./Models/IQuerySchoolDistrictModelPagedQueryResult";
+import { QuerySchoolDistrictModel } from "./Models/QuerySchoolDistrictModel";
+import type { IQuerySchoolDistrictModel } from "./Models/IQuerySchoolDistrictModel";
+import { SaveSchoolDistrictModel } from "./Models/SaveSchoolDistrictModel";
+import type { ISaveSchoolDistrictModel } from "./Models/ISaveSchoolDistrictModel";
 
 // Exports
 export type { ISchoolDistrictClient };

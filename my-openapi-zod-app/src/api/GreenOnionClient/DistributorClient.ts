@@ -14,14 +14,14 @@ import type { IDistributorClient } from "./IDistributorClient";
 type integer = number;
 
 // Models 
-import { QueryDistributorModelSearchQuery } from "./QueryDistributorModelSearchQuery";
-import type { IQueryDistributorModelSearchQuery } from "./IQueryDistributorModelSearchQuery";
-import { QueryDistributorModelPagedQueryResult } from "./QueryDistributorModelPagedQueryResult";
-import type { IQueryDistributorModelPagedQueryResult } from "./IQueryDistributorModelPagedQueryResult";
-import { QueryDistributorModel } from "./QueryDistributorModel";
-import type { IQueryDistributorModel } from "./IQueryDistributorModel";
-import { SaveDistributorModel } from "./SaveDistributorModel";
-import type { ISaveDistributorModel } from "./ISaveDistributorModel";
+import { QueryDistributorModelSearchQuery } from "./Models/QueryDistributorModelSearchQuery";
+import type { IQueryDistributorModelSearchQuery } from "./Models/IQueryDistributorModelSearchQuery";
+import { QueryDistributorModelPagedQueryResult } from "./Models/QueryDistributorModelPagedQueryResult";
+import type { IQueryDistributorModelPagedQueryResult } from "./Models/IQueryDistributorModelPagedQueryResult";
+import { QueryDistributorModel } from "./Models/QueryDistributorModel";
+import type { IQueryDistributorModel } from "./Models/IQueryDistributorModel";
+import { SaveDistributorModel } from "./Models/SaveDistributorModel";
+import type { ISaveDistributorModel } from "./Models/ISaveDistributorModel";
 
 // Exports
 export type { IDistributorClient };

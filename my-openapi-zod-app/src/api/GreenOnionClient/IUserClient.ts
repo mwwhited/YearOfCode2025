@@ -8,11 +8,11 @@
 //
 
 // Models 
-import type { IQueryUserModelSearchQuery } from "./IQueryUserModelSearchQuery";
-import type { IQueryUserModelPagedQueryResult } from "./IQueryUserModelPagedQueryResult";
-import type { IQueryUserModel } from "./IQueryUserModel";
-import type { ISaveUserModel } from "./ISaveUserModel";
-import type { INewUserEmailModel } from "./INewUserEmailModel";
+import type { IQueryUserModelSearchQuery } from "./Models/IQueryUserModelSearchQuery";
+import type { IQueryUserModelPagedQueryResult } from "./Models/IQueryUserModelPagedQueryResult";
+import type { IQueryUserModel } from "./Models/IQueryUserModel";
+import type { ISaveUserModel } from "./Models/ISaveUserModel";
+import type { INewUserEmailModel } from "./Models/INewUserEmailModel";
 
 export type { IQueryUserModelSearchQuery };
 export type { IQueryUserModelPagedQueryResult };

@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryDistributorModelSearchQuery } from "./IQueryDistributorModelSearchQuery";
-import type { IQueryDistributorModelPagedQueryResult } from "./IQueryDistributorModelPagedQueryResult";
-import type { IQueryDistributorModel } from "./IQueryDistributorModel";
-import type { ISaveDistributorModel } from "./ISaveDistributorModel";
+import type { IQueryDistributorModelSearchQuery } from "./Models/IQueryDistributorModelSearchQuery";
+import type { IQueryDistributorModelPagedQueryResult } from "./Models/IQueryDistributorModelPagedQueryResult";
+import type { IQueryDistributorModel } from "./Models/IQueryDistributorModel";
+import type { ISaveDistributorModel } from "./Models/ISaveDistributorModel";
 
 export type { IQueryDistributorModelSearchQuery };
 export type { IQueryDistributorModelPagedQueryResult };

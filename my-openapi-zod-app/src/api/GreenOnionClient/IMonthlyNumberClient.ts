@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryMonthlyNumberModelSearchQuery } from "./IQueryMonthlyNumberModelSearchQuery";
-import type { IQueryMonthlyNumberModelPagedQueryResult } from "./IQueryMonthlyNumberModelPagedQueryResult";
-import type { IQueryMonthlyNumberModel } from "./IQueryMonthlyNumberModel";
-import type { ISaveMonthlyNumberModel } from "./ISaveMonthlyNumberModel";
+import type { IQueryMonthlyNumberModelSearchQuery } from "./Models/IQueryMonthlyNumberModelSearchQuery";
+import type { IQueryMonthlyNumberModelPagedQueryResult } from "./Models/IQueryMonthlyNumberModelPagedQueryResult";
+import type { IQueryMonthlyNumberModel } from "./Models/IQueryMonthlyNumberModel";
+import type { ISaveMonthlyNumberModel } from "./Models/ISaveMonthlyNumberModel";
 
 export type { IQueryMonthlyNumberModelSearchQuery };
 export type { IQueryMonthlyNumberModelPagedQueryResult };

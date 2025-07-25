@@ -14,16 +14,16 @@ import type { IUserClient } from "./IUserClient";
 type integer = number;
 
 // Models 
-import { QueryUserModelSearchQuery } from "./QueryUserModelSearchQuery";
-import type { IQueryUserModelSearchQuery } from "./IQueryUserModelSearchQuery";
-import { QueryUserModelPagedQueryResult } from "./QueryUserModelPagedQueryResult";
-import type { IQueryUserModelPagedQueryResult } from "./IQueryUserModelPagedQueryResult";
-import { QueryUserModel } from "./QueryUserModel";
-import type { IQueryUserModel } from "./IQueryUserModel";
-import { SaveUserModel } from "./SaveUserModel";
-import type { ISaveUserModel } from "./ISaveUserModel";
-import { NewUserEmailModel } from "./NewUserEmailModel";
-import type { INewUserEmailModel } from "./INewUserEmailModel";
+import { QueryUserModelSearchQuery } from "./Models/QueryUserModelSearchQuery";
+import type { IQueryUserModelSearchQuery } from "./Models/IQueryUserModelSearchQuery";
+import { QueryUserModelPagedQueryResult } from "./Models/QueryUserModelPagedQueryResult";
+import type { IQueryUserModelPagedQueryResult } from "./Models/IQueryUserModelPagedQueryResult";
+import { QueryUserModel } from "./Models/QueryUserModel";
+import type { IQueryUserModel } from "./Models/IQueryUserModel";
+import { SaveUserModel } from "./Models/SaveUserModel";
+import type { ISaveUserModel } from "./Models/ISaveUserModel";
+import { NewUserEmailModel } from "./Models/NewUserEmailModel";
+import type { INewUserEmailModel } from "./Models/INewUserEmailModel";
 
 // Exports
 export type { IUserClient };

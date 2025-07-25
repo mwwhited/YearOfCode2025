@@ -1,0 +1,71 @@
+//
+// This file is generated. Do not edit manually.
+//
+// @applicationName: GreenOnion.API
+// @applicationDescription: GreenOnion.API - 1.0.0.0
+// @applicationVersion: 1.0.0.0
+// @generatedDate: 2025/07/25
+//
+
+import type { IQueryCategoryModelSearchQuery } from "./IQueryCategoryModelSearchQuery";
+import { ZQueryCategoryModelSearchQuery } from "../Schema/ZQueryCategoryModelSearchQuery";
+import { QueryCategoryModelFilter } from "./QueryCategoryModelFilter";
+import type { IQueryCategoryModelFilter } from "./IQueryCategoryModelFilter";
+import { QueryCategoryModelOrderBy } from "./QueryCategoryModelOrderBy";
+import type { IQueryCategoryModelOrderBy } from "./IQueryCategoryModelOrderBy";
+
+type integer = number;
+
+export class QueryCategoryModelSearchQuery implements IQueryCategoryModelSearchQuery {
+    readonly $zod: typeof ZQueryCategoryModelSearchQuery = ZQueryCategoryModelSearchQuery;
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** CategoryName; CategoryCode; IsActive; CreatedBy; UpdatedBy*/
+    filter?: IQueryCategoryModelFilter | undefined;
+    orderBy?: IQueryCategoryModelOrderBy | undefined;
+
+    constructor(data?: IQueryCategoryModelSearchQuery) {
+        if (data) {
+            for (const property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }   
+    
+    init(_data?: Partial<IQueryCategoryModelSearchQuery>) {
+        if (_data) {
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
+        }
+    } 
+    
+    static fromJS(data: Partial<IQueryCategoryModelSearchQuery>): IQueryCategoryModelSearchQuery {
+        data = typeof data === 'object' ? data : {};
+        const result = new QueryCategoryModelSearchQuery();
+        result.init(data);
+        return result;
+    }
+
+
+    toJSON(data?: any) : any {
+        data = typeof data === 'object' ? data : {};
+        for (const property in this) {
+            if (this.hasOwnProperty(property))
+                data[property] = this[property];
+        }
+        data["currentPage"] = this.currentPage;
+        data["pageSize"] = this.pageSize;
+        data["excludePageCount"] = this.excludePageCount;
+        data["searchTerm"] = this.searchTerm;
+        data["filter"] = this.filter;
+        data["orderBy"] = this.orderBy;
+        return data;
+    }
+}

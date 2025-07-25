@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { IQueryIocCategoryModelSearchQuery } from "./IQueryIocCategoryModelSearchQuery";
-import type { IQueryIocCategoryModelPagedQueryResult } from "./IQueryIocCategoryModelPagedQueryResult";
+import type { IQueryIocCategoryModelSearchQuery } from "./Models/IQueryIocCategoryModelSearchQuery";
+import type { IQueryIocCategoryModelPagedQueryResult } from "./Models/IQueryIocCategoryModelPagedQueryResult";
 
 export type { IQueryIocCategoryModelSearchQuery };
 export type { IQueryIocCategoryModelPagedQueryResult };

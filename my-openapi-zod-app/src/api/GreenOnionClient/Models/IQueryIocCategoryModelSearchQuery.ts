@@ -1,0 +1,20 @@
+//
+// This file is generated. Do not edit manually.
+//
+// @applicationName: GreenOnion.API
+// @applicationDescription: GreenOnion.API - 1.0.0.0
+// @applicationVersion: 1.0.0.0
+// @generatedDate: 2025/07/25
+//
+
+import type { z } from "zod";
+import { ZQueryIocCategoryModelSearchQuery } from "../Schema/ZQueryIocCategoryModelSearchQuery";
+import type { IQueryIocCategoryModelFilter } from "./IQueryIocCategoryModelFilter";
+import type { IQueryIocCategoryModelOrderBy } from "./IQueryIocCategoryModelOrderBy";
+
+
+export interface IQueryIocCategoryModelSearchQuery extends z.infer<typeof ZQueryIocCategoryModelSearchQuery> {
+  $zod: typeof ZQueryIocCategoryModelSearchQuery;
+  toJSON(data?: any): any;
+}
+

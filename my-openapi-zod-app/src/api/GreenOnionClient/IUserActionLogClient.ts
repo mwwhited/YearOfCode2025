@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { IQueryUserActionLogModelSearchQuery } from "./IQueryUserActionLogModelSearchQuery";
-import type { IQueryUserActionLogModelPagedQueryResult } from "./IQueryUserActionLogModelPagedQueryResult";
+import type { IQueryUserActionLogModelSearchQuery } from "./Models/IQueryUserActionLogModelSearchQuery";
+import type { IQueryUserActionLogModelPagedQueryResult } from "./Models/IQueryUserActionLogModelPagedQueryResult";
 
 export type { IQueryUserActionLogModelSearchQuery };
 export type { IQueryUserActionLogModelPagedQueryResult };

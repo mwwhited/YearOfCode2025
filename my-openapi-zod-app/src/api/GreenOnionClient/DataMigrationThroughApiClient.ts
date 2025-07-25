@@ -14,8 +14,8 @@ import type { IDataMigrationThroughApiClient } from "./IDataMigrationThroughApiC
 type integer = number;
 
 // Models 
-import { DataMigrationThroughApiResponseModel } from "./DataMigrationThroughApiResponseModel";
-import type { IDataMigrationThroughApiResponseModel } from "./IDataMigrationThroughApiResponseModel";
+import { DataMigrationThroughApiResponseModel } from "./Models/DataMigrationThroughApiResponseModel";
+import type { IDataMigrationThroughApiResponseModel } from "./Models/IDataMigrationThroughApiResponseModel";
 
 // Exports
 export type { IDataMigrationThroughApiClient };

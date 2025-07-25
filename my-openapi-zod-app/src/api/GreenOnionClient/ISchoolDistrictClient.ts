@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQuerySchoolDistrictModelSearchQuery } from "./IQuerySchoolDistrictModelSearchQuery";
-import type { IQuerySchoolDistrictModelPagedQueryResult } from "./IQuerySchoolDistrictModelPagedQueryResult";
-import type { IQuerySchoolDistrictModel } from "./IQuerySchoolDistrictModel";
-import type { ISaveSchoolDistrictModel } from "./ISaveSchoolDistrictModel";
+import type { IQuerySchoolDistrictModelSearchQuery } from "./Models/IQuerySchoolDistrictModelSearchQuery";
+import type { IQuerySchoolDistrictModelPagedQueryResult } from "./Models/IQuerySchoolDistrictModelPagedQueryResult";
+import type { IQuerySchoolDistrictModel } from "./Models/IQuerySchoolDistrictModel";
+import type { ISaveSchoolDistrictModel } from "./Models/ISaveSchoolDistrictModel";
 
 export type { IQuerySchoolDistrictModelSearchQuery };
 export type { IQuerySchoolDistrictModelPagedQueryResult };

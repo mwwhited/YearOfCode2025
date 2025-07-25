@@ -14,14 +14,14 @@ import type { IIngredientClient } from "./IIngredientClient";
 type integer = number;
 
 // Models 
-import { QueryIngredientModelSearchQuery } from "./QueryIngredientModelSearchQuery";
-import type { IQueryIngredientModelSearchQuery } from "./IQueryIngredientModelSearchQuery";
-import { QueryIngredientModelPagedQueryResult } from "./QueryIngredientModelPagedQueryResult";
-import type { IQueryIngredientModelPagedQueryResult } from "./IQueryIngredientModelPagedQueryResult";
-import { QueryIngredientModel } from "./QueryIngredientModel";
-import type { IQueryIngredientModel } from "./IQueryIngredientModel";
-import { SaveIngredientModel } from "./SaveIngredientModel";
-import type { ISaveIngredientModel } from "./ISaveIngredientModel";
+import { QueryIngredientModelSearchQuery } from "./Models/QueryIngredientModelSearchQuery";
+import type { IQueryIngredientModelSearchQuery } from "./Models/IQueryIngredientModelSearchQuery";
+import { QueryIngredientModelPagedQueryResult } from "./Models/QueryIngredientModelPagedQueryResult";
+import type { IQueryIngredientModelPagedQueryResult } from "./Models/IQueryIngredientModelPagedQueryResult";
+import { QueryIngredientModel } from "./Models/QueryIngredientModel";
+import type { IQueryIngredientModel } from "./Models/IQueryIngredientModel";
+import { SaveIngredientModel } from "./Models/SaveIngredientModel";
+import type { ISaveIngredientModel } from "./Models/ISaveIngredientModel";
 
 // Exports
 export type { IIngredientClient };

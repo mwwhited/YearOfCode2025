@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryDefinedFilterModelSearchQuery } from "./IQueryDefinedFilterModelSearchQuery";
-import type { IQueryDefinedFilterModelPagedQueryResult } from "./IQueryDefinedFilterModelPagedQueryResult";
-import type { IQueryDefinedFilterModel } from "./IQueryDefinedFilterModel";
-import type { ISaveDefinedFilterModel } from "./ISaveDefinedFilterModel";
+import type { IQueryDefinedFilterModelSearchQuery } from "./Models/IQueryDefinedFilterModelSearchQuery";
+import type { IQueryDefinedFilterModelPagedQueryResult } from "./Models/IQueryDefinedFilterModelPagedQueryResult";
+import type { IQueryDefinedFilterModel } from "./Models/IQueryDefinedFilterModel";
+import type { ISaveDefinedFilterModel } from "./Models/ISaveDefinedFilterModel";
 
 export type { IQueryDefinedFilterModelSearchQuery };
 export type { IQueryDefinedFilterModelPagedQueryResult };

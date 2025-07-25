@@ -14,14 +14,14 @@ import type { IStorageTypeClient } from "./IStorageTypeClient";
 type integer = number;
 
 // Models 
-import { QueryStorageTypeModelSearchQuery } from "./QueryStorageTypeModelSearchQuery";
-import type { IQueryStorageTypeModelSearchQuery } from "./IQueryStorageTypeModelSearchQuery";
-import { QueryStorageTypeModelPagedQueryResult } from "./QueryStorageTypeModelPagedQueryResult";
-import type { IQueryStorageTypeModelPagedQueryResult } from "./IQueryStorageTypeModelPagedQueryResult";
-import { QueryStorageTypeModel } from "./QueryStorageTypeModel";
-import type { IQueryStorageTypeModel } from "./IQueryStorageTypeModel";
-import { SaveStorageTypeModel } from "./SaveStorageTypeModel";
-import type { ISaveStorageTypeModel } from "./ISaveStorageTypeModel";
+import { QueryStorageTypeModelSearchQuery } from "./Models/QueryStorageTypeModelSearchQuery";
+import type { IQueryStorageTypeModelSearchQuery } from "./Models/IQueryStorageTypeModelSearchQuery";
+import { QueryStorageTypeModelPagedQueryResult } from "./Models/QueryStorageTypeModelPagedQueryResult";
+import type { IQueryStorageTypeModelPagedQueryResult } from "./Models/IQueryStorageTypeModelPagedQueryResult";
+import { QueryStorageTypeModel } from "./Models/QueryStorageTypeModel";
+import type { IQueryStorageTypeModel } from "./Models/IQueryStorageTypeModel";
+import { SaveStorageTypeModel } from "./Models/SaveStorageTypeModel";
+import type { ISaveStorageTypeModel } from "./Models/ISaveStorageTypeModel";
 
 // Exports
 export type { IStorageTypeClient };

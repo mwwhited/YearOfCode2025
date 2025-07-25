@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryAllergenModelSearchQuery } from "./IQueryAllergenModelSearchQuery";
-import type { IQueryAllergenModelPagedQueryResult } from "./IQueryAllergenModelPagedQueryResult";
-import type { IQueryAllergenModel } from "./IQueryAllergenModel";
-import type { ISaveAllergenModel } from "./ISaveAllergenModel";
+import type { IQueryAllergenModelSearchQuery } from "./Models/IQueryAllergenModelSearchQuery";
+import type { IQueryAllergenModelPagedQueryResult } from "./Models/IQueryAllergenModelPagedQueryResult";
+import type { IQueryAllergenModel } from "./Models/IQueryAllergenModel";
+import type { ISaveAllergenModel } from "./Models/ISaveAllergenModel";
 
 export type { IQueryAllergenModelSearchQuery };
 export type { IQueryAllergenModelPagedQueryResult };

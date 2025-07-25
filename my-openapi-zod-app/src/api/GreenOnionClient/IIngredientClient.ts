@@ -8,10 +8,10 @@
 //
 
 // Models 
-import type { IQueryIngredientModelSearchQuery } from "./IQueryIngredientModelSearchQuery";
-import type { IQueryIngredientModelPagedQueryResult } from "./IQueryIngredientModelPagedQueryResult";
-import type { IQueryIngredientModel } from "./IQueryIngredientModel";
-import type { ISaveIngredientModel } from "./ISaveIngredientModel";
+import type { IQueryIngredientModelSearchQuery } from "./Models/IQueryIngredientModelSearchQuery";
+import type { IQueryIngredientModelPagedQueryResult } from "./Models/IQueryIngredientModelPagedQueryResult";
+import type { IQueryIngredientModel } from "./Models/IQueryIngredientModel";
+import type { ISaveIngredientModel } from "./Models/ISaveIngredientModel";
 
 export type { IQueryIngredientModelSearchQuery };
 export type { IQueryIngredientModelPagedQueryResult };

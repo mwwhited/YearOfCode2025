@@ -14,14 +14,14 @@ import type { IMonthlyNumberClient } from "./IMonthlyNumberClient";
 type integer = number;
 
 // Models 
-import { QueryMonthlyNumberModelSearchQuery } from "./QueryMonthlyNumberModelSearchQuery";
-import type { IQueryMonthlyNumberModelSearchQuery } from "./IQueryMonthlyNumberModelSearchQuery";
-import { QueryMonthlyNumberModelPagedQueryResult } from "./QueryMonthlyNumberModelPagedQueryResult";
-import type { IQueryMonthlyNumberModelPagedQueryResult } from "./IQueryMonthlyNumberModelPagedQueryResult";
-import { QueryMonthlyNumberModel } from "./QueryMonthlyNumberModel";
-import type { IQueryMonthlyNumberModel } from "./IQueryMonthlyNumberModel";
-import { SaveMonthlyNumberModel } from "./SaveMonthlyNumberModel";
-import type { ISaveMonthlyNumberModel } from "./ISaveMonthlyNumberModel";
+import { QueryMonthlyNumberModelSearchQuery } from "./Models/QueryMonthlyNumberModelSearchQuery";
+import type { IQueryMonthlyNumberModelSearchQuery } from "./Models/IQueryMonthlyNumberModelSearchQuery";
+import { QueryMonthlyNumberModelPagedQueryResult } from "./Models/QueryMonthlyNumberModelPagedQueryResult";
+import type { IQueryMonthlyNumberModelPagedQueryResult } from "./Models/IQueryMonthlyNumberModelPagedQueryResult";
+import { QueryMonthlyNumberModel } from "./Models/QueryMonthlyNumberModel";
+import type { IQueryMonthlyNumberModel } from "./Models/IQueryMonthlyNumberModel";
+import { SaveMonthlyNumberModel } from "./Models/SaveMonthlyNumberModel";
+import type { ISaveMonthlyNumberModel } from "./Models/ISaveMonthlyNumberModel";
 
 // Exports
 export type { IMonthlyNumberClient };

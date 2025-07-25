@@ -8,8 +8,8 @@
 //
 
 // Models 
-import type { IQueryStateModelSearchQuery } from "./IQueryStateModelSearchQuery";
-import type { IQueryStateModelPagedQueryResult } from "./IQueryStateModelPagedQueryResult";
+import type { IQueryStateModelSearchQuery } from "./Models/IQueryStateModelSearchQuery";
+import type { IQueryStateModelPagedQueryResult } from "./Models/IQueryStateModelPagedQueryResult";
 
 export type { IQueryStateModelSearchQuery };
 export type { IQueryStateModelPagedQueryResult };

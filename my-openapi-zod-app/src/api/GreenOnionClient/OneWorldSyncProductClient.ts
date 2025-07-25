@@ -14,14 +14,14 @@ import type { IOneWorldSyncProductClient } from "./IOneWorldSyncProductClient";
 type integer = number;
 
 // Models 
-import { QueryOneWorldSyncProductModelSearchQuery } from "./QueryOneWorldSyncProductModelSearchQuery";
-import type { IQueryOneWorldSyncProductModelSearchQuery } from "./IQueryOneWorldSyncProductModelSearchQuery";
-import { QueryOneWorldSyncProductModelPagedQueryResult } from "./QueryOneWorldSyncProductModelPagedQueryResult";
-import type { IQueryOneWorldSyncProductModelPagedQueryResult } from "./IQueryOneWorldSyncProductModelPagedQueryResult";
-import { QueryOneWorldSyncProductModel } from "./QueryOneWorldSyncProductModel";
-import type { IQueryOneWorldSyncProductModel } from "./IQueryOneWorldSyncProductModel";
-import { SaveOneWorldSyncProductModel } from "./SaveOneWorldSyncProductModel";
-import type { ISaveOneWorldSyncProductModel } from "./ISaveOneWorldSyncProductModel";
+import { QueryOneWorldSyncProductModelSearchQuery } from "./Models/QueryOneWorldSyncProductModelSearchQuery";
+import type { IQueryOneWorldSyncProductModelSearchQuery } from "./Models/IQueryOneWorldSyncProductModelSearchQuery";
+import { QueryOneWorldSyncProductModelPagedQueryResult } from "./Models/QueryOneWorldSyncProductModelPagedQueryResult";
+import type { IQueryOneWorldSyncProductModelPagedQueryResult } from "./Models/IQueryOneWorldSyncProductModelPagedQueryResult";
+import { QueryOneWorldSyncProductModel } from "./Models/QueryOneWorldSyncProductModel";
+import type { IQueryOneWorldSyncProductModel } from "./Models/IQueryOneWorldSyncProductModel";
+import { SaveOneWorldSyncProductModel } from "./Models/SaveOneWorldSyncProductModel";
+import type { ISaveOneWorldSyncProductModel } from "./Models/ISaveOneWorldSyncProductModel";
 
 // Exports
 export type { IOneWorldSyncProductClient };

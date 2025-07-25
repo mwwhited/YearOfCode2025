@@ -14,10 +14,10 @@ import type { IIIocCategoryClient } from "./IIIocCategoryClient";
 type integer = number;
 
 // Models 
-import { QueryIocCategoryModelSearchQuery } from "./QueryIocCategoryModelSearchQuery";
-import type { IQueryIocCategoryModelSearchQuery } from "./IQueryIocCategoryModelSearchQuery";
-import { QueryIocCategoryModelPagedQueryResult } from "./QueryIocCategoryModelPagedQueryResult";
-import type { IQueryIocCategoryModelPagedQueryResult } from "./IQueryIocCategoryModelPagedQueryResult";
+import { QueryIocCategoryModelSearchQuery } from "./Models/QueryIocCategoryModelSearchQuery";
+import type { IQueryIocCategoryModelSearchQuery } from "./Models/IQueryIocCategoryModelSearchQuery";
+import { QueryIocCategoryModelPagedQueryResult } from "./Models/QueryIocCategoryModelPagedQueryResult";
+import type { IQueryIocCategoryModelPagedQueryResult } from "./Models/IQueryIocCategoryModelPagedQueryResult";
 
 // Exports
 export type { IIIocCategoryClient };

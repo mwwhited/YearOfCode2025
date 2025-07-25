@@ -14,26 +14,26 @@ import type { IProductClient } from "./IProductClient";
 type integer = number;
 
 // Models 
-import { QueryProductModelSearchQuery } from "./QueryProductModelSearchQuery";
-import type { IQueryProductModelSearchQuery } from "./IQueryProductModelSearchQuery";
-import { QueryProductModelPagedQueryResult } from "./QueryProductModelPagedQueryResult";
-import type { IQueryProductModelPagedQueryResult } from "./IQueryProductModelPagedQueryResult";
-import { QueryProductModel } from "./QueryProductModel";
-import type { IQueryProductModel } from "./IQueryProductModel";
-import { ContentReference } from "./ContentReference";
-import type { IContentReference } from "./IContentReference";
-import { ProductResponse } from "./ProductResponse";
-import type { IProductResponse } from "./IProductResponse";
-import { ProductGtinAllocationModel } from "./ProductGtinAllocationModel";
-import type { IProductGtinAllocationModel } from "./IProductGtinAllocationModel";
-import { ProductUpcAllocationModel } from "./ProductUpcAllocationModel";
-import type { IProductUpcAllocationModel } from "./IProductUpcAllocationModel";
-import { FileUploadResponse } from "./FileUploadResponse";
-import type { IFileUploadResponse } from "./IFileUploadResponse";
-import { SelectProductSaveCheckListRequestModel } from "./SelectProductSaveCheckListRequestModel";
-import type { ISelectProductSaveCheckListRequestModel } from "./ISelectProductSaveCheckListRequestModel";
-import { BaseResponseModel } from "./BaseResponseModel";
-import type { IBaseResponseModel } from "./IBaseResponseModel";
+import { QueryProductModelSearchQuery } from "./Models/QueryProductModelSearchQuery";
+import type { IQueryProductModelSearchQuery } from "./Models/IQueryProductModelSearchQuery";
+import { QueryProductModelPagedQueryResult } from "./Models/QueryProductModelPagedQueryResult";
+import type { IQueryProductModelPagedQueryResult } from "./Models/IQueryProductModelPagedQueryResult";
+import { QueryProductModel } from "./Models/QueryProductModel";
+import type { IQueryProductModel } from "./Models/IQueryProductModel";
+import { ContentReference } from "./Models/ContentReference";
+import type { IContentReference } from "./Models/IContentReference";
+import { ProductResponse } from "./Models/ProductResponse";
+import type { IProductResponse } from "./Models/IProductResponse";
+import { ProductGtinAllocationModel } from "./Models/ProductGtinAllocationModel";
+import type { IProductGtinAllocationModel } from "./Models/IProductGtinAllocationModel";
+import { ProductUpcAllocationModel } from "./Models/ProductUpcAllocationModel";
+import type { IProductUpcAllocationModel } from "./Models/IProductUpcAllocationModel";
+import { FileUploadResponse } from "./Models/FileUploadResponse";
+import type { IFileUploadResponse } from "./Models/IFileUploadResponse";
+import { SelectProductSaveCheckListRequestModel } from "./Models/SelectProductSaveCheckListRequestModel";
+import type { ISelectProductSaveCheckListRequestModel } from "./Models/ISelectProductSaveCheckListRequestModel";
+import { BaseResponseModel } from "./Models/BaseResponseModel";
+import type { IBaseResponseModel } from "./Models/IBaseResponseModel";
 
 // Exports
 export type { IProductClient };
