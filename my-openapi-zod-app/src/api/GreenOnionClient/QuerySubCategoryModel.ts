@@ -29,7 +29,7 @@ export class QuerySubCategoryModel implements IQuerySubCategoryModel {
 
     constructor(data?: IQuerySubCategoryModel) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -54,14 +54,14 @@ export class QuerySubCategoryModel implements IQuerySubCategoryModel {
     
     static fromJS(data: any): IQuerySubCategoryModel {
         data = typeof data === 'object' ? data : {};
-        let result = new QuerySubCategoryModel();
+        const result = new QuerySubCategoryModel();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

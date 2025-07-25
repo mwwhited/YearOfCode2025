@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryStorageTypeModelSearchQuery } from "./IQueryStorageTypeModelSearchQuery";
-
 import type { IQueryStorageTypeModelFilter } from "./IQueryStorageTypeModelFilter";
 import { ZQueryStorageTypeModelFilter } from "./ZQueryStorageTypeModelFilter";
 import type { IQueryStorageTypeModelOrderBy } from "./IQueryStorageTypeModelOrderBy";
 import { ZQueryStorageTypeModelOrderBy } from "./ZQueryStorageTypeModelOrderBy";
+
+import type { IQueryStorageTypeModelSearchQuery } from "./IQueryStorageTypeModelSearchQuery";
+
 
 export const ZQueryStorageTypeModelSearchQuery: z.ZodType<IQueryStorageTypeModelSearchQuery> = z.object({
     currentPage: z.string(),

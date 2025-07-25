@@ -32,7 +32,7 @@ export class SaveSchoolDistrictModel implements ISaveSchoolDistrictModel {
 
     constructor(data?: ISaveSchoolDistrictModel) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -60,14 +60,14 @@ export class SaveSchoolDistrictModel implements ISaveSchoolDistrictModel {
     
     static fromJS(data: any): ISaveSchoolDistrictModel {
         data = typeof data === 'object' ? data : {};
-        let result = new SaveSchoolDistrictModel();
+        const result = new SaveSchoolDistrictModel();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

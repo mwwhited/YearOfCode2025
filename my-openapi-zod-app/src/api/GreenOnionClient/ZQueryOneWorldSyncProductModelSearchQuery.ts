@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryOneWorldSyncProductModelSearchQuery } from "./IQueryOneWorldSyncProductModelSearchQuery";
-
 import type { IQueryOneWorldSyncProductModelFilter } from "./IQueryOneWorldSyncProductModelFilter";
 import { ZQueryOneWorldSyncProductModelFilter } from "./ZQueryOneWorldSyncProductModelFilter";
 import type { IQueryOneWorldSyncProductModelOrderBy } from "./IQueryOneWorldSyncProductModelOrderBy";
 import { ZQueryOneWorldSyncProductModelOrderBy } from "./ZQueryOneWorldSyncProductModelOrderBy";
+
+import type { IQueryOneWorldSyncProductModelSearchQuery } from "./IQueryOneWorldSyncProductModelSearchQuery";
+
 
 export const ZQueryOneWorldSyncProductModelSearchQuery: z.ZodType<IQueryOneWorldSyncProductModelSearchQuery> = z.object({
     currentPage: z.string(),

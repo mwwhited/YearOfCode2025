@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryMonthlyNumberModelPagedQueryResult } from "./IQueryMonthlyNumberModelPagedQueryResult";
-
 import type { IQueryMonthlyNumberModel } from "./IQueryMonthlyNumberModel";
 import { ZQueryMonthlyNumberModel } from "./ZQueryMonthlyNumberModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryMonthlyNumberModelPagedQueryResult } from "./IQueryMonthlyNumberModelPagedQueryResult";
+
 
 export const ZQueryMonthlyNumberModelPagedQueryResult: z.ZodType<IQueryMonthlyNumberModelPagedQueryResult> = z.object({
     rows: z.string(),

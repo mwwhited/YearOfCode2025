@@ -8,9 +8,6 @@
 //
 
 import { z } from "zod";
-
-import type { IFileUploadResponse } from "./IFileUploadResponse";
-
 import type { IMappingFieldData } from "./IMappingFieldData";
 import { ZMappingFieldData } from "./ZMappingFieldData";
 import type { IFileHeader } from "./IFileHeader";
@@ -23,6 +20,9 @@ import type { IProductTableField } from "./IProductTableField";
 import { ZProductTableField } from "./ZProductTableField";
 import type { IFileStatus } from "./IFileStatus";
 import { ZFileStatus } from "./ZFileStatus";
+
+import type { IFileUploadResponse } from "./IFileUploadResponse";
+
 
 export const ZFileUploadResponse: z.ZodType<IFileUploadResponse> = z.object({
     manufacture: z.string(),

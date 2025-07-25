@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryAllergenModelPagedQueryResult } from "./IQueryAllergenModelPagedQueryResult";
-
 import type { IQueryAllergenModel } from "./IQueryAllergenModel";
 import { ZQueryAllergenModel } from "./ZQueryAllergenModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryAllergenModelPagedQueryResult } from "./IQueryAllergenModelPagedQueryResult";
+
 
 export const ZQueryAllergenModelPagedQueryResult: z.ZodType<IQueryAllergenModelPagedQueryResult> = z.object({
     rows: z.string(),

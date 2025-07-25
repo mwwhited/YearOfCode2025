@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryProductModelPagedQueryResult } from "./IQueryProductModelPagedQueryResult";
-
 import type { IQueryProductModel } from "./IQueryProductModel";
 import { ZQueryProductModel } from "./ZQueryProductModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryProductModelPagedQueryResult } from "./IQueryProductModelPagedQueryResult";
+
 
 export const ZQueryProductModelPagedQueryResult: z.ZodType<IQueryProductModelPagedQueryResult> = z.object({
     rows: z.string(),

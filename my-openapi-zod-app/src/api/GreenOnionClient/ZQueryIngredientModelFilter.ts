@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IFilterParameter } from "./IFilterParameter";
+import { ZFilterParameter } from "./ZFilterParameter";
 
 import type { IQueryIngredientModelFilter } from "./IQueryIngredientModelFilter";
 
-import type { IFilterParameter } from "./IFilterParameter";
-import { ZFilterParameter } from "./ZFilterParameter";
 
 export const ZQueryIngredientModelFilter: z.ZodType<IQueryIngredientModelFilter> = z.object({
     ingredientId: z.string(),

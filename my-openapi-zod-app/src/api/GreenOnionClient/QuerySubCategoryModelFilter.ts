@@ -31,7 +31,7 @@ export class QuerySubCategoryModelFilter implements IQuerySubCategoryModelFilter
 
     constructor(data?: IQuerySubCategoryModelFilter) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -56,14 +56,14 @@ export class QuerySubCategoryModelFilter implements IQuerySubCategoryModelFilter
     
     static fromJS(data: any): IQuerySubCategoryModelFilter {
         data = typeof data === 'object' ? data : {};
-        let result = new QuerySubCategoryModelFilter();
+        const result = new QuerySubCategoryModelFilter();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

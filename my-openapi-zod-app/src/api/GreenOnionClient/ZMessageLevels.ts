@@ -9,9 +9,6 @@
 
 import { z } from "zod";
 
-import type { IMessageLevels } from "./IMessageLevels";
-
-
 export const ZMessageLevels = z.enum([
     "trace",
     "debug",

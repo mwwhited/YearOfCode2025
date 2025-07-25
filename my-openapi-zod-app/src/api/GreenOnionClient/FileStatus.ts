@@ -20,7 +20,7 @@ export class FileStatus implements IFileStatus {
 
     constructor(data?: IFileStatus) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -36,14 +36,14 @@ export class FileStatus implements IFileStatus {
     
     static fromJS(data: any): IFileStatus {
         data = typeof data === 'object' ? data : {};
-        let result = new FileStatus();
+        const result = new FileStatus();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

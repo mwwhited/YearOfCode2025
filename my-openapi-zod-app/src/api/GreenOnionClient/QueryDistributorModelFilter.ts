@@ -30,7 +30,7 @@ export class QueryDistributorModelFilter implements IQueryDistributorModelFilter
 
     constructor(data?: IQueryDistributorModelFilter) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -54,14 +54,14 @@ export class QueryDistributorModelFilter implements IQueryDistributorModelFilter
     
     static fromJS(data: any): IQueryDistributorModelFilter {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryDistributorModelFilter();
+        const result = new QueryDistributorModelFilter();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

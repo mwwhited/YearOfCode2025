@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IFilterParameter } from "./IFilterParameter";
+import { ZFilterParameter } from "./ZFilterParameter";
 
 import type { IQuerySchoolDistrictModelFilter } from "./IQuerySchoolDistrictModelFilter";
 
-import type { IFilterParameter } from "./IFilterParameter";
-import { ZFilterParameter } from "./ZFilterParameter";
 
 export const ZQuerySchoolDistrictModelFilter: z.ZodType<IQuerySchoolDistrictModelFilter> = z.object({
     schoolDistrictId: z.string(),

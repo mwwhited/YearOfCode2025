@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQuerySubCategoryModelPagedQueryResult } from "./IQuerySubCategoryModelPagedQueryResult";
-
 import type { IQuerySubCategoryModel } from "./IQuerySubCategoryModel";
 import { ZQuerySubCategoryModel } from "./ZQuerySubCategoryModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQuerySubCategoryModelPagedQueryResult } from "./IQuerySubCategoryModelPagedQueryResult";
+
 
 export const ZQuerySubCategoryModelPagedQueryResult: z.ZodType<IQuerySubCategoryModelPagedQueryResult> = z.object({
     rows: z.string(),

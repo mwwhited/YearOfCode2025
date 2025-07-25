@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryMonthlyNumberModelSearchQuery } from "./IQueryMonthlyNumberModelSearchQuery";
-
 import type { IQueryMonthlyNumberModelFilter } from "./IQueryMonthlyNumberModelFilter";
 import { ZQueryMonthlyNumberModelFilter } from "./ZQueryMonthlyNumberModelFilter";
 import type { IQueryMonthlyNumberModelOrderBy } from "./IQueryMonthlyNumberModelOrderBy";
 import { ZQueryMonthlyNumberModelOrderBy } from "./ZQueryMonthlyNumberModelOrderBy";
+
+import type { IQueryMonthlyNumberModelSearchQuery } from "./IQueryMonthlyNumberModelSearchQuery";
+
 
 export const ZQueryMonthlyNumberModelSearchQuery: z.ZodType<IQueryMonthlyNumberModelSearchQuery> = z.object({
     currentPage: z.string(),

@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryRoleModelPagedQueryResult } from "./IQueryRoleModelPagedQueryResult";
-
 import type { IQueryRoleModel } from "./IQueryRoleModel";
 import { ZQueryRoleModel } from "./ZQueryRoleModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryRoleModelPagedQueryResult } from "./IQueryRoleModelPagedQueryResult";
+
 
 export const ZQueryRoleModelPagedQueryResult: z.ZodType<IQueryRoleModelPagedQueryResult> = z.object({
     rows: z.string(),

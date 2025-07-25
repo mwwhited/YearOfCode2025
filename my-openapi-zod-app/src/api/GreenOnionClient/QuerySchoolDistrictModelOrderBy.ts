@@ -43,7 +43,7 @@ export class QuerySchoolDistrictModelOrderBy implements IQuerySchoolDistrictMode
 
     constructor(data?: IQuerySchoolDistrictModelOrderBy) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -80,14 +80,14 @@ export class QuerySchoolDistrictModelOrderBy implements IQuerySchoolDistrictMode
     
     static fromJS(data: any): IQuerySchoolDistrictModelOrderBy {
         data = typeof data === 'object' ? data : {};
-        let result = new QuerySchoolDistrictModelOrderBy();
+        const result = new QuerySchoolDistrictModelOrderBy();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryStorageTypeModelPagedQueryResult } from "./IQueryStorageTypeModelPagedQueryResult";
-
 import type { IQueryStorageTypeModel } from "./IQueryStorageTypeModel";
 import { ZQueryStorageTypeModel } from "./ZQueryStorageTypeModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryStorageTypeModelPagedQueryResult } from "./IQueryStorageTypeModelPagedQueryResult";
+
 
 export const ZQueryStorageTypeModelPagedQueryResult: z.ZodType<IQueryStorageTypeModelPagedQueryResult> = z.object({
     rows: z.string(),

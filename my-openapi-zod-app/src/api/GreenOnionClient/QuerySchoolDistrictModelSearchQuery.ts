@@ -28,7 +28,7 @@ export class QuerySchoolDistrictModelSearchQuery implements IQuerySchoolDistrict
 
     constructor(data?: IQuerySchoolDistrictModelSearchQuery) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -48,14 +48,14 @@ export class QuerySchoolDistrictModelSearchQuery implements IQuerySchoolDistrict
     
     static fromJS(data: any): IQuerySchoolDistrictModelSearchQuery {
         data = typeof data === 'object' ? data : {};
-        let result = new QuerySchoolDistrictModelSearchQuery();
+        const result = new QuerySchoolDistrictModelSearchQuery();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

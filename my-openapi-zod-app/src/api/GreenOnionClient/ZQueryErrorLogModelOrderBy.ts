@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IOrderDirections } from "./IOrderDirections";
+import { ZOrderDirections } from "./ZOrderDirections";
 
 import type { IQueryErrorLogModelOrderBy } from "./IQueryErrorLogModelOrderBy";
 
-import type { IOrderDirections } from "./IOrderDirections";
-import { ZOrderDirections } from "./ZOrderDirections";
 
 export const ZQueryErrorLogModelOrderBy: z.ZodType<IQueryErrorLogModelOrderBy> = z.object({
     errorLogId: z.string(),

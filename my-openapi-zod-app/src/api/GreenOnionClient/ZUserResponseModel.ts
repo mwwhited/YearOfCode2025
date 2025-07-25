@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IRoleMst } from "./IRoleMst";
+import { ZRoleMst } from "./ZRoleMst";
 
 import type { IUserResponseModel } from "./IUserResponseModel";
 
-import type { IRoleMst } from "./IRoleMst";
-import { ZRoleMst } from "./ZRoleMst";
 
 export const ZUserResponseModel: z.ZodType<IUserResponseModel> = z.object({
     success: z.string(),

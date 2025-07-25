@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQuerySchoolDistrictModelSearchQuery } from "./IQuerySchoolDistrictModelSearchQuery";
-
 import type { IQuerySchoolDistrictModelFilter } from "./IQuerySchoolDistrictModelFilter";
 import { ZQuerySchoolDistrictModelFilter } from "./ZQuerySchoolDistrictModelFilter";
 import type { IQuerySchoolDistrictModelOrderBy } from "./IQuerySchoolDistrictModelOrderBy";
 import { ZQuerySchoolDistrictModelOrderBy } from "./ZQuerySchoolDistrictModelOrderBy";
+
+import type { IQuerySchoolDistrictModelSearchQuery } from "./IQuerySchoolDistrictModelSearchQuery";
+
 
 export const ZQuerySchoolDistrictModelSearchQuery: z.ZodType<IQuerySchoolDistrictModelSearchQuery> = z.object({
     currentPage: z.string(),

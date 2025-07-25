@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IOrderDirections } from "./IOrderDirections";
+import { ZOrderDirections } from "./ZOrderDirections";
 
 import type { IQueryDefinedFilterModelOrderBy } from "./IQueryDefinedFilterModelOrderBy";
 
-import type { IOrderDirections } from "./IOrderDirections";
-import { ZOrderDirections } from "./ZOrderDirections";
 
 export const ZQueryDefinedFilterModelOrderBy: z.ZodType<IQueryDefinedFilterModelOrderBy> = z.object({
     definedFilterId: z.string(),

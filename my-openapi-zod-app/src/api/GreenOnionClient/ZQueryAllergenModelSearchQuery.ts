@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryAllergenModelSearchQuery } from "./IQueryAllergenModelSearchQuery";
-
 import type { IQueryAllergenModelFilter } from "./IQueryAllergenModelFilter";
 import { ZQueryAllergenModelFilter } from "./ZQueryAllergenModelFilter";
 import type { IQueryAllergenModelOrderBy } from "./IQueryAllergenModelOrderBy";
 import { ZQueryAllergenModelOrderBy } from "./ZQueryAllergenModelOrderBy";
+
+import type { IQueryAllergenModelSearchQuery } from "./IQueryAllergenModelSearchQuery";
+
 
 export const ZQueryAllergenModelSearchQuery: z.ZodType<IQueryAllergenModelSearchQuery> = z.object({
     currentPage: z.string(),

@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryErrorLogModelSearchQuery } from "./IQueryErrorLogModelSearchQuery";
-
 import type { IQueryErrorLogModelFilter } from "./IQueryErrorLogModelFilter";
 import { ZQueryErrorLogModelFilter } from "./ZQueryErrorLogModelFilter";
 import type { IQueryErrorLogModelOrderBy } from "./IQueryErrorLogModelOrderBy";
 import { ZQueryErrorLogModelOrderBy } from "./ZQueryErrorLogModelOrderBy";
+
+import type { IQueryErrorLogModelSearchQuery } from "./IQueryErrorLogModelSearchQuery";
+
 
 export const ZQueryErrorLogModelSearchQuery: z.ZodType<IQueryErrorLogModelSearchQuery> = z.object({
     currentPage: z.string(),

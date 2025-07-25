@@ -22,7 +22,7 @@ export class QueryStateModelFilter implements IQueryStateModelFilter {
 
     constructor(data?: IQueryStateModelFilter) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -38,14 +38,14 @@ export class QueryStateModelFilter implements IQueryStateModelFilter {
     
     static fromJS(data: any): IQueryStateModelFilter {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryStateModelFilter();
+        const result = new QueryStateModelFilter();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

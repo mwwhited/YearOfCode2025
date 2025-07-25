@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryCategoryModelSearchQuery } from "./IQueryCategoryModelSearchQuery";
-
 import type { IQueryCategoryModelFilter } from "./IQueryCategoryModelFilter";
 import { ZQueryCategoryModelFilter } from "./ZQueryCategoryModelFilter";
 import type { IQueryCategoryModelOrderBy } from "./IQueryCategoryModelOrderBy";
 import { ZQueryCategoryModelOrderBy } from "./ZQueryCategoryModelOrderBy";
+
+import type { IQueryCategoryModelSearchQuery } from "./IQueryCategoryModelSearchQuery";
+
 
 export const ZQueryCategoryModelSearchQuery: z.ZodType<IQueryCategoryModelSearchQuery> = z.object({
     currentPage: z.string(),

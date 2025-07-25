@@ -24,7 +24,7 @@ export class SelectProductSaveCheckListRequestModel implements ISelectProductSav
 
     constructor(data?: ISelectProductSaveCheckListRequestModel) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -46,14 +46,14 @@ export class SelectProductSaveCheckListRequestModel implements ISelectProductSav
     
     static fromJS(data: any): ISelectProductSaveCheckListRequestModel {
         data = typeof data === 'object' ? data : {};
-        let result = new SelectProductSaveCheckListRequestModel();
+        const result = new SelectProductSaveCheckListRequestModel();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

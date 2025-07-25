@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryDefinedFilterModelSearchQuery } from "./IQueryDefinedFilterModelSearchQuery";
-
 import type { IQueryDefinedFilterModelFilter } from "./IQueryDefinedFilterModelFilter";
 import { ZQueryDefinedFilterModelFilter } from "./ZQueryDefinedFilterModelFilter";
 import type { IQueryDefinedFilterModelOrderBy } from "./IQueryDefinedFilterModelOrderBy";
 import { ZQueryDefinedFilterModelOrderBy } from "./ZQueryDefinedFilterModelOrderBy";
+
+import type { IQueryDefinedFilterModelSearchQuery } from "./IQueryDefinedFilterModelSearchQuery";
+
 
 export const ZQueryDefinedFilterModelSearchQuery: z.ZodType<IQueryDefinedFilterModelSearchQuery> = z.object({
     currentPage: z.string(),

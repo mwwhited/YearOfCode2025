@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IOrderDirections } from "./IOrderDirections";
+import { ZOrderDirections } from "./ZOrderDirections";
 
 import type { IQueryIocCategoryModelOrderBy } from "./IQueryIocCategoryModelOrderBy";
 
-import type { IOrderDirections } from "./IOrderDirections";
-import { ZOrderDirections } from "./ZOrderDirections";
 
 export const ZQueryIocCategoryModelOrderBy: z.ZodType<IQueryIocCategoryModelOrderBy> = z.object({
     iocCategoryId: z.string(),

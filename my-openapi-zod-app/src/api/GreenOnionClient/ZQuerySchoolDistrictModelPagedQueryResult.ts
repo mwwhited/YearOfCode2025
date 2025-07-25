@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQuerySchoolDistrictModelPagedQueryResult } from "./IQuerySchoolDistrictModelPagedQueryResult";
-
 import type { IQuerySchoolDistrictModel } from "./IQuerySchoolDistrictModel";
 import { ZQuerySchoolDistrictModel } from "./ZQuerySchoolDistrictModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQuerySchoolDistrictModelPagedQueryResult } from "./IQuerySchoolDistrictModelPagedQueryResult";
+
 
 export const ZQuerySchoolDistrictModelPagedQueryResult: z.ZodType<IQuerySchoolDistrictModelPagedQueryResult> = z.object({
     rows: z.string(),

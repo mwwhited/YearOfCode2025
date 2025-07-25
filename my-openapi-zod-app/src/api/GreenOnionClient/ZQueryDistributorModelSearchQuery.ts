@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryDistributorModelSearchQuery } from "./IQueryDistributorModelSearchQuery";
-
 import type { IQueryDistributorModelFilter } from "./IQueryDistributorModelFilter";
 import { ZQueryDistributorModelFilter } from "./ZQueryDistributorModelFilter";
 import type { IQueryDistributorModelOrderBy } from "./IQueryDistributorModelOrderBy";
 import { ZQueryDistributorModelOrderBy } from "./ZQueryDistributorModelOrderBy";
+
+import type { IQueryDistributorModelSearchQuery } from "./IQueryDistributorModelSearchQuery";
+
 
 export const ZQueryDistributorModelSearchQuery: z.ZodType<IQueryDistributorModelSearchQuery> = z.object({
     currentPage: z.string(),

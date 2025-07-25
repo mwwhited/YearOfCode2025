@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IOrderDirections } from "./IOrderDirections";
+import { ZOrderDirections } from "./ZOrderDirections";
 
 import type { IQueryUserActionLogModelOrderBy } from "./IQueryUserActionLogModelOrderBy";
 
-import type { IOrderDirections } from "./IOrderDirections";
-import { ZOrderDirections } from "./ZOrderDirections";
 
 export const ZQueryUserActionLogModelOrderBy: z.ZodType<IQueryUserActionLogModelOrderBy> = z.object({
     userActionLogId: z.string(),

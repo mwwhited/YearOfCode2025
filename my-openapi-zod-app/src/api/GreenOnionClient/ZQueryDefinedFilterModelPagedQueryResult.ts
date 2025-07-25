@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryDefinedFilterModelPagedQueryResult } from "./IQueryDefinedFilterModelPagedQueryResult";
-
 import type { IQueryDefinedFilterModel } from "./IQueryDefinedFilterModel";
 import { ZQueryDefinedFilterModel } from "./ZQueryDefinedFilterModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryDefinedFilterModelPagedQueryResult } from "./IQueryDefinedFilterModelPagedQueryResult";
+
 
 export const ZQueryDefinedFilterModelPagedQueryResult: z.ZodType<IQueryDefinedFilterModelPagedQueryResult> = z.object({
     rows: z.string(),

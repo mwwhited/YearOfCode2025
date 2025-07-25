@@ -23,7 +23,7 @@ export class QueryAllergenModelOrderBy implements IQueryAllergenModelOrderBy {
 
     constructor(data?: IQueryAllergenModelOrderBy) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -40,14 +40,14 @@ export class QueryAllergenModelOrderBy implements IQueryAllergenModelOrderBy {
     
     static fromJS(data: any): IQueryAllergenModelOrderBy {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryAllergenModelOrderBy();
+        const result = new QueryAllergenModelOrderBy();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

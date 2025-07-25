@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryUserModelSearchQuery } from "./IQueryUserModelSearchQuery";
-
 import type { IQueryUserModelFilter } from "./IQueryUserModelFilter";
 import { ZQueryUserModelFilter } from "./ZQueryUserModelFilter";
 import type { IQueryUserModelOrderBy } from "./IQueryUserModelOrderBy";
 import { ZQueryUserModelOrderBy } from "./ZQueryUserModelOrderBy";
+
+import type { IQueryUserModelSearchQuery } from "./IQueryUserModelSearchQuery";
+
 
 export const ZQueryUserModelSearchQuery: z.ZodType<IQueryUserModelSearchQuery> = z.object({
     currentPage: z.string(),

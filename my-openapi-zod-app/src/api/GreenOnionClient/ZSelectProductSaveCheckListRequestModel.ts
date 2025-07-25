@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IProductCheck } from "./IProductCheck";
+import { ZProductCheck } from "./ZProductCheck";
 
 import type { ISelectProductSaveCheckListRequestModel } from "./ISelectProductSaveCheckListRequestModel";
 
-import type { IProductCheck } from "./IProductCheck";
-import { ZProductCheck } from "./ZProductCheck";
 
 export const ZSelectProductSaveCheckListRequestModel: z.ZodType<ISelectProductSaveCheckListRequestModel> = z.object({
     uniqueExcelFileId: z.string(),

@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IFilterParameter } from "./IFilterParameter";
+import { ZFilterParameter } from "./ZFilterParameter";
 
 import type { IQueryIocCategoryModelFilter } from "./IQueryIocCategoryModelFilter";
 
-import type { IFilterParameter } from "./IFilterParameter";
-import { ZFilterParameter } from "./ZFilterParameter";
 
 export const ZQueryIocCategoryModelFilter: z.ZodType<IQueryIocCategoryModelFilter> = z.object({
     iocCategoryId: z.string(),

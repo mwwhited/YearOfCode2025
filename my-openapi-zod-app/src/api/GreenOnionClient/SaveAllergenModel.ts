@@ -21,7 +21,7 @@ export class SaveAllergenModel implements ISaveAllergenModel {
 
     constructor(data?: ISaveAllergenModel) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -38,14 +38,14 @@ export class SaveAllergenModel implements ISaveAllergenModel {
     
     static fromJS(data: any): ISaveAllergenModel {
         data = typeof data === 'object' ? data : {};
-        let result = new SaveAllergenModel();
+        const result = new SaveAllergenModel();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

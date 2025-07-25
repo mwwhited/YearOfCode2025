@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryOneWorldSyncProductModelPagedQueryResult } from "./IQueryOneWorldSyncProductModelPagedQueryResult";
-
 import type { IQueryOneWorldSyncProductModel } from "./IQueryOneWorldSyncProductModel";
 import { ZQueryOneWorldSyncProductModel } from "./ZQueryOneWorldSyncProductModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryOneWorldSyncProductModelPagedQueryResult } from "./IQueryOneWorldSyncProductModelPagedQueryResult";
+
 
 export const ZQueryOneWorldSyncProductModelPagedQueryResult: z.ZodType<IQueryOneWorldSyncProductModelPagedQueryResult> = z.object({
     rows: z.string(),

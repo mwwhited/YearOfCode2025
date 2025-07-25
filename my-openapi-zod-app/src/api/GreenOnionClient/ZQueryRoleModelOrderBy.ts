@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IOrderDirections } from "./IOrderDirections";
+import { ZOrderDirections } from "./ZOrderDirections";
 
 import type { IQueryRoleModelOrderBy } from "./IQueryRoleModelOrderBy";
 
-import type { IOrderDirections } from "./IOrderDirections";
-import { ZOrderDirections } from "./ZOrderDirections";
 
 export const ZQueryRoleModelOrderBy: z.ZodType<IQueryRoleModelOrderBy> = z.object({
     roleId: z.string(),

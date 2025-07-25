@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IMessageLevels } from "./IMessageLevels";
+import { ZMessageLevels } from "./ZMessageLevels";
 
 import type { IResultMessage } from "./IResultMessage";
 
-import type { IMessageLevels } from "./IMessageLevels";
-import { ZMessageLevels } from "./ZMessageLevels";
 
 export const ZResultMessage: z.ZodType<IResultMessage> = z.object({
     level: z.string(),

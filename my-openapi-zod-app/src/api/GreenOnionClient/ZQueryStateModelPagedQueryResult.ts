@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryStateModelPagedQueryResult } from "./IQueryStateModelPagedQueryResult";
-
 import type { IQueryStateModel } from "./IQueryStateModel";
 import { ZQueryStateModel } from "./ZQueryStateModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryStateModelPagedQueryResult } from "./IQueryStateModelPagedQueryResult";
+
 
 export const ZQueryStateModelPagedQueryResult: z.ZodType<IQueryStateModelPagedQueryResult> = z.object({
     rows: z.string(),

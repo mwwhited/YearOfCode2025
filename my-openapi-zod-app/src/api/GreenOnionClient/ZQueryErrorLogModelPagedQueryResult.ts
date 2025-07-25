@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryErrorLogModelPagedQueryResult } from "./IQueryErrorLogModelPagedQueryResult";
-
 import type { IQueryErrorLogModel } from "./IQueryErrorLogModel";
 import { ZQueryErrorLogModel } from "./ZQueryErrorLogModel";
 import type { IResultMessage } from "./IResultMessage";
 import { ZResultMessage } from "./ZResultMessage";
+
+import type { IQueryErrorLogModelPagedQueryResult } from "./IQueryErrorLogModelPagedQueryResult";
+
 
 export const ZQueryErrorLogModelPagedQueryResult: z.ZodType<IQueryErrorLogModelPagedQueryResult> = z.object({
     rows: z.string(),

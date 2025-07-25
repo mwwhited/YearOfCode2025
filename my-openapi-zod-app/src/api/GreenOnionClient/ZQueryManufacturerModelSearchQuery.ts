@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryManufacturerModelSearchQuery } from "./IQueryManufacturerModelSearchQuery";
-
 import type { IQueryManufacturerModelFilter } from "./IQueryManufacturerModelFilter";
 import { ZQueryManufacturerModelFilter } from "./ZQueryManufacturerModelFilter";
 import type { IQueryManufacturerModelOrderBy } from "./IQueryManufacturerModelOrderBy";
 import { ZQueryManufacturerModelOrderBy } from "./ZQueryManufacturerModelOrderBy";
+
+import type { IQueryManufacturerModelSearchQuery } from "./IQueryManufacturerModelSearchQuery";
+
 
 export const ZQueryManufacturerModelSearchQuery: z.ZodType<IQueryManufacturerModelSearchQuery> = z.object({
     currentPage: z.string(),

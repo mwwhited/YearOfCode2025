@@ -22,7 +22,7 @@ export class QueryStorageTypeModelFilter implements IQueryStorageTypeModelFilter
 
     constructor(data?: IQueryStorageTypeModelFilter) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -38,14 +38,14 @@ export class QueryStorageTypeModelFilter implements IQueryStorageTypeModelFilter
     
     static fromJS(data: any): IQueryStorageTypeModelFilter {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryStorageTypeModelFilter();
+        const result = new QueryStorageTypeModelFilter();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

@@ -27,7 +27,7 @@ export class QueryProductModelPagedQueryResult implements IQueryProductModelPage
 
     constructor(data?: IQueryProductModelPagedQueryResult) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -54,14 +54,14 @@ export class QueryProductModelPagedQueryResult implements IQueryProductModelPage
     
     static fromJS(data: any): IQueryProductModelPagedQueryResult {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryProductModelPagedQueryResult();
+        const result = new QueryProductModelPagedQueryResult();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

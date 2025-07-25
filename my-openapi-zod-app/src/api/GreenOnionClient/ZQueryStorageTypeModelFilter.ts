@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IFilterParameter } from "./IFilterParameter";
+import { ZFilterParameter } from "./ZFilterParameter";
 
 import type { IQueryStorageTypeModelFilter } from "./IQueryStorageTypeModelFilter";
 
-import type { IFilterParameter } from "./IFilterParameter";
-import { ZFilterParameter } from "./ZFilterParameter";
 
 export const ZQueryStorageTypeModelFilter: z.ZodType<IQueryStorageTypeModelFilter> = z.object({
     storageTypeId: z.string(),

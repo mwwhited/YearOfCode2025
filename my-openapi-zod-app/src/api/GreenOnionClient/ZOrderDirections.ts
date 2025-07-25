@@ -9,9 +9,6 @@
 
 import { z } from "zod";
 
-import type { IOrderDirections } from "./IOrderDirections";
-
-
 export const ZOrderDirections = z.enum([
     "asc",
     "desc",

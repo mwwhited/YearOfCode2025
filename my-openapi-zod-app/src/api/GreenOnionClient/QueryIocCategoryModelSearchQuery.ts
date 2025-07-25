@@ -28,7 +28,7 @@ export class QueryIocCategoryModelSearchQuery implements IQueryIocCategoryModelS
 
     constructor(data?: IQueryIocCategoryModelSearchQuery) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -48,14 +48,14 @@ export class QueryIocCategoryModelSearchQuery implements IQueryIocCategoryModelS
     
     static fromJS(data: any): IQueryIocCategoryModelSearchQuery {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryIocCategoryModelSearchQuery();
+        const result = new QueryIocCategoryModelSearchQuery();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

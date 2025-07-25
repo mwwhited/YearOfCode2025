@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { INutritionalInformationModel } from "./INutritionalInformationModel";
+import { ZNutritionalInformationModel } from "./ZNutritionalInformationModel";
 
 import type { IQueryProductModel } from "./IQueryProductModel";
 
-import type { INutritionalInformationModel } from "./INutritionalInformationModel";
-import { ZNutritionalInformationModel } from "./ZNutritionalInformationModel";
 
 export const ZQueryProductModel: z.ZodType<IQueryProductModel> = z.object({
     productId: z.string(),

@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryRoleModelSearchQuery } from "./IQueryRoleModelSearchQuery";
-
 import type { IQueryRoleModelFilter } from "./IQueryRoleModelFilter";
 import { ZQueryRoleModelFilter } from "./ZQueryRoleModelFilter";
 import type { IQueryRoleModelOrderBy } from "./IQueryRoleModelOrderBy";
 import { ZQueryRoleModelOrderBy } from "./ZQueryRoleModelOrderBy";
+
+import type { IQueryRoleModelSearchQuery } from "./IQueryRoleModelSearchQuery";
+
 
 export const ZQueryRoleModelSearchQuery: z.ZodType<IQueryRoleModelSearchQuery> = z.object({
     currentPage: z.string(),

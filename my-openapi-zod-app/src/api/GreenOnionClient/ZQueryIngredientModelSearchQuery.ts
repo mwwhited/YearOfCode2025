@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryIngredientModelSearchQuery } from "./IQueryIngredientModelSearchQuery";
-
 import type { IQueryIngredientModelFilter } from "./IQueryIngredientModelFilter";
 import { ZQueryIngredientModelFilter } from "./ZQueryIngredientModelFilter";
 import type { IQueryIngredientModelOrderBy } from "./IQueryIngredientModelOrderBy";
 import { ZQueryIngredientModelOrderBy } from "./ZQueryIngredientModelOrderBy";
+
+import type { IQueryIngredientModelSearchQuery } from "./IQueryIngredientModelSearchQuery";
+
 
 export const ZQueryIngredientModelSearchQuery: z.ZodType<IQueryIngredientModelSearchQuery> = z.object({
     currentPage: z.string(),

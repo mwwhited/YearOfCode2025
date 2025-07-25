@@ -52,7 +52,7 @@ export class QueryProductModelOrderBy implements IQueryProductModelOrderBy {
 
     constructor(data?: IQueryProductModelOrderBy) {
         if (data) {
-            for (var property in data) {
+            for (const property in data) {
                 if (data.hasOwnProperty(property))
                     (<any>this)[property] = (<any>data)[property];
             }
@@ -98,14 +98,14 @@ export class QueryProductModelOrderBy implements IQueryProductModelOrderBy {
     
     static fromJS(data: any): IQueryProductModelOrderBy {
         data = typeof data === 'object' ? data : {};
-        let result = new QueryProductModelOrderBy();
+        const result = new QueryProductModelOrderBy();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        for (var property in this) {
+        for (const property in this) {
             if (this.hasOwnProperty(property))
                 data[property] = this[property];
         }

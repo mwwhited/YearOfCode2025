@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IOrderDirections } from "./IOrderDirections";
+import { ZOrderDirections } from "./ZOrderDirections";
 
 import type { IQueryStorageTypeModelOrderBy } from "./IQueryStorageTypeModelOrderBy";
 
-import type { IOrderDirections } from "./IOrderDirections";
-import { ZOrderDirections } from "./ZOrderDirections";
 
 export const ZQueryStorageTypeModelOrderBy: z.ZodType<IQueryStorageTypeModelOrderBy> = z.object({
     storageTypeId: z.string(),

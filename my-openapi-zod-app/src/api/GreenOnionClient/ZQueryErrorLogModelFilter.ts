@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
+import type { IFilterParameter } from "./IFilterParameter";
+import { ZFilterParameter } from "./ZFilterParameter";
 
 import type { IQueryErrorLogModelFilter } from "./IQueryErrorLogModelFilter";
 
-import type { IFilterParameter } from "./IFilterParameter";
-import { ZFilterParameter } from "./ZFilterParameter";
 
 export const ZQueryErrorLogModelFilter: z.ZodType<IQueryErrorLogModelFilter> = z.object({
     errorLogId: z.string(),

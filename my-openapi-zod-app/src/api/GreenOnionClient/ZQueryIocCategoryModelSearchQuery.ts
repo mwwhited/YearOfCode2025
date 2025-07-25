@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-
-import type { IQueryIocCategoryModelSearchQuery } from "./IQueryIocCategoryModelSearchQuery";
-
 import type { IQueryIocCategoryModelFilter } from "./IQueryIocCategoryModelFilter";
 import { ZQueryIocCategoryModelFilter } from "./ZQueryIocCategoryModelFilter";
 import type { IQueryIocCategoryModelOrderBy } from "./IQueryIocCategoryModelOrderBy";
 import { ZQueryIocCategoryModelOrderBy } from "./ZQueryIocCategoryModelOrderBy";
+
+import type { IQueryIocCategoryModelSearchQuery } from "./IQueryIocCategoryModelSearchQuery";
+
 
 export const ZQueryIocCategoryModelSearchQuery: z.ZodType<IQueryIocCategoryModelSearchQuery> = z.object({
     currentPage: z.string(),
