@@ -1,0 +1,61 @@
+//
+// This file is generated. Do not edit manually.
+//
+// @applicationName: GreenOnion.API
+// @applicationDescription: GreenOnion.API - 1.0.0.0
+// @applicationVersion: 1.0.0.0
+// @generatedDate: 2025/07/25
+//
+
+import type { IBaseResponseModel } from "./IBaseResponseModel";
+import { ZBaseResponseModel } from "./ZBaseResponseModel";
+
+
+type integer = number;
+
+export class BaseResponseModel implements IBaseResponseModel {
+    readonly $schema: typeof ZBaseResponseModel = ZBaseResponseModel;
+    success?: boolean | undefined; 
+    message?: string | undefined; 
+    totalRecords?: integer | undefined; 
+    payload?: any | undefined; 
+
+    constructor(data?: IBaseResponseModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }   
+    
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).success = _data["success:"];
+            (<any>this).message = _data["message:"];
+            (<any>this).totalRecords = _data["totalRecords:"];
+            (<any>this).payload = _data["payload:"];
+        }
+    } 
+    
+    static fromJS(data: any): IBaseResponseModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new BaseResponseModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        for (var property in this) {
+            if (this.hasOwnProperty(property))
+                data[property] = this[property];
+        }
+        data["success"] = this.success;
+        data["message"] = this.message;
+        data["totalRecords"] = this.totalRecords;
+        data["payload"] = this.payload;
+        return data;
+    }
+
+}

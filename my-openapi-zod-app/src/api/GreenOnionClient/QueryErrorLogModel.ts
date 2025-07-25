@@ -1,0 +1,58 @@
+//
+// This file is generated. Do not edit manually.
+//
+// @applicationName: GreenOnion.API
+// @applicationDescription: GreenOnion.API - 1.0.0.0
+// @applicationVersion: 1.0.0.0
+// @generatedDate: 2025/07/25
+//
+
+import type { IQueryErrorLogModel } from "./IQueryErrorLogModel";
+import { ZQueryErrorLogModel } from "./ZQueryErrorLogModel";
+
+
+type integer = number;
+
+export class QueryErrorLogModel implements IQueryErrorLogModel {
+    readonly $schema: typeof ZQueryErrorLogModel = ZQueryErrorLogModel;
+    errorLogId?: integer | undefined; 
+    errorMessage?: string | undefined; 
+    errorPath?: string | undefined; 
+
+    constructor(data?: IQueryErrorLogModel) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }   
+    
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).errorLogId = _data["errorLogId:"];
+            (<any>this).errorMessage = _data["errorMessage:"];
+            (<any>this).errorPath = _data["errorPath:"];
+        }
+    } 
+    
+    static fromJS(data: any): IQueryErrorLogModel {
+        data = typeof data === 'object' ? data : {};
+        let result = new QueryErrorLogModel();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        for (var property in this) {
+            if (this.hasOwnProperty(property))
+                data[property] = this[property];
+        }
+        data["errorLogId"] = this.errorLogId;
+        data["errorMessage"] = this.errorMessage;
+        data["errorPath"] = this.errorPath;
+        return data;
+    }
+
+}

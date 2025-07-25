@@ -19,5 +19,26 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '.*',
+          args: 'after-used',
+          argsIgnorePattern: '.*', 
+          ignoreRestSiblings: true,
+        },
+      ],
+
+      '@typescript-eslint/no-unused-vars-experimental': 'off',
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: false,
+        },
+      ],
+    },
   },
 ])
