@@ -9,56 +9,13 @@
 
 import { z } from "zod";
 
-import type { ISuggestedProductRequestModel } from "./ISuggestedProductRequestModel";
-
-
-export const ZSuggestedProductRequestModel: z.ZodType<ISuggestedProductRequestModel> = z.object({
-    suggestionId: z.string(),
-    productId: z.string(),
-    suggestedProductId: z.string(),
-    suggestionDate: z.string(),
-    suggestedByUserId: z.string(),
-    isActive: z.string(),
-    suggestedByDistrictId: z.string(),
+export const ZSuggestedProductRequestModel = z.object({
+    suggestionId:z.number().int().optional(),
+    productId:z.number().int().optional(),
+    suggestedProductId:z.number().int().optional(),
+    suggestionDate:z.string().optional(),
+    suggestedByUserId:z.number().int().optional(),
+    isActive:z.boolean().optional(),
+    suggestedByDistrictId:z.number().int().optional(),
 });
-/*
-[class, SuggestedProductRequestModel],[interface, ISuggestedProductRequestModel],[schema, ZSuggestedProductRequestModel],[definition, {
-        "type": "object",
-        "properties": {
-          "suggestionId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "suggestedProductId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "suggestionDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "suggestedByUserId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "suggestedByDistrictId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

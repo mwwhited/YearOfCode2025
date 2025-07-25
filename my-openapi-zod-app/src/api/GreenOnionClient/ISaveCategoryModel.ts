@@ -10,15 +10,9 @@
 import type { z } from "zod";
 import { ZSaveCategoryModel } from "./ZSaveCategoryModel";
 
-type integer = number;
 
-export interface ISaveCategoryModel {
-    $schema: typeof ZSaveCategoryModel;
-
-    categoryId?: integer | undefined;
-    categoryName?: string | undefined;
-    categoryCode?: string | undefined;
-    isActive?: boolean | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISaveCategoryModel extends z.infer<typeof ZSaveCategoryModel> {
+  $zod: typeof ZSaveCategoryModel;
+  toJSON(data?: any): any;
 }
+

@@ -12,17 +12,9 @@ import { ZQueryUserActionLogModelSearchQuery } from "./ZQueryUserActionLogModelS
 import type { IQueryUserActionLogModelFilter } from "./IQueryUserActionLogModelFilter";
 import type { IQueryUserActionLogModelOrderBy } from "./IQueryUserActionLogModelOrderBy";
 
-type integer = number;
 
-export interface IQueryUserActionLogModelSearchQuery {
-    $schema: typeof ZQueryUserActionLogModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; User*/
-    filter?: IQueryUserActionLogModelFilter | undefined;
-    orderBy?: IQueryUserActionLogModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryUserActionLogModelSearchQuery extends z.infer<typeof ZQueryUserActionLogModelSearchQuery> {
+  $zod: typeof ZQueryUserActionLogModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

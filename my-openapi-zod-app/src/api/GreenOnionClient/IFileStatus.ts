@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZFileStatus } from "./ZFileStatus";
 
-type integer = number;
 
-export interface IFileStatus {
-    $schema: typeof ZFileStatus;
-
-    status?: boolean | undefined;
-    reason?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IFileStatus extends z.infer<typeof ZFileStatus> {
+  $zod: typeof ZFileStatus;
+  toJSON(data?: any): any;
 }
+

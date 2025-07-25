@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZFileHeader } from "./ZFileHeader";
 
-type integer = number;
 
-export interface IFileHeader {
-    $schema: typeof ZFileHeader;
-
-    headerId?: integer | undefined;
-    headerName?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IFileHeader extends z.infer<typeof ZFileHeader> {
+  $zod: typeof ZFileHeader;
+  toJSON(data?: any): any;
 }
+

@@ -9,106 +9,23 @@
 
 import { z } from "zod";
 
-import type { ISaveUserModel } from "./ISaveUserModel";
-
-
-export const ZSaveUserModel: z.ZodType<ISaveUserModel> = z.object({
-    userId: z.string(),
-    isActive: z.string(),
-    firstName: z.string(),
-    lastName: z.string(),
-    email: z.string(),
-    mobile: z.string(),
-    profileImage: z.string(),
-    coverImage: z.string(),
-    addressLine1: z.string(),
-    addressLine2: z.string(),
-    city: z.string(),
-    country: z.string(),
-    zipCode: z.string(),
-    stateId: z.string(),
-    roleId: z.string(),
-    schoolDistrictId: z.string(),
-    manufacturerId: z.string(),
+export const ZSaveUserModel = z.object({
+    userId:z.number().int().optional(),
+    isActive:z.boolean().optional(),
+    firstName:z.string().optional(),
+    lastName:z.string().optional(),
+    email:z.string().optional(),
+    mobile:z.string().optional(),
+    profileImage:z.string().optional(),
+    coverImage:z.string().optional(),
+    addressLine1:z.string().optional(),
+    addressLine2:z.string().optional(),
+    city:z.string().optional(),
+    country:z.string().optional(),
+    zipCode:z.string().optional(),
+    stateId:z.number().int().optional(),
+    roleId:z.number().int().optional(),
+    schoolDistrictId:z.number().int().optional(),
+    manufacturerId:z.number().int().optional(),
 });
-/*
-[class, SaveUserModel],[interface, ISaveUserModel],[schema, ZSaveUserModel],[definition, {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "mobile": {
-            "type": "string",
-            "nullable": true
-          },
-          "profileImage": {
-            "type": "string",
-            "nullable": true
-          },
-          "coverImage": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressLine1": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressLine2": {
-            "type": "string",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "nullable": true
-          },
-          "zipCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "stateId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "roleId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "schoolDistrictId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "manufacturerId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

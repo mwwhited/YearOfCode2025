@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZQueryStateModel } from "./ZQueryStateModel";
 
-type integer = number;
 
-export interface IQueryStateModel {
-    $schema: typeof ZQueryStateModel;
-
-    stateId?: integer | undefined;
-    stateName?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryStateModel extends z.infer<typeof ZQueryStateModel> {
+  $zod: typeof ZQueryStateModel;
+  toJSON(data?: any): any;
 }
+

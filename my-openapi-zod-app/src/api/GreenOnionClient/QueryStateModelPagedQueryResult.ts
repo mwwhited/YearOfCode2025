@@ -17,7 +17,7 @@ import type { IResultMessage } from "./IResultMessage";
 type integer = number;
 
 export class QueryStateModelPagedQueryResult implements IQueryStateModelPagedQueryResult {
-    readonly $schema: typeof ZQueryStateModelPagedQueryResult = ZQueryStateModelPagedQueryResult;
+    readonly $zod: typeof ZQueryStateModelPagedQueryResult = ZQueryStateModelPagedQueryResult;
     
     rows?: IQueryStateModel[] | undefined;/*Gets the collection of items in the result.*/
     messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/

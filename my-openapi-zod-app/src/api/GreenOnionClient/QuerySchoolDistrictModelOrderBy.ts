@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QuerySchoolDistrictModelOrderBy implements IQuerySchoolDistrictModelOrderBy {
-    readonly $schema: typeof ZQuerySchoolDistrictModelOrderBy = ZQuerySchoolDistrictModelOrderBy;
+    readonly $zod: typeof ZQuerySchoolDistrictModelOrderBy = ZQuerySchoolDistrictModelOrderBy;
     
     schoolDistrictId?: IOrderDirections | undefined;
     siteCode?: IOrderDirections | undefined;

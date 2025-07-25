@@ -9,26 +9,8 @@
 
 import { z } from "zod";
 
-import type { IProductTableField } from "./IProductTableField";
-
-
-export const ZProductTableField: z.ZodType<IProductTableField> = z.object({
-    fieldID: z.string(),
-    fieldName: z.string(),
+export const ZProductTableField = z.object({
+    fieldID:z.number().int().optional(),
+    fieldName:z.string().optional(),
 });
-/*
-[class, ProductTableField],[interface, IProductTableField],[schema, ZProductTableField],[definition, {
-        "type": "object",
-        "properties": {
-          "fieldID": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fieldName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

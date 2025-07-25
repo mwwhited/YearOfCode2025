@@ -10,18 +10,9 @@
 import type { z } from "zod";
 import { ZSuggestedProductRequestModel } from "./ZSuggestedProductRequestModel";
 
-type integer = number;
 
-export interface ISuggestedProductRequestModel {
-    $schema: typeof ZSuggestedProductRequestModel;
-
-    suggestionId?: integer | undefined;
-    productId?: integer | undefined;
-    suggestedProductId?: integer | undefined;
-    suggestionDate?: string | undefined;
-    suggestedByUserId?: integer | undefined;
-    isActive?: boolean | undefined;
-    suggestedByDistrictId?: integer | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISuggestedProductRequestModel extends z.infer<typeof ZSuggestedProductRequestModel> {
+  $zod: typeof ZSuggestedProductRequestModel;
+  toJSON(data?: any): any;
 }
+

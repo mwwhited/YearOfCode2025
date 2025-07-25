@@ -17,7 +17,7 @@ import type { IQueryProductModelOrderBy } from "./IQueryProductModelOrderBy";
 type integer = number;
 
 export class QueryProductModelSearchQuery implements IQueryProductModelSearchQuery {
-    readonly $schema: typeof ZQueryProductModelSearchQuery = ZQueryProductModelSearchQuery;
+    readonly $zod: typeof ZQueryProductModelSearchQuery = ZQueryProductModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

@@ -9,63 +9,14 @@
 
 import { z } from "zod";
 
-import type { IRoleMst } from "./IRoleMst";
-
-
-export const ZRoleMst: z.ZodType<IRoleMst> = z.object({
-    roleId: z.string(),
-    roleName: z.string(),
-    parentRoleId: z.string(),
-    isActive: z.string(),
-    createdOn: z.string(),
-    createdByUserId: z.string(),
-    updatedOn: z.string(),
-    updatedByUserId: z.string(),
+export const ZRoleMst = z.object({
+    roleId:z.number().int().optional(),
+    roleName:z.string().optional(),
+    parentRoleId:z.number().int().optional(),
+    isActive:z.boolean().optional(),
+    createdOn:z.string().optional(),
+    createdByUserId:z.number().int().optional(),
+    updatedOn:z.string().optional(),
+    updatedByUserId:z.number().int().optional(),
 });
-/*
-[class, RoleMst],[interface, IRoleMst],[schema, ZRoleMst],[definition, {
-        "type": "object",
-        "properties": {
-          "roleId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "roleName": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "parentRoleId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "createdOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdByUserId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "updatedOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedByUserId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

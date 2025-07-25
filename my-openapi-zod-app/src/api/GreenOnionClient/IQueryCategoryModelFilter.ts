@@ -11,21 +11,9 @@ import type { z } from "zod";
 import { ZQueryCategoryModelFilter } from "./ZQueryCategoryModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryCategoryModelFilter {
-    $schema: typeof ZQueryCategoryModelFilter;
-
-    categoryId?: IFilterParameter | undefined;
-    categoryName?: IFilterParameter | undefined;
-    categoryCode?: IFilterParameter | undefined;
-    isActive?: IFilterParameter | undefined;
-    createdOn?: IFilterParameter | undefined;
-    createdById?: IFilterParameter | undefined;
-    createdBy?: IFilterParameter | undefined;
-    updatedOn?: IFilterParameter | undefined;
-    updatedById?: IFilterParameter | undefined;
-    updatedBy?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryCategoryModelFilter extends z.infer<typeof ZQueryCategoryModelFilter> {
+  $zod: typeof ZQueryCategoryModelFilter;
+  toJSON(data?: any): any;
 }
+

@@ -13,7 +13,7 @@ import { ZQueryIocCategoryModel } from "./ZQueryIocCategoryModel";
 type integer = number;
 
 export class QueryIocCategoryModel implements IQueryIocCategoryModel {
-    readonly $schema: typeof ZQueryIocCategoryModel = ZQueryIocCategoryModel;
+    readonly $zod: typeof ZQueryIocCategoryModel = ZQueryIocCategoryModel;
     
     iocCategoryId?: integer | undefined;
     name?: string | undefined;

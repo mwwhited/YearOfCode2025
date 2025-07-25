@@ -8,33 +8,11 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryAllergenModelFilter } from "./IQueryAllergenModelFilter";
-
-
-export const ZQueryAllergenModelFilter: z.ZodType<IQueryAllergenModelFilter> = z.object({
-    allergenId: z.string(),
-    allergenName: z.string(),
-    allergenGroup: z.string(),
+export const ZQueryAllergenModelFilter = z.object({
+    allergenId:ZFilterParameter.optional(),
+    allergenName:ZFilterParameter.optional(),
+    allergenGroup:ZFilterParameter.optional(),
 });
-/*
-[class, QueryAllergenModelFilter],[interface, IQueryAllergenModelFilter],[schema, ZQueryAllergenModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "allergenId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "allergenName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "allergenGroup": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** AllergenId; AllergenName; AllergenGroup",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryAllergenModel"
-      }]
-*/
+

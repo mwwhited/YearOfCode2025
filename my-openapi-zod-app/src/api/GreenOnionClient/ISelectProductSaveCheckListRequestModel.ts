@@ -11,15 +11,9 @@ import type { z } from "zod";
 import { ZSelectProductSaveCheckListRequestModel } from "./ZSelectProductSaveCheckListRequestModel";
 import type { IProductCheck } from "./IProductCheck";
 
-type integer = number;
 
-export interface ISelectProductSaveCheckListRequestModel {
-    $schema: typeof ZSelectProductSaveCheckListRequestModel;
-
-    uniqueExcelFileId?: string | undefined;
-    userOrDistrictId?: integer | undefined;
-    option?: string | undefined;
-    productCheckList?: IProductCheck[] | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISelectProductSaveCheckListRequestModel extends z.infer<typeof ZSelectProductSaveCheckListRequestModel> {
+  $zod: typeof ZSelectProductSaveCheckListRequestModel;
+  toJSON(data?: any): any;
 }
+

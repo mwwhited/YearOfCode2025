@@ -12,16 +12,9 @@ import { ZQueryMonthlyNumberModelPagedQueryResult } from "./ZQueryMonthlyNumberM
 import type { IQueryMonthlyNumberModel } from "./IQueryMonthlyNumberModel";
 import type { IResultMessage } from "./IResultMessage";
 
-type integer = number;
 
-export interface IQueryMonthlyNumberModelPagedQueryResult {
-    $schema: typeof ZQueryMonthlyNumberModelPagedQueryResult;
-
-    rows?: IQueryMonthlyNumberModel[] | undefined;/*Gets the collection of items in the result.*/
-    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
-    currentPage?: integer | undefined;/*Gets the total number of pages.*/
-    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
-    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
-
-    toJSON(data?: any) : any;
+export interface IQueryMonthlyNumberModelPagedQueryResult extends z.infer<typeof ZQueryMonthlyNumberModelPagedQueryResult> {
+  $zod: typeof ZQueryMonthlyNumberModelPagedQueryResult;
+  toJSON(data?: any): any;
 }
+

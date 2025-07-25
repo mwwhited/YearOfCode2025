@@ -17,7 +17,7 @@ import type { IResultMessage } from "./IResultMessage";
 type integer = number;
 
 export class QueryMonthlyNumberModelPagedQueryResult implements IQueryMonthlyNumberModelPagedQueryResult {
-    readonly $schema: typeof ZQueryMonthlyNumberModelPagedQueryResult = ZQueryMonthlyNumberModelPagedQueryResult;
+    readonly $zod: typeof ZQueryMonthlyNumberModelPagedQueryResult = ZQueryMonthlyNumberModelPagedQueryResult;
     
     rows?: IQueryMonthlyNumberModel[] | undefined;/*Gets the collection of items in the result.*/
     messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/

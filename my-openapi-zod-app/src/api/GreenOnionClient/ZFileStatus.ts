@@ -9,25 +9,8 @@
 
 import { z } from "zod";
 
-import type { IFileStatus } from "./IFileStatus";
-
-
-export const ZFileStatus: z.ZodType<IFileStatus> = z.object({
-    status: z.string(),
-    reason: z.string(),
+export const ZFileStatus = z.object({
+    status:z.boolean().optional(),
+    reason:z.string().optional(),
 });
-/*
-[class, FileStatus],[interface, IFileStatus],[schema, ZFileStatus],[definition, {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "boolean"
-          },
-          "reason": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

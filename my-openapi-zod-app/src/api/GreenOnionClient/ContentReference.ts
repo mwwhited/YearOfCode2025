@@ -13,7 +13,7 @@ import { ZContentReference } from "./ZContentReference";
 type integer = number;
 
 export class ContentReference implements IContentReference {
-    readonly $schema: typeof ZContentReference = ZContentReference;
+    readonly $zod: typeof ZContentReference = ZContentReference;
     
     content?: string | undefined;/*Gets or initializes the content type of the content.*/
     contentType?: string | undefined;/*Gets or initializes the content type of the content.*/

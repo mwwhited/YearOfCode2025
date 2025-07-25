@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZApproveSuggestProductRequestModel } from "./ZApproveSuggestProductRequestModel";
 
-type integer = number;
 
-export interface IApproveSuggestProductRequestModel {
-    $schema: typeof ZApproveSuggestProductRequestModel;
-
-    productId?: integer | undefined;
-    suggestedProductId?: integer | undefined;
-
-    toJSON(data?: any) : any;
+export interface IApproveSuggestProductRequestModel extends z.infer<typeof ZApproveSuggestProductRequestModel> {
+  $zod: typeof ZApproveSuggestProductRequestModel;
+  toJSON(data?: any): any;
 }
+

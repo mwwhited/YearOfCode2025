@@ -9,27 +9,8 @@
 
 import { z } from "zod";
 
-import type { ISaveStorageTypeModel } from "./ISaveStorageTypeModel";
-
-
-export const ZSaveStorageTypeModel: z.ZodType<ISaveStorageTypeModel> = z.object({
-    storageTypeId: z.string(),
-    storageTypeName: z.string(),
+export const ZSaveStorageTypeModel = z.object({
+    storageTypeId:z.number().int().optional(),
+    storageTypeName:z.string().optional(),
 });
-/*
-[class, SaveStorageTypeModel],[interface, ISaveStorageTypeModel],[schema, ZSaveStorageTypeModel],[definition, {
-        "type": "object",
-        "properties": {
-          "storageTypeId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "storageTypeName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

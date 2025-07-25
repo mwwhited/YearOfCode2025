@@ -13,7 +13,7 @@ import { ZQueryDistributorModel } from "./ZQueryDistributorModel";
 type integer = number;
 
 export class QueryDistributorModel implements IQueryDistributorModel {
-    readonly $schema: typeof ZQueryDistributorModel = ZQueryDistributorModel;
+    readonly $zod: typeof ZQueryDistributorModel = ZQueryDistributorModel;
     
     distributorId?: integer | undefined;
     distributorName?: string | undefined;

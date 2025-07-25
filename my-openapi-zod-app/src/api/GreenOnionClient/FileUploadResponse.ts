@@ -25,7 +25,7 @@ import type { IFileStatus } from "./IFileStatus";
 type integer = number;
 
 export class FileUploadResponse implements IFileUploadResponse {
-    readonly $schema: typeof ZFileUploadResponse = ZFileUploadResponse;
+    readonly $zod: typeof ZFileUploadResponse = ZFileUploadResponse;
     
     manufacture?: string | undefined;
     distributer?: string | undefined;

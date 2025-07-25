@@ -10,21 +10,9 @@
 import type { z } from "zod";
 import { ZQueryCategoryModel } from "./ZQueryCategoryModel";
 
-type integer = number;
 
-export interface IQueryCategoryModel {
-    $schema: typeof ZQueryCategoryModel;
-
-    categoryId?: integer | undefined;
-    categoryName?: string | undefined;
-    categoryCode?: string | undefined;
-    isActive?: boolean | undefined;
-    createdOn?: string | undefined;
-    createdById?: integer | undefined;
-    createdBy?: string | undefined;
-    updatedOn?: string | undefined;
-    updatedById?: integer | undefined;
-    updatedBy?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryCategoryModel extends z.infer<typeof ZQueryCategoryModel> {
+  $zod: typeof ZQueryCategoryModel;
+  toJSON(data?: any): any;
 }
+

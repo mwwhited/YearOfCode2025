@@ -8,29 +8,10 @@
 //
 
 import { z } from "zod";
-import type { IOrderDirections } from "./IOrderDirections";
 import { ZOrderDirections } from "./ZOrderDirections";
 
-import type { IQueryStateModelOrderBy } from "./IQueryStateModelOrderBy";
-
-
-export const ZQueryStateModelOrderBy: z.ZodType<IQueryStateModelOrderBy> = z.object({
-    stateId: z.string(),
-    stateName: z.string(),
+export const ZQueryStateModelOrderBy = z.object({
+    stateId:ZOrderDirections.optional(),
+    stateName:ZOrderDirections.optional(),
 });
-/*
-[class, QueryStateModelOrderBy],[interface, IQueryStateModelOrderBy],[schema, ZQueryStateModelOrderBy],[definition, {
-        "type": "object",
-        "properties": {
-          "stateId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "stateName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          }
-        },
-        "description": "**Filterable Properties:** StateId; StateName",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryStateModel"
-      }]
-*/
+

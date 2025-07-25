@@ -13,7 +13,7 @@ import { ZRoleMst } from "./ZRoleMst";
 type integer = number;
 
 export class RoleMst implements IRoleMst {
-    readonly $schema: typeof ZRoleMst = ZRoleMst;
+    readonly $zod: typeof ZRoleMst = ZRoleMst;
     
     roleId?: integer | undefined;
     roleName?: string | undefined;

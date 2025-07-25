@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QuerySubCategoryModelFilter implements IQuerySubCategoryModelFilter {
-    readonly $schema: typeof ZQuerySubCategoryModelFilter = ZQuerySubCategoryModelFilter;
+    readonly $zod: typeof ZQuerySubCategoryModelFilter = ZQuerySubCategoryModelFilter;
     
     subCategoryId?: IFilterParameter | undefined;
     categoryId?: IFilterParameter | undefined;

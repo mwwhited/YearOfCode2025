@@ -13,7 +13,7 @@ import { ZQueryStateModel } from "./ZQueryStateModel";
 type integer = number;
 
 export class QueryStateModel implements IQueryStateModel {
-    readonly $schema: typeof ZQueryStateModel = ZQueryStateModel;
+    readonly $zod: typeof ZQueryStateModel = ZQueryStateModel;
     
     stateId?: integer | undefined;
     stateName?: string | undefined;

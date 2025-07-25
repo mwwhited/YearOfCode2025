@@ -13,7 +13,7 @@ import { ZProductUploadModel } from "./ZProductUploadModel";
 type integer = number;
 
 export class ProductUploadModel implements IProductUploadModel {
-    readonly $schema: typeof ZProductUploadModel = ZProductUploadModel;
+    readonly $zod: typeof ZProductUploadModel = ZProductUploadModel;
     
     districtId?: integer | undefined;
     mrfcode?: string | undefined;

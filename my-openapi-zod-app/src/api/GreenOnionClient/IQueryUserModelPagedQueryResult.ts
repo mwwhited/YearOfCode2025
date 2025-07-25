@@ -12,16 +12,9 @@ import { ZQueryUserModelPagedQueryResult } from "./ZQueryUserModelPagedQueryResu
 import type { IQueryUserModel } from "./IQueryUserModel";
 import type { IResultMessage } from "./IResultMessage";
 
-type integer = number;
 
-export interface IQueryUserModelPagedQueryResult {
-    $schema: typeof ZQueryUserModelPagedQueryResult;
-
-    rows?: IQueryUserModel[] | undefined;/*Gets the collection of items in the result.*/
-    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
-    currentPage?: integer | undefined;/*Gets the total number of pages.*/
-    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
-    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
-
-    toJSON(data?: any) : any;
+export interface IQueryUserModelPagedQueryResult extends z.infer<typeof ZQueryUserModelPagedQueryResult> {
+  $zod: typeof ZQueryUserModelPagedQueryResult;
+  toJSON(data?: any): any;
 }
+

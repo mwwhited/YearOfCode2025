@@ -11,13 +11,9 @@ import type { z } from "zod";
 import { ZQueryStateModelOrderBy } from "./ZQueryStateModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryStateModelOrderBy {
-    $schema: typeof ZQueryStateModelOrderBy;
-
-    stateId?: IOrderDirections | undefined;
-    stateName?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryStateModelOrderBy extends z.infer<typeof ZQueryStateModelOrderBy> {
+  $zod: typeof ZQueryStateModelOrderBy;
+  toJSON(data?: any): any;
 }
+

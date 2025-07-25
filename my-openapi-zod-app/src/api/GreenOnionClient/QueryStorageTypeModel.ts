@@ -13,7 +13,7 @@ import { ZQueryStorageTypeModel } from "./ZQueryStorageTypeModel";
 type integer = number;
 
 export class QueryStorageTypeModel implements IQueryStorageTypeModel {
-    readonly $schema: typeof ZQueryStorageTypeModel = ZQueryStorageTypeModel;
+    readonly $zod: typeof ZQueryStorageTypeModel = ZQueryStorageTypeModel;
     
     storageTypeId?: integer | undefined;
     storageTypeName?: string | undefined;

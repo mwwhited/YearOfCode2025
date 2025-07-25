@@ -8,61 +8,18 @@
 //
 
 import { z } from "zod";
-import type { IOrderDirections } from "./IOrderDirections";
 import { ZOrderDirections } from "./ZOrderDirections";
 
-import type { IQueryUserActionLogModelOrderBy } from "./IQueryUserActionLogModelOrderBy";
-
-
-export const ZQueryUserActionLogModelOrderBy: z.ZodType<IQueryUserActionLogModelOrderBy> = z.object({
-    userActionLogId: z.string(),
-    eventType: z.string(),
-    httpMethod: z.string(),
-    eventDate: z.string(),
-    sessionId: z.string(),
-    requestId: z.string(),
-    correlationId: z.string(),
-    requestPath: z.string(),
-    userId: z.string(),
-    user: z.string(),
+export const ZQueryUserActionLogModelOrderBy = z.object({
+    userActionLogId:ZOrderDirections.optional(),
+    eventType:ZOrderDirections.optional(),
+    httpMethod:ZOrderDirections.optional(),
+    eventDate:ZOrderDirections.optional(),
+    sessionId:ZOrderDirections.optional(),
+    requestId:ZOrderDirections.optional(),
+    correlationId:ZOrderDirections.optional(),
+    requestPath:ZOrderDirections.optional(),
+    userId:ZOrderDirections.optional(),
+    user:ZOrderDirections.optional(),
 });
-/*
-[class, QueryUserActionLogModelOrderBy],[interface, IQueryUserActionLogModelOrderBy],[schema, ZQueryUserActionLogModelOrderBy],[definition, {
-        "type": "object",
-        "properties": {
-          "userActionLogId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "eventType": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "httpMethod": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "eventDate": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "sessionId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "requestId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "correlationId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "requestPath": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "userId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "user": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          }
-        },
-        "description": "**Filterable Properties:** UserActionLogId; EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; UserId; User",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryUserActionLogModel"
-      }]
-*/
+

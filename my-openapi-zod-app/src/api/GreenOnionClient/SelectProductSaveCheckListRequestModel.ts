@@ -15,7 +15,7 @@ import type { IProductCheck } from "./IProductCheck";
 type integer = number;
 
 export class SelectProductSaveCheckListRequestModel implements ISelectProductSaveCheckListRequestModel {
-    readonly $schema: typeof ZSelectProductSaveCheckListRequestModel = ZSelectProductSaveCheckListRequestModel;
+    readonly $zod: typeof ZSelectProductSaveCheckListRequestModel = ZSelectProductSaveCheckListRequestModel;
     
     uniqueExcelFileId?: string | undefined;
     userOrDistrictId?: integer | undefined;

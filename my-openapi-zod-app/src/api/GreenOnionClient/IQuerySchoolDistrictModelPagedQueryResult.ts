@@ -12,16 +12,9 @@ import { ZQuerySchoolDistrictModelPagedQueryResult } from "./ZQuerySchoolDistric
 import type { IQuerySchoolDistrictModel } from "./IQuerySchoolDistrictModel";
 import type { IResultMessage } from "./IResultMessage";
 
-type integer = number;
 
-export interface IQuerySchoolDistrictModelPagedQueryResult {
-    $schema: typeof ZQuerySchoolDistrictModelPagedQueryResult;
-
-    rows?: IQuerySchoolDistrictModel[] | undefined;/*Gets the collection of items in the result.*/
-    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
-    currentPage?: integer | undefined;/*Gets the total number of pages.*/
-    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
-    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
-
-    toJSON(data?: any) : any;
+export interface IQuerySchoolDistrictModelPagedQueryResult extends z.infer<typeof ZQuerySchoolDistrictModelPagedQueryResult> {
+  $zod: typeof ZQuerySchoolDistrictModelPagedQueryResult;
+  toJSON(data?: any): any;
 }
+

@@ -8,202 +8,42 @@
 //
 
 import { z } from "zod";
-import type { INutritionalInformationModel } from "./INutritionalInformationModel";
 import { ZNutritionalInformationModel } from "./ZNutritionalInformationModel";
 
-import type { IQueryProductModel } from "./IQueryProductModel";
-
-
-export const ZQueryProductModel: z.ZodType<IQueryProductModel> = z.object({
-    productId: z.string(),
-    name: z.string(),
-    description: z.string(),
-    gtin: z.string(),
-    upc: z.string(),
-    images: z.string(),
-    isActive: z.string(),
-    manufacturerId: z.string(),
-    manufacturerName: z.string(),
-    iocCategoryId: z.string(),
-    iocCategory: z.string(),
-    categoryId: z.string(),
-    category: z.string(),
-    subCategoryId: z.string(),
-    subCategory: z.string(),
-    storageTypeId: z.string(),
-    storageTypeName: z.string(),
-    ingredients: z.string(),
-    isAllocated: z.string(),
-    hasAllergens: z.string(),
-    hasOneWorldSyncProduct: z.string(),
-    oneWorldSyncProductId: z.string(),
-    hasProduct: z.string(),
-    hasSuggestedProducts: z.string(),
-    hasApprovedSuggestedProducts: z.string(),
-    isSuggestedProduct: z.string(),
-    isApprovedSuggestedProduct: z.string(),
-    nutritionalInformation: z.string(),
-    createdOn: z.string(),
-    createdById: z.string(),
-    createdBy: z.string(),
-    updatedOn: z.string(),
-    updatedById: z.string(),
-    updatedBy: z.string(),
+export const ZQueryProductModel = z.object({
+    productId:z.number().int().optional(),
+    name:z.string().optional(),
+    description:z.string().optional(),
+    gtin:z.string().optional(),
+    upc:z.string().optional(),
+    images:zARRAY!!!,
+    isActive:z.boolean().optional(),
+    manufacturerId:z.number().int().optional(),
+    manufacturerName:z.string().optional(),
+    iocCategoryId:z.number().int().optional(),
+    iocCategory:z.string().optional(),
+    categoryId:z.number().int().optional(),
+    category:z.string().optional(),
+    subCategoryId:z.number().int().optional(),
+    subCategory:z.string().optional(),
+    storageTypeId:z.number().int().optional(),
+    storageTypeName:z.string().optional(),
+    ingredients:z.string().optional(),
+    isAllocated:z.boolean().optional(),
+    hasAllergens:z.boolean().optional(),
+    hasOneWorldSyncProduct:z.boolean().optional(),
+    oneWorldSyncProductId:z.number().int().optional(),
+    hasProduct:z.boolean().optional(),
+    hasSuggestedProducts:z.boolean().optional(),
+    hasApprovedSuggestedProducts:z.boolean().optional(),
+    isSuggestedProduct:z.boolean().optional(),
+    isApprovedSuggestedProduct:z.boolean().optional(),
+    nutritionalInformation:ZNutritionalInformationModel.optional(),
+    createdOn:z.string().optional(),
+    createdById:z.number().int().optional(),
+    createdBy:z.string().optional(),
+    updatedOn:z.string().optional(),
+    updatedById:z.number().int().optional(),
+    updatedBy:z.string().optional(),
 });
-/*
-[class, QueryProductModel],[interface, IQueryProductModel],[schema, ZQueryProductModel],[definition, {
-        "type": "object",
-        "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true,
-            "x-navigation-key": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "gtin": {
-            "type": "string",
-            "nullable": true
-          },
-          "upc": {
-            "type": "string",
-            "nullable": true
-          },
-          "images": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "manufacturerId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryManufacturerModel"
-          },
-          "manufacturerName": {
-            "type": "string",
-            "nullable": true
-          },
-          "iocCategoryId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryIocCategoryModel"
-          },
-          "iocCategory": {
-            "type": "string",
-            "nullable": true
-          },
-          "categoryId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryCategoryModel"
-          },
-          "category": {
-            "type": "string",
-            "nullable": true
-          },
-          "subCategoryId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QuerySubCategoryModel"
-          },
-          "subCategory": {
-            "type": "string",
-            "nullable": true
-          },
-          "storageTypeId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryStorageTypeModel"
-          },
-          "storageTypeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "ingredients": {
-            "type": "string",
-            "nullable": true
-          },
-          "isAllocated": {
-            "type": "boolean"
-          },
-          "hasAllergens": {
-            "type": "boolean"
-          },
-          "hasOneWorldSyncProduct": {
-            "type": "boolean"
-          },
-          "oneWorldSyncProductId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryOneWorldSyncProductModel"
-          },
-          "hasProduct": {
-            "type": "boolean"
-          },
-          "hasSuggestedProducts": {
-            "type": "boolean"
-          },
-          "hasApprovedSuggestedProducts": {
-            "type": "boolean"
-          },
-          "isSuggestedProduct": {
-            "type": "boolean"
-          },
-          "isApprovedSuggestedProduct": {
-            "type": "boolean"
-          },
-          "nutritionalInformation": {
-            "$ref": "#/components/schemas/GreenOnion.Common.Models.NutritionalInformationModel"
-          },
-          "createdOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryUserModel"
-          },
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryUserModel"
-          },
-          "updatedBy": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

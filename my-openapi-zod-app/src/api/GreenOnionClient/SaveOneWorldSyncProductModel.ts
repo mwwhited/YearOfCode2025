@@ -15,7 +15,7 @@ import type { INutritionalInformationModel } from "./INutritionalInformationMode
 type integer = number;
 
 export class SaveOneWorldSyncProductModel implements ISaveOneWorldSyncProductModel {
-    readonly $schema: typeof ZSaveOneWorldSyncProductModel = ZSaveOneWorldSyncProductModel;
+    readonly $zod: typeof ZSaveOneWorldSyncProductModel = ZSaveOneWorldSyncProductModel;
     
     productId?: integer | undefined;
     productName?: string | undefined;

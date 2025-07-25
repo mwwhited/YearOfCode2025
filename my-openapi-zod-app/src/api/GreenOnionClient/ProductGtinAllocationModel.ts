@@ -13,7 +13,7 @@ import { ZProductGtinAllocationModel } from "./ZProductGtinAllocationModel";
 type integer = number;
 
 export class ProductGtinAllocationModel implements IProductGtinAllocationModel {
-    readonly $schema: typeof ZProductGtinAllocationModel = ZProductGtinAllocationModel;
+    readonly $zod: typeof ZProductGtinAllocationModel = ZProductGtinAllocationModel;
     
     productId?: integer | undefined;
     gtin?: string | undefined;

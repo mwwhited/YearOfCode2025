@@ -11,21 +11,9 @@ import type { z } from "zod";
 import { ZQueryUserActionLogModelOrderBy } from "./ZQueryUserActionLogModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryUserActionLogModelOrderBy {
-    $schema: typeof ZQueryUserActionLogModelOrderBy;
-
-    userActionLogId?: IOrderDirections | undefined;
-    eventType?: IOrderDirections | undefined;
-    httpMethod?: IOrderDirections | undefined;
-    eventDate?: IOrderDirections | undefined;
-    sessionId?: IOrderDirections | undefined;
-    requestId?: IOrderDirections | undefined;
-    correlationId?: IOrderDirections | undefined;
-    requestPath?: IOrderDirections | undefined;
-    userId?: IOrderDirections | undefined;
-    user?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryUserActionLogModelOrderBy extends z.infer<typeof ZQueryUserActionLogModelOrderBy> {
+  $zod: typeof ZQueryUserActionLogModelOrderBy;
+  toJSON(data?: any): any;
 }
+

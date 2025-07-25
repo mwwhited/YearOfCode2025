@@ -13,7 +13,7 @@ import { ZQueryRoleModel } from "./ZQueryRoleModel";
 type integer = number;
 
 export class QueryRoleModel implements IQueryRoleModel {
-    readonly $schema: typeof ZQueryRoleModel = ZQueryRoleModel;
+    readonly $zod: typeof ZQueryRoleModel = ZQueryRoleModel;
     
     roleId?: integer | undefined;
     roleName?: string | undefined;

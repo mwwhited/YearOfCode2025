@@ -10,16 +10,9 @@
 import type { z } from "zod";
 import { ZNewUserEmailModel } from "./ZNewUserEmailModel";
 
-type integer = number;
 
-export interface INewUserEmailModel {
-    $schema: typeof ZNewUserEmailModel;
-
-    firstName?: string | undefined;
-    lastName?: string | undefined;
-    role?: string | undefined;
-    email?: string | undefined;
-    association?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface INewUserEmailModel extends z.infer<typeof ZNewUserEmailModel> {
+  $zod: typeof ZNewUserEmailModel;
+  toJSON(data?: any): any;
 }
+

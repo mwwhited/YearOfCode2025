@@ -17,7 +17,7 @@ import type { IQueryDefinedFilterModelOrderBy } from "./IQueryDefinedFilterModel
 type integer = number;
 
 export class QueryDefinedFilterModelSearchQuery implements IQueryDefinedFilterModelSearchQuery {
-    readonly $schema: typeof ZQueryDefinedFilterModelSearchQuery = ZQueryDefinedFilterModelSearchQuery;
+    readonly $zod: typeof ZQueryDefinedFilterModelSearchQuery = ZQueryDefinedFilterModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

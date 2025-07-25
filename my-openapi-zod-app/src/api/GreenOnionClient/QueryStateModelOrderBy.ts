@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryStateModelOrderBy implements IQueryStateModelOrderBy {
-    readonly $schema: typeof ZQueryStateModelOrderBy = ZQueryStateModelOrderBy;
+    readonly $zod: typeof ZQueryStateModelOrderBy = ZQueryStateModelOrderBy;
     
     stateId?: IOrderDirections | undefined;
     stateName?: IOrderDirections | undefined;

@@ -12,17 +12,9 @@ import { ZQueryErrorLogModelSearchQuery } from "./ZQueryErrorLogModelSearchQuery
 import type { IQueryErrorLogModelFilter } from "./IQueryErrorLogModelFilter";
 import type { IQueryErrorLogModelOrderBy } from "./IQueryErrorLogModelOrderBy";
 
-type integer = number;
 
-export interface IQueryErrorLogModelSearchQuery {
-    $schema: typeof ZQueryErrorLogModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** ErrorMessage; ErrorPath*/
-    filter?: IQueryErrorLogModelFilter | undefined;
-    orderBy?: IQueryErrorLogModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryErrorLogModelSearchQuery extends z.infer<typeof ZQueryErrorLogModelSearchQuery> {
+  $zod: typeof ZQueryErrorLogModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

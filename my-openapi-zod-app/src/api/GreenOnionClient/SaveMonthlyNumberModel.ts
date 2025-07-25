@@ -13,7 +13,7 @@ import { ZSaveMonthlyNumberModel } from "./ZSaveMonthlyNumberModel";
 type integer = number;
 
 export class SaveMonthlyNumberModel implements ISaveMonthlyNumberModel {
-    readonly $schema: typeof ZSaveMonthlyNumberModel = ZSaveMonthlyNumberModel;
+    readonly $zod: typeof ZSaveMonthlyNumberModel = ZSaveMonthlyNumberModel;
     
     id?: integer | undefined;
     schoolDistrictId?: integer | undefined;

@@ -17,7 +17,7 @@ import type { IQueryOneWorldSyncProductModelOrderBy } from "./IQueryOneWorldSync
 type integer = number;
 
 export class QueryOneWorldSyncProductModelSearchQuery implements IQueryOneWorldSyncProductModelSearchQuery {
-    readonly $schema: typeof ZQueryOneWorldSyncProductModelSearchQuery = ZQueryOneWorldSyncProductModelSearchQuery;
+    readonly $zod: typeof ZQueryOneWorldSyncProductModelSearchQuery = ZQueryOneWorldSyncProductModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

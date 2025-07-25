@@ -17,7 +17,7 @@ import type { IQueryStorageTypeModelOrderBy } from "./IQueryStorageTypeModelOrde
 type integer = number;
 
 export class QueryStorageTypeModelSearchQuery implements IQueryStorageTypeModelSearchQuery {
-    readonly $schema: typeof ZQueryStorageTypeModelSearchQuery = ZQueryStorageTypeModelSearchQuery;
+    readonly $zod: typeof ZQueryStorageTypeModelSearchQuery = ZQueryStorageTypeModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

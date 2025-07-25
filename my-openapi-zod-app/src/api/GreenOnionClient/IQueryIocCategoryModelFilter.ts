@@ -11,14 +11,9 @@ import type { z } from "zod";
 import { ZQueryIocCategoryModelFilter } from "./ZQueryIocCategoryModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryIocCategoryModelFilter {
-    $schema: typeof ZQueryIocCategoryModelFilter;
-
-    iocCategoryId?: IFilterParameter | undefined;
-    name?: IFilterParameter | undefined;
-    color?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryIocCategoryModelFilter extends z.infer<typeof ZQueryIocCategoryModelFilter> {
+  $zod: typeof ZQueryIocCategoryModelFilter;
+  toJSON(data?: any): any;
 }
+

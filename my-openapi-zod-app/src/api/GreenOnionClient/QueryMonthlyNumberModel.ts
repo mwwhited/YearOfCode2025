@@ -13,7 +13,7 @@ import { ZQueryMonthlyNumberModel } from "./ZQueryMonthlyNumberModel";
 type integer = number;
 
 export class QueryMonthlyNumberModel implements IQueryMonthlyNumberModel {
-    readonly $schema: typeof ZQueryMonthlyNumberModel = ZQueryMonthlyNumberModel;
+    readonly $zod: typeof ZQueryMonthlyNumberModel = ZQueryMonthlyNumberModel;
     
     id?: integer | undefined;
     schoolDistrictId?: integer | undefined;

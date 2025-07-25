@@ -18,18 +18,4 @@ export const ZMessageLevels = z.enum([
     "fatal",
     "unknown",
 ]);
-/*
-[class, MessageLevels],[interface, IMessageLevels],[schema, ZMessageLevels],[definition, {
-        "enum": [
-          "trace",
-          "debug",
-          "info",
-          "warning",
-          "error",
-          "fatal",
-          "unknown"
-        ],
-        "type": "string",
-        "description": "response message level"
-      }]
-*/
+

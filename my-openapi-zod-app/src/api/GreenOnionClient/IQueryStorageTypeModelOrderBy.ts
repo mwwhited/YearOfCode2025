@@ -11,13 +11,9 @@ import type { z } from "zod";
 import { ZQueryStorageTypeModelOrderBy } from "./ZQueryStorageTypeModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryStorageTypeModelOrderBy {
-    $schema: typeof ZQueryStorageTypeModelOrderBy;
-
-    storageTypeId?: IOrderDirections | undefined;
-    storageTypeName?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryStorageTypeModelOrderBy extends z.infer<typeof ZQueryStorageTypeModelOrderBy> {
+  $zod: typeof ZQueryStorageTypeModelOrderBy;
+  toJSON(data?: any): any;
 }
+

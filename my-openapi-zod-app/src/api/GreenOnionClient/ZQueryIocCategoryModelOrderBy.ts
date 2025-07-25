@@ -8,33 +8,11 @@
 //
 
 import { z } from "zod";
-import type { IOrderDirections } from "./IOrderDirections";
 import { ZOrderDirections } from "./ZOrderDirections";
 
-import type { IQueryIocCategoryModelOrderBy } from "./IQueryIocCategoryModelOrderBy";
-
-
-export const ZQueryIocCategoryModelOrderBy: z.ZodType<IQueryIocCategoryModelOrderBy> = z.object({
-    iocCategoryId: z.string(),
-    name: z.string(),
-    color: z.string(),
+export const ZQueryIocCategoryModelOrderBy = z.object({
+    iocCategoryId:ZOrderDirections.optional(),
+    name:ZOrderDirections.optional(),
+    color:ZOrderDirections.optional(),
 });
-/*
-[class, QueryIocCategoryModelOrderBy],[interface, IQueryIocCategoryModelOrderBy],[schema, ZQueryIocCategoryModelOrderBy],[definition, {
-        "type": "object",
-        "properties": {
-          "iocCategoryId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "name": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "color": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          }
-        },
-        "description": "**Filterable Properties:** IocCategoryId; Name; Color",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryIocCategoryModel"
-      }]
-*/
+

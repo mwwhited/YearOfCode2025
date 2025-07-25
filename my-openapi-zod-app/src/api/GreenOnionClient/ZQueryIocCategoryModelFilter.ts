@@ -8,33 +8,11 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryIocCategoryModelFilter } from "./IQueryIocCategoryModelFilter";
-
-
-export const ZQueryIocCategoryModelFilter: z.ZodType<IQueryIocCategoryModelFilter> = z.object({
-    iocCategoryId: z.string(),
-    name: z.string(),
-    color: z.string(),
+export const ZQueryIocCategoryModelFilter = z.object({
+    iocCategoryId:ZFilterParameter.optional(),
+    name:ZFilterParameter.optional(),
+    color:ZFilterParameter.optional(),
 });
-/*
-[class, QueryIocCategoryModelFilter],[interface, IQueryIocCategoryModelFilter],[schema, ZQueryIocCategoryModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "iocCategoryId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "name": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "color": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** IocCategoryId; Name; Color",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryIocCategoryModel"
-      }]
-*/
+

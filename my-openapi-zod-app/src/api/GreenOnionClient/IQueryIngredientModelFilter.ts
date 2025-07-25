@@ -11,15 +11,9 @@ import type { z } from "zod";
 import { ZQueryIngredientModelFilter } from "./ZQueryIngredientModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryIngredientModelFilter {
-    $schema: typeof ZQueryIngredientModelFilter;
-
-    ingredientId?: IFilterParameter | undefined;
-    ingredientName?: IFilterParameter | undefined;
-    group?: IFilterParameter | undefined;
-    iocGroup?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryIngredientModelFilter extends z.infer<typeof ZQueryIngredientModelFilter> {
+  $zod: typeof ZQueryIngredientModelFilter;
+  toJSON(data?: any): any;
 }
+

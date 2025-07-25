@@ -15,7 +15,7 @@ import type { IMessageLevels } from "./IMessageLevels";
 type integer = number;
 
 export class ResultMessage implements IResultMessage {
-    readonly $schema: typeof ZResultMessage = ZResultMessage;
+    readonly $zod: typeof ZResultMessage = ZResultMessage;
     
     level?: IMessageLevels | undefined;
     message?: string | undefined;/*Simple English message about issue.*/

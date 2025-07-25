@@ -17,7 +17,7 @@ import type { IQueryIngredientModelOrderBy } from "./IQueryIngredientModelOrderB
 type integer = number;
 
 export class QueryIngredientModelSearchQuery implements IQueryIngredientModelSearchQuery {
-    readonly $schema: typeof ZQueryIngredientModelSearchQuery = ZQueryIngredientModelSearchQuery;
+    readonly $zod: typeof ZQueryIngredientModelSearchQuery = ZQueryIngredientModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

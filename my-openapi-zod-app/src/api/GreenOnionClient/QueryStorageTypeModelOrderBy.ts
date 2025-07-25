@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryStorageTypeModelOrderBy implements IQueryStorageTypeModelOrderBy {
-    readonly $schema: typeof ZQueryStorageTypeModelOrderBy = ZQueryStorageTypeModelOrderBy;
+    readonly $zod: typeof ZQueryStorageTypeModelOrderBy = ZQueryStorageTypeModelOrderBy;
     
     storageTypeId?: IOrderDirections | undefined;
     storageTypeName?: IOrderDirections | undefined;

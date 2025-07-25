@@ -13,7 +13,7 @@ import { ZDataMigrationThroughApiResponseModel } from "./ZDataMigrationThroughAp
 type integer = number;
 
 export class DataMigrationThroughApiResponseModel implements IDataMigrationThroughApiResponseModel {
-    readonly $schema: typeof ZDataMigrationThroughApiResponseModel = ZDataMigrationThroughApiResponseModel;
+    readonly $zod: typeof ZDataMigrationThroughApiResponseModel = ZDataMigrationThroughApiResponseModel;
     
     success?: boolean | undefined;
     message?: string | undefined;

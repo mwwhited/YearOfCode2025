@@ -13,7 +13,7 @@ import { ZQueryAllergenModel } from "./ZQueryAllergenModel";
 type integer = number;
 
 export class QueryAllergenModel implements IQueryAllergenModel {
-    readonly $schema: typeof ZQueryAllergenModel = ZQueryAllergenModel;
+    readonly $zod: typeof ZQueryAllergenModel = ZQueryAllergenModel;
     
     allergenId?: integer | undefined;
     allergenName?: string | undefined;

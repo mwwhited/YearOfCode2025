@@ -17,7 +17,7 @@ import type { IQueryUserActionLogModelOrderBy } from "./IQueryUserActionLogModel
 type integer = number;
 
 export class QueryUserActionLogModelSearchQuery implements IQueryUserActionLogModelSearchQuery {
-    readonly $schema: typeof ZQueryUserActionLogModelSearchQuery = ZQueryUserActionLogModelSearchQuery;
+    readonly $zod: typeof ZQueryUserActionLogModelSearchQuery = ZQueryUserActionLogModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

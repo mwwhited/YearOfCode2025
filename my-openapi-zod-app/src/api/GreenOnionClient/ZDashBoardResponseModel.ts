@@ -9,47 +9,13 @@
 
 import { z } from "zod";
 
-import type { IDashBoardResponseModel } from "./IDashBoardResponseModel";
-
-
-export const ZDashBoardResponseModel: z.ZodType<IDashBoardResponseModel> = z.object({
-    success: z.string(),
-    message: z.string(),
-    totalRecords: z.string(),
-    payload: z.string(),
-    isUpdate: z.string(),
-    isAdded: z.string(),
-    isDelete: z.string(),
+export const ZDashBoardResponseModel = z.object({
+    success:z.boolean().optional(),
+    message:z.string().optional(),
+    totalRecords:z.number().int().optional(),
+    payload:z.unknown().optional(),
+    isUpdate:z.boolean().optional(),
+    isAdded:z.boolean().optional(),
+    isDelete:z.boolean().optional(),
 });
-/*
-[class, DashBoardResponseModel],[interface, IDashBoardResponseModel],[schema, ZDashBoardResponseModel],[definition, {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "totalRecords": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "payload": {
-            "nullable": true
-          },
-          "isUpdate": {
-            "type": "boolean"
-          },
-          "isAdded": {
-            "type": "boolean"
-          },
-          "isDelete": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

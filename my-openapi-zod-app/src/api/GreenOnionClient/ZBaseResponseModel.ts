@@ -9,35 +9,10 @@
 
 import { z } from "zod";
 
-import type { IBaseResponseModel } from "./IBaseResponseModel";
-
-
-export const ZBaseResponseModel: z.ZodType<IBaseResponseModel> = z.object({
-    success: z.string(),
-    message: z.string(),
-    totalRecords: z.string(),
-    payload: z.string(),
+export const ZBaseResponseModel = z.object({
+    success:z.boolean().optional(),
+    message:z.string().optional(),
+    totalRecords:z.number().int().optional(),
+    payload:z.unknown().optional(),
 });
-/*
-[class, BaseResponseModel],[interface, IBaseResponseModel],[schema, ZBaseResponseModel],[definition, {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "totalRecords": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "payload": {
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

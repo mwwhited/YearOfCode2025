@@ -11,22 +11,9 @@ import type { z } from "zod";
 import { ZQueryRoleModelOrderBy } from "./ZQueryRoleModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryRoleModelOrderBy {
-    $schema: typeof ZQueryRoleModelOrderBy;
-
-    roleId?: IOrderDirections | undefined;
-    roleName?: IOrderDirections | undefined;
-    isActive?: IOrderDirections | undefined;
-    userCount?: IOrderDirections | undefined;
-    activeUserCount?: IOrderDirections | undefined;
-    createdOn?: IOrderDirections | undefined;
-    createdById?: IOrderDirections | undefined;
-    createdBy?: IOrderDirections | undefined;
-    updatedOn?: IOrderDirections | undefined;
-    updatedById?: IOrderDirections | undefined;
-    updatedBy?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryRoleModelOrderBy extends z.infer<typeof ZQueryRoleModelOrderBy> {
+  $zod: typeof ZQueryRoleModelOrderBy;
+  toJSON(data?: any): any;
 }
+

@@ -17,7 +17,7 @@ import type { IQueryManufacturerModelOrderBy } from "./IQueryManufacturerModelOr
 type integer = number;
 
 export class QueryManufacturerModelSearchQuery implements IQueryManufacturerModelSearchQuery {
-    readonly $schema: typeof ZQueryManufacturerModelSearchQuery = ZQueryManufacturerModelSearchQuery;
+    readonly $zod: typeof ZQueryManufacturerModelSearchQuery = ZQueryManufacturerModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

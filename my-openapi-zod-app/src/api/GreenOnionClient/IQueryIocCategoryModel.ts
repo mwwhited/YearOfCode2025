@@ -10,14 +10,9 @@
 import type { z } from "zod";
 import { ZQueryIocCategoryModel } from "./ZQueryIocCategoryModel";
 
-type integer = number;
 
-export interface IQueryIocCategoryModel {
-    $schema: typeof ZQueryIocCategoryModel;
-
-    iocCategoryId?: integer | undefined;
-    name?: string | undefined;
-    color?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryIocCategoryModel extends z.infer<typeof ZQueryIocCategoryModel> {
+  $zod: typeof ZQueryIocCategoryModel;
+  toJSON(data?: any): any;
 }
+

@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZSaveStorageTypeModel } from "./ZSaveStorageTypeModel";
 
-type integer = number;
 
-export interface ISaveStorageTypeModel {
-    $schema: typeof ZSaveStorageTypeModel;
-
-    storageTypeId?: integer | undefined;
-    storageTypeName?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISaveStorageTypeModel extends z.infer<typeof ZSaveStorageTypeModel> {
+  $zod: typeof ZSaveStorageTypeModel;
+  toJSON(data?: any): any;
 }
+

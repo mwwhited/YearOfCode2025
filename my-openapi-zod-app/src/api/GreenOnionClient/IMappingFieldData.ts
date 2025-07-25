@@ -10,16 +10,9 @@
 import type { z } from "zod";
 import { ZMappingFieldData } from "./ZMappingFieldData";
 
-type integer = number;
 
-export interface IMappingFieldData {
-    $schema: typeof ZMappingFieldData;
-
-    mappingID?: integer | undefined;
-    isChecked?: boolean | undefined;
-    fileFieldName?: string | undefined;
-    tableFieldID?: string | undefined;
-    tableFieldName?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IMappingFieldData extends z.infer<typeof ZMappingFieldData> {
+  $zod: typeof ZMappingFieldData;
+  toJSON(data?: any): any;
 }
+

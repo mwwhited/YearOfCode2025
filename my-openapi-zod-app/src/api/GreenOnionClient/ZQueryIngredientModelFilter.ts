@@ -8,37 +8,12 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryIngredientModelFilter } from "./IQueryIngredientModelFilter";
-
-
-export const ZQueryIngredientModelFilter: z.ZodType<IQueryIngredientModelFilter> = z.object({
-    ingredientId: z.string(),
-    ingredientName: z.string(),
-    group: z.string(),
-    iocGroup: z.string(),
+export const ZQueryIngredientModelFilter = z.object({
+    ingredientId:ZFilterParameter.optional(),
+    ingredientName:ZFilterParameter.optional(),
+    group:ZFilterParameter.optional(),
+    iocGroup:ZFilterParameter.optional(),
 });
-/*
-[class, QueryIngredientModelFilter],[interface, IQueryIngredientModelFilter],[schema, ZQueryIngredientModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "ingredientId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "ingredientName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "group": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "iocGroup": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** IngredientId; IngredientName; Group; IocGroup",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryIngredientModel"
-      }]
-*/
+

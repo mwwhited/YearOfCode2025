@@ -17,7 +17,7 @@ import type { IQueryDistributorModelOrderBy } from "./IQueryDistributorModelOrde
 type integer = number;
 
 export class QueryDistributorModelSearchQuery implements IQueryDistributorModelSearchQuery {
-    readonly $schema: typeof ZQueryDistributorModelSearchQuery = ZQueryDistributorModelSearchQuery;
+    readonly $zod: typeof ZQueryDistributorModelSearchQuery = ZQueryDistributorModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

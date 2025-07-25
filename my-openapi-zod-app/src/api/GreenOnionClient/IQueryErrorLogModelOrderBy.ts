@@ -11,14 +11,9 @@ import type { z } from "zod";
 import { ZQueryErrorLogModelOrderBy } from "./ZQueryErrorLogModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryErrorLogModelOrderBy {
-    $schema: typeof ZQueryErrorLogModelOrderBy;
-
-    errorLogId?: IOrderDirections | undefined;
-    errorMessage?: IOrderDirections | undefined;
-    errorPath?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryErrorLogModelOrderBy extends z.infer<typeof ZQueryErrorLogModelOrderBy> {
+  $zod: typeof ZQueryErrorLogModelOrderBy;
+  toJSON(data?: any): any;
 }
+

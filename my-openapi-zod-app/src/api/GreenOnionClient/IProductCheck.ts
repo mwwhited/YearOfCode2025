@@ -10,14 +10,9 @@
 import type { z } from "zod";
 import { ZProductCheck } from "./ZProductCheck";
 
-type integer = number;
 
-export interface IProductCheck {
-    $schema: typeof ZProductCheck;
-
-    ischeck?: boolean | undefined;
-    headerName?: string | undefined;
-    headerValue?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IProductCheck extends z.infer<typeof ZProductCheck> {
+  $zod: typeof ZProductCheck;
+  toJSON(data?: any): any;
 }
+

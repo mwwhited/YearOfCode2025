@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryAllergenModelOrderBy implements IQueryAllergenModelOrderBy {
-    readonly $schema: typeof ZQueryAllergenModelOrderBy = ZQueryAllergenModelOrderBy;
+    readonly $zod: typeof ZQueryAllergenModelOrderBy = ZQueryAllergenModelOrderBy;
     
     allergenId?: IOrderDirections | undefined;
     allergenName?: IOrderDirections | undefined;

@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryRoleModelFilter implements IQueryRoleModelFilter {
-    readonly $schema: typeof ZQueryRoleModelFilter = ZQueryRoleModelFilter;
+    readonly $zod: typeof ZQueryRoleModelFilter = ZQueryRoleModelFilter;
     
     roleId?: IFilterParameter | undefined;
     roleName?: IFilterParameter | undefined;

@@ -8,29 +8,10 @@
 //
 
 import { z } from "zod";
-import type { IOrderDirections } from "./IOrderDirections";
 import { ZOrderDirections } from "./ZOrderDirections";
 
-import type { IQueryStorageTypeModelOrderBy } from "./IQueryStorageTypeModelOrderBy";
-
-
-export const ZQueryStorageTypeModelOrderBy: z.ZodType<IQueryStorageTypeModelOrderBy> = z.object({
-    storageTypeId: z.string(),
-    storageTypeName: z.string(),
+export const ZQueryStorageTypeModelOrderBy = z.object({
+    storageTypeId:ZOrderDirections.optional(),
+    storageTypeName:ZOrderDirections.optional(),
 });
-/*
-[class, QueryStorageTypeModelOrderBy],[interface, IQueryStorageTypeModelOrderBy],[schema, ZQueryStorageTypeModelOrderBy],[definition, {
-        "type": "object",
-        "properties": {
-          "storageTypeId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "storageTypeName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          }
-        },
-        "description": "**Filterable Properties:** StorageTypeId; StorageTypeName",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryStorageTypeModel"
-      }]
-*/
+

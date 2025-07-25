@@ -13,7 +13,7 @@ import { ZQuerySchoolDistrictModel } from "./ZQuerySchoolDistrictModel";
 type integer = number;
 
 export class QuerySchoolDistrictModel implements IQuerySchoolDistrictModel {
-    readonly $schema: typeof ZQuerySchoolDistrictModel = ZQuerySchoolDistrictModel;
+    readonly $zod: typeof ZQuerySchoolDistrictModel = ZQuerySchoolDistrictModel;
     
     schoolDistrictId?: integer | undefined;
     siteCode?: string | undefined;

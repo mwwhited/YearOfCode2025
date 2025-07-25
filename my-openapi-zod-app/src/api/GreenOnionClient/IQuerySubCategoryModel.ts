@@ -10,22 +10,9 @@
 import type { z } from "zod";
 import { ZQuerySubCategoryModel } from "./ZQuerySubCategoryModel";
 
-type integer = number;
 
-export interface IQuerySubCategoryModel {
-    $schema: typeof ZQuerySubCategoryModel;
-
-    subCategoryId?: integer | undefined;
-    categoryId?: integer | undefined;
-    subCategoryName?: string | undefined;
-    subCategoryCode?: string | undefined;
-    isActive?: boolean | undefined;
-    createdOn?: string | undefined;
-    createdById?: integer | undefined;
-    createdBy?: string | undefined;
-    updatedOn?: string | undefined;
-    updatedById?: integer | undefined;
-    updatedBy?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQuerySubCategoryModel extends z.infer<typeof ZQuerySubCategoryModel> {
+  $zod: typeof ZQuerySubCategoryModel;
+  toJSON(data?: any): any;
 }
+

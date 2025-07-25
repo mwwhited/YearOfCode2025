@@ -13,7 +13,7 @@ import { ZQueryManufacturerModel } from "./ZQueryManufacturerModel";
 type integer = number;
 
 export class QueryManufacturerModel implements IQueryManufacturerModel {
-    readonly $schema: typeof ZQueryManufacturerModel = ZQueryManufacturerModel;
+    readonly $zod: typeof ZQueryManufacturerModel = ZQueryManufacturerModel;
     
     manufacturerId?: integer | undefined;
     manufacturerName?: string | undefined;

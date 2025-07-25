@@ -13,7 +13,7 @@ import { ZNutritionalInformationModel } from "./ZNutritionalInformationModel";
 type integer = number;
 
 export class NutritionalInformationModel implements INutritionalInformationModel {
-    readonly $schema: typeof ZNutritionalInformationModel = ZNutritionalInformationModel;
+    readonly $zod: typeof ZNutritionalInformationModel = ZNutritionalInformationModel;
     
     serving?: number | undefined;
     servingUom?: string | undefined;

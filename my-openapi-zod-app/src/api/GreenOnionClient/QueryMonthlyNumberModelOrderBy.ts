@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryMonthlyNumberModelOrderBy implements IQueryMonthlyNumberModelOrderBy {
-    readonly $schema: typeof ZQueryMonthlyNumberModelOrderBy = ZQueryMonthlyNumberModelOrderBy;
+    readonly $zod: typeof ZQueryMonthlyNumberModelOrderBy = ZQueryMonthlyNumberModelOrderBy;
     
     id?: IOrderDirections | undefined;
     schoolDistrictId?: IOrderDirections | undefined;

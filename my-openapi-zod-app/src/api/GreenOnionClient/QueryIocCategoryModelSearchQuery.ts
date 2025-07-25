@@ -17,7 +17,7 @@ import type { IQueryIocCategoryModelOrderBy } from "./IQueryIocCategoryModelOrde
 type integer = number;
 
 export class QueryIocCategoryModelSearchQuery implements IQueryIocCategoryModelSearchQuery {
-    readonly $schema: typeof ZQueryIocCategoryModelSearchQuery = ZQueryIocCategoryModelSearchQuery;
+    readonly $zod: typeof ZQueryIocCategoryModelSearchQuery = ZQueryIocCategoryModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

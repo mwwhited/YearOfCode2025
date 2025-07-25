@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryDefinedFilterModelOrderBy implements IQueryDefinedFilterModelOrderBy {
-    readonly $schema: typeof ZQueryDefinedFilterModelOrderBy = ZQueryDefinedFilterModelOrderBy;
+    readonly $zod: typeof ZQueryDefinedFilterModelOrderBy = ZQueryDefinedFilterModelOrderBy;
     
     definedFilterId?: IOrderDirections | undefined;
     createById?: IOrderDirections | undefined;

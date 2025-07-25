@@ -9,42 +9,11 @@
 
 import { z } from "zod";
 
-import type { IProblemDetails } from "./IProblemDetails";
-
-
-export const ZProblemDetails: z.ZodType<IProblemDetails> = z.object({
-    type: z.string(),
-    title: z.string(),
-    status: z.string(),
-    detail: z.string(),
-    instance: z.string(),
+export const ZProblemDetails = z.object({
+    type:z.string().optional(),
+    title:z.string().optional(),
+    status:z.number().int().optional(),
+    detail:z.string().optional(),
+    instance:z.string().optional(),
 });
-/*
-[class, ProblemDetails],[interface, IProblemDetails],[schema, ZProblemDetails],[definition, {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "detail": {
-            "type": "string",
-            "nullable": true
-          },
-          "instance": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": { }
-      }]
-*/
+

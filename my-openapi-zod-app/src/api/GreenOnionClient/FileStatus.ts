@@ -13,7 +13,7 @@ import { ZFileStatus } from "./ZFileStatus";
 type integer = number;
 
 export class FileStatus implements IFileStatus {
-    readonly $schema: typeof ZFileStatus = ZFileStatus;
+    readonly $zod: typeof ZFileStatus = ZFileStatus;
     
     status?: boolean | undefined;
     reason?: string | undefined;

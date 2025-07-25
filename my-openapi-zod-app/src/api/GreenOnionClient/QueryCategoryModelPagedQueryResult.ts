@@ -17,7 +17,7 @@ import type { IResultMessage } from "./IResultMessage";
 type integer = number;
 
 export class QueryCategoryModelPagedQueryResult implements IQueryCategoryModelPagedQueryResult {
-    readonly $schema: typeof ZQueryCategoryModelPagedQueryResult = ZQueryCategoryModelPagedQueryResult;
+    readonly $zod: typeof ZQueryCategoryModelPagedQueryResult = ZQueryCategoryModelPagedQueryResult;
     
     rows?: IQueryCategoryModel[] | undefined;/*Gets the collection of items in the result.*/
     messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/

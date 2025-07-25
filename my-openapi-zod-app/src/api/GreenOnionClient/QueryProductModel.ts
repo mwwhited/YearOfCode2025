@@ -15,7 +15,7 @@ import type { INutritionalInformationModel } from "./INutritionalInformationMode
 type integer = number;
 
 export class QueryProductModel implements IQueryProductModel {
-    readonly $schema: typeof ZQueryProductModel = ZQueryProductModel;
+    readonly $zod: typeof ZQueryProductModel = ZQueryProductModel;
     
     productId?: integer | undefined;
     name?: string | undefined;

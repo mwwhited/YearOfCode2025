@@ -9,170 +9,34 @@
 
 import { z } from "zod";
 
-import type { IQueryUserModel } from "./IQueryUserModel";
-
-
-export const ZQueryUserModel: z.ZodType<IQueryUserModel> = z.object({
-    userId: z.string(),
-    isActive: z.string(),
-    firstName: z.string(),
-    lastName: z.string(),
-    objectId: z.string(),
-    email: z.string(),
-    mobile: z.string(),
-    profileImage: z.string(),
-    coverImage: z.string(),
-    addressLine1: z.string(),
-    addressLine2: z.string(),
-    city: z.string(),
-    country: z.string(),
-    zipCode: z.string(),
-    stateId: z.string(),
-    state: z.string(),
-    roleId: z.string(),
-    roleName: z.string(),
-    schoolDistrictId: z.string(),
-    schoolDistrictName: z.string(),
-    manufacturerId: z.string(),
-    manufacturerName: z.string(),
-    createdOn: z.string(),
-    createdById: z.string(),
-    createdBy: z.string(),
-    updatedOn: z.string(),
-    updatedById: z.string(),
-    updatedBy: z.string(),
+export const ZQueryUserModel = z.object({
+    userId:z.number().int().optional(),
+    isActive:z.boolean().optional(),
+    firstName:z.string().optional(),
+    lastName:z.string().optional(),
+    objectId:z.string().optional(),
+    email:z.string().optional(),
+    mobile:z.string().optional(),
+    profileImage:z.string().optional(),
+    coverImage:z.string().optional(),
+    addressLine1:z.string().optional(),
+    addressLine2:z.string().optional(),
+    city:z.string().optional(),
+    country:z.string().optional(),
+    zipCode:z.string().optional(),
+    stateId:z.number().int().optional(),
+    state:z.string().optional(),
+    roleId:z.number().int().optional(),
+    roleName:z.string().optional(),
+    schoolDistrictId:z.number().int().optional(),
+    schoolDistrictName:z.string().optional(),
+    manufacturerId:z.number().int().optional(),
+    manufacturerName:z.string().optional(),
+    createdOn:z.string().optional(),
+    createdById:z.number().int().optional(),
+    createdBy:z.string().optional(),
+    updatedOn:z.string().optional(),
+    updatedById:z.number().int().optional(),
+    updatedBy:z.string().optional(),
 });
-/*
-[class, QueryUserModel],[interface, IQueryUserModel],[schema, ZQueryUserModel],[definition, {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32",
-            "x-navigation-key": true
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "objectId": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "mobile": {
-            "type": "string",
-            "nullable": true
-          },
-          "profileImage": {
-            "type": "string",
-            "nullable": true
-          },
-          "coverImage": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressLine1": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressLine2": {
-            "type": "string",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "nullable": true
-          },
-          "zipCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "stateId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryStateModel"
-          },
-          "state": {
-            "type": "string",
-            "nullable": true
-          },
-          "roleId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryRoleModel"
-          },
-          "roleName": {
-            "type": "string",
-            "nullable": true
-          },
-          "schoolDistrictId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QuerySchoolDistrictModel"
-          },
-          "schoolDistrictName": {
-            "type": "string",
-            "nullable": true
-          },
-          "manufacturerId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryManufacturerModel"
-          },
-          "manufacturerName": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryUserModel"
-          },
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryUserModel"
-          },
-          "updatedBy": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

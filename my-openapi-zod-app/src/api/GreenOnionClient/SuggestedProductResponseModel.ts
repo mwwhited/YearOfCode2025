@@ -13,7 +13,7 @@ import { ZSuggestedProductResponseModel } from "./ZSuggestedProductResponseModel
 type integer = number;
 
 export class SuggestedProductResponseModel implements ISuggestedProductResponseModel {
-    readonly $schema: typeof ZSuggestedProductResponseModel = ZSuggestedProductResponseModel;
+    readonly $zod: typeof ZSuggestedProductResponseModel = ZSuggestedProductResponseModel;
     
     success?: boolean | undefined;
     message?: string | undefined;

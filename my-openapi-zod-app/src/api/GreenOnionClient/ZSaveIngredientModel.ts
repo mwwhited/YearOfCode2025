@@ -9,37 +9,10 @@
 
 import { z } from "zod";
 
-import type { ISaveIngredientModel } from "./ISaveIngredientModel";
-
-
-export const ZSaveIngredientModel: z.ZodType<ISaveIngredientModel> = z.object({
-    ingredientId: z.string(),
-    ingredientName: z.string(),
-    group: z.string(),
-    iocGroup: z.string(),
+export const ZSaveIngredientModel = z.object({
+    ingredientId:z.number().int().optional(),
+    ingredientName:z.string().optional(),
+    group:z.string().optional(),
+    iocGroup:z.string().optional(),
 });
-/*
-[class, SaveIngredientModel],[interface, ISaveIngredientModel],[schema, ZSaveIngredientModel],[definition, {
-        "type": "object",
-        "properties": {
-          "ingredientId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "ingredientName": {
-            "type": "string",
-            "nullable": true
-          },
-          "group": {
-            "type": "string",
-            "nullable": true
-          },
-          "iocGroup": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

@@ -12,17 +12,9 @@ import { ZQueryAllergenModelSearchQuery } from "./ZQueryAllergenModelSearchQuery
 import type { IQueryAllergenModelFilter } from "./IQueryAllergenModelFilter";
 import type { IQueryAllergenModelOrderBy } from "./IQueryAllergenModelOrderBy";
 
-type integer = number;
 
-export interface IQueryAllergenModelSearchQuery {
-    $schema: typeof ZQueryAllergenModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** AllergenName; AllergenGroup*/
-    filter?: IQueryAllergenModelFilter | undefined;
-    orderBy?: IQueryAllergenModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryAllergenModelSearchQuery extends z.infer<typeof ZQueryAllergenModelSearchQuery> {
+  $zod: typeof ZQueryAllergenModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

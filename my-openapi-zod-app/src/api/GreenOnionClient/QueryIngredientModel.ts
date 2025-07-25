@@ -13,7 +13,7 @@ import { ZQueryIngredientModel } from "./ZQueryIngredientModel";
 type integer = number;
 
 export class QueryIngredientModel implements IQueryIngredientModel {
-    readonly $schema: typeof ZQueryIngredientModel = ZQueryIngredientModel;
+    readonly $zod: typeof ZQueryIngredientModel = ZQueryIngredientModel;
     
     ingredientId?: integer | undefined;
     ingredientName?: string | undefined;

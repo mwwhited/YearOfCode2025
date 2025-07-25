@@ -10,18 +10,9 @@
 import type { z } from "zod";
 import { ZDataMigrationThroughApiResponseModel } from "./ZDataMigrationThroughApiResponseModel";
 
-type integer = number;
 
-export interface IDataMigrationThroughApiResponseModel {
-    $schema: typeof ZDataMigrationThroughApiResponseModel;
-
-    success?: boolean | undefined;
-    message?: string | undefined;
-    totalRecords?: integer | undefined;
-    payload?: unknown | undefined;
-    isUpdate?: boolean | undefined;
-    isAdded?: boolean | undefined;
-    isDelete?: boolean | undefined;
-
-    toJSON(data?: any) : any;
+export interface IDataMigrationThroughApiResponseModel extends z.infer<typeof ZDataMigrationThroughApiResponseModel> {
+  $zod: typeof ZDataMigrationThroughApiResponseModel;
+  toJSON(data?: any): any;
 }
+

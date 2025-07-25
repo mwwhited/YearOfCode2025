@@ -11,14 +11,9 @@ import type { z } from "zod";
 import { ZQueryIocCategoryModelOrderBy } from "./ZQueryIocCategoryModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryIocCategoryModelOrderBy {
-    $schema: typeof ZQueryIocCategoryModelOrderBy;
-
-    iocCategoryId?: IOrderDirections | undefined;
-    name?: IOrderDirections | undefined;
-    color?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryIocCategoryModelOrderBy extends z.infer<typeof ZQueryIocCategoryModelOrderBy> {
+  $zod: typeof ZQueryIocCategoryModelOrderBy;
+  toJSON(data?: any): any;
 }
+

@@ -9,37 +9,10 @@
 
 import { z } from "zod";
 
-import type { ISaveDistributorModel } from "./ISaveDistributorModel";
-
-
-export const ZSaveDistributorModel: z.ZodType<ISaveDistributorModel> = z.object({
-    distributorId: z.string(),
-    distributorName: z.string(),
-    distributorCode: z.string(),
-    isActive: z.string(),
+export const ZSaveDistributorModel = z.object({
+    distributorId:z.number().int().optional(),
+    distributorName:z.string().optional(),
+    distributorCode:z.string().optional(),
+    isActive:z.boolean().optional(),
 });
-/*
-[class, SaveDistributorModel],[interface, ISaveDistributorModel],[schema, ZSaveDistributorModel],[definition, {
-        "type": "object",
-        "properties": {
-          "distributorId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "distributorName": {
-            "type": "string",
-            "nullable": true
-          },
-          "distributorCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

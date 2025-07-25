@@ -13,7 +13,7 @@ import { ZQueryErrorLogModel } from "./ZQueryErrorLogModel";
 type integer = number;
 
 export class QueryErrorLogModel implements IQueryErrorLogModel {
-    readonly $schema: typeof ZQueryErrorLogModel = ZQueryErrorLogModel;
+    readonly $zod: typeof ZQueryErrorLogModel = ZQueryErrorLogModel;
     
     errorLogId?: integer | undefined;
     errorMessage?: string | undefined;

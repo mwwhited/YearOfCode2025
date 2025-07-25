@@ -8,33 +8,11 @@
 //
 
 import { z } from "zod";
-import type { IOrderDirections } from "./IOrderDirections";
 import { ZOrderDirections } from "./ZOrderDirections";
 
-import type { IQueryAllergenModelOrderBy } from "./IQueryAllergenModelOrderBy";
-
-
-export const ZQueryAllergenModelOrderBy: z.ZodType<IQueryAllergenModelOrderBy> = z.object({
-    allergenId: z.string(),
-    allergenName: z.string(),
-    allergenGroup: z.string(),
+export const ZQueryAllergenModelOrderBy = z.object({
+    allergenId:ZOrderDirections.optional(),
+    allergenName:ZOrderDirections.optional(),
+    allergenGroup:ZOrderDirections.optional(),
 });
-/*
-[class, QueryAllergenModelOrderBy],[interface, IQueryAllergenModelOrderBy],[schema, ZQueryAllergenModelOrderBy],[definition, {
-        "type": "object",
-        "properties": {
-          "allergenId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "allergenName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          },
-          "allergenGroup": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.OrderDirections"
-          }
-        },
-        "description": "**Filterable Properties:** AllergenId; AllergenName; AllergenGroup",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryAllergenModel"
-      }]
-*/
+

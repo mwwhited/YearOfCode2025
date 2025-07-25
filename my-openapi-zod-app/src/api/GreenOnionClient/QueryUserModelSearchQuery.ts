@@ -17,7 +17,7 @@ import type { IQueryUserModelOrderBy } from "./IQueryUserModelOrderBy";
 type integer = number;
 
 export class QueryUserModelSearchQuery implements IQueryUserModelSearchQuery {
-    readonly $schema: typeof ZQueryUserModelSearchQuery = ZQueryUserModelSearchQuery;
+    readonly $zod: typeof ZQueryUserModelSearchQuery = ZQueryUserModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

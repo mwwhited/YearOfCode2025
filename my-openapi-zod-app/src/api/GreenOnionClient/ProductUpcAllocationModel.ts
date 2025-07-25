@@ -13,7 +13,7 @@ import { ZProductUpcAllocationModel } from "./ZProductUpcAllocationModel";
 type integer = number;
 
 export class ProductUpcAllocationModel implements IProductUpcAllocationModel {
-    readonly $schema: typeof ZProductUpcAllocationModel = ZProductUpcAllocationModel;
+    readonly $zod: typeof ZProductUpcAllocationModel = ZProductUpcAllocationModel;
     
     productId?: integer | undefined;
     upc?: string | undefined;

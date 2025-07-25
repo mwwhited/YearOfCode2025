@@ -10,18 +10,9 @@
 import type { z } from "zod";
 import { ZProductResponse } from "./ZProductResponse";
 
-type integer = number;
 
-export interface IProductResponse {
-    $schema: typeof ZProductResponse;
-
-    success?: boolean | undefined;
-    message?: string | undefined;
-    totalRecords?: integer | undefined;
-    payload?: unknown | undefined;
-    isUpdate?: boolean | undefined;
-    isAdded?: boolean | undefined;
-    isDelete?: boolean | undefined;
-
-    toJSON(data?: any) : any;
+export interface IProductResponse extends z.infer<typeof ZProductResponse> {
+  $zod: typeof ZProductResponse;
+  toJSON(data?: any): any;
 }
+

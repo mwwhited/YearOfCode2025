@@ -10,19 +10,9 @@
 import type { z } from "zod";
 import { ZRoleMst } from "./ZRoleMst";
 
-type integer = number;
 
-export interface IRoleMst {
-    $schema: typeof ZRoleMst;
-
-    roleId?: integer | undefined;
-    roleName?: string | undefined;
-    parentRoleId?: integer | undefined;
-    isActive?: boolean | undefined;
-    createdOn?: string | undefined;
-    createdByUserId?: integer | undefined;
-    updatedOn?: string | undefined;
-    updatedByUserId?: integer | undefined;
-
-    toJSON(data?: any) : any;
+export interface IRoleMst extends z.infer<typeof ZRoleMst> {
+  $zod: typeof ZRoleMst;
+  toJSON(data?: any): any;
 }
+

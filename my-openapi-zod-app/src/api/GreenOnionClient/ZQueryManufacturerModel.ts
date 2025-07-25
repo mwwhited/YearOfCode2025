@@ -9,104 +9,23 @@
 
 import { z } from "zod";
 
-import type { IQueryManufacturerModel } from "./IQueryManufacturerModel";
-
-
-export const ZQueryManufacturerModel: z.ZodType<IQueryManufacturerModel> = z.object({
-    manufacturerId: z.string(),
-    manufacturerName: z.string(),
-    glnNumber: z.string(),
-    isActive: z.string(),
-    hasUsers: z.string(),
-    userCount: z.string(),
-    hasActiveUsers: z.string(),
-    activeUserCount: z.string(),
-    productCount: z.string(),
-    hasOneWorldSync: z.string(),
-    oneWorldSyncCount: z.string(),
-    createdOn: z.string(),
-    createdById: z.string(),
-    createdBy: z.string(),
-    updatedOn: z.string(),
-    updatedById: z.string(),
-    updatedBy: z.string(),
+export const ZQueryManufacturerModel = z.object({
+    manufacturerId:z.number().int().optional(),
+    manufacturerName:z.string().optional(),
+    glnNumber:z.string().optional(),
+    isActive:z.boolean().optional(),
+    hasUsers:z.boolean().optional(),
+    userCount:z.number().int().optional(),
+    hasActiveUsers:z.boolean().optional(),
+    activeUserCount:z.number().int().optional(),
+    productCount:z.number().int().optional(),
+    hasOneWorldSync:z.boolean().optional(),
+    oneWorldSyncCount:z.number().int().optional(),
+    createdOn:z.string().optional(),
+    createdById:z.number().int().optional(),
+    createdBy:z.string().optional(),
+    updatedOn:z.string().optional(),
+    updatedById:z.number().int().optional(),
+    updatedBy:z.string().optional(),
 });
-/*
-[class, QueryManufacturerModel],[interface, IQueryManufacturerModel],[schema, ZQueryManufacturerModel],[definition, {
-        "type": "object",
-        "properties": {
-          "manufacturerId": {
-            "type": "integer",
-            "format": "int32",
-            "x-navigation-key": true
-          },
-          "manufacturerName": {
-            "type": "string",
-            "nullable": true
-          },
-          "glnNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "hasUsers": {
-            "type": "boolean"
-          },
-          "userCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "hasActiveUsers": {
-            "type": "boolean"
-          },
-          "activeUserCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "productCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "hasOneWorldSync": {
-            "type": "boolean"
-          },
-          "oneWorldSyncCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "createdOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryUserModel"
-          },
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryUserModel"
-          },
-          "updatedBy": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

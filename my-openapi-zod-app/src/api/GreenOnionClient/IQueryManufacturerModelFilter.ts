@@ -11,28 +11,9 @@ import type { z } from "zod";
 import { ZQueryManufacturerModelFilter } from "./ZQueryManufacturerModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryManufacturerModelFilter {
-    $schema: typeof ZQueryManufacturerModelFilter;
-
-    manufacturerId?: IFilterParameter | undefined;
-    manufacturerName?: IFilterParameter | undefined;
-    glnNumber?: IFilterParameter | undefined;
-    isActive?: IFilterParameter | undefined;
-    hasUsers?: IFilterParameter | undefined;
-    userCount?: IFilterParameter | undefined;
-    hasActiveUsers?: IFilterParameter | undefined;
-    activeUserCount?: IFilterParameter | undefined;
-    productCount?: IFilterParameter | undefined;
-    hasOneWorldSync?: IFilterParameter | undefined;
-    oneWorldSyncCount?: IFilterParameter | undefined;
-    createdOn?: IFilterParameter | undefined;
-    createdById?: IFilterParameter | undefined;
-    createdBy?: IFilterParameter | undefined;
-    updatedOn?: IFilterParameter | undefined;
-    updatedById?: IFilterParameter | undefined;
-    updatedBy?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryManufacturerModelFilter extends z.infer<typeof ZQueryManufacturerModelFilter> {
+  $zod: typeof ZQueryManufacturerModelFilter;
+  toJSON(data?: any): any;
 }
+

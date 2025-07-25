@@ -13,7 +13,7 @@ import { ZFilterParameter } from "./ZFilterParameter";
 type integer = number;
 
 export class FilterParameter implements IFilterParameter {
-    readonly $schema: typeof ZFilterParameter = ZFilterParameter;
+    readonly $zod: typeof ZFilterParameter = ZFilterParameter;
     
     eq?: unknown | undefined;/*`Equal To`: pass in the value to match for a given property  
 

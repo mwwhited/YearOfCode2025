@@ -13,7 +13,7 @@ import { ZQuerySubCategoryModel } from "./ZQuerySubCategoryModel";
 type integer = number;
 
 export class QuerySubCategoryModel implements IQuerySubCategoryModel {
-    readonly $schema: typeof ZQuerySubCategoryModel = ZQuerySubCategoryModel;
+    readonly $zod: typeof ZQuerySubCategoryModel = ZQuerySubCategoryModel;
     
     subCategoryId?: integer | undefined;
     categoryId?: integer | undefined;

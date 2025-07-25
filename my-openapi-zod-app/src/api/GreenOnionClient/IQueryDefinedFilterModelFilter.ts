@@ -11,22 +11,9 @@ import type { z } from "zod";
 import { ZQueryDefinedFilterModelFilter } from "./ZQueryDefinedFilterModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryDefinedFilterModelFilter {
-    $schema: typeof ZQueryDefinedFilterModelFilter;
-
-    definedFilterId?: IFilterParameter | undefined;
-    createById?: IFilterParameter | undefined;
-    updatedOn?: IFilterParameter | undefined;
-    updatedById?: IFilterParameter | undefined;
-    updatedBy?: IFilterParameter | undefined;
-    createBy?: IFilterParameter | undefined;
-    path?: IFilterParameter | undefined;
-    name?: IFilterParameter | undefined;
-    isActive?: IFilterParameter | undefined;
-    createdOn?: IFilterParameter | undefined;
-    state?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryDefinedFilterModelFilter extends z.infer<typeof ZQueryDefinedFilterModelFilter> {
+  $zod: typeof ZQueryDefinedFilterModelFilter;
+  toJSON(data?: any): any;
 }
+

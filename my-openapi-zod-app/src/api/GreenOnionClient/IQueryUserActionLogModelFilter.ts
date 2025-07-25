@@ -11,21 +11,9 @@ import type { z } from "zod";
 import { ZQueryUserActionLogModelFilter } from "./ZQueryUserActionLogModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryUserActionLogModelFilter {
-    $schema: typeof ZQueryUserActionLogModelFilter;
-
-    userActionLogId?: IFilterParameter | undefined;
-    eventType?: IFilterParameter | undefined;
-    httpMethod?: IFilterParameter | undefined;
-    eventDate?: IFilterParameter | undefined;
-    sessionId?: IFilterParameter | undefined;
-    requestId?: IFilterParameter | undefined;
-    correlationId?: IFilterParameter | undefined;
-    requestPath?: IFilterParameter | undefined;
-    userId?: IFilterParameter | undefined;
-    user?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryUserActionLogModelFilter extends z.infer<typeof ZQueryUserActionLogModelFilter> {
+  $zod: typeof ZQueryUserActionLogModelFilter;
+  toJSON(data?: any): any;
 }
+

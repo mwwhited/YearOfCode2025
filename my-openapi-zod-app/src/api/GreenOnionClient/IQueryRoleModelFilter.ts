@@ -11,22 +11,9 @@ import type { z } from "zod";
 import { ZQueryRoleModelFilter } from "./ZQueryRoleModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryRoleModelFilter {
-    $schema: typeof ZQueryRoleModelFilter;
-
-    roleId?: IFilterParameter | undefined;
-    roleName?: IFilterParameter | undefined;
-    isActive?: IFilterParameter | undefined;
-    userCount?: IFilterParameter | undefined;
-    activeUserCount?: IFilterParameter | undefined;
-    createdOn?: IFilterParameter | undefined;
-    createdById?: IFilterParameter | undefined;
-    createdBy?: IFilterParameter | undefined;
-    updatedOn?: IFilterParameter | undefined;
-    updatedById?: IFilterParameter | undefined;
-    updatedBy?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryRoleModelFilter extends z.infer<typeof ZQueryRoleModelFilter> {
+  $zod: typeof ZQueryRoleModelFilter;
+  toJSON(data?: any): any;
 }
+

@@ -12,17 +12,9 @@ import { ZQuerySubCategoryModelSearchQuery } from "./ZQuerySubCategoryModelSearc
 import type { IQuerySubCategoryModelFilter } from "./IQuerySubCategoryModelFilter";
 import type { IQuerySubCategoryModelOrderBy } from "./IQuerySubCategoryModelOrderBy";
 
-type integer = number;
 
-export interface IQuerySubCategoryModelSearchQuery {
-    $schema: typeof ZQuerySubCategoryModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** SubCategoryName; SubCategoryCode; IsActive; CreatedBy; UpdatedBy*/
-    filter?: IQuerySubCategoryModelFilter | undefined;
-    orderBy?: IQuerySubCategoryModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQuerySubCategoryModelSearchQuery extends z.infer<typeof ZQuerySubCategoryModelSearchQuery> {
+  $zod: typeof ZQuerySubCategoryModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

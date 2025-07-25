@@ -17,7 +17,7 @@ import type { IQueryErrorLogModelOrderBy } from "./IQueryErrorLogModelOrderBy";
 type integer = number;
 
 export class QueryErrorLogModelSearchQuery implements IQueryErrorLogModelSearchQuery {
-    readonly $schema: typeof ZQueryErrorLogModelSearchQuery = ZQueryErrorLogModelSearchQuery;
+    readonly $zod: typeof ZQueryErrorLogModelSearchQuery = ZQueryErrorLogModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

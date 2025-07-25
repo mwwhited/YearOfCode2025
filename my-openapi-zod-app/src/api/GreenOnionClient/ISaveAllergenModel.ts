@@ -10,14 +10,9 @@
 import type { z } from "zod";
 import { ZSaveAllergenModel } from "./ZSaveAllergenModel";
 
-type integer = number;
 
-export interface ISaveAllergenModel {
-    $schema: typeof ZSaveAllergenModel;
-
-    allergenId?: integer | undefined;
-    allergenName?: string | undefined;
-    allergenGroup?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISaveAllergenModel extends z.infer<typeof ZSaveAllergenModel> {
+  $zod: typeof ZSaveAllergenModel;
+  toJSON(data?: any): any;
 }
+

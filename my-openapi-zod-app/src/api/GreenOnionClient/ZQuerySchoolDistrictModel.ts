@@ -9,137 +9,29 @@
 
 import { z } from "zod";
 
-import type { IQuerySchoolDistrictModel } from "./IQuerySchoolDistrictModel";
-
-
-export const ZQuerySchoolDistrictModel: z.ZodType<IQuerySchoolDistrictModel> = z.object({
-    schoolDistrictId: z.string(),
-    siteCode: z.string(),
-    districtName: z.string(),
-    phoneNumber: z.string(),
-    email: z.string(),
-    country: z.string(),
-    stateId: z.string(),
-    state: z.string(),
-    city: z.string(),
-    districtLogo: z.string(),
-    isActive: z.string(),
-    foodServiceOptions: z.string(),
-    contractCompany: z.string(),
-    isSchoolCoopMember: z.string(),
-    isSchoolCoop: z.string(),
-    schoolCoopId: z.string(),
-    schoolCoopName: z.string(),
-    createdOn: z.string(),
-    createdById: z.string(),
-    createdBy: z.string(),
-    updatedOn: z.string(),
-    updatedById: z.string(),
-    updatedBy: z.string(),
+export const ZQuerySchoolDistrictModel = z.object({
+    schoolDistrictId:z.number().int().optional(),
+    siteCode:z.string().optional(),
+    districtName:z.string().optional(),
+    phoneNumber:z.string().optional(),
+    email:z.string().optional(),
+    country:z.string().optional(),
+    stateId:z.number().int().optional(),
+    state:z.string().optional(),
+    city:z.string().optional(),
+    districtLogo:z.string().optional(),
+    isActive:z.boolean().optional(),
+    foodServiceOptions:z.string().optional(),
+    contractCompany:z.string().optional(),
+    isSchoolCoopMember:z.boolean().optional(),
+    isSchoolCoop:z.boolean().optional(),
+    schoolCoopId:z.number().int().optional(),
+    schoolCoopName:z.string().optional(),
+    createdOn:z.string().optional(),
+    createdById:z.number().int().optional(),
+    createdBy:z.string().optional(),
+    updatedOn:z.string().optional(),
+    updatedById:z.number().int().optional(),
+    updatedBy:z.string().optional(),
 });
-/*
-[class, QuerySchoolDistrictModel],[interface, IQuerySchoolDistrictModel],[schema, ZQuerySchoolDistrictModel],[definition, {
-        "type": "object",
-        "properties": {
-          "schoolDistrictId": {
-            "type": "integer",
-            "format": "int32",
-            "x-navigation-key": true
-          },
-          "siteCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "districtName": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "country": {
-            "type": "string",
-            "nullable": true
-          },
-          "stateId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-target": "GreenOnion.Common.Models.QueryStateModel"
-          },
-          "state": {
-            "type": "string",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
-          "districtLogo": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "foodServiceOptions": {
-            "type": "string",
-            "nullable": true
-          },
-          "contractCompany": {
-            "type": "string",
-            "nullable": true
-          },
-          "isSchoolCoopMember": {
-            "type": "boolean"
-          },
-          "isSchoolCoop": {
-            "type": "boolean"
-          },
-          "schoolCoopId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "schoolCoopName": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "createdById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedOn": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "updatedById": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "updatedBy": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

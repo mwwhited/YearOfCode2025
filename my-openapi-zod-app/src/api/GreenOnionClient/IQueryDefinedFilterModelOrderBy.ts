@@ -11,22 +11,9 @@ import type { z } from "zod";
 import { ZQueryDefinedFilterModelOrderBy } from "./ZQueryDefinedFilterModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryDefinedFilterModelOrderBy {
-    $schema: typeof ZQueryDefinedFilterModelOrderBy;
-
-    definedFilterId?: IOrderDirections | undefined;
-    createById?: IOrderDirections | undefined;
-    updatedOn?: IOrderDirections | undefined;
-    updatedById?: IOrderDirections | undefined;
-    updatedBy?: IOrderDirections | undefined;
-    createBy?: IOrderDirections | undefined;
-    path?: IOrderDirections | undefined;
-    name?: IOrderDirections | undefined;
-    isActive?: IOrderDirections | undefined;
-    createdOn?: IOrderDirections | undefined;
-    state?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryDefinedFilterModelOrderBy extends z.infer<typeof ZQueryDefinedFilterModelOrderBy> {
+  $zod: typeof ZQueryDefinedFilterModelOrderBy;
+  toJSON(data?: any): any;
 }
+

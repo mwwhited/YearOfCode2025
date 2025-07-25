@@ -11,21 +11,9 @@ import type { z } from "zod";
 import { ZQueryDistributorModelOrderBy } from "./ZQueryDistributorModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryDistributorModelOrderBy {
-    $schema: typeof ZQueryDistributorModelOrderBy;
-
-    distributorId?: IOrderDirections | undefined;
-    distributorName?: IOrderDirections | undefined;
-    distributorCode?: IOrderDirections | undefined;
-    isActive?: IOrderDirections | undefined;
-    createdOn?: IOrderDirections | undefined;
-    createdById?: IOrderDirections | undefined;
-    createdBy?: IOrderDirections | undefined;
-    updatedOn?: IOrderDirections | undefined;
-    updatedById?: IOrderDirections | undefined;
-    updatedBy?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryDistributorModelOrderBy extends z.infer<typeof ZQueryDistributorModelOrderBy> {
+  $zod: typeof ZQueryDistributorModelOrderBy;
+  toJSON(data?: any): any;
 }
+

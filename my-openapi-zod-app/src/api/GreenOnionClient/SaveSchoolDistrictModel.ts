@@ -13,7 +13,7 @@ import { ZSaveSchoolDistrictModel } from "./ZSaveSchoolDistrictModel";
 type integer = number;
 
 export class SaveSchoolDistrictModel implements ISaveSchoolDistrictModel {
-    readonly $schema: typeof ZSaveSchoolDistrictModel = ZSaveSchoolDistrictModel;
+    readonly $zod: typeof ZSaveSchoolDistrictModel = ZSaveSchoolDistrictModel;
     
     schoolDistrictId?: integer | undefined;
     siteCode?: string | undefined;

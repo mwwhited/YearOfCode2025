@@ -13,7 +13,7 @@ import { ZProductActivityReportFilter } from "./ZProductActivityReportFilter";
 type integer = number;
 
 export class ProductActivityReportFilter implements IProductActivityReportFilter {
-    readonly $schema: typeof ZProductActivityReportFilter = ZProductActivityReportFilter;
+    readonly $zod: typeof ZProductActivityReportFilter = ZProductActivityReportFilter;
     
     pageNumber?: integer | undefined;
     pageSize?: integer | undefined;

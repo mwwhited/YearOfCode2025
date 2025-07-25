@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryErrorLogModelFilter implements IQueryErrorLogModelFilter {
-    readonly $schema: typeof ZQueryErrorLogModelFilter = ZQueryErrorLogModelFilter;
+    readonly $zod: typeof ZQueryErrorLogModelFilter = ZQueryErrorLogModelFilter;
     
     errorLogId?: IFilterParameter | undefined;
     errorMessage?: IFilterParameter | undefined;

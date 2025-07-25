@@ -13,7 +13,7 @@ import { ZProblemDetails } from "./ZProblemDetails";
 type integer = number;
 
 export class ProblemDetails implements IProblemDetails {
-    readonly $schema: typeof ZProblemDetails = ZProblemDetails;
+    readonly $zod: typeof ZProblemDetails = ZProblemDetails;
     
     type?: string | undefined;
     title?: string | undefined;

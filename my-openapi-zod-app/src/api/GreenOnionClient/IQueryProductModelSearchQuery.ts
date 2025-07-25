@@ -12,17 +12,9 @@ import { ZQueryProductModelSearchQuery } from "./ZQueryProductModelSearchQuery";
 import type { IQueryProductModelFilter } from "./IQueryProductModelFilter";
 import type { IQueryProductModelOrderBy } from "./IQueryProductModelOrderBy";
 
-type integer = number;
 
-export interface IQueryProductModelSearchQuery {
-    $schema: typeof ZQueryProductModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** Name; Description; Gtin; Upc; ManufacturerName; IocCategory; Category; SubCategory; StorageTypeName; Ingredients; CreatedBy; UpdatedBy*/
-    filter?: IQueryProductModelFilter | undefined;
-    orderBy?: IQueryProductModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryProductModelSearchQuery extends z.infer<typeof ZQueryProductModelSearchQuery> {
+  $zod: typeof ZQueryProductModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

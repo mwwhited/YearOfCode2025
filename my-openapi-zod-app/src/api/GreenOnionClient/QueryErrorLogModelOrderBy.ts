@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryErrorLogModelOrderBy implements IQueryErrorLogModelOrderBy {
-    readonly $schema: typeof ZQueryErrorLogModelOrderBy = ZQueryErrorLogModelOrderBy;
+    readonly $zod: typeof ZQueryErrorLogModelOrderBy = ZQueryErrorLogModelOrderBy;
     
     errorLogId?: IOrderDirections | undefined;
     errorMessage?: IOrderDirections | undefined;

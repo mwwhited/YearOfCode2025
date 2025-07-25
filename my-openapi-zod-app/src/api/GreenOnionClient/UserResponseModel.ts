@@ -15,7 +15,7 @@ import type { IRoleMst } from "./IRoleMst";
 type integer = number;
 
 export class UserResponseModel implements IUserResponseModel {
-    readonly $schema: typeof ZUserResponseModel = ZUserResponseModel;
+    readonly $zod: typeof ZUserResponseModel = ZUserResponseModel;
     
     success?: boolean | undefined;
     message?: string | undefined;

@@ -10,14 +10,9 @@
 import type { z } from "zod";
 import { ZQueryErrorLogModel } from "./ZQueryErrorLogModel";
 
-type integer = number;
 
-export interface IQueryErrorLogModel {
-    $schema: typeof ZQueryErrorLogModel;
-
-    errorLogId?: integer | undefined;
-    errorMessage?: string | undefined;
-    errorPath?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryErrorLogModel extends z.infer<typeof ZQueryErrorLogModel> {
+  $zod: typeof ZQueryErrorLogModel;
+  toJSON(data?: any): any;
 }
+

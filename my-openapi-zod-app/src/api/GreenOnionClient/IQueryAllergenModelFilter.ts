@@ -11,14 +11,9 @@ import type { z } from "zod";
 import { ZQueryAllergenModelFilter } from "./ZQueryAllergenModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryAllergenModelFilter {
-    $schema: typeof ZQueryAllergenModelFilter;
-
-    allergenId?: IFilterParameter | undefined;
-    allergenName?: IFilterParameter | undefined;
-    allergenGroup?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryAllergenModelFilter extends z.infer<typeof ZQueryAllergenModelFilter> {
+  $zod: typeof ZQueryAllergenModelFilter;
+  toJSON(data?: any): any;
 }
+

@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryUserActionLogModelFilter implements IQueryUserActionLogModelFilter {
-    readonly $schema: typeof ZQueryUserActionLogModelFilter = ZQueryUserActionLogModelFilter;
+    readonly $zod: typeof ZQueryUserActionLogModelFilter = ZQueryUserActionLogModelFilter;
     
     userActionLogId?: IFilterParameter | undefined;
     eventType?: IFilterParameter | undefined;

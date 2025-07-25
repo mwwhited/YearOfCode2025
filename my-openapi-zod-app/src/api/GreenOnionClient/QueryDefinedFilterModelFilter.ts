@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryDefinedFilterModelFilter implements IQueryDefinedFilterModelFilter {
-    readonly $schema: typeof ZQueryDefinedFilterModelFilter = ZQueryDefinedFilterModelFilter;
+    readonly $zod: typeof ZQueryDefinedFilterModelFilter = ZQueryDefinedFilterModelFilter;
     
     definedFilterId?: IFilterParameter | undefined;
     createById?: IFilterParameter | undefined;

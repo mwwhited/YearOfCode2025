@@ -10,15 +10,9 @@
 import type { z } from "zod";
 import { ZQueryIngredientModel } from "./ZQueryIngredientModel";
 
-type integer = number;
 
-export interface IQueryIngredientModel {
-    $schema: typeof ZQueryIngredientModel;
-
-    ingredientId?: integer | undefined;
-    ingredientName?: string | undefined;
-    group?: string | undefined;
-    iocGroup?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryIngredientModel extends z.infer<typeof ZQueryIngredientModel> {
+  $zod: typeof ZQueryIngredientModel;
+  toJSON(data?: any): any;
 }
+

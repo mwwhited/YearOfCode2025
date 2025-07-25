@@ -12,16 +12,9 @@ import { ZQueryAllergenModelPagedQueryResult } from "./ZQueryAllergenModelPagedQ
 import type { IQueryAllergenModel } from "./IQueryAllergenModel";
 import type { IResultMessage } from "./IResultMessage";
 
-type integer = number;
 
-export interface IQueryAllergenModelPagedQueryResult {
-    $schema: typeof ZQueryAllergenModelPagedQueryResult;
-
-    rows?: IQueryAllergenModel[] | undefined;/*Gets the collection of items in the result.*/
-    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
-    currentPage?: integer | undefined;/*Gets the total number of pages.*/
-    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
-    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
-
-    toJSON(data?: any) : any;
+export interface IQueryAllergenModelPagedQueryResult extends z.infer<typeof ZQueryAllergenModelPagedQueryResult> {
+  $zod: typeof ZQueryAllergenModelPagedQueryResult;
+  toJSON(data?: any): any;
 }
+

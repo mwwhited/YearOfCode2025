@@ -13,7 +13,7 @@ import { ZFileHeaderData } from "./ZFileHeaderData";
 type integer = number;
 
 export class FileHeaderData implements IFileHeaderData {
-    readonly $schema: typeof ZFileHeaderData = ZFileHeaderData;
+    readonly $zod: typeof ZFileHeaderData = ZFileHeaderData;
     
     headerDataId?: integer | undefined;
     headerDataName?: string | undefined;

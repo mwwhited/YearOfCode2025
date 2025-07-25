@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryAllergenModelFilter implements IQueryAllergenModelFilter {
-    readonly $schema: typeof ZQueryAllergenModelFilter = ZQueryAllergenModelFilter;
+    readonly $zod: typeof ZQueryAllergenModelFilter = ZQueryAllergenModelFilter;
     
     allergenId?: IFilterParameter | undefined;
     allergenName?: IFilterParameter | undefined;

@@ -13,7 +13,7 @@ import { ZNewUserEmailModel } from "./ZNewUserEmailModel";
 type integer = number;
 
 export class NewUserEmailModel implements INewUserEmailModel {
-    readonly $schema: typeof ZNewUserEmailModel = ZNewUserEmailModel;
+    readonly $zod: typeof ZNewUserEmailModel = ZNewUserEmailModel;
     
     firstName?: string | undefined;
     lastName?: string | undefined;

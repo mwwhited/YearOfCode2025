@@ -13,7 +13,7 @@ import { ZProductTableField } from "./ZProductTableField";
 type integer = number;
 
 export class ProductTableField implements IProductTableField {
-    readonly $schema: typeof ZProductTableField = ZProductTableField;
+    readonly $zod: typeof ZProductTableField = ZProductTableField;
     
     fieldID?: integer | undefined;
     fieldName?: string | undefined;

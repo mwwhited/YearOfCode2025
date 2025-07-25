@@ -13,7 +13,7 @@ import { ZSaveDefinedFilterModel } from "./ZSaveDefinedFilterModel";
 type integer = number;
 
 export class SaveDefinedFilterModel implements ISaveDefinedFilterModel {
-    readonly $schema: typeof ZSaveDefinedFilterModel = ZSaveDefinedFilterModel;
+    readonly $zod: typeof ZSaveDefinedFilterModel = ZSaveDefinedFilterModel;
     
     definedFilterId?: integer | undefined;
     path?: string | undefined;

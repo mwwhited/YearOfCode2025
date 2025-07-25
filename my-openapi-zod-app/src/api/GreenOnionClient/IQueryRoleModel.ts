@@ -10,22 +10,9 @@
 import type { z } from "zod";
 import { ZQueryRoleModel } from "./ZQueryRoleModel";
 
-type integer = number;
 
-export interface IQueryRoleModel {
-    $schema: typeof ZQueryRoleModel;
-
-    roleId?: integer | undefined;
-    roleName?: string | undefined;
-    isActive?: boolean | undefined;
-    userCount?: integer | undefined;
-    activeUserCount?: integer | undefined;
-    createdOn?: string | undefined;
-    createdById?: integer | undefined;
-    createdBy?: string | undefined;
-    updatedOn?: string | undefined;
-    updatedById?: integer | undefined;
-    updatedBy?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryRoleModel extends z.infer<typeof ZQueryRoleModel> {
+  $zod: typeof ZQueryRoleModel;
+  toJSON(data?: any): any;
 }
+

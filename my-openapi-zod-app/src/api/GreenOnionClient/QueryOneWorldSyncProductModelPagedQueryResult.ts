@@ -17,7 +17,7 @@ import type { IResultMessage } from "./IResultMessage";
 type integer = number;
 
 export class QueryOneWorldSyncProductModelPagedQueryResult implements IQueryOneWorldSyncProductModelPagedQueryResult {
-    readonly $schema: typeof ZQueryOneWorldSyncProductModelPagedQueryResult = ZQueryOneWorldSyncProductModelPagedQueryResult;
+    readonly $zod: typeof ZQueryOneWorldSyncProductModelPagedQueryResult = ZQueryOneWorldSyncProductModelPagedQueryResult;
     
     rows?: IQueryOneWorldSyncProductModel[] | undefined;/*Gets the collection of items in the result.*/
     messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/

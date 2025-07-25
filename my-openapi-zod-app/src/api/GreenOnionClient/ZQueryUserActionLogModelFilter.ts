@@ -8,61 +8,18 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryUserActionLogModelFilter } from "./IQueryUserActionLogModelFilter";
-
-
-export const ZQueryUserActionLogModelFilter: z.ZodType<IQueryUserActionLogModelFilter> = z.object({
-    userActionLogId: z.string(),
-    eventType: z.string(),
-    httpMethod: z.string(),
-    eventDate: z.string(),
-    sessionId: z.string(),
-    requestId: z.string(),
-    correlationId: z.string(),
-    requestPath: z.string(),
-    userId: z.string(),
-    user: z.string(),
+export const ZQueryUserActionLogModelFilter = z.object({
+    userActionLogId:ZFilterParameter.optional(),
+    eventType:ZFilterParameter.optional(),
+    httpMethod:ZFilterParameter.optional(),
+    eventDate:ZFilterParameter.optional(),
+    sessionId:ZFilterParameter.optional(),
+    requestId:ZFilterParameter.optional(),
+    correlationId:ZFilterParameter.optional(),
+    requestPath:ZFilterParameter.optional(),
+    userId:ZFilterParameter.optional(),
+    user:ZFilterParameter.optional(),
 });
-/*
-[class, QueryUserActionLogModelFilter],[interface, IQueryUserActionLogModelFilter],[schema, ZQueryUserActionLogModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "userActionLogId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "eventType": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "httpMethod": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "eventDate": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "sessionId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "requestId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "correlationId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "requestPath": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "userId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "user": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** UserActionLogId; EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; UserId; User",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryUserActionLogModel"
-      }]
-*/
+

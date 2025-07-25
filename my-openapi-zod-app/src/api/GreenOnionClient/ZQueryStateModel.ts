@@ -9,27 +9,8 @@
 
 import { z } from "zod";
 
-import type { IQueryStateModel } from "./IQueryStateModel";
-
-
-export const ZQueryStateModel: z.ZodType<IQueryStateModel> = z.object({
-    stateId: z.string(),
-    stateName: z.string(),
+export const ZQueryStateModel = z.object({
+    stateId:z.number().int().optional(),
+    stateName:z.string().optional(),
 });
-/*
-[class, QueryStateModel],[interface, IQueryStateModel],[schema, ZQueryStateModel],[definition, {
-        "type": "object",
-        "properties": {
-          "stateId": {
-            "type": "integer",
-            "format": "int32",
-            "x-navigation-key": true
-          },
-          "stateName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

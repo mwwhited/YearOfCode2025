@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryOneWorldSyncProductModelFilter implements IQueryOneWorldSyncProductModelFilter {
-    readonly $schema: typeof ZQueryOneWorldSyncProductModelFilter = ZQueryOneWorldSyncProductModelFilter;
+    readonly $zod: typeof ZQueryOneWorldSyncProductModelFilter = ZQueryOneWorldSyncProductModelFilter;
     
     productId?: IFilterParameter | undefined;
     name?: IFilterParameter | undefined;

@@ -9,32 +9,9 @@
 
 import { z } from "zod";
 
-import type { ISaveAllergenModel } from "./ISaveAllergenModel";
-
-
-export const ZSaveAllergenModel: z.ZodType<ISaveAllergenModel> = z.object({
-    allergenId: z.string(),
-    allergenName: z.string(),
-    allergenGroup: z.string(),
+export const ZSaveAllergenModel = z.object({
+    allergenId:z.number().int().optional(),
+    allergenName:z.string().optional(),
+    allergenGroup:z.string().optional(),
 });
-/*
-[class, SaveAllergenModel],[interface, ISaveAllergenModel],[schema, ZSaveAllergenModel],[definition, {
-        "type": "object",
-        "properties": {
-          "allergenId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "allergenName": {
-            "type": "string",
-            "nullable": true
-          },
-          "allergenGroup": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

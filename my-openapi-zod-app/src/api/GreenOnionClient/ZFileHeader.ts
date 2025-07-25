@@ -9,26 +9,8 @@
 
 import { z } from "zod";
 
-import type { IFileHeader } from "./IFileHeader";
-
-
-export const ZFileHeader: z.ZodType<IFileHeader> = z.object({
-    headerId: z.string(),
-    headerName: z.string(),
+export const ZFileHeader = z.object({
+    headerId:z.number().int().optional(),
+    headerName:z.string().optional(),
 });
-/*
-[class, FileHeader],[interface, IFileHeader],[schema, ZFileHeader],[definition, {
-        "type": "object",
-        "properties": {
-          "headerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "headerName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

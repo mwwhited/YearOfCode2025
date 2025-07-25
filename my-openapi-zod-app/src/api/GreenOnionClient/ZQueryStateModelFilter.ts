@@ -8,29 +8,10 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryStateModelFilter } from "./IQueryStateModelFilter";
-
-
-export const ZQueryStateModelFilter: z.ZodType<IQueryStateModelFilter> = z.object({
-    stateId: z.string(),
-    stateName: z.string(),
+export const ZQueryStateModelFilter = z.object({
+    stateId:ZFilterParameter.optional(),
+    stateName:ZFilterParameter.optional(),
 });
-/*
-[class, QueryStateModelFilter],[interface, IQueryStateModelFilter],[schema, ZQueryStateModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "stateId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "stateName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** StateId; StateName",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryStateModel"
-      }]
-*/
+

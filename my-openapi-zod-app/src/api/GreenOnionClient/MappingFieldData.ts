@@ -13,7 +13,7 @@ import { ZMappingFieldData } from "./ZMappingFieldData";
 type integer = number;
 
 export class MappingFieldData implements IMappingFieldData {
-    readonly $schema: typeof ZMappingFieldData = ZMappingFieldData;
+    readonly $zod: typeof ZMappingFieldData = ZMappingFieldData;
     
     mappingID?: integer | undefined;
     isChecked?: boolean | undefined;

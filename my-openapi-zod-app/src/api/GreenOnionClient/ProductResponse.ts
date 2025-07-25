@@ -13,7 +13,7 @@ import { ZProductResponse } from "./ZProductResponse";
 type integer = number;
 
 export class ProductResponse implements IProductResponse {
-    readonly $schema: typeof ZProductResponse = ZProductResponse;
+    readonly $zod: typeof ZProductResponse = ZProductResponse;
     
     success?: boolean | undefined;
     message?: string | undefined;

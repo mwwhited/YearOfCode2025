@@ -12,16 +12,9 @@ import { ZQueryErrorLogModelPagedQueryResult } from "./ZQueryErrorLogModelPagedQ
 import type { IQueryErrorLogModel } from "./IQueryErrorLogModel";
 import type { IResultMessage } from "./IResultMessage";
 
-type integer = number;
 
-export interface IQueryErrorLogModelPagedQueryResult {
-    $schema: typeof ZQueryErrorLogModelPagedQueryResult;
-
-    rows?: IQueryErrorLogModel[] | undefined;/*Gets the collection of items in the result.*/
-    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
-    currentPage?: integer | undefined;/*Gets the total number of pages.*/
-    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
-    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
-
-    toJSON(data?: any) : any;
+export interface IQueryErrorLogModelPagedQueryResult extends z.infer<typeof ZQueryErrorLogModelPagedQueryResult> {
+  $zod: typeof ZQueryErrorLogModelPagedQueryResult;
+  toJSON(data?: any): any;
 }
+

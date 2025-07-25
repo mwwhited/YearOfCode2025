@@ -11,20 +11,9 @@ import type { z } from "zod";
 import { ZUserResponseModel } from "./ZUserResponseModel";
 import type { IRoleMst } from "./IRoleMst";
 
-type integer = number;
 
-export interface IUserResponseModel {
-    $schema: typeof ZUserResponseModel;
-
-    success?: boolean | undefined;
-    message?: string | undefined;
-    totalRecords?: integer | undefined;
-    payload?: unknown | undefined;
-    isUpdate?: boolean | undefined;
-    isAdded?: boolean | undefined;
-    isDelete?: boolean | undefined;
-    roleList?: IRoleMst[] | undefined;
-    isEmailExists?: boolean | undefined;
-
-    toJSON(data?: any) : any;
+export interface IUserResponseModel extends z.infer<typeof ZUserResponseModel> {
+  $zod: typeof ZUserResponseModel;
+  toJSON(data?: any): any;
 }
+

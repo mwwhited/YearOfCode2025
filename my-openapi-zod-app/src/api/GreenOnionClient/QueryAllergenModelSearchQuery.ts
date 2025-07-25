@@ -17,7 +17,7 @@ import type { IQueryAllergenModelOrderBy } from "./IQueryAllergenModelOrderBy";
 type integer = number;
 
 export class QueryAllergenModelSearchQuery implements IQueryAllergenModelSearchQuery {
-    readonly $schema: typeof ZQueryAllergenModelSearchQuery = ZQueryAllergenModelSearchQuery;
+    readonly $zod: typeof ZQueryAllergenModelSearchQuery = ZQueryAllergenModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

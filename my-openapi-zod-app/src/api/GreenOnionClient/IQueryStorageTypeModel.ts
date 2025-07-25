@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZQueryStorageTypeModel } from "./ZQueryStorageTypeModel";
 
-type integer = number;
 
-export interface IQueryStorageTypeModel {
-    $schema: typeof ZQueryStorageTypeModel;
-
-    storageTypeId?: integer | undefined;
-    storageTypeName?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryStorageTypeModel extends z.infer<typeof ZQueryStorageTypeModel> {
+  $zod: typeof ZQueryStorageTypeModel;
+  toJSON(data?: any): any;
 }
+

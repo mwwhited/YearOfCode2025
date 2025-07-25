@@ -8,29 +8,10 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryStorageTypeModelFilter } from "./IQueryStorageTypeModelFilter";
-
-
-export const ZQueryStorageTypeModelFilter: z.ZodType<IQueryStorageTypeModelFilter> = z.object({
-    storageTypeId: z.string(),
-    storageTypeName: z.string(),
+export const ZQueryStorageTypeModelFilter = z.object({
+    storageTypeId:ZFilterParameter.optional(),
+    storageTypeName:ZFilterParameter.optional(),
 });
-/*
-[class, QueryStorageTypeModelFilter],[interface, IQueryStorageTypeModelFilter],[schema, ZQueryStorageTypeModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "storageTypeId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "storageTypeName": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** StorageTypeId; StorageTypeName",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryStorageTypeModel"
-      }]
-*/
+

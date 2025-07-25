@@ -17,7 +17,7 @@ import type { IQueryMonthlyNumberModelOrderBy } from "./IQueryMonthlyNumberModel
 type integer = number;
 
 export class QueryMonthlyNumberModelSearchQuery implements IQueryMonthlyNumberModelSearchQuery {
-    readonly $schema: typeof ZQueryMonthlyNumberModelSearchQuery = ZQueryMonthlyNumberModelSearchQuery;
+    readonly $zod: typeof ZQueryMonthlyNumberModelSearchQuery = ZQueryMonthlyNumberModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

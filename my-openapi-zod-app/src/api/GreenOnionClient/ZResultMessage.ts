@@ -8,50 +8,13 @@
 //
 
 import { z } from "zod";
-import type { IMessageLevels } from "./IMessageLevels";
 import { ZMessageLevels } from "./ZMessageLevels";
 
-import type { IResultMessage } from "./IResultMessage";
-
-
-export const ZResultMessage: z.ZodType<IResultMessage> = z.object({
-    level: z.string(),
-    message: z.string(),
-    messageCode: z.string(),
-    context: z.string(),
-    metaData: z.string(),
+export const ZResultMessage = z.object({
+    level:ZMessageLevels.optional(),
+    message:z.string().optional().describe("Simple English message about issue."),
+    messageCode:z.string().optional().describe("unique code that may be used to assist in translating issue"),
+    context:z.string().optional().describe("Property or path related to this message"),
+    metaData:z.unknown().optional().describe("additional properties related to response"),
 });
-/*
-[class, ResultMessage],[interface, IResultMessage],[schema, ZResultMessage],[definition, {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "level": {
-            "$ref": "#/components/schemas/Eliassen.System.ResponseModel.MessageLevels"
-          },
-          "message": {
-            "type": "string",
-            "description": "Simple English message about issue.",
-            "nullable": true
-          },
-          "messageCode": {
-            "type": "string",
-            "description": "unique code that may be used to assist in translating issue",
-            "nullable": true
-          },
-          "context": {
-            "type": "string",
-            "description": "Property or path related to this message",
-            "nullable": true
-          },
-          "metaData": {
-            "description": "additional properties related to response",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "additional details about response"
-      }]
-*/
+

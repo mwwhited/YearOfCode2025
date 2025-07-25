@@ -13,7 +13,7 @@ import { ZDashBoardResponseModel } from "./ZDashBoardResponseModel";
 type integer = number;
 
 export class DashBoardResponseModel implements IDashBoardResponseModel {
-    readonly $schema: typeof ZDashBoardResponseModel = ZDashBoardResponseModel;
+    readonly $zod: typeof ZDashBoardResponseModel = ZDashBoardResponseModel;
     
     success?: boolean | undefined;
     message?: string | undefined;

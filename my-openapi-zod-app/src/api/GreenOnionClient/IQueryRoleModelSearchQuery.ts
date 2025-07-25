@@ -12,17 +12,9 @@ import { ZQueryRoleModelSearchQuery } from "./ZQueryRoleModelSearchQuery";
 import type { IQueryRoleModelFilter } from "./IQueryRoleModelFilter";
 import type { IQueryRoleModelOrderBy } from "./IQueryRoleModelOrderBy";
 
-type integer = number;
 
-export interface IQueryRoleModelSearchQuery {
-    $schema: typeof ZQueryRoleModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** RoleName; CreatedBy; UpdatedBy*/
-    filter?: IQueryRoleModelFilter | undefined;
-    orderBy?: IQueryRoleModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryRoleModelSearchQuery extends z.infer<typeof ZQueryRoleModelSearchQuery> {
+  $zod: typeof ZQueryRoleModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

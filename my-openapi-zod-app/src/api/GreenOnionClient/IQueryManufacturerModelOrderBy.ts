@@ -11,28 +11,9 @@ import type { z } from "zod";
 import { ZQueryManufacturerModelOrderBy } from "./ZQueryManufacturerModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryManufacturerModelOrderBy {
-    $schema: typeof ZQueryManufacturerModelOrderBy;
-
-    manufacturerId?: IOrderDirections | undefined;
-    manufacturerName?: IOrderDirections | undefined;
-    glnNumber?: IOrderDirections | undefined;
-    isActive?: IOrderDirections | undefined;
-    hasUsers?: IOrderDirections | undefined;
-    userCount?: IOrderDirections | undefined;
-    hasActiveUsers?: IOrderDirections | undefined;
-    activeUserCount?: IOrderDirections | undefined;
-    productCount?: IOrderDirections | undefined;
-    hasOneWorldSync?: IOrderDirections | undefined;
-    oneWorldSyncCount?: IOrderDirections | undefined;
-    createdOn?: IOrderDirections | undefined;
-    createdById?: IOrderDirections | undefined;
-    createdBy?: IOrderDirections | undefined;
-    updatedOn?: IOrderDirections | undefined;
-    updatedById?: IOrderDirections | undefined;
-    updatedBy?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryManufacturerModelOrderBy extends z.infer<typeof ZQueryManufacturerModelOrderBy> {
+  $zod: typeof ZQueryManufacturerModelOrderBy;
+  toJSON(data?: any): any;
 }
+

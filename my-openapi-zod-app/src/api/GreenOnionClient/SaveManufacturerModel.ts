@@ -13,7 +13,7 @@ import { ZSaveManufacturerModel } from "./ZSaveManufacturerModel";
 type integer = number;
 
 export class SaveManufacturerModel implements ISaveManufacturerModel {
-    readonly $schema: typeof ZSaveManufacturerModel = ZSaveManufacturerModel;
+    readonly $zod: typeof ZSaveManufacturerModel = ZSaveManufacturerModel;
     
     manufacturerId?: integer | undefined;
     manufacturerName?: string | undefined;

@@ -11,13 +11,9 @@ import type { z } from "zod";
 import { ZQueryStorageTypeModelFilter } from "./ZQueryStorageTypeModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryStorageTypeModelFilter {
-    $schema: typeof ZQueryStorageTypeModelFilter;
-
-    storageTypeId?: IFilterParameter | undefined;
-    storageTypeName?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryStorageTypeModelFilter extends z.infer<typeof ZQueryStorageTypeModelFilter> {
+  $zod: typeof ZQueryStorageTypeModelFilter;
+  toJSON(data?: any): any;
 }
+

@@ -17,7 +17,7 @@ import type { IQuerySchoolDistrictModelOrderBy } from "./IQuerySchoolDistrictMod
 type integer = number;
 
 export class QuerySchoolDistrictModelSearchQuery implements IQuerySchoolDistrictModelSearchQuery {
-    readonly $schema: typeof ZQuerySchoolDistrictModelSearchQuery = ZQuerySchoolDistrictModelSearchQuery;
+    readonly $zod: typeof ZQuerySchoolDistrictModelSearchQuery = ZQuerySchoolDistrictModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

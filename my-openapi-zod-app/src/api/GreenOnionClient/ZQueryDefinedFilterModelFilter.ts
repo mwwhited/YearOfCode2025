@@ -8,65 +8,19 @@
 //
 
 import { z } from "zod";
-import type { IFilterParameter } from "./IFilterParameter";
 import { ZFilterParameter } from "./ZFilterParameter";
 
-import type { IQueryDefinedFilterModelFilter } from "./IQueryDefinedFilterModelFilter";
-
-
-export const ZQueryDefinedFilterModelFilter: z.ZodType<IQueryDefinedFilterModelFilter> = z.object({
-    definedFilterId: z.string(),
-    createById: z.string(),
-    updatedOn: z.string(),
-    updatedById: z.string(),
-    updatedBy: z.string(),
-    createBy: z.string(),
-    path: z.string(),
-    name: z.string(),
-    isActive: z.string(),
-    createdOn: z.string(),
-    state: z.string(),
+export const ZQueryDefinedFilterModelFilter = z.object({
+    definedFilterId:ZFilterParameter.optional(),
+    createById:ZFilterParameter.optional(),
+    updatedOn:ZFilterParameter.optional(),
+    updatedById:ZFilterParameter.optional(),
+    updatedBy:ZFilterParameter.optional(),
+    createBy:ZFilterParameter.optional(),
+    path:ZFilterParameter.optional(),
+    name:ZFilterParameter.optional(),
+    isActive:ZFilterParameter.optional(),
+    createdOn:ZFilterParameter.optional(),
+    state:ZFilterParameter.optional(),
 });
-/*
-[class, QueryDefinedFilterModelFilter],[interface, IQueryDefinedFilterModelFilter],[schema, ZQueryDefinedFilterModelFilter],[definition, {
-        "type": "object",
-        "properties": {
-          "definedFilterId": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "createById": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "updatedOn": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "updatedById": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "updatedBy": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "createBy": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "path": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "name": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "isActive": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "createdOn": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          },
-          "state": {
-            "$ref": "#/components/schemas/Eliassen.System.Linq.Search.FilterParameter"
-          }
-        },
-        "description": "**Filterable Properties:** DefinedFilterId; CreateById; UpdatedOn; UpdatedById; UpdatedBy; CreateBy; Path; Name; IsActive; CreatedOn; State",
-        "nullable": true,
-        "x-query-set": "GreenOnion.Common.Models.QueryDefinedFilterModel"
-      }]
-*/
+

@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryStateModelFilter implements IQueryStateModelFilter {
-    readonly $schema: typeof ZQueryStateModelFilter = ZQueryStateModelFilter;
+    readonly $zod: typeof ZQueryStateModelFilter = ZQueryStateModelFilter;
     
     stateId?: IFilterParameter | undefined;
     stateName?: IFilterParameter | undefined;

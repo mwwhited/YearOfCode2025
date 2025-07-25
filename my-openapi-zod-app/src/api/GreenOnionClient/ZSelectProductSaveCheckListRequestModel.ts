@@ -8,42 +8,12 @@
 //
 
 import { z } from "zod";
-import type { IProductCheck } from "./IProductCheck";
 import { ZProductCheck } from "./ZProductCheck";
 
-import type { ISelectProductSaveCheckListRequestModel } from "./ISelectProductSaveCheckListRequestModel";
-
-
-export const ZSelectProductSaveCheckListRequestModel: z.ZodType<ISelectProductSaveCheckListRequestModel> = z.object({
-    uniqueExcelFileId: z.string(),
-    userOrDistrictId: z.string(),
-    option: z.string(),
-    productCheckList: z.string(),
+export const ZSelectProductSaveCheckListRequestModel = z.object({
+    uniqueExcelFileId:z.string().optional(),
+    userOrDistrictId:z.number().int().optional(),
+    option:z.string().optional(),
+    productCheckList:zARRAY!!!,
 });
-/*
-[class, SelectProductSaveCheckListRequestModel],[interface, ISelectProductSaveCheckListRequestModel],[schema, ZSelectProductSaveCheckListRequestModel],[definition, {
-        "type": "object",
-        "properties": {
-          "uniqueExcelFileId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "userOrDistrictId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "option": {
-            "type": "string",
-            "nullable": true
-          },
-          "productCheckList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductCheck"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

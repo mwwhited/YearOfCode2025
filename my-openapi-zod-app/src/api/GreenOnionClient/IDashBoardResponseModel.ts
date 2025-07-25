@@ -10,18 +10,9 @@
 import type { z } from "zod";
 import { ZDashBoardResponseModel } from "./ZDashBoardResponseModel";
 
-type integer = number;
 
-export interface IDashBoardResponseModel {
-    $schema: typeof ZDashBoardResponseModel;
-
-    success?: boolean | undefined;
-    message?: string | undefined;
-    totalRecords?: integer | undefined;
-    payload?: unknown | undefined;
-    isUpdate?: boolean | undefined;
-    isAdded?: boolean | undefined;
-    isDelete?: boolean | undefined;
-
-    toJSON(data?: any) : any;
+export interface IDashBoardResponseModel extends z.infer<typeof ZDashBoardResponseModel> {
+  $zod: typeof ZDashBoardResponseModel;
+  toJSON(data?: any): any;
 }
+

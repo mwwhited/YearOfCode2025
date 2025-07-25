@@ -13,7 +13,7 @@ import { ZQueryUserActionLogModel } from "./ZQueryUserActionLogModel";
 type integer = number;
 
 export class QueryUserActionLogModel implements IQueryUserActionLogModel {
-    readonly $schema: typeof ZQueryUserActionLogModel = ZQueryUserActionLogModel;
+    readonly $zod: typeof ZQueryUserActionLogModel = ZQueryUserActionLogModel;
     
     userActionLogId?: integer | undefined;
     eventType?: string | undefined;

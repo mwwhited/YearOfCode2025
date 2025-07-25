@@ -10,13 +10,9 @@
 import type { z } from "zod";
 import { ZProductTableField } from "./ZProductTableField";
 
-type integer = number;
 
-export interface IProductTableField {
-    $schema: typeof ZProductTableField;
-
-    fieldID?: integer | undefined;
-    fieldName?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface IProductTableField extends z.infer<typeof ZProductTableField> {
+  $zod: typeof ZProductTableField;
+  toJSON(data?: any): any;
 }
+

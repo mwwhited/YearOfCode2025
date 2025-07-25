@@ -13,7 +13,7 @@ import { ZSaveUserModel } from "./ZSaveUserModel";
 type integer = number;
 
 export class SaveUserModel implements ISaveUserModel {
-    readonly $schema: typeof ZSaveUserModel = ZSaveUserModel;
+    readonly $zod: typeof ZSaveUserModel = ZSaveUserModel;
     
     userId?: integer | undefined;
     isActive?: boolean | undefined;

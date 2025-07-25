@@ -17,7 +17,7 @@ import type { IResultMessage } from "./IResultMessage";
 type integer = number;
 
 export class QuerySchoolDistrictModelPagedQueryResult implements IQuerySchoolDistrictModelPagedQueryResult {
-    readonly $schema: typeof ZQuerySchoolDistrictModelPagedQueryResult = ZQuerySchoolDistrictModelPagedQueryResult;
+    readonly $zod: typeof ZQuerySchoolDistrictModelPagedQueryResult = ZQuerySchoolDistrictModelPagedQueryResult;
     
     rows?: IQuerySchoolDistrictModel[] | undefined;/*Gets the collection of items in the result.*/
     messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/

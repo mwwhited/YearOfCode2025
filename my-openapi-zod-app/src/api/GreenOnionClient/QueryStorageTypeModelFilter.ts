@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryStorageTypeModelFilter implements IQueryStorageTypeModelFilter {
-    readonly $schema: typeof ZQueryStorageTypeModelFilter = ZQueryStorageTypeModelFilter;
+    readonly $zod: typeof ZQueryStorageTypeModelFilter = ZQueryStorageTypeModelFilter;
     
     storageTypeId?: IFilterParameter | undefined;
     storageTypeName?: IFilterParameter | undefined;

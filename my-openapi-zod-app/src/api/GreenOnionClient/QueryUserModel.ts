@@ -13,7 +13,7 @@ import { ZQueryUserModel } from "./ZQueryUserModel";
 type integer = number;
 
 export class QueryUserModel implements IQueryUserModel {
-    readonly $schema: typeof ZQueryUserModel = ZQueryUserModel;
+    readonly $zod: typeof ZQueryUserModel = ZQueryUserModel;
     
     userId?: integer | undefined;
     isActive?: boolean | undefined;

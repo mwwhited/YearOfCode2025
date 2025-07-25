@@ -9,26 +9,8 @@
 
 import { z } from "zod";
 
-import type { IApproveSuggestProductRequestModel } from "./IApproveSuggestProductRequestModel";
-
-
-export const ZApproveSuggestProductRequestModel: z.ZodType<IApproveSuggestProductRequestModel> = z.object({
-    productId: z.string(),
-    suggestedProductId: z.string(),
+export const ZApproveSuggestProductRequestModel = z.object({
+    productId:z.number().int().optional(),
+    suggestedProductId:z.number().int().optional(),
 });
-/*
-[class, ApproveSuggestProductRequestModel],[interface, IApproveSuggestProductRequestModel],[schema, ZApproveSuggestProductRequestModel],[definition, {
-        "type": "object",
-        "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "suggestedProductId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

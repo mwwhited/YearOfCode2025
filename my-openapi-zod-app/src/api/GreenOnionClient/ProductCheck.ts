@@ -13,7 +13,7 @@ import { ZProductCheck } from "./ZProductCheck";
 type integer = number;
 
 export class ProductCheck implements IProductCheck {
-    readonly $schema: typeof ZProductCheck = ZProductCheck;
+    readonly $zod: typeof ZProductCheck = ZProductCheck;
     
     ischeck?: boolean | undefined;
     headerName?: string | undefined;

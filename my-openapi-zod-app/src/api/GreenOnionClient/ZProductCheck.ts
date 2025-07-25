@@ -9,30 +9,9 @@
 
 import { z } from "zod";
 
-import type { IProductCheck } from "./IProductCheck";
-
-
-export const ZProductCheck: z.ZodType<IProductCheck> = z.object({
-    ischeck: z.string(),
-    headerName: z.string(),
-    headerValue: z.string(),
+export const ZProductCheck = z.object({
+    ischeck:z.boolean().optional(),
+    headerName:z.string().optional(),
+    headerValue:z.string().optional(),
 });
-/*
-[class, ProductCheck],[interface, IProductCheck],[schema, ZProductCheck],[definition, {
-        "type": "object",
-        "properties": {
-          "ischeck": {
-            "type": "boolean"
-          },
-          "headerName": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerValue": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

@@ -15,7 +15,7 @@ import type { IFilterParameter } from "./IFilterParameter";
 type integer = number;
 
 export class QueryMonthlyNumberModelFilter implements IQueryMonthlyNumberModelFilter {
-    readonly $schema: typeof ZQueryMonthlyNumberModelFilter = ZQueryMonthlyNumberModelFilter;
+    readonly $zod: typeof ZQueryMonthlyNumberModelFilter = ZQueryMonthlyNumberModelFilter;
     
     id?: IFilterParameter | undefined;
     schoolDistrictId?: IFilterParameter | undefined;

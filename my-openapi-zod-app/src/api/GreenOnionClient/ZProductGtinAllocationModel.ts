@@ -9,37 +9,10 @@
 
 import { z } from "zod";
 
-import type { IProductGtinAllocationModel } from "./IProductGtinAllocationModel";
-
-
-export const ZProductGtinAllocationModel: z.ZodType<IProductGtinAllocationModel> = z.object({
-    productId: z.string(),
-    gtin: z.string(),
-    isActive: z.string(),
-    createdBy: z.string(),
+export const ZProductGtinAllocationModel = z.object({
+    productId:z.number().int().optional(),
+    gtin:z.string().optional(),
+    isActive:z.boolean().optional(),
+    createdBy:z.number().int().optional(),
 });
-/*
-[class, ProductGtinAllocationModel],[interface, IProductGtinAllocationModel],[schema, ZProductGtinAllocationModel],[definition, {
-        "type": "object",
-        "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "gtin": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "createdBy": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

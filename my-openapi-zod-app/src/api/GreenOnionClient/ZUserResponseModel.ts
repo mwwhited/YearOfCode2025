@@ -8,62 +8,17 @@
 //
 
 import { z } from "zod";
-import type { IRoleMst } from "./IRoleMst";
 import { ZRoleMst } from "./ZRoleMst";
 
-import type { IUserResponseModel } from "./IUserResponseModel";
-
-
-export const ZUserResponseModel: z.ZodType<IUserResponseModel> = z.object({
-    success: z.string(),
-    message: z.string(),
-    totalRecords: z.string(),
-    payload: z.string(),
-    isUpdate: z.string(),
-    isAdded: z.string(),
-    isDelete: z.string(),
-    roleList: z.string(),
-    isEmailExists: z.string(),
+export const ZUserResponseModel = z.object({
+    success:z.boolean().optional(),
+    message:z.string().optional(),
+    totalRecords:z.number().int().optional(),
+    payload:z.unknown().optional(),
+    isUpdate:z.boolean().optional(),
+    isAdded:z.boolean().optional(),
+    isDelete:z.boolean().optional(),
+    roleList:zARRAY!!!,
+    isEmailExists:z.boolean().optional(),
 });
-/*
-[class, UserResponseModel],[interface, IUserResponseModel],[schema, ZUserResponseModel],[definition, {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "totalRecords": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "payload": {
-            "nullable": true
-          },
-          "isUpdate": {
-            "type": "boolean"
-          },
-          "isAdded": {
-            "type": "boolean"
-          },
-          "isDelete": {
-            "type": "boolean"
-          },
-          "roleList": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GreenOnion.Entities.Models.RoleMst"
-            },
-            "nullable": true
-          },
-          "isEmailExists": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

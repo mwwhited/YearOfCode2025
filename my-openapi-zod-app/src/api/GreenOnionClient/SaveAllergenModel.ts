@@ -13,7 +13,7 @@ import { ZSaveAllergenModel } from "./ZSaveAllergenModel";
 type integer = number;
 
 export class SaveAllergenModel implements ISaveAllergenModel {
-    readonly $schema: typeof ZSaveAllergenModel = ZSaveAllergenModel;
+    readonly $zod: typeof ZSaveAllergenModel = ZSaveAllergenModel;
     
     allergenId?: integer | undefined;
     allergenName?: string | undefined;

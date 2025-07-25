@@ -9,80 +9,17 @@
 
 import { z } from "zod";
 
-import type { ISaveMonthlyNumberModel } from "./ISaveMonthlyNumberModel";
-
-
-export const ZSaveMonthlyNumberModel: z.ZodType<ISaveMonthlyNumberModel> = z.object({
-    id: z.string(),
-    schoolDistrictId: z.string(),
-    monthId: z.string(),
-    actualMonthId: z.string(),
-    year: z.string(),
-    enrollment: z.string(),
-    numberOfSites: z.string(),
-    numberOfDistricts: z.string(),
-    mealsServed: z.string(),
-    freeAndReducedPercent: z.string(),
-    isActive: z.string(),
+export const ZSaveMonthlyNumberModel = z.object({
+    id:z.number().int().optional(),
+    schoolDistrictId:z.number().int().optional(),
+    monthId:z.number().int().optional(),
+    actualMonthId:z.number().int().optional(),
+    year:z.string().optional(),
+    enrollment:z.number().int().optional(),
+    numberOfSites:z.number().int().optional(),
+    numberOfDistricts:z.number().int().optional(),
+    mealsServed:z.number().int().optional(),
+    freeAndReducedPercent:z.number().int().optional(),
+    isActive:z.boolean().optional(),
 });
-/*
-[class, SaveMonthlyNumberModel],[interface, ISaveMonthlyNumberModel],[schema, ZSaveMonthlyNumberModel],[definition, {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "schoolDistrictId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "monthId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "actualMonthId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "year": {
-            "type": "string",
-            "nullable": true
-          },
-          "enrollment": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "numberOfSites": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "numberOfDistricts": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "mealsServed": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "freeAndReducedPercent": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryProductModelOrderBy implements IQueryProductModelOrderBy {
-    readonly $schema: typeof ZQueryProductModelOrderBy = ZQueryProductModelOrderBy;
+    readonly $zod: typeof ZQueryProductModelOrderBy = ZQueryProductModelOrderBy;
     
     productId?: IOrderDirections | undefined;
     name?: IOrderDirections | undefined;

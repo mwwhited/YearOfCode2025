@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryUserActionLogModelOrderBy implements IQueryUserActionLogModelOrderBy {
-    readonly $schema: typeof ZQueryUserActionLogModelOrderBy = ZQueryUserActionLogModelOrderBy;
+    readonly $zod: typeof ZQueryUserActionLogModelOrderBy = ZQueryUserActionLogModelOrderBy;
     
     userActionLogId?: IOrderDirections | undefined;
     eventType?: IOrderDirections | undefined;

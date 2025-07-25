@@ -17,7 +17,7 @@ import type { IQueryRoleModelOrderBy } from "./IQueryRoleModelOrderBy";
 type integer = number;
 
 export class QueryRoleModelSearchQuery implements IQueryRoleModelSearchQuery {
-    readonly $schema: typeof ZQueryRoleModelSearchQuery = ZQueryRoleModelSearchQuery;
+    readonly $zod: typeof ZQueryRoleModelSearchQuery = ZQueryRoleModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

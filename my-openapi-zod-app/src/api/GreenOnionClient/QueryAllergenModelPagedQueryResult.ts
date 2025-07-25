@@ -17,7 +17,7 @@ import type { IResultMessage } from "./IResultMessage";
 type integer = number;
 
 export class QueryAllergenModelPagedQueryResult implements IQueryAllergenModelPagedQueryResult {
-    readonly $schema: typeof ZQueryAllergenModelPagedQueryResult = ZQueryAllergenModelPagedQueryResult;
+    readonly $zod: typeof ZQueryAllergenModelPagedQueryResult = ZQueryAllergenModelPagedQueryResult;
     
     rows?: IQueryAllergenModel[] | undefined;/*Gets the collection of items in the result.*/
     messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/

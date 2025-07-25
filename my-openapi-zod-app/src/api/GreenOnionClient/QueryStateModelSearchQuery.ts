@@ -17,7 +17,7 @@ import type { IQueryStateModelOrderBy } from "./IQueryStateModelOrderBy";
 type integer = number;
 
 export class QueryStateModelSearchQuery implements IQueryStateModelSearchQuery {
-    readonly $schema: typeof ZQueryStateModelSearchQuery = ZQueryStateModelSearchQuery;
+    readonly $zod: typeof ZQueryStateModelSearchQuery = ZQueryStateModelSearchQuery;
     
     currentPage?: integer | undefined;/*Gets or sets the current page number.*/
     pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/

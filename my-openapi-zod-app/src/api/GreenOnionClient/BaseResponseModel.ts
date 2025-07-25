@@ -13,7 +13,7 @@ import { ZBaseResponseModel } from "./ZBaseResponseModel";
 type integer = number;
 
 export class BaseResponseModel implements IBaseResponseModel {
-    readonly $schema: typeof ZBaseResponseModel = ZBaseResponseModel;
+    readonly $zod: typeof ZBaseResponseModel = ZBaseResponseModel;
     
     success?: boolean | undefined;
     message?: string | undefined;

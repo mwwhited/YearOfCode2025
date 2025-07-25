@@ -9,37 +9,10 @@
 
 import { z } from "zod";
 
-import type { ISaveCategoryModel } from "./ISaveCategoryModel";
-
-
-export const ZSaveCategoryModel: z.ZodType<ISaveCategoryModel> = z.object({
-    categoryId: z.string(),
-    categoryName: z.string(),
-    categoryCode: z.string(),
-    isActive: z.string(),
+export const ZSaveCategoryModel = z.object({
+    categoryId:z.number().int().optional(),
+    categoryName:z.string().optional(),
+    categoryCode:z.string().optional(),
+    isActive:z.boolean().optional(),
 });
-/*
-[class, SaveCategoryModel],[interface, ISaveCategoryModel],[schema, ZSaveCategoryModel],[definition, {
-        "type": "object",
-        "properties": {
-          "categoryId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "categoryName": {
-            "type": "string",
-            "nullable": true
-          },
-          "categoryCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

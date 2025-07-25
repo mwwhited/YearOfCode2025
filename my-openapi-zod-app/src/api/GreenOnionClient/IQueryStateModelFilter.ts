@@ -11,13 +11,9 @@ import type { z } from "zod";
 import { ZQueryStateModelFilter } from "./ZQueryStateModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryStateModelFilter {
-    $schema: typeof ZQueryStateModelFilter;
-
-    stateId?: IFilterParameter | undefined;
-    stateName?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryStateModelFilter extends z.infer<typeof ZQueryStateModelFilter> {
+  $zod: typeof ZQueryStateModelFilter;
+  toJSON(data?: any): any;
 }
+

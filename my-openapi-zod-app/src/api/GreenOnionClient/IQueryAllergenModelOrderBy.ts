@@ -11,14 +11,9 @@ import type { z } from "zod";
 import { ZQueryAllergenModelOrderBy } from "./ZQueryAllergenModelOrderBy";
 import type { IOrderDirections } from "./IOrderDirections";
 
-type integer = number;
 
-export interface IQueryAllergenModelOrderBy {
-    $schema: typeof ZQueryAllergenModelOrderBy;
-
-    allergenId?: IOrderDirections | undefined;
-    allergenName?: IOrderDirections | undefined;
-    allergenGroup?: IOrderDirections | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryAllergenModelOrderBy extends z.infer<typeof ZQueryAllergenModelOrderBy> {
+  $zod: typeof ZQueryAllergenModelOrderBy;
+  toJSON(data?: any): any;
 }
+

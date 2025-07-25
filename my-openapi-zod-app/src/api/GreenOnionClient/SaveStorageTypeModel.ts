@@ -13,7 +13,7 @@ import { ZSaveStorageTypeModel } from "./ZSaveStorageTypeModel";
 type integer = number;
 
 export class SaveStorageTypeModel implements ISaveStorageTypeModel {
-    readonly $schema: typeof ZSaveStorageTypeModel = ZSaveStorageTypeModel;
+    readonly $zod: typeof ZSaveStorageTypeModel = ZSaveStorageTypeModel;
     
     storageTypeId?: integer | undefined;
     storageTypeName?: string | undefined;

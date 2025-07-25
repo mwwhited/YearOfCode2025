@@ -12,17 +12,9 @@ import { ZQueryDistributorModelSearchQuery } from "./ZQueryDistributorModelSearc
 import type { IQueryDistributorModelFilter } from "./IQueryDistributorModelFilter";
 import type { IQueryDistributorModelOrderBy } from "./IQueryDistributorModelOrderBy";
 
-type integer = number;
 
-export interface IQueryDistributorModelSearchQuery {
-    $schema: typeof ZQueryDistributorModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** DistributorName; DistributorCode; IsActive; CreatedBy; UpdatedBy*/
-    filter?: IQueryDistributorModelFilter | undefined;
-    orderBy?: IQueryDistributorModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryDistributorModelSearchQuery extends z.infer<typeof ZQueryDistributorModelSearchQuery> {
+  $zod: typeof ZQueryDistributorModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

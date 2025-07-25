@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryRoleModelOrderBy implements IQueryRoleModelOrderBy {
-    readonly $schema: typeof ZQueryRoleModelOrderBy = ZQueryRoleModelOrderBy;
+    readonly $zod: typeof ZQueryRoleModelOrderBy = ZQueryRoleModelOrderBy;
     
     roleId?: IOrderDirections | undefined;
     roleName?: IOrderDirections | undefined;

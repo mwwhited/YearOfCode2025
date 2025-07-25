@@ -12,16 +12,9 @@ import { ZQueryDistributorModelPagedQueryResult } from "./ZQueryDistributorModel
 import type { IQueryDistributorModel } from "./IQueryDistributorModel";
 import type { IResultMessage } from "./IResultMessage";
 
-type integer = number;
 
-export interface IQueryDistributorModelPagedQueryResult {
-    $schema: typeof ZQueryDistributorModelPagedQueryResult;
-
-    rows?: IQueryDistributorModel[] | undefined;/*Gets the collection of items in the result.*/
-    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
-    currentPage?: integer | undefined;/*Gets the total number of pages.*/
-    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
-    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
-
-    toJSON(data?: any) : any;
+export interface IQueryDistributorModelPagedQueryResult extends z.infer<typeof ZQueryDistributorModelPagedQueryResult> {
+  $zod: typeof ZQueryDistributorModelPagedQueryResult;
+  toJSON(data?: any): any;
 }
+

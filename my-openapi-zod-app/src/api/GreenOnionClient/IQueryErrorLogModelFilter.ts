@@ -11,14 +11,9 @@ import type { z } from "zod";
 import { ZQueryErrorLogModelFilter } from "./ZQueryErrorLogModelFilter";
 import type { IFilterParameter } from "./IFilterParameter";
 
-type integer = number;
 
-export interface IQueryErrorLogModelFilter {
-    $schema: typeof ZQueryErrorLogModelFilter;
-
-    errorLogId?: IFilterParameter | undefined;
-    errorMessage?: IFilterParameter | undefined;
-    errorPath?: IFilterParameter | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryErrorLogModelFilter extends z.infer<typeof ZQueryErrorLogModelFilter> {
+  $zod: typeof ZQueryErrorLogModelFilter;
+  toJSON(data?: any): any;
 }
+

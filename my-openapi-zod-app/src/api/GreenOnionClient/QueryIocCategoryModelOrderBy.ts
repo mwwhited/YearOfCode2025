@@ -15,7 +15,7 @@ import type { IOrderDirections } from "./IOrderDirections";
 type integer = number;
 
 export class QueryIocCategoryModelOrderBy implements IQueryIocCategoryModelOrderBy {
-    readonly $schema: typeof ZQueryIocCategoryModelOrderBy = ZQueryIocCategoryModelOrderBy;
+    readonly $zod: typeof ZQueryIocCategoryModelOrderBy = ZQueryIocCategoryModelOrderBy;
     
     iocCategoryId?: IOrderDirections | undefined;
     name?: IOrderDirections | undefined;

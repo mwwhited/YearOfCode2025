@@ -9,36 +9,10 @@
 
 import { z } from "zod";
 
-import type { ISaveManufacturerModel } from "./ISaveManufacturerModel";
-
-
-export const ZSaveManufacturerModel: z.ZodType<ISaveManufacturerModel> = z.object({
-    manufacturerId: z.string(),
-    manufacturerName: z.string(),
-    glnNumber: z.string(),
-    isActive: z.string(),
+export const ZSaveManufacturerModel = z.object({
+    manufacturerId:z.number().int().optional(),
+    manufacturerName:z.string().optional(),
+    glnNumber:z.string().optional(),
+    isActive:z.boolean().optional(),
 });
-/*
-[class, SaveManufacturerModel],[interface, ISaveManufacturerModel],[schema, ZSaveManufacturerModel],[definition, {
-        "type": "object",
-        "properties": {
-          "manufacturerId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "manufacturerName": {
-            "type": "string",
-            "nullable": true
-          },
-          "glnNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

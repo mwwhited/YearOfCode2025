@@ -13,7 +13,7 @@ import { ZApproveSuggestProductRequestModel } from "./ZApproveSuggestProductRequ
 type integer = number;
 
 export class ApproveSuggestProductRequestModel implements IApproveSuggestProductRequestModel {
-    readonly $schema: typeof ZApproveSuggestProductRequestModel = ZApproveSuggestProductRequestModel;
+    readonly $zod: typeof ZApproveSuggestProductRequestModel = ZApproveSuggestProductRequestModel;
     
     productId?: integer | undefined;
     suggestedProductId?: integer | undefined;

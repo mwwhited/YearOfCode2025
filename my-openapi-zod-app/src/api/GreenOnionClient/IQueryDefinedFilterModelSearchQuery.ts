@@ -12,17 +12,9 @@ import { ZQueryDefinedFilterModelSearchQuery } from "./ZQueryDefinedFilterModelS
 import type { IQueryDefinedFilterModelFilter } from "./IQueryDefinedFilterModelFilter";
 import type { IQueryDefinedFilterModelOrderBy } from "./IQueryDefinedFilterModelOrderBy";
 
-type integer = number;
 
-export interface IQueryDefinedFilterModelSearchQuery {
-    $schema: typeof ZQueryDefinedFilterModelSearchQuery;
-
-    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
-    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
-    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
-    searchTerm?: string | undefined;/***Searched Properties:** CreateById; UpdatedOn; UpdatedById; UpdatedBy; CreateBy; Path; Name; IsActive; CreatedOn; State*/
-    filter?: IQueryDefinedFilterModelFilter | undefined;
-    orderBy?: IQueryDefinedFilterModelOrderBy | undefined;
-
-    toJSON(data?: any) : any;
+export interface IQueryDefinedFilterModelSearchQuery extends z.infer<typeof ZQueryDefinedFilterModelSearchQuery> {
+  $zod: typeof ZQueryDefinedFilterModelSearchQuery;
+  toJSON(data?: any): any;
 }
+

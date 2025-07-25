@@ -10,16 +10,9 @@
 import type { z } from "zod";
 import { ZSaveDefinedFilterModel } from "./ZSaveDefinedFilterModel";
 
-type integer = number;
 
-export interface ISaveDefinedFilterModel {
-    $schema: typeof ZSaveDefinedFilterModel;
-
-    definedFilterId?: integer | undefined;
-    path?: string | undefined;
-    name?: string | undefined;
-    isActive?: boolean | undefined;
-    state?: string | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISaveDefinedFilterModel extends z.infer<typeof ZSaveDefinedFilterModel> {
+  $zod: typeof ZSaveDefinedFilterModel;
+  toJSON(data?: any): any;
 }
+

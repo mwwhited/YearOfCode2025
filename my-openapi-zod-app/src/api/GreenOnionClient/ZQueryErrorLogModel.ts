@@ -9,32 +9,9 @@
 
 import { z } from "zod";
 
-import type { IQueryErrorLogModel } from "./IQueryErrorLogModel";
-
-
-export const ZQueryErrorLogModel: z.ZodType<IQueryErrorLogModel> = z.object({
-    errorLogId: z.string(),
-    errorMessage: z.string(),
-    errorPath: z.string(),
+export const ZQueryErrorLogModel = z.object({
+    errorLogId:z.number().int().optional(),
+    errorMessage:z.string().optional(),
+    errorPath:z.string().optional(),
 });
-/*
-[class, QueryErrorLogModel],[interface, IQueryErrorLogModel],[schema, ZQueryErrorLogModel],[definition, {
-        "type": "object",
-        "properties": {
-          "errorLogId": {
-            "type": "integer",
-            "format": "int32",
-            "x-navigation-key": true
-          },
-          "errorMessage": {
-            "type": "string",
-            "nullable": true
-          },
-          "errorPath": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

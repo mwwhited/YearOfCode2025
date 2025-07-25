@@ -9,42 +9,11 @@
 
 import { z } from "zod";
 
-import type { ISaveDefinedFilterModel } from "./ISaveDefinedFilterModel";
-
-
-export const ZSaveDefinedFilterModel: z.ZodType<ISaveDefinedFilterModel> = z.object({
-    definedFilterId: z.string(),
-    path: z.string(),
-    name: z.string(),
-    isActive: z.string(),
-    state: z.string(),
+export const ZSaveDefinedFilterModel = z.object({
+    definedFilterId:z.number().int().optional(),
+    path:z.string().optional(),
+    name:z.string().optional(),
+    isActive:z.boolean().optional(),
+    state:z.string().optional(),
 });
-/*
-[class, SaveDefinedFilterModel],[interface, ISaveDefinedFilterModel],[schema, ZSaveDefinedFilterModel],[definition, {
-        "type": "object",
-        "properties": {
-          "definedFilterId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true,
-            "x-navigation-key": true
-          },
-          "path": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "state": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      }]
-*/
+

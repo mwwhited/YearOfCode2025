@@ -10,15 +10,9 @@
 import type { z } from "zod";
 import { ZBaseResponseModel } from "./ZBaseResponseModel";
 
-type integer = number;
 
-export interface IBaseResponseModel {
-    $schema: typeof ZBaseResponseModel;
-
-    success?: boolean | undefined;
-    message?: string | undefined;
-    totalRecords?: integer | undefined;
-    payload?: unknown | undefined;
-
-    toJSON(data?: any) : any;
+export interface IBaseResponseModel extends z.infer<typeof ZBaseResponseModel> {
+  $zod: typeof ZBaseResponseModel;
+  toJSON(data?: any): any;
 }
+

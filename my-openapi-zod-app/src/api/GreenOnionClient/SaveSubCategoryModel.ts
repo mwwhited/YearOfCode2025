@@ -13,7 +13,7 @@ import { ZSaveSubCategoryModel } from "./ZSaveSubCategoryModel";
 type integer = number;
 
 export class SaveSubCategoryModel implements ISaveSubCategoryModel {
-    readonly $schema: typeof ZSaveSubCategoryModel = ZSaveSubCategoryModel;
+    readonly $zod: typeof ZSaveSubCategoryModel = ZSaveSubCategoryModel;
     
     subCategoryId?: integer | undefined;
     categoryId?: integer | undefined;

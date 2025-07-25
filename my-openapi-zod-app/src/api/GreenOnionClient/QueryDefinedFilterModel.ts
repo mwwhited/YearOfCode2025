@@ -13,7 +13,7 @@ import { ZQueryDefinedFilterModel } from "./ZQueryDefinedFilterModel";
 type integer = number;
 
 export class QueryDefinedFilterModel implements IQueryDefinedFilterModel {
-    readonly $schema: typeof ZQueryDefinedFilterModel = ZQueryDefinedFilterModel;
+    readonly $zod: typeof ZQueryDefinedFilterModel = ZQueryDefinedFilterModel;
     
     definedFilterId?: integer | undefined;
     createById?: integer | undefined;

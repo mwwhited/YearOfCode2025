@@ -10,15 +10,9 @@
 import type { z } from "zod";
 import { ZProductGtinAllocationModel } from "./ZProductGtinAllocationModel";
 
-type integer = number;
 
-export interface IProductGtinAllocationModel {
-    $schema: typeof ZProductGtinAllocationModel;
-
-    productId?: integer | undefined;
-    gtin?: string | undefined;
-    isActive?: boolean | undefined;
-    createdBy?: integer | undefined;
-
-    toJSON(data?: any) : any;
+export interface IProductGtinAllocationModel extends z.infer<typeof ZProductGtinAllocationModel> {
+  $zod: typeof ZProductGtinAllocationModel;
+  toJSON(data?: any): any;
 }
+

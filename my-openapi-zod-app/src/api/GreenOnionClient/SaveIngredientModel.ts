@@ -13,7 +13,7 @@ import { ZSaveIngredientModel } from "./ZSaveIngredientModel";
 type integer = number;
 
 export class SaveIngredientModel implements ISaveIngredientModel {
-    readonly $schema: typeof ZSaveIngredientModel = ZSaveIngredientModel;
+    readonly $zod: typeof ZSaveIngredientModel = ZSaveIngredientModel;
     
     ingredientId?: integer | undefined;
     ingredientName?: string | undefined;

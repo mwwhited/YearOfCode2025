@@ -13,13 +13,4 @@ export const ZOrderDirections = z.enum([
     "asc",
     "desc",
 ]);
-/*
-[class, OrderDirections],[interface, IOrderDirections],[schema, ZOrderDirections],[definition, {
-        "enum": [
-          "asc",
-          "desc"
-        ],
-        "type": "string",
-        "description": "Enumeration to control sort order"
-      }]
-*/
+

@@ -10,15 +10,9 @@
 import type { z } from "zod";
 import { ZSaveDistributorModel } from "./ZSaveDistributorModel";
 
-type integer = number;
 
-export interface ISaveDistributorModel {
-    $schema: typeof ZSaveDistributorModel;
-
-    distributorId?: integer | undefined;
-    distributorName?: string | undefined;
-    distributorCode?: string | undefined;
-    isActive?: boolean | undefined;
-
-    toJSON(data?: any) : any;
+export interface ISaveDistributorModel extends z.infer<typeof ZSaveDistributorModel> {
+  $zod: typeof ZSaveDistributorModel;
+  toJSON(data?: any): any;
 }
+
