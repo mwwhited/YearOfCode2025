@@ -56,7 +56,7 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -74,11 +74,11 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
     protected processGetDashBoardProductList(response: Response): Promise<DashBoardResponseModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = DashBoardResponseModel.fromJS(resultData200);
             return result200;
             });
@@ -113,7 +113,7 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -131,11 +131,11 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
     protected processGetDashBoardTotalCountList(response: Response): Promise<DashBoardResponseModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = DashBoardResponseModel.fromJS(resultData200);
             return result200;
             });
@@ -170,7 +170,7 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -188,11 +188,11 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
     protected processGetDistrictFreeOfIOCProductList(response: Response): Promise<DashBoardResponseModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = DashBoardResponseModel.fromJS(resultData200);
             return result200;
             });
@@ -227,7 +227,7 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -245,11 +245,11 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
     protected processGetDistrictFreeOfIOCProductReplacesList(response: Response): Promise<DashBoardResponseModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = DashBoardResponseModel.fromJS(resultData200);
             return result200;
             });
@@ -278,7 +278,7 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -296,11 +296,11 @@ export class DashBoardClient extends ClientBase implements IDashBoardClient  {
 
     protected processGetManufactureTotalProductChart(response: Response): Promise<DashBoardResponseModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = DashBoardResponseModel.fromJS(resultData200);
             return result200;
             });

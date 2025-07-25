@@ -61,7 +61,7 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -79,11 +79,11 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
 
     protected processQuery(response: Response): Promise<QueryDefinedFilterModelPagedQueryResult> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryDefinedFilterModelPagedQueryResult.fromJS(resultData200);
             return result200;
             });
@@ -127,7 +127,7 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
             url_ += "path=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -143,11 +143,11 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
 
     protected processGet(response: Response): Promise<QueryDefinedFilterModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryDefinedFilterModel.fromJS(resultData200);
             return result200;
             });
@@ -177,7 +177,7 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -195,11 +195,11 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
 
     protected processSave(response: Response): Promise<QueryDefinedFilterModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryDefinedFilterModel.fromJS(resultData200);
             return result200;
             });

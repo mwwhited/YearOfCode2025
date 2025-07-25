@@ -61,7 +61,7 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -79,11 +79,11 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
 
     protected processQuery(response: Response): Promise<QueryIngredientModelPagedQueryResult> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryIngredientModelPagedQueryResult.fromJS(resultData200);
             return result200;
             });
@@ -122,7 +122,7 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
             url_ += "keyword=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -138,11 +138,11 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
 
     protected processGet(response: Response): Promise<QueryIngredientModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryIngredientModel.fromJS(resultData200);
             return result200;
             });
@@ -172,7 +172,7 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -190,11 +190,11 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
 
     protected processSave(response: Response): Promise<QueryIngredientModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryIngredientModel.fromJS(resultData200);
             return result200;
             });

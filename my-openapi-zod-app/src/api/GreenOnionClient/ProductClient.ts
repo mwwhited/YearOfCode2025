@@ -79,7 +79,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -97,11 +97,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processQuery(response: Response): Promise<QueryProductModelPagedQueryResult> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryProductModelPagedQueryResult.fromJS(resultData200);
             return result200;
             });
@@ -145,7 +145,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
             url_ += "upc=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -161,11 +161,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processGet(response: Response): Promise<QueryProductModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryProductModel.fromJS(resultData200);
             return result200;
             });
@@ -385,7 +385,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -403,11 +403,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processSave(response: Response): Promise<QueryProductModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = QueryProductModel.fromJS(resultData200);
             return result200;
             });
@@ -445,7 +445,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
             url_ += "download=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -461,11 +461,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected process{id}(response: Response): Promise<ContentReference> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ContentReference.fromJS(resultData200);
             return result200;
             });
@@ -493,7 +493,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -511,11 +511,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processCreateProduct(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -548,7 +548,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
             url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -564,11 +564,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processGetProductDataByID(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -598,7 +598,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -616,11 +616,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processCreateUpdateGtinAllocation(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -650,7 +650,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -668,11 +668,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processCreateUpdateUpcAllocation(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -705,7 +705,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -721,11 +721,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processGetProductAllGtin(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -757,7 +757,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -773,11 +773,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processGetProductAllUpc(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -821,7 +821,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -839,11 +839,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processCreateSelectProductUpload(response: Response): Promise<FileUploadResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = FileUploadResponse.fromJS(resultData200);
             return result200;
             });
@@ -873,7 +873,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -891,11 +891,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processSaveSelectProductUpload(response: Response): Promise<FileUploadResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = FileUploadResponse.fromJS(resultData200);
             return result200;
             });
@@ -924,7 +924,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -942,11 +942,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processUploadFileWithOCR(response: Response): Promise<BaseResponseModel> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = BaseResponseModel.fromJS(resultData200);
             return result200;
             });
@@ -975,7 +975,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
         const content_ = JSON.stringify(body);
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             body: content_,
             method: "POST",
             headers: {
@@ -993,11 +993,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processCreateProductBeforeApprove(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
@@ -1030,7 +1030,7 @@ export class ProductClient extends ClientBase implements IProductClient  {
             url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: RequestInit = {
+        const options_: RequestInit = {
             method: "GET",
             headers: {
                 "Accept": "text/plain"
@@ -1046,11 +1046,11 @@ export class ProductClient extends ClientBase implements IProductClient  {
 
     protected processGetProductBeforeApproveDataByID(response: Response): Promise<ProductResponse> {
         const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = ProductResponse.fromJS(resultData200);
             return result200;
             });
