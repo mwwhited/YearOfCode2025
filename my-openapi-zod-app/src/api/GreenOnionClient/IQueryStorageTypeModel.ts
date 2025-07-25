@@ -15,8 +15,8 @@ type integer = number;
 export interface IQueryStorageTypeModel {
     $schema: typeof ZQueryStorageTypeModel;
 
-    storageTypeId?: integer | undefined; 
-    storageTypeName?: string | undefined; 
+    storageTypeId?: integer | undefined;
+    storageTypeName?: string | undefined;
 
     toJSON(data?: any) : any;
 }

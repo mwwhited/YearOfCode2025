@@ -15,9 +15,9 @@ type integer = number;
 export interface IQueryErrorLogModel {
     $schema: typeof ZQueryErrorLogModel;
 
-    errorLogId?: integer | undefined; 
-    errorMessage?: string | undefined; 
-    errorPath?: string | undefined; 
+    errorLogId?: integer | undefined;
+    errorMessage?: string | undefined;
+    errorPath?: string | undefined;
 
     toJSON(data?: any) : any;
 }

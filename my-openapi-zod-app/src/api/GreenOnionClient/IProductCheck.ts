@@ -15,9 +15,9 @@ type integer = number;
 export interface IProductCheck {
     $schema: typeof ZProductCheck;
 
-    ischeck?: boolean | undefined; 
-    headerName?: string | undefined; 
-    headerValue?: string | undefined; 
+    ischeck?: boolean | undefined;
+    headerName?: string | undefined;
+    headerValue?: string | undefined;
 
     toJSON(data?: any) : any;
 }

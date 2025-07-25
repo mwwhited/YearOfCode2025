@@ -10,22 +10,22 @@
 import type { IQueryRoleModel } from "./IQueryRoleModel";
 import { ZQueryRoleModel } from "./ZQueryRoleModel";
 
-
 type integer = number;
 
 export class QueryRoleModel implements IQueryRoleModel {
     readonly $schema: typeof ZQueryRoleModel = ZQueryRoleModel;
-    roleId?: integer | undefined; 
-    roleName?: string | undefined; 
-    isActive?: boolean | undefined; 
-    userCount?: integer | undefined; 
-    activeUserCount?: integer | undefined; 
-    createdOn?: string | undefined; 
-    createdById?: integer | undefined; 
-    createdBy?: string | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
+    
+    roleId?: integer | undefined;
+    roleName?: string | undefined;
+    isActive?: boolean | undefined;
+    userCount?: integer | undefined;
+    activeUserCount?: integer | undefined;
+    createdOn?: string | undefined;
+    createdById?: integer | undefined;
+    createdBy?: string | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
 
     constructor(data?: IQueryRoleModel) {
         if (data) {
@@ -36,30 +36,31 @@ export class QueryRoleModel implements IQueryRoleModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryRoleModel>) {
         if (_data) {
-            (<any>this).roleId = _data["roleId:"];
-            (<any>this).roleName = _data["roleName:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).userCount = _data["userCount:"];
-            (<any>this).activeUserCount = _data["activeUserCount:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).roleId = _data["roleId"];
+            (<any>this).roleName = _data["roleName"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).userCount = _data["userCount"];
+            (<any>this).activeUserCount = _data["activeUserCount"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryRoleModel {
+    static fromJS(data: Partial<IQueryRoleModel>): IQueryRoleModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryRoleModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -78,5 +79,4 @@ export class QueryRoleModel implements IQueryRoleModel {
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

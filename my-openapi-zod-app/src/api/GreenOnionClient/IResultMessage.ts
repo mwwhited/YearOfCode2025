@@ -16,11 +16,11 @@ type integer = number;
 export interface IResultMessage {
     $schema: typeof ZResultMessage;
 
-    level?: any | undefined; 
-    message?: string | undefined; /* Simple English message about issue. */
-    messageCode?: string | undefined; /* unique code that may be used to assist in translating issue */
-    context?: string | undefined; /* Property or path related to this message */
-    metaData?: any | undefined; /* additional properties related to response */
+    level?: IMessageLevels | undefined;
+    message?: string | undefined;/*Simple English message about issue.*/
+    messageCode?: string | undefined;/*unique code that may be used to assist in translating issue*/
+    context?: string | undefined;/*Property or path related to this message*/
+    metaData?: unknown | undefined;/*additional properties related to response*/
 
     toJSON(data?: any) : any;
 }

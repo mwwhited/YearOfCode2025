@@ -9,7 +9,6 @@
 
 import type { IQueryMonthlyNumberModelSearchQuery } from "./IQueryMonthlyNumberModelSearchQuery";
 import { ZQueryMonthlyNumberModelSearchQuery } from "./ZQueryMonthlyNumberModelSearchQuery";
-
 import { QueryMonthlyNumberModelFilter } from "./QueryMonthlyNumberModelFilter";
 import type { IQueryMonthlyNumberModelFilter } from "./IQueryMonthlyNumberModelFilter";
 import { QueryMonthlyNumberModelOrderBy } from "./QueryMonthlyNumberModelOrderBy";
@@ -19,12 +18,13 @@ type integer = number;
 
 export class QueryMonthlyNumberModelSearchQuery implements IQueryMonthlyNumberModelSearchQuery {
     readonly $schema: typeof ZQueryMonthlyNumberModelSearchQuery = ZQueryMonthlyNumberModelSearchQuery;
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** SchoolDistrictId; MonthId; ActualMonthId; Year; Enrollment; NumberOfSites; NumberOfDistricts; MealsServed; FreeAndReducedPercent; IsActive; RegDate; CreatedBy; UpdatedBy */
-    filter?: IQueryMonthlyNumberModelFilter | undefined; 
-    orderBy?: IQueryMonthlyNumberModelOrderBy | undefined; 
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** SchoolDistrictId; MonthId; ActualMonthId; Year; Enrollment; NumberOfSites; NumberOfDistricts; MealsServed; FreeAndReducedPercent; IsActive; RegDate; CreatedBy; UpdatedBy*/
+    filter?: IQueryMonthlyNumberModelFilter | undefined;
+    orderBy?: IQueryMonthlyNumberModelOrderBy | undefined;
 
     constructor(data?: IQueryMonthlyNumberModelSearchQuery) {
         if (data) {
@@ -35,25 +35,26 @@ export class QueryMonthlyNumberModelSearchQuery implements IQueryMonthlyNumberMo
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryMonthlyNumberModelSearchQuery>) {
         if (_data) {
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).excludePageCount = _data["excludePageCount:"];
-            (<any>this).searchTerm = _data["searchTerm:"];
-            (<any>this).filter = _data["filter:"];
-            (<any>this).orderBy = _data["orderBy:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryMonthlyNumberModelSearchQuery {
+    static fromJS(data: Partial<IQueryMonthlyNumberModelSearchQuery>): IQueryMonthlyNumberModelSearchQuery {
         data = typeof data === 'object' ? data : {};
         const result = new QueryMonthlyNumberModelSearchQuery();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -67,5 +68,4 @@ export class QueryMonthlyNumberModelSearchQuery implements IQueryMonthlyNumberMo
         data["orderBy"] = this.orderBy;
         return data;
     }
-
 }

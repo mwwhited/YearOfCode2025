@@ -10,7 +10,6 @@
 import type { IMessageLevels } from "./IMessageLevels";
 import { ZMessageLevels } from "./ZMessageLevels";
 
-
 export const MessageLevels = Object.fromEntries(
   ZMessageLevels.options.map((k) => [k, k])
 ) as { [K in IMessageLevels]: K };

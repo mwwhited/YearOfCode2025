@@ -9,7 +9,6 @@
 
 import type { IUserResponseModel } from "./IUserResponseModel";
 import { ZUserResponseModel } from "./ZUserResponseModel";
-
 import { RoleMst } from "./RoleMst";
 import type { IRoleMst } from "./IRoleMst";
 
@@ -17,15 +16,16 @@ type integer = number;
 
 export class UserResponseModel implements IUserResponseModel {
     readonly $schema: typeof ZUserResponseModel = ZUserResponseModel;
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
-    isUpdate?: boolean | undefined; 
-    isAdded?: boolean | undefined; 
-    isDelete?: boolean | undefined; 
-    roleList?: IRoleMst[] | undefined; 
-    isEmailExists?: boolean | undefined; 
+    
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
+    isUpdate?: boolean | undefined;
+    isAdded?: boolean | undefined;
+    isDelete?: boolean | undefined;
+    roleList?: IRoleMst[] | undefined;
+    isEmailExists?: boolean | undefined;
 
     constructor(data?: IUserResponseModel) {
         if (data) {
@@ -36,32 +36,33 @@ export class UserResponseModel implements IUserResponseModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IUserResponseModel>) {
         if (_data) {
-            (<any>this).success = _data["success:"];
-            (<any>this).message = _data["message:"];
-            (<any>this).totalRecords = _data["totalRecords:"];
-            (<any>this).payload = _data["payload:"];
-            (<any>this).isUpdate = _data["isUpdate:"];
-            (<any>this).isAdded = _data["isAdded:"];
-            (<any>this).isDelete = _data["isDelete:"];
+            (<any>this).success = _data["success"];
+            (<any>this).message = _data["message"];
+            (<any>this).totalRecords = _data["totalRecords"];
+            (<any>this).payload = _data["payload"];
+            (<any>this).isUpdate = _data["isUpdate"];
+            (<any>this).isAdded = _data["isAdded"];
+            (<any>this).isDelete = _data["isDelete"];
             if (Array.isArray(_data["roleList"])) {
                 (<any>this).rows = [] as any;
                 for (let item of _data["roleList"])
                     (<any>this).roleList!.push(RoleMst.fromJS(item));
             }
-            (<any>this).isEmailExists = _data["isEmailExists:"];
+            (<any>this).isEmailExists = _data["isEmailExists"];
         }
     } 
     
-    static fromJS(data: any): IUserResponseModel {
+    static fromJS(data: Partial<IUserResponseModel>): IUserResponseModel {
         data = typeof data === 'object' ? data : {};
         const result = new UserResponseModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -82,5 +83,4 @@ export class UserResponseModel implements IUserResponseModel {
         data["isEmailExists"] = this.isEmailExists;
         return data;
     }
-
 }

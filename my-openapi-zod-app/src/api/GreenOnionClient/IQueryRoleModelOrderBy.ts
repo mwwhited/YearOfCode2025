@@ -16,17 +16,17 @@ type integer = number;
 export interface IQueryRoleModelOrderBy {
     $schema: typeof ZQueryRoleModelOrderBy;
 
-    roleId?: any | undefined; 
-    roleName?: any | undefined; 
-    isActive?: any | undefined; 
-    userCount?: any | undefined; 
-    activeUserCount?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    roleId?: IOrderDirections | undefined;
+    roleName?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    userCount?: IOrderDirections | undefined;
+    activeUserCount?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

@@ -15,14 +15,14 @@ type integer = number;
 export interface IRoleMst {
     $schema: typeof ZRoleMst;
 
-    roleId?: integer | undefined; 
-    roleName?: string | undefined; 
-    parentRoleId?: integer | undefined; 
-    isActive?: boolean | undefined; 
-    createdOn?: string | undefined; 
-    createdByUserId?: integer | undefined; 
-    updatedOn?: string | undefined; 
-    updatedByUserId?: integer | undefined; 
+    roleId?: integer | undefined;
+    roleName?: string | undefined;
+    parentRoleId?: integer | undefined;
+    isActive?: boolean | undefined;
+    createdOn?: string | undefined;
+    createdByUserId?: integer | undefined;
+    updatedOn?: string | undefined;
+    updatedByUserId?: integer | undefined;
 
     toJSON(data?: any) : any;
 }

@@ -9,7 +9,6 @@
 
 import type { IQueryCategoryModelPagedQueryResult } from "./IQueryCategoryModelPagedQueryResult";
 import { ZQueryCategoryModelPagedQueryResult } from "./ZQueryCategoryModelPagedQueryResult";
-
 import { QueryCategoryModel } from "./QueryCategoryModel";
 import type { IQueryCategoryModel } from "./IQueryCategoryModel";
 import { ResultMessage } from "./ResultMessage";
@@ -19,11 +18,12 @@ type integer = number;
 
 export class QueryCategoryModelPagedQueryResult implements IQueryCategoryModelPagedQueryResult {
     readonly $schema: typeof ZQueryCategoryModelPagedQueryResult = ZQueryCategoryModelPagedQueryResult;
-    rows?: IQueryCategoryModel[] | undefined; /* Gets the collection of items in the result. */
-    messages?: IResultMessage[] | undefined; /* Gets or sets the collection of result messages associated with the query result. */
-    currentPage?: integer | undefined; /* Gets the total number of pages. */
-    totalPageCount?: integer | undefined; /* Gets the total number of pages. */
-    totalRowCount?: integer | undefined; /* Gets the total number of rows. */
+    
+    rows?: IQueryCategoryModel[] | undefined;/*Gets the collection of items in the result.*/
+    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
+    currentPage?: integer | undefined;/*Gets the total number of pages.*/
+    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
+    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
 
     constructor(data?: IQueryCategoryModelPagedQueryResult) {
         if (data) {
@@ -34,7 +34,7 @@ export class QueryCategoryModelPagedQueryResult implements IQueryCategoryModelPa
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryCategoryModelPagedQueryResult>) {
         if (_data) {
             if (Array.isArray(_data["rows"])) {
                 (<any>this).rows = [] as any;
@@ -46,20 +46,21 @@ export class QueryCategoryModelPagedQueryResult implements IQueryCategoryModelPa
                 for (let item of _data["messages"])
                     (<any>this).messages!.push(ResultMessage.fromJS(item));
             }
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).totalPageCount = _data["totalPageCount:"];
-            (<any>this).totalRowCount = _data["totalRowCount:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).totalPageCount = _data["totalPageCount"];
+            (<any>this).totalRowCount = _data["totalRowCount"];
         }
     } 
     
-    static fromJS(data: any): IQueryCategoryModelPagedQueryResult {
+    static fromJS(data: Partial<IQueryCategoryModelPagedQueryResult>): IQueryCategoryModelPagedQueryResult {
         data = typeof data === 'object' ? data : {};
         const result = new QueryCategoryModelPagedQueryResult();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -80,5 +81,4 @@ export class QueryCategoryModelPagedQueryResult implements IQueryCategoryModelPa
         data["totalRowCount"] = this.totalRowCount;
         return data;
     }
-
 }

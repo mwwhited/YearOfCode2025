@@ -15,10 +15,10 @@ type integer = number;
 export interface IQueryIngredientModel {
     $schema: typeof ZQueryIngredientModel;
 
-    ingredientId?: integer | undefined; 
-    ingredientName?: string | undefined; 
-    group?: string | undefined; 
-    iocGroup?: string | undefined; 
+    ingredientId?: integer | undefined;
+    ingredientName?: string | undefined;
+    group?: string | undefined;
+    iocGroup?: string | undefined;
 
     toJSON(data?: any) : any;
 }

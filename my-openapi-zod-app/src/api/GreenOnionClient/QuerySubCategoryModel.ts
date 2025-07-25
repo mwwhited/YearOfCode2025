@@ -10,22 +10,22 @@
 import type { IQuerySubCategoryModel } from "./IQuerySubCategoryModel";
 import { ZQuerySubCategoryModel } from "./ZQuerySubCategoryModel";
 
-
 type integer = number;
 
 export class QuerySubCategoryModel implements IQuerySubCategoryModel {
     readonly $schema: typeof ZQuerySubCategoryModel = ZQuerySubCategoryModel;
-    subCategoryId?: integer | undefined; 
-    categoryId?: integer | undefined; 
-    subCategoryName?: string | undefined; 
-    subCategoryCode?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdOn?: string | undefined; 
-    createdById?: integer | undefined; 
-    createdBy?: string | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
+    
+    subCategoryId?: integer | undefined;
+    categoryId?: integer | undefined;
+    subCategoryName?: string | undefined;
+    subCategoryCode?: string | undefined;
+    isActive?: boolean | undefined;
+    createdOn?: string | undefined;
+    createdById?: integer | undefined;
+    createdBy?: string | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
 
     constructor(data?: IQuerySubCategoryModel) {
         if (data) {
@@ -36,30 +36,31 @@ export class QuerySubCategoryModel implements IQuerySubCategoryModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQuerySubCategoryModel>) {
         if (_data) {
-            (<any>this).subCategoryId = _data["subCategoryId:"];
-            (<any>this).categoryId = _data["categoryId:"];
-            (<any>this).subCategoryName = _data["subCategoryName:"];
-            (<any>this).subCategoryCode = _data["subCategoryCode:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).subCategoryId = _data["subCategoryId"];
+            (<any>this).categoryId = _data["categoryId"];
+            (<any>this).subCategoryName = _data["subCategoryName"];
+            (<any>this).subCategoryCode = _data["subCategoryCode"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQuerySubCategoryModel {
+    static fromJS(data: Partial<IQuerySubCategoryModel>): IQuerySubCategoryModel {
         data = typeof data === 'object' ? data : {};
         const result = new QuerySubCategoryModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -78,5 +79,4 @@ export class QuerySubCategoryModel implements IQuerySubCategoryModel {
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

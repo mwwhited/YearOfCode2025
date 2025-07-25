@@ -9,7 +9,6 @@
 
 import type { IQueryErrorLogModelPagedQueryResult } from "./IQueryErrorLogModelPagedQueryResult";
 import { ZQueryErrorLogModelPagedQueryResult } from "./ZQueryErrorLogModelPagedQueryResult";
-
 import { QueryErrorLogModel } from "./QueryErrorLogModel";
 import type { IQueryErrorLogModel } from "./IQueryErrorLogModel";
 import { ResultMessage } from "./ResultMessage";
@@ -19,11 +18,12 @@ type integer = number;
 
 export class QueryErrorLogModelPagedQueryResult implements IQueryErrorLogModelPagedQueryResult {
     readonly $schema: typeof ZQueryErrorLogModelPagedQueryResult = ZQueryErrorLogModelPagedQueryResult;
-    rows?: IQueryErrorLogModel[] | undefined; /* Gets the collection of items in the result. */
-    messages?: IResultMessage[] | undefined; /* Gets or sets the collection of result messages associated with the query result. */
-    currentPage?: integer | undefined; /* Gets the total number of pages. */
-    totalPageCount?: integer | undefined; /* Gets the total number of pages. */
-    totalRowCount?: integer | undefined; /* Gets the total number of rows. */
+    
+    rows?: IQueryErrorLogModel[] | undefined;/*Gets the collection of items in the result.*/
+    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
+    currentPage?: integer | undefined;/*Gets the total number of pages.*/
+    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
+    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
 
     constructor(data?: IQueryErrorLogModelPagedQueryResult) {
         if (data) {
@@ -34,7 +34,7 @@ export class QueryErrorLogModelPagedQueryResult implements IQueryErrorLogModelPa
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryErrorLogModelPagedQueryResult>) {
         if (_data) {
             if (Array.isArray(_data["rows"])) {
                 (<any>this).rows = [] as any;
@@ -46,20 +46,21 @@ export class QueryErrorLogModelPagedQueryResult implements IQueryErrorLogModelPa
                 for (let item of _data["messages"])
                     (<any>this).messages!.push(ResultMessage.fromJS(item));
             }
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).totalPageCount = _data["totalPageCount:"];
-            (<any>this).totalRowCount = _data["totalRowCount:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).totalPageCount = _data["totalPageCount"];
+            (<any>this).totalRowCount = _data["totalRowCount"];
         }
     } 
     
-    static fromJS(data: any): IQueryErrorLogModelPagedQueryResult {
+    static fromJS(data: Partial<IQueryErrorLogModelPagedQueryResult>): IQueryErrorLogModelPagedQueryResult {
         data = typeof data === 'object' ? data : {};
         const result = new QueryErrorLogModelPagedQueryResult();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -80,5 +81,4 @@ export class QueryErrorLogModelPagedQueryResult implements IQueryErrorLogModelPa
         data["totalRowCount"] = this.totalRowCount;
         return data;
     }
-
 }

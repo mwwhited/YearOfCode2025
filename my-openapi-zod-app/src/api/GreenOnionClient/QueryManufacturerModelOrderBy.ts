@@ -9,7 +9,6 @@
 
 import type { IQueryManufacturerModelOrderBy } from "./IQueryManufacturerModelOrderBy";
 import { ZQueryManufacturerModelOrderBy } from "./ZQueryManufacturerModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,23 +16,24 @@ type integer = number;
 
 export class QueryManufacturerModelOrderBy implements IQueryManufacturerModelOrderBy {
     readonly $schema: typeof ZQueryManufacturerModelOrderBy = ZQueryManufacturerModelOrderBy;
-    manufacturerId?: IOrderDirections | undefined; 
-    manufacturerName?: IOrderDirections | undefined; 
-    glnNumber?: IOrderDirections | undefined; 
-    isActive?: IOrderDirections | undefined; 
-    hasUsers?: IOrderDirections | undefined; 
-    userCount?: IOrderDirections | undefined; 
-    hasActiveUsers?: IOrderDirections | undefined; 
-    activeUserCount?: IOrderDirections | undefined; 
-    productCount?: IOrderDirections | undefined; 
-    hasOneWorldSync?: IOrderDirections | undefined; 
-    oneWorldSyncCount?: IOrderDirections | undefined; 
-    createdOn?: IOrderDirections | undefined; 
-    createdById?: IOrderDirections | undefined; 
-    createdBy?: IOrderDirections | undefined; 
-    updatedOn?: IOrderDirections | undefined; 
-    updatedById?: IOrderDirections | undefined; 
-    updatedBy?: IOrderDirections | undefined; 
+    
+    manufacturerId?: IOrderDirections | undefined;
+    manufacturerName?: IOrderDirections | undefined;
+    glnNumber?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    hasUsers?: IOrderDirections | undefined;
+    userCount?: IOrderDirections | undefined;
+    hasActiveUsers?: IOrderDirections | undefined;
+    activeUserCount?: IOrderDirections | undefined;
+    productCount?: IOrderDirections | undefined;
+    hasOneWorldSync?: IOrderDirections | undefined;
+    oneWorldSyncCount?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     constructor(data?: IQueryManufacturerModelOrderBy) {
         if (data) {
@@ -44,36 +44,37 @@ export class QueryManufacturerModelOrderBy implements IQueryManufacturerModelOrd
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryManufacturerModelOrderBy>) {
         if (_data) {
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).manufacturerName = _data["manufacturerName:"];
-            (<any>this).glnNumber = _data["glnNumber:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).hasUsers = _data["hasUsers:"];
-            (<any>this).userCount = _data["userCount:"];
-            (<any>this).hasActiveUsers = _data["hasActiveUsers:"];
-            (<any>this).activeUserCount = _data["activeUserCount:"];
-            (<any>this).productCount = _data["productCount:"];
-            (<any>this).hasOneWorldSync = _data["hasOneWorldSync:"];
-            (<any>this).oneWorldSyncCount = _data["oneWorldSyncCount:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).manufacturerName = _data["manufacturerName"];
+            (<any>this).glnNumber = _data["glnNumber"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).hasUsers = _data["hasUsers"];
+            (<any>this).userCount = _data["userCount"];
+            (<any>this).hasActiveUsers = _data["hasActiveUsers"];
+            (<any>this).activeUserCount = _data["activeUserCount"];
+            (<any>this).productCount = _data["productCount"];
+            (<any>this).hasOneWorldSync = _data["hasOneWorldSync"];
+            (<any>this).oneWorldSyncCount = _data["oneWorldSyncCount"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryManufacturerModelOrderBy {
+    static fromJS(data: Partial<IQueryManufacturerModelOrderBy>): IQueryManufacturerModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryManufacturerModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -98,5 +99,4 @@ export class QueryManufacturerModelOrderBy implements IQueryManufacturerModelOrd
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

@@ -15,8 +15,8 @@ type integer = number;
 export interface ISaveStorageTypeModel {
     $schema: typeof ZSaveStorageTypeModel;
 
-    storageTypeId?: integer | undefined; 
-    storageTypeName?: string | undefined; 
+    storageTypeId?: integer | undefined;
+    storageTypeName?: string | undefined;
 
     toJSON(data?: any) : any;
 }

@@ -10,16 +10,16 @@
 import type { ISaveDefinedFilterModel } from "./ISaveDefinedFilterModel";
 import { ZSaveDefinedFilterModel } from "./ZSaveDefinedFilterModel";
 
-
 type integer = number;
 
 export class SaveDefinedFilterModel implements ISaveDefinedFilterModel {
     readonly $schema: typeof ZSaveDefinedFilterModel = ZSaveDefinedFilterModel;
-    definedFilterId?: integer | undefined; 
-    path?: string | undefined; 
-    name?: string | undefined; 
-    isActive?: boolean | undefined; 
-    state?: string | undefined; 
+    
+    definedFilterId?: integer | undefined;
+    path?: string | undefined;
+    name?: string | undefined;
+    isActive?: boolean | undefined;
+    state?: string | undefined;
 
     constructor(data?: ISaveDefinedFilterModel) {
         if (data) {
@@ -30,24 +30,25 @@ export class SaveDefinedFilterModel implements ISaveDefinedFilterModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveDefinedFilterModel>) {
         if (_data) {
-            (<any>this).definedFilterId = _data["definedFilterId:"];
-            (<any>this).path = _data["path:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).state = _data["state:"];
+            (<any>this).definedFilterId = _data["definedFilterId"];
+            (<any>this).path = _data["path"];
+            (<any>this).name = _data["name"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).state = _data["state"];
         }
     } 
     
-    static fromJS(data: any): ISaveDefinedFilterModel {
+    static fromJS(data: Partial<ISaveDefinedFilterModel>): ISaveDefinedFilterModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveDefinedFilterModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -60,5 +61,4 @@ export class SaveDefinedFilterModel implements ISaveDefinedFilterModel {
         data["state"] = this.state;
         return data;
     }
-
 }

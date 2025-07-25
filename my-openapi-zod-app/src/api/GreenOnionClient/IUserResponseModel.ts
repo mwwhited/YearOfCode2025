@@ -16,15 +16,15 @@ type integer = number;
 export interface IUserResponseModel {
     $schema: typeof ZUserResponseModel;
 
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
-    isUpdate?: boolean | undefined; 
-    isAdded?: boolean | undefined; 
-    isDelete?: boolean | undefined; 
-    roleList?: IRoleMst[] | undefined; 
-    isEmailExists?: boolean | undefined; 
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
+    isUpdate?: boolean | undefined;
+    isAdded?: boolean | undefined;
+    isDelete?: boolean | undefined;
+    roleList?: IRoleMst[] | undefined;
+    isEmailExists?: boolean | undefined;
 
     toJSON(data?: any) : any;
 }

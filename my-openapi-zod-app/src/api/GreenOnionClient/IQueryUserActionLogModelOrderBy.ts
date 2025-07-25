@@ -16,16 +16,16 @@ type integer = number;
 export interface IQueryUserActionLogModelOrderBy {
     $schema: typeof ZQueryUserActionLogModelOrderBy;
 
-    userActionLogId?: any | undefined; 
-    eventType?: any | undefined; 
-    httpMethod?: any | undefined; 
-    eventDate?: any | undefined; 
-    sessionId?: any | undefined; 
-    requestId?: any | undefined; 
-    correlationId?: any | undefined; 
-    requestPath?: any | undefined; 
-    userId?: any | undefined; 
-    user?: any | undefined; 
+    userActionLogId?: IOrderDirections | undefined;
+    eventType?: IOrderDirections | undefined;
+    httpMethod?: IOrderDirections | undefined;
+    eventDate?: IOrderDirections | undefined;
+    sessionId?: IOrderDirections | undefined;
+    requestId?: IOrderDirections | undefined;
+    correlationId?: IOrderDirections | undefined;
+    requestPath?: IOrderDirections | undefined;
+    userId?: IOrderDirections | undefined;
+    user?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

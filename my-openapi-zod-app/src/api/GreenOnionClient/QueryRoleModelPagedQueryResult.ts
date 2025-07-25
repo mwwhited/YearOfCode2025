@@ -9,7 +9,6 @@
 
 import type { IQueryRoleModelPagedQueryResult } from "./IQueryRoleModelPagedQueryResult";
 import { ZQueryRoleModelPagedQueryResult } from "./ZQueryRoleModelPagedQueryResult";
-
 import { QueryRoleModel } from "./QueryRoleModel";
 import type { IQueryRoleModel } from "./IQueryRoleModel";
 import { ResultMessage } from "./ResultMessage";
@@ -19,11 +18,12 @@ type integer = number;
 
 export class QueryRoleModelPagedQueryResult implements IQueryRoleModelPagedQueryResult {
     readonly $schema: typeof ZQueryRoleModelPagedQueryResult = ZQueryRoleModelPagedQueryResult;
-    rows?: IQueryRoleModel[] | undefined; /* Gets the collection of items in the result. */
-    messages?: IResultMessage[] | undefined; /* Gets or sets the collection of result messages associated with the query result. */
-    currentPage?: integer | undefined; /* Gets the total number of pages. */
-    totalPageCount?: integer | undefined; /* Gets the total number of pages. */
-    totalRowCount?: integer | undefined; /* Gets the total number of rows. */
+    
+    rows?: IQueryRoleModel[] | undefined;/*Gets the collection of items in the result.*/
+    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
+    currentPage?: integer | undefined;/*Gets the total number of pages.*/
+    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
+    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
 
     constructor(data?: IQueryRoleModelPagedQueryResult) {
         if (data) {
@@ -34,7 +34,7 @@ export class QueryRoleModelPagedQueryResult implements IQueryRoleModelPagedQuery
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryRoleModelPagedQueryResult>) {
         if (_data) {
             if (Array.isArray(_data["rows"])) {
                 (<any>this).rows = [] as any;
@@ -46,20 +46,21 @@ export class QueryRoleModelPagedQueryResult implements IQueryRoleModelPagedQuery
                 for (let item of _data["messages"])
                     (<any>this).messages!.push(ResultMessage.fromJS(item));
             }
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).totalPageCount = _data["totalPageCount:"];
-            (<any>this).totalRowCount = _data["totalRowCount:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).totalPageCount = _data["totalPageCount"];
+            (<any>this).totalRowCount = _data["totalRowCount"];
         }
     } 
     
-    static fromJS(data: any): IQueryRoleModelPagedQueryResult {
+    static fromJS(data: Partial<IQueryRoleModelPagedQueryResult>): IQueryRoleModelPagedQueryResult {
         data = typeof data === 'object' ? data : {};
         const result = new QueryRoleModelPagedQueryResult();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -80,5 +81,4 @@ export class QueryRoleModelPagedQueryResult implements IQueryRoleModelPagedQuery
         data["totalRowCount"] = this.totalRowCount;
         return data;
     }
-
 }

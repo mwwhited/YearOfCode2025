@@ -16,24 +16,24 @@ type integer = number;
 export interface IQueryMonthlyNumberModelOrderBy {
     $schema: typeof ZQueryMonthlyNumberModelOrderBy;
 
-    id?: any | undefined; 
-    schoolDistrictId?: any | undefined; 
-    monthId?: any | undefined; 
-    actualMonthId?: any | undefined; 
-    year?: any | undefined; 
-    enrollment?: any | undefined; 
-    numberOfSites?: any | undefined; 
-    numberOfDistricts?: any | undefined; 
-    mealsServed?: any | undefined; 
-    freeAndReducedPercent?: any | undefined; 
-    isActive?: any | undefined; 
-    regDate?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    id?: IOrderDirections | undefined;
+    schoolDistrictId?: IOrderDirections | undefined;
+    monthId?: IOrderDirections | undefined;
+    actualMonthId?: IOrderDirections | undefined;
+    year?: IOrderDirections | undefined;
+    enrollment?: IOrderDirections | undefined;
+    numberOfSites?: IOrderDirections | undefined;
+    numberOfDistricts?: IOrderDirections | undefined;
+    mealsServed?: IOrderDirections | undefined;
+    freeAndReducedPercent?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    regDate?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

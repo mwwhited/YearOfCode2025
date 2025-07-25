@@ -15,10 +15,10 @@ type integer = number;
 export interface ISaveManufacturerModel {
     $schema: typeof ZSaveManufacturerModel;
 
-    manufacturerId?: integer | undefined; 
-    manufacturerName?: string | undefined; 
-    glnNumber?: string | undefined; 
-    isActive?: boolean | undefined; 
+    manufacturerId?: integer | undefined;
+    manufacturerName?: string | undefined;
+    glnNumber?: string | undefined;
+    isActive?: boolean | undefined;
 
     toJSON(data?: any) : any;
 }

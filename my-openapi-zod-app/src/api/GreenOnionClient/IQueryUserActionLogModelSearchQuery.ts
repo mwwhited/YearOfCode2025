@@ -17,12 +17,12 @@ type integer = number;
 export interface IQueryUserActionLogModelSearchQuery {
     $schema: typeof ZQueryUserActionLogModelSearchQuery;
 
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; User */
-    filter?: any | undefined; 
-    orderBy?: any | undefined; 
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; User*/
+    filter?: IQueryUserActionLogModelFilter | undefined;
+    orderBy?: IQueryUserActionLogModelOrderBy | undefined;
 
     toJSON(data?: any) : any;
 }

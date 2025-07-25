@@ -9,7 +9,6 @@
 
 import type { IQueryIocCategoryModelFilter } from "./IQueryIocCategoryModelFilter";
 import { ZQueryIocCategoryModelFilter } from "./ZQueryIocCategoryModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,9 +16,10 @@ type integer = number;
 
 export class QueryIocCategoryModelFilter implements IQueryIocCategoryModelFilter {
     readonly $schema: typeof ZQueryIocCategoryModelFilter = ZQueryIocCategoryModelFilter;
-    iocCategoryId?: IFilterParameter | undefined; 
-    name?: IFilterParameter | undefined; 
-    color?: IFilterParameter | undefined; 
+    
+    iocCategoryId?: IFilterParameter | undefined;
+    name?: IFilterParameter | undefined;
+    color?: IFilterParameter | undefined;
 
     constructor(data?: IQueryIocCategoryModelFilter) {
         if (data) {
@@ -30,22 +30,23 @@ export class QueryIocCategoryModelFilter implements IQueryIocCategoryModelFilter
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryIocCategoryModelFilter>) {
         if (_data) {
-            (<any>this).iocCategoryId = _data["iocCategoryId:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).color = _data["color:"];
+            (<any>this).iocCategoryId = _data["iocCategoryId"];
+            (<any>this).name = _data["name"];
+            (<any>this).color = _data["color"];
         }
     } 
     
-    static fromJS(data: any): IQueryIocCategoryModelFilter {
+    static fromJS(data: Partial<IQueryIocCategoryModelFilter>): IQueryIocCategoryModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryIocCategoryModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -56,5 +57,4 @@ export class QueryIocCategoryModelFilter implements IQueryIocCategoryModelFilter
         data["color"] = this.color;
         return data;
     }
-
 }

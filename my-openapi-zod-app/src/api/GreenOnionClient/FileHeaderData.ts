@@ -10,14 +10,14 @@
 import type { IFileHeaderData } from "./IFileHeaderData";
 import { ZFileHeaderData } from "./ZFileHeaderData";
 
-
 type integer = number;
 
 export class FileHeaderData implements IFileHeaderData {
     readonly $schema: typeof ZFileHeaderData = ZFileHeaderData;
-    headerDataId?: integer | undefined; 
-    headerDataName?: string | undefined; 
-    headerDataValue?: string | undefined; 
+    
+    headerDataId?: integer | undefined;
+    headerDataName?: string | undefined;
+    headerDataValue?: string | undefined;
 
     constructor(data?: IFileHeaderData) {
         if (data) {
@@ -28,22 +28,23 @@ export class FileHeaderData implements IFileHeaderData {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IFileHeaderData>) {
         if (_data) {
-            (<any>this).headerDataId = _data["headerDataId:"];
-            (<any>this).headerDataName = _data["headerDataName:"];
-            (<any>this).headerDataValue = _data["headerDataValue:"];
+            (<any>this).headerDataId = _data["headerDataId"];
+            (<any>this).headerDataName = _data["headerDataName"];
+            (<any>this).headerDataValue = _data["headerDataValue"];
         }
     } 
     
-    static fromJS(data: any): IFileHeaderData {
+    static fromJS(data: Partial<IFileHeaderData>): IFileHeaderData {
         data = typeof data === 'object' ? data : {};
         const result = new FileHeaderData();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -54,5 +55,4 @@ export class FileHeaderData implements IFileHeaderData {
         data["headerDataValue"] = this.headerDataValue;
         return data;
     }
-
 }

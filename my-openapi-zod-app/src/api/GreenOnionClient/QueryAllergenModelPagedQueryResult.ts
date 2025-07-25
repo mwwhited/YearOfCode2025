@@ -9,7 +9,6 @@
 
 import type { IQueryAllergenModelPagedQueryResult } from "./IQueryAllergenModelPagedQueryResult";
 import { ZQueryAllergenModelPagedQueryResult } from "./ZQueryAllergenModelPagedQueryResult";
-
 import { QueryAllergenModel } from "./QueryAllergenModel";
 import type { IQueryAllergenModel } from "./IQueryAllergenModel";
 import { ResultMessage } from "./ResultMessage";
@@ -19,11 +18,12 @@ type integer = number;
 
 export class QueryAllergenModelPagedQueryResult implements IQueryAllergenModelPagedQueryResult {
     readonly $schema: typeof ZQueryAllergenModelPagedQueryResult = ZQueryAllergenModelPagedQueryResult;
-    rows?: IQueryAllergenModel[] | undefined; /* Gets the collection of items in the result. */
-    messages?: IResultMessage[] | undefined; /* Gets or sets the collection of result messages associated with the query result. */
-    currentPage?: integer | undefined; /* Gets the total number of pages. */
-    totalPageCount?: integer | undefined; /* Gets the total number of pages. */
-    totalRowCount?: integer | undefined; /* Gets the total number of rows. */
+    
+    rows?: IQueryAllergenModel[] | undefined;/*Gets the collection of items in the result.*/
+    messages?: IResultMessage[] | undefined;/*Gets or sets the collection of result messages associated with the query result.*/
+    currentPage?: integer | undefined;/*Gets the total number of pages.*/
+    totalPageCount?: integer | undefined;/*Gets the total number of pages.*/
+    totalRowCount?: integer | undefined;/*Gets the total number of rows.*/
 
     constructor(data?: IQueryAllergenModelPagedQueryResult) {
         if (data) {
@@ -34,7 +34,7 @@ export class QueryAllergenModelPagedQueryResult implements IQueryAllergenModelPa
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryAllergenModelPagedQueryResult>) {
         if (_data) {
             if (Array.isArray(_data["rows"])) {
                 (<any>this).rows = [] as any;
@@ -46,20 +46,21 @@ export class QueryAllergenModelPagedQueryResult implements IQueryAllergenModelPa
                 for (let item of _data["messages"])
                     (<any>this).messages!.push(ResultMessage.fromJS(item));
             }
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).totalPageCount = _data["totalPageCount:"];
-            (<any>this).totalRowCount = _data["totalRowCount:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).totalPageCount = _data["totalPageCount"];
+            (<any>this).totalRowCount = _data["totalRowCount"];
         }
     } 
     
-    static fromJS(data: any): IQueryAllergenModelPagedQueryResult {
+    static fromJS(data: Partial<IQueryAllergenModelPagedQueryResult>): IQueryAllergenModelPagedQueryResult {
         data = typeof data === 'object' ? data : {};
         const result = new QueryAllergenModelPagedQueryResult();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -80,5 +81,4 @@ export class QueryAllergenModelPagedQueryResult implements IQueryAllergenModelPa
         data["totalRowCount"] = this.totalRowCount;
         return data;
     }
-
 }

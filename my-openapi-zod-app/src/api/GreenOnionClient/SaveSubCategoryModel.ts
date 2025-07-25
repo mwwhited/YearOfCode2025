@@ -10,16 +10,16 @@
 import type { ISaveSubCategoryModel } from "./ISaveSubCategoryModel";
 import { ZSaveSubCategoryModel } from "./ZSaveSubCategoryModel";
 
-
 type integer = number;
 
 export class SaveSubCategoryModel implements ISaveSubCategoryModel {
     readonly $schema: typeof ZSaveSubCategoryModel = ZSaveSubCategoryModel;
-    subCategoryId?: integer | undefined; 
-    categoryId?: integer | undefined; 
-    subCategoryName?: string | undefined; 
-    subCategoryCode?: string | undefined; 
-    isActive?: boolean | undefined; 
+    
+    subCategoryId?: integer | undefined;
+    categoryId?: integer | undefined;
+    subCategoryName?: string | undefined;
+    subCategoryCode?: string | undefined;
+    isActive?: boolean | undefined;
 
     constructor(data?: ISaveSubCategoryModel) {
         if (data) {
@@ -30,24 +30,25 @@ export class SaveSubCategoryModel implements ISaveSubCategoryModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveSubCategoryModel>) {
         if (_data) {
-            (<any>this).subCategoryId = _data["subCategoryId:"];
-            (<any>this).categoryId = _data["categoryId:"];
-            (<any>this).subCategoryName = _data["subCategoryName:"];
-            (<any>this).subCategoryCode = _data["subCategoryCode:"];
-            (<any>this).isActive = _data["isActive:"];
+            (<any>this).subCategoryId = _data["subCategoryId"];
+            (<any>this).categoryId = _data["categoryId"];
+            (<any>this).subCategoryName = _data["subCategoryName"];
+            (<any>this).subCategoryCode = _data["subCategoryCode"];
+            (<any>this).isActive = _data["isActive"];
         }
     } 
     
-    static fromJS(data: any): ISaveSubCategoryModel {
+    static fromJS(data: Partial<ISaveSubCategoryModel>): ISaveSubCategoryModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveSubCategoryModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -60,5 +61,4 @@ export class SaveSubCategoryModel implements ISaveSubCategoryModel {
         data["isActive"] = this.isActive;
         return data;
     }
-
 }

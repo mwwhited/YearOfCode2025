@@ -16,17 +16,17 @@ type integer = number;
 export interface IQueryDefinedFilterModelOrderBy {
     $schema: typeof ZQueryDefinedFilterModelOrderBy;
 
-    definedFilterId?: any | undefined; 
-    createById?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
-    createBy?: any | undefined; 
-    path?: any | undefined; 
-    name?: any | undefined; 
-    isActive?: any | undefined; 
-    createdOn?: any | undefined; 
-    state?: any | undefined; 
+    definedFilterId?: IOrderDirections | undefined;
+    createById?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
+    createBy?: IOrderDirections | undefined;
+    path?: IOrderDirections | undefined;
+    name?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    state?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

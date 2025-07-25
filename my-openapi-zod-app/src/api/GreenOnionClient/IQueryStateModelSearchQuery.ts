@@ -17,12 +17,12 @@ type integer = number;
 export interface IQueryStateModelSearchQuery {
     $schema: typeof ZQueryStateModelSearchQuery;
 
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** StateName */
-    filter?: any | undefined; 
-    orderBy?: any | undefined; 
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** StateName*/
+    filter?: IQueryStateModelFilter | undefined;
+    orderBy?: IQueryStateModelOrderBy | undefined;
 
     toJSON(data?: any) : any;
 }

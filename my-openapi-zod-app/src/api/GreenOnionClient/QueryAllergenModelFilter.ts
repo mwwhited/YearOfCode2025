@@ -9,7 +9,6 @@
 
 import type { IQueryAllergenModelFilter } from "./IQueryAllergenModelFilter";
 import { ZQueryAllergenModelFilter } from "./ZQueryAllergenModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,9 +16,10 @@ type integer = number;
 
 export class QueryAllergenModelFilter implements IQueryAllergenModelFilter {
     readonly $schema: typeof ZQueryAllergenModelFilter = ZQueryAllergenModelFilter;
-    allergenId?: IFilterParameter | undefined; 
-    allergenName?: IFilterParameter | undefined; 
-    allergenGroup?: IFilterParameter | undefined; 
+    
+    allergenId?: IFilterParameter | undefined;
+    allergenName?: IFilterParameter | undefined;
+    allergenGroup?: IFilterParameter | undefined;
 
     constructor(data?: IQueryAllergenModelFilter) {
         if (data) {
@@ -30,22 +30,23 @@ export class QueryAllergenModelFilter implements IQueryAllergenModelFilter {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryAllergenModelFilter>) {
         if (_data) {
-            (<any>this).allergenId = _data["allergenId:"];
-            (<any>this).allergenName = _data["allergenName:"];
-            (<any>this).allergenGroup = _data["allergenGroup:"];
+            (<any>this).allergenId = _data["allergenId"];
+            (<any>this).allergenName = _data["allergenName"];
+            (<any>this).allergenGroup = _data["allergenGroup"];
         }
     } 
     
-    static fromJS(data: any): IQueryAllergenModelFilter {
+    static fromJS(data: Partial<IQueryAllergenModelFilter>): IQueryAllergenModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryAllergenModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -56,5 +57,4 @@ export class QueryAllergenModelFilter implements IQueryAllergenModelFilter {
         data["allergenGroup"] = this.allergenGroup;
         return data;
     }
-
 }

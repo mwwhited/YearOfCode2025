@@ -9,7 +9,6 @@
 
 import type { ISaveOneWorldSyncProductModel } from "./ISaveOneWorldSyncProductModel";
 import { ZSaveOneWorldSyncProductModel } from "./ZSaveOneWorldSyncProductModel";
-
 import { NutritionalInformationModel } from "./NutritionalInformationModel";
 import type { INutritionalInformationModel } from "./INutritionalInformationModel";
 
@@ -17,23 +16,24 @@ type integer = number;
 
 export class SaveOneWorldSyncProductModel implements ISaveOneWorldSyncProductModel {
     readonly $schema: typeof ZSaveOneWorldSyncProductModel = ZSaveOneWorldSyncProductModel;
-    productId?: integer | undefined; 
-    productName?: string | undefined; 
-    gtin?: string | undefined; 
-    upc?: string | undefined; 
-    brandName?: string | undefined; 
-    ingredients?: string | undefined; 
-    productDescription?: string | undefined; 
-    vendor?: string | undefined; 
-    manufacturerId?: integer | undefined; 
-    storageTypeId?: integer | undefined; 
-    categoryName?: string | undefined; 
-    subCategory1Name?: string | undefined; 
-    subCategory2Name?: string | undefined; 
-    allergenKeyword?: string | undefined; 
-    isActive?: boolean | undefined; 
-    dataForm?: string | undefined; 
-    nutritionalInformation?: INutritionalInformationModel | undefined; 
+    
+    productId?: integer | undefined;
+    productName?: string | undefined;
+    gtin?: string | undefined;
+    upc?: string | undefined;
+    brandName?: string | undefined;
+    ingredients?: string | undefined;
+    productDescription?: string | undefined;
+    vendor?: string | undefined;
+    manufacturerId?: integer | undefined;
+    storageTypeId?: integer | undefined;
+    categoryName?: string | undefined;
+    subCategory1Name?: string | undefined;
+    subCategory2Name?: string | undefined;
+    allergenKeyword?: string | undefined;
+    isActive?: boolean | undefined;
+    dataForm?: string | undefined;
+    nutritionalInformation?: INutritionalInformationModel | undefined;
 
     constructor(data?: ISaveOneWorldSyncProductModel) {
         if (data) {
@@ -44,36 +44,37 @@ export class SaveOneWorldSyncProductModel implements ISaveOneWorldSyncProductMod
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveOneWorldSyncProductModel>) {
         if (_data) {
-            (<any>this).productId = _data["productId:"];
-            (<any>this).productName = _data["productName:"];
-            (<any>this).gtin = _data["gtin:"];
-            (<any>this).upc = _data["upc:"];
-            (<any>this).brandName = _data["brandName:"];
-            (<any>this).ingredients = _data["ingredients:"];
-            (<any>this).productDescription = _data["productDescription:"];
-            (<any>this).vendor = _data["vendor:"];
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).storageTypeId = _data["storageTypeId:"];
-            (<any>this).categoryName = _data["categoryName:"];
-            (<any>this).subCategory1Name = _data["subCategory1Name:"];
-            (<any>this).subCategory2Name = _data["subCategory2Name:"];
-            (<any>this).allergenKeyword = _data["allergenKeyword:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).dataForm = _data["dataForm:"];
-            (<any>this).nutritionalInformation = _data["nutritionalInformation:"];
+            (<any>this).productId = _data["productId"];
+            (<any>this).productName = _data["productName"];
+            (<any>this).gtin = _data["gtin"];
+            (<any>this).upc = _data["upc"];
+            (<any>this).brandName = _data["brandName"];
+            (<any>this).ingredients = _data["ingredients"];
+            (<any>this).productDescription = _data["productDescription"];
+            (<any>this).vendor = _data["vendor"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).storageTypeId = _data["storageTypeId"];
+            (<any>this).categoryName = _data["categoryName"];
+            (<any>this).subCategory1Name = _data["subCategory1Name"];
+            (<any>this).subCategory2Name = _data["subCategory2Name"];
+            (<any>this).allergenKeyword = _data["allergenKeyword"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).dataForm = _data["dataForm"];
+            (<any>this).nutritionalInformation = _data["nutritionalInformation"];
         }
     } 
     
-    static fromJS(data: any): ISaveOneWorldSyncProductModel {
+    static fromJS(data: Partial<ISaveOneWorldSyncProductModel>): ISaveOneWorldSyncProductModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveOneWorldSyncProductModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -98,5 +99,4 @@ export class SaveOneWorldSyncProductModel implements ISaveOneWorldSyncProductMod
         data["nutritionalInformation"] = this.nutritionalInformation;
         return data;
     }
-
 }

@@ -15,16 +15,16 @@ type integer = number;
 export interface IQueryCategoryModel {
     $schema: typeof ZQueryCategoryModel;
 
-    categoryId?: integer | undefined; 
-    categoryName?: string | undefined; 
-    categoryCode?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdOn?: string | undefined; 
-    createdById?: integer | undefined; 
-    createdBy?: string | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
+    categoryId?: integer | undefined;
+    categoryName?: string | undefined;
+    categoryCode?: string | undefined;
+    isActive?: boolean | undefined;
+    createdOn?: string | undefined;
+    createdById?: integer | undefined;
+    createdBy?: string | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
 
     toJSON(data?: any) : any;
 }

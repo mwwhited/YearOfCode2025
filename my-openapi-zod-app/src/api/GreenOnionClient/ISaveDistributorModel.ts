@@ -15,10 +15,10 @@ type integer = number;
 export interface ISaveDistributorModel {
     $schema: typeof ZSaveDistributorModel;
 
-    distributorId?: integer | undefined; 
-    distributorName?: string | undefined; 
-    distributorCode?: string | undefined; 
-    isActive?: boolean | undefined; 
+    distributorId?: integer | undefined;
+    distributorName?: string | undefined;
+    distributorCode?: string | undefined;
+    isActive?: boolean | undefined;
 
     toJSON(data?: any) : any;
 }

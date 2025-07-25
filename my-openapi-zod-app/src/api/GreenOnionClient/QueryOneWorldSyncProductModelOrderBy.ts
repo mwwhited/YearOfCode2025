@@ -9,7 +9,6 @@
 
 import type { IQueryOneWorldSyncProductModelOrderBy } from "./IQueryOneWorldSyncProductModelOrderBy";
 import { ZQueryOneWorldSyncProductModelOrderBy } from "./ZQueryOneWorldSyncProductModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,38 +16,39 @@ type integer = number;
 
 export class QueryOneWorldSyncProductModelOrderBy implements IQueryOneWorldSyncProductModelOrderBy {
     readonly $schema: typeof ZQueryOneWorldSyncProductModelOrderBy = ZQueryOneWorldSyncProductModelOrderBy;
-    productId?: IOrderDirections | undefined; 
-    name?: IOrderDirections | undefined; 
-    description?: IOrderDirections | undefined; 
-    gtin?: IOrderDirections | undefined; 
-    upc?: IOrderDirections | undefined; 
-    isActive?: IOrderDirections | undefined; 
-    manufacturerId?: IOrderDirections | undefined; 
-    manufacturerName?: IOrderDirections | undefined; 
-    iocCategoryId?: IOrderDirections | undefined; 
-    iocCategory?: IOrderDirections | undefined; 
-    categoryId?: IOrderDirections | undefined; 
-    category?: IOrderDirections | undefined; 
-    subCategoryId?: IOrderDirections | undefined; 
-    subCategory?: IOrderDirections | undefined; 
-    storageTypeId?: IOrderDirections | undefined; 
-    storageTypeName?: IOrderDirections | undefined; 
-    ingredients?: IOrderDirections | undefined; 
-    isAllocated?: IOrderDirections | undefined; 
-    hasAllergens?: IOrderDirections | undefined; 
-    hasOneWorldSyncProduct?: IOrderDirections | undefined; 
-    oneWorldSyncProductId?: IOrderDirections | undefined; 
-    hasProduct?: IOrderDirections | undefined; 
-    hasSuggestedProducts?: IOrderDirections | undefined; 
-    hasApprovedSuggestedProducts?: IOrderDirections | undefined; 
-    isSuggestedProduct?: IOrderDirections | undefined; 
-    isApprovedSuggestedProduct?: IOrderDirections | undefined; 
-    createdOn?: IOrderDirections | undefined; 
-    createdById?: IOrderDirections | undefined; 
-    createdBy?: IOrderDirections | undefined; 
-    updatedOn?: IOrderDirections | undefined; 
-    updatedById?: IOrderDirections | undefined; 
-    updatedBy?: IOrderDirections | undefined; 
+    
+    productId?: IOrderDirections | undefined;
+    name?: IOrderDirections | undefined;
+    description?: IOrderDirections | undefined;
+    gtin?: IOrderDirections | undefined;
+    upc?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    manufacturerId?: IOrderDirections | undefined;
+    manufacturerName?: IOrderDirections | undefined;
+    iocCategoryId?: IOrderDirections | undefined;
+    iocCategory?: IOrderDirections | undefined;
+    categoryId?: IOrderDirections | undefined;
+    category?: IOrderDirections | undefined;
+    subCategoryId?: IOrderDirections | undefined;
+    subCategory?: IOrderDirections | undefined;
+    storageTypeId?: IOrderDirections | undefined;
+    storageTypeName?: IOrderDirections | undefined;
+    ingredients?: IOrderDirections | undefined;
+    isAllocated?: IOrderDirections | undefined;
+    hasAllergens?: IOrderDirections | undefined;
+    hasOneWorldSyncProduct?: IOrderDirections | undefined;
+    oneWorldSyncProductId?: IOrderDirections | undefined;
+    hasProduct?: IOrderDirections | undefined;
+    hasSuggestedProducts?: IOrderDirections | undefined;
+    hasApprovedSuggestedProducts?: IOrderDirections | undefined;
+    isSuggestedProduct?: IOrderDirections | undefined;
+    isApprovedSuggestedProduct?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     constructor(data?: IQueryOneWorldSyncProductModelOrderBy) {
         if (data) {
@@ -59,51 +59,52 @@ export class QueryOneWorldSyncProductModelOrderBy implements IQueryOneWorldSyncP
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryOneWorldSyncProductModelOrderBy>) {
         if (_data) {
-            (<any>this).productId = _data["productId:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).description = _data["description:"];
-            (<any>this).gtin = _data["gtin:"];
-            (<any>this).upc = _data["upc:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).manufacturerName = _data["manufacturerName:"];
-            (<any>this).iocCategoryId = _data["iocCategoryId:"];
-            (<any>this).iocCategory = _data["iocCategory:"];
-            (<any>this).categoryId = _data["categoryId:"];
-            (<any>this).category = _data["category:"];
-            (<any>this).subCategoryId = _data["subCategoryId:"];
-            (<any>this).subCategory = _data["subCategory:"];
-            (<any>this).storageTypeId = _data["storageTypeId:"];
-            (<any>this).storageTypeName = _data["storageTypeName:"];
-            (<any>this).ingredients = _data["ingredients:"];
-            (<any>this).isAllocated = _data["isAllocated:"];
-            (<any>this).hasAllergens = _data["hasAllergens:"];
-            (<any>this).hasOneWorldSyncProduct = _data["hasOneWorldSyncProduct:"];
-            (<any>this).oneWorldSyncProductId = _data["oneWorldSyncProductId:"];
-            (<any>this).hasProduct = _data["hasProduct:"];
-            (<any>this).hasSuggestedProducts = _data["hasSuggestedProducts:"];
-            (<any>this).hasApprovedSuggestedProducts = _data["hasApprovedSuggestedProducts:"];
-            (<any>this).isSuggestedProduct = _data["isSuggestedProduct:"];
-            (<any>this).isApprovedSuggestedProduct = _data["isApprovedSuggestedProduct:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).productId = _data["productId"];
+            (<any>this).name = _data["name"];
+            (<any>this).description = _data["description"];
+            (<any>this).gtin = _data["gtin"];
+            (<any>this).upc = _data["upc"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).manufacturerName = _data["manufacturerName"];
+            (<any>this).iocCategoryId = _data["iocCategoryId"];
+            (<any>this).iocCategory = _data["iocCategory"];
+            (<any>this).categoryId = _data["categoryId"];
+            (<any>this).category = _data["category"];
+            (<any>this).subCategoryId = _data["subCategoryId"];
+            (<any>this).subCategory = _data["subCategory"];
+            (<any>this).storageTypeId = _data["storageTypeId"];
+            (<any>this).storageTypeName = _data["storageTypeName"];
+            (<any>this).ingredients = _data["ingredients"];
+            (<any>this).isAllocated = _data["isAllocated"];
+            (<any>this).hasAllergens = _data["hasAllergens"];
+            (<any>this).hasOneWorldSyncProduct = _data["hasOneWorldSyncProduct"];
+            (<any>this).oneWorldSyncProductId = _data["oneWorldSyncProductId"];
+            (<any>this).hasProduct = _data["hasProduct"];
+            (<any>this).hasSuggestedProducts = _data["hasSuggestedProducts"];
+            (<any>this).hasApprovedSuggestedProducts = _data["hasApprovedSuggestedProducts"];
+            (<any>this).isSuggestedProduct = _data["isSuggestedProduct"];
+            (<any>this).isApprovedSuggestedProduct = _data["isApprovedSuggestedProduct"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryOneWorldSyncProductModelOrderBy {
+    static fromJS(data: Partial<IQueryOneWorldSyncProductModelOrderBy>): IQueryOneWorldSyncProductModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryOneWorldSyncProductModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -143,5 +144,4 @@ export class QueryOneWorldSyncProductModelOrderBy implements IQueryOneWorldSyncP
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

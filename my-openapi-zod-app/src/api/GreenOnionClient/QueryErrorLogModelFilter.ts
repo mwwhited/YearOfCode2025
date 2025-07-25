@@ -9,7 +9,6 @@
 
 import type { IQueryErrorLogModelFilter } from "./IQueryErrorLogModelFilter";
 import { ZQueryErrorLogModelFilter } from "./ZQueryErrorLogModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,9 +16,10 @@ type integer = number;
 
 export class QueryErrorLogModelFilter implements IQueryErrorLogModelFilter {
     readonly $schema: typeof ZQueryErrorLogModelFilter = ZQueryErrorLogModelFilter;
-    errorLogId?: IFilterParameter | undefined; 
-    errorMessage?: IFilterParameter | undefined; 
-    errorPath?: IFilterParameter | undefined; 
+    
+    errorLogId?: IFilterParameter | undefined;
+    errorMessage?: IFilterParameter | undefined;
+    errorPath?: IFilterParameter | undefined;
 
     constructor(data?: IQueryErrorLogModelFilter) {
         if (data) {
@@ -30,22 +30,23 @@ export class QueryErrorLogModelFilter implements IQueryErrorLogModelFilter {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryErrorLogModelFilter>) {
         if (_data) {
-            (<any>this).errorLogId = _data["errorLogId:"];
-            (<any>this).errorMessage = _data["errorMessage:"];
-            (<any>this).errorPath = _data["errorPath:"];
+            (<any>this).errorLogId = _data["errorLogId"];
+            (<any>this).errorMessage = _data["errorMessage"];
+            (<any>this).errorPath = _data["errorPath"];
         }
     } 
     
-    static fromJS(data: any): IQueryErrorLogModelFilter {
+    static fromJS(data: Partial<IQueryErrorLogModelFilter>): IQueryErrorLogModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryErrorLogModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -56,5 +57,4 @@ export class QueryErrorLogModelFilter implements IQueryErrorLogModelFilter {
         data["errorPath"] = this.errorPath;
         return data;
     }
-
 }

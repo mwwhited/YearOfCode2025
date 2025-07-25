@@ -9,7 +9,6 @@
 
 import type { IQueryUserModelSearchQuery } from "./IQueryUserModelSearchQuery";
 import { ZQueryUserModelSearchQuery } from "./ZQueryUserModelSearchQuery";
-
 import { QueryUserModelFilter } from "./QueryUserModelFilter";
 import type { IQueryUserModelFilter } from "./IQueryUserModelFilter";
 import { QueryUserModelOrderBy } from "./QueryUserModelOrderBy";
@@ -19,12 +18,13 @@ type integer = number;
 
 export class QueryUserModelSearchQuery implements IQueryUserModelSearchQuery {
     readonly $schema: typeof ZQueryUserModelSearchQuery = ZQueryUserModelSearchQuery;
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** FirstName; LastName; Email; Mobile; AddressLine1; AddressLine2; City; Country; ZipCode; State; RoleName; SchoolDistrictName; ManufacturerName; CreatedBy; UpdatedBy */
-    filter?: IQueryUserModelFilter | undefined; 
-    orderBy?: IQueryUserModelOrderBy | undefined; 
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** FirstName; LastName; Email; Mobile; AddressLine1; AddressLine2; City; Country; ZipCode; State; RoleName; SchoolDistrictName; ManufacturerName; CreatedBy; UpdatedBy*/
+    filter?: IQueryUserModelFilter | undefined;
+    orderBy?: IQueryUserModelOrderBy | undefined;
 
     constructor(data?: IQueryUserModelSearchQuery) {
         if (data) {
@@ -35,25 +35,26 @@ export class QueryUserModelSearchQuery implements IQueryUserModelSearchQuery {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserModelSearchQuery>) {
         if (_data) {
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).excludePageCount = _data["excludePageCount:"];
-            (<any>this).searchTerm = _data["searchTerm:"];
-            (<any>this).filter = _data["filter:"];
-            (<any>this).orderBy = _data["orderBy:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserModelSearchQuery {
+    static fromJS(data: Partial<IQueryUserModelSearchQuery>): IQueryUserModelSearchQuery {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserModelSearchQuery();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -67,5 +68,4 @@ export class QueryUserModelSearchQuery implements IQueryUserModelSearchQuery {
         data["orderBy"] = this.orderBy;
         return data;
     }
-
 }

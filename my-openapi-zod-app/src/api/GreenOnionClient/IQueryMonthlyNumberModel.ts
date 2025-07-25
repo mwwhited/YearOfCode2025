@@ -15,24 +15,24 @@ type integer = number;
 export interface IQueryMonthlyNumberModel {
     $schema: typeof ZQueryMonthlyNumberModel;
 
-    id?: integer | undefined; 
-    schoolDistrictId?: integer | undefined; 
-    monthId?: integer | undefined; 
-    actualMonthId?: integer | undefined; 
-    year?: string | undefined; 
-    enrollment?: integer | undefined; 
-    numberOfSites?: integer | undefined; 
-    numberOfDistricts?: integer | undefined; 
-    mealsServed?: integer | undefined; 
-    freeAndReducedPercent?: integer | undefined; 
-    isActive?: boolean | undefined; 
-    regDate?: string | undefined; 
-    createdOn?: string | undefined; 
-    createdById?: integer | undefined; 
-    createdBy?: string | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
+    id?: integer | undefined;
+    schoolDistrictId?: integer | undefined;
+    monthId?: integer | undefined;
+    actualMonthId?: integer | undefined;
+    year?: string | undefined;
+    enrollment?: integer | undefined;
+    numberOfSites?: integer | undefined;
+    numberOfDistricts?: integer | undefined;
+    mealsServed?: integer | undefined;
+    freeAndReducedPercent?: integer | undefined;
+    isActive?: boolean | undefined;
+    regDate?: string | undefined;
+    createdOn?: string | undefined;
+    createdById?: integer | undefined;
+    createdBy?: string | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
 
     toJSON(data?: any) : any;
 }

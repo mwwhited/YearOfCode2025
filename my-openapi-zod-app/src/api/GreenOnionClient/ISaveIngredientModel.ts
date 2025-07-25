@@ -15,10 +15,10 @@ type integer = number;
 export interface ISaveIngredientModel {
     $schema: typeof ZSaveIngredientModel;
 
-    ingredientId?: integer | undefined; 
-    ingredientName?: string | undefined; 
-    group?: string | undefined; 
-    iocGroup?: string | undefined; 
+    ingredientId?: integer | undefined;
+    ingredientName?: string | undefined;
+    group?: string | undefined;
+    iocGroup?: string | undefined;
 
     toJSON(data?: any) : any;
 }

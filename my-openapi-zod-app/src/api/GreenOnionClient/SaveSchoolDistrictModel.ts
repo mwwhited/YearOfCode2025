@@ -10,25 +10,25 @@
 import type { ISaveSchoolDistrictModel } from "./ISaveSchoolDistrictModel";
 import { ZSaveSchoolDistrictModel } from "./ZSaveSchoolDistrictModel";
 
-
 type integer = number;
 
 export class SaveSchoolDistrictModel implements ISaveSchoolDistrictModel {
     readonly $schema: typeof ZSaveSchoolDistrictModel = ZSaveSchoolDistrictModel;
-    schoolDistrictId?: integer | undefined; 
-    siteCode?: string | undefined; 
-    districtName?: string | undefined; 
-    phoneNumber?: string | undefined; 
-    email?: string | undefined; 
-    country?: string | undefined; 
-    state?: integer | undefined; 
-    city?: string | undefined; 
-    districtLogo?: string | undefined; 
-    isActive?: boolean | undefined; 
-    foodServiceOptions?: string | undefined; 
-    contractCompany?: string | undefined; 
-    isSchoolCoop?: boolean | undefined; 
-    schoolCoopId?: integer | undefined; 
+    
+    schoolDistrictId?: integer | undefined;
+    siteCode?: string | undefined;
+    districtName?: string | undefined;
+    phoneNumber?: string | undefined;
+    email?: string | undefined;
+    country?: string | undefined;
+    state?: integer | undefined;
+    city?: string | undefined;
+    districtLogo?: string | undefined;
+    isActive?: boolean | undefined;
+    foodServiceOptions?: string | undefined;
+    contractCompany?: string | undefined;
+    isSchoolCoop?: boolean | undefined;
+    schoolCoopId?: integer | undefined;
 
     constructor(data?: ISaveSchoolDistrictModel) {
         if (data) {
@@ -39,33 +39,34 @@ export class SaveSchoolDistrictModel implements ISaveSchoolDistrictModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveSchoolDistrictModel>) {
         if (_data) {
-            (<any>this).schoolDistrictId = _data["schoolDistrictId:"];
-            (<any>this).siteCode = _data["siteCode:"];
-            (<any>this).districtName = _data["districtName:"];
-            (<any>this).phoneNumber = _data["phoneNumber:"];
-            (<any>this).email = _data["email:"];
-            (<any>this).country = _data["country:"];
-            (<any>this).state = _data["state:"];
-            (<any>this).city = _data["city:"];
-            (<any>this).districtLogo = _data["districtLogo:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).foodServiceOptions = _data["foodServiceOptions:"];
-            (<any>this).contractCompany = _data["contractCompany:"];
-            (<any>this).isSchoolCoop = _data["isSchoolCoop:"];
-            (<any>this).schoolCoopId = _data["schoolCoopId:"];
+            (<any>this).schoolDistrictId = _data["schoolDistrictId"];
+            (<any>this).siteCode = _data["siteCode"];
+            (<any>this).districtName = _data["districtName"];
+            (<any>this).phoneNumber = _data["phoneNumber"];
+            (<any>this).email = _data["email"];
+            (<any>this).country = _data["country"];
+            (<any>this).state = _data["state"];
+            (<any>this).city = _data["city"];
+            (<any>this).districtLogo = _data["districtLogo"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).foodServiceOptions = _data["foodServiceOptions"];
+            (<any>this).contractCompany = _data["contractCompany"];
+            (<any>this).isSchoolCoop = _data["isSchoolCoop"];
+            (<any>this).schoolCoopId = _data["schoolCoopId"];
         }
     } 
     
-    static fromJS(data: any): ISaveSchoolDistrictModel {
+    static fromJS(data: Partial<ISaveSchoolDistrictModel>): ISaveSchoolDistrictModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveSchoolDistrictModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -87,5 +88,4 @@ export class SaveSchoolDistrictModel implements ISaveSchoolDistrictModel {
         data["schoolCoopId"] = this.schoolCoopId;
         return data;
     }
-
 }

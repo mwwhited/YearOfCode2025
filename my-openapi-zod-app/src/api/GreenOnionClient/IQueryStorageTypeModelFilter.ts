@@ -16,8 +16,8 @@ type integer = number;
 export interface IQueryStorageTypeModelFilter {
     $schema: typeof ZQueryStorageTypeModelFilter;
 
-    storageTypeId?: any | undefined; 
-    storageTypeName?: any | undefined; 
+    storageTypeId?: IFilterParameter | undefined;
+    storageTypeName?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

@@ -16,9 +16,9 @@ type integer = number;
 export interface IQueryErrorLogModelOrderBy {
     $schema: typeof ZQueryErrorLogModelOrderBy;
 
-    errorLogId?: any | undefined; 
-    errorMessage?: any | undefined; 
-    errorPath?: any | undefined; 
+    errorLogId?: IOrderDirections | undefined;
+    errorMessage?: IOrderDirections | undefined;
+    errorPath?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

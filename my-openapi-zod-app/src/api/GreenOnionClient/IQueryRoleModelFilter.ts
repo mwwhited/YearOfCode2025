@@ -16,17 +16,17 @@ type integer = number;
 export interface IQueryRoleModelFilter {
     $schema: typeof ZQueryRoleModelFilter;
 
-    roleId?: any | undefined; 
-    roleName?: any | undefined; 
-    isActive?: any | undefined; 
-    userCount?: any | undefined; 
-    activeUserCount?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    roleId?: IFilterParameter | undefined;
+    roleName?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    userCount?: IFilterParameter | undefined;
+    activeUserCount?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

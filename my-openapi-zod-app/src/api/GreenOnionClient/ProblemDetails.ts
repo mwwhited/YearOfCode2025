@@ -10,16 +10,16 @@
 import type { IProblemDetails } from "./IProblemDetails";
 import { ZProblemDetails } from "./ZProblemDetails";
 
-
 type integer = number;
 
 export class ProblemDetails implements IProblemDetails {
     readonly $schema: typeof ZProblemDetails = ZProblemDetails;
-    type?: string | undefined; 
-    title?: string | undefined; 
-    status?: integer | undefined; 
-    detail?: string | undefined; 
-    instance?: string | undefined; 
+    
+    type?: string | undefined;
+    title?: string | undefined;
+    status?: integer | undefined;
+    detail?: string | undefined;
+    instance?: string | undefined;
 
     constructor(data?: IProblemDetails) {
         if (data) {
@@ -30,24 +30,26 @@ export class ProblemDetails implements IProblemDetails {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IProblemDetails>) {
         if (_data) {
-            (<any>this).type = _data["type:"];
-            (<any>this).title = _data["title:"];
-            (<any>this).status = _data["status:"];
-            (<any>this).detail = _data["detail:"];
-            (<any>this).instance = _data["instance:"];
+            (<any>this).type = _data["type"];
+            (<any>this).title = _data["title"];
+            (<any>this).status = _data["status"];
+            (<any>this).detail = _data["detail"];
+            (<any>this).instance = _data["instance"];
         }
     } 
     
-    static fromJS(data: any): IProblemDetails {
+    static fromJS(data: Partial<IProblemDetails>): IProblemDetails {
         data = typeof data === 'object' ? data : {};
         const result = new ProblemDetails();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+    [key: string]: unknown; // Additional properties are allowed
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -60,6 +62,4 @@ export class ProblemDetails implements IProblemDetails {
         data["instance"] = this.instance;
         return data;
     }
-
-    [key: string]: any; // Additional properties are allowed
 }

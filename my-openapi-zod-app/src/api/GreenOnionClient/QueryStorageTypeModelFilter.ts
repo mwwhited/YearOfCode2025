@@ -9,7 +9,6 @@
 
 import type { IQueryStorageTypeModelFilter } from "./IQueryStorageTypeModelFilter";
 import { ZQueryStorageTypeModelFilter } from "./ZQueryStorageTypeModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,8 +16,9 @@ type integer = number;
 
 export class QueryStorageTypeModelFilter implements IQueryStorageTypeModelFilter {
     readonly $schema: typeof ZQueryStorageTypeModelFilter = ZQueryStorageTypeModelFilter;
-    storageTypeId?: IFilterParameter | undefined; 
-    storageTypeName?: IFilterParameter | undefined; 
+    
+    storageTypeId?: IFilterParameter | undefined;
+    storageTypeName?: IFilterParameter | undefined;
 
     constructor(data?: IQueryStorageTypeModelFilter) {
         if (data) {
@@ -29,21 +29,22 @@ export class QueryStorageTypeModelFilter implements IQueryStorageTypeModelFilter
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryStorageTypeModelFilter>) {
         if (_data) {
-            (<any>this).storageTypeId = _data["storageTypeId:"];
-            (<any>this).storageTypeName = _data["storageTypeName:"];
+            (<any>this).storageTypeId = _data["storageTypeId"];
+            (<any>this).storageTypeName = _data["storageTypeName"];
         }
     } 
     
-    static fromJS(data: any): IQueryStorageTypeModelFilter {
+    static fromJS(data: Partial<IQueryStorageTypeModelFilter>): IQueryStorageTypeModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryStorageTypeModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -53,5 +54,4 @@ export class QueryStorageTypeModelFilter implements IQueryStorageTypeModelFilter
         data["storageTypeName"] = this.storageTypeName;
         return data;
     }
-
 }

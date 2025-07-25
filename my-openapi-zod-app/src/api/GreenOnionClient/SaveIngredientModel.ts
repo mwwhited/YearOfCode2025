@@ -10,15 +10,15 @@
 import type { ISaveIngredientModel } from "./ISaveIngredientModel";
 import { ZSaveIngredientModel } from "./ZSaveIngredientModel";
 
-
 type integer = number;
 
 export class SaveIngredientModel implements ISaveIngredientModel {
     readonly $schema: typeof ZSaveIngredientModel = ZSaveIngredientModel;
-    ingredientId?: integer | undefined; 
-    ingredientName?: string | undefined; 
-    group?: string | undefined; 
-    iocGroup?: string | undefined; 
+    
+    ingredientId?: integer | undefined;
+    ingredientName?: string | undefined;
+    group?: string | undefined;
+    iocGroup?: string | undefined;
 
     constructor(data?: ISaveIngredientModel) {
         if (data) {
@@ -29,23 +29,24 @@ export class SaveIngredientModel implements ISaveIngredientModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveIngredientModel>) {
         if (_data) {
-            (<any>this).ingredientId = _data["ingredientId:"];
-            (<any>this).ingredientName = _data["ingredientName:"];
-            (<any>this).group = _data["group:"];
-            (<any>this).iocGroup = _data["iocGroup:"];
+            (<any>this).ingredientId = _data["ingredientId"];
+            (<any>this).ingredientName = _data["ingredientName"];
+            (<any>this).group = _data["group"];
+            (<any>this).iocGroup = _data["iocGroup"];
         }
     } 
     
-    static fromJS(data: any): ISaveIngredientModel {
+    static fromJS(data: Partial<ISaveIngredientModel>): ISaveIngredientModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveIngredientModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -57,5 +58,4 @@ export class SaveIngredientModel implements ISaveIngredientModel {
         data["iocGroup"] = this.iocGroup;
         return data;
     }
-
 }

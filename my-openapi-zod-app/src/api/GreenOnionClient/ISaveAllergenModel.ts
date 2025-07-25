@@ -15,9 +15,9 @@ type integer = number;
 export interface ISaveAllergenModel {
     $schema: typeof ZSaveAllergenModel;
 
-    allergenId?: integer | undefined; 
-    allergenName?: string | undefined; 
-    allergenGroup?: string | undefined; 
+    allergenId?: integer | undefined;
+    allergenName?: string | undefined;
+    allergenGroup?: string | undefined;
 
     toJSON(data?: any) : any;
 }

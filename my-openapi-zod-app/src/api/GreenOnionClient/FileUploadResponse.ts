@@ -9,7 +9,6 @@
 
 import type { IFileUploadResponse } from "./IFileUploadResponse";
 import { ZFileUploadResponse } from "./ZFileUploadResponse";
-
 import { MappingFieldData } from "./MappingFieldData";
 import type { IMappingFieldData } from "./IMappingFieldData";
 import { FileHeader } from "./FileHeader";
@@ -27,20 +26,21 @@ type integer = number;
 
 export class FileUploadResponse implements IFileUploadResponse {
     readonly $schema: typeof ZFileUploadResponse = ZFileUploadResponse;
-    manufacture?: string | undefined; 
-    distributer?: string | undefined; 
-    districtName?: string | undefined; 
-    mappingFieldList?: IMappingFieldData[] | undefined; 
-    fileHeaderList?: IFileHeader[] | undefined; 
-    fileDataList?: IFileHeaderData[] | undefined; 
-    productList?: IProductUploadModel[] | undefined; 
-    tableFieldList?: IProductTableField[] | undefined; 
-    uniqueExcelFileId?: string | undefined; 
-    statusList?: IFileStatus[] | undefined; 
-    absolutePath?: string | undefined; 
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    payload?: any | undefined; 
+    
+    manufacture?: string | undefined;
+    distributer?: string | undefined;
+    districtName?: string | undefined;
+    mappingFieldList?: IMappingFieldData[] | undefined;
+    fileHeaderList?: IFileHeader[] | undefined;
+    fileDataList?: IFileHeaderData[] | undefined;
+    productList?: IProductUploadModel[] | undefined;
+    tableFieldList?: IProductTableField[] | undefined;
+    uniqueExcelFileId?: string | undefined;
+    statusList?: IFileStatus[] | undefined;
+    absolutePath?: string | undefined;
+    success?: boolean | undefined;
+    message?: string | undefined;
+    payload?: unknown | undefined;
 
     constructor(data?: IFileUploadResponse) {
         if (data) {
@@ -51,11 +51,11 @@ export class FileUploadResponse implements IFileUploadResponse {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IFileUploadResponse>) {
         if (_data) {
-            (<any>this).manufacture = _data["manufacture:"];
-            (<any>this).distributer = _data["distributer:"];
-            (<any>this).districtName = _data["districtName:"];
+            (<any>this).manufacture = _data["manufacture"];
+            (<any>this).distributer = _data["distributer"];
+            (<any>this).districtName = _data["districtName"];
             if (Array.isArray(_data["mappingFieldList"])) {
                 (<any>this).rows = [] as any;
                 for (let item of _data["mappingFieldList"])
@@ -81,27 +81,28 @@ export class FileUploadResponse implements IFileUploadResponse {
                 for (let item of _data["tableFieldList"])
                     (<any>this).tableFieldList!.push(ProductTableField.fromJS(item));
             }
-            (<any>this).uniqueExcelFileId = _data["uniqueExcelFileId:"];
+            (<any>this).uniqueExcelFileId = _data["uniqueExcelFileId"];
             if (Array.isArray(_data["statusList"])) {
                 (<any>this).rows = [] as any;
                 for (let item of _data["statusList"])
                     (<any>this).statusList!.push(FileStatus.fromJS(item));
             }
-            (<any>this).absolutePath = _data["absolutePath:"];
-            (<any>this).success = _data["success:"];
-            (<any>this).message = _data["message:"];
-            (<any>this).payload = _data["payload:"];
+            (<any>this).absolutePath = _data["absolutePath"];
+            (<any>this).success = _data["success"];
+            (<any>this).message = _data["message"];
+            (<any>this).payload = _data["payload"];
         }
     } 
     
-    static fromJS(data: any): IFileUploadResponse {
+    static fromJS(data: Partial<IFileUploadResponse>): IFileUploadResponse {
         data = typeof data === 'object' ? data : {};
         const result = new FileUploadResponse();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -147,5 +148,4 @@ export class FileUploadResponse implements IFileUploadResponse {
         data["payload"] = this.payload;
         return data;
     }
-
 }

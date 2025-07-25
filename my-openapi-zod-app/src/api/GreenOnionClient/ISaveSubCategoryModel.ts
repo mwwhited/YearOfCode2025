@@ -15,11 +15,11 @@ type integer = number;
 export interface ISaveSubCategoryModel {
     $schema: typeof ZSaveSubCategoryModel;
 
-    subCategoryId?: integer | undefined; 
-    categoryId?: integer | undefined; 
-    subCategoryName?: string | undefined; 
-    subCategoryCode?: string | undefined; 
-    isActive?: boolean | undefined; 
+    subCategoryId?: integer | undefined;
+    categoryId?: integer | undefined;
+    subCategoryName?: string | undefined;
+    subCategoryCode?: string | undefined;
+    isActive?: boolean | undefined;
 
     toJSON(data?: any) : any;
 }

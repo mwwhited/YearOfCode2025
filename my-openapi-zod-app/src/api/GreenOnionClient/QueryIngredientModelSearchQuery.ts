@@ -9,7 +9,6 @@
 
 import type { IQueryIngredientModelSearchQuery } from "./IQueryIngredientModelSearchQuery";
 import { ZQueryIngredientModelSearchQuery } from "./ZQueryIngredientModelSearchQuery";
-
 import { QueryIngredientModelFilter } from "./QueryIngredientModelFilter";
 import type { IQueryIngredientModelFilter } from "./IQueryIngredientModelFilter";
 import { QueryIngredientModelOrderBy } from "./QueryIngredientModelOrderBy";
@@ -19,12 +18,13 @@ type integer = number;
 
 export class QueryIngredientModelSearchQuery implements IQueryIngredientModelSearchQuery {
     readonly $schema: typeof ZQueryIngredientModelSearchQuery = ZQueryIngredientModelSearchQuery;
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** IngredientName; Group; IocGroup */
-    filter?: IQueryIngredientModelFilter | undefined; 
-    orderBy?: IQueryIngredientModelOrderBy | undefined; 
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** IngredientName; Group; IocGroup*/
+    filter?: IQueryIngredientModelFilter | undefined;
+    orderBy?: IQueryIngredientModelOrderBy | undefined;
 
     constructor(data?: IQueryIngredientModelSearchQuery) {
         if (data) {
@@ -35,25 +35,26 @@ export class QueryIngredientModelSearchQuery implements IQueryIngredientModelSea
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryIngredientModelSearchQuery>) {
         if (_data) {
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).excludePageCount = _data["excludePageCount:"];
-            (<any>this).searchTerm = _data["searchTerm:"];
-            (<any>this).filter = _data["filter:"];
-            (<any>this).orderBy = _data["orderBy:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryIngredientModelSearchQuery {
+    static fromJS(data: Partial<IQueryIngredientModelSearchQuery>): IQueryIngredientModelSearchQuery {
         data = typeof data === 'object' ? data : {};
         const result = new QueryIngredientModelSearchQuery();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -67,5 +68,4 @@ export class QueryIngredientModelSearchQuery implements IQueryIngredientModelSea
         data["orderBy"] = this.orderBy;
         return data;
     }
-
 }

@@ -15,10 +15,10 @@ type integer = number;
 export interface IProductGtinAllocationModel {
     $schema: typeof ZProductGtinAllocationModel;
 
-    productId?: integer | undefined; 
-    gtin?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdBy?: integer | undefined; 
+    productId?: integer | undefined;
+    gtin?: string | undefined;
+    isActive?: boolean | undefined;
+    createdBy?: integer | undefined;
 
     toJSON(data?: any) : any;
 }

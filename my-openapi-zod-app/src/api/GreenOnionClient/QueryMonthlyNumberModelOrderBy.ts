@@ -9,7 +9,6 @@
 
 import type { IQueryMonthlyNumberModelOrderBy } from "./IQueryMonthlyNumberModelOrderBy";
 import { ZQueryMonthlyNumberModelOrderBy } from "./ZQueryMonthlyNumberModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,24 +16,25 @@ type integer = number;
 
 export class QueryMonthlyNumberModelOrderBy implements IQueryMonthlyNumberModelOrderBy {
     readonly $schema: typeof ZQueryMonthlyNumberModelOrderBy = ZQueryMonthlyNumberModelOrderBy;
-    id?: IOrderDirections | undefined; 
-    schoolDistrictId?: IOrderDirections | undefined; 
-    monthId?: IOrderDirections | undefined; 
-    actualMonthId?: IOrderDirections | undefined; 
-    year?: IOrderDirections | undefined; 
-    enrollment?: IOrderDirections | undefined; 
-    numberOfSites?: IOrderDirections | undefined; 
-    numberOfDistricts?: IOrderDirections | undefined; 
-    mealsServed?: IOrderDirections | undefined; 
-    freeAndReducedPercent?: IOrderDirections | undefined; 
-    isActive?: IOrderDirections | undefined; 
-    regDate?: IOrderDirections | undefined; 
-    createdOn?: IOrderDirections | undefined; 
-    createdById?: IOrderDirections | undefined; 
-    createdBy?: IOrderDirections | undefined; 
-    updatedOn?: IOrderDirections | undefined; 
-    updatedById?: IOrderDirections | undefined; 
-    updatedBy?: IOrderDirections | undefined; 
+    
+    id?: IOrderDirections | undefined;
+    schoolDistrictId?: IOrderDirections | undefined;
+    monthId?: IOrderDirections | undefined;
+    actualMonthId?: IOrderDirections | undefined;
+    year?: IOrderDirections | undefined;
+    enrollment?: IOrderDirections | undefined;
+    numberOfSites?: IOrderDirections | undefined;
+    numberOfDistricts?: IOrderDirections | undefined;
+    mealsServed?: IOrderDirections | undefined;
+    freeAndReducedPercent?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    regDate?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     constructor(data?: IQueryMonthlyNumberModelOrderBy) {
         if (data) {
@@ -45,37 +45,38 @@ export class QueryMonthlyNumberModelOrderBy implements IQueryMonthlyNumberModelO
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryMonthlyNumberModelOrderBy>) {
         if (_data) {
-            (<any>this).id = _data["id:"];
-            (<any>this).schoolDistrictId = _data["schoolDistrictId:"];
-            (<any>this).monthId = _data["monthId:"];
-            (<any>this).actualMonthId = _data["actualMonthId:"];
-            (<any>this).year = _data["year:"];
-            (<any>this).enrollment = _data["enrollment:"];
-            (<any>this).numberOfSites = _data["numberOfSites:"];
-            (<any>this).numberOfDistricts = _data["numberOfDistricts:"];
-            (<any>this).mealsServed = _data["mealsServed:"];
-            (<any>this).freeAndReducedPercent = _data["freeAndReducedPercent:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).regDate = _data["regDate:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).id = _data["id"];
+            (<any>this).schoolDistrictId = _data["schoolDistrictId"];
+            (<any>this).monthId = _data["monthId"];
+            (<any>this).actualMonthId = _data["actualMonthId"];
+            (<any>this).year = _data["year"];
+            (<any>this).enrollment = _data["enrollment"];
+            (<any>this).numberOfSites = _data["numberOfSites"];
+            (<any>this).numberOfDistricts = _data["numberOfDistricts"];
+            (<any>this).mealsServed = _data["mealsServed"];
+            (<any>this).freeAndReducedPercent = _data["freeAndReducedPercent"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).regDate = _data["regDate"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryMonthlyNumberModelOrderBy {
+    static fromJS(data: Partial<IQueryMonthlyNumberModelOrderBy>): IQueryMonthlyNumberModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryMonthlyNumberModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -101,5 +102,4 @@ export class QueryMonthlyNumberModelOrderBy implements IQueryMonthlyNumberModelO
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

@@ -17,12 +17,12 @@ type integer = number;
 export interface IQueryIocCategoryModelSearchQuery {
     $schema: typeof ZQueryIocCategoryModelSearchQuery;
 
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** Name; Color */
-    filter?: any | undefined; 
-    orderBy?: any | undefined; 
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** Name; Color*/
+    filter?: IQueryIocCategoryModelFilter | undefined;
+    orderBy?: IQueryIocCategoryModelOrderBy | undefined;
 
     toJSON(data?: any) : any;
 }

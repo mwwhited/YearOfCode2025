@@ -10,13 +10,13 @@
 import type { IQueryStateModel } from "./IQueryStateModel";
 import { ZQueryStateModel } from "./ZQueryStateModel";
 
-
 type integer = number;
 
 export class QueryStateModel implements IQueryStateModel {
     readonly $schema: typeof ZQueryStateModel = ZQueryStateModel;
-    stateId?: integer | undefined; 
-    stateName?: string | undefined; 
+    
+    stateId?: integer | undefined;
+    stateName?: string | undefined;
 
     constructor(data?: IQueryStateModel) {
         if (data) {
@@ -27,21 +27,22 @@ export class QueryStateModel implements IQueryStateModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryStateModel>) {
         if (_data) {
-            (<any>this).stateId = _data["stateId:"];
-            (<any>this).stateName = _data["stateName:"];
+            (<any>this).stateId = _data["stateId"];
+            (<any>this).stateName = _data["stateName"];
         }
     } 
     
-    static fromJS(data: any): IQueryStateModel {
+    static fromJS(data: Partial<IQueryStateModel>): IQueryStateModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryStateModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -51,5 +52,4 @@ export class QueryStateModel implements IQueryStateModel {
         data["stateName"] = this.stateName;
         return data;
     }
-
 }

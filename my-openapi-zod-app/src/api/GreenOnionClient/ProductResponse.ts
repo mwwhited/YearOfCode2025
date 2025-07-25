@@ -10,18 +10,18 @@
 import type { IProductResponse } from "./IProductResponse";
 import { ZProductResponse } from "./ZProductResponse";
 
-
 type integer = number;
 
 export class ProductResponse implements IProductResponse {
     readonly $schema: typeof ZProductResponse = ZProductResponse;
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
-    isUpdate?: boolean | undefined; 
-    isAdded?: boolean | undefined; 
-    isDelete?: boolean | undefined; 
+    
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
+    isUpdate?: boolean | undefined;
+    isAdded?: boolean | undefined;
+    isDelete?: boolean | undefined;
 
     constructor(data?: IProductResponse) {
         if (data) {
@@ -32,26 +32,27 @@ export class ProductResponse implements IProductResponse {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IProductResponse>) {
         if (_data) {
-            (<any>this).success = _data["success:"];
-            (<any>this).message = _data["message:"];
-            (<any>this).totalRecords = _data["totalRecords:"];
-            (<any>this).payload = _data["payload:"];
-            (<any>this).isUpdate = _data["isUpdate:"];
-            (<any>this).isAdded = _data["isAdded:"];
-            (<any>this).isDelete = _data["isDelete:"];
+            (<any>this).success = _data["success"];
+            (<any>this).message = _data["message"];
+            (<any>this).totalRecords = _data["totalRecords"];
+            (<any>this).payload = _data["payload"];
+            (<any>this).isUpdate = _data["isUpdate"];
+            (<any>this).isAdded = _data["isAdded"];
+            (<any>this).isDelete = _data["isDelete"];
         }
     } 
     
-    static fromJS(data: any): IProductResponse {
+    static fromJS(data: Partial<IProductResponse>): IProductResponse {
         data = typeof data === 'object' ? data : {};
         const result = new ProductResponse();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -66,5 +67,4 @@ export class ProductResponse implements IProductResponse {
         data["isDelete"] = this.isDelete;
         return data;
     }
-
 }

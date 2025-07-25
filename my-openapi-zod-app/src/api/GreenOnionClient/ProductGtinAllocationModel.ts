@@ -10,15 +10,15 @@
 import type { IProductGtinAllocationModel } from "./IProductGtinAllocationModel";
 import { ZProductGtinAllocationModel } from "./ZProductGtinAllocationModel";
 
-
 type integer = number;
 
 export class ProductGtinAllocationModel implements IProductGtinAllocationModel {
     readonly $schema: typeof ZProductGtinAllocationModel = ZProductGtinAllocationModel;
-    productId?: integer | undefined; 
-    gtin?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdBy?: integer | undefined; 
+    
+    productId?: integer | undefined;
+    gtin?: string | undefined;
+    isActive?: boolean | undefined;
+    createdBy?: integer | undefined;
 
     constructor(data?: IProductGtinAllocationModel) {
         if (data) {
@@ -29,23 +29,24 @@ export class ProductGtinAllocationModel implements IProductGtinAllocationModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IProductGtinAllocationModel>) {
         if (_data) {
-            (<any>this).productId = _data["productId:"];
-            (<any>this).gtin = _data["gtin:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdBy = _data["createdBy:"];
+            (<any>this).productId = _data["productId"];
+            (<any>this).gtin = _data["gtin"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdBy = _data["createdBy"];
         }
     } 
     
-    static fromJS(data: any): IProductGtinAllocationModel {
+    static fromJS(data: Partial<IProductGtinAllocationModel>): IProductGtinAllocationModel {
         data = typeof data === 'object' ? data : {};
         const result = new ProductGtinAllocationModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -57,5 +58,4 @@ export class ProductGtinAllocationModel implements IProductGtinAllocationModel {
         data["createdBy"] = this.createdBy;
         return data;
     }
-
 }

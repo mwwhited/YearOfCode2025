@@ -10,13 +10,13 @@
 import type { IFileHeader } from "./IFileHeader";
 import { ZFileHeader } from "./ZFileHeader";
 
-
 type integer = number;
 
 export class FileHeader implements IFileHeader {
     readonly $schema: typeof ZFileHeader = ZFileHeader;
-    headerId?: integer | undefined; 
-    headerName?: string | undefined; 
+    
+    headerId?: integer | undefined;
+    headerName?: string | undefined;
 
     constructor(data?: IFileHeader) {
         if (data) {
@@ -27,21 +27,22 @@ export class FileHeader implements IFileHeader {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IFileHeader>) {
         if (_data) {
-            (<any>this).headerId = _data["headerId:"];
-            (<any>this).headerName = _data["headerName:"];
+            (<any>this).headerId = _data["headerId"];
+            (<any>this).headerName = _data["headerName"];
         }
     } 
     
-    static fromJS(data: any): IFileHeader {
+    static fromJS(data: Partial<IFileHeader>): IFileHeader {
         data = typeof data === 'object' ? data : {};
         const result = new FileHeader();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -51,5 +52,4 @@ export class FileHeader implements IFileHeader {
         data["headerName"] = this.headerName;
         return data;
     }
-
 }

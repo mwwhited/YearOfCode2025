@@ -15,8 +15,8 @@ type integer = number;
 export interface IProductTableField {
     $schema: typeof ZProductTableField;
 
-    fieldID?: integer | undefined; 
-    fieldName?: string | undefined; 
+    fieldID?: integer | undefined;
+    fieldName?: string | undefined;
 
     toJSON(data?: any) : any;
 }

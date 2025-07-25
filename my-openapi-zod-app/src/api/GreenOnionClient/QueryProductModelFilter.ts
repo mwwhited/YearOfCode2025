@@ -9,7 +9,6 @@
 
 import type { IQueryProductModelFilter } from "./IQueryProductModelFilter";
 import { ZQueryProductModelFilter } from "./ZQueryProductModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,38 +16,39 @@ type integer = number;
 
 export class QueryProductModelFilter implements IQueryProductModelFilter {
     readonly $schema: typeof ZQueryProductModelFilter = ZQueryProductModelFilter;
-    productId?: IFilterParameter | undefined; 
-    name?: IFilterParameter | undefined; 
-    description?: IFilterParameter | undefined; 
-    gtin?: IFilterParameter | undefined; 
-    upc?: IFilterParameter | undefined; 
-    isActive?: IFilterParameter | undefined; 
-    manufacturerId?: IFilterParameter | undefined; 
-    manufacturerName?: IFilterParameter | undefined; 
-    iocCategoryId?: IFilterParameter | undefined; 
-    iocCategory?: IFilterParameter | undefined; 
-    categoryId?: IFilterParameter | undefined; 
-    category?: IFilterParameter | undefined; 
-    subCategoryId?: IFilterParameter | undefined; 
-    subCategory?: IFilterParameter | undefined; 
-    storageTypeId?: IFilterParameter | undefined; 
-    storageTypeName?: IFilterParameter | undefined; 
-    ingredients?: IFilterParameter | undefined; 
-    isAllocated?: IFilterParameter | undefined; 
-    hasAllergens?: IFilterParameter | undefined; 
-    hasOneWorldSyncProduct?: IFilterParameter | undefined; 
-    oneWorldSyncProductId?: IFilterParameter | undefined; 
-    hasProduct?: IFilterParameter | undefined; 
-    hasSuggestedProducts?: IFilterParameter | undefined; 
-    hasApprovedSuggestedProducts?: IFilterParameter | undefined; 
-    isSuggestedProduct?: IFilterParameter | undefined; 
-    isApprovedSuggestedProduct?: IFilterParameter | undefined; 
-    createdOn?: IFilterParameter | undefined; 
-    createdById?: IFilterParameter | undefined; 
-    createdBy?: IFilterParameter | undefined; 
-    updatedOn?: IFilterParameter | undefined; 
-    updatedById?: IFilterParameter | undefined; 
-    updatedBy?: IFilterParameter | undefined; 
+    
+    productId?: IFilterParameter | undefined;
+    name?: IFilterParameter | undefined;
+    description?: IFilterParameter | undefined;
+    gtin?: IFilterParameter | undefined;
+    upc?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    manufacturerId?: IFilterParameter | undefined;
+    manufacturerName?: IFilterParameter | undefined;
+    iocCategoryId?: IFilterParameter | undefined;
+    iocCategory?: IFilterParameter | undefined;
+    categoryId?: IFilterParameter | undefined;
+    category?: IFilterParameter | undefined;
+    subCategoryId?: IFilterParameter | undefined;
+    subCategory?: IFilterParameter | undefined;
+    storageTypeId?: IFilterParameter | undefined;
+    storageTypeName?: IFilterParameter | undefined;
+    ingredients?: IFilterParameter | undefined;
+    isAllocated?: IFilterParameter | undefined;
+    hasAllergens?: IFilterParameter | undefined;
+    hasOneWorldSyncProduct?: IFilterParameter | undefined;
+    oneWorldSyncProductId?: IFilterParameter | undefined;
+    hasProduct?: IFilterParameter | undefined;
+    hasSuggestedProducts?: IFilterParameter | undefined;
+    hasApprovedSuggestedProducts?: IFilterParameter | undefined;
+    isSuggestedProduct?: IFilterParameter | undefined;
+    isApprovedSuggestedProduct?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     constructor(data?: IQueryProductModelFilter) {
         if (data) {
@@ -59,51 +59,52 @@ export class QueryProductModelFilter implements IQueryProductModelFilter {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryProductModelFilter>) {
         if (_data) {
-            (<any>this).productId = _data["productId:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).description = _data["description:"];
-            (<any>this).gtin = _data["gtin:"];
-            (<any>this).upc = _data["upc:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).manufacturerName = _data["manufacturerName:"];
-            (<any>this).iocCategoryId = _data["iocCategoryId:"];
-            (<any>this).iocCategory = _data["iocCategory:"];
-            (<any>this).categoryId = _data["categoryId:"];
-            (<any>this).category = _data["category:"];
-            (<any>this).subCategoryId = _data["subCategoryId:"];
-            (<any>this).subCategory = _data["subCategory:"];
-            (<any>this).storageTypeId = _data["storageTypeId:"];
-            (<any>this).storageTypeName = _data["storageTypeName:"];
-            (<any>this).ingredients = _data["ingredients:"];
-            (<any>this).isAllocated = _data["isAllocated:"];
-            (<any>this).hasAllergens = _data["hasAllergens:"];
-            (<any>this).hasOneWorldSyncProduct = _data["hasOneWorldSyncProduct:"];
-            (<any>this).oneWorldSyncProductId = _data["oneWorldSyncProductId:"];
-            (<any>this).hasProduct = _data["hasProduct:"];
-            (<any>this).hasSuggestedProducts = _data["hasSuggestedProducts:"];
-            (<any>this).hasApprovedSuggestedProducts = _data["hasApprovedSuggestedProducts:"];
-            (<any>this).isSuggestedProduct = _data["isSuggestedProduct:"];
-            (<any>this).isApprovedSuggestedProduct = _data["isApprovedSuggestedProduct:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).productId = _data["productId"];
+            (<any>this).name = _data["name"];
+            (<any>this).description = _data["description"];
+            (<any>this).gtin = _data["gtin"];
+            (<any>this).upc = _data["upc"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).manufacturerName = _data["manufacturerName"];
+            (<any>this).iocCategoryId = _data["iocCategoryId"];
+            (<any>this).iocCategory = _data["iocCategory"];
+            (<any>this).categoryId = _data["categoryId"];
+            (<any>this).category = _data["category"];
+            (<any>this).subCategoryId = _data["subCategoryId"];
+            (<any>this).subCategory = _data["subCategory"];
+            (<any>this).storageTypeId = _data["storageTypeId"];
+            (<any>this).storageTypeName = _data["storageTypeName"];
+            (<any>this).ingredients = _data["ingredients"];
+            (<any>this).isAllocated = _data["isAllocated"];
+            (<any>this).hasAllergens = _data["hasAllergens"];
+            (<any>this).hasOneWorldSyncProduct = _data["hasOneWorldSyncProduct"];
+            (<any>this).oneWorldSyncProductId = _data["oneWorldSyncProductId"];
+            (<any>this).hasProduct = _data["hasProduct"];
+            (<any>this).hasSuggestedProducts = _data["hasSuggestedProducts"];
+            (<any>this).hasApprovedSuggestedProducts = _data["hasApprovedSuggestedProducts"];
+            (<any>this).isSuggestedProduct = _data["isSuggestedProduct"];
+            (<any>this).isApprovedSuggestedProduct = _data["isApprovedSuggestedProduct"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryProductModelFilter {
+    static fromJS(data: Partial<IQueryProductModelFilter>): IQueryProductModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryProductModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -143,5 +144,4 @@ export class QueryProductModelFilter implements IQueryProductModelFilter {
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

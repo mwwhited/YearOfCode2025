@@ -9,7 +9,6 @@
 
 import type { IQueryIocCategoryModelOrderBy } from "./IQueryIocCategoryModelOrderBy";
 import { ZQueryIocCategoryModelOrderBy } from "./ZQueryIocCategoryModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,9 +16,10 @@ type integer = number;
 
 export class QueryIocCategoryModelOrderBy implements IQueryIocCategoryModelOrderBy {
     readonly $schema: typeof ZQueryIocCategoryModelOrderBy = ZQueryIocCategoryModelOrderBy;
-    iocCategoryId?: IOrderDirections | undefined; 
-    name?: IOrderDirections | undefined; 
-    color?: IOrderDirections | undefined; 
+    
+    iocCategoryId?: IOrderDirections | undefined;
+    name?: IOrderDirections | undefined;
+    color?: IOrderDirections | undefined;
 
     constructor(data?: IQueryIocCategoryModelOrderBy) {
         if (data) {
@@ -30,22 +30,23 @@ export class QueryIocCategoryModelOrderBy implements IQueryIocCategoryModelOrder
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryIocCategoryModelOrderBy>) {
         if (_data) {
-            (<any>this).iocCategoryId = _data["iocCategoryId:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).color = _data["color:"];
+            (<any>this).iocCategoryId = _data["iocCategoryId"];
+            (<any>this).name = _data["name"];
+            (<any>this).color = _data["color"];
         }
     } 
     
-    static fromJS(data: any): IQueryIocCategoryModelOrderBy {
+    static fromJS(data: Partial<IQueryIocCategoryModelOrderBy>): IQueryIocCategoryModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryIocCategoryModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -56,5 +57,4 @@ export class QueryIocCategoryModelOrderBy implements IQueryIocCategoryModelOrder
         data["color"] = this.color;
         return data;
     }
-
 }

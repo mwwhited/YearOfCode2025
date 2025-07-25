@@ -15,11 +15,11 @@ type integer = number;
 export interface INewUserEmailModel {
     $schema: typeof ZNewUserEmailModel;
 
-    firstName?: string | undefined; 
-    lastName?: string | undefined; 
-    role?: string | undefined; 
-    email?: string | undefined; 
-    association?: string | undefined; 
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    role?: string | undefined;
+    email?: string | undefined;
+    association?: string | undefined;
 
     toJSON(data?: any) : any;
 }

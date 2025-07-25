@@ -15,10 +15,10 @@ type integer = number;
 export interface IProductUpcAllocationModel {
     $schema: typeof ZProductUpcAllocationModel;
 
-    productId?: integer | undefined; 
-    upc?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdBy?: integer | undefined; 
+    productId?: integer | undefined;
+    upc?: string | undefined;
+    isActive?: boolean | undefined;
+    createdBy?: integer | undefined;
 
     toJSON(data?: any) : any;
 }

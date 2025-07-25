@@ -10,21 +10,21 @@
 import type { IQueryUserActionLogModel } from "./IQueryUserActionLogModel";
 import { ZQueryUserActionLogModel } from "./ZQueryUserActionLogModel";
 
-
 type integer = number;
 
 export class QueryUserActionLogModel implements IQueryUserActionLogModel {
     readonly $schema: typeof ZQueryUserActionLogModel = ZQueryUserActionLogModel;
-    userActionLogId?: integer | undefined; 
-    eventType?: string | undefined; 
-    httpMethod?: string | undefined; 
-    eventDate?: string | undefined; 
-    sessionId?: string | undefined; 
-    requestId?: string | undefined; 
-    correlationId?: string | undefined; 
-    requestPath?: string | undefined; 
-    userId?: integer | undefined; 
-    user?: string | undefined; 
+    
+    userActionLogId?: integer | undefined;
+    eventType?: string | undefined;
+    httpMethod?: string | undefined;
+    eventDate?: string | undefined;
+    sessionId?: string | undefined;
+    requestId?: string | undefined;
+    correlationId?: string | undefined;
+    requestPath?: string | undefined;
+    userId?: integer | undefined;
+    user?: string | undefined;
 
     constructor(data?: IQueryUserActionLogModel) {
         if (data) {
@@ -35,29 +35,30 @@ export class QueryUserActionLogModel implements IQueryUserActionLogModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserActionLogModel>) {
         if (_data) {
-            (<any>this).userActionLogId = _data["userActionLogId:"];
-            (<any>this).eventType = _data["eventType:"];
-            (<any>this).httpMethod = _data["httpMethod:"];
-            (<any>this).eventDate = _data["eventDate:"];
-            (<any>this).sessionId = _data["sessionId:"];
-            (<any>this).requestId = _data["requestId:"];
-            (<any>this).correlationId = _data["correlationId:"];
-            (<any>this).requestPath = _data["requestPath:"];
-            (<any>this).userId = _data["userId:"];
-            (<any>this).user = _data["user:"];
+            (<any>this).userActionLogId = _data["userActionLogId"];
+            (<any>this).eventType = _data["eventType"];
+            (<any>this).httpMethod = _data["httpMethod"];
+            (<any>this).eventDate = _data["eventDate"];
+            (<any>this).sessionId = _data["sessionId"];
+            (<any>this).requestId = _data["requestId"];
+            (<any>this).correlationId = _data["correlationId"];
+            (<any>this).requestPath = _data["requestPath"];
+            (<any>this).userId = _data["userId"];
+            (<any>this).user = _data["user"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserActionLogModel {
+    static fromJS(data: Partial<IQueryUserActionLogModel>): IQueryUserActionLogModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserActionLogModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -75,5 +76,4 @@ export class QueryUserActionLogModel implements IQueryUserActionLogModel {
         data["user"] = this.user;
         return data;
     }
-
 }

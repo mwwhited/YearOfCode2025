@@ -10,25 +10,25 @@
 import type { IProductActivityReportFilter } from "./IProductActivityReportFilter";
 import { ZProductActivityReportFilter } from "./ZProductActivityReportFilter";
 
-
 type integer = number;
 
 export class ProductActivityReportFilter implements IProductActivityReportFilter {
     readonly $schema: typeof ZProductActivityReportFilter = ZProductActivityReportFilter;
-    pageNumber?: integer | undefined; 
-    pageSize?: integer | undefined; 
-    schoolDistrictId?: integer | undefined; 
-    iocCategoryId?: integer | undefined; 
-    userId?: integer | undefined; 
-    productId?: integer | undefined; 
-    gtin?: string | undefined; 
-    upc?: string | undefined; 
-    startDate?: string | undefined; 
-    endDate?: string | undefined; 
-    productGtinId?: integer | undefined; 
-    productUpcId?: integer | undefined; 
-    cooperative?: string | undefined; 
-    manufactureId?: integer | undefined; 
+    
+    pageNumber?: integer | undefined;
+    pageSize?: integer | undefined;
+    schoolDistrictId?: integer | undefined;
+    iocCategoryId?: integer | undefined;
+    userId?: integer | undefined;
+    productId?: integer | undefined;
+    gtin?: string | undefined;
+    upc?: string | undefined;
+    startDate?: string | undefined;
+    endDate?: string | undefined;
+    productGtinId?: integer | undefined;
+    productUpcId?: integer | undefined;
+    cooperative?: string | undefined;
+    manufactureId?: integer | undefined;
 
     constructor(data?: IProductActivityReportFilter) {
         if (data) {
@@ -39,33 +39,34 @@ export class ProductActivityReportFilter implements IProductActivityReportFilter
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IProductActivityReportFilter>) {
         if (_data) {
-            (<any>this).pageNumber = _data["pageNumber:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).schoolDistrictId = _data["schoolDistrictId:"];
-            (<any>this).iocCategoryId = _data["iocCategoryId:"];
-            (<any>this).userId = _data["userId:"];
-            (<any>this).productId = _data["productId:"];
-            (<any>this).gtin = _data["gtin:"];
-            (<any>this).upc = _data["upc:"];
-            (<any>this).startDate = _data["startDate:"];
-            (<any>this).endDate = _data["endDate:"];
-            (<any>this).productGtinId = _data["productGtinId:"];
-            (<any>this).productUpcId = _data["productUpcId:"];
-            (<any>this).cooperative = _data["cooperative:"];
-            (<any>this).manufactureId = _data["manufactureId:"];
+            (<any>this).pageNumber = _data["pageNumber"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).schoolDistrictId = _data["schoolDistrictId"];
+            (<any>this).iocCategoryId = _data["iocCategoryId"];
+            (<any>this).userId = _data["userId"];
+            (<any>this).productId = _data["productId"];
+            (<any>this).gtin = _data["gtin"];
+            (<any>this).upc = _data["upc"];
+            (<any>this).startDate = _data["startDate"];
+            (<any>this).endDate = _data["endDate"];
+            (<any>this).productGtinId = _data["productGtinId"];
+            (<any>this).productUpcId = _data["productUpcId"];
+            (<any>this).cooperative = _data["cooperative"];
+            (<any>this).manufactureId = _data["manufactureId"];
         }
     } 
     
-    static fromJS(data: any): IProductActivityReportFilter {
+    static fromJS(data: Partial<IProductActivityReportFilter>): IProductActivityReportFilter {
         data = typeof data === 'object' ? data : {};
         const result = new ProductActivityReportFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -87,5 +88,4 @@ export class ProductActivityReportFilter implements IProductActivityReportFilter
         data["manufactureId"] = this.manufactureId;
         return data;
     }
-
 }

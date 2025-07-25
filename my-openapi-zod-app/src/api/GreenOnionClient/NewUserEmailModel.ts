@@ -10,16 +10,16 @@
 import type { INewUserEmailModel } from "./INewUserEmailModel";
 import { ZNewUserEmailModel } from "./ZNewUserEmailModel";
 
-
 type integer = number;
 
 export class NewUserEmailModel implements INewUserEmailModel {
     readonly $schema: typeof ZNewUserEmailModel = ZNewUserEmailModel;
-    firstName?: string | undefined; 
-    lastName?: string | undefined; 
-    role?: string | undefined; 
-    email?: string | undefined; 
-    association?: string | undefined; 
+    
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    role?: string | undefined;
+    email?: string | undefined;
+    association?: string | undefined;
 
     constructor(data?: INewUserEmailModel) {
         if (data) {
@@ -30,24 +30,25 @@ export class NewUserEmailModel implements INewUserEmailModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<INewUserEmailModel>) {
         if (_data) {
-            (<any>this).firstName = _data["firstName:"];
-            (<any>this).lastName = _data["lastName:"];
-            (<any>this).role = _data["role:"];
-            (<any>this).email = _data["email:"];
-            (<any>this).association = _data["association:"];
+            (<any>this).firstName = _data["firstName"];
+            (<any>this).lastName = _data["lastName"];
+            (<any>this).role = _data["role"];
+            (<any>this).email = _data["email"];
+            (<any>this).association = _data["association"];
         }
     } 
     
-    static fromJS(data: any): INewUserEmailModel {
+    static fromJS(data: Partial<INewUserEmailModel>): INewUserEmailModel {
         data = typeof data === 'object' ? data : {};
         const result = new NewUserEmailModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -60,5 +61,4 @@ export class NewUserEmailModel implements INewUserEmailModel {
         data["association"] = this.association;
         return data;
     }
-
 }

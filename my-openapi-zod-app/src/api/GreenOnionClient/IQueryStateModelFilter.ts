@@ -16,8 +16,8 @@ type integer = number;
 export interface IQueryStateModelFilter {
     $schema: typeof ZQueryStateModelFilter;
 
-    stateId?: any | undefined; 
-    stateName?: any | undefined; 
+    stateId?: IFilterParameter | undefined;
+    stateName?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

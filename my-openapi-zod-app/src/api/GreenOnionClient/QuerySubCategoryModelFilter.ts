@@ -9,7 +9,6 @@
 
 import type { IQuerySubCategoryModelFilter } from "./IQuerySubCategoryModelFilter";
 import { ZQuerySubCategoryModelFilter } from "./ZQuerySubCategoryModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,17 +16,18 @@ type integer = number;
 
 export class QuerySubCategoryModelFilter implements IQuerySubCategoryModelFilter {
     readonly $schema: typeof ZQuerySubCategoryModelFilter = ZQuerySubCategoryModelFilter;
-    subCategoryId?: IFilterParameter | undefined; 
-    categoryId?: IFilterParameter | undefined; 
-    subCategoryName?: IFilterParameter | undefined; 
-    subCategoryCode?: IFilterParameter | undefined; 
-    isActive?: IFilterParameter | undefined; 
-    createdOn?: IFilterParameter | undefined; 
-    createdById?: IFilterParameter | undefined; 
-    createdBy?: IFilterParameter | undefined; 
-    updatedOn?: IFilterParameter | undefined; 
-    updatedById?: IFilterParameter | undefined; 
-    updatedBy?: IFilterParameter | undefined; 
+    
+    subCategoryId?: IFilterParameter | undefined;
+    categoryId?: IFilterParameter | undefined;
+    subCategoryName?: IFilterParameter | undefined;
+    subCategoryCode?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     constructor(data?: IQuerySubCategoryModelFilter) {
         if (data) {
@@ -38,30 +38,31 @@ export class QuerySubCategoryModelFilter implements IQuerySubCategoryModelFilter
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQuerySubCategoryModelFilter>) {
         if (_data) {
-            (<any>this).subCategoryId = _data["subCategoryId:"];
-            (<any>this).categoryId = _data["categoryId:"];
-            (<any>this).subCategoryName = _data["subCategoryName:"];
-            (<any>this).subCategoryCode = _data["subCategoryCode:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).subCategoryId = _data["subCategoryId"];
+            (<any>this).categoryId = _data["categoryId"];
+            (<any>this).subCategoryName = _data["subCategoryName"];
+            (<any>this).subCategoryCode = _data["subCategoryCode"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQuerySubCategoryModelFilter {
+    static fromJS(data: Partial<IQuerySubCategoryModelFilter>): IQuerySubCategoryModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QuerySubCategoryModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -80,5 +81,4 @@ export class QuerySubCategoryModelFilter implements IQuerySubCategoryModelFilter
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

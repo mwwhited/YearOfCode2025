@@ -10,15 +10,15 @@
 import type { IBaseResponseModel } from "./IBaseResponseModel";
 import { ZBaseResponseModel } from "./ZBaseResponseModel";
 
-
 type integer = number;
 
 export class BaseResponseModel implements IBaseResponseModel {
     readonly $schema: typeof ZBaseResponseModel = ZBaseResponseModel;
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
+    
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
 
     constructor(data?: IBaseResponseModel) {
         if (data) {
@@ -29,23 +29,24 @@ export class BaseResponseModel implements IBaseResponseModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IBaseResponseModel>) {
         if (_data) {
-            (<any>this).success = _data["success:"];
-            (<any>this).message = _data["message:"];
-            (<any>this).totalRecords = _data["totalRecords:"];
-            (<any>this).payload = _data["payload:"];
+            (<any>this).success = _data["success"];
+            (<any>this).message = _data["message"];
+            (<any>this).totalRecords = _data["totalRecords"];
+            (<any>this).payload = _data["payload"];
         }
     } 
     
-    static fromJS(data: any): IBaseResponseModel {
+    static fromJS(data: Partial<IBaseResponseModel>): IBaseResponseModel {
         data = typeof data === 'object' ? data : {};
         const result = new BaseResponseModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -57,5 +58,4 @@ export class BaseResponseModel implements IBaseResponseModel {
         data["payload"] = this.payload;
         return data;
     }
-
 }

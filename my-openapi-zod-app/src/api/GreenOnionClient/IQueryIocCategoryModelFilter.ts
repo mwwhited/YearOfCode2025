@@ -16,9 +16,9 @@ type integer = number;
 export interface IQueryIocCategoryModelFilter {
     $schema: typeof ZQueryIocCategoryModelFilter;
 
-    iocCategoryId?: any | undefined; 
-    name?: any | undefined; 
-    color?: any | undefined; 
+    iocCategoryId?: IFilterParameter | undefined;
+    name?: IFilterParameter | undefined;
+    color?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

@@ -21,20 +21,20 @@ type integer = number;
 export interface IFileUploadResponse {
     $schema: typeof ZFileUploadResponse;
 
-    manufacture?: string | undefined; 
-    distributer?: string | undefined; 
-    districtName?: string | undefined; 
-    mappingFieldList?: IMappingFieldData[] | undefined; 
-    fileHeaderList?: IFileHeader[] | undefined; 
-    fileDataList?: IFileHeaderData[] | undefined; 
-    productList?: IProductUploadModel[] | undefined; 
-    tableFieldList?: IProductTableField[] | undefined; 
-    uniqueExcelFileId?: string | undefined; 
-    statusList?: IFileStatus[] | undefined; 
-    absolutePath?: string | undefined; 
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    payload?: any | undefined; 
+    manufacture?: string | undefined;
+    distributer?: string | undefined;
+    districtName?: string | undefined;
+    mappingFieldList?: IMappingFieldData[] | undefined;
+    fileHeaderList?: IFileHeader[] | undefined;
+    fileDataList?: IFileHeaderData[] | undefined;
+    productList?: IProductUploadModel[] | undefined;
+    tableFieldList?: IProductTableField[] | undefined;
+    uniqueExcelFileId?: string | undefined;
+    statusList?: IFileStatus[] | undefined;
+    absolutePath?: string | undefined;
+    success?: boolean | undefined;
+    message?: string | undefined;
+    payload?: unknown | undefined;
 
     toJSON(data?: any) : any;
 }

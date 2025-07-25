@@ -15,13 +15,13 @@ type integer = number;
 export interface ISuggestedProductRequestModel {
     $schema: typeof ZSuggestedProductRequestModel;
 
-    suggestionId?: integer | undefined; 
-    productId?: integer | undefined; 
-    suggestedProductId?: integer | undefined; 
-    suggestionDate?: string | undefined; 
-    suggestedByUserId?: integer | undefined; 
-    isActive?: boolean | undefined; 
-    suggestedByDistrictId?: integer | undefined; 
+    suggestionId?: integer | undefined;
+    productId?: integer | undefined;
+    suggestedProductId?: integer | undefined;
+    suggestionDate?: string | undefined;
+    suggestedByUserId?: integer | undefined;
+    isActive?: boolean | undefined;
+    suggestedByDistrictId?: integer | undefined;
 
     toJSON(data?: any) : any;
 }

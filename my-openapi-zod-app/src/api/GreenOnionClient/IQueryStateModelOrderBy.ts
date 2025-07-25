@@ -16,8 +16,8 @@ type integer = number;
 export interface IQueryStateModelOrderBy {
     $schema: typeof ZQueryStateModelOrderBy;
 
-    stateId?: any | undefined; 
-    stateName?: any | undefined; 
+    stateId?: IOrderDirections | undefined;
+    stateName?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

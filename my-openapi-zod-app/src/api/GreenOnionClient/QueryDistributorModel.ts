@@ -10,21 +10,21 @@
 import type { IQueryDistributorModel } from "./IQueryDistributorModel";
 import { ZQueryDistributorModel } from "./ZQueryDistributorModel";
 
-
 type integer = number;
 
 export class QueryDistributorModel implements IQueryDistributorModel {
     readonly $schema: typeof ZQueryDistributorModel = ZQueryDistributorModel;
-    distributorId?: integer | undefined; 
-    distributorName?: string | undefined; 
-    distributorCode?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdOn?: string | undefined; 
-    createdById?: integer | undefined; 
-    createdBy?: string | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
+    
+    distributorId?: integer | undefined;
+    distributorName?: string | undefined;
+    distributorCode?: string | undefined;
+    isActive?: boolean | undefined;
+    createdOn?: string | undefined;
+    createdById?: integer | undefined;
+    createdBy?: string | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
 
     constructor(data?: IQueryDistributorModel) {
         if (data) {
@@ -35,29 +35,30 @@ export class QueryDistributorModel implements IQueryDistributorModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryDistributorModel>) {
         if (_data) {
-            (<any>this).distributorId = _data["distributorId:"];
-            (<any>this).distributorName = _data["distributorName:"];
-            (<any>this).distributorCode = _data["distributorCode:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).distributorId = _data["distributorId"];
+            (<any>this).distributorName = _data["distributorName"];
+            (<any>this).distributorCode = _data["distributorCode"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryDistributorModel {
+    static fromJS(data: Partial<IQueryDistributorModel>): IQueryDistributorModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryDistributorModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -75,5 +76,4 @@ export class QueryDistributorModel implements IQueryDistributorModel {
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

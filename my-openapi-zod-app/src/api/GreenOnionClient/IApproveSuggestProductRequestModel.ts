@@ -15,8 +15,8 @@ type integer = number;
 export interface IApproveSuggestProductRequestModel {
     $schema: typeof ZApproveSuggestProductRequestModel;
 
-    productId?: integer | undefined; 
-    suggestedProductId?: integer | undefined; 
+    productId?: integer | undefined;
+    suggestedProductId?: integer | undefined;
 
     toJSON(data?: any) : any;
 }

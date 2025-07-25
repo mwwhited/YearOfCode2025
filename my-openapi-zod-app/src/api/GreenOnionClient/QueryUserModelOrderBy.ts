@@ -9,7 +9,6 @@
 
 import type { IQueryUserModelOrderBy } from "./IQueryUserModelOrderBy";
 import { ZQueryUserModelOrderBy } from "./ZQueryUserModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,34 +16,35 @@ type integer = number;
 
 export class QueryUserModelOrderBy implements IQueryUserModelOrderBy {
     readonly $schema: typeof ZQueryUserModelOrderBy = ZQueryUserModelOrderBy;
-    userId?: IOrderDirections | undefined; 
-    isActive?: IOrderDirections | undefined; 
-    firstName?: IOrderDirections | undefined; 
-    lastName?: IOrderDirections | undefined; 
-    objectId?: IOrderDirections | undefined; 
-    email?: IOrderDirections | undefined; 
-    mobile?: IOrderDirections | undefined; 
-    profileImage?: IOrderDirections | undefined; 
-    coverImage?: IOrderDirections | undefined; 
-    addressLine1?: IOrderDirections | undefined; 
-    addressLine2?: IOrderDirections | undefined; 
-    city?: IOrderDirections | undefined; 
-    country?: IOrderDirections | undefined; 
-    zipCode?: IOrderDirections | undefined; 
-    stateId?: IOrderDirections | undefined; 
-    state?: IOrderDirections | undefined; 
-    roleId?: IOrderDirections | undefined; 
-    roleName?: IOrderDirections | undefined; 
-    schoolDistrictId?: IOrderDirections | undefined; 
-    schoolDistrictName?: IOrderDirections | undefined; 
-    manufacturerId?: IOrderDirections | undefined; 
-    manufacturerName?: IOrderDirections | undefined; 
-    createdOn?: IOrderDirections | undefined; 
-    createdById?: IOrderDirections | undefined; 
-    createdBy?: IOrderDirections | undefined; 
-    updatedOn?: IOrderDirections | undefined; 
-    updatedById?: IOrderDirections | undefined; 
-    updatedBy?: IOrderDirections | undefined; 
+    
+    userId?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    firstName?: IOrderDirections | undefined;
+    lastName?: IOrderDirections | undefined;
+    objectId?: IOrderDirections | undefined;
+    email?: IOrderDirections | undefined;
+    mobile?: IOrderDirections | undefined;
+    profileImage?: IOrderDirections | undefined;
+    coverImage?: IOrderDirections | undefined;
+    addressLine1?: IOrderDirections | undefined;
+    addressLine2?: IOrderDirections | undefined;
+    city?: IOrderDirections | undefined;
+    country?: IOrderDirections | undefined;
+    zipCode?: IOrderDirections | undefined;
+    stateId?: IOrderDirections | undefined;
+    state?: IOrderDirections | undefined;
+    roleId?: IOrderDirections | undefined;
+    roleName?: IOrderDirections | undefined;
+    schoolDistrictId?: IOrderDirections | undefined;
+    schoolDistrictName?: IOrderDirections | undefined;
+    manufacturerId?: IOrderDirections | undefined;
+    manufacturerName?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     constructor(data?: IQueryUserModelOrderBy) {
         if (data) {
@@ -55,47 +55,48 @@ export class QueryUserModelOrderBy implements IQueryUserModelOrderBy {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserModelOrderBy>) {
         if (_data) {
-            (<any>this).userId = _data["userId:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).firstName = _data["firstName:"];
-            (<any>this).lastName = _data["lastName:"];
-            (<any>this).objectId = _data["objectId:"];
-            (<any>this).email = _data["email:"];
-            (<any>this).mobile = _data["mobile:"];
-            (<any>this).profileImage = _data["profileImage:"];
-            (<any>this).coverImage = _data["coverImage:"];
-            (<any>this).addressLine1 = _data["addressLine1:"];
-            (<any>this).addressLine2 = _data["addressLine2:"];
-            (<any>this).city = _data["city:"];
-            (<any>this).country = _data["country:"];
-            (<any>this).zipCode = _data["zipCode:"];
-            (<any>this).stateId = _data["stateId:"];
-            (<any>this).state = _data["state:"];
-            (<any>this).roleId = _data["roleId:"];
-            (<any>this).roleName = _data["roleName:"];
-            (<any>this).schoolDistrictId = _data["schoolDistrictId:"];
-            (<any>this).schoolDistrictName = _data["schoolDistrictName:"];
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).manufacturerName = _data["manufacturerName:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).userId = _data["userId"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).firstName = _data["firstName"];
+            (<any>this).lastName = _data["lastName"];
+            (<any>this).objectId = _data["objectId"];
+            (<any>this).email = _data["email"];
+            (<any>this).mobile = _data["mobile"];
+            (<any>this).profileImage = _data["profileImage"];
+            (<any>this).coverImage = _data["coverImage"];
+            (<any>this).addressLine1 = _data["addressLine1"];
+            (<any>this).addressLine2 = _data["addressLine2"];
+            (<any>this).city = _data["city"];
+            (<any>this).country = _data["country"];
+            (<any>this).zipCode = _data["zipCode"];
+            (<any>this).stateId = _data["stateId"];
+            (<any>this).state = _data["state"];
+            (<any>this).roleId = _data["roleId"];
+            (<any>this).roleName = _data["roleName"];
+            (<any>this).schoolDistrictId = _data["schoolDistrictId"];
+            (<any>this).schoolDistrictName = _data["schoolDistrictName"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).manufacturerName = _data["manufacturerName"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserModelOrderBy {
+    static fromJS(data: Partial<IQueryUserModelOrderBy>): IQueryUserModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -131,5 +132,4 @@ export class QueryUserModelOrderBy implements IQueryUserModelOrderBy {
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

@@ -16,16 +16,16 @@ type integer = number;
 export interface IQueryUserActionLogModelFilter {
     $schema: typeof ZQueryUserActionLogModelFilter;
 
-    userActionLogId?: any | undefined; 
-    eventType?: any | undefined; 
-    httpMethod?: any | undefined; 
-    eventDate?: any | undefined; 
-    sessionId?: any | undefined; 
-    requestId?: any | undefined; 
-    correlationId?: any | undefined; 
-    requestPath?: any | undefined; 
-    userId?: any | undefined; 
-    user?: any | undefined; 
+    userActionLogId?: IFilterParameter | undefined;
+    eventType?: IFilterParameter | undefined;
+    httpMethod?: IFilterParameter | undefined;
+    eventDate?: IFilterParameter | undefined;
+    sessionId?: IFilterParameter | undefined;
+    requestId?: IFilterParameter | undefined;
+    correlationId?: IFilterParameter | undefined;
+    requestPath?: IFilterParameter | undefined;
+    userId?: IFilterParameter | undefined;
+    user?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

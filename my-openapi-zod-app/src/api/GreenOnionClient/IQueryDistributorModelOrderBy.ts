@@ -16,16 +16,16 @@ type integer = number;
 export interface IQueryDistributorModelOrderBy {
     $schema: typeof ZQueryDistributorModelOrderBy;
 
-    distributorId?: any | undefined; 
-    distributorName?: any | undefined; 
-    distributorCode?: any | undefined; 
-    isActive?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    distributorId?: IOrderDirections | undefined;
+    distributorName?: IOrderDirections | undefined;
+    distributorCode?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

@@ -15,13 +15,13 @@ type integer = number;
 export interface IDataMigrationThroughApiResponseModel {
     $schema: typeof ZDataMigrationThroughApiResponseModel;
 
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
-    isUpdate?: boolean | undefined; 
-    isAdded?: boolean | undefined; 
-    isDelete?: boolean | undefined; 
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
+    isUpdate?: boolean | undefined;
+    isAdded?: boolean | undefined;
+    isDelete?: boolean | undefined;
 
     toJSON(data?: any) : any;
 }

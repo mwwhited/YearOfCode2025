@@ -9,7 +9,6 @@
 
 import type { IQueryManufacturerModelFilter } from "./IQueryManufacturerModelFilter";
 import { ZQueryManufacturerModelFilter } from "./ZQueryManufacturerModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,23 +16,24 @@ type integer = number;
 
 export class QueryManufacturerModelFilter implements IQueryManufacturerModelFilter {
     readonly $schema: typeof ZQueryManufacturerModelFilter = ZQueryManufacturerModelFilter;
-    manufacturerId?: IFilterParameter | undefined; 
-    manufacturerName?: IFilterParameter | undefined; 
-    glnNumber?: IFilterParameter | undefined; 
-    isActive?: IFilterParameter | undefined; 
-    hasUsers?: IFilterParameter | undefined; 
-    userCount?: IFilterParameter | undefined; 
-    hasActiveUsers?: IFilterParameter | undefined; 
-    activeUserCount?: IFilterParameter | undefined; 
-    productCount?: IFilterParameter | undefined; 
-    hasOneWorldSync?: IFilterParameter | undefined; 
-    oneWorldSyncCount?: IFilterParameter | undefined; 
-    createdOn?: IFilterParameter | undefined; 
-    createdById?: IFilterParameter | undefined; 
-    createdBy?: IFilterParameter | undefined; 
-    updatedOn?: IFilterParameter | undefined; 
-    updatedById?: IFilterParameter | undefined; 
-    updatedBy?: IFilterParameter | undefined; 
+    
+    manufacturerId?: IFilterParameter | undefined;
+    manufacturerName?: IFilterParameter | undefined;
+    glnNumber?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    hasUsers?: IFilterParameter | undefined;
+    userCount?: IFilterParameter | undefined;
+    hasActiveUsers?: IFilterParameter | undefined;
+    activeUserCount?: IFilterParameter | undefined;
+    productCount?: IFilterParameter | undefined;
+    hasOneWorldSync?: IFilterParameter | undefined;
+    oneWorldSyncCount?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     constructor(data?: IQueryManufacturerModelFilter) {
         if (data) {
@@ -44,36 +44,37 @@ export class QueryManufacturerModelFilter implements IQueryManufacturerModelFilt
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryManufacturerModelFilter>) {
         if (_data) {
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).manufacturerName = _data["manufacturerName:"];
-            (<any>this).glnNumber = _data["glnNumber:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).hasUsers = _data["hasUsers:"];
-            (<any>this).userCount = _data["userCount:"];
-            (<any>this).hasActiveUsers = _data["hasActiveUsers:"];
-            (<any>this).activeUserCount = _data["activeUserCount:"];
-            (<any>this).productCount = _data["productCount:"];
-            (<any>this).hasOneWorldSync = _data["hasOneWorldSync:"];
-            (<any>this).oneWorldSyncCount = _data["oneWorldSyncCount:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).manufacturerName = _data["manufacturerName"];
+            (<any>this).glnNumber = _data["glnNumber"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).hasUsers = _data["hasUsers"];
+            (<any>this).userCount = _data["userCount"];
+            (<any>this).hasActiveUsers = _data["hasActiveUsers"];
+            (<any>this).activeUserCount = _data["activeUserCount"];
+            (<any>this).productCount = _data["productCount"];
+            (<any>this).hasOneWorldSync = _data["hasOneWorldSync"];
+            (<any>this).oneWorldSyncCount = _data["oneWorldSyncCount"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryManufacturerModelFilter {
+    static fromJS(data: Partial<IQueryManufacturerModelFilter>): IQueryManufacturerModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryManufacturerModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -98,5 +99,4 @@ export class QueryManufacturerModelFilter implements IQueryManufacturerModelFilt
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

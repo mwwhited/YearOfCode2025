@@ -16,23 +16,23 @@ type integer = number;
 export interface IQueryManufacturerModelOrderBy {
     $schema: typeof ZQueryManufacturerModelOrderBy;
 
-    manufacturerId?: any | undefined; 
-    manufacturerName?: any | undefined; 
-    glnNumber?: any | undefined; 
-    isActive?: any | undefined; 
-    hasUsers?: any | undefined; 
-    userCount?: any | undefined; 
-    hasActiveUsers?: any | undefined; 
-    activeUserCount?: any | undefined; 
-    productCount?: any | undefined; 
-    hasOneWorldSync?: any | undefined; 
-    oneWorldSyncCount?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    manufacturerId?: IOrderDirections | undefined;
+    manufacturerName?: IOrderDirections | undefined;
+    glnNumber?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    hasUsers?: IOrderDirections | undefined;
+    userCount?: IOrderDirections | undefined;
+    hasActiveUsers?: IOrderDirections | undefined;
+    activeUserCount?: IOrderDirections | undefined;
+    productCount?: IOrderDirections | undefined;
+    hasOneWorldSync?: IOrderDirections | undefined;
+    oneWorldSyncCount?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

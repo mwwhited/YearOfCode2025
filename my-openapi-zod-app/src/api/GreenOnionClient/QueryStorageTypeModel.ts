@@ -10,13 +10,13 @@
 import type { IQueryStorageTypeModel } from "./IQueryStorageTypeModel";
 import { ZQueryStorageTypeModel } from "./ZQueryStorageTypeModel";
 
-
 type integer = number;
 
 export class QueryStorageTypeModel implements IQueryStorageTypeModel {
     readonly $schema: typeof ZQueryStorageTypeModel = ZQueryStorageTypeModel;
-    storageTypeId?: integer | undefined; 
-    storageTypeName?: string | undefined; 
+    
+    storageTypeId?: integer | undefined;
+    storageTypeName?: string | undefined;
 
     constructor(data?: IQueryStorageTypeModel) {
         if (data) {
@@ -27,21 +27,22 @@ export class QueryStorageTypeModel implements IQueryStorageTypeModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryStorageTypeModel>) {
         if (_data) {
-            (<any>this).storageTypeId = _data["storageTypeId:"];
-            (<any>this).storageTypeName = _data["storageTypeName:"];
+            (<any>this).storageTypeId = _data["storageTypeId"];
+            (<any>this).storageTypeName = _data["storageTypeName"];
         }
     } 
     
-    static fromJS(data: any): IQueryStorageTypeModel {
+    static fromJS(data: Partial<IQueryStorageTypeModel>): IQueryStorageTypeModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryStorageTypeModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -51,5 +52,4 @@ export class QueryStorageTypeModel implements IQueryStorageTypeModel {
         data["storageTypeName"] = this.storageTypeName;
         return data;
     }
-
 }

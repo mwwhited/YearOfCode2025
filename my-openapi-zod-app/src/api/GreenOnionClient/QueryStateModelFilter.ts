@@ -9,7 +9,6 @@
 
 import type { IQueryStateModelFilter } from "./IQueryStateModelFilter";
 import { ZQueryStateModelFilter } from "./ZQueryStateModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,8 +16,9 @@ type integer = number;
 
 export class QueryStateModelFilter implements IQueryStateModelFilter {
     readonly $schema: typeof ZQueryStateModelFilter = ZQueryStateModelFilter;
-    stateId?: IFilterParameter | undefined; 
-    stateName?: IFilterParameter | undefined; 
+    
+    stateId?: IFilterParameter | undefined;
+    stateName?: IFilterParameter | undefined;
 
     constructor(data?: IQueryStateModelFilter) {
         if (data) {
@@ -29,21 +29,22 @@ export class QueryStateModelFilter implements IQueryStateModelFilter {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryStateModelFilter>) {
         if (_data) {
-            (<any>this).stateId = _data["stateId:"];
-            (<any>this).stateName = _data["stateName:"];
+            (<any>this).stateId = _data["stateId"];
+            (<any>this).stateName = _data["stateName"];
         }
     } 
     
-    static fromJS(data: any): IQueryStateModelFilter {
+    static fromJS(data: Partial<IQueryStateModelFilter>): IQueryStateModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryStateModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -53,5 +54,4 @@ export class QueryStateModelFilter implements IQueryStateModelFilter {
         data["stateName"] = this.stateName;
         return data;
     }
-
 }

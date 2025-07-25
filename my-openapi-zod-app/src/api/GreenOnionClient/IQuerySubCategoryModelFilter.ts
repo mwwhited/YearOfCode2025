@@ -16,17 +16,17 @@ type integer = number;
 export interface IQuerySubCategoryModelFilter {
     $schema: typeof ZQuerySubCategoryModelFilter;
 
-    subCategoryId?: any | undefined; 
-    categoryId?: any | undefined; 
-    subCategoryName?: any | undefined; 
-    subCategoryCode?: any | undefined; 
-    isActive?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    subCategoryId?: IFilterParameter | undefined;
+    categoryId?: IFilterParameter | undefined;
+    subCategoryName?: IFilterParameter | undefined;
+    subCategoryCode?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

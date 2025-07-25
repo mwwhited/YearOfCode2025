@@ -10,7 +10,6 @@
 import type { IOrderDirections } from "./IOrderDirections";
 import { ZOrderDirections } from "./ZOrderDirections";
 
-
 export const OrderDirections = Object.fromEntries(
   ZOrderDirections.options.map((k) => [k, k])
 ) as { [K in IOrderDirections]: K };

@@ -10,15 +10,15 @@
 import type { IQueryIngredientModel } from "./IQueryIngredientModel";
 import { ZQueryIngredientModel } from "./ZQueryIngredientModel";
 
-
 type integer = number;
 
 export class QueryIngredientModel implements IQueryIngredientModel {
     readonly $schema: typeof ZQueryIngredientModel = ZQueryIngredientModel;
-    ingredientId?: integer | undefined; 
-    ingredientName?: string | undefined; 
-    group?: string | undefined; 
-    iocGroup?: string | undefined; 
+    
+    ingredientId?: integer | undefined;
+    ingredientName?: string | undefined;
+    group?: string | undefined;
+    iocGroup?: string | undefined;
 
     constructor(data?: IQueryIngredientModel) {
         if (data) {
@@ -29,23 +29,24 @@ export class QueryIngredientModel implements IQueryIngredientModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryIngredientModel>) {
         if (_data) {
-            (<any>this).ingredientId = _data["ingredientId:"];
-            (<any>this).ingredientName = _data["ingredientName:"];
-            (<any>this).group = _data["group:"];
-            (<any>this).iocGroup = _data["iocGroup:"];
+            (<any>this).ingredientId = _data["ingredientId"];
+            (<any>this).ingredientName = _data["ingredientName"];
+            (<any>this).group = _data["group"];
+            (<any>this).iocGroup = _data["iocGroup"];
         }
     } 
     
-    static fromJS(data: any): IQueryIngredientModel {
+    static fromJS(data: Partial<IQueryIngredientModel>): IQueryIngredientModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryIngredientModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -57,5 +58,4 @@ export class QueryIngredientModel implements IQueryIngredientModel {
         data["iocGroup"] = this.iocGroup;
         return data;
     }
-
 }

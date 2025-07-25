@@ -10,14 +10,14 @@
 import type { IContentReference } from "./IContentReference";
 import { ZContentReference } from "./ZContentReference";
 
-
 type integer = number;
 
 export class ContentReference implements IContentReference {
     readonly $schema: typeof ZContentReference = ZContentReference;
-    content?: string | undefined; /* Gets or initializes the content type of the content. */
-    contentType?: string | undefined; /* Gets or initializes the content type of the content. */
-    fileName?: string | undefined; /* Gets or initializes the file name associated with the content. */
+    
+    content?: string | undefined;/*Gets or initializes the content type of the content.*/
+    contentType?: string | undefined;/*Gets or initializes the content type of the content.*/
+    fileName?: string | undefined;/*Gets or initializes the file name associated with the content.*/
 
     constructor(data?: IContentReference) {
         if (data) {
@@ -28,22 +28,23 @@ export class ContentReference implements IContentReference {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IContentReference>) {
         if (_data) {
-            (<any>this).content = _data["content:"];
-            (<any>this).contentType = _data["contentType:"];
-            (<any>this).fileName = _data["fileName:"];
+            (<any>this).content = _data["content"];
+            (<any>this).contentType = _data["contentType"];
+            (<any>this).fileName = _data["fileName"];
         }
     } 
     
-    static fromJS(data: any): IContentReference {
+    static fromJS(data: Partial<IContentReference>): IContentReference {
         data = typeof data === 'object' ? data : {};
         const result = new ContentReference();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -54,5 +55,4 @@ export class ContentReference implements IContentReference {
         data["fileName"] = this.fileName;
         return data;
     }
-
 }

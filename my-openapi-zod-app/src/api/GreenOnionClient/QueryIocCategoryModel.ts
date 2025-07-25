@@ -10,14 +10,14 @@
 import type { IQueryIocCategoryModel } from "./IQueryIocCategoryModel";
 import { ZQueryIocCategoryModel } from "./ZQueryIocCategoryModel";
 
-
 type integer = number;
 
 export class QueryIocCategoryModel implements IQueryIocCategoryModel {
     readonly $schema: typeof ZQueryIocCategoryModel = ZQueryIocCategoryModel;
-    iocCategoryId?: integer | undefined; 
-    name?: string | undefined; 
-    color?: string | undefined; 
+    
+    iocCategoryId?: integer | undefined;
+    name?: string | undefined;
+    color?: string | undefined;
 
     constructor(data?: IQueryIocCategoryModel) {
         if (data) {
@@ -28,22 +28,23 @@ export class QueryIocCategoryModel implements IQueryIocCategoryModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryIocCategoryModel>) {
         if (_data) {
-            (<any>this).iocCategoryId = _data["iocCategoryId:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).color = _data["color:"];
+            (<any>this).iocCategoryId = _data["iocCategoryId"];
+            (<any>this).name = _data["name"];
+            (<any>this).color = _data["color"];
         }
     } 
     
-    static fromJS(data: any): IQueryIocCategoryModel {
+    static fromJS(data: Partial<IQueryIocCategoryModel>): IQueryIocCategoryModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryIocCategoryModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -54,5 +55,4 @@ export class QueryIocCategoryModel implements IQueryIocCategoryModel {
         data["color"] = this.color;
         return data;
     }
-
 }

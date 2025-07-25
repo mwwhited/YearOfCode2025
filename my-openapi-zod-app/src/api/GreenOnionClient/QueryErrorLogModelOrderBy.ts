@@ -9,7 +9,6 @@
 
 import type { IQueryErrorLogModelOrderBy } from "./IQueryErrorLogModelOrderBy";
 import { ZQueryErrorLogModelOrderBy } from "./ZQueryErrorLogModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,9 +16,10 @@ type integer = number;
 
 export class QueryErrorLogModelOrderBy implements IQueryErrorLogModelOrderBy {
     readonly $schema: typeof ZQueryErrorLogModelOrderBy = ZQueryErrorLogModelOrderBy;
-    errorLogId?: IOrderDirections | undefined; 
-    errorMessage?: IOrderDirections | undefined; 
-    errorPath?: IOrderDirections | undefined; 
+    
+    errorLogId?: IOrderDirections | undefined;
+    errorMessage?: IOrderDirections | undefined;
+    errorPath?: IOrderDirections | undefined;
 
     constructor(data?: IQueryErrorLogModelOrderBy) {
         if (data) {
@@ -30,22 +30,23 @@ export class QueryErrorLogModelOrderBy implements IQueryErrorLogModelOrderBy {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryErrorLogModelOrderBy>) {
         if (_data) {
-            (<any>this).errorLogId = _data["errorLogId:"];
-            (<any>this).errorMessage = _data["errorMessage:"];
-            (<any>this).errorPath = _data["errorPath:"];
+            (<any>this).errorLogId = _data["errorLogId"];
+            (<any>this).errorMessage = _data["errorMessage"];
+            (<any>this).errorPath = _data["errorPath"];
         }
     } 
     
-    static fromJS(data: any): IQueryErrorLogModelOrderBy {
+    static fromJS(data: Partial<IQueryErrorLogModelOrderBy>): IQueryErrorLogModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryErrorLogModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -56,5 +57,4 @@ export class QueryErrorLogModelOrderBy implements IQueryErrorLogModelOrderBy {
         data["errorPath"] = this.errorPath;
         return data;
     }
-
 }

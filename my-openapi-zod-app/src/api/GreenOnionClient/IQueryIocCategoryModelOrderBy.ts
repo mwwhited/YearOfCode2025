@@ -16,9 +16,9 @@ type integer = number;
 export interface IQueryIocCategoryModelOrderBy {
     $schema: typeof ZQueryIocCategoryModelOrderBy;
 
-    iocCategoryId?: any | undefined; 
-    name?: any | undefined; 
-    color?: any | undefined; 
+    iocCategoryId?: IOrderDirections | undefined;
+    name?: IOrderDirections | undefined;
+    color?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

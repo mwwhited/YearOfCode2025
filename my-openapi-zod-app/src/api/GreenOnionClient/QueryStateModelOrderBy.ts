@@ -9,7 +9,6 @@
 
 import type { IQueryStateModelOrderBy } from "./IQueryStateModelOrderBy";
 import { ZQueryStateModelOrderBy } from "./ZQueryStateModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,8 +16,9 @@ type integer = number;
 
 export class QueryStateModelOrderBy implements IQueryStateModelOrderBy {
     readonly $schema: typeof ZQueryStateModelOrderBy = ZQueryStateModelOrderBy;
-    stateId?: IOrderDirections | undefined; 
-    stateName?: IOrderDirections | undefined; 
+    
+    stateId?: IOrderDirections | undefined;
+    stateName?: IOrderDirections | undefined;
 
     constructor(data?: IQueryStateModelOrderBy) {
         if (data) {
@@ -29,21 +29,22 @@ export class QueryStateModelOrderBy implements IQueryStateModelOrderBy {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryStateModelOrderBy>) {
         if (_data) {
-            (<any>this).stateId = _data["stateId:"];
-            (<any>this).stateName = _data["stateName:"];
+            (<any>this).stateId = _data["stateId"];
+            (<any>this).stateName = _data["stateName"];
         }
     } 
     
-    static fromJS(data: any): IQueryStateModelOrderBy {
+    static fromJS(data: Partial<IQueryStateModelOrderBy>): IQueryStateModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryStateModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -53,5 +54,4 @@ export class QueryStateModelOrderBy implements IQueryStateModelOrderBy {
         data["stateName"] = this.stateName;
         return data;
     }
-
 }

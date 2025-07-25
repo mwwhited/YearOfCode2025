@@ -16,9 +16,9 @@ type integer = number;
 export interface IQueryAllergenModelFilter {
     $schema: typeof ZQueryAllergenModelFilter;
 
-    allergenId?: any | undefined; 
-    allergenName?: any | undefined; 
-    allergenGroup?: any | undefined; 
+    allergenId?: IFilterParameter | undefined;
+    allergenName?: IFilterParameter | undefined;
+    allergenGroup?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

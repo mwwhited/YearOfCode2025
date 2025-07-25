@@ -9,7 +9,6 @@
 
 import type { IQueryDefinedFilterModelOrderBy } from "./IQueryDefinedFilterModelOrderBy";
 import { ZQueryDefinedFilterModelOrderBy } from "./ZQueryDefinedFilterModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,17 +16,18 @@ type integer = number;
 
 export class QueryDefinedFilterModelOrderBy implements IQueryDefinedFilterModelOrderBy {
     readonly $schema: typeof ZQueryDefinedFilterModelOrderBy = ZQueryDefinedFilterModelOrderBy;
-    definedFilterId?: IOrderDirections | undefined; 
-    createById?: IOrderDirections | undefined; 
-    updatedOn?: IOrderDirections | undefined; 
-    updatedById?: IOrderDirections | undefined; 
-    updatedBy?: IOrderDirections | undefined; 
-    createBy?: IOrderDirections | undefined; 
-    path?: IOrderDirections | undefined; 
-    name?: IOrderDirections | undefined; 
-    isActive?: IOrderDirections | undefined; 
-    createdOn?: IOrderDirections | undefined; 
-    state?: IOrderDirections | undefined; 
+    
+    definedFilterId?: IOrderDirections | undefined;
+    createById?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
+    createBy?: IOrderDirections | undefined;
+    path?: IOrderDirections | undefined;
+    name?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    state?: IOrderDirections | undefined;
 
     constructor(data?: IQueryDefinedFilterModelOrderBy) {
         if (data) {
@@ -38,30 +38,31 @@ export class QueryDefinedFilterModelOrderBy implements IQueryDefinedFilterModelO
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryDefinedFilterModelOrderBy>) {
         if (_data) {
-            (<any>this).definedFilterId = _data["definedFilterId:"];
-            (<any>this).createById = _data["createById:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
-            (<any>this).createBy = _data["createBy:"];
-            (<any>this).path = _data["path:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).state = _data["state:"];
+            (<any>this).definedFilterId = _data["definedFilterId"];
+            (<any>this).createById = _data["createById"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
+            (<any>this).createBy = _data["createBy"];
+            (<any>this).path = _data["path"];
+            (<any>this).name = _data["name"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).state = _data["state"];
         }
     } 
     
-    static fromJS(data: any): IQueryDefinedFilterModelOrderBy {
+    static fromJS(data: Partial<IQueryDefinedFilterModelOrderBy>): IQueryDefinedFilterModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryDefinedFilterModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -80,5 +81,4 @@ export class QueryDefinedFilterModelOrderBy implements IQueryDefinedFilterModelO
         data["state"] = this.state;
         return data;
     }
-
 }

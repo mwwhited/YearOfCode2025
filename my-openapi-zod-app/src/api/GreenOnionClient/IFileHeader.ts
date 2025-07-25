@@ -15,8 +15,8 @@ type integer = number;
 export interface IFileHeader {
     $schema: typeof ZFileHeader;
 
-    headerId?: integer | undefined; 
-    headerName?: string | undefined; 
+    headerId?: integer | undefined;
+    headerName?: string | undefined;
 
     toJSON(data?: any) : any;
 }

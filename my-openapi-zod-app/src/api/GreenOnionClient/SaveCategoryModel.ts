@@ -10,15 +10,15 @@
 import type { ISaveCategoryModel } from "./ISaveCategoryModel";
 import { ZSaveCategoryModel } from "./ZSaveCategoryModel";
 
-
 type integer = number;
 
 export class SaveCategoryModel implements ISaveCategoryModel {
     readonly $schema: typeof ZSaveCategoryModel = ZSaveCategoryModel;
-    categoryId?: integer | undefined; 
-    categoryName?: string | undefined; 
-    categoryCode?: string | undefined; 
-    isActive?: boolean | undefined; 
+    
+    categoryId?: integer | undefined;
+    categoryName?: string | undefined;
+    categoryCode?: string | undefined;
+    isActive?: boolean | undefined;
 
     constructor(data?: ISaveCategoryModel) {
         if (data) {
@@ -29,23 +29,24 @@ export class SaveCategoryModel implements ISaveCategoryModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveCategoryModel>) {
         if (_data) {
-            (<any>this).categoryId = _data["categoryId:"];
-            (<any>this).categoryName = _data["categoryName:"];
-            (<any>this).categoryCode = _data["categoryCode:"];
-            (<any>this).isActive = _data["isActive:"];
+            (<any>this).categoryId = _data["categoryId"];
+            (<any>this).categoryName = _data["categoryName"];
+            (<any>this).categoryCode = _data["categoryCode"];
+            (<any>this).isActive = _data["isActive"];
         }
     } 
     
-    static fromJS(data: any): ISaveCategoryModel {
+    static fromJS(data: Partial<ISaveCategoryModel>): ISaveCategoryModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveCategoryModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -57,5 +58,4 @@ export class SaveCategoryModel implements ISaveCategoryModel {
         data["isActive"] = this.isActive;
         return data;
     }
-
 }

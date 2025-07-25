@@ -16,10 +16,10 @@ type integer = number;
 export interface ISelectProductSaveCheckListRequestModel {
     $schema: typeof ZSelectProductSaveCheckListRequestModel;
 
-    uniqueExcelFileId?: string | undefined; 
-    userOrDistrictId?: integer | undefined; 
-    option?: string | undefined; 
-    productCheckList?: IProductCheck[] | undefined; 
+    uniqueExcelFileId?: string | undefined;
+    userOrDistrictId?: integer | undefined;
+    option?: string | undefined;
+    productCheckList?: IProductCheck[] | undefined;
 
     toJSON(data?: any) : any;
 }

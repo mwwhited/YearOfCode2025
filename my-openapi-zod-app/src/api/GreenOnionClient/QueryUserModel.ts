@@ -10,39 +10,39 @@
 import type { IQueryUserModel } from "./IQueryUserModel";
 import { ZQueryUserModel } from "./ZQueryUserModel";
 
-
 type integer = number;
 
 export class QueryUserModel implements IQueryUserModel {
     readonly $schema: typeof ZQueryUserModel = ZQueryUserModel;
-    userId?: integer | undefined; 
-    isActive?: boolean | undefined; 
-    firstName?: string | undefined; 
-    lastName?: string | undefined; 
-    objectId?: string | undefined; 
-    email?: string | undefined; 
-    mobile?: string | undefined; 
-    profileImage?: string | undefined; 
-    coverImage?: string | undefined; 
-    addressLine1?: string | undefined; 
-    addressLine2?: string | undefined; 
-    city?: string | undefined; 
-    country?: string | undefined; 
-    zipCode?: string | undefined; 
-    stateId?: integer | undefined; 
-    state?: string | undefined; 
-    roleId?: integer | undefined; 
-    roleName?: string | undefined; 
-    schoolDistrictId?: integer | undefined; 
-    schoolDistrictName?: string | undefined; 
-    manufacturerId?: integer | undefined; 
-    manufacturerName?: string | undefined; 
-    createdOn?: string | undefined; 
-    createdById?: integer | undefined; 
-    createdBy?: string | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
+    
+    userId?: integer | undefined;
+    isActive?: boolean | undefined;
+    firstName?: string | undefined;
+    lastName?: string | undefined;
+    objectId?: string | undefined;
+    email?: string | undefined;
+    mobile?: string | undefined;
+    profileImage?: string | undefined;
+    coverImage?: string | undefined;
+    addressLine1?: string | undefined;
+    addressLine2?: string | undefined;
+    city?: string | undefined;
+    country?: string | undefined;
+    zipCode?: string | undefined;
+    stateId?: integer | undefined;
+    state?: string | undefined;
+    roleId?: integer | undefined;
+    roleName?: string | undefined;
+    schoolDistrictId?: integer | undefined;
+    schoolDistrictName?: string | undefined;
+    manufacturerId?: integer | undefined;
+    manufacturerName?: string | undefined;
+    createdOn?: string | undefined;
+    createdById?: integer | undefined;
+    createdBy?: string | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
 
     constructor(data?: IQueryUserModel) {
         if (data) {
@@ -53,47 +53,48 @@ export class QueryUserModel implements IQueryUserModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserModel>) {
         if (_data) {
-            (<any>this).userId = _data["userId:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).firstName = _data["firstName:"];
-            (<any>this).lastName = _data["lastName:"];
-            (<any>this).objectId = _data["objectId:"];
-            (<any>this).email = _data["email:"];
-            (<any>this).mobile = _data["mobile:"];
-            (<any>this).profileImage = _data["profileImage:"];
-            (<any>this).coverImage = _data["coverImage:"];
-            (<any>this).addressLine1 = _data["addressLine1:"];
-            (<any>this).addressLine2 = _data["addressLine2:"];
-            (<any>this).city = _data["city:"];
-            (<any>this).country = _data["country:"];
-            (<any>this).zipCode = _data["zipCode:"];
-            (<any>this).stateId = _data["stateId:"];
-            (<any>this).state = _data["state:"];
-            (<any>this).roleId = _data["roleId:"];
-            (<any>this).roleName = _data["roleName:"];
-            (<any>this).schoolDistrictId = _data["schoolDistrictId:"];
-            (<any>this).schoolDistrictName = _data["schoolDistrictName:"];
-            (<any>this).manufacturerId = _data["manufacturerId:"];
-            (<any>this).manufacturerName = _data["manufacturerName:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).userId = _data["userId"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).firstName = _data["firstName"];
+            (<any>this).lastName = _data["lastName"];
+            (<any>this).objectId = _data["objectId"];
+            (<any>this).email = _data["email"];
+            (<any>this).mobile = _data["mobile"];
+            (<any>this).profileImage = _data["profileImage"];
+            (<any>this).coverImage = _data["coverImage"];
+            (<any>this).addressLine1 = _data["addressLine1"];
+            (<any>this).addressLine2 = _data["addressLine2"];
+            (<any>this).city = _data["city"];
+            (<any>this).country = _data["country"];
+            (<any>this).zipCode = _data["zipCode"];
+            (<any>this).stateId = _data["stateId"];
+            (<any>this).state = _data["state"];
+            (<any>this).roleId = _data["roleId"];
+            (<any>this).roleName = _data["roleName"];
+            (<any>this).schoolDistrictId = _data["schoolDistrictId"];
+            (<any>this).schoolDistrictName = _data["schoolDistrictName"];
+            (<any>this).manufacturerId = _data["manufacturerId"];
+            (<any>this).manufacturerName = _data["manufacturerName"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserModel {
+    static fromJS(data: Partial<IQueryUserModel>): IQueryUserModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -129,5 +130,4 @@ export class QueryUserModel implements IQueryUserModel {
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

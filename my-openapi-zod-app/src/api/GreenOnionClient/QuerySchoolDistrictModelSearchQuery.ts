@@ -9,7 +9,6 @@
 
 import type { IQuerySchoolDistrictModelSearchQuery } from "./IQuerySchoolDistrictModelSearchQuery";
 import { ZQuerySchoolDistrictModelSearchQuery } from "./ZQuerySchoolDistrictModelSearchQuery";
-
 import { QuerySchoolDistrictModelFilter } from "./QuerySchoolDistrictModelFilter";
 import type { IQuerySchoolDistrictModelFilter } from "./IQuerySchoolDistrictModelFilter";
 import { QuerySchoolDistrictModelOrderBy } from "./QuerySchoolDistrictModelOrderBy";
@@ -19,12 +18,13 @@ type integer = number;
 
 export class QuerySchoolDistrictModelSearchQuery implements IQuerySchoolDistrictModelSearchQuery {
     readonly $schema: typeof ZQuerySchoolDistrictModelSearchQuery = ZQuerySchoolDistrictModelSearchQuery;
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** SiteCode; DistrictName; PhoneNumber; Email; Country; State; City; DistrictLogo; FoodServiceOptions; ContractCompany; SchoolCoopName; CreatedBy; UpdatedBy */
-    filter?: IQuerySchoolDistrictModelFilter | undefined; 
-    orderBy?: IQuerySchoolDistrictModelOrderBy | undefined; 
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** SiteCode; DistrictName; PhoneNumber; Email; Country; State; City; DistrictLogo; FoodServiceOptions; ContractCompany; SchoolCoopName; CreatedBy; UpdatedBy*/
+    filter?: IQuerySchoolDistrictModelFilter | undefined;
+    orderBy?: IQuerySchoolDistrictModelOrderBy | undefined;
 
     constructor(data?: IQuerySchoolDistrictModelSearchQuery) {
         if (data) {
@@ -35,25 +35,26 @@ export class QuerySchoolDistrictModelSearchQuery implements IQuerySchoolDistrict
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQuerySchoolDistrictModelSearchQuery>) {
         if (_data) {
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).excludePageCount = _data["excludePageCount:"];
-            (<any>this).searchTerm = _data["searchTerm:"];
-            (<any>this).filter = _data["filter:"];
-            (<any>this).orderBy = _data["orderBy:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
         }
     } 
     
-    static fromJS(data: any): IQuerySchoolDistrictModelSearchQuery {
+    static fromJS(data: Partial<IQuerySchoolDistrictModelSearchQuery>): IQuerySchoolDistrictModelSearchQuery {
         data = typeof data === 'object' ? data : {};
         const result = new QuerySchoolDistrictModelSearchQuery();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -67,5 +68,4 @@ export class QuerySchoolDistrictModelSearchQuery implements IQuerySchoolDistrict
         data["orderBy"] = this.orderBy;
         return data;
     }
-
 }

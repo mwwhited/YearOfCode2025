@@ -15,20 +15,20 @@ type integer = number;
 export interface IProductActivityReportFilter {
     $schema: typeof ZProductActivityReportFilter;
 
-    pageNumber?: integer | undefined; 
-    pageSize?: integer | undefined; 
-    schoolDistrictId?: integer | undefined; 
-    iocCategoryId?: integer | undefined; 
-    userId?: integer | undefined; 
-    productId?: integer | undefined; 
-    gtin?: string | undefined; 
-    upc?: string | undefined; 
-    startDate?: string | undefined; 
-    endDate?: string | undefined; 
-    productGtinId?: integer | undefined; 
-    productUpcId?: integer | undefined; 
-    cooperative?: string | undefined; 
-    manufactureId?: integer | undefined; 
+    pageNumber?: integer | undefined;
+    pageSize?: integer | undefined;
+    schoolDistrictId?: integer | undefined;
+    iocCategoryId?: integer | undefined;
+    userId?: integer | undefined;
+    productId?: integer | undefined;
+    gtin?: string | undefined;
+    upc?: string | undefined;
+    startDate?: string | undefined;
+    endDate?: string | undefined;
+    productGtinId?: integer | undefined;
+    productUpcId?: integer | undefined;
+    cooperative?: string | undefined;
+    manufactureId?: integer | undefined;
 
     toJSON(data?: any) : any;
 }

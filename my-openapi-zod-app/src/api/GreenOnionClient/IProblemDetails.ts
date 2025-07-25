@@ -15,12 +15,12 @@ type integer = number;
 export interface IProblemDetails {
     $schema: typeof ZProblemDetails;
 
-    type?: string | undefined; 
-    title?: string | undefined; 
-    status?: integer | undefined; 
-    detail?: string | undefined; 
-    instance?: string | undefined; 
-    [key: string]: any; // Additional properties are allowed
+    type?: string | undefined;
+    title?: string | undefined;
+    status?: integer | undefined;
+    detail?: string | undefined;
+    instance?: string | undefined;
+    [key: string]: unknown; // Additional properties are allowed
 
     toJSON(data?: any) : any;
 }

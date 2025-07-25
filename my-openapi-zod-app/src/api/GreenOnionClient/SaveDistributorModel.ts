@@ -10,15 +10,15 @@
 import type { ISaveDistributorModel } from "./ISaveDistributorModel";
 import { ZSaveDistributorModel } from "./ZSaveDistributorModel";
 
-
 type integer = number;
 
 export class SaveDistributorModel implements ISaveDistributorModel {
     readonly $schema: typeof ZSaveDistributorModel = ZSaveDistributorModel;
-    distributorId?: integer | undefined; 
-    distributorName?: string | undefined; 
-    distributorCode?: string | undefined; 
-    isActive?: boolean | undefined; 
+    
+    distributorId?: integer | undefined;
+    distributorName?: string | undefined;
+    distributorCode?: string | undefined;
+    isActive?: boolean | undefined;
 
     constructor(data?: ISaveDistributorModel) {
         if (data) {
@@ -29,23 +29,24 @@ export class SaveDistributorModel implements ISaveDistributorModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveDistributorModel>) {
         if (_data) {
-            (<any>this).distributorId = _data["distributorId:"];
-            (<any>this).distributorName = _data["distributorName:"];
-            (<any>this).distributorCode = _data["distributorCode:"];
-            (<any>this).isActive = _data["isActive:"];
+            (<any>this).distributorId = _data["distributorId"];
+            (<any>this).distributorName = _data["distributorName"];
+            (<any>this).distributorCode = _data["distributorCode"];
+            (<any>this).isActive = _data["isActive"];
         }
     } 
     
-    static fromJS(data: any): ISaveDistributorModel {
+    static fromJS(data: Partial<ISaveDistributorModel>): ISaveDistributorModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveDistributorModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -57,5 +58,4 @@ export class SaveDistributorModel implements ISaveDistributorModel {
         data["isActive"] = this.isActive;
         return data;
     }
-
 }

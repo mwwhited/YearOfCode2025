@@ -9,7 +9,6 @@
 
 import type { IQueryDistributorModelOrderBy } from "./IQueryDistributorModelOrderBy";
 import { ZQueryDistributorModelOrderBy } from "./ZQueryDistributorModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,16 +16,17 @@ type integer = number;
 
 export class QueryDistributorModelOrderBy implements IQueryDistributorModelOrderBy {
     readonly $schema: typeof ZQueryDistributorModelOrderBy = ZQueryDistributorModelOrderBy;
-    distributorId?: IOrderDirections | undefined; 
-    distributorName?: IOrderDirections | undefined; 
-    distributorCode?: IOrderDirections | undefined; 
-    isActive?: IOrderDirections | undefined; 
-    createdOn?: IOrderDirections | undefined; 
-    createdById?: IOrderDirections | undefined; 
-    createdBy?: IOrderDirections | undefined; 
-    updatedOn?: IOrderDirections | undefined; 
-    updatedById?: IOrderDirections | undefined; 
-    updatedBy?: IOrderDirections | undefined; 
+    
+    distributorId?: IOrderDirections | undefined;
+    distributorName?: IOrderDirections | undefined;
+    distributorCode?: IOrderDirections | undefined;
+    isActive?: IOrderDirections | undefined;
+    createdOn?: IOrderDirections | undefined;
+    createdById?: IOrderDirections | undefined;
+    createdBy?: IOrderDirections | undefined;
+    updatedOn?: IOrderDirections | undefined;
+    updatedById?: IOrderDirections | undefined;
+    updatedBy?: IOrderDirections | undefined;
 
     constructor(data?: IQueryDistributorModelOrderBy) {
         if (data) {
@@ -37,29 +37,30 @@ export class QueryDistributorModelOrderBy implements IQueryDistributorModelOrder
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryDistributorModelOrderBy>) {
         if (_data) {
-            (<any>this).distributorId = _data["distributorId:"];
-            (<any>this).distributorName = _data["distributorName:"];
-            (<any>this).distributorCode = _data["distributorCode:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).createdById = _data["createdById:"];
-            (<any>this).createdBy = _data["createdBy:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
+            (<any>this).distributorId = _data["distributorId"];
+            (<any>this).distributorName = _data["distributorName"];
+            (<any>this).distributorCode = _data["distributorCode"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).createdById = _data["createdById"];
+            (<any>this).createdBy = _data["createdBy"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryDistributorModelOrderBy {
+    static fromJS(data: Partial<IQueryDistributorModelOrderBy>): IQueryDistributorModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryDistributorModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -77,5 +78,4 @@ export class QueryDistributorModelOrderBy implements IQueryDistributorModelOrder
         data["updatedBy"] = this.updatedBy;
         return data;
     }
-
 }

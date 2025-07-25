@@ -15,11 +15,11 @@ type integer = number;
 export interface IMappingFieldData {
     $schema: typeof ZMappingFieldData;
 
-    mappingID?: integer | undefined; 
-    isChecked?: boolean | undefined; 
-    fileFieldName?: string | undefined; 
-    tableFieldID?: string | undefined; 
-    tableFieldName?: string | undefined; 
+    mappingID?: integer | undefined;
+    isChecked?: boolean | undefined;
+    fileFieldName?: string | undefined;
+    tableFieldID?: string | undefined;
+    tableFieldName?: string | undefined;
 
     toJSON(data?: any) : any;
 }

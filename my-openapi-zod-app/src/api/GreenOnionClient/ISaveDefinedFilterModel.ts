@@ -15,11 +15,11 @@ type integer = number;
 export interface ISaveDefinedFilterModel {
     $schema: typeof ZSaveDefinedFilterModel;
 
-    definedFilterId?: integer | undefined; 
-    path?: string | undefined; 
-    name?: string | undefined; 
-    isActive?: boolean | undefined; 
-    state?: string | undefined; 
+    definedFilterId?: integer | undefined;
+    path?: string | undefined;
+    name?: string | undefined;
+    isActive?: boolean | undefined;
+    state?: string | undefined;
 
     toJSON(data?: any) : any;
 }

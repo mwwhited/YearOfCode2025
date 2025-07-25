@@ -16,23 +16,23 @@ type integer = number;
 export interface ISaveOneWorldSyncProductModel {
     $schema: typeof ZSaveOneWorldSyncProductModel;
 
-    productId?: integer | undefined; 
-    productName?: string | undefined; 
-    gtin?: string | undefined; 
-    upc?: string | undefined; 
-    brandName?: string | undefined; 
-    ingredients?: string | undefined; 
-    productDescription?: string | undefined; 
-    vendor?: string | undefined; 
-    manufacturerId?: integer | undefined; 
-    storageTypeId?: integer | undefined; 
-    categoryName?: string | undefined; 
-    subCategory1Name?: string | undefined; 
-    subCategory2Name?: string | undefined; 
-    allergenKeyword?: string | undefined; 
-    isActive?: boolean | undefined; 
-    dataForm?: string | undefined; 
-    nutritionalInformation?: any | undefined; 
+    productId?: integer | undefined;
+    productName?: string | undefined;
+    gtin?: string | undefined;
+    upc?: string | undefined;
+    brandName?: string | undefined;
+    ingredients?: string | undefined;
+    productDescription?: string | undefined;
+    vendor?: string | undefined;
+    manufacturerId?: integer | undefined;
+    storageTypeId?: integer | undefined;
+    categoryName?: string | undefined;
+    subCategory1Name?: string | undefined;
+    subCategory2Name?: string | undefined;
+    allergenKeyword?: string | undefined;
+    isActive?: boolean | undefined;
+    dataForm?: string | undefined;
+    nutritionalInformation?: INutritionalInformationModel | undefined;
 
     toJSON(data?: any) : any;
 }

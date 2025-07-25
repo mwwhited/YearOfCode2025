@@ -10,14 +10,14 @@
 import type { IQueryErrorLogModel } from "./IQueryErrorLogModel";
 import { ZQueryErrorLogModel } from "./ZQueryErrorLogModel";
 
-
 type integer = number;
 
 export class QueryErrorLogModel implements IQueryErrorLogModel {
     readonly $schema: typeof ZQueryErrorLogModel = ZQueryErrorLogModel;
-    errorLogId?: integer | undefined; 
-    errorMessage?: string | undefined; 
-    errorPath?: string | undefined; 
+    
+    errorLogId?: integer | undefined;
+    errorMessage?: string | undefined;
+    errorPath?: string | undefined;
 
     constructor(data?: IQueryErrorLogModel) {
         if (data) {
@@ -28,22 +28,23 @@ export class QueryErrorLogModel implements IQueryErrorLogModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryErrorLogModel>) {
         if (_data) {
-            (<any>this).errorLogId = _data["errorLogId:"];
-            (<any>this).errorMessage = _data["errorMessage:"];
-            (<any>this).errorPath = _data["errorPath:"];
+            (<any>this).errorLogId = _data["errorLogId"];
+            (<any>this).errorMessage = _data["errorMessage"];
+            (<any>this).errorPath = _data["errorPath"];
         }
     } 
     
-    static fromJS(data: any): IQueryErrorLogModel {
+    static fromJS(data: Partial<IQueryErrorLogModel>): IQueryErrorLogModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryErrorLogModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -54,5 +55,4 @@ export class QueryErrorLogModel implements IQueryErrorLogModel {
         data["errorPath"] = this.errorPath;
         return data;
     }
-
 }

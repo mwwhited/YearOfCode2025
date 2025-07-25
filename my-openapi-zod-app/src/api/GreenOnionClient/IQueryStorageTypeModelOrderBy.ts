@@ -16,8 +16,8 @@ type integer = number;
 export interface IQueryStorageTypeModelOrderBy {
     $schema: typeof ZQueryStorageTypeModelOrderBy;
 
-    storageTypeId?: any | undefined; 
-    storageTypeName?: any | undefined; 
+    storageTypeId?: IOrderDirections | undefined;
+    storageTypeName?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

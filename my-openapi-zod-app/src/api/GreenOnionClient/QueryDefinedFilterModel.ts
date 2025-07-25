@@ -10,22 +10,22 @@
 import type { IQueryDefinedFilterModel } from "./IQueryDefinedFilterModel";
 import { ZQueryDefinedFilterModel } from "./ZQueryDefinedFilterModel";
 
-
 type integer = number;
 
 export class QueryDefinedFilterModel implements IQueryDefinedFilterModel {
     readonly $schema: typeof ZQueryDefinedFilterModel = ZQueryDefinedFilterModel;
-    definedFilterId?: integer | undefined; 
-    createById?: integer | undefined; 
-    updatedOn?: string | undefined; 
-    updatedById?: integer | undefined; 
-    updatedBy?: string | undefined; 
-    createBy?: string | undefined; 
-    path?: string | undefined; 
-    name?: string | undefined; 
-    isActive?: boolean | undefined; 
-    createdOn?: string | undefined; 
-    state?: string | undefined; 
+    
+    definedFilterId?: integer | undefined;
+    createById?: integer | undefined;
+    updatedOn?: string | undefined;
+    updatedById?: integer | undefined;
+    updatedBy?: string | undefined;
+    createBy?: string | undefined;
+    path?: string | undefined;
+    name?: string | undefined;
+    isActive?: boolean | undefined;
+    createdOn?: string | undefined;
+    state?: string | undefined;
 
     constructor(data?: IQueryDefinedFilterModel) {
         if (data) {
@@ -36,30 +36,31 @@ export class QueryDefinedFilterModel implements IQueryDefinedFilterModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryDefinedFilterModel>) {
         if (_data) {
-            (<any>this).definedFilterId = _data["definedFilterId:"];
-            (<any>this).createById = _data["createById:"];
-            (<any>this).updatedOn = _data["updatedOn:"];
-            (<any>this).updatedById = _data["updatedById:"];
-            (<any>this).updatedBy = _data["updatedBy:"];
-            (<any>this).createBy = _data["createBy:"];
-            (<any>this).path = _data["path:"];
-            (<any>this).name = _data["name:"];
-            (<any>this).isActive = _data["isActive:"];
-            (<any>this).createdOn = _data["createdOn:"];
-            (<any>this).state = _data["state:"];
+            (<any>this).definedFilterId = _data["definedFilterId"];
+            (<any>this).createById = _data["createById"];
+            (<any>this).updatedOn = _data["updatedOn"];
+            (<any>this).updatedById = _data["updatedById"];
+            (<any>this).updatedBy = _data["updatedBy"];
+            (<any>this).createBy = _data["createBy"];
+            (<any>this).path = _data["path"];
+            (<any>this).name = _data["name"];
+            (<any>this).isActive = _data["isActive"];
+            (<any>this).createdOn = _data["createdOn"];
+            (<any>this).state = _data["state"];
         }
     } 
     
-    static fromJS(data: any): IQueryDefinedFilterModel {
+    static fromJS(data: Partial<IQueryDefinedFilterModel>): IQueryDefinedFilterModel {
         data = typeof data === 'object' ? data : {};
         const result = new QueryDefinedFilterModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -78,5 +79,4 @@ export class QueryDefinedFilterModel implements IQueryDefinedFilterModel {
         data["state"] = this.state;
         return data;
     }
-
 }

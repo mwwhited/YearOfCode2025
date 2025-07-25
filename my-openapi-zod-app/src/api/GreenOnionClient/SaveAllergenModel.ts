@@ -10,14 +10,14 @@
 import type { ISaveAllergenModel } from "./ISaveAllergenModel";
 import { ZSaveAllergenModel } from "./ZSaveAllergenModel";
 
-
 type integer = number;
 
 export class SaveAllergenModel implements ISaveAllergenModel {
     readonly $schema: typeof ZSaveAllergenModel = ZSaveAllergenModel;
-    allergenId?: integer | undefined; 
-    allergenName?: string | undefined; 
-    allergenGroup?: string | undefined; 
+    
+    allergenId?: integer | undefined;
+    allergenName?: string | undefined;
+    allergenGroup?: string | undefined;
 
     constructor(data?: ISaveAllergenModel) {
         if (data) {
@@ -28,22 +28,23 @@ export class SaveAllergenModel implements ISaveAllergenModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveAllergenModel>) {
         if (_data) {
-            (<any>this).allergenId = _data["allergenId:"];
-            (<any>this).allergenName = _data["allergenName:"];
-            (<any>this).allergenGroup = _data["allergenGroup:"];
+            (<any>this).allergenId = _data["allergenId"];
+            (<any>this).allergenName = _data["allergenName"];
+            (<any>this).allergenGroup = _data["allergenGroup"];
         }
     } 
     
-    static fromJS(data: any): ISaveAllergenModel {
+    static fromJS(data: Partial<ISaveAllergenModel>): ISaveAllergenModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveAllergenModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -54,5 +55,4 @@ export class SaveAllergenModel implements ISaveAllergenModel {
         data["allergenGroup"] = this.allergenGroup;
         return data;
     }
-
 }

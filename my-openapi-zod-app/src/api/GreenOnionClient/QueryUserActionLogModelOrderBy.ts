@@ -9,7 +9,6 @@
 
 import type { IQueryUserActionLogModelOrderBy } from "./IQueryUserActionLogModelOrderBy";
 import { ZQueryUserActionLogModelOrderBy } from "./ZQueryUserActionLogModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,16 +16,17 @@ type integer = number;
 
 export class QueryUserActionLogModelOrderBy implements IQueryUserActionLogModelOrderBy {
     readonly $schema: typeof ZQueryUserActionLogModelOrderBy = ZQueryUserActionLogModelOrderBy;
-    userActionLogId?: IOrderDirections | undefined; 
-    eventType?: IOrderDirections | undefined; 
-    httpMethod?: IOrderDirections | undefined; 
-    eventDate?: IOrderDirections | undefined; 
-    sessionId?: IOrderDirections | undefined; 
-    requestId?: IOrderDirections | undefined; 
-    correlationId?: IOrderDirections | undefined; 
-    requestPath?: IOrderDirections | undefined; 
-    userId?: IOrderDirections | undefined; 
-    user?: IOrderDirections | undefined; 
+    
+    userActionLogId?: IOrderDirections | undefined;
+    eventType?: IOrderDirections | undefined;
+    httpMethod?: IOrderDirections | undefined;
+    eventDate?: IOrderDirections | undefined;
+    sessionId?: IOrderDirections | undefined;
+    requestId?: IOrderDirections | undefined;
+    correlationId?: IOrderDirections | undefined;
+    requestPath?: IOrderDirections | undefined;
+    userId?: IOrderDirections | undefined;
+    user?: IOrderDirections | undefined;
 
     constructor(data?: IQueryUserActionLogModelOrderBy) {
         if (data) {
@@ -37,29 +37,30 @@ export class QueryUserActionLogModelOrderBy implements IQueryUserActionLogModelO
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserActionLogModelOrderBy>) {
         if (_data) {
-            (<any>this).userActionLogId = _data["userActionLogId:"];
-            (<any>this).eventType = _data["eventType:"];
-            (<any>this).httpMethod = _data["httpMethod:"];
-            (<any>this).eventDate = _data["eventDate:"];
-            (<any>this).sessionId = _data["sessionId:"];
-            (<any>this).requestId = _data["requestId:"];
-            (<any>this).correlationId = _data["correlationId:"];
-            (<any>this).requestPath = _data["requestPath:"];
-            (<any>this).userId = _data["userId:"];
-            (<any>this).user = _data["user:"];
+            (<any>this).userActionLogId = _data["userActionLogId"];
+            (<any>this).eventType = _data["eventType"];
+            (<any>this).httpMethod = _data["httpMethod"];
+            (<any>this).eventDate = _data["eventDate"];
+            (<any>this).sessionId = _data["sessionId"];
+            (<any>this).requestId = _data["requestId"];
+            (<any>this).correlationId = _data["correlationId"];
+            (<any>this).requestPath = _data["requestPath"];
+            (<any>this).userId = _data["userId"];
+            (<any>this).user = _data["user"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserActionLogModelOrderBy {
+    static fromJS(data: Partial<IQueryUserActionLogModelOrderBy>): IQueryUserActionLogModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserActionLogModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -77,5 +78,4 @@ export class QueryUserActionLogModelOrderBy implements IQueryUserActionLogModelO
         data["user"] = this.user;
         return data;
     }
-
 }

@@ -16,9 +16,9 @@ type integer = number;
 export interface IQueryAllergenModelOrderBy {
     $schema: typeof ZQueryAllergenModelOrderBy;
 
-    allergenId?: any | undefined; 
-    allergenName?: any | undefined; 
-    allergenGroup?: any | undefined; 
+    allergenId?: IOrderDirections | undefined;
+    allergenName?: IOrderDirections | undefined;
+    allergenGroup?: IOrderDirections | undefined;
 
     toJSON(data?: any) : any;
 }

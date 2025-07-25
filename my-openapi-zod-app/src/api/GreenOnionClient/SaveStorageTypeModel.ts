@@ -10,13 +10,13 @@
 import type { ISaveStorageTypeModel } from "./ISaveStorageTypeModel";
 import { ZSaveStorageTypeModel } from "./ZSaveStorageTypeModel";
 
-
 type integer = number;
 
 export class SaveStorageTypeModel implements ISaveStorageTypeModel {
     readonly $schema: typeof ZSaveStorageTypeModel = ZSaveStorageTypeModel;
-    storageTypeId?: integer | undefined; 
-    storageTypeName?: string | undefined; 
+    
+    storageTypeId?: integer | undefined;
+    storageTypeName?: string | undefined;
 
     constructor(data?: ISaveStorageTypeModel) {
         if (data) {
@@ -27,21 +27,22 @@ export class SaveStorageTypeModel implements ISaveStorageTypeModel {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISaveStorageTypeModel>) {
         if (_data) {
-            (<any>this).storageTypeId = _data["storageTypeId:"];
-            (<any>this).storageTypeName = _data["storageTypeName:"];
+            (<any>this).storageTypeId = _data["storageTypeId"];
+            (<any>this).storageTypeName = _data["storageTypeName"];
         }
     } 
     
-    static fromJS(data: any): ISaveStorageTypeModel {
+    static fromJS(data: Partial<ISaveStorageTypeModel>): ISaveStorageTypeModel {
         data = typeof data === 'object' ? data : {};
         const result = new SaveStorageTypeModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -51,5 +52,4 @@ export class SaveStorageTypeModel implements ISaveStorageTypeModel {
         data["storageTypeName"] = this.storageTypeName;
         return data;
     }
-
 }

@@ -10,18 +10,18 @@
 import type { ISuggestedProductResponseModel } from "./ISuggestedProductResponseModel";
 import { ZSuggestedProductResponseModel } from "./ZSuggestedProductResponseModel";
 
-
 type integer = number;
 
 export class SuggestedProductResponseModel implements ISuggestedProductResponseModel {
     readonly $schema: typeof ZSuggestedProductResponseModel = ZSuggestedProductResponseModel;
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
-    isUpdate?: boolean | undefined; 
-    isAdded?: boolean | undefined; 
-    isDelete?: boolean | undefined; 
+    
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
+    isUpdate?: boolean | undefined;
+    isAdded?: boolean | undefined;
+    isDelete?: boolean | undefined;
 
     constructor(data?: ISuggestedProductResponseModel) {
         if (data) {
@@ -32,26 +32,27 @@ export class SuggestedProductResponseModel implements ISuggestedProductResponseM
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<ISuggestedProductResponseModel>) {
         if (_data) {
-            (<any>this).success = _data["success:"];
-            (<any>this).message = _data["message:"];
-            (<any>this).totalRecords = _data["totalRecords:"];
-            (<any>this).payload = _data["payload:"];
-            (<any>this).isUpdate = _data["isUpdate:"];
-            (<any>this).isAdded = _data["isAdded:"];
-            (<any>this).isDelete = _data["isDelete:"];
+            (<any>this).success = _data["success"];
+            (<any>this).message = _data["message"];
+            (<any>this).totalRecords = _data["totalRecords"];
+            (<any>this).payload = _data["payload"];
+            (<any>this).isUpdate = _data["isUpdate"];
+            (<any>this).isAdded = _data["isAdded"];
+            (<any>this).isDelete = _data["isDelete"];
         }
     } 
     
-    static fromJS(data: any): ISuggestedProductResponseModel {
+    static fromJS(data: Partial<ISuggestedProductResponseModel>): ISuggestedProductResponseModel {
         data = typeof data === 'object' ? data : {};
         const result = new SuggestedProductResponseModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -66,5 +67,4 @@ export class SuggestedProductResponseModel implements ISuggestedProductResponseM
         data["isDelete"] = this.isDelete;
         return data;
     }
-
 }

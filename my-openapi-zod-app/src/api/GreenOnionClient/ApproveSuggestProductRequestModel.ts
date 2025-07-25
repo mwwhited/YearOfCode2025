@@ -10,13 +10,13 @@
 import type { IApproveSuggestProductRequestModel } from "./IApproveSuggestProductRequestModel";
 import { ZApproveSuggestProductRequestModel } from "./ZApproveSuggestProductRequestModel";
 
-
 type integer = number;
 
 export class ApproveSuggestProductRequestModel implements IApproveSuggestProductRequestModel {
     readonly $schema: typeof ZApproveSuggestProductRequestModel = ZApproveSuggestProductRequestModel;
-    productId?: integer | undefined; 
-    suggestedProductId?: integer | undefined; 
+    
+    productId?: integer | undefined;
+    suggestedProductId?: integer | undefined;
 
     constructor(data?: IApproveSuggestProductRequestModel) {
         if (data) {
@@ -27,21 +27,22 @@ export class ApproveSuggestProductRequestModel implements IApproveSuggestProduct
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IApproveSuggestProductRequestModel>) {
         if (_data) {
-            (<any>this).productId = _data["productId:"];
-            (<any>this).suggestedProductId = _data["suggestedProductId:"];
+            (<any>this).productId = _data["productId"];
+            (<any>this).suggestedProductId = _data["suggestedProductId"];
         }
     } 
     
-    static fromJS(data: any): IApproveSuggestProductRequestModel {
+    static fromJS(data: Partial<IApproveSuggestProductRequestModel>): IApproveSuggestProductRequestModel {
         data = typeof data === 'object' ? data : {};
         const result = new ApproveSuggestProductRequestModel();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -51,5 +52,4 @@ export class ApproveSuggestProductRequestModel implements IApproveSuggestProduct
         data["suggestedProductId"] = this.suggestedProductId;
         return data;
     }
-
 }

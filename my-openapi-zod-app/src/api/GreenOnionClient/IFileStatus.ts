@@ -15,8 +15,8 @@ type integer = number;
 export interface IFileStatus {
     $schema: typeof ZFileStatus;
 
-    status?: boolean | undefined; 
-    reason?: string | undefined; 
+    status?: boolean | undefined;
+    reason?: string | undefined;
 
     toJSON(data?: any) : any;
 }

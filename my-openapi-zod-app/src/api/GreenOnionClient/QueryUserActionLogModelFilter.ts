@@ -9,7 +9,6 @@
 
 import type { IQueryUserActionLogModelFilter } from "./IQueryUserActionLogModelFilter";
 import { ZQueryUserActionLogModelFilter } from "./ZQueryUserActionLogModelFilter";
-
 import { FilterParameter } from "./FilterParameter";
 import type { IFilterParameter } from "./IFilterParameter";
 
@@ -17,16 +16,17 @@ type integer = number;
 
 export class QueryUserActionLogModelFilter implements IQueryUserActionLogModelFilter {
     readonly $schema: typeof ZQueryUserActionLogModelFilter = ZQueryUserActionLogModelFilter;
-    userActionLogId?: IFilterParameter | undefined; 
-    eventType?: IFilterParameter | undefined; 
-    httpMethod?: IFilterParameter | undefined; 
-    eventDate?: IFilterParameter | undefined; 
-    sessionId?: IFilterParameter | undefined; 
-    requestId?: IFilterParameter | undefined; 
-    correlationId?: IFilterParameter | undefined; 
-    requestPath?: IFilterParameter | undefined; 
-    userId?: IFilterParameter | undefined; 
-    user?: IFilterParameter | undefined; 
+    
+    userActionLogId?: IFilterParameter | undefined;
+    eventType?: IFilterParameter | undefined;
+    httpMethod?: IFilterParameter | undefined;
+    eventDate?: IFilterParameter | undefined;
+    sessionId?: IFilterParameter | undefined;
+    requestId?: IFilterParameter | undefined;
+    correlationId?: IFilterParameter | undefined;
+    requestPath?: IFilterParameter | undefined;
+    userId?: IFilterParameter | undefined;
+    user?: IFilterParameter | undefined;
 
     constructor(data?: IQueryUserActionLogModelFilter) {
         if (data) {
@@ -37,29 +37,30 @@ export class QueryUserActionLogModelFilter implements IQueryUserActionLogModelFi
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserActionLogModelFilter>) {
         if (_data) {
-            (<any>this).userActionLogId = _data["userActionLogId:"];
-            (<any>this).eventType = _data["eventType:"];
-            (<any>this).httpMethod = _data["httpMethod:"];
-            (<any>this).eventDate = _data["eventDate:"];
-            (<any>this).sessionId = _data["sessionId:"];
-            (<any>this).requestId = _data["requestId:"];
-            (<any>this).correlationId = _data["correlationId:"];
-            (<any>this).requestPath = _data["requestPath:"];
-            (<any>this).userId = _data["userId:"];
-            (<any>this).user = _data["user:"];
+            (<any>this).userActionLogId = _data["userActionLogId"];
+            (<any>this).eventType = _data["eventType"];
+            (<any>this).httpMethod = _data["httpMethod"];
+            (<any>this).eventDate = _data["eventDate"];
+            (<any>this).sessionId = _data["sessionId"];
+            (<any>this).requestId = _data["requestId"];
+            (<any>this).correlationId = _data["correlationId"];
+            (<any>this).requestPath = _data["requestPath"];
+            (<any>this).userId = _data["userId"];
+            (<any>this).user = _data["user"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserActionLogModelFilter {
+    static fromJS(data: Partial<IQueryUserActionLogModelFilter>): IQueryUserActionLogModelFilter {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserActionLogModelFilter();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -77,5 +78,4 @@ export class QueryUserActionLogModelFilter implements IQueryUserActionLogModelFi
         data["user"] = this.user;
         return data;
     }
-
 }

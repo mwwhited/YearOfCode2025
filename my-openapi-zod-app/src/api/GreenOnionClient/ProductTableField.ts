@@ -10,13 +10,13 @@
 import type { IProductTableField } from "./IProductTableField";
 import { ZProductTableField } from "./ZProductTableField";
 
-
 type integer = number;
 
 export class ProductTableField implements IProductTableField {
     readonly $schema: typeof ZProductTableField = ZProductTableField;
-    fieldID?: integer | undefined; 
-    fieldName?: string | undefined; 
+    
+    fieldID?: integer | undefined;
+    fieldName?: string | undefined;
 
     constructor(data?: IProductTableField) {
         if (data) {
@@ -27,21 +27,22 @@ export class ProductTableField implements IProductTableField {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IProductTableField>) {
         if (_data) {
-            (<any>this).fieldID = _data["fieldID:"];
-            (<any>this).fieldName = _data["fieldName:"];
+            (<any>this).fieldID = _data["fieldID"];
+            (<any>this).fieldName = _data["fieldName"];
         }
     } 
     
-    static fromJS(data: any): IProductTableField {
+    static fromJS(data: Partial<IProductTableField>): IProductTableField {
         data = typeof data === 'object' ? data : {};
         const result = new ProductTableField();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -51,5 +52,4 @@ export class ProductTableField implements IProductTableField {
         data["fieldName"] = this.fieldName;
         return data;
     }
-
 }

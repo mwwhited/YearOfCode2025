@@ -17,12 +17,12 @@ type integer = number;
 export interface IQueryMonthlyNumberModelSearchQuery {
     $schema: typeof ZQueryMonthlyNumberModelSearchQuery;
 
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** SchoolDistrictId; MonthId; ActualMonthId; Year; Enrollment; NumberOfSites; NumberOfDistricts; MealsServed; FreeAndReducedPercent; IsActive; RegDate; CreatedBy; UpdatedBy */
-    filter?: any | undefined; 
-    orderBy?: any | undefined; 
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** SchoolDistrictId; MonthId; ActualMonthId; Year; Enrollment; NumberOfSites; NumberOfDistricts; MealsServed; FreeAndReducedPercent; IsActive; RegDate; CreatedBy; UpdatedBy*/
+    filter?: IQueryMonthlyNumberModelFilter | undefined;
+    orderBy?: IQueryMonthlyNumberModelOrderBy | undefined;
 
     toJSON(data?: any) : any;
 }

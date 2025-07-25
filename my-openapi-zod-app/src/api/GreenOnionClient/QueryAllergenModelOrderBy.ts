@@ -9,7 +9,6 @@
 
 import type { IQueryAllergenModelOrderBy } from "./IQueryAllergenModelOrderBy";
 import { ZQueryAllergenModelOrderBy } from "./ZQueryAllergenModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,9 +16,10 @@ type integer = number;
 
 export class QueryAllergenModelOrderBy implements IQueryAllergenModelOrderBy {
     readonly $schema: typeof ZQueryAllergenModelOrderBy = ZQueryAllergenModelOrderBy;
-    allergenId?: IOrderDirections | undefined; 
-    allergenName?: IOrderDirections | undefined; 
-    allergenGroup?: IOrderDirections | undefined; 
+    
+    allergenId?: IOrderDirections | undefined;
+    allergenName?: IOrderDirections | undefined;
+    allergenGroup?: IOrderDirections | undefined;
 
     constructor(data?: IQueryAllergenModelOrderBy) {
         if (data) {
@@ -30,22 +30,23 @@ export class QueryAllergenModelOrderBy implements IQueryAllergenModelOrderBy {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryAllergenModelOrderBy>) {
         if (_data) {
-            (<any>this).allergenId = _data["allergenId:"];
-            (<any>this).allergenName = _data["allergenName:"];
-            (<any>this).allergenGroup = _data["allergenGroup:"];
+            (<any>this).allergenId = _data["allergenId"];
+            (<any>this).allergenName = _data["allergenName"];
+            (<any>this).allergenGroup = _data["allergenGroup"];
         }
     } 
     
-    static fromJS(data: any): IQueryAllergenModelOrderBy {
+    static fromJS(data: Partial<IQueryAllergenModelOrderBy>): IQueryAllergenModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryAllergenModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -56,5 +57,4 @@ export class QueryAllergenModelOrderBy implements IQueryAllergenModelOrderBy {
         data["allergenGroup"] = this.allergenGroup;
         return data;
     }
-
 }

@@ -15,17 +15,17 @@ type integer = number;
 export interface ISaveMonthlyNumberModel {
     $schema: typeof ZSaveMonthlyNumberModel;
 
-    id?: integer | undefined; 
-    schoolDistrictId?: integer | undefined; 
-    monthId?: integer | undefined; 
-    actualMonthId?: integer | undefined; 
-    year?: string | undefined; 
-    enrollment?: integer | undefined; 
-    numberOfSites?: integer | undefined; 
-    numberOfDistricts?: integer | undefined; 
-    mealsServed?: integer | undefined; 
-    freeAndReducedPercent?: integer | undefined; 
-    isActive?: boolean | undefined; 
+    id?: integer | undefined;
+    schoolDistrictId?: integer | undefined;
+    monthId?: integer | undefined;
+    actualMonthId?: integer | undefined;
+    year?: string | undefined;
+    enrollment?: integer | undefined;
+    numberOfSites?: integer | undefined;
+    numberOfDistricts?: integer | undefined;
+    mealsServed?: integer | undefined;
+    freeAndReducedPercent?: integer | undefined;
+    isActive?: boolean | undefined;
 
     toJSON(data?: any) : any;
 }

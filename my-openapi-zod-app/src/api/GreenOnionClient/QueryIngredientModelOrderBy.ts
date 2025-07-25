@@ -9,7 +9,6 @@
 
 import type { IQueryIngredientModelOrderBy } from "./IQueryIngredientModelOrderBy";
 import { ZQueryIngredientModelOrderBy } from "./ZQueryIngredientModelOrderBy";
-
 import { OrderDirections } from "./OrderDirections";
 import type { IOrderDirections } from "./IOrderDirections";
 
@@ -17,10 +16,11 @@ type integer = number;
 
 export class QueryIngredientModelOrderBy implements IQueryIngredientModelOrderBy {
     readonly $schema: typeof ZQueryIngredientModelOrderBy = ZQueryIngredientModelOrderBy;
-    ingredientId?: IOrderDirections | undefined; 
-    ingredientName?: IOrderDirections | undefined; 
-    group?: IOrderDirections | undefined; 
-    iocGroup?: IOrderDirections | undefined; 
+    
+    ingredientId?: IOrderDirections | undefined;
+    ingredientName?: IOrderDirections | undefined;
+    group?: IOrderDirections | undefined;
+    iocGroup?: IOrderDirections | undefined;
 
     constructor(data?: IQueryIngredientModelOrderBy) {
         if (data) {
@@ -31,23 +31,24 @@ export class QueryIngredientModelOrderBy implements IQueryIngredientModelOrderBy
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryIngredientModelOrderBy>) {
         if (_data) {
-            (<any>this).ingredientId = _data["ingredientId:"];
-            (<any>this).ingredientName = _data["ingredientName:"];
-            (<any>this).group = _data["group:"];
-            (<any>this).iocGroup = _data["iocGroup:"];
+            (<any>this).ingredientId = _data["ingredientId"];
+            (<any>this).ingredientName = _data["ingredientName"];
+            (<any>this).group = _data["group"];
+            (<any>this).iocGroup = _data["iocGroup"];
         }
     } 
     
-    static fromJS(data: any): IQueryIngredientModelOrderBy {
+    static fromJS(data: Partial<IQueryIngredientModelOrderBy>): IQueryIngredientModelOrderBy {
         data = typeof data === 'object' ? data : {};
         const result = new QueryIngredientModelOrderBy();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -59,5 +60,4 @@ export class QueryIngredientModelOrderBy implements IQueryIngredientModelOrderBy
         data["iocGroup"] = this.iocGroup;
         return data;
     }
-
 }

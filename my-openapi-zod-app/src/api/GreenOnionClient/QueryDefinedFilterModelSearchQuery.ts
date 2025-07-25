@@ -9,7 +9,6 @@
 
 import type { IQueryDefinedFilterModelSearchQuery } from "./IQueryDefinedFilterModelSearchQuery";
 import { ZQueryDefinedFilterModelSearchQuery } from "./ZQueryDefinedFilterModelSearchQuery";
-
 import { QueryDefinedFilterModelFilter } from "./QueryDefinedFilterModelFilter";
 import type { IQueryDefinedFilterModelFilter } from "./IQueryDefinedFilterModelFilter";
 import { QueryDefinedFilterModelOrderBy } from "./QueryDefinedFilterModelOrderBy";
@@ -19,12 +18,13 @@ type integer = number;
 
 export class QueryDefinedFilterModelSearchQuery implements IQueryDefinedFilterModelSearchQuery {
     readonly $schema: typeof ZQueryDefinedFilterModelSearchQuery = ZQueryDefinedFilterModelSearchQuery;
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** CreateById; UpdatedOn; UpdatedById; UpdatedBy; CreateBy; Path; Name; IsActive; CreatedOn; State */
-    filter?: IQueryDefinedFilterModelFilter | undefined; 
-    orderBy?: IQueryDefinedFilterModelOrderBy | undefined; 
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** CreateById; UpdatedOn; UpdatedById; UpdatedBy; CreateBy; Path; Name; IsActive; CreatedOn; State*/
+    filter?: IQueryDefinedFilterModelFilter | undefined;
+    orderBy?: IQueryDefinedFilterModelOrderBy | undefined;
 
     constructor(data?: IQueryDefinedFilterModelSearchQuery) {
         if (data) {
@@ -35,25 +35,26 @@ export class QueryDefinedFilterModelSearchQuery implements IQueryDefinedFilterMo
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryDefinedFilterModelSearchQuery>) {
         if (_data) {
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).excludePageCount = _data["excludePageCount:"];
-            (<any>this).searchTerm = _data["searchTerm:"];
-            (<any>this).filter = _data["filter:"];
-            (<any>this).orderBy = _data["orderBy:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryDefinedFilterModelSearchQuery {
+    static fromJS(data: Partial<IQueryDefinedFilterModelSearchQuery>): IQueryDefinedFilterModelSearchQuery {
         data = typeof data === 'object' ? data : {};
         const result = new QueryDefinedFilterModelSearchQuery();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -67,5 +68,4 @@ export class QueryDefinedFilterModelSearchQuery implements IQueryDefinedFilterMo
         data["orderBy"] = this.orderBy;
         return data;
     }
-
 }

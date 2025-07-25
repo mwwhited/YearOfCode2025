@@ -16,23 +16,23 @@ type integer = number;
 export interface IQueryManufacturerModelFilter {
     $schema: typeof ZQueryManufacturerModelFilter;
 
-    manufacturerId?: any | undefined; 
-    manufacturerName?: any | undefined; 
-    glnNumber?: any | undefined; 
-    isActive?: any | undefined; 
-    hasUsers?: any | undefined; 
-    userCount?: any | undefined; 
-    hasActiveUsers?: any | undefined; 
-    activeUserCount?: any | undefined; 
-    productCount?: any | undefined; 
-    hasOneWorldSync?: any | undefined; 
-    oneWorldSyncCount?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    manufacturerId?: IFilterParameter | undefined;
+    manufacturerName?: IFilterParameter | undefined;
+    glnNumber?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    hasUsers?: IFilterParameter | undefined;
+    userCount?: IFilterParameter | undefined;
+    hasActiveUsers?: IFilterParameter | undefined;
+    activeUserCount?: IFilterParameter | undefined;
+    productCount?: IFilterParameter | undefined;
+    hasOneWorldSync?: IFilterParameter | undefined;
+    oneWorldSyncCount?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

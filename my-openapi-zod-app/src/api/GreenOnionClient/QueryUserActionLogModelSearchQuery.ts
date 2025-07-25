@@ -9,7 +9,6 @@
 
 import type { IQueryUserActionLogModelSearchQuery } from "./IQueryUserActionLogModelSearchQuery";
 import { ZQueryUserActionLogModelSearchQuery } from "./ZQueryUserActionLogModelSearchQuery";
-
 import { QueryUserActionLogModelFilter } from "./QueryUserActionLogModelFilter";
 import type { IQueryUserActionLogModelFilter } from "./IQueryUserActionLogModelFilter";
 import { QueryUserActionLogModelOrderBy } from "./QueryUserActionLogModelOrderBy";
@@ -19,12 +18,13 @@ type integer = number;
 
 export class QueryUserActionLogModelSearchQuery implements IQueryUserActionLogModelSearchQuery {
     readonly $schema: typeof ZQueryUserActionLogModelSearchQuery = ZQueryUserActionLogModelSearchQuery;
-    currentPage?: integer | undefined; /* Gets or sets the current page number. */
-    pageSize?: integer | undefined; /* **Default size:** `10`, `-1` will disable paging */
-    excludePageCount?: boolean | undefined; /* `true` will disable row/page counts and may decrease processing time without effecting paging functions */
-    searchTerm?: string | undefined; /* **Searched Properties:** EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; User */
-    filter?: IQueryUserActionLogModelFilter | undefined; 
-    orderBy?: IQueryUserActionLogModelOrderBy | undefined; 
+    
+    currentPage?: integer | undefined;/*Gets or sets the current page number.*/
+    pageSize?: integer | undefined;/***Default size:** `10`, `-1` will disable paging*/
+    excludePageCount?: boolean | undefined;/*`true` will disable row/page counts and may decrease processing time without effecting paging functions*/
+    searchTerm?: string | undefined;/***Searched Properties:** EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; User*/
+    filter?: IQueryUserActionLogModelFilter | undefined;
+    orderBy?: IQueryUserActionLogModelOrderBy | undefined;
 
     constructor(data?: IQueryUserActionLogModelSearchQuery) {
         if (data) {
@@ -35,25 +35,26 @@ export class QueryUserActionLogModelSearchQuery implements IQueryUserActionLogMo
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IQueryUserActionLogModelSearchQuery>) {
         if (_data) {
-            (<any>this).currentPage = _data["currentPage:"];
-            (<any>this).pageSize = _data["pageSize:"];
-            (<any>this).excludePageCount = _data["excludePageCount:"];
-            (<any>this).searchTerm = _data["searchTerm:"];
-            (<any>this).filter = _data["filter:"];
-            (<any>this).orderBy = _data["orderBy:"];
+            (<any>this).currentPage = _data["currentPage"];
+            (<any>this).pageSize = _data["pageSize"];
+            (<any>this).excludePageCount = _data["excludePageCount"];
+            (<any>this).searchTerm = _data["searchTerm"];
+            (<any>this).filter = _data["filter"];
+            (<any>this).orderBy = _data["orderBy"];
         }
     } 
     
-    static fromJS(data: any): IQueryUserActionLogModelSearchQuery {
+    static fromJS(data: Partial<IQueryUserActionLogModelSearchQuery>): IQueryUserActionLogModelSearchQuery {
         data = typeof data === 'object' ? data : {};
         const result = new QueryUserActionLogModelSearchQuery();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -67,5 +68,4 @@ export class QueryUserActionLogModelSearchQuery implements IQueryUserActionLogMo
         data["orderBy"] = this.orderBy;
         return data;
     }
-
 }

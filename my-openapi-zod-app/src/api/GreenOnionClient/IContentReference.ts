@@ -15,9 +15,9 @@ type integer = number;
 export interface IContentReference {
     $schema: typeof ZContentReference;
 
-    content?: string | undefined; /* Gets or initializes the content type of the content. */
-    contentType?: string | undefined; /* Gets or initializes the content type of the content. */
-    fileName?: string | undefined; /* Gets or initializes the file name associated with the content. */
+    content?: string | undefined;/*Gets or initializes the content type of the content.*/
+    contentType?: string | undefined;/*Gets or initializes the content type of the content.*/
+    fileName?: string | undefined;/*Gets or initializes the file name associated with the content.*/
 
     toJSON(data?: any) : any;
 }

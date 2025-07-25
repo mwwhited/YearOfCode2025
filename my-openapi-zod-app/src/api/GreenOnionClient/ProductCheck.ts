@@ -10,14 +10,14 @@
 import type { IProductCheck } from "./IProductCheck";
 import { ZProductCheck } from "./ZProductCheck";
 
-
 type integer = number;
 
 export class ProductCheck implements IProductCheck {
     readonly $schema: typeof ZProductCheck = ZProductCheck;
-    ischeck?: boolean | undefined; 
-    headerName?: string | undefined; 
-    headerValue?: string | undefined; 
+    
+    ischeck?: boolean | undefined;
+    headerName?: string | undefined;
+    headerValue?: string | undefined;
 
     constructor(data?: IProductCheck) {
         if (data) {
@@ -28,22 +28,23 @@ export class ProductCheck implements IProductCheck {
         }
     }   
     
-    init(_data?: any) {
+    init(_data?: Partial<IProductCheck>) {
         if (_data) {
-            (<any>this).ischeck = _data["ischeck:"];
-            (<any>this).headerName = _data["headerName:"];
-            (<any>this).headerValue = _data["headerValue:"];
+            (<any>this).ischeck = _data["ischeck"];
+            (<any>this).headerName = _data["headerName"];
+            (<any>this).headerValue = _data["headerValue"];
         }
     } 
     
-    static fromJS(data: any): IProductCheck {
+    static fromJS(data: Partial<IProductCheck>): IProductCheck {
         data = typeof data === 'object' ? data : {};
         const result = new ProductCheck();
         result.init(data);
         return result;
     }
 
-    toJSON(data?: any) {
+
+    toJSON(data?: any) : any {
         data = typeof data === 'object' ? data : {};
         for (const property in this) {
             if (this.hasOwnProperty(property))
@@ -54,5 +55,4 @@ export class ProductCheck implements IProductCheck {
         data["headerValue"] = this.headerValue;
         return data;
     }
-
 }

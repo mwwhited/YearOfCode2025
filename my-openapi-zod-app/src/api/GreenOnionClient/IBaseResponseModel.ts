@@ -15,10 +15,10 @@ type integer = number;
 export interface IBaseResponseModel {
     $schema: typeof ZBaseResponseModel;
 
-    success?: boolean | undefined; 
-    message?: string | undefined; 
-    totalRecords?: integer | undefined; 
-    payload?: any | undefined; 
+    success?: boolean | undefined;
+    message?: string | undefined;
+    totalRecords?: integer | undefined;
+    payload?: unknown | undefined;
 
     toJSON(data?: any) : any;
 }

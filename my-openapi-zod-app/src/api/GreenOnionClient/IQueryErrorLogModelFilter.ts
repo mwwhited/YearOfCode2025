@@ -16,9 +16,9 @@ type integer = number;
 export interface IQueryErrorLogModelFilter {
     $schema: typeof ZQueryErrorLogModelFilter;
 
-    errorLogId?: any | undefined; 
-    errorMessage?: any | undefined; 
-    errorPath?: any | undefined; 
+    errorLogId?: IFilterParameter | undefined;
+    errorMessage?: IFilterParameter | undefined;
+    errorPath?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }

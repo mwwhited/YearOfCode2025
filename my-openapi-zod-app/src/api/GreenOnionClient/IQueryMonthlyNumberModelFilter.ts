@@ -16,24 +16,24 @@ type integer = number;
 export interface IQueryMonthlyNumberModelFilter {
     $schema: typeof ZQueryMonthlyNumberModelFilter;
 
-    id?: any | undefined; 
-    schoolDistrictId?: any | undefined; 
-    monthId?: any | undefined; 
-    actualMonthId?: any | undefined; 
-    year?: any | undefined; 
-    enrollment?: any | undefined; 
-    numberOfSites?: any | undefined; 
-    numberOfDistricts?: any | undefined; 
-    mealsServed?: any | undefined; 
-    freeAndReducedPercent?: any | undefined; 
-    isActive?: any | undefined; 
-    regDate?: any | undefined; 
-    createdOn?: any | undefined; 
-    createdById?: any | undefined; 
-    createdBy?: any | undefined; 
-    updatedOn?: any | undefined; 
-    updatedById?: any | undefined; 
-    updatedBy?: any | undefined; 
+    id?: IFilterParameter | undefined;
+    schoolDistrictId?: IFilterParameter | undefined;
+    monthId?: IFilterParameter | undefined;
+    actualMonthId?: IFilterParameter | undefined;
+    year?: IFilterParameter | undefined;
+    enrollment?: IFilterParameter | undefined;
+    numberOfSites?: IFilterParameter | undefined;
+    numberOfDistricts?: IFilterParameter | undefined;
+    mealsServed?: IFilterParameter | undefined;
+    freeAndReducedPercent?: IFilterParameter | undefined;
+    isActive?: IFilterParameter | undefined;
+    regDate?: IFilterParameter | undefined;
+    createdOn?: IFilterParameter | undefined;
+    createdById?: IFilterParameter | undefined;
+    createdBy?: IFilterParameter | undefined;
+    updatedOn?: IFilterParameter | undefined;
+    updatedById?: IFilterParameter | undefined;
+    updatedBy?: IFilterParameter | undefined;
 
     toJSON(data?: any) : any;
 }
