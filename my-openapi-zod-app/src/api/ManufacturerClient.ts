@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
     }
 
     /**
-    *
     * Query **QueryManufacturerModel**
-    *
     * @description Query **QueryManufacturerModel**
     * @operationId Manufacturer_Query
     * @tag Manufacturer
     * @tag model-query
-    * @path /api/Manufacturer/Query
+    * @path /api/Manufacturer/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     Query(params: {
-        body?: IQueryManufacturerModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModelSearchQuery
-    }): Promise<IQueryManufacturerModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryManufacturerModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModelSearchQuery        
+    }): Promise<IQueryManufacturerModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Manufacturer/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryManufacturerModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryManufacturerModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryManufacturerModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryManufacturerModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryManufacturerModel**
-    *
     * @description Get **QueryManufacturerModel**
     * @operationId Manufacturer_Get
     * @tag Manufacturer
     * @tag model-getter
-    * @path /api/Manufacturer/Get
+    * @path /api/Manufacturer/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            gln?: string | undefined; // 
-    }): Promise<IQueryManufacturerModel> {
-        const { id, gln,  } = params;
+            id?: number | undefined;
+            gln?: string | undefined;
+    }): Promise<IQueryManufacturerModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Manufacturer/Get?";
+        const { id, gln,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
         else if (gln !== undefined)
             url_ += "gln=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
         });
     }
 
-    protected processGet(response: Response): Promise<QueryManufacturerModel> {
+    protected processGet(response: Response): Promise<IQueryManufacturerModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,28 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryManufacturerModel>(null as any);
+        return Promise.resolve<IQueryManufacturerModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryManufacturerModel**
-    *
     * @description Save **QueryManufacturerModel**
     * @operationId Manufacturer_Save
     * @tag Manufacturer
     * @tag model-setter
-    * @path /api/Manufacturer/Save
+    * @path /api/Manufacturer/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @role Manufacturer User
+    * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     Save(params: {
-        body?: ISaveManufacturerModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveManufacturerModel
-    }): Promise<IQueryManufacturerModel> { // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModel        
-        const { body } = params;
+        body?: ISaveManufacturerModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveManufacturerModel        
+    }): Promise<IQueryManufacturerModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Manufacturer/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +189,8 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
         });
     }
 
-    protected processSave(response: Response): Promise<QueryManufacturerModel> {
+    protected processSave(response: Response): Promise<IQueryManufacturerModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +205,6 @@ export class ManufacturerClient extends ClientBase implements IManufacturerClien
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryManufacturerModel>(null as any);
+        return Promise.resolve<IQueryManufacturerModel | undefined>(null as any);
     }
-    
 }

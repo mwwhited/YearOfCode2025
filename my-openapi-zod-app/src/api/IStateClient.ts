@@ -4,8 +4,10 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { IQueryStateModelSearchQuery } from "./Models/IQueryStateModelSearchQuery";
@@ -14,23 +16,19 @@ import type { IQueryStateModelPagedQueryResult } from "./Models/IQueryStateModel
 export type { IQueryStateModelSearchQuery };
 export type { IQueryStateModelPagedQueryResult };
 
-type integer = number;
-
 export interface IStateClient {
 
     /**
-    *
     * Query **QueryStateModel**
-    *
     * @description Query **QueryStateModel**
     * @operationId State_Query
     * @tag State
     * @tag model-query
-    * @path /api/State/Query
+    * @path /api/State/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryStateModel
     */
     Query(params: {
-        body?: IQueryStateModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelSearchQuery
-    }): Promise<IQueryStateModelPagedQueryResult>; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelPagedQueryResult
-    
-
+        body?: IQueryStateModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelSearchQuery        
+    }): Promise<IQueryStateModelPagedQueryResult | undefined>;
 }

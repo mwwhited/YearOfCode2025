@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -46,24 +46,23 @@ export class UserClient extends ClientBase implements IUserClient  {
     }
 
     /**
-    *
     * Query **QueryUserModel**
-    *
     * @description Query **QueryUserModel**
     * @operationId User_Query
     * @tag User
     * @tag model-query
-    * @path /api/User/Query
+    * @path /api/User/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     Query(params: {
-        body?: IQueryUserModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserModelSearchQuery
-    }): Promise<IQueryUserModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryUserModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryUserModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserModelSearchQuery        
+    }): Promise<IQueryUserModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/User/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -80,7 +79,8 @@ export class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryUserModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryUserModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -95,27 +95,26 @@ export class UserClient extends ClientBase implements IUserClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryUserModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryUserModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryUserModel**
-    *
     * @description Get **QueryUserModel**
     * @operationId User_Get
     * @tag User
     * @tag model-getter
-    * @path /api/User/Get
+    * @path /api/User/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            email?: string | undefined; // 
-            objectid?: string | undefined; // 
-    }): Promise<IQueryUserModel> {
-        const { id, email, objectid,  } = params;
+            id?: number | undefined;
+            email?: string | undefined;
+            objectid?: string | undefined;
+    }): Promise<IQueryUserModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/User/Get?";
+        const { id, email, objectid,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -129,10 +128,10 @@ export class UserClient extends ClientBase implements IUserClient  {
         else if (objectid !== undefined)
             url_ += "objectid=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -144,7 +143,8 @@ export class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processGet(response: Response): Promise<QueryUserModel> {
+    protected processGet(response: Response): Promise<IQueryUserModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -159,27 +159,26 @@ export class UserClient extends ClientBase implements IUserClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryUserModel>(null as any);
+        return Promise.resolve<IQueryUserModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryUserModel**
-    *
     * @description Save **QueryUserModel**
     * @operationId User_Save
     * @tag User
     * @tag model-setter
-    * @path /api/User/Save
+    * @path /api/User/Save 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     Save(params: {
-        body?: ISaveUserModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveUserModel
-    }): Promise<IQueryUserModel> { // #/components/schemas/GreenOnion.Common.Models.QueryUserModel        
-        const { body } = params;
+        body?: ISaveUserModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveUserModel        
+    }): Promise<IQueryUserModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/User/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -196,7 +195,8 @@ export class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processSave(response: Response): Promise<QueryUserModel> {
+    protected processSave(response: Response): Promise<IQueryUserModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -211,17 +211,53 @@ export class UserClient extends ClientBase implements IUserClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryUserModel>(null as any);
+        return Promise.resolve<IQueryUserModel | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId User_SendNewUserEmail
     * @tag User
-    * @path /api/User/SendNewUserEmail
+    * @path /api/User/SendNewUserEmail 
+    * @anonymous false
     */
-    
+    SendNewUserEmail(params: {
+        body?: INewUserEmailModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Users.NewUserEmailModel        
+    }): Promise<void> 
+    { 
+        let url_ = this.baseUrl + "/api/User/SendNewUserEmail?";
+        url_ = url_.replace(/[?&]$/, "");
+        const { body } = params;
+        const content_ = JSON.stringify(body);
+        const options_: RequestInit = {
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            }
+        };
+
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.http.fetch(url_, transformedOptions_);
+        }).then((_response: Response) => {
+            return this.processSendNewUserEmail(_response);
+        });
+    }
+
+    protected processSendNewUserEmail(response: Response): Promise<void>
+    {
+        const status = response.status;
+        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = JSON.parse(resultData200);            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<void>(null as any);
+    }
 }

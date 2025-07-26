@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
     }
 
     /**
-    *
     * Query **QueryMonthlyNumberModel**
-    *
     * @description Query **QueryMonthlyNumberModel**
     * @operationId MonthlyNumber_Query
     * @tag MonthlyNumber
     * @tag model-query
-    * @path /api/MonthlyNumber/Query
+    * @path /api/MonthlyNumber/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     Query(params: {
-        body?: IQueryMonthlyNumberModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelSearchQuery
-    }): Promise<IQueryMonthlyNumberModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryMonthlyNumberModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelSearchQuery        
+    }): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/MonthlyNumber/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryMonthlyNumberModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,27 +92,26 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryMonthlyNumberModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryMonthlyNumberModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryMonthlyNumberModel**
-    *
     * @description Get **QueryMonthlyNumberModel**
     * @operationId MonthlyNumber_Get
     * @tag MonthlyNumber
     * @tag model-getter
-    * @path /api/MonthlyNumber/Get
+    * @path /api/MonthlyNumber/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            schoolDistrictId?: integer | undefined; // 
-            year?: string | undefined; // 
-    }): Promise<IQueryMonthlyNumberModel> {
-        const { id, schoolDistrictId, year,  } = params;
+            id?: number | undefined;
+            schoolDistrictId?: number | undefined;
+            year?: string | undefined;
+    }): Promise<IQueryMonthlyNumberModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/MonthlyNumber/Get?";
+        const { id, schoolDistrictId, year,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -126,10 +125,10 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
         else if (year !== undefined)
             url_ += "year=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -141,7 +140,8 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
         });
     }
 
-    protected processGet(response: Response): Promise<QueryMonthlyNumberModel> {
+    protected processGet(response: Response): Promise<IQueryMonthlyNumberModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -156,27 +156,27 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryMonthlyNumberModel>(null as any);
+        return Promise.resolve<IQueryMonthlyNumberModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryMonthlyNumberModel**
-    *
     * @description Save **QueryMonthlyNumberModel**
     * @operationId MonthlyNumber_Save
     * @tag MonthlyNumber
     * @tag model-setter
-    * @path /api/MonthlyNumber/Save
+    * @path /api/MonthlyNumber/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     Save(params: {
-        body?: ISaveMonthlyNumberModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveMonthlyNumberModel
-    }): Promise<IQueryMonthlyNumberModel> { // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModel        
-        const { body } = params;
+        body?: ISaveMonthlyNumberModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveMonthlyNumberModel        
+    }): Promise<IQueryMonthlyNumberModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/MonthlyNumber/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -193,7 +193,8 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
         });
     }
 
-    protected processSave(response: Response): Promise<QueryMonthlyNumberModel> {
+    protected processSave(response: Response): Promise<IQueryMonthlyNumberModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -208,7 +209,6 @@ export class MonthlyNumberClient extends ClientBase implements IMonthlyNumberCli
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryMonthlyNumberModel>(null as any);
+        return Promise.resolve<IQueryMonthlyNumberModel | undefined>(null as any);
     }
-    
 }

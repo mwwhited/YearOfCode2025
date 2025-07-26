@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -37,24 +37,23 @@ export class RoleClient extends ClientBase implements IRoleClient  {
     }
 
     /**
-    *
     * Query **QueryRoleModel**
-    *
     * @description Query **QueryRoleModel**
     * @operationId Role_Query
     * @tag Role
     * @tag model-query
-    * @path /api/Role/Query
+    * @path /api/Role/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryRoleModel
     */
     Query(params: {
-        body?: IQueryRoleModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryRoleModelSearchQuery
-    }): Promise<IQueryRoleModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryRoleModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryRoleModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryRoleModelSearchQuery        
+    }): Promise<IQueryRoleModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Role/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -71,7 +70,8 @@ export class RoleClient extends ClientBase implements IRoleClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryRoleModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryRoleModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -86,7 +86,6 @@ export class RoleClient extends ClientBase implements IRoleClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryRoleModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryRoleModelPagedQueryResult | undefined>(null as any);
     }
-    
 }

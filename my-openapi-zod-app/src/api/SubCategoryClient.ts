@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
     }
 
     /**
-    *
     * Query **QuerySubCategoryModel**
-    *
     * @description Query **QuerySubCategoryModel**
     * @operationId SubCategory_Query
     * @tag SubCategory
     * @tag model-query
-    * @path /api/SubCategory/Query
+    * @path /api/SubCategory/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     Query(params: {
-        body?: IQuerySubCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySubCategoryModelSearchQuery
-    }): Promise<IQuerySubCategoryModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QuerySubCategoryModelPagedQueryResult        
-        const { body } = params;
+        body?: IQuerySubCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySubCategoryModelSearchQuery        
+    }): Promise<IQuerySubCategoryModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SubCategory/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
         });
     }
 
-    protected processQuery(response: Response): Promise<QuerySubCategoryModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQuerySubCategoryModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QuerySubCategoryModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQuerySubCategoryModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QuerySubCategoryModel**
-    *
     * @description Get **QuerySubCategoryModel**
     * @operationId SubCategory_Get
     * @tag SubCategory
     * @tag model-getter
-    * @path /api/SubCategory/Get
+    * @path /api/SubCategory/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQuerySubCategoryModel> {
-        const { id, name,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQuerySubCategoryModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SubCategory/Get?";
+        const { id, name,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
         else if (name !== undefined)
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
         });
     }
 
-    protected processGet(response: Response): Promise<QuerySubCategoryModel> {
+    protected processGet(response: Response): Promise<IQuerySubCategoryModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QuerySubCategoryModel>(null as any);
+        return Promise.resolve<IQuerySubCategoryModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QuerySubCategoryModel**
-    *
     * @description Save **QuerySubCategoryModel**
     * @operationId SubCategory_Save
     * @tag SubCategory
     * @tag model-setter
-    * @path /api/SubCategory/Save
+    * @path /api/SubCategory/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     Save(params: {
-        body?: ISaveSubCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSubCategoryModel
-    }): Promise<IQuerySubCategoryModel> { // #/components/schemas/GreenOnion.Common.Models.QuerySubCategoryModel        
-        const { body } = params;
+        body?: ISaveSubCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSubCategoryModel        
+    }): Promise<IQuerySubCategoryModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SubCategory/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
         });
     }
 
-    protected processSave(response: Response): Promise<QuerySubCategoryModel> {
+    protected processSave(response: Response): Promise<IQuerySubCategoryModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class SubCategoryClient extends ClientBase implements ISubCategoryClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QuerySubCategoryModel>(null as any);
+        return Promise.resolve<IQuerySubCategoryModel | undefined>(null as any);
     }
-    
 }

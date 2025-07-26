@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
     }
 
     /**
-    *
     * Query **QuerySchoolDistrictModel**
-    *
     * @description Query **QuerySchoolDistrictModel**
     * @operationId SchoolDistrict_Query
     * @tag SchoolDistrict
     * @tag model-query
-    * @path /api/SchoolDistrict/Query
+    * @path /api/SchoolDistrict/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     Query(params: {
-        body?: IQuerySchoolDistrictModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelSearchQuery
-    }): Promise<IQuerySchoolDistrictModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelPagedQueryResult        
-        const { body } = params;
+        body?: IQuerySchoolDistrictModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelSearchQuery        
+    }): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SchoolDistrict/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
         });
     }
 
-    protected processQuery(response: Response): Promise<QuerySchoolDistrictModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QuerySchoolDistrictModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQuerySchoolDistrictModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QuerySchoolDistrictModel**
-    *
     * @description Get **QuerySchoolDistrictModel**
     * @operationId SchoolDistrict_Get
     * @tag SchoolDistrict
     * @tag model-getter
-    * @path /api/SchoolDistrict/Get
+    * @path /api/SchoolDistrict/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQuerySchoolDistrictModel> {
-        const { id, name,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQuerySchoolDistrictModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SchoolDistrict/Get?";
+        const { id, name,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
         else if (name !== undefined)
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
         });
     }
 
-    protected processGet(response: Response): Promise<QuerySchoolDistrictModel> {
+    protected processGet(response: Response): Promise<IQuerySchoolDistrictModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QuerySchoolDistrictModel>(null as any);
+        return Promise.resolve<IQuerySchoolDistrictModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QuerySchoolDistrictModel**
-    *
     * @description Save **QuerySchoolDistrictModel**
     * @operationId SchoolDistrict_Save
     * @tag SchoolDistrict
     * @tag model-setter
-    * @path /api/SchoolDistrict/Save
+    * @path /api/SchoolDistrict/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     Save(params: {
-        body?: ISaveSchoolDistrictModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSchoolDistrictModel
-    }): Promise<IQuerySchoolDistrictModel> { // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModel        
-        const { body } = params;
+        body?: ISaveSchoolDistrictModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSchoolDistrictModel        
+    }): Promise<IQuerySchoolDistrictModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SchoolDistrict/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
         });
     }
 
-    protected processSave(response: Response): Promise<QuerySchoolDistrictModel> {
+    protected processSave(response: Response): Promise<IQuerySchoolDistrictModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class SchoolDistrictClient extends ClientBase implements ISchoolDistrictC
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QuerySchoolDistrictModel>(null as any);
+        return Promise.resolve<IQuerySchoolDistrictModel | undefined>(null as any);
     }
-    
 }

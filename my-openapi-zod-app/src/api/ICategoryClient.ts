@@ -4,8 +4,10 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { IQueryCategoryModelSearchQuery } from "./Models/IQueryCategoryModelSearchQuery";
@@ -18,52 +20,47 @@ export type { IQueryCategoryModelPagedQueryResult };
 export type { IQueryCategoryModel };
 export type { ISaveCategoryModel };
 
-type integer = number;
-
 export interface ICategoryClient {
 
     /**
-    *
     * Query **QueryCategoryModel**
-    *
     * @description Query **QueryCategoryModel**
     * @operationId Category_Query
     * @tag Category
     * @tag model-query
-    * @path /api/Category/Query
+    * @path /api/Category/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     Query(params: {
-        body?: IQueryCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelSearchQuery
-    }): Promise<IQueryCategoryModelPagedQueryResult>; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelPagedQueryResult
-    
-    
+        body?: IQueryCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelSearchQuery        
+    }): Promise<IQueryCategoryModelPagedQueryResult | undefined>;
     /**
-    *
     * Get **QueryCategoryModel**
-    *
     * @description Get **QueryCategoryModel**
     * @operationId Category_Get
     * @tag Category
     * @tag model-getter
-    * @path /api/Category/Get
+    * @path /api/Category/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQueryCategoryModel>;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQueryCategoryModel | undefined>;
     /**
-    *
     * Save **QueryCategoryModel**
-    *
     * @description Save **QueryCategoryModel**
     * @operationId Category_Save
     * @tag Category
     * @tag model-setter
-    * @path /api/Category/Save
+    * @path /api/Category/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     Save(params: {
-        body?: ISaveCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveCategoryModel
-    }): Promise<IQueryCategoryModel>; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModel
-    
-
+        body?: ISaveCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveCategoryModel        
+    }): Promise<IQueryCategoryModel | undefined>;
 }

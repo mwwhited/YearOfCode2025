@@ -4,81 +4,60 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { IDashBoardResponseModel } from "./Models/IDashBoardResponseModel";
 
 export type { IDashBoardResponseModel };
 
-type integer = number;
-
 export interface IDashBoardClient {
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DashBoard_GetDashBoardList
     * @tag DashBoard
-    * @path /api/DashBoard/GetDashBoardProductList
+    * @path /api/DashBoard/GetDashBoardProductList 
+    * @anonymous false
     */
-    GetDashBoardProductList(params: {
-            userId?: integer | undefined; // 
-    }): Promise<IDashBoardResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DashBoard.DashBoardResponseModel
-    
+    GetDashBoardList(params: {
+            userId?: number | undefined;
+    }): Promise<IDashBoardResponseModel | undefined>;
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DashBoard_GetDashBoardTotalCountList
     * @tag DashBoard
-    * @path /api/DashBoard/GetDashBoardTotalCountList
+    * @path /api/DashBoard/GetDashBoardTotalCountList 
+    * @anonymous false
     */
     GetDashBoardTotalCountList(params: {
-            userId?: integer | undefined; // 
-    }): Promise<IDashBoardResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DashBoard.DashBoardResponseModel
-    
+            userId?: number | undefined;
+    }): Promise<IDashBoardResponseModel | undefined>;
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DashBoard_GetDistrictFreeOfIOCProductList
     * @tag DashBoard
-    * @path /api/DashBoard/GetDistrictFreeOfIOCProductList
+    * @path /api/DashBoard/GetDistrictFreeOfIOCProductList 
+    * @anonymous false
     */
     GetDistrictFreeOfIOCProductList(params: {
-            userId?: integer | undefined; // 
-    }): Promise<IDashBoardResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DashBoard.DashBoardResponseModel
-    
+            userId?: number | undefined;
+    }): Promise<IDashBoardResponseModel | undefined>;
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DashBoard_GetDistrictFreeOfIOCProductReplacesList
     * @tag DashBoard
-    * @path /api/DashBoard/GetDistrictFreeOfIOCProductReplacesList
+    * @path /api/DashBoard/GetDistrictFreeOfIOCProductReplacesList 
+    * @anonymous false
     */
     GetDistrictFreeOfIOCProductReplacesList(params: {
-            userId?: integer | undefined; // 
-    }): Promise<IDashBoardResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DashBoard.DashBoardResponseModel
-    
+            userId?: number | undefined;
+    }): Promise<IDashBoardResponseModel | undefined>;
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DashBoard_GetManufactureTotalProductChart
     * @tag DashBoard
-    * @path /api/DashBoard/GetManufactureTotalProductChart
+    * @path /api/DashBoard/GetManufactureTotalProductChart 
+    * @anonymous false
+    * @role Manufacturer User
     */
-    GetManufactureTotalProductChart(params: {
-    }): Promise<IDashBoardResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DashBoard.DashBoardResponseModel
-    
-
+    GetManufactureTotalProductChart(): Promise<IDashBoardResponseModel | undefined>;
 }

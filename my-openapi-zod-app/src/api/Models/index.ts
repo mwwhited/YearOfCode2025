@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 
@@ -37,6 +37,8 @@ export { ProductUpcAllocationModel } from "./ProductUpcAllocationModel";
 export type { IProductUpcAllocationModel } from "./IProductUpcAllocationModel";
 export { ProductUploadModel } from "./ProductUploadModel";
 export type { IProductUploadModel } from "./IProductUploadModel";
+export { SelectPrdFileupload } from "./SelectPrdFileupload";
+export type { ISelectPrdFileupload } from "./ISelectPrdFileupload";
 export { SelectProductSaveCheckListRequestModel } from "./SelectProductSaveCheckListRequestModel";
 export type { ISelectProductSaveCheckListRequestModel } from "./ISelectProductSaveCheckListRequestModel";
 export { ProductActivityReportFilter } from "./ProductActivityReportFilter";
@@ -259,6 +261,8 @@ export { SaveMonthlyNumberModel } from "./SaveMonthlyNumberModel";
 export type { ISaveMonthlyNumberModel } from "./ISaveMonthlyNumberModel";
 export { SaveOneWorldSyncProductModel } from "./SaveOneWorldSyncProductModel";
 export type { ISaveOneWorldSyncProductModel } from "./ISaveOneWorldSyncProductModel";
+export { SaveProductModel } from "./SaveProductModel";
+export type { ISaveProductModel } from "./ISaveProductModel";
 export { SaveSchoolDistrictModel } from "./SaveSchoolDistrictModel";
 export type { ISaveSchoolDistrictModel } from "./ISaveSchoolDistrictModel";
 export { SaveStorageTypeModel } from "./SaveStorageTypeModel";

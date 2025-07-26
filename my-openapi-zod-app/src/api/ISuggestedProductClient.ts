@@ -4,8 +4,10 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { ISuggestedProductRequestModel } from "./Models/ISuggestedProductRequestModel";
@@ -14,34 +16,26 @@ import type { ISuggestedProductResponseModel } from "./Models/ISuggestedProductR
 export type { ISuggestedProductRequestModel };
 export type { ISuggestedProductResponseModel };
 
-type integer = number;
-
 export interface ISuggestedProductClient {
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId SuggestedProduct_CreateSuggestedProduct
     * @tag SuggestedProduct
-    * @path /api/SuggestedProduct/CreateSuggestedProduct
+    * @path /api/SuggestedProduct/CreateSuggestedProduct 
+    * @anonymous false
+    * @role Super Admin
+    * @role District Admin
+    * @role Cooperative Admin
     */
     CreateSuggestedProduct(params: {
-        body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel
-    }): Promise<ISuggestedProductResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.SuggestedProduct.SuggestedProductResponseModel
-    
+        body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel        
+    }): Promise<ISuggestedProductResponseModel | undefined>;
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId SuggestedProduct_ApproveSuggestedProduct
     * @tag SuggestedProduct
-    * @path /api/SuggestedProduct/ApproveSuggestedProduct
+    * @path /api/SuggestedProduct/ApproveSuggestedProduct 
+    * @anonymous false
+    * @role Super Admin
     */
-    ApproveSuggestedProduct(params: {
-    }): Promise<ISuggestedProductResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.SuggestedProduct.SuggestedProductResponseModel
-    
-
+    ApproveSuggestedProduct(): Promise<ISuggestedProductResponseModel | undefined>;
 }

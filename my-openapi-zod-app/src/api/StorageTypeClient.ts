@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
     }
 
     /**
-    *
     * Query **QueryStorageTypeModel**
-    *
     * @description Query **QueryStorageTypeModel**
     * @operationId StorageType_Query
     * @tag StorageType
     * @tag model-query
-    * @path /api/StorageType/Query
+    * @path /api/StorageType/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     Query(params: {
-        body?: IQueryStorageTypeModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelSearchQuery
-    }): Promise<IQueryStorageTypeModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryStorageTypeModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelSearchQuery        
+    }): Promise<IQueryStorageTypeModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/StorageType/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryStorageTypeModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryStorageTypeModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryStorageTypeModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryStorageTypeModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryStorageTypeModel**
-    *
     * @description Get **QueryStorageTypeModel**
     * @operationId StorageType_Get
     * @tag StorageType
     * @tag model-getter
-    * @path /api/StorageType/Get
+    * @path /api/StorageType/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQueryStorageTypeModel> {
-        const { id, name,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQueryStorageTypeModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/StorageType/Get?";
+        const { id, name,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
         else if (name !== undefined)
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
         });
     }
 
-    protected processGet(response: Response): Promise<QueryStorageTypeModel> {
+    protected processGet(response: Response): Promise<IQueryStorageTypeModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryStorageTypeModel>(null as any);
+        return Promise.resolve<IQueryStorageTypeModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryStorageTypeModel**
-    *
     * @description Save **QueryStorageTypeModel**
     * @operationId StorageType_Save
     * @tag StorageType
     * @tag model-setter
-    * @path /api/StorageType/Save
+    * @path /api/StorageType/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     Save(params: {
-        body?: ISaveStorageTypeModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveStorageTypeModel
-    }): Promise<IQueryStorageTypeModel> { // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModel        
-        const { body } = params;
+        body?: ISaveStorageTypeModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveStorageTypeModel        
+    }): Promise<IQueryStorageTypeModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/StorageType/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
         });
     }
 
-    protected processSave(response: Response): Promise<QueryStorageTypeModel> {
+    protected processSave(response: Response): Promise<IQueryStorageTypeModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class StorageTypeClient extends ClientBase implements IStorageTypeClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryStorageTypeModel>(null as any);
+        return Promise.resolve<IQueryStorageTypeModel | undefined>(null as any);
     }
-    
 }

@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
     }
 
     /**
-    *
     * Query **QueryDistributorModel**
-    *
     * @description Query **QueryDistributorModel**
     * @operationId Distributor_Query
     * @tag Distributor
     * @tag model-query
-    * @path /api/Distributor/Query
+    * @path /api/Distributor/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     Query(params: {
-        body?: IQueryDistributorModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelSearchQuery
-    }): Promise<IQueryDistributorModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryDistributorModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelSearchQuery        
+    }): Promise<IQueryDistributorModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Distributor/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryDistributorModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryDistributorModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryDistributorModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryDistributorModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryDistributorModel**
-    *
     * @description Get **QueryDistributorModel**
     * @operationId Distributor_Get
     * @tag Distributor
     * @tag model-getter
-    * @path /api/Distributor/Get
+    * @path /api/Distributor/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQueryDistributorModel> {
-        const { id, name,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQueryDistributorModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Distributor/Get?";
+        const { id, name,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
         else if (name !== undefined)
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
         });
     }
 
-    protected processGet(response: Response): Promise<QueryDistributorModel> {
+    protected processGet(response: Response): Promise<IQueryDistributorModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryDistributorModel>(null as any);
+        return Promise.resolve<IQueryDistributorModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryDistributorModel**
-    *
     * @description Save **QueryDistributorModel**
     * @operationId Distributor_Save
     * @tag Distributor
     * @tag model-setter
-    * @path /api/Distributor/Save
+    * @path /api/Distributor/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     Save(params: {
-        body?: ISaveDistributorModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDistributorModel
-    }): Promise<IQueryDistributorModel> { // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModel        
-        const { body } = params;
+        body?: ISaveDistributorModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDistributorModel        
+    }): Promise<IQueryDistributorModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Distributor/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
         });
     }
 
-    protected processSave(response: Response): Promise<QueryDistributorModel> {
+    protected processSave(response: Response): Promise<IQueryDistributorModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class DistributorClient extends ClientBase implements IDistributorClient 
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryDistributorModel>(null as any);
+        return Promise.resolve<IQueryDistributorModel | undefined>(null as any);
     }
-    
 }

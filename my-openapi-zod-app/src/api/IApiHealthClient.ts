@@ -4,25 +4,20 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 
 
-type integer = number;
-
 export interface IApiHealthClient {
 
-    
     /**
-    *
-    * 
-    *
-    * @description 
-    * @operationId 
+    * @operationId Health
     * @tag ApiHealth
-    * @path /health
+    * @path /health 
     */
-
+    Health(): Promise<object | undefined>;
 }

@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -37,24 +37,23 @@ export class IIocCategoryClient extends ClientBase implements IIIocCategoryClien
     }
 
     /**
-    *
     * Query **QueryIocCategoryModel**
-    *
     * @description Query **QueryIocCategoryModel**
     * @operationId IIocCategory_Query
     * @tag IIocCategory
     * @tag model-query
-    * @path /api/IIocCategory/Query
+    * @path /api/IIocCategory/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryIocCategoryModel
     */
     Query(params: {
-        body?: IQueryIocCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIocCategoryModelSearchQuery
-    }): Promise<IQueryIocCategoryModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryIocCategoryModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryIocCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIocCategoryModelSearchQuery        
+    }): Promise<IQueryIocCategoryModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/IIocCategory/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -71,7 +70,8 @@ export class IIocCategoryClient extends ClientBase implements IIIocCategoryClien
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryIocCategoryModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryIocCategoryModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -86,7 +86,6 @@ export class IIocCategoryClient extends ClientBase implements IIIocCategoryClien
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryIocCategoryModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryIocCategoryModelPagedQueryResult | undefined>(null as any);
     }
-    
 }

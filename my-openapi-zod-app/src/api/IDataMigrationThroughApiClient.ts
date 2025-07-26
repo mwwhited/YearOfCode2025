@@ -4,29 +4,24 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { IDataMigrationThroughApiResponseModel } from "./Models/IDataMigrationThroughApiResponseModel";
 
 export type { IDataMigrationThroughApiResponseModel };
 
-type integer = number;
-
 export interface IDataMigrationThroughApiClient {
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DataMigrationThroughApi_ProductH7DataMigration
     * @tag DataMigrationThroughApi
-    * @path /api/DataMigrationThroughApi/ProductH7DataMigration
+    * @path /api/DataMigrationThroughApi/ProductH7DataMigration 
+    * @anonymous false
+    * @role Super Admin
     */
-    ProductH7DataMigration(params: {
-    }): Promise<IDataMigrationThroughApiResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DataMigrationThroughApi.DataMigrationThroughApiResponseModel
-    
-
+    ProductH7DataMigration(): Promise<IDataMigrationThroughApiResponseModel | undefined>;
 }

@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 
@@ -23,6 +23,7 @@ export { ZProductGtinAllocationModel } from "./ZProductGtinAllocationModel";
 export { ZProductTableField } from "./ZProductTableField"; 
 export { ZProductUpcAllocationModel } from "./ZProductUpcAllocationModel"; 
 export { ZProductUploadModel } from "./ZProductUploadModel"; 
+export { ZSelectPrdFileupload } from "./ZSelectPrdFileupload"; 
 export { ZSelectProductSaveCheckListRequestModel } from "./ZSelectProductSaveCheckListRequestModel"; 
 export { ZProductActivityReportFilter } from "./ZProductActivityReportFilter"; 
 export { ZApproveSuggestProductRequestModel } from "./ZApproveSuggestProductRequestModel"; 
@@ -134,6 +135,7 @@ export { ZSaveIngredientModel } from "./ZSaveIngredientModel";
 export { ZSaveManufacturerModel } from "./ZSaveManufacturerModel"; 
 export { ZSaveMonthlyNumberModel } from "./ZSaveMonthlyNumberModel"; 
 export { ZSaveOneWorldSyncProductModel } from "./ZSaveOneWorldSyncProductModel"; 
+export { ZSaveProductModel } from "./ZSaveProductModel"; 
 export { ZSaveSchoolDistrictModel } from "./ZSaveSchoolDistrictModel"; 
 export { ZSaveStorageTypeModel } from "./ZSaveStorageTypeModel"; 
 export { ZSaveSubCategoryModel } from "./ZSaveSubCategoryModel"; 

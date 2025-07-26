@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
     }
 
     /**
-    *
     * Query **QueryAllergenModel**
-    *
     * @description Query **QueryAllergenModel**
     * @operationId Allergen_Query
     * @tag Allergen
     * @tag model-query
-    * @path /api/Allergen/Query
+    * @path /api/Allergen/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     Query(params: {
-        body?: IQueryAllergenModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelSearchQuery
-    }): Promise<IQueryAllergenModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryAllergenModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelSearchQuery        
+    }): Promise<IQueryAllergenModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Allergen/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryAllergenModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryAllergenModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryAllergenModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryAllergenModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryAllergenModel**
-    *
     * @description Get **QueryAllergenModel**
     * @operationId Allergen_Get
     * @tag Allergen
     * @tag model-getter
-    * @path /api/Allergen/Get
+    * @path /api/Allergen/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQueryAllergenModel> {
-        const { id, name,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQueryAllergenModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Allergen/Get?";
+        const { id, name,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
         else if (name !== undefined)
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
         });
     }
 
-    protected processGet(response: Response): Promise<QueryAllergenModel> {
+    protected processGet(response: Response): Promise<IQueryAllergenModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryAllergenModel>(null as any);
+        return Promise.resolve<IQueryAllergenModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryAllergenModel**
-    *
     * @description Save **QueryAllergenModel**
     * @operationId Allergen_Save
     * @tag Allergen
     * @tag model-setter
-    * @path /api/Allergen/Save
+    * @path /api/Allergen/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     Save(params: {
-        body?: ISaveAllergenModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveAllergenModel
-    }): Promise<IQueryAllergenModel> { // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModel        
-        const { body } = params;
+        body?: ISaveAllergenModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveAllergenModel        
+    }): Promise<IQueryAllergenModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Allergen/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
         });
     }
 
-    protected processSave(response: Response): Promise<QueryAllergenModel> {
+    protected processSave(response: Response): Promise<IQueryAllergenModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class AllergenClient extends ClientBase implements IAllergenClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryAllergenModel>(null as any);
+        return Promise.resolve<IQueryAllergenModel | undefined>(null as any);
     }
-    
 }

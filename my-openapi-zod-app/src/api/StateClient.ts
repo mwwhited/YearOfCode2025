@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -37,24 +37,23 @@ export class StateClient extends ClientBase implements IStateClient  {
     }
 
     /**
-    *
     * Query **QueryStateModel**
-    *
     * @description Query **QueryStateModel**
     * @operationId State_Query
     * @tag State
     * @tag model-query
-    * @path /api/State/Query
+    * @path /api/State/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryStateModel
     */
     Query(params: {
-        body?: IQueryStateModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelSearchQuery
-    }): Promise<IQueryStateModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryStateModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryStateModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelSearchQuery        
+    }): Promise<IQueryStateModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/State/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -71,7 +70,8 @@ export class StateClient extends ClientBase implements IStateClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryStateModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryStateModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -86,7 +86,6 @@ export class StateClient extends ClientBase implements IStateClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryStateModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryStateModelPagedQueryResult | undefined>(null as any);
     }
-    
 }

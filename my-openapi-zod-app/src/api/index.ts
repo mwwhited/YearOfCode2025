@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 
@@ -99,6 +99,9 @@ export { ZProductUpcAllocationModel } from "./Schema/ZProductUpcAllocationModel"
 export { ProductUploadModel } from "./Models/ProductUploadModel"; 
 export type { IProductUploadModel } from "./Models/IProductUploadModel"; 
 export { ZProductUploadModel } from "./Schema/ZProductUploadModel"; 
+export { SelectPrdFileupload } from "./Models/SelectPrdFileupload"; 
+export type { ISelectPrdFileupload } from "./Models/ISelectPrdFileupload"; 
+export { ZSelectPrdFileupload } from "./Schema/ZSelectPrdFileupload"; 
 export { SelectProductSaveCheckListRequestModel } from "./Models/SelectProductSaveCheckListRequestModel"; 
 export type { ISelectProductSaveCheckListRequestModel } from "./Models/ISelectProductSaveCheckListRequestModel"; 
 export { ZSelectProductSaveCheckListRequestModel } from "./Schema/ZSelectProductSaveCheckListRequestModel"; 
@@ -432,6 +435,9 @@ export { ZSaveMonthlyNumberModel } from "./Schema/ZSaveMonthlyNumberModel";
 export { SaveOneWorldSyncProductModel } from "./Models/SaveOneWorldSyncProductModel"; 
 export type { ISaveOneWorldSyncProductModel } from "./Models/ISaveOneWorldSyncProductModel"; 
 export { ZSaveOneWorldSyncProductModel } from "./Schema/ZSaveOneWorldSyncProductModel"; 
+export { SaveProductModel } from "./Models/SaveProductModel"; 
+export type { ISaveProductModel } from "./Models/ISaveProductModel"; 
+export { ZSaveProductModel } from "./Schema/ZSaveProductModel"; 
 export { SaveSchoolDistrictModel } from "./Models/SaveSchoolDistrictModel"; 
 export type { ISaveSchoolDistrictModel } from "./Models/ISaveSchoolDistrictModel"; 
 export { ZSaveSchoolDistrictModel } from "./Schema/ZSaveSchoolDistrictModel"; 

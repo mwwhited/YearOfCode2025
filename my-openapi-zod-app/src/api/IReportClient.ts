@@ -4,8 +4,10 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { IProductActivityReportFilter } from "./Models/IProductActivityReportFilter";
@@ -14,35 +16,24 @@ import type { IUserResponseModel } from "./Models/IUserResponseModel";
 export type { IProductActivityReportFilter };
 export type { IUserResponseModel };
 
-type integer = number;
-
 export interface IReportClient {
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Report_GetProductActivityReportFilter
     * @tag Report
-    * @path /api/Report/GetProductActivityReportFilter
+    * @path /api/Report/GetProductActivityReportFilter 
+    * @anonymous false
     */
     GetProductActivityReportFilter(params: {
-        body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter
-    }): Promise<IUserResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.UserResponse.UserResponseModel
-    
+        body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter        
+    }): Promise<IUserResponseModel | undefined>;
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Report_GetItemDetailByProductIdReport
     * @tag Report
-    * @path /api/Report/GetItemDetailByProductIdReport
+    * @path /api/Report/GetItemDetailByProductIdReport 
+    * @anonymous false
     */
     GetItemDetailByProductIdReport(params: {
-            productId?: integer | undefined; // 
-    }): Promise<IUserResponseModel>; // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.UserResponse.UserResponseModel
-    
-
+            productId?: number | undefined;
+    }): Promise<IUserResponseModel | undefined>;
 }

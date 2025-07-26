@@ -4,8 +4,10 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
+
+type integer = number;
 
 // Models 
 import type { IQueryIngredientModelSearchQuery } from "./Models/IQueryIngredientModelSearchQuery";
@@ -18,52 +20,47 @@ export type { IQueryIngredientModelPagedQueryResult };
 export type { IQueryIngredientModel };
 export type { ISaveIngredientModel };
 
-type integer = number;
-
 export interface IIngredientClient {
 
     /**
-    *
     * Query **QueryIngredientModel**
-    *
     * @description Query **QueryIngredientModel**
     * @operationId Ingredient_Query
     * @tag Ingredient
     * @tag model-query
-    * @path /api/Ingredient/Query
+    * @path /api/Ingredient/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Query(params: {
-        body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery
-    }): Promise<IQueryIngredientModelPagedQueryResult>; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelPagedQueryResult
-    
-    
+        body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery        
+    }): Promise<IQueryIngredientModelPagedQueryResult | undefined>;
     /**
-    *
     * Get **QueryIngredientModel**
-    *
     * @description Get **QueryIngredientModel**
     * @operationId Ingredient_Get
     * @tag Ingredient
     * @tag model-getter
-    * @path /api/Ingredient/Get
+    * @path /api/Ingredient/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            keyword?: string | undefined; // 
-    }): Promise<IQueryIngredientModel>;
+            id?: number | undefined;
+            keyword?: string | undefined;
+    }): Promise<IQueryIngredientModel | undefined>;
     /**
-    *
     * Save **QueryIngredientModel**
-    *
     * @description Save **QueryIngredientModel**
     * @operationId Ingredient_Save
     * @tag Ingredient
     * @tag model-setter
-    * @path /api/Ingredient/Save
+    * @path /api/Ingredient/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Save(params: {
-        body?: ISaveIngredientModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveIngredientModel
-    }): Promise<IQueryIngredientModel>; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModel
-    
-
+        body?: ISaveIngredientModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveIngredientModel        
+    }): Promise<IQueryIngredientModel | undefined>;
 }

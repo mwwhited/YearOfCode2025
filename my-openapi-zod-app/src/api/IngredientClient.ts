@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
     }
 
     /**
-    *
     * Query **QueryIngredientModel**
-    *
     * @description Query **QueryIngredientModel**
     * @operationId Ingredient_Query
     * @tag Ingredient
     * @tag model-query
-    * @path /api/Ingredient/Query
+    * @path /api/Ingredient/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Query(params: {
-        body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery
-    }): Promise<IQueryIngredientModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery        
+    }): Promise<IQueryIngredientModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Ingredient/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryIngredientModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryIngredientModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryIngredientModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryIngredientModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryIngredientModel**
-    *
     * @description Get **QueryIngredientModel**
     * @operationId Ingredient_Get
     * @tag Ingredient
     * @tag model-getter
-    * @path /api/Ingredient/Get
+    * @path /api/Ingredient/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            keyword?: string | undefined; // 
-    }): Promise<IQueryIngredientModel> {
-        const { id, keyword,  } = params;
+            id?: number | undefined;
+            keyword?: string | undefined;
+    }): Promise<IQueryIngredientModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Ingredient/Get?";
+        const { id, keyword,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
         else if (keyword !== undefined)
             url_ += "keyword=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
         });
     }
 
-    protected processGet(response: Response): Promise<QueryIngredientModel> {
+    protected processGet(response: Response): Promise<IQueryIngredientModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryIngredientModel>(null as any);
+        return Promise.resolve<IQueryIngredientModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryIngredientModel**
-    *
     * @description Save **QueryIngredientModel**
     * @operationId Ingredient_Save
     * @tag Ingredient
     * @tag model-setter
-    * @path /api/Ingredient/Save
+    * @path /api/Ingredient/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Save(params: {
-        body?: ISaveIngredientModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveIngredientModel
-    }): Promise<IQueryIngredientModel> { // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModel        
-        const { body } = params;
+        body?: ISaveIngredientModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveIngredientModel        
+    }): Promise<IQueryIngredientModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Ingredient/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
         });
     }
 
-    protected processSave(response: Response): Promise<QueryIngredientModel> {
+    protected processSave(response: Response): Promise<IQueryIngredientModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class IngredientClient extends ClientBase implements IIngredientClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryIngredientModel>(null as any);
+        return Promise.resolve<IQueryIngredientModel | undefined>(null as any);
     }
-    
 }

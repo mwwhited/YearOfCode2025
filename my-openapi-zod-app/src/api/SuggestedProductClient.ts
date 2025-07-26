@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -37,23 +37,22 @@ export class SuggestedProductClient extends ClientBase implements ISuggestedProd
     }
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId SuggestedProduct_CreateSuggestedProduct
     * @tag SuggestedProduct
-    * @path /api/SuggestedProduct/CreateSuggestedProduct
+    * @path /api/SuggestedProduct/CreateSuggestedProduct 
+    * @anonymous false
+    * @role Super Admin
+    * @role District Admin
+    * @role Cooperative Admin
     */
     CreateSuggestedProduct(params: {
-        body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel
-    }): Promise<ISuggestedProductResponseModel> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.SuggestedProduct.SuggestedProductResponseModel        
-        const { body } = params;
+        body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel        
+    }): Promise<ISuggestedProductResponseModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SuggestedProduct/CreateSuggestedProduct?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -70,7 +69,8 @@ export class SuggestedProductClient extends ClientBase implements ISuggestedProd
         });
     }
 
-    protected processCreateSuggestedProduct(response: Response): Promise<SuggestedProductResponseModel> {
+    protected processCreateSuggestedProduct(response: Response): Promise<ISuggestedProductResponseModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -85,28 +85,20 @@ export class SuggestedProductClient extends ClientBase implements ISuggestedProd
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<SuggestedProductResponseModel>(null as any);
+        return Promise.resolve<ISuggestedProductResponseModel | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId SuggestedProduct_ApproveSuggestedProduct
     * @tag SuggestedProduct
-    * @path /api/SuggestedProduct/ApproveSuggestedProduct
+    * @path /api/SuggestedProduct/ApproveSuggestedProduct 
+    * @anonymous false
+    * @role Super Admin
     */
-    ApproveSuggestedProduct(params: {
-    }): Promise<ISuggestedProductResponseModel> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.SuggestedProduct.SuggestedProductResponseModel        
-        const { body } = params;
+    ApproveSuggestedProduct(): Promise<ISuggestedProductResponseModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/SuggestedProduct/ApproveSuggestedProduct?";
         url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
-            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -121,7 +113,8 @@ export class SuggestedProductClient extends ClientBase implements ISuggestedProd
         });
     }
 
-    protected processApproveSuggestedProduct(response: Response): Promise<SuggestedProductResponseModel> {
+    protected processApproveSuggestedProduct(response: Response): Promise<ISuggestedProductResponseModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -136,7 +129,6 @@ export class SuggestedProductClient extends ClientBase implements ISuggestedProd
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<SuggestedProductResponseModel>(null as any);
+        return Promise.resolve<ISuggestedProductResponseModel | undefined>(null as any);
     }
-    
 }

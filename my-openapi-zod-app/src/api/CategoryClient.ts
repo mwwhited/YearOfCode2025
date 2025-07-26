@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
     }
 
     /**
-    *
     * Query **QueryCategoryModel**
-    *
     * @description Query **QueryCategoryModel**
     * @operationId Category_Query
     * @tag Category
     * @tag model-query
-    * @path /api/Category/Query
+    * @path /api/Category/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     Query(params: {
-        body?: IQueryCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelSearchQuery
-    }): Promise<IQueryCategoryModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelSearchQuery        
+    }): Promise<IQueryCategoryModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Category/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryCategoryModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryCategoryModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,26 +92,25 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryCategoryModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryCategoryModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryCategoryModel**
-    *
     * @description Get **QueryCategoryModel**
     * @operationId Category_Get
     * @tag Category
     * @tag model-getter
-    * @path /api/Category/Get
+    * @path /api/Category/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-    }): Promise<IQueryCategoryModel> {
-        const { id, name,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+    }): Promise<IQueryCategoryModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Category/Get?";
+        const { id, name,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -121,10 +120,10 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
         else if (name !== undefined)
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -136,7 +135,8 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
         });
     }
 
-    protected processGet(response: Response): Promise<QueryCategoryModel> {
+    protected processGet(response: Response): Promise<IQueryCategoryModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -151,27 +151,27 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryCategoryModel>(null as any);
+        return Promise.resolve<IQueryCategoryModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryCategoryModel**
-    *
     * @description Save **QueryCategoryModel**
     * @operationId Category_Save
     * @tag Category
     * @tag model-setter
-    * @path /api/Category/Save
+    * @path /api/Category/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     Save(params: {
-        body?: ISaveCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveCategoryModel
-    }): Promise<IQueryCategoryModel> { // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModel        
-        const { body } = params;
+        body?: ISaveCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveCategoryModel        
+    }): Promise<IQueryCategoryModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Category/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -188,7 +188,8 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
         });
     }
 
-    protected processSave(response: Response): Promise<QueryCategoryModel> {
+    protected processSave(response: Response): Promise<IQueryCategoryModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -203,7 +204,6 @@ export class CategoryClient extends ClientBase implements ICategoryClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryCategoryModel>(null as any);
+        return Promise.resolve<IQueryCategoryModel | undefined>(null as any);
     }
-    
 }

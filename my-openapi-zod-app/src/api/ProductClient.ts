@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -20,6 +20,8 @@ import { QueryProductModelPagedQueryResult } from "./Models/QueryProductModelPag
 import type { IQueryProductModelPagedQueryResult } from "./Models/IQueryProductModelPagedQueryResult";
 import { QueryProductModel } from "./Models/QueryProductModel";
 import type { IQueryProductModel } from "./Models/IQueryProductModel";
+import { SaveProductModel } from "./Models/SaveProductModel";
+import type { ISaveProductModel } from "./Models/ISaveProductModel";
 import { ContentReference } from "./Models/ContentReference";
 import type { IContentReference } from "./Models/IContentReference";
 import { ProductResponse } from "./Models/ProductResponse";
@@ -28,6 +30,8 @@ import { ProductGtinAllocationModel } from "./Models/ProductGtinAllocationModel"
 import type { IProductGtinAllocationModel } from "./Models/IProductGtinAllocationModel";
 import { ProductUpcAllocationModel } from "./Models/ProductUpcAllocationModel";
 import type { IProductUpcAllocationModel } from "./Models/IProductUpcAllocationModel";
+import { SelectPrdFileupload } from "./Models/SelectPrdFileupload";
+import type { ISelectPrdFileupload } from "./Models/ISelectPrdFileupload";
 import { FileUploadResponse } from "./Models/FileUploadResponse";
 import type { IFileUploadResponse } from "./Models/IFileUploadResponse";
 import { SelectProductSaveCheckListRequestModel } from "./Models/SelectProductSaveCheckListRequestModel";
@@ -41,10 +45,12 @@ export type { IProductClient };
 export type { IQueryProductModelSearchQuery };
 export type { IQueryProductModelPagedQueryResult };
 export type { IQueryProductModel };
+export type { ISaveProductModel };
 export type { IContentReference };
 export type { IProductResponse };
 export type { IProductGtinAllocationModel };
 export type { IProductUpcAllocationModel };
+export type { ISelectPrdFileupload };
 export type { IFileUploadResponse };
 export type { ISelectProductSaveCheckListRequestModel };
 export type { IBaseResponseModel };
@@ -61,24 +67,23 @@ export class ProductClient extends ClientBase implements IProductClient  {
     }
 
     /**
-    *
     * Query **QueryProductModel**
-    *
     * @description Query **QueryProductModel**
     * @operationId Product_Query
     * @tag Product
     * @tag model-query
-    * @path /api/Product/Query
+    * @path /api/Product/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryProductModel
     */
     Query(params: {
-        body?: IQueryProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryProductModelSearchQuery
-    }): Promise<IQueryProductModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryProductModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryProductModelSearchQuery        
+    }): Promise<IQueryProductModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -95,7 +100,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryProductModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryProductModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -110,27 +116,26 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryProductModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryProductModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryProductModel**
-    *
     * @description Get **QueryProductModel**
     * @operationId Product_Get
     * @tag Product
     * @tag model-getter
-    * @path /api/Product/Get
+    * @path /api/Product/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryProductModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            gtin?: string | undefined; // 
-            upc?: string | undefined; // 
-    }): Promise<IQueryProductModel> {
-        const { id, gtin, upc,  } = params;
+            id?: number | undefined;
+            gtin?: string | undefined;
+            upc?: string | undefined;
+    }): Promise<IQueryProductModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/Get?";
+        const { id, gtin, upc,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -144,10 +149,10 @@ export class ProductClient extends ClientBase implements IProductClient  {
         else if (upc !== undefined)
             url_ += "upc=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -159,7 +164,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processGet(response: Response): Promise<QueryProductModel> {
+    protected processGet(response: Response): Promise<IQueryProductModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -174,217 +180,27 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryProductModel>(null as any);
+        return Promise.resolve<IQueryProductModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryProductModel**
-    *
     * @description Save **QueryProductModel**
     * @operationId Product_Save
     * @tag Product
     * @tag model-setter
-    * @path /api/Product/Save
+    * @path /api/Product/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryProductModel
     */
     Save(params: {
-            ProductId?: integer | undefined; // 
-            ProductName?: string | undefined; // 
-            Gtin?: string | undefined; // 
-            Upc?: string | undefined; // 
-            CategoryId?: integer | undefined; // 
-            SubCategoryId?: integer | undefined; // 
-            IocCategoryId?: integer | undefined; // 
-            Ingredients?: string | undefined; // 
-            BrandName?: string | undefined; // 
-            Description?: string | undefined; // 
-            AllergenKeywords?: string | undefined; // 
-            Vendor?: string | undefined; // 
-            ManufacturerId?: integer | undefined; // 
-            StorageTypeId?: integer | undefined; // 
-            ProductLabelPdfUrl?: string | undefined; // 
-            ManufacturerProductCode?: string | undefined; // 
-            IsActive?: boolean | undefined; // 
-            NutritionalInformation.Serving?: number | undefined; // 
-            NutritionalInformation.ServingUom?: string | undefined; // 
-            NutritionalInformation.Calories?: number | undefined; // 
-            NutritionalInformation.CaloriesUom?: string | undefined; // 
-            NutritionalInformation.Carbohydrates?: number | undefined; // 
-            NutritionalInformation.CarbohydratesUom?: string | undefined; // 
-            NutritionalInformation.Protein?: number | undefined; // 
-            NutritionalInformation.ProteinUom?: string | undefined; // 
-            NutritionalInformation.TotalFat?: number | undefined; // 
-            NutritionalInformation.TransFat?: number | undefined; // 
-            NutritionalInformation.SaturatedFat?: number | undefined; // 
-            NutritionalInformation.DietaryFiber?: number | undefined; // 
-            NutritionalInformation.DietaryFiberUom?: string | undefined; // 
-            NutritionalInformation.Sugar?: number | undefined; // 
-            NutritionalInformation.SugarUom?: string | undefined; // 
-            NutritionalInformation.AddedSugar?: number | undefined; // 
-            NutritionalInformation.AddedSugarUom?: string | undefined; // 
-            NutritionalInformation.Sodium?: number | undefined; // 
-            NutritionalInformation.SodiumUom?: string | undefined; // 
-            NutritionalInformation.Cholesterol?: number | undefined; // 
-            NutritionalInformation.CholesterolUom?: string | undefined; // 
-    }): Promise<IQueryProductModel> { // #/components/schemas/GreenOnion.Common.Models.QueryProductModel        
-        const { body } = params;
+        body?: ISaveProductModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveProductModel        
+    }): Promise<IQueryProductModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/Save?";
-        const { ProductId, ProductName, Gtin, Upc, CategoryId, SubCategoryId, IocCategoryId, Ingredients, BrandName, Description, AllergenKeywords, Vendor, ManufacturerId, StorageTypeId, ProductLabelPdfUrl, ManufacturerProductCode, IsActive, NutritionalInformation.Serving, NutritionalInformation.ServingUom, NutritionalInformation.Calories, NutritionalInformation.CaloriesUom, NutritionalInformation.Carbohydrates, NutritionalInformation.CarbohydratesUom, NutritionalInformation.Protein, NutritionalInformation.ProteinUom, NutritionalInformation.TotalFat, NutritionalInformation.TransFat, NutritionalInformation.SaturatedFat, NutritionalInformation.DietaryFiber, NutritionalInformation.DietaryFiberUom, NutritionalInformation.Sugar, NutritionalInformation.SugarUom, NutritionalInformation.AddedSugar, NutritionalInformation.AddedSugarUom, NutritionalInformation.Sodium, NutritionalInformation.SodiumUom, NutritionalInformation.Cholesterol, NutritionalInformation.CholesterolUom,  } = params;
-        if (ProductId === null)
-            throw new Error("The parameter 'ProductId' cannot be null.");
-        else if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
-        if (ProductName === null)
-            throw new Error("The parameter 'ProductName' cannot be null.");
-        else if (ProductName !== undefined)
-            url_ += "ProductName=" + encodeURIComponent("" + id) + "&";
-        if (Gtin === null)
-            throw new Error("The parameter 'Gtin' cannot be null.");
-        else if (Gtin !== undefined)
-            url_ += "Gtin=" + encodeURIComponent("" + id) + "&";
-        if (Upc === null)
-            throw new Error("The parameter 'Upc' cannot be null.");
-        else if (Upc !== undefined)
-            url_ += "Upc=" + encodeURIComponent("" + id) + "&";
-        if (CategoryId === null)
-            throw new Error("The parameter 'CategoryId' cannot be null.");
-        else if (CategoryId !== undefined)
-            url_ += "CategoryId=" + encodeURIComponent("" + id) + "&";
-        if (SubCategoryId === null)
-            throw new Error("The parameter 'SubCategoryId' cannot be null.");
-        else if (SubCategoryId !== undefined)
-            url_ += "SubCategoryId=" + encodeURIComponent("" + id) + "&";
-        if (IocCategoryId === null)
-            throw new Error("The parameter 'IocCategoryId' cannot be null.");
-        else if (IocCategoryId !== undefined)
-            url_ += "IocCategoryId=" + encodeURIComponent("" + id) + "&";
-        if (Ingredients === null)
-            throw new Error("The parameter 'Ingredients' cannot be null.");
-        else if (Ingredients !== undefined)
-            url_ += "Ingredients=" + encodeURIComponent("" + id) + "&";
-        if (BrandName === null)
-            throw new Error("The parameter 'BrandName' cannot be null.");
-        else if (BrandName !== undefined)
-            url_ += "BrandName=" + encodeURIComponent("" + id) + "&";
-        if (Description === null)
-            throw new Error("The parameter 'Description' cannot be null.");
-        else if (Description !== undefined)
-            url_ += "Description=" + encodeURIComponent("" + id) + "&";
-        if (AllergenKeywords === null)
-            throw new Error("The parameter 'AllergenKeywords' cannot be null.");
-        else if (AllergenKeywords !== undefined)
-            url_ += "AllergenKeywords=" + encodeURIComponent("" + id) + "&";
-        if (Vendor === null)
-            throw new Error("The parameter 'Vendor' cannot be null.");
-        else if (Vendor !== undefined)
-            url_ += "Vendor=" + encodeURIComponent("" + id) + "&";
-        if (ManufacturerId === null)
-            throw new Error("The parameter 'ManufacturerId' cannot be null.");
-        else if (ManufacturerId !== undefined)
-            url_ += "ManufacturerId=" + encodeURIComponent("" + id) + "&";
-        if (StorageTypeId === null)
-            throw new Error("The parameter 'StorageTypeId' cannot be null.");
-        else if (StorageTypeId !== undefined)
-            url_ += "StorageTypeId=" + encodeURIComponent("" + id) + "&";
-        if (ProductLabelPdfUrl === null)
-            throw new Error("The parameter 'ProductLabelPdfUrl' cannot be null.");
-        else if (ProductLabelPdfUrl !== undefined)
-            url_ += "ProductLabelPdfUrl=" + encodeURIComponent("" + id) + "&";
-        if (ManufacturerProductCode === null)
-            throw new Error("The parameter 'ManufacturerProductCode' cannot be null.");
-        else if (ManufacturerProductCode !== undefined)
-            url_ += "ManufacturerProductCode=" + encodeURIComponent("" + id) + "&";
-        if (IsActive === null)
-            throw new Error("The parameter 'IsActive' cannot be null.");
-        else if (IsActive !== undefined)
-            url_ += "IsActive=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Serving === null)
-            throw new Error("The parameter 'NutritionalInformation.Serving' cannot be null.");
-        else if (NutritionalInformation.Serving !== undefined)
-            url_ += "NutritionalInformation.Serving=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.ServingUom === null)
-            throw new Error("The parameter 'NutritionalInformation.ServingUom' cannot be null.");
-        else if (NutritionalInformation.ServingUom !== undefined)
-            url_ += "NutritionalInformation.ServingUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Calories === null)
-            throw new Error("The parameter 'NutritionalInformation.Calories' cannot be null.");
-        else if (NutritionalInformation.Calories !== undefined)
-            url_ += "NutritionalInformation.Calories=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.CaloriesUom === null)
-            throw new Error("The parameter 'NutritionalInformation.CaloriesUom' cannot be null.");
-        else if (NutritionalInformation.CaloriesUom !== undefined)
-            url_ += "NutritionalInformation.CaloriesUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Carbohydrates === null)
-            throw new Error("The parameter 'NutritionalInformation.Carbohydrates' cannot be null.");
-        else if (NutritionalInformation.Carbohydrates !== undefined)
-            url_ += "NutritionalInformation.Carbohydrates=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.CarbohydratesUom === null)
-            throw new Error("The parameter 'NutritionalInformation.CarbohydratesUom' cannot be null.");
-        else if (NutritionalInformation.CarbohydratesUom !== undefined)
-            url_ += "NutritionalInformation.CarbohydratesUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Protein === null)
-            throw new Error("The parameter 'NutritionalInformation.Protein' cannot be null.");
-        else if (NutritionalInformation.Protein !== undefined)
-            url_ += "NutritionalInformation.Protein=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.ProteinUom === null)
-            throw new Error("The parameter 'NutritionalInformation.ProteinUom' cannot be null.");
-        else if (NutritionalInformation.ProteinUom !== undefined)
-            url_ += "NutritionalInformation.ProteinUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.TotalFat === null)
-            throw new Error("The parameter 'NutritionalInformation.TotalFat' cannot be null.");
-        else if (NutritionalInformation.TotalFat !== undefined)
-            url_ += "NutritionalInformation.TotalFat=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.TransFat === null)
-            throw new Error("The parameter 'NutritionalInformation.TransFat' cannot be null.");
-        else if (NutritionalInformation.TransFat !== undefined)
-            url_ += "NutritionalInformation.TransFat=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.SaturatedFat === null)
-            throw new Error("The parameter 'NutritionalInformation.SaturatedFat' cannot be null.");
-        else if (NutritionalInformation.SaturatedFat !== undefined)
-            url_ += "NutritionalInformation.SaturatedFat=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.DietaryFiber === null)
-            throw new Error("The parameter 'NutritionalInformation.DietaryFiber' cannot be null.");
-        else if (NutritionalInformation.DietaryFiber !== undefined)
-            url_ += "NutritionalInformation.DietaryFiber=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.DietaryFiberUom === null)
-            throw new Error("The parameter 'NutritionalInformation.DietaryFiberUom' cannot be null.");
-        else if (NutritionalInformation.DietaryFiberUom !== undefined)
-            url_ += "NutritionalInformation.DietaryFiberUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Sugar === null)
-            throw new Error("The parameter 'NutritionalInformation.Sugar' cannot be null.");
-        else if (NutritionalInformation.Sugar !== undefined)
-            url_ += "NutritionalInformation.Sugar=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.SugarUom === null)
-            throw new Error("The parameter 'NutritionalInformation.SugarUom' cannot be null.");
-        else if (NutritionalInformation.SugarUom !== undefined)
-            url_ += "NutritionalInformation.SugarUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.AddedSugar === null)
-            throw new Error("The parameter 'NutritionalInformation.AddedSugar' cannot be null.");
-        else if (NutritionalInformation.AddedSugar !== undefined)
-            url_ += "NutritionalInformation.AddedSugar=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.AddedSugarUom === null)
-            throw new Error("The parameter 'NutritionalInformation.AddedSugarUom' cannot be null.");
-        else if (NutritionalInformation.AddedSugarUom !== undefined)
-            url_ += "NutritionalInformation.AddedSugarUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Sodium === null)
-            throw new Error("The parameter 'NutritionalInformation.Sodium' cannot be null.");
-        else if (NutritionalInformation.Sodium !== undefined)
-            url_ += "NutritionalInformation.Sodium=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.SodiumUom === null)
-            throw new Error("The parameter 'NutritionalInformation.SodiumUom' cannot be null.");
-        else if (NutritionalInformation.SodiumUom !== undefined)
-            url_ += "NutritionalInformation.SodiumUom=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.Cholesterol === null)
-            throw new Error("The parameter 'NutritionalInformation.Cholesterol' cannot be null.");
-        else if (NutritionalInformation.Cholesterol !== undefined)
-            url_ += "NutritionalInformation.Cholesterol=" + encodeURIComponent("" + id) + "&";
-        if (NutritionalInformation.CholesterolUom === null)
-            throw new Error("The parameter 'NutritionalInformation.CholesterolUom' cannot be null.");
-        else if (NutritionalInformation.CholesterolUom !== undefined)
-            url_ += "NutritionalInformation.CholesterolUom=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -401,7 +217,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processSave(response: Response): Promise<QueryProductModel> {
+    protected processSave(response: Response): Promise<IQueryProductModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -416,25 +233,21 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryProductModel>(null as any);
+        return Promise.resolve<IQueryProductModel | undefined>(null as any);
     }
-    
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_Pdfs
     * @tag Product
-    * @path /api/Product/Pdfs/{id}
+    * @path /api/Product/Pdfs/{id} 
+    * @anonymous false
     */
-    {id}(params: {
-            id?: string | undefined; // 
-            download?: boolean | undefined; // 
-    }): Promise<IContentReference> {
-        const { id, download,  } = params;
+    Pdfs(params: {
+            id?: string | undefined;
+            download?: boolean | undefined;
+    }): Promise<IContentReference | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/Pdfs/{id}?";
+        const { id, download,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -444,10 +257,10 @@ export class ProductClient extends ClientBase implements IProductClient  {
         else if (download !== undefined)
             url_ += "download=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -455,11 +268,12 @@ export class ProductClient extends ClientBase implements IProductClient  {
         return this.transformOptions(options_).then(transformedOptions_ => {
             return this.http.fetch(url_, transformedOptions_);
         }).then((_response: Response) => {
-            return this.process{id}(_response);
+            return this.processPdfs(_response);
         });
     }
 
-    protected process{id}(response: Response): Promise<ContentReference> {
+    protected processPdfs(response: Response): Promise<IContentReference | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -474,27 +288,19 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ContentReference>(null as any);
+        return Promise.resolve<IContentReference | undefined>(null as any);
     }
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_CreateProduct
     * @tag Product
-    * @path /api/Product/CreateProduct
+    * @path /api/Product/CreateProduct 
+    * @anonymous false
     */
-    CreateProduct(params: {
-    }): Promise<IProductResponse> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.Product.ProductResponse        
-        const { body } = params;
+    CreateProduct(): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/CreateProduct?";
         url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
-            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -509,7 +315,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processCreateProduct(response: Response): Promise<ProductResponse> {
+    protected processCreateProduct(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -524,33 +331,29 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_GetProductDataByID
     * @tag Product
-    * @path /api/Product/GetProductDataByID
+    * @path /api/Product/GetProductDataByID 
+    * @anonymous false
     */
     GetProductDataByID(params: {
-            ProductId?: integer | undefined; // 
-    }): Promise<IProductResponse> {
-        const { ProductId,  } = params;
+            ProductId?: number | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/GetProductDataByID?";
+        const { ProductId,  } = params;
         if (ProductId === null)
             throw new Error("The parameter 'ProductId' cannot be null.");
         else if (ProductId !== undefined)
             url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -562,7 +365,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processGetProductDataByID(response: Response): Promise<ProductResponse> {
+    protected processGetProductDataByID(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -577,27 +381,22 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_CreateUpdateGtinAllocation
     * @tag Product
-    * @path /api/Product/CreateUpdateGtinAllocation
+    * @path /api/Product/CreateUpdateGtinAllocation 
+    * @anonymous false
     */
     CreateUpdateGtinAllocation(params: {
-        body?: IProductGtinAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductGtinAllocationModel
-    }): Promise<IProductResponse> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.Product.ProductResponse        
-        const { body } = params;
+        body?: IProductGtinAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductGtinAllocationModel        
+    }): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/CreateUpdateGtinAllocation?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -614,7 +413,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processCreateUpdateGtinAllocation(response: Response): Promise<ProductResponse> {
+    protected processCreateUpdateGtinAllocation(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -629,27 +429,22 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_CreateUpdateUpcAllocation
     * @tag Product
-    * @path /api/Product/CreateUpdateUpcAllocation
+    * @path /api/Product/CreateUpdateUpcAllocation 
+    * @anonymous false
     */
     CreateUpdateUpcAllocation(params: {
-        body?: IProductUpcAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductUpcAllocationModel
-    }): Promise<IProductResponse> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.Product.ProductResponse        
-        const { body } = params;
+        body?: IProductUpcAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductUpcAllocationModel        
+    }): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/CreateUpdateUpcAllocation?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -666,7 +461,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processCreateUpdateUpcAllocation(response: Response): Promise<ProductResponse> {
+    protected processCreateUpdateUpcAllocation(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -681,33 +477,29 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_GetProductAllGtin
     * @tag Product
-    * @path /api/Product/GetProductAllGtin
+    * @path /api/Product/GetProductAllGtin 
+    * @anonymous false
     */
     GetProductAllGtin(params: {
-            productId?: integer | undefined; // 
-    }): Promise<IProductResponse> {
-        const { productId,  } = params;
+            productId?: number | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/GetProductAllGtin?";
+        const { productId,  } = params;
         if (productId === null)
             throw new Error("The parameter 'productId' cannot be null.");
         else if (productId !== undefined)
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -719,7 +511,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processGetProductAllGtin(response: Response): Promise<ProductResponse> {
+    protected processGetProductAllGtin(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -734,32 +527,29 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_GetProductAllUpc
     * @tag Product
-    * @path /api/Product/GetProductAllUpc
+    * @path /api/Product/GetProductAllUpc 
+    * @anonymous false
     */
     GetProductAllUpc(params: {
-            productId?: integer | undefined; // 
-    }): Promise<IProductResponse> {
-        const { productId,  } = params;
+            productId?: number | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/GetProductAllUpc?";
+        const { productId,  } = params;
         if (productId === null)
             throw new Error("The parameter 'productId' cannot be null.");
         else if (productId !== undefined)
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -771,7 +561,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processGetProductAllUpc(response: Response): Promise<ProductResponse> {
+    protected processGetProductAllUpc(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -786,23 +577,24 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_CreateSelectProductUpload
     * @tag Product
-    * @path /api/Product/CreateSelectProductUpload
+    * @path /api/Product/CreateSelectProductUpload 
+    * @anonymous false
+    * @role Super Admin
+    * @role Cooperative Admin
+    * @role District Admin
     */
     CreateSelectProductUpload(params: {
-            schoolDistrictId?: integer | undefined; // 
-            UserId?: integer | undefined; // 
-            Option?: string | undefined; // 
-    }): Promise<IFileUploadResponse> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.Product.FileUploadResponse        
-        const { body } = params;
+            schoolDistrictId?: number | undefined;
+            UserId?: number | undefined;
+            Option?: string | undefined;
+        body?: ISelectPrdFileupload | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload        
+    }): Promise<IFileUploadResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/CreateSelectProductUpload?";
         const { schoolDistrictId, UserId, Option,  } = params;
         if (schoolDistrictId === null)
@@ -818,9 +610,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         else if (Option !== undefined)
             url_ += "Option=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -837,7 +628,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processCreateSelectProductUpload(response: Response): Promise<FileUploadResponse> {
+    protected processCreateSelectProductUpload(response: Response): Promise<IFileUploadResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -852,27 +644,25 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<FileUploadResponse>(null as any);
+        return Promise.resolve<IFileUploadResponse | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_SaveSelectProductUpload
     * @tag Product
-    * @path /api/Product/SaveSelectProductUpload
+    * @path /api/Product/SaveSelectProductUpload 
+    * @anonymous false
+    * @role Super Admin
+    * @role Cooperative Admin
+    * @role District Admin
     */
     SaveSelectProductUpload(params: {
-        body?: ISelectProductSaveCheckListRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectProductSaveCheckListRequestModel
-    }): Promise<IFileUploadResponse> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.Product.FileUploadResponse        
-        const { body } = params;
+        body?: ISelectProductSaveCheckListRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectProductSaveCheckListRequestModel        
+    }): Promise<IFileUploadResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/SaveSelectProductUpload?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -889,7 +679,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processSaveSelectProductUpload(response: Response): Promise<FileUploadResponse> {
+    protected processSaveSelectProductUpload(response: Response): Promise<IFileUploadResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -904,28 +695,19 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<FileUploadResponse>(null as any);
+        return Promise.resolve<IFileUploadResponse | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_UploadFileWithOCR
     * @tag Product
-    * @path /api/Product/UploadFileWithOCR
+    * @path /api/Product/UploadFileWithOCR 
+    * @anonymous false
     */
-    UploadFileWithOCR(params: {
-    }): Promise<IBaseResponseModel> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.BaseResponse.BaseResponseModel        
-        const { body } = params;
+    UploadFileWithOCR(): Promise<IBaseResponseModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/UploadFileWithOCR?";
         url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
-            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -940,7 +722,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processUploadFileWithOCR(response: Response): Promise<BaseResponseModel> {
+    protected processUploadFileWithOCR(response: Response): Promise<IBaseResponseModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -955,28 +738,19 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<BaseResponseModel>(null as any);
+        return Promise.resolve<IBaseResponseModel | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_CreateProductBeforeApprove
     * @tag Product
-    * @path /api/Product/CreateProductBeforeApprove
+    * @path /api/Product/CreateProductBeforeApprove 
+    * @anonymous false
     */
-    CreateProductBeforeApprove(params: {
-    }): Promise<IProductResponse> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.Product.ProductResponse        
-        const { body } = params;
+    CreateProductBeforeApprove(): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/CreateProductBeforeApprove?";
         url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
-            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -991,7 +765,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processCreateProductBeforeApprove(response: Response): Promise<ProductResponse> {
+    protected processCreateProductBeforeApprove(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -1006,33 +781,29 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Product_GetProductBeforeApproveDataByID
     * @tag Product
-    * @path /api/Product/GetProductBeforeApproveDataByID
+    * @path /api/Product/GetProductBeforeApproveDataByID 
+    * @anonymous false
     */
     GetProductBeforeApproveDataByID(params: {
-            ProductId?: integer | undefined; // 
-    }): Promise<IProductResponse> {
-        const { ProductId,  } = params;
+            ProductId?: number | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Product/GetProductBeforeApproveDataByID?";
+        const { ProductId,  } = params;
         if (ProductId === null)
             throw new Error("The parameter 'ProductId' cannot be null.");
         else if (ProductId !== undefined)
             url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -1044,7 +815,8 @@ export class ProductClient extends ClientBase implements IProductClient  {
         });
     }
 
-    protected processGetProductBeforeApproveDataByID(response: Response): Promise<ProductResponse> {
+    protected processGetProductBeforeApproveDataByID(response: Response): Promise<IProductResponse | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -1059,9 +831,6 @@ export class ProductClient extends ClientBase implements IProductClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<ProductResponse>(null as any);
+        return Promise.resolve<IProductResponse | undefined>(null as any);
     }
-    
-    
-    
 }

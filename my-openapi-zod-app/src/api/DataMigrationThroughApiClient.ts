@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -34,24 +34,17 @@ export class DataMigrationThroughApiClient extends ClientBase implements IDataMi
     }
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId DataMigrationThroughApi_ProductH7DataMigration
     * @tag DataMigrationThroughApi
-    * @path /api/DataMigrationThroughApi/ProductH7DataMigration
+    * @path /api/DataMigrationThroughApi/ProductH7DataMigration 
+    * @anonymous false
+    * @role Super Admin
     */
-    ProductH7DataMigration(params: {
-    }): Promise<IDataMigrationThroughApiResponseModel> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.DataMigrationThroughApi.DataMigrationThroughApiResponseModel        
-        const { body } = params;
+    ProductH7DataMigration(): Promise<IDataMigrationThroughApiResponseModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/DataMigrationThroughApi/ProductH7DataMigration?";
         url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
-            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -66,7 +59,8 @@ export class DataMigrationThroughApiClient extends ClientBase implements IDataMi
         });
     }
 
-    protected processProductH7DataMigration(response: Response): Promise<DataMigrationThroughApiResponseModel> {
+    protected processProductH7DataMigration(response: Response): Promise<IDataMigrationThroughApiResponseModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -81,7 +75,6 @@ export class DataMigrationThroughApiClient extends ClientBase implements IDataMi
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<DataMigrationThroughApiResponseModel>(null as any);
+        return Promise.resolve<IDataMigrationThroughApiResponseModel | undefined>(null as any);
     }
-    
 }

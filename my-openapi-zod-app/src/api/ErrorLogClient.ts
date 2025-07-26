@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -37,24 +37,24 @@ export class ErrorLogClient extends ClientBase implements IErrorLogClient  {
     }
 
     /**
-    *
     * Query **QueryErrorLogModel**
-    *
     * @description Query **QueryErrorLogModel**
     * @operationId ErrorLog_Query
     * @tag ErrorLog
     * @tag model-query
-    * @path /api/ErrorLog/Query
+    * @path /api/ErrorLog/Query 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryErrorLogModel
     */
     Query(params: {
-        body?: IQueryErrorLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryErrorLogModelSearchQuery
-    }): Promise<IQueryErrorLogModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryErrorLogModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryErrorLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryErrorLogModelSearchQuery        
+    }): Promise<IQueryErrorLogModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/ErrorLog/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -71,7 +71,8 @@ export class ErrorLogClient extends ClientBase implements IErrorLogClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryErrorLogModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryErrorLogModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -86,7 +87,6 @@ export class ErrorLogClient extends ClientBase implements IErrorLogClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryErrorLogModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryErrorLogModelPagedQueryResult | undefined>(null as any);
     }
-    
 }

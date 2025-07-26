@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -37,23 +37,19 @@ export class ReportClient extends ClientBase implements IReportClient  {
     }
 
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Report_GetProductActivityReportFilter
     * @tag Report
-    * @path /api/Report/GetProductActivityReportFilter
+    * @path /api/Report/GetProductActivityReportFilter 
+    * @anonymous false
     */
     GetProductActivityReportFilter(params: {
-        body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter
-    }): Promise<IUserResponseModel> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.UserResponse.UserResponseModel        
-        const { body } = params;
+        body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter        
+    }): Promise<IUserResponseModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Report/GetProductActivityReportFilter?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -70,7 +66,8 @@ export class ReportClient extends ClientBase implements IReportClient  {
         });
     }
 
-    protected processGetProductActivityReportFilter(response: Response): Promise<UserResponseModel> {
+    protected processGetProductActivityReportFilter(response: Response): Promise<IUserResponseModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -85,22 +82,18 @@ export class ReportClient extends ClientBase implements IReportClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<UserResponseModel>(null as any);
+        return Promise.resolve<IUserResponseModel | undefined>(null as any);
     }
-    
     /**
-    *
-    * 
-    *
-    * @description 
     * @operationId Report_GetItemDetailByProductIdReport
     * @tag Report
-    * @path /api/Report/GetItemDetailByProductIdReport
+    * @path /api/Report/GetItemDetailByProductIdReport 
+    * @anonymous false
     */
     GetItemDetailByProductIdReport(params: {
-            productId?: integer | undefined; // 
-    }): Promise<IUserResponseModel> { // #/components/schemas/GreenOnion.Common.GreenOnionModel.ResponseModel.UserResponse.UserResponseModel        
-        const { body } = params;
+            productId?: number | undefined;
+    }): Promise<IUserResponseModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/Report/GetItemDetailByProductIdReport?";
         const { productId,  } = params;
         if (productId === null)
@@ -108,11 +101,7 @@ export class ReportClient extends ClientBase implements IReportClient  {
         else if (productId !== undefined)
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
-            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -127,7 +116,8 @@ export class ReportClient extends ClientBase implements IReportClient  {
         });
     }
 
-    protected processGetItemDetailByProductIdReport(response: Response): Promise<UserResponseModel> {
+    protected processGetItemDetailByProductIdReport(response: Response): Promise<IUserResponseModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -142,7 +132,6 @@ export class ReportClient extends ClientBase implements IReportClient  {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<UserResponseModel>(null as any);
+        return Promise.resolve<IUserResponseModel | undefined>(null as any);
     }
-    
 }

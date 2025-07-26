@@ -4,7 +4,7 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/25
+// @generatedDate: 2025/07/26
 //
 
 // Interface
@@ -43,24 +43,23 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
     }
 
     /**
-    *
     * Query **QueryDefinedFilterModel**
-    *
     * @description Query **QueryDefinedFilterModel**
     * @operationId DefinedFilter_Query
     * @tag DefinedFilter
     * @tag model-query
-    * @path /api/DefinedFilter/Query
+    * @path /api/DefinedFilter/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     Query(params: {
-        body?: IQueryDefinedFilterModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDefinedFilterModelSearchQuery
-    }): Promise<IQueryDefinedFilterModelPagedQueryResult> { // #/components/schemas/GreenOnion.Common.Models.QueryDefinedFilterModelPagedQueryResult        
-        const { body } = params;
+        body?: IQueryDefinedFilterModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDefinedFilterModelSearchQuery        
+    }): Promise<IQueryDefinedFilterModelPagedQueryResult | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/DefinedFilter/Query?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -77,7 +76,8 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
         });
     }
 
-    protected processQuery(response: Response): Promise<QueryDefinedFilterModelPagedQueryResult> {
+    protected processQuery(response: Response): Promise<IQueryDefinedFilterModelPagedQueryResult | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -92,27 +92,26 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryDefinedFilterModelPagedQueryResult>(null as any);
+        return Promise.resolve<IQueryDefinedFilterModelPagedQueryResult | undefined>(null as any);
     }
-    
-    
     /**
-    *
     * Get **QueryDefinedFilterModel**
-    *
     * @description Get **QueryDefinedFilterModel**
     * @operationId DefinedFilter_Get
     * @tag DefinedFilter
     * @tag model-getter
-    * @path /api/DefinedFilter/Get
+    * @path /api/DefinedFilter/Get 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     Get(params: {
-            id?: integer | undefined; // 
-            name?: string | undefined; // 
-            path?: string | undefined; // 
-    }): Promise<IQueryDefinedFilterModel> {
-        const { id, name, path,  } = params;
+            id?: number | undefined;
+            name?: string | undefined;
+            path?: string | undefined;
+    }): Promise<IQueryDefinedFilterModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/DefinedFilter/Get?";
+        const { id, name, path,  } = params;
         if (id === null)
             throw new Error("The parameter 'id' cannot be null.");
         else if (id !== undefined)
@@ -126,10 +125,10 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
         else if (path !== undefined)
             url_ += "path=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
-
         const options_: RequestInit = {
-            method: "GET",
+            method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             }
         };
@@ -141,7 +140,8 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
         });
     }
 
-    protected processGet(response: Response): Promise<QueryDefinedFilterModel> {
+    protected processGet(response: Response): Promise<IQueryDefinedFilterModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -156,27 +156,27 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryDefinedFilterModel>(null as any);
+        return Promise.resolve<IQueryDefinedFilterModel | undefined>(null as any);
     }
     /**
-    *
     * Save **QueryDefinedFilterModel**
-    *
     * @description Save **QueryDefinedFilterModel**
     * @operationId DefinedFilter_Save
     * @tag DefinedFilter
     * @tag model-setter
-    * @path /api/DefinedFilter/Save
+    * @path /api/DefinedFilter/Save 
+    * @anonymous false
+    * @role Super Admin
+    * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     Save(params: {
-        body?: ISaveDefinedFilterModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDefinedFilterModel
-    }): Promise<IQueryDefinedFilterModel> { // #/components/schemas/GreenOnion.Common.Models.QueryDefinedFilterModel        
-        const { body } = params;
+        body?: ISaveDefinedFilterModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDefinedFilterModel        
+    }): Promise<IQueryDefinedFilterModel | undefined> 
+    { 
         let url_ = this.baseUrl + "/api/DefinedFilter/Save?";
         url_ = url_.replace(/[?&]$/, "");
-
+        const { body } = params;
         const content_ = JSON.stringify(body);
-
         const options_: RequestInit = {
             body: content_,
             method: "POST",
@@ -193,7 +193,8 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
         });
     }
 
-    protected processSave(response: Response): Promise<QueryDefinedFilterModel> {
+    protected processSave(response: Response): Promise<IQueryDefinedFilterModel | undefined>
+    {
         const status = response.status;
         const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -208,7 +209,6 @@ export class DefinedFilterClient extends ClientBase implements IDefinedFilterCli
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<QueryDefinedFilterModel>(null as any);
+        return Promise.resolve<IQueryDefinedFilterModel | undefined>(null as any);
     }
-    
 }
