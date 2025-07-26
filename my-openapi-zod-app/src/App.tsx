@@ -9,7 +9,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Loading from './components/Loading';
 import DemoPage from './components/DemoPage';
 import MonitoringDashboard from './components/MonitoringDashboard';
-import { createApiClient, schemas } from './api/GreenOnionClient';
+import { QueryRoleModelPagedQueryResult, ZQueryRoleModelPagedQueryResult } from './api';
 import { monitoring, trackWebVitals } from './utils/monitoring';
 
 // Create a custom schema that handles the API's datetime format
@@ -27,8 +27,6 @@ const customRoleSchema = z.object({
   updatedBy: z.string(),
 });
 
-type RolePagedResult = z.infer<typeof schemas.GreenOnion_Common_Models_QueryRoleModelPagedQueryResult>;
-type Role = z.infer<typeof customRoleSchema>;
 
 function App() {
   const [count, setCount] = useState(0)
@@ -178,5 +176,3 @@ function App() {
 }
 
 export default App
-
-
