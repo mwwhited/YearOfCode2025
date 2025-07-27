@@ -1,5 +1,7 @@
 # Client Generator
 
+## Notes
+
 ```ts
 //
 // This file is generated. Do not edit manually.
@@ -10,4 +12,9 @@
 // @generatedDate: 2025/07/26
 //
 
+```## Required Components 
+
+```shell
+npm install uuid
+npm install zod
 ```

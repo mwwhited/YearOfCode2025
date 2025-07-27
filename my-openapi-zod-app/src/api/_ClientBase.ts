@@ -7,7 +7,10 @@
 // @generatedDate: 2025/07/26
 //
 
-import GlobalState from './GlobalState';
+
+import _GlobalState from './_GlobalState';
+const GlobalState = _GlobalState;
+ 
 import { v4 as uuidv4 } from 'uuid';
 
 export abstract class ClientBase {
@@ -18,26 +21,36 @@ export abstract class ClientBase {
 
     protected async transformOptions(options: RequestInit): Promise<RequestInit> {
         const token =  GlobalState.getJwtToken();
+
+        const headers: Record<string, string> = {
+            ...(typeof options.headers === 'object' && !Array.isArray(options.headers) && !(options.headers instanceof Headers)
+                ? options.headers as Record<string, string>
+                : {})
+        };
+
         if (token) {
-            options.headers = {
-                ...options.headers,
-                "Authorization": `Bearer ${token}`
-            };
-        } 
-        const sessionId = GlobalState.getSessionId();
-        if (sessionId){
-            options.headers["X-Session-ID"]=sessionId;  
-        }
-        const correlationId = GlobalState.getCorrelationId();
-        if (correlationId){
-            options.headers["X-Correlation-ID"]=correlationId;  
-        }
-        const eventType = GlobalState.getEventType();
-        if (eventType){
-            options.headers["X-Event-Type"]=eventType;  
+            headers["Authorization"] = `Bearer ${token}`;
         }
 
-        options.headers["X-Request-ID"]= uuidv4();  
+        const sessionId = GlobalState.getSessionId();
+        if (sessionId){
+            headers["X-Session-ID"] = sessionId;
+        }
+
+        const correlationId = GlobalState.getCorrelationId();
+        if (correlationId){
+            headers["X-Correlation-ID"] = correlationId;
+        }
+
+        const eventType = GlobalState.getEventType();
+        if (eventType){
+            headers["X-Event-Type"] = eventType;
+        }
+
+        headers["X-Request-ID"] = uuidv4();
+
+        options.headers = headers;
+        
         return options;
     }
 }
