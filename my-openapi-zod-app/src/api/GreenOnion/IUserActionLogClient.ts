@@ -1,0 +1,35 @@
+//
+// This file is generated. Do not edit manually.
+//
+// @applicationName: GreenOnion.API
+// @applicationDescription: GreenOnion.API - 1.0.0.0
+// @applicationVersion: 1.0.0.0
+// @generatedDate: 2025/07/27
+//
+
+// Models 
+import type {
+    IQueryUserActionLogModelSearchQuery,
+    IQueryUserActionLogModelPagedQueryResult,
+ } from "./Models";
+ 
+export type {
+    IQueryUserActionLogModelSearchQuery,
+    IQueryUserActionLogModelPagedQueryResult,
+ };
+
+export default interface IUserActionLogClient {
+    /**
+    * Query **QueryUserActionLogModel**
+    * @description Query **QueryUserActionLogModel**
+    * @operationId UserActionLog_Query
+    * @tag UserActionLog
+    * @tag model-query
+    * @path /api/UserActionLog/Query 
+    * @anonymous false
+    * @querySet GreenOnion.Common.Models.QueryUserActionLogModel
+    */
+    Query(params: {
+        body?: IQueryUserActionLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserActionLogModelSearchQuery        
+    }): Promise<IQueryUserActionLogModelPagedQueryResult | undefined>;
+}

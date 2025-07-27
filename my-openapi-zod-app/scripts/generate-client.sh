@@ -26,8 +26,9 @@ echo "🔧 Generating TypeScript client with Zod schemas..."
 npx openapi-zod-client \
     ./greenonion-swagger.json \
     --output "$OUTPUT_DIR/$OUTPUT_FILE" \
-    --template "$TEMPLATE_DIR/$TEMPLATE_FILE" \
     --with-alias
+    
+    #--template "$TEMPLATE_DIR/$TEMPLATE_FILE" \
 
 if [ $? -eq 0 ]; then
     echo "✅ Client generated successfully in $OUTPUT_DIR"

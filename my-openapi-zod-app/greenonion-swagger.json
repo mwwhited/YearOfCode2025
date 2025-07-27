@@ -2081,292 +2081,25 @@
         "summary": "Save **QueryProductModel**",
         "description": "Save **QueryProductModel**",
         "operationId": "Product_Save",
-        "parameters": [
-          {
-            "name": "ProductId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
-          {
-            "name": "ProductName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Gtin",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Upc",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "CategoryId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "SubCategoryId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "IocCategoryId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Ingredients",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "BrandName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Description",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "AllergenKeywords",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Vendor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ManufacturerId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "StorageTypeId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "ProductLabelPdfUrl",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ManufacturerProductCode",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "IsActive",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Serving",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.ServingUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Calories",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.CaloriesUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Carbohydrates",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.CarbohydratesUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Protein",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.ProteinUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.TotalFat",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.TransFat",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.SaturatedFat",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.DietaryFiber",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.DietaryFiberUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Sugar",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.SugarUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.AddedSugar",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.AddedSugarUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Sodium",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.SodiumUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "NutritionalInformation.Cholesterol",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "NutritionalInformation.CholesterolUom",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GreenOnion.Common.Models.SaveProductModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GreenOnion.Common.Models.SaveProductModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GreenOnion.Common.Models.SaveProductModel"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -2998,14 +2731,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object"
-              },
-              "encoding": {
-                "ImportFile": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload"
               }
             }
           }
@@ -3790,7 +3528,7 @@
           }
         },
         "x-permissions": {
-          "anonymous": true
+          "anonymous": false
         },
         "x-query-set": "GreenOnion.Common.Models.QueryRoleModel"
       }
@@ -4833,6 +4571,7 @@
         "tags": [
           "ApiHealth"
         ],
+        "operationId": "Health",
         "responses": {
           "200": {
             "description": null,
@@ -5320,6 +5059,17 @@
           },
           "isMapping": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload": {
+        "type": "object",
+        "properties": {
+          "importFile": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -10289,6 +10039,89 @@
           },
           "dataForm": {
             "type": "string",
+            "nullable": true
+          },
+          "nutritionalInformation": {
+            "$ref": "#/components/schemas/GreenOnion.Common.Models.NutritionalInformationModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GreenOnion.Common.Models.SaveProductModel": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "gtin": {
+            "type": "string",
+            "nullable": true
+          },
+          "upc": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "subCategoryId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "iocCategoryId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ingredients": {
+            "type": "string",
+            "nullable": true
+          },
+          "brandName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "allergenKeywords": {
+            "type": "string",
+            "nullable": true
+          },
+          "vendor": {
+            "type": "string",
+            "nullable": true
+          },
+          "manufacturerId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "storageTypeId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "productLabelPdfUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "manufacturerProductCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
             "nullable": true
           },
           "nutritionalInformation": {
