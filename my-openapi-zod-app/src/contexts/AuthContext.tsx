@@ -5,6 +5,7 @@ import type { AccountInfo } from '@azure/msal-browser';
 import { configManager } from '@/config/appConfig';
 import { createLoginRequest } from '@/config/msalConfig';
 import { applicationInsights } from '@/services/applicationInsights';
+import { ClientBase } from '@/api/_ClientBase';
 
 interface User {
   id?: string;
@@ -45,7 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     accountInfo: account,
   } : null;
 
-  // Track authentication state changes
+  // Track authentication state changes and initialize API client
   React.useEffect(() => {
     if (user && user.id) {
       applicationInsights.trackUserAuthentication(user.id, {
@@ -54,8 +55,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         roles: user.roles?.join(','),
         hasRoles: user.roles ? user.roles.length > 0 : false,
       });
+
+      // Initialize API ClientBase with MSAL instance and account
+      ClientBase.initialize(instance, account);
+    } else {
+      // Clear API ClientBase when user is not authenticated
+      ClientBase.initialize(instance, null);
     }
-  }, [user]);
+  }, [user, instance, account]);
 
   const hasRole = (roleName: string): boolean => {
     return user?.roles?.includes(roleName) ?? false;

@@ -42,25 +42,31 @@
 - **Structure**: Clients, Models, Schema (Zod validation)
 - **Type Safety**: Full TypeScript interfaces
 - **ESLint**: Ignored in configuration due to generated nature
-- **Usage**: Ready for integration with authentication tokens
+- **Authentication**: MSAL integration via enhanced _ClientBase
+- **Correlation Tracking**: Comprehensive request correlation and user action tracking
+- **Usage**: Automatic authentication and telemetry headers on all API calls
 
 ## Technical Decisions Made
 
 ### Architecture Choices
 1. **Context over Redux**: Used React Context for auth state (simpler for this use case)
-2. **Generated Client**: Kept existing GreenOnion API client structure
+2. **Generated Client**: Kept existing GreenOnion API client structure with MSAL enhancement
 3. **Role-Based Routes**: Implemented hierarchical role system (Admin > Manager > User)
 4. **CSS Variables**: Chose CSS custom properties over CSS-in-JS for better performance
 5. **MSAL Redirect**: Used redirect flow over popup for better browser compatibility
-6. **Absolute Imports**: All components must use `@/` prefix for internal imports (never relative paths)
-7. **PrimeReact Wrappers**: All PrimeReact components must be wrapped in `@/components/controls` (NEVER direct imports)
+6. **Correlation Tracking**: Static manager pattern for cross-component API correlation
+7. **Component Wrapping**: All PrimeReact components wrapped for consistency and control
+8. **Import Path Standards**: Cross-directory use `@/`, siblings use `./` (never deep relative paths)
+9. **PrimeReact Wrappers**: All PrimeReact components wrapped in `@/components/controls` (NEVER direct imports)
 
 ### File Organization
 - **Separation of Concerns**: Clear separation between auth, layout, pages, routing, controls
 - **Custom Hook**: Extracted useAuth for reusability and React Fast Refresh compatibility
 - **Type Safety**: Proper TypeScript interfaces throughout
-- **Configuration**: Environment-based configuration for Azure B2C
-- **Component Wrapping**: All UI components wrapped in `@/components/controls` layer
+- **Configuration**: Runtime configuration via config.json
+- **Component Controls**: Centralized PrimeReact wrapper components with barrel exports
+- **Correlation System**: Static manager + React context for API request tracking
+- **API Enhancement**: MSAL-integrated _ClientBase with comprehensive header management
 
 ### Performance Considerations
 - **Bundle Size**: Chart.js added for PrimeReact Chart component
@@ -183,14 +189,15 @@ The application now uses runtime configuration instead of build-time environment
 ## Known Issues & Considerations
 
 ### Current Limitations
-- **Mock Data**: Dashboard uses mock data, needs API integration
+- **Mock Data**: Dashboard uses mock data, ready for API integration with enhanced client
 - **Role Synchronization**: Roles are extracted from B2C claims, may need backend sync
 - **Error Handling**: Basic error handling implemented, could be enhanced
 - **Loading States**: Basic loading indicators, could be more comprehensive
 
 ### Future Enhancements Identified
-- **API Integration**: Replace mock data with real API calls
+- **API Integration**: Replace mock data with real API calls using correlation-tracked clients
 - **Error Boundaries**: Add React error boundaries for better error handling
+- **Correlation Analysis**: Backend integration for correlation header processing and analytics
 - **Offline Support**: Consider service worker for offline functionality
 - **Performance**: Code splitting and lazy loading for better performance
 
@@ -233,6 +240,13 @@ The application now uses runtime configuration instead of build-time environment
 - `config.example.json` - Configuration template and guide
 - `CONFIGURATION.md` - Comprehensive configuration documentation
 
+### New Files (API Enhancement & Correlation Tracking)
+- `src/utils/correlationManager.ts` - Static correlation state manager
+- `src/contexts/CorrelationContext.tsx` - React correlation context
+- `src/utils/apiTestHelper.ts` - API usage examples and testing utilities
+- `CORRELATION_TRACKING.md` - Comprehensive correlation documentation
+- `ARCHITECTURE_COMPLIANCE_TODO.md` - Architecture compliance tracking
+
 ### Modified Files (Initial Setup)
 - `src/App.tsx` - Added routing and providers
 - `src/main.tsx` - Updated to use AppWithConfig wrapper
@@ -248,6 +262,14 @@ The application now uses runtime configuration instead of build-time environment
 - `TODO.md` - Updated configuration requirements
 - `ARCHITECTURE.md` - Added configuration change log
 - `CLAUDE.md` - Updated memory with configuration changes
+
+### Modified Files (API Enhancement & Correlation Tracking)
+- `src/api/_ClientBase.ts` - Complete MSAL integration + correlation headers
+- `src/components/controls/Button.tsx` - Added correlation tracking on click
+- `src/contexts/AuthContext.tsx` - Initialize ClientBase with MSAL instance
+- `src/App.tsx` - Added CorrelationProvider to component tree
+- `src/components/controls/` - 12 PrimeReact wrapper components created
+- `CLAUDE.md` - Updated with API enhancement documentation
 
 ### Removed Files
 - `.env.example` - Replaced with config.example.json
@@ -301,6 +323,38 @@ The application now uses runtime configuration instead of build-time environment
 - Development experience improved with clear error messages
 - Flexible telemetry system works with cloud and local endpoints
 
+### API Client MSAL Integration & Correlation Tracking (2025-07-28)
+**Enhancement**: Complete overhaul of API client authentication and request correlation
+**Implementation**:
+- Replaced GlobalState-based authentication with MSAL integration
+- Added comprehensive correlation tracking system for API requests
+- Enhanced Button component to start user action correlation chains
+- Implemented static correlation manager for cross-component state
+
+**Files Created**:
+- `src/utils/correlationManager.ts` - Static singleton for correlation state management
+- `src/contexts/CorrelationContext.tsx` - React context for component-level correlation
+- `CORRELATION_TRACKING.md` - Comprehensive documentation of tracking system
+
+**Files Modified**:
+- `src/api/_ClientBase.ts` - Complete MSAL integration with correlation headers
+- `src/components/controls/Button.tsx` - Added correlation tracking on click
+- `src/contexts/AuthContext.tsx` - Initialize ClientBase with MSAL instance
+- `src/App.tsx` - Added CorrelationProvider to component tree
+
+**Headers Added to All API Requests**:
+- `Authorization: Bearer <token>` (MSAL JWT with automatic refresh)
+- `X-Session-ID` (MSAL homeAccountId)
+- `X-Request-ID` (unique per API call - UUID v4)
+- `X-Correlation-ID` (per user action request chain)
+- `X-USER-ACTION-ID`, `X-USER-ACTION-LABEL`, `X-USER-ACTION-PAGE`, `X-USER-ACTION-TYPE`, `X-USER-ACTION-EVENT`, `X-USER-ACTION-TIMESTAMP`
+
+**Architectural Impact**:
+- Zero code changes required for existing API clients
+- Automatic authentication and correlation for all generated clients
+- Complete traceability from UI interactions to API requests
+- Perfect alignment with Application Insights telemetry data
+
 ## Dependencies Added (Complete List)
 - `@azure/msal-browser`: ^4.16.0
 - `@azure/msal-react`: ^3.0.16
@@ -321,13 +375,15 @@ The application now uses runtime configuration instead of build-time environment
 ✅ **Telemetry**: Application Insights with fallback system  
 ✅ **Error Handling**: Comprehensive error recovery mechanisms  
 ✅ **Build System**: TypeScript, ESLint, and Vite all clean  
+✅ **ARCHITECTURE Compliance**: All import paths corrected, all PrimeReact components wrapped  
+✅ **API Client Enhancement**: MSAL authentication + comprehensive correlation tracking system  
 
 ## Next Session Guidance
 If continuing development:
-1. **Priority**: Test the complete application flow with proper configuration
-2. **Focus**: Replace Dashboard mock data with real API calls using GreenOnion client
-3. **Consider**: Implementing additional pages (Products, Categories, Users, etc.)
-4. **Testing**: Add unit tests for authentication and telemetry flows
-5. **Performance**: Consider code splitting for large routes
-6. **Monitoring**: Verify Application Insights data in Azure portal
-7. **Documentation**: Update user guides and deployment instructions
+1. **Priority**: Replace Dashboard mock data with real API calls using enhanced GreenOnion client
+2. **Focus**: Test complete authentication and correlation flow with actual API endpoints
+3. **Consider**: Implementing additional pages (Products, Categories, Users, etc.) using correlation-tracked interactions
+4. **Testing**: Add unit tests for authentication, correlation, and API integration flows
+5. **Performance**: Consider code splitting for large routes and API client modules
+6. **Monitoring**: Verify Application Insights correlation data and API request telemetry in Azure portal
+7. **API Enhancement**: Test correlation headers in server-side logging and tracing systems

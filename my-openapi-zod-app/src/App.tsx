@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { PrimeReactProvider } from 'primereact/api';
 import { AuthProvider } from '@/contexts/AuthContext';
+import { CorrelationProvider } from '@/contexts/CorrelationContext';
 import { AppRoutes } from '@/routes/AppRoutes';
 
 // PrimeReact styles
@@ -14,9 +15,11 @@ function App() {
   return (
     <PrimeReactProvider>
       <BrowserRouter>
-        <AuthProvider>
-          <AppRoutes />
-        </AuthProvider>
+        <CorrelationProvider>
+          <AuthProvider>
+            <AppRoutes />
+          </AuthProvider>
+        </CorrelationProvider>
       </BrowserRouter>
     </PrimeReactProvider>
   );
