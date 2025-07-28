@@ -2,7 +2,8 @@ import React, { createContext } from 'react';
 import type { ReactNode } from 'react';
 import { useMsal, useAccount } from '@azure/msal-react';
 import type { AccountInfo } from '@azure/msal-browser';
-import { loginRequest } from '../config/msalConfig';
+import { configManager } from '../config/appConfig';
+import { createLoginRequest } from '../config/msalConfig';
 
 interface User {
   id?: string;
@@ -53,6 +54,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = async (): Promise<void> => {
     try {
+      const config = configManager.getConfig();
+      if (!config) {
+        throw new Error('Configuration not loaded');
+      }
+      const loginRequest = createLoginRequest(config);
       await instance.loginRedirect(loginRequest);
     } catch (error) {
       console.error('Login failed:', error);
@@ -75,6 +81,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (!account) return null;
 
     try {
+      const config = configManager.getConfig();
+      if (!config) {
+        throw new Error('Configuration not loaded');
+      }
+      const loginRequest = createLoginRequest(config);
+      
       const response = await instance.acquireTokenSilent({
         ...loginRequest,
         account: account,
@@ -82,12 +94,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return response.accessToken;
     } catch (error) {
       console.error('Token acquisition failed:', error);
-      // Note: acquireTokenRedirect doesn't return a value, it redirects
-      await instance.acquireTokenRedirect({
-        ...loginRequest,
-        account: account,
-      });
-      return null;
+      try {
+        const config = configManager.getConfig();
+        if (!config) {
+          throw new Error('Configuration not loaded');
+        }
+        const loginRequest = createLoginRequest(config);
+        
+        // Note: acquireTokenRedirect doesn't return a value, it redirects
+        await instance.acquireTokenRedirect({
+          ...loginRequest,
+          account: account,
+        });
+        return null;
+      } catch (redirectError) {
+        console.error('Token acquisition via redirect failed:', redirectError);
+        return null;
+      }
     }
   };
 

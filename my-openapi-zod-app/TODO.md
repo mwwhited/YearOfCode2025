@@ -81,19 +81,34 @@
 - [ ] Set up application registration
 - [ ] Configure redirect URIs
 - [ ] Set up custom attributes for roles
-- [ ] Update environment variables
+- [ ] Update config.json with Azure B2C settings
 
-### Environment Setup
-- [ ] Copy .env.example to .env
+### Runtime Configuration Setup
+- [ ] Copy config.example.json to public/config.json
+- [ ] Configure Azure B2C settings in config.json
 - [ ] Configure API base URL
-- [ ] Set up development database connection
-- [ ] Configure logging levels
+- [ ] Set up environment-specific configurations
+- [ ] Test configuration loading and validation
+
+### Deployment Configuration
+- [ ] Create environment-specific config files
+- [ ] Set up configuration injection for containers
+- [ ] Configure Kubernetes ConfigMaps (if applicable)
+- [ ] Document configuration management procedures
 
 ## Known Issues 🐛
 
 - [ ] Chart.js bundle size warning - consider lazy loading
 - [ ] ESLint warning for AuthContext export - consider separating context from provider
 - [ ] Need to implement proper error handling for MSAL token acquisition
+
+## Recent Changes ✨
+
+### 2025-07-28 - Runtime Configuration System
+- [x] Replaced .env files with runtime config.json system
+- [x] Implemented post-build configuration capability
+- [x] Added configuration validation and error handling
+- [x] Created comprehensive configuration documentation
 
 ## Notes 📝
 
@@ -102,3 +117,6 @@
 - CSS variables are centralized in `src/styles/variables.css`
 - Role-based routing is implemented with ProtectedRoute component
 - Deep linking is supported through React Router
+- **Runtime Configuration**: App now uses `public/config.json` for all settings
+- **Post-Build Config**: Configuration can be changed without rebuilding
+- **Environment Flexibility**: Single build works across all environments

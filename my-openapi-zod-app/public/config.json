@@ -1,14 +1,19 @@
 {
   "azure": {
-    "clientId": "your-client-id-here",
-    "authority": "https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1_signupsignin",
-    "knownAuthorities": ["your-tenant.b2clogin.com"],
+    "clientId": "3262be3f-57f5-44f0-a783-8f2ad7bd6095",
+    "authority": "https://greenoniondev.b2clogin.com/greenoniondev.onmicrosoft.com/B2C_1_SignupSignin",
+    "knownAuthorities": [
+      "https://greenoniondev.b2clogin.com"
+    ],
     "redirectUri": "/",
     "postLogoutRedirectUri": "/"
   },
   "api": {
-    "baseUrl": "https://your-api-url.com",
-    "scopes": ["openid", "profile"],
+    "baseUrl": "http://localhost:7080",
+    "scopes": [
+      "openid",
+      "profile"
+    ],
     "timeout": 30000
   },
   "app": {

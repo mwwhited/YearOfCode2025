@@ -186,6 +186,45 @@
 
 ---
 
+### 2025-07-28 - Runtime Configuration System
+**Changes Made:**
+- Replaced .env environment variables with runtime config.json system
+- Implemented post-build configuration capability
+- Added configuration validation and error handling
+- Created configuration management infrastructure
+
+**Files Added:**
+- `public/config.json` - Runtime configuration file
+- `src/config/appConfig.ts` - Configuration management class
+- `src/config/useConfig.ts` - React hook for configuration
+- `src/AppWithConfig.tsx` - Configuration-aware app wrapper
+- `config.example.json` - Configuration template
+- `CONFIGURATION.md` - Comprehensive configuration guide
+
+**Files Modified:**
+- `src/config/msalConfig.ts` - Updated to use runtime config
+- `src/contexts/AuthContext.tsx` - Updated to use runtime config
+- `src/main.tsx` - Updated entry point to load config first
+
+**Files Removed:**
+- `.env.example` - Replaced with config.example.json
+
+**Architecture Decisions:**
+- **Runtime Configuration**: Chose JSON over environment variables for post-build flexibility
+- **Async Loading**: Configuration loaded asynchronously before app initialization
+- **Graceful Fallback**: Error handling with fallback configuration and retry mechanism
+- **Validation**: Client-side validation of configuration completeness
+- **Caching**: Configuration cached after first load for performance
+
+**Impact:**
+- **Deployment Flexibility**: Single build can be deployed to multiple environments
+- **Zero-Downtime Updates**: Configuration changes without application rebuild
+- **Better DevOps**: Simplified CI/CD pipeline with environment-specific configs
+- **Error Resilience**: Graceful handling of configuration loading failures
+- **Development Experience**: Clear error messages and troubleshooting guidance
+
+---
+
 ### Future Changes
 **IMPORTANT**: All future architecture changes MUST be documented here with:
 - Date and description of changes

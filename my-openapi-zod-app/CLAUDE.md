@@ -66,13 +66,28 @@
 
 ## Configuration Requirements
 
-### Environment Variables Needed
+### Runtime Configuration (config.json)
+The application now uses runtime configuration instead of build-time environment variables:
+
+```json
+{
+  "azure": {
+    "clientId": "your-client-id",
+    "authority": "https://tenant.b2clogin.com/tenant.onmicrosoft.com/B2C_1_signupsignin",
+    "knownAuthorities": ["tenant.b2clogin.com"]
+  },
+  "api": {
+    "baseUrl": "https://your-api-url.com",
+    "scopes": ["openid", "profile"]
+  }
+}
 ```
-REACT_APP_AZURE_CLIENT_ID=your-client-id
-REACT_APP_AZURE_AUTHORITY=https://tenant.b2clogin.com/tenant.onmicrosoft.com/B2C_1_signupsignin
-REACT_APP_AZURE_KNOWN_AUTHORITY=tenant.b2clogin.com
-REACT_APP_API_BASE_URL=https://your-api-url.com
-```
+
+**Key Benefits:**
+- Post-build configuration changes
+- Single build for multiple environments
+- Runtime validation and error handling
+- Environment-specific deployment flexibility
 
 ### Azure B2C Setup Required
 1. Create Azure B2C tenant
@@ -110,8 +125,8 @@ REACT_APP_API_BASE_URL=https://your-api-url.com
 5. **Test**: `npm run test` for unit tests
 
 ## Files Created/Modified
-### New Files
-- `src/config/msalConfig.ts` - Azure B2C configuration
+### New Files (Initial Setup)
+- `src/config/msalConfig.ts` - Azure B2C configuration factory functions
 - `src/contexts/AuthContext.tsx` - Authentication context
 - `src/hooks/useAuth.ts` - Authentication hook
 - `src/components/auth/LoginPage.tsx` - Login interface
@@ -123,17 +138,35 @@ REACT_APP_API_BASE_URL=https://your-api-url.com
 - `src/routes/AppRoutes.tsx` - Routing configuration
 - `src/pages/Dashboard.tsx` - Dashboard with charts
 - `src/styles/variables.css` - CSS custom properties
-- `.env.example` - Environment template
 - `TODO.md` - Task tracking
 - `CLAUDE.md` - This memory file
 
-### Modified Files
+### New Files (Runtime Configuration)
+- `public/config.json` - Runtime configuration file
+- `src/config/appConfig.ts` - Configuration management system
+- `src/config/useConfig.ts` - React hook for configuration
+- `src/AppWithConfig.tsx` - Configuration-aware app wrapper
+- `config.example.json` - Configuration template and guide
+- `CONFIGURATION.md` - Comprehensive configuration documentation
+
+### Modified Files (Initial Setup)
 - `src/App.tsx` - Added routing and providers
-- `src/main.tsx` - Added MSAL provider
+- `src/main.tsx` - Updated to use AppWithConfig wrapper
 - `src/App.css` - Updated with layout styles
 - `ARCHITECTURE.md` - Comprehensive architecture documentation
 - `eslint.config.js` - Updated to ignore generated files
 - `package.json` - Added dependencies (MSAL, Router, Chart.js, PrimeFlex)
+
+### Modified Files (Runtime Configuration)
+- `src/config/msalConfig.ts` - Changed to factory functions using runtime config
+- `src/contexts/AuthContext.tsx` - Updated to use configuration manager
+- `src/main.tsx` - Updated to load configuration before MSAL initialization
+- `TODO.md` - Updated configuration requirements
+- `ARCHITECTURE.md` - Added configuration change log
+- `CLAUDE.md` - Updated memory with configuration changes
+
+### Removed Files
+- `.env.example` - Replaced with config.example.json
 
 ## Dependencies Added
 - `@azure/msal-browser`: ^4.16.0
