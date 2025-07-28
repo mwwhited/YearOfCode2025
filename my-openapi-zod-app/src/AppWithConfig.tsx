@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { PublicClientApplication } from '@azure/msal-browser';
-import { MsalProvider } from '@azure/msal-react';
+import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
+import { MsalProvider, MsalAuthenticationTemplate } from '@azure/msal-react';
 import { Button, ProgressSpinner, Message } from '@/components/controls';
 import { configManager } from '@/config/appConfig';
-import { createMsalConfig } from '@/config/msalConfig';
+import { createMsalConfig, createLoginRequest } from '@/config/msalConfig';
 import { applicationInsights } from '@/services/applicationInsights';
 import '@/services/apiInterceptor'; // Initialize API interceptors
 import App from '@/App';
 
 export const AppWithConfig = () => {
   const [msalInstance, setMsalInstance] = useState<PublicClientApplication | null>(null);
+  const [loginRequest, setLoginRequest] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,6 +32,7 @@ export const AppWithConfig = () => {
       
       // Create MSAL configuration
       const msalConfig = createMsalConfig(config);
+      const authRequest = createLoginRequest(config);
       
       // Initialize MSAL instance
       const msalInstance = new PublicClientApplication(msalConfig);
@@ -51,6 +53,7 @@ export const AppWithConfig = () => {
       }
       
       setMsalInstance(msalInstance);
+      setLoginRequest(authRequest);
       console.info('✅ Application initialized successfully');
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to initialize application';
@@ -120,10 +123,47 @@ export const AppWithConfig = () => {
     );
   }
 
-  // Success state - render the main application
+  // Success state - render the main application with authentication template
   return (
     <MsalProvider instance={msalInstance}>
-      <App />
+      <MsalAuthenticationTemplate 
+        interactionType={InteractionType.Redirect}
+        authenticationRequest={loginRequest}
+        loadingComponent={
+          () => (
+            <div className="min-h-screen flex align-items-center justify-content-center">
+              <div className="text-center">
+                <ProgressSpinner style={{ width: '50px', height: '50px' }} />
+                <div className="mt-3">
+                  <h3>Authenticating...</h3>
+                  <p className="text-600">Please wait while we authenticate you</p>
+                </div>
+              </div>
+            </div>
+          )
+        }
+        errorComponent={
+          () => (
+            <div className="min-h-screen flex align-items-center justify-content-center px-4">
+              <div className="max-w-md w-full">
+                <Message 
+                  severity="error" 
+                  text="Authentication failed" 
+                  className="w-full mb-3"
+                />
+                <div className="text-center">
+                  <h3 className="mt-0">Authentication Error</h3>
+                  <p className="text-600 mb-4">
+                    Unable to authenticate. Please try refreshing the page.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )
+        }
+      >
+        <App />
+      </MsalAuthenticationTemplate>
     </MsalProvider>
   );
 };

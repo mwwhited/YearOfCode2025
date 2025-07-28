@@ -3,6 +3,7 @@ import type { AccountInfo, IPublicClientApplication } from '@azure/msal-browser'
 import { configManager } from '@/config/appConfig';
 import { createLoginRequest } from '@/config/msalConfig';
 import { correlationManager } from '@/utils/correlationManager';
+import { tokenCache } from '@/services/tokenCache';
 
 export abstract class ClientBase {
     private static msalInstance: IPublicClientApplication | null = null;
@@ -14,127 +15,69 @@ export abstract class ClientBase {
     }
 
     private static async getAccessToken(): Promise<string | null> {
-        console.log('Checking MSAL instance and account');
-        console.log('MSAL instance exists:', !!ClientBase.msalInstance);
-        console.log('Account exists:', !!ClientBase.account);
-        console.log('Account details:', ClientBase.account);
+        // First try to get cached token (like original GlobalState pattern)
+        const cachedToken = tokenCache.getToken();
+        if (cachedToken) {
+            console.log('✅ Using cached token');
+            return cachedToken;
+        }
+        
+        console.log('⚠️ No cached token available, falling back to MSAL');
         
         if (!ClientBase.msalInstance || !ClientBase.account) {
-            console.log('Missing MSAL instance or account, returning null');
             return null;
         }
-        
-        // TEMPORARY: Skip token acquisition for development to test API calls
-        // This bypasses the B2C token timeout issue
-        // TODO: Remove this once B2C token acquisition is fixed
-        const skipTokenAcquisition = false; // Set to false to test with real tokens
-        if (skipTokenAcquisition) {
-            console.log('🚧 DEVELOPMENT MODE: Skipping token acquisition, returning dummy token');
-            return 'development-dummy-token';
-        }
+
         try {
             const config = configManager.getConfig();
             if (!config) {
                 throw new Error('Configuration not loaded');
             }
             
-            console.log('Config from configManager:', config);
             const loginRequest = createLoginRequest(config);
-            console.log('Created login request:', loginRequest);
             
-            console.log('Login request:', loginRequest);
-            console.log('Account:', ClientBase.account);
-            
-            const tokenRequest = {
+            const response = await ClientBase.msalInstance.acquireTokenSilent({
                 ...loginRequest,
                 account: ClientBase.account,
-            };
-            console.log('Token request:', tokenRequest);
-            
-            // Check what tokens are already available in cache
-            console.log('Checking token cache...');
-            const allAccounts = ClientBase.msalInstance.getAllAccounts();
-            console.log('All cached accounts:', allAccounts);
-            
-            // For B2C, let's try without specific scopes first to see if we can get any token
-            const noScopeRequest = {
-                account: ClientBase.account,
-                forceRefresh: false
-            };
-            console.log('Trying request without specific scopes:', noScopeRequest);
-            
-            let response;
-            try {
-                console.log('Starting token acquisition without scopes...');
-                
-                // Add timeout to prevent hanging (60 seconds for B2C)
-                const tokenPromise = ClientBase.msalInstance.acquireTokenSilent(noScopeRequest);
-                const timeoutPromise = new Promise<never>((_, reject) => 
-                    setTimeout(() => reject(new Error('Token acquisition timeout after 60 seconds')), 60000)
-                );
-                
-                console.log('Waiting for token acquisition to complete...');
-                response = await Promise.race([tokenPromise, timeoutPromise]);
-                console.log('MWHITED4 - No scope request success', response);
-            } catch (noScopeError) {
-                console.log('No scope request failed:', noScopeError);
-                
-                // Try with original token request but with forceRefresh: false
-                const cachedTokenRequest = {
-                    ...tokenRequest,
-                    forceRefresh: false
-                };
-                console.log('Trying cached token request:', cachedTokenRequest);
-                
-                try {
-                    console.log('Starting cached token acquisition...');
-                    response = await ClientBase.msalInstance.acquireTokenSilent(cachedTokenRequest);
-                    console.log('Cached token success', response);
-                } catch (cachedError) {
-                    console.log('Cached token failed, trying force refresh:', cachedError);
-                    
-                    // Last resort - force refresh
-                    const forceRefreshRequest = {
-                        ...tokenRequest,
-                        forceRefresh: true
-                    };
-                    
-                    response = await ClientBase.msalInstance.acquireTokenSilent(forceRefreshRequest);
-                    console.log('Force refresh success', response);
-                }
-            }
-            
-            console.log('Final response:', response);
-            console.log('Access token:', response.accessToken);
+            });
             
             return response.accessToken;
         } catch (error) {
             console.error('Token acquisition failed:', error);
-            console.error('Error type:', typeof error);
-            console.error('Error message:', error instanceof Error ? error.message : 'Unknown error');
+            
+            // Check if this is a typical MSAL error that can be resolved
             if (error && typeof error === 'object' && 'errorCode' in error) {
-                console.error('MSAL Error code:', (error as any).errorCode);
-                console.error('MSAL Error description:', (error as any).errorMessage);
+                const msalError = error as any;
+                
+                // Handle specific MSAL errors
+                if (msalError.errorCode === 'consent_required' || 
+                    msalError.errorCode === 'interaction_required' ||
+                    msalError.errorCode === 'login_required') {
+                  
+                  console.log('Interactive login required, redirecting...');
+                  try {
+                    const config = configManager.getConfig();
+                    if (!config) {
+                      throw new Error('Configuration not loaded');
+                    }
+                    const loginRequest = createLoginRequest(config);
+                    
+                    // Note: acquireTokenRedirect doesn't return a value, it redirects
+                    await ClientBase.msalInstance.acquireTokenRedirect({
+                      ...loginRequest,
+                      account: ClientBase.account,
+                    });
+                    return null;
+                  } catch (redirectError) {
+                    console.error('Token acquisition via redirect failed:', redirectError);
+                    return null;
+                  }
+                }
             }
             
-            try {
-                const config = configManager.getConfig();
-                if (!config) {
-                    throw new Error('Configuration not loaded');
-                }
-                
-                const loginRequest = createLoginRequest(config);
-                
-                await ClientBase.msalInstance.acquireTokenRedirect({
-                    ...loginRequest,
-                    account: ClientBase.account,
-                });
-                
-                return null;
-            } catch (redirectError) {
-                console.error('Token acquisition via redirect failed:', redirectError);
-                return null;
-            }
+            // For other errors, don't trigger redirect as it might cause logout loops
+            console.warn('Token acquisition failed, but not triggering redirect to avoid loops');
+            return null;
         }
     }
     

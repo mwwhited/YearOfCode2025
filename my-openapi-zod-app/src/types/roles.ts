@@ -3,14 +3,16 @@
  * Defines the hierarchy of user roles in the GreenOnion system
  * Higher values indicate higher permissions
  */
-export enum UserRole {
-  MANUFACTURER_USER = 'Manufacturer User',
-  COOPERATIVE_USER = 'Cooperative User',
-  DISTRICT_USER = 'District User',
-  DISTRICT_ADMIN = 'District Admin',
-  COOPERATIVE_ADMIN = 'Cooperative Admin',
-  SUPER_ADMIN = 'Super Admin'
-}
+export const UserRole = {
+  MANUFACTURER_USER: 'Manufacturer User',
+  COOPERATIVE_USER: 'Cooperative User',
+  DISTRICT_USER: 'District User',
+  DISTRICT_ADMIN: 'District Admin',
+  COOPERATIVE_ADMIN: 'Cooperative Admin',
+  SUPER_ADMIN: 'Super Admin'
+} as const;
+
+export type UserRole = typeof UserRole[keyof typeof UserRole];
 
 /**
  * Role hierarchy mapping for permission checks
@@ -37,37 +39,37 @@ export const ROLE_GROUPS = {
     UserRole.DISTRICT_ADMIN,
     UserRole.COOPERATIVE_ADMIN,
     UserRole.SUPER_ADMIN
-  ],
+  ] as string[],
   
   // Administrative roles (can manage users, settings, etc.)
   ADMIN_ROLES: [
     UserRole.DISTRICT_ADMIN,
     UserRole.COOPERATIVE_ADMIN,
     UserRole.SUPER_ADMIN
-  ],
+  ] as string[],
   
   // District-level roles
   DISTRICT_ROLES: [
     UserRole.DISTRICT_USER,
     UserRole.DISTRICT_ADMIN
-  ],
+  ] as string[],
   
   // Cooperative-level roles
   COOPERATIVE_ROLES: [
     UserRole.COOPERATIVE_USER,
     UserRole.COOPERATIVE_ADMIN
-  ],
+  ] as string[],
   
   // Manufacturer-level roles
   MANUFACTURER_ROLES: [
     UserRole.MANUFACTURER_USER
-  ],
+  ] as string[],
   
   // Super admin only
   SUPER_ADMIN_ONLY: [
     UserRole.SUPER_ADMIN
-  ]
-} as const;
+  ] as string[]
+};
 
 /**
  * Helper function to check if a role has sufficient permissions

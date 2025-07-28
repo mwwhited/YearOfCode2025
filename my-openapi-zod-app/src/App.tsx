@@ -22,7 +22,7 @@ function App() {
       console.log('🔧 MSAL Event:', event.eventType, event.payload);
       
       if (event.eventType === 'msal:acquireTokenSuccess') {
-        console.log('✅ Token acquired successfully');
+        console.log('✅ Token acquired successfully:', event.payload);
       } else if (event.eventType === 'msal:acquireTokenFailure') {
         console.log('❌ Token acquisition failed:', event.error);
       } else if (event.eventType === 'msal:loginSuccess') {

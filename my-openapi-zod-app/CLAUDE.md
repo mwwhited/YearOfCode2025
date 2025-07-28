@@ -11,18 +11,19 @@
 ### Authentication System
 - **Provider**: Azure B2C with `@azure/msal-react` and `@azure/msal-browser`
 - **Configuration**: Located in `src/config/msalConfig.ts`
-- **Context**: `src/contexts/AuthContext.tsx` with role extraction from B2C claims
+- **Context**: `src/contexts/AuthContext.tsx` with complete user data from API
 - **Hook**: `src/hooks/useAuth.ts` for component usage
-- **Role Claims**: Extracts roles from `extension_Role`, `roles`, or `groups` claims
+- **Role System**: API-based roles from `UserClient.Get()` instead of B2C claims
 - **Token Management**: Automatic acquisition with fallback to redirect flow
 - **Login Flow**: Direct B2C redirect (no separate login page)
+- **User Data**: Complete user profile, organization, and role information from GreenOnion API
 
 ### Routing Architecture
 - **Router**: React Router DOM v7.7.1 with BrowserRouter
 - **Protection**: `ProtectedRoute` component with automatic B2C login trigger
 - **Routes**: Organized in `src/routes/AppRoutes.tsx`
 - **Deep Linking**: Full URL support with automatic authentication
-- **Role-Based Access**: Admin, Manager, User hierarchy
+- **Role-Based Access**: Complete 6-tier role hierarchy with enum-based permissions
 - **Login Flow**: All routes protected, automatic B2C redirect for unauthenticated users
 
 ### UI Components & Layout
@@ -47,6 +48,42 @@
 - **Authentication**: MSAL integration via enhanced _ClientBase
 - **Correlation Tracking**: Comprehensive request correlation and user action tracking
 - **Usage**: Automatic authentication and telemetry headers on all API calls
+
+### Role-Based Authentication System (Enhanced 2025-07-28)
+**Complete User Data Integration**: 
+- **AuthContext Enhancement**: Now stores complete `UserClient.Get()` response instead of just role extraction
+- **Full User Profile**: Access to personal info, organization details, address, audit information
+- **Convenience Methods**: `getUserFullName()`, `getUserDistrict()`, `getUserManufacturer()`, `getUserRole()`
+- **Enhanced UI**: AppHeader displays full name and role information from API data
+- **Type Safety**: All user data properly typed with IQueryUserModel interface
+
+**Role Enumeration System**:
+- **Location**: `src/types/roles.ts` with complete type-safe role management
+- **UserRole Enum**: Six-tier hierarchy from Manufacturer User to Super Admin
+- **Role Groups**: Predefined groups (ALL_USERS, ADMIN_ROLES, DISTRICT_ROLES, etc.)
+- **Helper Functions**: `hasRolePermission()`, `hasAnyRolePermission()` with hierarchical support
+- **Permission Inheritance**: Higher-level roles automatically have access to lower-level functionality
+
+**Role Hierarchy** (lowest to highest permissions):
+1. **Manufacturer User** - Basic manufacturer access
+2. **Cooperative User** - Cooperative member access  
+3. **District User** - District member access
+4. **District Admin** - Can manage district users and settings
+5. **Cooperative Admin** - Can manage cooperative users and settings
+6. **Super Admin** - Full system access and user management
+
+**Available User Data Properties**:
+- **Personal**: firstName, lastName, email, mobile, profileImage, coverImage
+- **Organization**: schoolDistrictId/Name, manufacturerId/Name, roleId/Name
+- **Location**: addressLine1/2, city, state, country, zipCode, stateId
+- **Audit**: createdOn/By, updatedOn/By, isActive status, userId
+
+**Authentication Flow**:
+1. B2C authentication provides basic account info
+2. `UserClient.Get()` called automatically to fetch complete user profile
+3. User data stored in AuthContext with convenience methods
+4. Role-based navigation and route protection using enum system
+5. Loading states during user data fetch prevent premature access
 
 ## Technical Decisions Made
 
@@ -249,6 +286,11 @@ The application now uses runtime configuration instead of build-time environment
 - `CORRELATION_TRACKING.md` - Comprehensive correlation documentation
 - `ARCHITECTURE_COMPLIANCE_TODO.md` - Architecture compliance tracking
 
+### New Files (Role-Based Authentication Enhancement)
+- `src/types/roles.ts` - Complete role enumeration system with hierarchy and helper functions
+- `src/components/UserInfoDemo.tsx` - Demo component showing complete user data access
+- `src/pages/UsersList.tsx` - Users management page with role-based access
+
 ### Modified Files (Initial Setup)
 - `src/App.tsx` - Added routing and providers
 - `src/main.tsx` - Updated to use AppWithConfig wrapper
@@ -277,6 +319,13 @@ The application now uses runtime configuration instead of build-time environment
 - `src/components/auth/ProtectedRoute.tsx` - Auto-trigger B2C login
 - `src/routes/AppRoutes.tsx` - Removed login route, all routes protected
 - `src/components/layout/AppHeader.tsx` - Simplified UI, removed login button
+
+### Modified Files (Role-Based Authentication Enhancement)
+- `src/contexts/AuthContext.tsx` - Complete overhaul to store full user data from UserClient.Get()
+- `src/components/layout/AppHeader.tsx` - Enhanced to display full name and role from API data
+- `src/components/layout/AppSidebar.tsx` - Updated to use role enums and groups
+- `src/routes/AppRoutes.tsx` - Updated route protection with role enums
+- `src/hooks/useAuth.ts` - Inherits all new convenience methods from enhanced AuthContext
 
 ### Modified Files (Application Insights Development Fix)
 - `src/services/applicationInsights.ts` - Development mode detection and conditional React plugin loading
@@ -418,6 +467,8 @@ The application now uses runtime configuration instead of build-time environment
 ## Current Application Status
 ✅ **Core Functionality**: All major features implemented and functional  
 ✅ **Authentication**: Azure B2C with MSAL React fully integrated  
+✅ **User Data Integration**: Complete user profile from GreenOnion API with convenience methods  
+✅ **Role System**: Type-safe 6-tier role hierarchy with enum-based permissions  
 ✅ **Routing**: Role-based protected routes with deep linking  
 ✅ **UI System**: PrimeReact components with centralized styling  
 ✅ **Configuration**: Runtime config.json system working  
@@ -429,10 +480,30 @@ The application now uses runtime configuration instead of build-time environment
 
 ## Next Session Guidance
 If continuing development:
-1. **Priority**: Replace Dashboard mock data with real API calls using enhanced GreenOnion client
-2. **Focus**: Test complete authentication and correlation flow with actual API endpoints
-3. **Consider**: Implementing additional pages (Products, Categories, Users, etc.) using correlation-tracked interactions
-4. **Testing**: Add unit tests for authentication, correlation, and API integration flows
-5. **Performance**: Consider code splitting for large routes and API client modules
-6. **Monitoring**: Verify Application Insights correlation data and API request telemetry in Azure portal
-7. **API Enhancement**: Test correlation headers in server-side logging and tracing systems
+1. **Priority**: Test complete authentication flow with actual API endpoints and user data
+2. **Focus**: Implement additional pages (Products, Categories, etc.) using role-based access patterns
+3. **Consider**: Add user profile editing functionality using the complete user data context
+4. **Testing**: Add unit tests for role hierarchy, user data integration, and permission checking
+5. **Performance**: Consider code splitting for large routes and optimize user data loading
+6. **Enhancement**: Implement district/manufacturer-specific data filtering based on user context
+7. **Monitoring**: Verify role assignments and user data tracking in Application Insights
+8. **API Enhancement**: Test complete user context in server-side logging and business logic
+
+**Available User Data Context**:
+```typescript
+// Example usage in any component
+const { 
+  user, 
+  getUserFullName, 
+  getUserDistrict, 
+  getUserManufacturer, 
+  getUserRole,
+  hasRole,
+  hasAnyRole 
+} = useAuth();
+
+// Access complete API user data
+const apiData = user?.apiUserData;
+const district = getUserDistrict();
+const isAdmin = hasRole(UserRole.DISTRICT_ADMIN);
+```
