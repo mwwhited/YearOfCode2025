@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { PrimeReactProvider } from 'primereact/api';
-import { AuthProvider } from './contexts/AuthContext';
-import { AppRoutes } from './routes/AppRoutes';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { AppRoutes } from '@/routes/AppRoutes';
 import './App.css';
 
 // PrimeReact styles

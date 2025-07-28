@@ -2,9 +2,9 @@ import React, { createContext } from 'react';
 import type { ReactNode } from 'react';
 import { useMsal, useAccount } from '@azure/msal-react';
 import type { AccountInfo } from '@azure/msal-browser';
-import { configManager } from '../config/appConfig';
-import { createLoginRequest } from '../config/msalConfig';
-import { applicationInsights } from '../services/applicationInsights';
+import { configManager } from '@/config/appConfig';
+import { createLoginRequest } from '@/config/msalConfig';
+import { applicationInsights } from '@/services/applicationInsights';
 
 interface User {
   id?: string;

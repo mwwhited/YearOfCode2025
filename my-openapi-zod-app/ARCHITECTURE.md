@@ -144,23 +144,38 @@
 - **UI Component Wrapping**: All PrimeReact components must be wrapped in `@/components/controls`
 
 ### Import Path Standards
-**REQUIRED**: All local imports across components must use absolute paths with the `@/` prefix instead of relative paths.
+**REQUIRED**: Use appropriate import paths based on file relationships:
 
 **✅ Correct Examples:**
 ```typescript
+// Absolute paths for cross-directory imports
 import { useAuth } from '@/hooks/useAuth';
-import { AppHeader } from '@/components/layout/AppHeader';
 import { AuthContext } from '@/contexts/AuthContext';
 import { msalConfig } from '@/config/msalConfig';
 import { Dashboard } from '@/pages/Dashboard';
+
+// Relative paths for sibling files (same directory)
+import { AppHeader } from './AppHeader';
+import { AppSidebar } from './AppSidebar';
+import { Button } from './Button';
+import { Card } from './Card';
 ```
 
 **❌ Incorrect Examples:**
 ```typescript
+// Deep relative paths (use @/ instead)
 import { useAuth } from '../../hooks/useAuth';
-import { AppHeader } from '../layout/AppHeader';
-import { AuthContext } from './AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
+
+// Absolute paths for siblings (use ./ instead)
+import { AppHeader } from '@/components/layout/AppHeader'; // when in same directory
+import { Button } from '@/components/controls/Button'; // when in same directory
 ```
+
+**Import Path Rules:**
+1. **Sibling Files**: Use `./filename` for files in the same directory
+2. **Cross-Directory**: Use `@/directory/filename` for files in different directories
+3. **Never Use**: Deep relative paths like `../../` or `../../../`
 
 **Path Mapping Configuration:**
 - `@/` maps to `src/` directory

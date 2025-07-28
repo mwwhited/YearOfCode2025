@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { monitoring } from '../utils/monitoring';
-import type { MonitoringEvent, PerformanceMetric } from '../utils/monitoring';
+import { monitoring } from '@/utils/monitoring';
+import type { MonitoringEvent, PerformanceMetric } from '@/utils/monitoring';
 
 const MonitoringDashboard = () => {
   const [events, setEvents] = useState<MonitoringEvent[]>([]);

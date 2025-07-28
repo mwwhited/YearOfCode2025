@@ -4,8 +4,8 @@ This file contains tasks to bring the application into compliance with ARCHITECT
 
 ## ❌ Critical Issues Found
 
-### 1. Relative Import Violations
-**PRIORITY: HIGH** - Convert all relative imports to absolute `@/` imports
+### 1. Import Path Violations (RULES UPDATED)
+**PRIORITY: HIGH** - Use correct import paths based on file relationships
 
 #### Files with relative imports:
 - `src/main.tsx:3` - `./AppWithConfig` → `@/AppWithConfig`
@@ -111,19 +111,26 @@ This file contains tasks to bring the application into compliance with ARCHITECT
 - [x] Update `@/components/controls/index.ts` with all exports
 - [x] Fix Button.tsx to use named export instead of default export
 
-### Phase 2: Convert Relative Imports to Absolute
-- [ ] Fix `src/main.tsx` imports
-- [ ] Fix `src/routes/AppRoutes.tsx` imports
-- [ ] Fix `src/pages/Dashboard.tsx` imports
-- [ ] Fix `src/App.tsx` imports
-- [ ] Fix `src/contexts/AuthContext.tsx` imports
-- [ ] Fix `src/hooks/useAuth.ts` imports
-- [ ] Fix `src/services/applicationInsights.ts` imports
-- [ ] Fix `src/services/apiInterceptor.ts` imports
-- [ ] Fix `src/AppWithConfig.tsx` imports
-- [ ] Fix all `src/components/auth/` file imports
-- [ ] Fix all `src/components/layout/` file imports
-- [ ] Fix `src/components/MonitoringDashboard.tsx` imports
+### Phase 2: Apply Correct Import Path Standards ✅ COMPLETE
+**CORRECTED RULES**: 
+- **Cross-directory imports**: Use `@/directory/file` 
+- **Sibling imports**: Use `./file` (same directory)
+- **Never use**: Deep relative paths like `../../`
+
+- [x] Fix `src/main.tsx` imports
+- [x] Fix `src/routes/AppRoutes.tsx` imports  
+- [x] Fix `src/pages/Dashboard.tsx` imports
+- [x] Fix `src/App.tsx` imports
+- [x] Fix `src/contexts/AuthContext.tsx` imports
+- [x] Fix `src/hooks/useAuth.ts` imports
+- [x] Fix `src/services/applicationInsights.ts` imports - **CORRECTED**: sibling `./telemetryFallback`
+- [x] Fix `src/services/apiInterceptor.ts` imports - **CORRECTED**: sibling `./applicationInsights`
+- [x] Fix `src/AppWithConfig.tsx` imports
+- [x] Fix all `src/components/auth/` file imports (ProtectedRoute.tsx, LoginPage.tsx)
+- [x] Fix all `src/components/layout/` file imports - **CORRECTED**: siblings use `./AppHeader`, etc.
+- [x] Fix `src/components/MonitoringDashboard.tsx` imports
+- [x] Verified TypeScript compilation passes with all changes
+- [x] **Updated ARCHITECTURE.md and CLAUDE.md** with clarified import rules
 
 ### Phase 3: Replace Direct PrimeReact Imports
 - [ ] Update `src/AppWithConfig.tsx` to use wrapper components
@@ -141,6 +148,18 @@ This file contains tasks to bring the application into compliance with ARCHITECT
 - [ ] Verify no direct PrimeReact imports exist (except PrimeReactProvider)
 
 ## Implementation Notes
+
+### Import Path Rules (UPDATED)
+**Correct Import Standards:**
+```typescript
+// Cross-directory imports: Use @/ absolute paths
+import { useAuth } from '@/hooks/useAuth';
+import { AuthContext } from '@/contexts/AuthContext';
+
+// Sibling imports: Use ./ relative paths  
+import { AppHeader } from './AppHeader';        // Same directory
+import { telemetryFallback } from './telemetryFallback'; // Same directory
+```
 
 ### Wrapper Component Template:
 ```typescript
@@ -172,8 +191,9 @@ export { Avatar } from './Avatar';
 export { Menu } from './Menu';
 ```
 
-## Success Criteria
-- ✅ Zero relative imports in application code
+## Success Criteria (UPDATED)
+- ✅ **Correct import path usage**: `@/` for cross-directory, `./` for siblings
+- ✅ **No deep relative paths**: No `../../` or `../../../` imports
 - ✅ All PrimeReact components accessed through `@/components/controls`
 - ✅ TypeScript compilation passes
 - ✅ Application functions correctly

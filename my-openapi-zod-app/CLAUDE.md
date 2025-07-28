@@ -68,25 +68,41 @@
 - **Tree Shaking**: Vite configuration optimized for production builds
 
 ### Import Path Standards
-**CRITICAL REQUIREMENT**: All local imports across components MUST use absolute paths with `@/` prefix instead of relative paths.
+**CRITICAL REQUIREMENT**: Use appropriate import paths based on file relationships:
 
-**✅ Required Pattern:**
+**✅ Required Patterns:**
 ```typescript
+// Cross-directory imports: Use @/ absolute paths
 import { useAuth } from '@/hooks/useAuth';
-import { AppHeader } from '@/components/layout/AppHeader';
 import { AuthContext } from '@/contexts/AuthContext';
 import { msalConfig } from '@/config/msalConfig';
+import { Dashboard } from '@/pages/Dashboard';
+
+// Sibling imports: Use ./ relative paths
+import { AppHeader } from './AppHeader';
+import { AppSidebar } from './AppSidebar';
+import { Button } from './Button';
+import { Card } from './Card';
 ```
 
-**❌ Forbidden Pattern:**
+**❌ Forbidden Patterns:**
 ```typescript
+// Deep relative paths (use @/ instead)
 import { useAuth } from '../../hooks/useAuth';
-import { AppHeader } from '../layout/AppHeader';
-import { AuthContext } from './AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
+
+// Absolute paths for siblings (use ./ instead)
+import { AppHeader } from '@/components/layout/AppHeader'; // when in same directory
 ```
+
+**Import Rules:**
+1. **Sibling Files**: Use `./filename` for files in the same directory
+2. **Cross-Directory**: Use `@/directory/filename` for files in different directories  
+3. **Never Use**: Deep relative paths like `../../` or `../../../`
 
 **Benefits:**
-- Consistent import paths across the entire codebase
+- Clear distinction between sibling and cross-directory imports
+- Consistent import patterns across the entire codebase
 - Easier refactoring and file movement
 - Better IDE navigation and auto-completion
 - Eliminates deep nested relative path confusion

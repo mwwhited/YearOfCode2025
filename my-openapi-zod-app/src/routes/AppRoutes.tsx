@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { AppLayout } from '../components/layout/AppLayout';
-import { ProtectedRoute } from '../components/auth/ProtectedRoute';
-import { LoginPage } from '../components/auth/LoginPage';
-import { Dashboard } from '../pages/Dashboard';
+import { AppLayout } from '@/components/layout/AppLayout';
+import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
+import { LoginPage } from '@/components/auth/LoginPage';
+import { Dashboard } from '@/pages/Dashboard';
 
 // Placeholder components for other routes
 const ProductsPage = () => <div className="p-4"><h1>Products</h1><p>Products page coming soon...</p></div>;

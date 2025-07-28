@@ -4,11 +4,11 @@ import { MsalProvider } from '@azure/msal-react';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Message } from 'primereact/message';
 import { Button } from '@/components/controls';
-import { configManager } from './config/appConfig';
-import { createMsalConfig } from './config/msalConfig';
+import { configManager } from '@/config/appConfig';
+import { createMsalConfig } from '@/config/msalConfig';
 import { applicationInsights } from '@/services/applicationInsights';
-import './services/apiInterceptor'; // Initialize API interceptors
-import App from './App';
+import '@/services/apiInterceptor'; // Initialize API interceptors
+import App from '@/App';
 
 export const AppWithConfig = () => {
   const [msalInstance, setMsalInstance] = useState<PublicClientApplication | null>(null);
