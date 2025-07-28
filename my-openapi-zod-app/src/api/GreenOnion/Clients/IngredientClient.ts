@@ -44,7 +44,7 @@ export default class IngredientClient extends ClientBase implements IIngredientC
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
         super();
-        this.http = http ? http : window as unknown;
+        this.http = http ? http : (window as any);
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 

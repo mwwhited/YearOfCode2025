@@ -1,5 +1,4 @@
 // App.js
-import React from 'react';
 import { PrimeReactProvider } from 'primereact/api';
 import './App.css';
 

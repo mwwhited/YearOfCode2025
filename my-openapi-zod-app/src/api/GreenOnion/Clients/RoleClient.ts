@@ -38,7 +38,7 @@ export default class RoleClient extends ClientBase implements IRoleClient  {
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
         super();
-        this.http = http ? http : window as unknown;
+        this.http = http ? http : (window as any);
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 

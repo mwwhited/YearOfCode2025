@@ -9,7 +9,7 @@
 
 
 import GlobalState from './_GlobalState';
- 
+  
 import { v4 as uuidv4 } from 'uuid';
 
 export abstract class ClientBase {
@@ -81,6 +81,6 @@ export class ApiException extends Error {
     protected isApiException = true;
 
     static isApiException(obj: unknown): obj is ApiException {
-        return obj.isApiException === true;
+        return obj && (obj as any).isApiException && (obj as any).isApiException === true;
     }
 }
