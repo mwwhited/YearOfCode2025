@@ -129,7 +129,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

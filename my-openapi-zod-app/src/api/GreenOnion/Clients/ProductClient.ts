@@ -158,7 +158,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             url_ += "upc=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"
@@ -269,7 +269,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             url_ += "download=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"
@@ -365,7 +365,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"
@@ -515,7 +515,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"
@@ -567,7 +567,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             url_ += "productId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"
@@ -827,7 +827,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

@@ -129,7 +129,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
             url_ += "name=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

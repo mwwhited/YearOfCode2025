@@ -129,7 +129,7 @@ export default class IngredientClient extends ClientBase implements IIngredientC
             url_ += "keyword=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

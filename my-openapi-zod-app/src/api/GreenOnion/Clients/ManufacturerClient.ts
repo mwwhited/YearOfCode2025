@@ -129,7 +129,7 @@ export default class ManufacturerClient extends ClientBase implements IManufactu
             url_ += "gln=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

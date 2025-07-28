@@ -134,7 +134,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
             url_ += "year=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

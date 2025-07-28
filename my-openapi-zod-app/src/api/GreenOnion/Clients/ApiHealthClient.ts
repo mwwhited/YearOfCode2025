@@ -47,7 +47,7 @@ export default class ApiHealthClient extends ClientBase implements IApiHealthCli
         let url_ = this.baseUrl + "/health?";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"

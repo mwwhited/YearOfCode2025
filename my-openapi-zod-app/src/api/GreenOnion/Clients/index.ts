@@ -8,7 +8,6 @@
 // @ts-nocheck
 // eslint-disable @typescript-eslint/no-unused-vars
 
-
 export { ApiException } from "../../_ClientBase";
 
 // Clients

@@ -134,7 +134,7 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
             url_ += "path=" + encodeURIComponent("" + id) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "text/plain"
