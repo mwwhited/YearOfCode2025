@@ -3,10 +3,10 @@ import { PublicClientApplication } from '@azure/msal-browser';
 import { MsalProvider } from '@azure/msal-react';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Message } from 'primereact/message';
-import { Button } from 'primereact/button';
+import { Button } from '@/components/controls';
 import { configManager } from './config/appConfig';
 import { createMsalConfig } from './config/msalConfig';
-import { applicationInsights } from './services/applicationInsights';
+import { applicationInsights } from '@/services/applicationInsights';
 import './services/apiInterceptor'; // Initialize API interceptors
 import App from './App';
 
@@ -23,8 +23,13 @@ export const AppWithConfig = () => {
       // Load configuration from public/config.json
       const config = await configManager.loadConfig();
       
-      // Initialize Application Insights
-      applicationInsights.initialize(config);
+      // Initialize Application Insights (with error handling)
+      try {
+        applicationInsights.initialize(config);
+      } catch (aiError) {
+        console.warn('⚠️ Application Insights initialization failed:', aiError);
+        // Continue with app initialization even if AI fails
+      }
       
       // Create MSAL configuration
       const msalConfig = createMsalConfig(config);

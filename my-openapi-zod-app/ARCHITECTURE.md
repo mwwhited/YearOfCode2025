@@ -34,6 +34,12 @@
 │   │   ├── auth/                    # Authentication components
 │   │   │   ├── LoginPage.tsx        # Azure B2C login interface
 │   │   │   └── ProtectedRoute.tsx   # Route protection wrapper
+│   │   ├── controls/                # Wrapped PrimeReact UI components
+│   │   │   ├── Button.tsx           # Custom Button wrapper
+│   │   │   ├── DataTable.tsx        # Custom DataTable wrapper
+│   │   │   ├── Dialog.tsx           # Custom Dialog wrapper
+│   │   │   ├── InputText.tsx        # Custom InputText wrapper
+│   │   │   └── index.ts             # Component exports
 │   │   └── layout/                  # Layout components
 │   │       ├── AppHeader.tsx        # Navigation header
 │   │       ├── AppSidebar.tsx       # Role-based sidebar
@@ -134,6 +140,76 @@
 - **Component Architecture**: Functional components with hooks
 - **Error Boundaries**: Graceful error handling
 - **Accessibility**: ARIA labels and keyboard navigation support
+- **Import Paths**: Use absolute imports with `@/` prefix for all internal modules
+- **UI Component Wrapping**: All PrimeReact components must be wrapped in `@/components/controls`
+
+### Import Path Standards
+**REQUIRED**: All local imports across components must use absolute paths with the `@/` prefix instead of relative paths.
+
+**✅ Correct Examples:**
+```typescript
+import { useAuth } from '@/hooks/useAuth';
+import { AppHeader } from '@/components/layout/AppHeader';
+import { AuthContext } from '@/contexts/AuthContext';
+import { msalConfig } from '@/config/msalConfig';
+import { Dashboard } from '@/pages/Dashboard';
+```
+
+**❌ Incorrect Examples:**
+```typescript
+import { useAuth } from '../../hooks/useAuth';
+import { AppHeader } from '../layout/AppHeader';
+import { AuthContext } from './AuthContext';
+```
+
+**Path Mapping Configuration:**
+- `@/` maps to `src/` directory
+- Configured in `tsconfig.json` and build tools
+- Provides consistent, maintainable import paths
+- Improves refactoring and IDE navigation
+
+### PrimeReact Component Wrapping Standards
+**CRITICAL REQUIREMENT**: All PrimeReact components used in the application must be wrapped by custom components in `@/components/controls`.
+
+**✅ Correct Pattern:**
+```typescript
+// In @/components/controls/Button.tsx
+import { Button as PrimeButton } from 'primereact/button';
+import type { ButtonProps as PrimeButtonProps } from 'primereact/button';
+
+interface ButtonProps extends PrimeButtonProps {
+  // Add custom props if needed
+}
+
+export const Button: React.FC<ButtonProps> = (props) => {
+  return <PrimeButton {...props} />;
+};
+
+// In application components
+import { Button } from '@/components/controls';
+```
+
+**❌ Forbidden Pattern:**
+```typescript
+// Direct import of PrimeReact components in application code
+import { Button } from 'primereact/button';
+import { DataTable } from 'primereact/datatable';
+```
+
+**Wrapper Component Benefits:**
+- **Consistent Theming**: Centralized styling and theme customization
+- **Custom Logic**: Add application-specific behavior and validation
+- **Props Enhancement**: Extend PrimeReact props with custom functionality
+- **Future-Proofing**: Easy to replace or upgrade UI library
+- **Brand Consistency**: Ensure all components follow design system
+- **Type Safety**: Enhanced TypeScript interfaces for better DX
+
+**Required Wrapper Structure:**
+- **Location**: `src/components/controls/`
+- **Naming**: Match PrimeReact component names (Button, DataTable, etc.)
+- **Exports**: Use barrel exports from `@/components/controls/index.ts`
+- **Props**: Extend PrimeReact props interfaces when needed
+- **Documentation**: JSDoc comments for custom props and behavior
 
 ## Architecture Change Log
 
@@ -268,6 +344,36 @@
 - **Error Monitoring**: Proactive error detection and resolution
 - **User Experience**: Track and improve user journey and satisfaction
 - **DevOps Integration**: Monitor deployment success and rollback triggers
+
+---
+
+### 2025-07-28 - Application Insights Error Resolution & Fallback System
+**Changes Made:**
+- Resolved Application Insights configuration loading error
+- Implemented comprehensive fallback telemetry system
+- Added enhanced error handling and debugging capabilities
+- Fixed localhost endpoint compatibility issues
+- Created resilient telemetry infrastructure
+
+**Files Modified:**
+- `src/services/applicationInsights.ts` - Enhanced error handling and fallback system
+- `src/services/telemetryFallback.ts` - Improved fallback telemetry with better browser detection
+- `src/config/appConfig.ts` - Added debug logging for configuration loading
+- `src/AppWithConfig.tsx` - Enhanced Application Insights initialization error handling
+
+**Architecture Decisions:**
+- **Graceful Degradation**: Application continues to function even if Application Insights fails
+- **Fallback Telemetry**: Console-based telemetry in development and when AI is unavailable
+- **Localhost Compatibility**: Handle local development environments with custom AI endpoints
+- **Comprehensive Error Handling**: All telemetry methods check for fallback mode
+- **Debug Logging**: Enhanced logging to troubleshoot configuration issues
+
+**Impact:**
+- **Reliability**: Application no longer crashes due to telemetry configuration issues
+- **Development Experience**: Clear error messages and fallback behavior in development
+- **Production Resilience**: Telemetry failures don't affect core application functionality
+- **Debugging Capability**: Enhanced logging helps identify and resolve configuration issues
+- **Flexibility**: Works with both cloud and local Application Insights endpoints
 
 ---
 

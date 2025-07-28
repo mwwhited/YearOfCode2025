@@ -2,25 +2,59 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
 import { createBrowserHistory } from 'history';
 import type { AppConfig } from '@/config/appConfig';
+import { telemetryFallback } from './telemetryFallback';
 
 class ApplicationInsightsService {
   private appInsights: ApplicationInsights | null = null;
   private reactPlugin: ReactPlugin | null = null;
   private browserHistory = createBrowserHistory({ window });
+  private useFallback = false;
+
+  private shouldUseFallback(): boolean {
+    return this.useFallback || !this.appInsights;
+  }
 
   initialize(config: AppConfig): void {
-    const aiConfig = config.applicationInsights;
+    console.log('🔧 Application Insights initialize called with config:', config);
     
-    // Skip initialization if no connection string provided
-    if (!aiConfig.connectionString) {
-      console.warn('⚠️ Application Insights connection string not provided - telemetry disabled');
+    // Check if Application Insights configuration exists
+    if (!config || !config.applicationInsights) {
+      console.warn('⚠️ Application Insights configuration not found - using fallback telemetry');
+      console.log('🔧 Config object:', config);
+      console.log('🔧 ApplicationInsights property:', config?.applicationInsights);
+      this.useFallback = true;
       return;
     }
 
+    const aiConfig = config.applicationInsights;
+    console.log('🔧 AI Config extracted:', aiConfig);
+    
+    // Skip initialization if no connection string provided
+    if (!aiConfig.connectionString || aiConfig.connectionString.trim() === '') {
+      console.warn('⚠️ Application Insights connection string not provided - using fallback telemetry');
+      this.useFallback = true;
+      return;
+    }
+
+    // Skip if connection string appears to be a placeholder
+    if (aiConfig.connectionString.includes('your-instrumentation-key') || aiConfig.connectionString.includes('your-region')) {
+      console.warn('⚠️ Application Insights connection string appears to be a placeholder - using fallback telemetry');
+      this.useFallback = true;
+      return;
+    }
+
+    // Check if using localhost endpoint (development mode)
+    if (aiConfig.connectionString.includes('localhost')) {
+      console.warn('⚠️ Application Insights is configured with localhost endpoint - this may not be available');
+      console.log('🔧 Attempting to initialize anyway, will fall back on failure...');
+    }
+
     try {
+      console.log('🔧 Creating React plugin...');
       // Create React plugin for route tracking
       this.reactPlugin = new ReactPlugin();
 
+      console.log('🔧 Creating Application Insights instance...');
       // Initialize Application Insights
       this.appInsights = new ApplicationInsights({
         config: {
@@ -54,15 +88,21 @@ class ApplicationInsightsService {
         },
       });
 
+      console.log('🔧 Loading Application Insights...');
       // Load Application Insights
       this.appInsights.loadAppInsights();
 
+      console.log('🔧 Setting initial context...');
       // Set initial context
       this.setInitialContext(config);
 
       console.info('✅ Application Insights initialized successfully');
     } catch (error) {
       console.error('❌ Failed to initialize Application Insights:', error);
+      console.error('❌ Error details:', error instanceof Error ? error.message : 'Unknown error');
+      console.error('❌ Stack trace:', error instanceof Error ? error.stack : 'No stack trace');
+      // Set fallback mode on any initialization error
+      this.useFallback = true;
     }
   }
 
@@ -105,12 +145,12 @@ class ApplicationInsightsService {
 
   // Track custom events
   trackEvent(name: string, properties?: Record<string, any>, measurements?: Record<string, number>): void {
-    if (!this.appInsights) {
-      console.warn('Application Insights not initialized - event not tracked:', name);
+    if (this.shouldUseFallback()) {
+      telemetryFallback.trackEvent(name, properties, measurements);
       return;
     }
 
-    this.appInsights.trackEvent({
+    this.appInsights!.trackEvent({
       name,
       properties,
       measurements,
@@ -119,12 +159,12 @@ class ApplicationInsightsService {
 
   // Track page views
   trackPageView(name?: string, url?: string, properties?: Record<string, any>): void {
-    if (!this.appInsights) {
-      console.warn('Application Insights not initialized - page view not tracked');
+    if (this.shouldUseFallback()) {
+      telemetryFallback.trackPageView(name, url, properties);
       return;
     }
 
-    this.appInsights.trackPageView({
+    this.appInsights!.trackPageView({
       name,
       uri: url,
       properties,
@@ -133,12 +173,12 @@ class ApplicationInsightsService {
 
   // Track exceptions
   trackException(error: Error, severityLevel?: number, properties?: Record<string, any>): void {
-    if (!this.appInsights) {
-      console.warn('Application Insights not initialized - exception not tracked:', error);
+    if (this.shouldUseFallback()) {
+      telemetryFallback.trackException(error, severityLevel, properties);
       return;
     }
 
-    this.appInsights.trackException({
+    this.appInsights!.trackException({
       exception: error,
       severityLevel,
       properties,
@@ -147,12 +187,12 @@ class ApplicationInsightsService {
 
   // Track custom metrics
   trackMetric(name: string, average: number, sampleCount?: number, min?: number, max?: number, properties?: Record<string, any>): void {
-    if (!this.appInsights) {
-      console.warn('Application Insights not initialized - metric not tracked:', name);
+    if (this.shouldUseFallback()) {
+      telemetryFallback.trackMetric(name, average, sampleCount, min, max, properties);
       return;
     }
 
-    this.appInsights.trackMetric({
+    this.appInsights!.trackMetric({
       name,
       average,
       sampleCount,
@@ -164,12 +204,13 @@ class ApplicationInsightsService {
 
   // Track dependencies (API calls, etc.)
   trackDependencyData(id: string, absoluteUrl: string, pathName: string, totalTime: number, success: boolean, resultCode: number, method?: string): void {
-    if (!this.appInsights) {
-      console.warn('Application Insights not initialized - dependency not tracked');
+    if (this.shouldUseFallback()) {
+      // Fallback doesn't have trackDependencyData, so we'll track as an API call
+      telemetryFallback.trackApiCall(absoluteUrl, method || 'HTTP', resultCode, totalTime, success);
       return;
     }
 
-    this.appInsights.trackDependencyData({
+    this.appInsights!.trackDependencyData({
       id,
       target: absoluteUrl,
       name: pathName,
@@ -182,10 +223,13 @@ class ApplicationInsightsService {
 
   // Track user authentication events
   trackUserAuthentication(userId: string, properties?: Record<string, any>): void {
-    if (!this.appInsights) return;
+    if (this.shouldUseFallback()) {
+      telemetryFallback.trackUserAuthentication(userId, properties);
+      return;
+    }
 
     // Set authenticated user context
-    this.appInsights.setAuthenticatedUserContext(userId);
+    this.appInsights!.setAuthenticatedUserContext(userId);
 
     // Track login event
     this.trackEvent('UserAuthenticated', {
@@ -196,9 +240,12 @@ class ApplicationInsightsService {
 
   // Clear user context on logout
   clearUserContext(): void {
-    if (!this.appInsights) return;
+    if (this.shouldUseFallback()) {
+      telemetryFallback.clearUserContext();
+      return;
+    }
 
-    this.appInsights.clearAuthenticatedUserContext();
+    this.appInsights!.clearAuthenticatedUserContext();
     this.trackEvent('UserLoggedOut');
   }
 
@@ -241,8 +288,12 @@ class ApplicationInsightsService {
 
   // Flush telemetry (useful before page unload)
   flush(): void {
-    if (!this.appInsights) return;
-    this.appInsights.flush();
+    if (this.shouldUseFallback()) {
+      telemetryFallback.flush();
+      return;
+    }
+
+    this.appInsights!.flush();
   }
 }
 

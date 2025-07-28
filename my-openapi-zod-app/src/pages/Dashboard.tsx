@@ -5,7 +5,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { useAuth } from '../hooks/useAuth';
-import { useApplicationInsights } from '@hooks/useApplicationInsights';
+import { useApplicationInsights } from '@/hooks/useApplicationInsights';
 
 interface DashboardData {
   totalProducts: number;

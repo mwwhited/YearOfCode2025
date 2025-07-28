@@ -80,6 +80,10 @@ class ConfigManager {
 
       const config: AppConfig = await response.json();
       
+      // Add debug logging
+      console.log('🔧 Raw configuration loaded:', config);
+      console.log('🔧 Application Insights config:', config.applicationInsights);
+      
       // Validate required fields
       this.validateConfig(config);
       

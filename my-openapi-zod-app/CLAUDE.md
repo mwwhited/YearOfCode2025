@@ -52,17 +52,85 @@
 3. **Role-Based Routes**: Implemented hierarchical role system (Admin > Manager > User)
 4. **CSS Variables**: Chose CSS custom properties over CSS-in-JS for better performance
 5. **MSAL Redirect**: Used redirect flow over popup for better browser compatibility
+6. **Absolute Imports**: All components must use `@/` prefix for internal imports (never relative paths)
+7. **PrimeReact Wrappers**: All PrimeReact components must be wrapped in `@/components/controls` (NEVER direct imports)
 
 ### File Organization
-- **Separation of Concerns**: Clear separation between auth, layout, pages, routing
+- **Separation of Concerns**: Clear separation between auth, layout, pages, routing, controls
 - **Custom Hook**: Extracted useAuth for reusability and React Fast Refresh compatibility
 - **Type Safety**: Proper TypeScript interfaces throughout
 - **Configuration**: Environment-based configuration for Azure B2C
+- **Component Wrapping**: All UI components wrapped in `@/components/controls` layer
 
 ### Performance Considerations
 - **Bundle Size**: Chart.js added for PrimeReact Chart component
 - **Code Splitting**: React Router setup ready for lazy loading
 - **Tree Shaking**: Vite configuration optimized for production builds
+
+### Import Path Standards
+**CRITICAL REQUIREMENT**: All local imports across components MUST use absolute paths with `@/` prefix instead of relative paths.
+
+**✅ Required Pattern:**
+```typescript
+import { useAuth } from '@/hooks/useAuth';
+import { AppHeader } from '@/components/layout/AppHeader';
+import { AuthContext } from '@/contexts/AuthContext';
+import { msalConfig } from '@/config/msalConfig';
+```
+
+**❌ Forbidden Pattern:**
+```typescript
+import { useAuth } from '../../hooks/useAuth';
+import { AppHeader } from '../layout/AppHeader';
+import { AuthContext } from './AuthContext';
+```
+
+**Benefits:**
+- Consistent import paths across the entire codebase
+- Easier refactoring and file movement
+- Better IDE navigation and auto-completion
+- Eliminates deep nested relative path confusion
+- Improved code maintainability
+
+### PrimeReact Component Wrapper Standards
+**CRITICAL REQUIREMENT**: All PrimeReact components used anywhere in the application MUST be wrapped by custom components in `@/components/controls`.
+
+**✅ Required Implementation:**
+```typescript
+// @/components/controls/Button.tsx
+import { Button as PrimeButton } from 'primereact/button';
+import type { ButtonProps as PrimeButtonProps } from 'primereact/button';
+
+interface ButtonProps extends PrimeButtonProps {
+  // Custom props can be added here
+}
+
+export const Button: React.FC<ButtonProps> = (props) => {
+  return <PrimeButton {...props} />;
+};
+
+// @/components/controls/index.ts
+export { Button } from './Button';
+export { DataTable } from './DataTable';
+// ... other wrapped components
+
+// In application code
+import { Button, DataTable } from '@/components/controls';
+```
+
+**❌ FORBIDDEN - Direct PrimeReact Imports:**
+```typescript
+import { Button } from 'primereact/button';
+import { DataTable } from 'primereact/datatable';
+```
+
+**Wrapper Architecture Benefits:**
+- **Centralized Customization**: Single place to modify all instances of a component
+- **Theme Consistency**: Ensure all components follow design system
+- **Enhanced Props**: Add application-specific functionality
+- **Future-Proofing**: Easy library replacement or major version upgrades
+- **Type Safety**: Better TypeScript integration with custom interfaces
+- **Testing**: Easier to mock and test UI components
 
 ## Configuration Requirements
 
@@ -188,10 +256,62 @@ The application now uses runtime configuration instead of build-time environment
 ✅ Centralized styling system  
 ✅ Responsive design implemented  
 
+### Application Insights Integration
+- **Service**: `src/services/applicationInsights.ts` - Comprehensive telemetry wrapper
+- **Fallback**: `src/services/telemetryFallback.ts` - Console-based fallback for development
+- **API Tracking**: `src/services/apiInterceptor.ts` - Automatic API call monitoring
+- **React Hook**: `src/hooks/useApplicationInsights.ts` - Component-level telemetry
+- **Configuration**: Added applicationInsights section to config.json
+- **Features**: User tracking, custom events, performance metrics, error monitoring
+
+### Application Insights Error Resolution (2025-07-28)
+**Issue**: "Cannot read properties of undefined (reading 'connectionString')" error
+**Resolution**:
+- Enhanced error handling in Application Insights service
+- Implemented comprehensive fallback telemetry system
+- Fixed all tracking methods to use fallback when AI is unavailable
+- Added localhost endpoint compatibility warnings
+- Enhanced debug logging for configuration troubleshooting
+
+**Files Modified**:
+- `src/services/applicationInsights.ts` - All methods now check for fallback mode
+- `src/services/telemetryFallback.ts` - Improved browser environment detection
+- `src/config/appConfig.ts` - Added debug logging for config loading
+- `src/AppWithConfig.tsx` - Enhanced AI initialization error handling
+
+**Architectural Impact**:
+- Application is now resilient to telemetry configuration failures
+- Graceful degradation ensures core functionality continues
+- Development experience improved with clear error messages
+- Flexible telemetry system works with cloud and local endpoints
+
+## Dependencies Added (Complete List)
+- `@azure/msal-browser`: ^4.16.0
+- `@azure/msal-react`: ^3.0.16
+- `react-router-dom`: ^7.7.1
+- `@types/react-router-dom`: ^5.3.3
+- `chart.js`: ^4.5.0
+- `primeflex`: ^4.0.0
+- `@microsoft/applicationinsights-web`: ^3.3.9
+- `@microsoft/applicationinsights-react-js`: ^19.3.7
+- `history`: ^5.3.0
+
+## Current Application Status
+✅ **Core Functionality**: All major features implemented and functional  
+✅ **Authentication**: Azure B2C with MSAL React fully integrated  
+✅ **Routing**: Role-based protected routes with deep linking  
+✅ **UI System**: PrimeReact components with centralized styling  
+✅ **Configuration**: Runtime config.json system working  
+✅ **Telemetry**: Application Insights with fallback system  
+✅ **Error Handling**: Comprehensive error recovery mechanisms  
+✅ **Build System**: TypeScript, ESLint, and Vite all clean  
+
 ## Next Session Guidance
 If continuing development:
-1. **Priority**: Configure Azure B2C environment variables
-2. **Focus**: Replace Dashboard mock data with real API calls
-3. **Consider**: Implementing additional pages (Products, Categories, etc.)
-4. **Testing**: Add unit tests for authentication flow
+1. **Priority**: Test the complete application flow with proper configuration
+2. **Focus**: Replace Dashboard mock data with real API calls using GreenOnion client
+3. **Consider**: Implementing additional pages (Products, Categories, Users, etc.)
+4. **Testing**: Add unit tests for authentication and telemetry flows
 5. **Performance**: Consider code splitting for large routes
+6. **Monitoring**: Verify Application Insights data in Azure portal
+7. **Documentation**: Update user guides and deployment instructions
