@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -42,7 +42,7 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * @operationId SuggestedProduct_CreateSuggestedProduct
     * @tag SuggestedProduct
     * @path /api/SuggestedProduct/CreateSuggestedProduct 
@@ -51,7 +51,7 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
     * @role District Admin
     * @role Cooperative Admin
     */
-    CreateSuggestedProduct(params: {
+    async CreateSuggestedProduct(params: {
         body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel        
     }): Promise<ISuggestedProductResponseModel | undefined> 
     { 
@@ -68,11 +68,10 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processCreateSuggestedProduct(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processCreateSuggestedProduct(response);
+        return processed;
     }
 
     protected async processCreateSuggestedProduct(response: Response): Promise<ISuggestedProductResponseModel | undefined>
@@ -96,14 +95,14 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
             }
         }
     }
-    async     /**
+    /**
     * @operationId SuggestedProduct_ApproveSuggestedProduct
     * @tag SuggestedProduct
     * @path /api/SuggestedProduct/ApproveSuggestedProduct 
     * @anonymous false
     * @role Super Admin
     */
-    ApproveSuggestedProduct(): Promise<ISuggestedProductResponseModel | undefined> 
+    async ApproveSuggestedProduct(): Promise<ISuggestedProductResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SuggestedProduct/ApproveSuggestedProduct?";
         url_ = url_.replace(/[?&]$/, "");
@@ -115,11 +114,10 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processApproveSuggestedProduct(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processApproveSuggestedProduct(response);
+        return processed;
     }
 
     protected async processApproveSuggestedProduct(response: Response): Promise<ISuggestedProductResponseModel | undefined>

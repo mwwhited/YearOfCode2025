@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -48,7 +48,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryDistributorModel**
     * @description Query **QueryDistributorModel**
     * @operationId Distributor_Query
@@ -58,7 +58,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryDistributorModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelSearchQuery        
     }): Promise<IQueryDistributorModelPagedQueryResult | undefined> 
     { 
@@ -75,11 +75,10 @@ export default class DistributorClient extends ClientBase implements IDistributo
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryDistributorModelPagedQueryResult | undefined>
@@ -113,7 +112,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryDistributorModel | undefined> 
@@ -137,11 +136,10 @@ export default class DistributorClient extends ClientBase implements IDistributo
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQueryDistributorModel | undefined>
@@ -165,7 +163,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
             }
         }
     }
-    async     /**
+    /**
     * Save **QueryDistributorModel**
     * @description Save **QueryDistributorModel**
     * @operationId Distributor_Save
@@ -176,7 +174,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveDistributorModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDistributorModel        
     }): Promise<IQueryDistributorModel | undefined> 
     { 
@@ -193,11 +191,10 @@ export default class DistributorClient extends ClientBase implements IDistributo
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQueryDistributorModel | undefined>

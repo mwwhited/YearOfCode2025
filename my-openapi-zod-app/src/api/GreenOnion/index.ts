@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Clients
 export type { default as IAllergenClient } from "./IAllergenClient";  
 export type { default as ICategoryClient } from "./ICategoryClient";  

@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Models 
 import type {
@@ -45,7 +45,7 @@ export default interface ISchoolDistrictClient {
     * @path /api/SchoolDistrict/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
-    */
+    */ 
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

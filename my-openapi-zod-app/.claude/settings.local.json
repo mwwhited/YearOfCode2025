@@ -16,7 +16,8 @@
       "Bash(./scripts/refactor-components.sh:*)",
       "Bash(npm run dev:*)",
       "Bash(./scripts/generate-client.sh:*)",
-      "Bash(npx openapi-zod-client:*)"
+      "Bash(npx openapi-zod-client:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": []
   }

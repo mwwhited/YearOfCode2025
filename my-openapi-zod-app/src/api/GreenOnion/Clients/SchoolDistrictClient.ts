@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -48,7 +48,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QuerySchoolDistrictModel**
     * @description Query **QuerySchoolDistrictModel**
     * @operationId SchoolDistrict_Query
@@ -58,7 +58,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQuerySchoolDistrictModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelSearchQuery        
     }): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined> 
     { 
@@ -75,11 +75,10 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined>
@@ -113,7 +112,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQuerySchoolDistrictModel | undefined> 
@@ -137,11 +136,10 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQuerySchoolDistrictModel | undefined>
@@ -165,7 +163,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
             }
         }
     }
-    async     /**
+    /**
     * Save **QuerySchoolDistrictModel**
     * @description Save **QuerySchoolDistrictModel**
     * @operationId SchoolDistrict_Save
@@ -176,7 +174,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveSchoolDistrictModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSchoolDistrictModel        
     }): Promise<IQuerySchoolDistrictModel | undefined> 
     { 
@@ -193,11 +191,10 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQuerySchoolDistrictModel | undefined>

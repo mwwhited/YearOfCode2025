@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -48,7 +48,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryStorageTypeModel**
     * @description Query **QueryStorageTypeModel**
     * @operationId StorageType_Query
@@ -58,7 +58,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryStorageTypeModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelSearchQuery        
     }): Promise<IQueryStorageTypeModelPagedQueryResult | undefined> 
     { 
@@ -75,11 +75,10 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryStorageTypeModelPagedQueryResult | undefined>
@@ -113,7 +112,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryStorageTypeModel | undefined> 
@@ -137,11 +136,10 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQueryStorageTypeModel | undefined>
@@ -165,7 +163,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
             }
         }
     }
-    async     /**
+    /**
     * Save **QueryStorageTypeModel**
     * @description Save **QueryStorageTypeModel**
     * @operationId StorageType_Save
@@ -176,7 +174,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveStorageTypeModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveStorageTypeModel        
     }): Promise<IQueryStorageTypeModel | undefined> 
     { 
@@ -193,11 +191,10 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQueryStorageTypeModel | undefined>

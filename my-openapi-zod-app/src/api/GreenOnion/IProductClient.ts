@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Models 
 import type {
@@ -61,7 +61,7 @@ export default interface IProductClient {
     * @path /api/Product/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryProductModel
-    */
+    */ 
     Get(params: {
             id?: number | undefined;
             gtin?: string | undefined;
@@ -86,7 +86,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/Pdfs/{id} 
     * @anonymous false
-    */
+    */ 
     Pdfs(params: {
             id?: string | undefined;
             download?: boolean | undefined;
@@ -103,7 +103,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductDataByID 
     * @anonymous false
-    */
+    */ 
     GetProductDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -130,7 +130,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductAllGtin 
     * @anonymous false
-    */
+    */ 
     GetProductAllGtin(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -139,7 +139,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductAllUpc 
     * @anonymous false
-    */
+    */ 
     GetProductAllUpc(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -189,7 +189,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductBeforeApproveDataByID 
     * @anonymous false
-    */
+    */ 
     GetProductBeforeApproveDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;

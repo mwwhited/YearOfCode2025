@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -48,7 +48,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryAllergenModel**
     * @description Query **QueryAllergenModel**
     * @operationId Allergen_Query
@@ -58,7 +58,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryAllergenModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelSearchQuery        
     }): Promise<IQueryAllergenModelPagedQueryResult | undefined> 
     { 
@@ -75,11 +75,10 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryAllergenModelPagedQueryResult | undefined>
@@ -113,7 +112,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryAllergenModel | undefined> 
@@ -137,11 +136,10 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQueryAllergenModel | undefined>
@@ -165,7 +163,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
             }
         }
     }
-    async     /**
+    /**
     * Save **QueryAllergenModel**
     * @description Save **QueryAllergenModel**
     * @operationId Allergen_Save
@@ -176,7 +174,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveAllergenModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveAllergenModel        
     }): Promise<IQueryAllergenModel | undefined> 
     { 
@@ -193,11 +191,10 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQueryAllergenModel | undefined>

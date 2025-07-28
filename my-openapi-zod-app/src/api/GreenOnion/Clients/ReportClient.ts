@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -42,13 +42,13 @@ export default class ReportClient extends ClientBase implements IReportClient  {
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * @operationId Report_GetProductActivityReportFilter
     * @tag Report
     * @path /api/Report/GetProductActivityReportFilter 
     * @anonymous false
     */
-    GetProductActivityReportFilter(params: {
+    async GetProductActivityReportFilter(params: {
         body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter        
     }): Promise<IUserResponseModel | undefined> 
     { 
@@ -65,11 +65,10 @@ export default class ReportClient extends ClientBase implements IReportClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetProductActivityReportFilter(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetProductActivityReportFilter(response);
+        return processed;
     }
 
     protected async processGetProductActivityReportFilter(response: Response): Promise<IUserResponseModel | undefined>
@@ -93,13 +92,13 @@ export default class ReportClient extends ClientBase implements IReportClient  {
             }
         }
     }
-    async     /**
+    /**
     * @operationId Report_GetItemDetailByProductIdReport
     * @tag Report
     * @path /api/Report/GetItemDetailByProductIdReport 
     * @anonymous false
     */
-    GetItemDetailByProductIdReport(params: {
+    async GetItemDetailByProductIdReport(params: {
             productId?: number | undefined;
     }): Promise<IUserResponseModel | undefined> 
     { 
@@ -118,11 +117,10 @@ export default class ReportClient extends ClientBase implements IReportClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetItemDetailByProductIdReport(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetItemDetailByProductIdReport(response);
+        return processed;
     }
 
     protected async processGetItemDetailByProductIdReport(response: Response): Promise<IUserResponseModel | undefined>

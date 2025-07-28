@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -51,7 +51,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryUserModel**
     * @description Query **QueryUserModel**
     * @operationId User_Query
@@ -61,7 +61,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryUserModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserModelSearchQuery        
     }): Promise<IQueryUserModelPagedQueryResult | undefined> 
     { 
@@ -78,11 +78,10 @@ export default class UserClient extends ClientBase implements IUserClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryUserModelPagedQueryResult | undefined>
@@ -116,7 +115,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             email?: string | undefined;
             objectid?: string | undefined;
@@ -145,11 +144,10 @@ export default class UserClient extends ClientBase implements IUserClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQueryUserModel | undefined>
@@ -173,7 +171,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
             }
         }
     }
-    async     /**
+    /**
     * Save **QueryUserModel**
     * @description Save **QueryUserModel**
     * @operationId User_Save
@@ -183,7 +181,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveUserModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveUserModel        
     }): Promise<IQueryUserModel | undefined> 
     { 
@@ -200,11 +198,10 @@ export default class UserClient extends ClientBase implements IUserClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQueryUserModel | undefined>
@@ -228,13 +225,13 @@ export default class UserClient extends ClientBase implements IUserClient  {
             }
         }
     }
-    async     /**
+    /**
     * @operationId User_SendNewUserEmail
     * @tag User
     * @path /api/User/SendNewUserEmail 
     * @anonymous false
     */
-    SendNewUserEmail(params: {
+    async SendNewUserEmail(params: {
         body?: INewUserEmailModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Users.NewUserEmailModel        
     }): Promise<void> 
     { 
@@ -251,11 +248,10 @@ export default class UserClient extends ClientBase implements IUserClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSendNewUserEmail(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSendNewUserEmail(response);
+        return processed;
     }
 
     protected async processSendNewUserEmail(response: Response): Promise<unknown | undefined>

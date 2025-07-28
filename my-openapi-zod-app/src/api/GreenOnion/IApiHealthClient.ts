@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Models 
 import type {
@@ -19,6 +19,6 @@ export default interface IApiHealthClient {
     * @operationId Health
     * @tag ApiHealth
     * @path /health 
-    */
+    */ 
     Health(): Promise<object | undefined>;
 }

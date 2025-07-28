@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -39,13 +39,13 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * @operationId DashBoard_GetDashBoardList
     * @tag DashBoard
     * @path /api/DashBoard/GetDashBoardProductList 
     * @anonymous false
     */
-    GetDashBoardList(params: {
+    async GetDashBoardList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined> 
     { 
@@ -64,11 +64,10 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetDashBoardList(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetDashBoardList(response);
+        return processed;
     }
 
     protected async processGetDashBoardList(response: Response): Promise<IDashBoardResponseModel | undefined>
@@ -92,13 +91,13 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         }
     }
-    async     /**
+    /**
     * @operationId DashBoard_GetDashBoardTotalCountList
     * @tag DashBoard
     * @path /api/DashBoard/GetDashBoardTotalCountList 
     * @anonymous false
     */
-    GetDashBoardTotalCountList(params: {
+    async GetDashBoardTotalCountList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined> 
     { 
@@ -117,11 +116,10 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetDashBoardTotalCountList(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetDashBoardTotalCountList(response);
+        return processed;
     }
 
     protected async processGetDashBoardTotalCountList(response: Response): Promise<IDashBoardResponseModel | undefined>
@@ -145,13 +143,13 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         }
     }
-    async     /**
+    /**
     * @operationId DashBoard_GetDistrictFreeOfIOCProductList
     * @tag DashBoard
     * @path /api/DashBoard/GetDistrictFreeOfIOCProductList 
     * @anonymous false
     */
-    GetDistrictFreeOfIOCProductList(params: {
+    async GetDistrictFreeOfIOCProductList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined> 
     { 
@@ -170,11 +168,10 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetDistrictFreeOfIOCProductList(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetDistrictFreeOfIOCProductList(response);
+        return processed;
     }
 
     protected async processGetDistrictFreeOfIOCProductList(response: Response): Promise<IDashBoardResponseModel | undefined>
@@ -198,13 +195,13 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         }
     }
-    async     /**
+    /**
     * @operationId DashBoard_GetDistrictFreeOfIOCProductReplacesList
     * @tag DashBoard
     * @path /api/DashBoard/GetDistrictFreeOfIOCProductReplacesList 
     * @anonymous false
     */
-    GetDistrictFreeOfIOCProductReplacesList(params: {
+    async GetDistrictFreeOfIOCProductReplacesList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined> 
     { 
@@ -223,11 +220,10 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetDistrictFreeOfIOCProductReplacesList(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetDistrictFreeOfIOCProductReplacesList(response);
+        return processed;
     }
 
     protected async processGetDistrictFreeOfIOCProductReplacesList(response: Response): Promise<IDashBoardResponseModel | undefined>
@@ -251,14 +247,14 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         }
     }
-    async     /**
+    /**
     * @operationId DashBoard_GetManufactureTotalProductChart
     * @tag DashBoard
     * @path /api/DashBoard/GetManufactureTotalProductChart 
     * @anonymous false
     * @role Manufacturer User
     */
-    GetManufactureTotalProductChart(): Promise<IDashBoardResponseModel | undefined> 
+    async GetManufactureTotalProductChart(): Promise<IDashBoardResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/DashBoard/GetManufactureTotalProductChart?";
         url_ = url_.replace(/[?&]$/, "");
@@ -270,11 +266,10 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetManufactureTotalProductChart(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetManufactureTotalProductChart(response);
+        return processed;
     }
 
     protected async processGetManufactureTotalProductChart(response: Response): Promise<IDashBoardResponseModel | undefined>

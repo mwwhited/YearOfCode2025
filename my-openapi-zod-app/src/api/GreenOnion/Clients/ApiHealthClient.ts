@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -41,7 +41,7 @@ export default class ApiHealthClient extends ClientBase implements IApiHealthCli
     * @tag ApiHealth
     * @path /health 
     */
-    Health(): Promise<object | undefined> 
+    async Health(): Promise<object | undefined> 
     { 
         let url_ = this.baseUrl + "/health?";
         url_ = url_.replace(/[?&]$/, "");
@@ -53,11 +53,10 @@ export default class ApiHealthClient extends ClientBase implements IApiHealthCli
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processHealth(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processHealth(response);
+        return processed;
     }
 
     protected async processHealth(response: Response): Promise<object | undefined>

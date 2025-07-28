@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -42,7 +42,7 @@ export default class ErrorLogClient extends ClientBase implements IErrorLogClien
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryErrorLogModel**
     * @description Query **QueryErrorLogModel**
     * @operationId ErrorLog_Query
@@ -53,7 +53,7 @@ export default class ErrorLogClient extends ClientBase implements IErrorLogClien
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QueryErrorLogModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryErrorLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryErrorLogModelSearchQuery        
     }): Promise<IQueryErrorLogModelPagedQueryResult | undefined> 
     { 
@@ -70,11 +70,10 @@ export default class ErrorLogClient extends ClientBase implements IErrorLogClien
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryErrorLogModelPagedQueryResult | undefined>

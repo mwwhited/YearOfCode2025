@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -39,14 +39,14 @@ export default class DataMigrationThroughApiClient extends ClientBase implements
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * @operationId DataMigrationThroughApi_ProductH7DataMigration
     * @tag DataMigrationThroughApi
     * @path /api/DataMigrationThroughApi/ProductH7DataMigration 
     * @anonymous false
     * @role Super Admin
     */
-    ProductH7DataMigration(): Promise<IDataMigrationThroughApiResponseModel | undefined> 
+    async ProductH7DataMigration(): Promise<IDataMigrationThroughApiResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/DataMigrationThroughApi/ProductH7DataMigration?";
         url_ = url_.replace(/[?&]$/, "");
@@ -58,11 +58,10 @@ export default class DataMigrationThroughApiClient extends ClientBase implements
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processProductH7DataMigration(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processProductH7DataMigration(response);
+        return processed;
     }
 
     protected async processProductH7DataMigration(response: Response): Promise<IDataMigrationThroughApiResponseModel | undefined>

@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -48,7 +48,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryMonthlyNumberModel**
     * @description Query **QueryMonthlyNumberModel**
     * @operationId MonthlyNumber_Query
@@ -58,7 +58,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryMonthlyNumberModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelSearchQuery        
     }): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined> 
     { 
@@ -75,11 +75,10 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined>
@@ -113,7 +112,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             schoolDistrictId?: number | undefined;
             year?: string | undefined;
@@ -142,11 +141,10 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQueryMonthlyNumberModel | undefined>
@@ -170,7 +168,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
             }
         }
     }
-    async     /**
+    /**
     * Save **QueryMonthlyNumberModel**
     * @description Save **QueryMonthlyNumberModel**
     * @operationId MonthlyNumber_Save
@@ -181,7 +179,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveMonthlyNumberModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveMonthlyNumberModel        
     }): Promise<IQueryMonthlyNumberModel | undefined> 
     { 
@@ -198,11 +196,10 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQueryMonthlyNumberModel | undefined>

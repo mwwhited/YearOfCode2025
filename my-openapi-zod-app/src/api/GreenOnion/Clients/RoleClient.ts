@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -42,7 +42,7 @@ export default class RoleClient extends ClientBase implements IRoleClient  {
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryRoleModel**
     * @description Query **QueryRoleModel**
     * @operationId Role_Query
@@ -52,7 +52,7 @@ export default class RoleClient extends ClientBase implements IRoleClient  {
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryRoleModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryRoleModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryRoleModelSearchQuery        
     }): Promise<IQueryRoleModelPagedQueryResult | undefined> 
     { 
@@ -69,11 +69,10 @@ export default class RoleClient extends ClientBase implements IRoleClient  {
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryRoleModelPagedQueryResult | undefined>

@@ -4,8 +4,8 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -72,7 +72,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    async     /**
+    /**
     * Query **QueryProductModel**
     * @description Query **QueryProductModel**
     * @operationId Product_Query
@@ -82,7 +82,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryProductModel
     */
-    Query(params: {
+    async Query(params: {
         body?: IQueryProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryProductModelSearchQuery        
     }): Promise<IQueryProductModelPagedQueryResult | undefined> 
     { 
@@ -99,11 +99,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processQuery(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processQuery(response);
+        return processed;
     }
 
     protected async processQuery(response: Response): Promise<IQueryProductModelPagedQueryResult | undefined>
@@ -137,7 +136,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryProductModel
     */
-    Get(params: {
+    async Get(params: {
             id?: number | undefined;
             gtin?: string | undefined;
             upc?: string | undefined;
@@ -166,11 +165,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGet(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGet(response);
+        return processed;
     }
 
     protected async processGet(response: Response): Promise<IQueryProductModel | undefined>
@@ -194,7 +192,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * Save **QueryProductModel**
     * @description Save **QueryProductModel**
     * @operationId Product_Save
@@ -205,7 +203,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @role Super Admin
     * @querySet GreenOnion.Common.Models.QueryProductModel
     */
-    Save(params: {
+    async Save(params: {
         body?: ISaveProductModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveProductModel        
     }): Promise<IQueryProductModel | undefined> 
     { 
@@ -222,11 +220,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSave(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSave(response);
+        return processed;
     }
 
     protected async processSave(response: Response): Promise<IQueryProductModel | undefined>
@@ -256,7 +253,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @path /api/Product/Pdfs/{id} 
     * @anonymous false
     */
-    Pdfs(params: {
+    async Pdfs(params: {
             id?: string | undefined;
             download?: boolean | undefined;
     }): Promise<IContentReference | undefined> 
@@ -280,11 +277,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processPdfs(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processPdfs(response);
+        return processed;
     }
 
     protected async processPdfs(response: Response): Promise<IContentReference | undefined>
@@ -308,13 +304,13 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_CreateProduct
     * @tag Product
     * @path /api/Product/CreateProduct 
     * @anonymous false
     */
-    CreateProduct(): Promise<IProductResponse | undefined> 
+    async CreateProduct(): Promise<IProductResponse | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Product/CreateProduct?";
         url_ = url_.replace(/[?&]$/, "");
@@ -326,11 +322,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processCreateProduct(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processCreateProduct(response);
+        return processed;
     }
 
     protected async processCreateProduct(response: Response): Promise<IProductResponse | undefined>
@@ -360,7 +355,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @path /api/Product/GetProductDataByID 
     * @anonymous false
     */
-    GetProductDataByID(params: {
+    async GetProductDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined> 
     { 
@@ -379,11 +374,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetProductDataByID(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetProductDataByID(response);
+        return processed;
     }
 
     protected async processGetProductDataByID(response: Response): Promise<IProductResponse | undefined>
@@ -407,13 +401,13 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_CreateUpdateGtinAllocation
     * @tag Product
     * @path /api/Product/CreateUpdateGtinAllocation 
     * @anonymous false
     */
-    CreateUpdateGtinAllocation(params: {
+    async CreateUpdateGtinAllocation(params: {
         body?: IProductGtinAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductGtinAllocationModel        
     }): Promise<IProductResponse | undefined> 
     { 
@@ -430,11 +424,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processCreateUpdateGtinAllocation(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processCreateUpdateGtinAllocation(response);
+        return processed;
     }
 
     protected async processCreateUpdateGtinAllocation(response: Response): Promise<IProductResponse | undefined>
@@ -458,13 +451,13 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_CreateUpdateUpcAllocation
     * @tag Product
     * @path /api/Product/CreateUpdateUpcAllocation 
     * @anonymous false
     */
-    CreateUpdateUpcAllocation(params: {
+    async CreateUpdateUpcAllocation(params: {
         body?: IProductUpcAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductUpcAllocationModel        
     }): Promise<IProductResponse | undefined> 
     { 
@@ -481,11 +474,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processCreateUpdateUpcAllocation(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processCreateUpdateUpcAllocation(response);
+        return processed;
     }
 
     protected async processCreateUpdateUpcAllocation(response: Response): Promise<IProductResponse | undefined>
@@ -515,7 +507,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @path /api/Product/GetProductAllGtin 
     * @anonymous false
     */
-    GetProductAllGtin(params: {
+    async GetProductAllGtin(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined> 
     { 
@@ -534,11 +526,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetProductAllGtin(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetProductAllGtin(response);
+        return processed;
     }
 
     protected async processGetProductAllGtin(response: Response): Promise<IProductResponse | undefined>
@@ -568,7 +559,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @path /api/Product/GetProductAllUpc 
     * @anonymous false
     */
-    GetProductAllUpc(params: {
+    async GetProductAllUpc(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined> 
     { 
@@ -587,11 +578,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetProductAllUpc(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetProductAllUpc(response);
+        return processed;
     }
 
     protected async processGetProductAllUpc(response: Response): Promise<IProductResponse | undefined>
@@ -615,7 +605,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_CreateSelectProductUpload
     * @tag Product
     * @path /api/Product/CreateSelectProductUpload 
@@ -624,7 +614,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @role Cooperative Admin
     * @role District Admin
     */
-    CreateSelectProductUpload(params: {
+    async CreateSelectProductUpload(params: {
             schoolDistrictId?: number | undefined;
             UserId?: number | undefined;
             Option?: string | undefined;
@@ -657,11 +647,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processCreateSelectProductUpload(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processCreateSelectProductUpload(response);
+        return processed;
     }
 
     protected async processCreateSelectProductUpload(response: Response): Promise<IFileUploadResponse | undefined>
@@ -685,7 +674,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_SaveSelectProductUpload
     * @tag Product
     * @path /api/Product/SaveSelectProductUpload 
@@ -694,7 +683,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @role Cooperative Admin
     * @role District Admin
     */
-    SaveSelectProductUpload(params: {
+    async SaveSelectProductUpload(params: {
         body?: ISelectProductSaveCheckListRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectProductSaveCheckListRequestModel        
     }): Promise<IFileUploadResponse | undefined> 
     { 
@@ -711,11 +700,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processSaveSelectProductUpload(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processSaveSelectProductUpload(response);
+        return processed;
     }
 
     protected async processSaveSelectProductUpload(response: Response): Promise<IFileUploadResponse | undefined>
@@ -739,13 +727,13 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_UploadFileWithOCR
     * @tag Product
     * @path /api/Product/UploadFileWithOCR 
     * @anonymous false
     */
-    UploadFileWithOCR(): Promise<IBaseResponseModel | undefined> 
+    async UploadFileWithOCR(): Promise<IBaseResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Product/UploadFileWithOCR?";
         url_ = url_.replace(/[?&]$/, "");
@@ -757,11 +745,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processUploadFileWithOCR(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processUploadFileWithOCR(response);
+        return processed;
     }
 
     protected async processUploadFileWithOCR(response: Response): Promise<IBaseResponseModel | undefined>
@@ -785,13 +772,13 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         }
     }
-    async     /**
+    /**
     * @operationId Product_CreateProductBeforeApprove
     * @tag Product
     * @path /api/Product/CreateProductBeforeApprove 
     * @anonymous false
     */
-    CreateProductBeforeApprove(): Promise<IProductResponse | undefined> 
+    async CreateProductBeforeApprove(): Promise<IProductResponse | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Product/CreateProductBeforeApprove?";
         url_ = url_.replace(/[?&]$/, "");
@@ -803,11 +790,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processCreateProductBeforeApprove(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processCreateProductBeforeApprove(response);
+        return processed;
     }
 
     protected async processCreateProductBeforeApprove(response: Response): Promise<IProductResponse | undefined>
@@ -837,7 +823,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
     * @path /api/Product/GetProductBeforeApproveDataByID 
     * @anonymous false
     */
-    GetProductBeforeApproveDataByID(params: {
+    async GetProductBeforeApproveDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined> 
     { 
@@ -856,11 +842,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
             }
         };
 
-        return this.transformOptions(options_).then(transformedOptions_ => {
-            return this.http.fetch(url_, transformedOptions_);
-        }).then((_response: Response) => {
-            return this.processGetProductBeforeApproveDataByID(_response);
-        });
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processGetProductBeforeApproveDataByID(response);
+        return processed;
     }
 
     protected async processGetProductBeforeApproveDataByID(response: Response): Promise<IProductResponse | undefined>

@@ -9,12 +9,25 @@
 // @applicationName: GreenOnion.API
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
-// @generatedDate: 2025/07/27
 //
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 ```## Required Components 
 
 ```shell
-npm install uuid
-npm install zod
+npm install uuid zod
+npm install primereact primeicons
+```
+
+## Prime React
+```tsx
+import { PrimeReactProvider } from 'primereact/api';
+
+export default function MyApp({ Component, pageProps }) {
+    return (
+        <PrimeReactProvider>
+            <Component {...pageProps} />
+        </PrimeReactProvider>
+    );
+}
 ```
