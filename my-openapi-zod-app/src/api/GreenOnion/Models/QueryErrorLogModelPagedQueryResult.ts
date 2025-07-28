@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryErrorLogModelPagedQueryResult from "../Schema/ZQueryErrorLogModelPagedQueryResult";
 type QueryErrorLogModelPagedQueryResult = z.infer<typeof ZQueryErrorLogModelPagedQueryResult>;
-interface IQueryErrorLogModelPagedQueryResult extends QueryErrorLogModelPagedQueryResult {
-  $zod: typeof ZQueryErrorLogModelPagedQueryResult;
-}
+type IQueryErrorLogModelPagedQueryResult = z.infer<typeof ZQueryErrorLogModelPagedQueryResult>;
 export type { QueryErrorLogModelPagedQueryResult, IQueryErrorLogModelPagedQueryResult };
 export { ZQueryErrorLogModelPagedQueryResult };

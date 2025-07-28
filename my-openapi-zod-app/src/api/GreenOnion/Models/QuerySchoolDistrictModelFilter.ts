@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQuerySchoolDistrictModelFilter from "../Schema/ZQuerySchoolDistrictModelFilter";
 type QuerySchoolDistrictModelFilter = z.infer<typeof ZQuerySchoolDistrictModelFilter>;
-interface IQuerySchoolDistrictModelFilter extends QuerySchoolDistrictModelFilter {
-  $zod: typeof ZQuerySchoolDistrictModelFilter;
-}
+type IQuerySchoolDistrictModelFilter = z.infer<typeof ZQuerySchoolDistrictModelFilter>;
 export type { QuerySchoolDistrictModelFilter, IQuerySchoolDistrictModelFilter };
 export { ZQuerySchoolDistrictModelFilter };

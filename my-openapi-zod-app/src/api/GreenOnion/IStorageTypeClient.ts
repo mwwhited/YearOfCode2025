@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IStorageTypeClient {
+    
     /**
     * Query **QueryStorageTypeModel**
     * @description Query **QueryStorageTypeModel**
@@ -36,6 +38,7 @@ export default interface IStorageTypeClient {
     Query(params: {
         body?: IQueryStorageTypeModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelSearchQuery        
     }): Promise<IQueryStorageTypeModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryStorageTypeModel**
     * @description Get **QueryStorageTypeModel**
@@ -50,6 +53,7 @@ export default interface IStorageTypeClient {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryStorageTypeModel | undefined>;
+    
     /**
     * Save **QueryStorageTypeModel**
     * @description Save **QueryStorageTypeModel**

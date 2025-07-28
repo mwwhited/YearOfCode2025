@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IOneWorldSyncProductClient {
+    
     /**
     * Query **QueryOneWorldSyncProductModel**
     * @description Query **QueryOneWorldSyncProductModel**
@@ -36,6 +38,7 @@ export default interface IOneWorldSyncProductClient {
     Query(params: {
         body?: IQueryOneWorldSyncProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryOneWorldSyncProductModelSearchQuery        
     }): Promise<IQueryOneWorldSyncProductModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryOneWorldSyncProductModel**
     * @description Get **QueryOneWorldSyncProductModel**
@@ -51,6 +54,7 @@ export default interface IOneWorldSyncProductClient {
             gtin?: string | undefined;
             upc?: string | undefined;
     }): Promise<IQueryOneWorldSyncProductModel | undefined>;
+    
     /**
     * Save **QueryOneWorldSyncProductModel**
     * @description Save **QueryOneWorldSyncProductModel**

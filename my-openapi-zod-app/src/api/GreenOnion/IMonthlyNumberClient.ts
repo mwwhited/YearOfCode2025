@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IMonthlyNumberClient {
+    
     /**
     * Query **QueryMonthlyNumberModel**
     * @description Query **QueryMonthlyNumberModel**
@@ -36,6 +38,7 @@ export default interface IMonthlyNumberClient {
     Query(params: {
         body?: IQueryMonthlyNumberModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelSearchQuery        
     }): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryMonthlyNumberModel**
     * @description Get **QueryMonthlyNumberModel**
@@ -51,6 +54,7 @@ export default interface IMonthlyNumberClient {
             schoolDistrictId?: number | undefined;
             year?: string | undefined;
     }): Promise<IQueryMonthlyNumberModel | undefined>;
+    
     /**
     * Save **QueryMonthlyNumberModel**
     * @description Save **QueryMonthlyNumberModel**

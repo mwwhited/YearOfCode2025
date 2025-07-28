@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -17,6 +18,7 @@ export type {
  };
 
 export default interface IDashBoardClient {
+    
     /**
     * @operationId DashBoard_GetDashBoardList
     * @tag DashBoard
@@ -26,6 +28,7 @@ export default interface IDashBoardClient {
     GetDashBoardList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined>;
+    
     /**
     * @operationId DashBoard_GetDashBoardTotalCountList
     * @tag DashBoard
@@ -35,6 +38,7 @@ export default interface IDashBoardClient {
     GetDashBoardTotalCountList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined>;
+    
     /**
     * @operationId DashBoard_GetDistrictFreeOfIOCProductList
     * @tag DashBoard
@@ -44,6 +48,7 @@ export default interface IDashBoardClient {
     GetDistrictFreeOfIOCProductList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined>;
+    
     /**
     * @operationId DashBoard_GetDistrictFreeOfIOCProductReplacesList
     * @tag DashBoard
@@ -53,6 +58,7 @@ export default interface IDashBoardClient {
     GetDistrictFreeOfIOCProductReplacesList(params: {
             userId?: number | undefined;
     }): Promise<IDashBoardResponseModel | undefined>;
+    
     /**
     * @operationId DashBoard_GetManufactureTotalProductChart
     * @tag DashBoard

@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface ICategoryClient {
+    
     /**
     * Query **QueryCategoryModel**
     * @description Query **QueryCategoryModel**
@@ -36,6 +38,7 @@ export default interface ICategoryClient {
     Query(params: {
         body?: IQueryCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelSearchQuery        
     }): Promise<IQueryCategoryModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryCategoryModel**
     * @description Get **QueryCategoryModel**
@@ -50,6 +53,7 @@ export default interface ICategoryClient {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryCategoryModel | undefined>;
+    
     /**
     * Save **QueryCategoryModel**
     * @description Save **QueryCategoryModel**

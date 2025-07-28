@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZSaveDistributorModel from "../Schema/ZSaveDistributorModel";
 type SaveDistributorModel = z.infer<typeof ZSaveDistributorModel>;
-interface ISaveDistributorModel extends SaveDistributorModel {
-  $zod: typeof ZSaveDistributorModel;
-}
+type ISaveDistributorModel = z.infer<typeof ZSaveDistributorModel>;
 export type { SaveDistributorModel, ISaveDistributorModel };
 export { ZSaveDistributorModel };

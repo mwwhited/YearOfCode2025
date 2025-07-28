@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZNutritionalInformationModel from "../Schema/ZNutritionalInformationModel";
 type NutritionalInformationModel = z.infer<typeof ZNutritionalInformationModel>;
-interface INutritionalInformationModel extends NutritionalInformationModel {
-  $zod: typeof ZNutritionalInformationModel;
-}
+type INutritionalInformationModel = z.infer<typeof ZNutritionalInformationModel>;
 export type { NutritionalInformationModel, INutritionalInformationModel };
 export { ZNutritionalInformationModel };

@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -25,6 +26,7 @@ export type {
  };
 
 export default interface IUserClient {
+    
     /**
     * Query **QueryUserModel**
     * @description Query **QueryUserModel**
@@ -38,6 +40,7 @@ export default interface IUserClient {
     Query(params: {
         body?: IQueryUserModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserModelSearchQuery        
     }): Promise<IQueryUserModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryUserModel**
     * @description Get **QueryUserModel**
@@ -53,6 +56,7 @@ export default interface IUserClient {
             email?: string | undefined;
             objectid?: string | undefined;
     }): Promise<IQueryUserModel | undefined>;
+    
     /**
     * Save **QueryUserModel**
     * @description Save **QueryUserModel**
@@ -66,6 +70,7 @@ export default interface IUserClient {
     Save(params: {
         body?: ISaveUserModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveUserModel        
     }): Promise<IQueryUserModel | undefined>;
+    
     /**
     * @operationId User_SendNewUserEmail
     * @tag User

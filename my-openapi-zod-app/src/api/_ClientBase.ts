@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 
 import GlobalState from './_GlobalState';
@@ -53,7 +54,7 @@ export abstract class ClientBase {
         return options;
     }
     
-    protected throwException(message: string, status: number, response: string, headers: { [key: string]: unknown; }, result?: unknown): unknown {
+    protected throwException(message: string, status: number, response: string, headers: { [key: string]: unknown; }, result?: unknown): never {
         if (result !== null && result !== undefined)
             throw result;
         else

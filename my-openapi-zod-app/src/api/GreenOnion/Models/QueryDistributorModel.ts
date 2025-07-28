@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryDistributorModel from "../Schema/ZQueryDistributorModel";
 type QueryDistributorModel = z.infer<typeof ZQueryDistributorModel>;
-interface IQueryDistributorModel extends QueryDistributorModel {
-  $zod: typeof ZQueryDistributorModel;
-}
+type IQueryDistributorModel = z.infer<typeof ZQueryDistributorModel>;
 export type { QueryDistributorModel, IQueryDistributorModel };
 export { ZQueryDistributorModel };

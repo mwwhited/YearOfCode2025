@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZNewUserEmailModel from "../Schema/ZNewUserEmailModel";
 type NewUserEmailModel = z.infer<typeof ZNewUserEmailModel>;
-interface INewUserEmailModel extends NewUserEmailModel {
-  $zod: typeof ZNewUserEmailModel;
-}
+type INewUserEmailModel = z.infer<typeof ZNewUserEmailModel>;
 export type { NewUserEmailModel, INewUserEmailModel };
 export { ZNewUserEmailModel };

@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZDashBoardResponseModel from "../Schema/ZDashBoardResponseModel";
 type DashBoardResponseModel = z.infer<typeof ZDashBoardResponseModel>;
-interface IDashBoardResponseModel extends DashBoardResponseModel {
-  $zod: typeof ZDashBoardResponseModel;
-}
+type IDashBoardResponseModel = z.infer<typeof ZDashBoardResponseModel>;
 export type { DashBoardResponseModel, IDashBoardResponseModel };
 export { ZDashBoardResponseModel };

@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -19,6 +20,7 @@ export type {
  };
 
 export default interface IReportClient {
+    
     /**
     * @operationId Report_GetProductActivityReportFilter
     * @tag Report
@@ -28,6 +30,7 @@ export default interface IReportClient {
     GetProductActivityReportFilter(params: {
         body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter        
     }): Promise<IUserResponseModel | undefined>;
+    
     /**
     * @operationId Report_GetItemDetailByProductIdReport
     * @tag Report

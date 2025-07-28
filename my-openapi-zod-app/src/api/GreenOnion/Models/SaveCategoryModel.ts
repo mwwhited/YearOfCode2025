@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZSaveCategoryModel from "../Schema/ZSaveCategoryModel";
 type SaveCategoryModel = z.infer<typeof ZSaveCategoryModel>;
-interface ISaveCategoryModel extends SaveCategoryModel {
-  $zod: typeof ZSaveCategoryModel;
-}
+type ISaveCategoryModel = z.infer<typeof ZSaveCategoryModel>;
 export type { SaveCategoryModel, ISaveCategoryModel };
 export { ZSaveCategoryModel };

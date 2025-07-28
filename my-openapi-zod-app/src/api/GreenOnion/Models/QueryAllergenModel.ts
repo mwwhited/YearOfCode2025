@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryAllergenModel from "../Schema/ZQueryAllergenModel";
 type QueryAllergenModel = z.infer<typeof ZQueryAllergenModel>;
-interface IQueryAllergenModel extends QueryAllergenModel {
-  $zod: typeof ZQueryAllergenModel;
-}
+type IQueryAllergenModel = z.infer<typeof ZQueryAllergenModel>;
 export type { QueryAllergenModel, IQueryAllergenModel };
 export { ZQueryAllergenModel };

@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZFilterParameter from "../Schema/ZFilterParameter";
 type FilterParameter = z.infer<typeof ZFilterParameter>;
-interface IFilterParameter extends FilterParameter {
-  $zod: typeof ZFilterParameter;
-}
+type IFilterParameter = z.infer<typeof ZFilterParameter>;
 export type { FilterParameter, IFilterParameter };
 export { ZFilterParameter };

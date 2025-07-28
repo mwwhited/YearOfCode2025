@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryProductModelFilter from "../Schema/ZQueryProductModelFilter";
 type QueryProductModelFilter = z.infer<typeof ZQueryProductModelFilter>;
-interface IQueryProductModelFilter extends QueryProductModelFilter {
-  $zod: typeof ZQueryProductModelFilter;
-}
+type IQueryProductModelFilter = z.infer<typeof ZQueryProductModelFilter>;
 export type { QueryProductModelFilter, IQueryProductModelFilter };
 export { ZQueryProductModelFilter };

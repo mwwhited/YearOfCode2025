@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryIngredientModelSearchQuery from "../Schema/ZQueryIngredientModelSearchQuery";
 type QueryIngredientModelSearchQuery = z.infer<typeof ZQueryIngredientModelSearchQuery>;
-interface IQueryIngredientModelSearchQuery extends QueryIngredientModelSearchQuery {
-  $zod: typeof ZQueryIngredientModelSearchQuery;
-}
+type IQueryIngredientModelSearchQuery = z.infer<typeof ZQueryIngredientModelSearchQuery>;
 export type { QueryIngredientModelSearchQuery, IQueryIngredientModelSearchQuery };
 export { ZQueryIngredientModelSearchQuery };

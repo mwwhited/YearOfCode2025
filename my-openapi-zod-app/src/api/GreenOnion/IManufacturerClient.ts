@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IManufacturerClient {
+    
     /**
     * Query **QueryManufacturerModel**
     * @description Query **QueryManufacturerModel**
@@ -36,6 +38,7 @@ export default interface IManufacturerClient {
     Query(params: {
         body?: IQueryManufacturerModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModelSearchQuery        
     }): Promise<IQueryManufacturerModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryManufacturerModel**
     * @description Get **QueryManufacturerModel**
@@ -50,6 +53,7 @@ export default interface IManufacturerClient {
             id?: number | undefined;
             gln?: string | undefined;
     }): Promise<IQueryManufacturerModel | undefined>;
+    
     /**
     * Save **QueryManufacturerModel**
     * @description Save **QueryManufacturerModel**

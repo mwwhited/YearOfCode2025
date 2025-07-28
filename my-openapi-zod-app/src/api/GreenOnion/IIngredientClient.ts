@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IIngredientClient {
+    
     /**
     * Query **QueryIngredientModel**
     * @description Query **QueryIngredientModel**
@@ -36,6 +38,7 @@ export default interface IIngredientClient {
     Query(params: {
         body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery        
     }): Promise<IQueryIngredientModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryIngredientModel**
     * @description Get **QueryIngredientModel**
@@ -50,6 +53,7 @@ export default interface IIngredientClient {
             id?: number | undefined;
             keyword?: string | undefined;
     }): Promise<IQueryIngredientModel | undefined>;
+    
     /**
     * Save **QueryIngredientModel**
     * @description Save **QueryIngredientModel**

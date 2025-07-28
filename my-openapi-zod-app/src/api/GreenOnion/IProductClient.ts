@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -39,6 +40,7 @@ export type {
  };
 
 export default interface IProductClient {
+    
     /**
     * Query **QueryProductModel**
     * @description Query **QueryProductModel**
@@ -52,6 +54,7 @@ export default interface IProductClient {
     Query(params: {
         body?: IQueryProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryProductModelSearchQuery        
     }): Promise<IQueryProductModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryProductModel**
     * @description Get **QueryProductModel**
@@ -67,6 +70,7 @@ export default interface IProductClient {
             gtin?: string | undefined;
             upc?: string | undefined;
     }): Promise<IQueryProductModel | undefined>;
+    
     /**
     * Save **QueryProductModel**
     * @description Save **QueryProductModel**
@@ -81,6 +85,7 @@ export default interface IProductClient {
     Save(params: {
         body?: ISaveProductModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveProductModel        
     }): Promise<IQueryProductModel | undefined>;
+    
     /**
     * @operationId Product_Pdfs
     * @tag Product
@@ -91,6 +96,7 @@ export default interface IProductClient {
             id?: string | undefined;
             download?: boolean | undefined;
     }): Promise<IContentReference | undefined>;
+    
     /**
     * @operationId Product_CreateProduct
     * @tag Product
@@ -98,6 +104,7 @@ export default interface IProductClient {
     * @anonymous false
     */
     CreateProduct(): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_GetProductDataByID
     * @tag Product
@@ -107,6 +114,7 @@ export default interface IProductClient {
     GetProductDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_CreateUpdateGtinAllocation
     * @tag Product
@@ -116,6 +124,7 @@ export default interface IProductClient {
     CreateUpdateGtinAllocation(params: {
         body?: IProductGtinAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductGtinAllocationModel        
     }): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_CreateUpdateUpcAllocation
     * @tag Product
@@ -125,6 +134,7 @@ export default interface IProductClient {
     CreateUpdateUpcAllocation(params: {
         body?: IProductUpcAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductUpcAllocationModel        
     }): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_GetProductAllGtin
     * @tag Product
@@ -134,6 +144,7 @@ export default interface IProductClient {
     GetProductAllGtin(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_GetProductAllUpc
     * @tag Product
@@ -143,6 +154,7 @@ export default interface IProductClient {
     GetProductAllUpc(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_CreateSelectProductUpload
     * @tag Product
@@ -158,6 +170,7 @@ export default interface IProductClient {
             Option?: string | undefined;
         body?: ISelectPrdFileupload | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload        
     }): Promise<IFileUploadResponse | undefined>;
+    
     /**
     * @operationId Product_SaveSelectProductUpload
     * @tag Product
@@ -170,6 +183,7 @@ export default interface IProductClient {
     SaveSelectProductUpload(params: {
         body?: ISelectProductSaveCheckListRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectProductSaveCheckListRequestModel        
     }): Promise<IFileUploadResponse | undefined>;
+    
     /**
     * @operationId Product_UploadFileWithOCR
     * @tag Product
@@ -177,6 +191,7 @@ export default interface IProductClient {
     * @anonymous false
     */
     UploadFileWithOCR(): Promise<IBaseResponseModel | undefined>;
+    
     /**
     * @operationId Product_CreateProductBeforeApprove
     * @tag Product
@@ -184,6 +199,7 @@ export default interface IProductClient {
     * @anonymous false
     */
     CreateProductBeforeApprove(): Promise<IProductResponse | undefined>;
+    
     /**
     * @operationId Product_GetProductBeforeApproveDataByID
     * @tag Product

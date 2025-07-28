@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IDistributorClient {
+    
     /**
     * Query **QueryDistributorModel**
     * @description Query **QueryDistributorModel**
@@ -36,6 +38,7 @@ export default interface IDistributorClient {
     Query(params: {
         body?: IQueryDistributorModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelSearchQuery        
     }): Promise<IQueryDistributorModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryDistributorModel**
     * @description Get **QueryDistributorModel**
@@ -50,6 +53,7 @@ export default interface IDistributorClient {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryDistributorModel | undefined>;
+    
     /**
     * Save **QueryDistributorModel**
     * @description Save **QueryDistributorModel**

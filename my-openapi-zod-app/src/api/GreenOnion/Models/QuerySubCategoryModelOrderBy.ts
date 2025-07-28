@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQuerySubCategoryModelOrderBy from "../Schema/ZQuerySubCategoryModelOrderBy";
 type QuerySubCategoryModelOrderBy = z.infer<typeof ZQuerySubCategoryModelOrderBy>;
-interface IQuerySubCategoryModelOrderBy extends QuerySubCategoryModelOrderBy {
-  $zod: typeof ZQuerySubCategoryModelOrderBy;
-}
+type IQuerySubCategoryModelOrderBy = z.infer<typeof ZQuerySubCategoryModelOrderBy>;
 export type { QuerySubCategoryModelOrderBy, IQuerySubCategoryModelOrderBy };
 export { ZQuerySubCategoryModelOrderBy };

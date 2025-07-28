@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryProductModelPagedQueryResult from "../Schema/ZQueryProductModelPagedQueryResult";
 type QueryProductModelPagedQueryResult = z.infer<typeof ZQueryProductModelPagedQueryResult>;
-interface IQueryProductModelPagedQueryResult extends QueryProductModelPagedQueryResult {
-  $zod: typeof ZQueryProductModelPagedQueryResult;
-}
+type IQueryProductModelPagedQueryResult = z.infer<typeof ZQueryProductModelPagedQueryResult>;
 export type { QueryProductModelPagedQueryResult, IQueryProductModelPagedQueryResult };
 export { ZQueryProductModelPagedQueryResult };

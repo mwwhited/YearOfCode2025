@@ -17,7 +17,10 @@
       "Bash(npm run dev:*)",
       "Bash(./scripts/generate-client.sh:*)",
       "Bash(npx openapi-zod-client:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

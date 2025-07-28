@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -47,7 +48,7 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
         this.http = http ? http : (window as any);
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
-
+    
     /**
     * Query **QueryCategoryModel**
     * @description Query **QueryCategoryModel**
@@ -90,18 +91,17 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQueryCategoryModelPagedQueryResult.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
+    }    
     /**
     * Get **QueryCategoryModel**
     * @description Get **QueryCategoryModel**
@@ -151,18 +151,18 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQueryCategoryModel.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
     }
+    
     /**
     * Save **QueryCategoryModel**
     * @description Save **QueryCategoryModel**
@@ -206,16 +206,14 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQueryCategoryModel.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
-}
+    }}

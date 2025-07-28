@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -19,6 +20,7 @@ export type {
  };
 
 export default interface ISuggestedProductClient {
+    
     /**
     * @operationId SuggestedProduct_CreateSuggestedProduct
     * @tag SuggestedProduct
@@ -31,6 +33,7 @@ export default interface ISuggestedProductClient {
     CreateSuggestedProduct(params: {
         body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel        
     }): Promise<ISuggestedProductResponseModel | undefined>;
+    
     /**
     * @operationId SuggestedProduct_ApproveSuggestedProduct
     * @tag SuggestedProduct

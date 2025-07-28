@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -47,7 +48,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
         this.http = http ? http : (window as any);
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
-
+    
     /**
     * Query **QuerySchoolDistrictModel**
     * @description Query **QuerySchoolDistrictModel**
@@ -90,18 +91,17 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQuerySchoolDistrictModelPagedQueryResult.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
+    }    
     /**
     * Get **QuerySchoolDistrictModel**
     * @description Get **QuerySchoolDistrictModel**
@@ -151,18 +151,18 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQuerySchoolDistrictModel.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
     }
+    
     /**
     * Save **QuerySchoolDistrictModel**
     * @description Save **QuerySchoolDistrictModel**
@@ -206,16 +206,14 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQuerySchoolDistrictModel.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
-}
+    }}

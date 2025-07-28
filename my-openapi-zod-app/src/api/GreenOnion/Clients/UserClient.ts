@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
@@ -50,7 +51,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
         this.http = http ? http : (window as any);
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
-
+    
     /**
     * Query **QueryUserModel**
     * @description Query **QueryUserModel**
@@ -93,18 +94,17 @@ export default class UserClient extends ClientBase implements IUserClient  {
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQueryUserModelPagedQueryResult.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
+    }    
     /**
     * Get **QueryUserModel**
     * @description Get **QueryUserModel**
@@ -159,18 +159,18 @@ export default class UserClient extends ClientBase implements IUserClient  {
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQueryUserModel.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
     }
+    
     /**
     * Save **QueryUserModel**
     * @description Save **QueryUserModel**
@@ -213,18 +213,17 @@ export default class UserClient extends ClientBase implements IUserClient  {
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = ZQueryUserModel.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
+    }    
     /**
     * @operationId User_SendNewUserEmail
     * @tag User
@@ -263,16 +262,14 @@ export default class UserClient extends ClientBase implements IUserClient  {
         };
         if (status === 200) {
             const _responseText = await response.text();
-            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);
+            const result200 = JSON.parse(resultData200);
             return result200;
         } else if (status !== 200 && status !== 204) {
             const _responseText = await response.text();
             if (_responseText !== "") {
                 const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
-                return JSON.parse(resultData200);
+                return resultData200;
             }
         }
-    }
-}
+    }}

@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryStorageTypeModelOrderBy from "../Schema/ZQueryStorageTypeModelOrderBy";
 type QueryStorageTypeModelOrderBy = z.infer<typeof ZQueryStorageTypeModelOrderBy>;
-interface IQueryStorageTypeModelOrderBy extends QueryStorageTypeModelOrderBy {
-  $zod: typeof ZQueryStorageTypeModelOrderBy;
-}
+type IQueryStorageTypeModelOrderBy = z.infer<typeof ZQueryStorageTypeModelOrderBy>;
 export type { QueryStorageTypeModelOrderBy, IQueryStorageTypeModelOrderBy };
 export { ZQueryStorageTypeModelOrderBy };

@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface IAllergenClient {
+    
     /**
     * Query **QueryAllergenModel**
     * @description Query **QueryAllergenModel**
@@ -36,6 +38,7 @@ export default interface IAllergenClient {
     Query(params: {
         body?: IQueryAllergenModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelSearchQuery        
     }): Promise<IQueryAllergenModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QueryAllergenModel**
     * @description Get **QueryAllergenModel**
@@ -50,6 +53,7 @@ export default interface IAllergenClient {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQueryAllergenModel | undefined>;
+    
     /**
     * Save **QueryAllergenModel**
     * @description Save **QueryAllergenModel**

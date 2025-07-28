@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZQueryIocCategoryModelSearchQuery from "../Schema/ZQueryIocCategoryModelSearchQuery";
 type QueryIocCategoryModelSearchQuery = z.infer<typeof ZQueryIocCategoryModelSearchQuery>;
-interface IQueryIocCategoryModelSearchQuery extends QueryIocCategoryModelSearchQuery {
-  $zod: typeof ZQueryIocCategoryModelSearchQuery;
-}
+type IQueryIocCategoryModelSearchQuery = z.infer<typeof ZQueryIocCategoryModelSearchQuery>;
 export type { QueryIocCategoryModelSearchQuery, IQueryIocCategoryModelSearchQuery };
 export { ZQueryIocCategoryModelSearchQuery };

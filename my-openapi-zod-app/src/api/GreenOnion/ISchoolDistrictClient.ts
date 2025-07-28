@@ -5,7 +5,8 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 // Models 
 import type {
@@ -23,6 +24,7 @@ export type {
  };
 
 export default interface ISchoolDistrictClient {
+    
     /**
     * Query **QuerySchoolDistrictModel**
     * @description Query **QuerySchoolDistrictModel**
@@ -36,6 +38,7 @@ export default interface ISchoolDistrictClient {
     Query(params: {
         body?: IQuerySchoolDistrictModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelSearchQuery        
     }): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined>;
+    
     /**
     * Get **QuerySchoolDistrictModel**
     * @description Get **QuerySchoolDistrictModel**
@@ -50,6 +53,7 @@ export default interface ISchoolDistrictClient {
             id?: number | undefined;
             name?: string | undefined;
     }): Promise<IQuerySchoolDistrictModel | undefined>;
+    
     /**
     * Save **QuerySchoolDistrictModel**
     * @description Save **QuerySchoolDistrictModel**

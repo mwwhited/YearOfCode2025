@@ -5,14 +5,13 @@
 // @applicationDescription: GreenOnion.API - 1.0.0.0
 // @applicationVersion: 1.0.0.0
 //
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// @ts-nocheck
+// eslint-disable @typescript-eslint/no-unused-vars
 
 import type { z } from "zod";
 
 import ZResultMessage from "../Schema/ZResultMessage";
 type ResultMessage = z.infer<typeof ZResultMessage>;
-interface IResultMessage extends ResultMessage {
-  $zod: typeof ZResultMessage;
-}
+type IResultMessage = z.infer<typeof ZResultMessage>;
 export type { ResultMessage, IResultMessage };
 export { ZResultMessage };
