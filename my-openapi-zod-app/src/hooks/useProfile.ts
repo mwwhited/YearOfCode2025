@@ -80,8 +80,11 @@ export const useProfile = (): UseProfileReturn => {
     try {
       const userClient = new UserClient();
       
+      console.log("SPECIAL!");
       // Call UserClient.get() without parameters to get current user
       const userData = await userClient.Get({});
+      
+      console.log("SPECIAL!", userData);
       
       if (userData) {
         // Validate user exists in system (like original objectId check)

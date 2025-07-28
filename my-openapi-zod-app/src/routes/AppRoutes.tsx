@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { RoleGuard } from '@/components/auth/RoleGuard';
 import { Dashboard } from '@/pages/Dashboard';
+import { Profile } from '@/pages/Profile';
+import { Logout } from '@/pages/Logout';
 import UsersList from '@/pages/UsersList';
 import { ROLE_GROUPS } from '@/types/roles';
 
@@ -19,13 +21,19 @@ const NotFoundPage = () => <div className="p-4"><h1>404 - Page Not Found</h1><p>
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* All routes are authenticated via MsalAuthenticationTemplate */}
+      {/* Logout route - accessible outside main layout for immediate logout */}
+      <Route path="/logout" element={<Logout />} />
+      
+      {/* All other routes are authenticated via MsalAuthenticationTemplate */}
       <Route path="/" element={<AppLayout />}>
         {/* Default redirect to dashboard */}
         <Route index element={<Navigate to="/dashboard" replace />} />
         
         {/* Dashboard - accessible to all authenticated users */}
         <Route path="dashboard" element={<Dashboard />} />
+        
+        {/* Profile - accessible to all authenticated users */}
+        <Route path="profile" element={<Profile />} />
         
         {/* Product routes - accessible to all authenticated users */}
         <Route path="products" element={<ProductsPage />} />

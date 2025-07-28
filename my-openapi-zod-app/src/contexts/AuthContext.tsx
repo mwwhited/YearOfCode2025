@@ -8,6 +8,7 @@ import { applicationInsights } from '@/services/applicationInsights';
 import { ClientBase } from '@/api/_ClientBase';
 import { UserRole, hasRolePermission, hasAnyRolePermission } from '@/types/roles';
 import { useProfile } from '@/hooks/useProfile';
+import { tokenCache } from '@/services/tokenCache';
 import type { IQueryUserModel } from '@/api/GreenOnion';
 
 interface User {
@@ -80,7 +81,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       profileRole: profile?.roleName || 'none',
       isLoadingProfile,
       hasValidProfile,
-      inProgress
+      inProgress,
+      isAuthenticated: !!activeAccount
     });
   }, [accounts, activeAccount, profile, isLoadingProfile, hasValidProfile, inProgress]);
 
@@ -140,6 +142,35 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       // Clear Application Insights user context before logout
       applicationInsights.clearUserContext();
+      
+      // Clear token cache
+      tokenCache.clearToken();
+      
+      // Clear any other localStorage items related to user session
+      try {
+        // Remove any user-specific localStorage items
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (
+            key.startsWith('msal.') || 
+            key.startsWith('greenonion_') ||
+            key.includes('user') ||
+            key.includes('profile') ||
+            key.includes('auth')
+          )) {
+            keysToRemove.push(key);
+          }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key));
+        
+        // Also clear sessionStorage
+        sessionStorage.clear();
+        
+        console.log('🧹 Cleared all user data from storage');
+      } catch (storageError) {
+        console.warn('⚠️ Error clearing storage:', storageError);
+      }
       
       await instance.logoutRedirect({
         postLogoutRedirectUri: '/',
@@ -244,7 +275,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     user,
     login,
     logout,
-    isAuthenticated: !!activeAccount && !!profile && hasValidProfile,
+    // With MsalAuthenticationTemplate, if we reach here, user is authenticated
+    // We're authenticated as soon as we have an activeAccount (MsalAuthenticationTemplate ensures this)
+    isAuthenticated: !!activeAccount,
     isLoading: inProgress !== 'none' || isLoadingProfile,
     hasRole,
     hasAnyRole,

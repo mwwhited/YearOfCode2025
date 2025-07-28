@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Toolbar, Button, Avatar, Menu } from '@/components/controls';
 import type { PrimeMenuType } from '@/components/controls/Menu';
 import { useRef } from 'react';
@@ -11,17 +12,22 @@ interface AppHeaderProps {
 
 export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCollapsed }) => {
   const { user, logout, isAuthenticated, getUserFullName, getUserRole } = useAuth();
+  const navigate = useNavigate();
   const menuRef = useRef<PrimeMenuType>(null);
+
+  // Get display name from user context
+  const displayName = getUserFullName() || user?.name || user?.username || 'User';
+  const userRole = getUserRole() || 'No role assigned';
 
   const userMenuItems = [
     {
-      label: `${getUserFullName() || user?.username || 'User'}`,
+      label: displayName,
       icon: 'pi pi-user',
       disabled: true,
-      template: (item: any) => (
+      template: () => (
         <div className="p-menuitem-content" style={{ padding: '0.5rem 1rem' }}>
-          <div className="font-semibold">{item.label}</div>
-          <div className="text-xs text-500">{getUserRole() || 'No role assigned'}</div>
+          <div className="font-semibold">{displayName}</div>
+          <div className="text-xs text-500">{userRole}</div>
         </div>
       )
     },
@@ -30,16 +36,15 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCo
       label: 'Profile',
       icon: 'pi pi-user',
       command: () => {
-        // Navigate to profile page
-        console.log('Navigate to profile');
+        navigate('/profile');
       }
     },
     {
       label: 'Settings',
       icon: 'pi pi-cog',
       command: () => {
-        // Navigate to settings page
-        console.log('Navigate to settings');
+        // For now, just show a message. Can be expanded later.
+        console.log('Settings functionality coming soon');
       }
     },
     {
@@ -66,12 +71,25 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCo
     </div>
   );
 
+  // Get avatar initials from user context
+  const getAvatarInitials = () => {
+    const fullName = getUserFullName();
+    if (fullName) {
+      const names = fullName.trim().split(' ');
+      if (names.length >= 2) {
+        return `${names[0].charAt(0)}${names[names.length - 1].charAt(0)}`.toUpperCase();
+      }
+      return names[0].charAt(0).toUpperCase();
+    }
+    return user?.name?.charAt(0)?.toUpperCase() || user?.username?.charAt(0)?.toUpperCase() || 'U';
+  };
+
   const endContent = (
     <div className="flex align-items-center">
       {isAuthenticated && (
         <>
           <span className="mr-2 text-sm hidden md:inline">
-            Welcome, {getUserFullName() || user?.name || user?.username}
+            Welcome, {displayName}
           </span>
           <Menu 
             model={userMenuItems} 
@@ -80,7 +98,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCo
             className="mt-2"
           />
           <Avatar
-            label={user?.name?.charAt(0) || user?.username?.charAt(0) || 'U'}
+            label={getAvatarInitials()}
             className="cursor-pointer"
             style={{ backgroundColor: 'var(--primary-color)', color: 'white' }}
             onClick={(e) => menuRef.current?.toggle(e)}

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { PublicClientApplication, InteractionType } from '@azure/msal-browser';
-import { MsalProvider, MsalAuthenticationTemplate } from '@azure/msal-react';
+import { MsalProvider, MsalAuthenticationTemplate, useMsal } from '@azure/msal-react';
 import { Button, ProgressSpinner, Message } from '@/components/controls';
 import { configManager } from '@/config/appConfig';
 import { createMsalConfig, createLoginRequest } from '@/config/msalConfig';
 import { applicationInsights } from '@/services/applicationInsights';
+import { tokenCache } from '@/services/tokenCache';
 import '@/services/apiInterceptor'; // Initialize API interceptors
 import App from '@/App';
 
@@ -38,19 +39,7 @@ export const AppWithConfig = () => {
       const msalInstance = new PublicClientApplication(msalConfig);
       await msalInstance.initialize();
       
-      // Handle redirect response immediately after initialization
-      try {
-        console.log('🔧 Handling redirect response during app initialization...');
-        const response = await msalInstance.handleRedirectPromise();
-        if (response) {
-          console.log('✅ Redirect response handled during initialization:', response.account?.username);
-        } else {
-          console.log('ℹ️ No redirect response to handle during initialization');
-        }
-      } catch (redirectError) {
-        console.warn('⚠️ Error handling redirect response during initialization:', redirectError);
-        // Don't fail app initialization for redirect errors
-      }
+      console.log('ℹ️ MSAL instance initialized, redirect handling will be done by AppWithAuthCheck');
       
       setMsalInstance(msalInstance);
       setLoginRequest(authRequest);
@@ -123,47 +112,132 @@ export const AppWithConfig = () => {
     );
   }
 
-  // Success state - render the main application with authentication template
+  // Success state - render the main application 
   return (
     <MsalProvider instance={msalInstance}>
-      <MsalAuthenticationTemplate 
-        interactionType={InteractionType.Redirect}
-        authenticationRequest={loginRequest}
-        loadingComponent={
-          () => (
-            <div className="min-h-screen flex align-items-center justify-content-center">
-              <div className="text-center">
-                <ProgressSpinner style={{ width: '50px', height: '50px' }} />
-                <div className="mt-3">
-                  <h3>Authenticating...</h3>
-                  <p className="text-600">Please wait while we authenticate you</p>
-                </div>
-              </div>
-            </div>
-          )
-        }
-        errorComponent={
-          () => (
-            <div className="min-h-screen flex align-items-center justify-content-center px-4">
-              <div className="max-w-md w-full">
-                <Message 
-                  severity="error" 
-                  text="Authentication failed" 
-                  className="w-full mb-3"
-                />
-                <div className="text-center">
-                  <h3 className="mt-0">Authentication Error</h3>
-                  <p className="text-600 mb-4">
-                    Unable to authenticate. Please try refreshing the page.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )
-        }
-      >
-        <App />
-      </MsalAuthenticationTemplate>
+      <AppWithAuthCheck msalInstance={msalInstance} loginRequest={loginRequest} />
     </MsalProvider>
+  );
+};
+
+/**
+ * Component that handles authentication logic more intelligently
+ * Checks for cached tokens first, then falls back to MsalAuthenticationTemplate
+ */
+const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginRequest: any }> = ({
+  msalInstance,
+  loginRequest
+}) => {
+  const { accounts, inProgress } = useMsal();
+  const [authCheckComplete, setAuthCheckComplete] = useState(false);
+
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      try {
+        console.log('🔍 Checking authentication state...', {
+          accounts: accounts.length,
+          inProgress,
+          hasValidToken: tokenCache.hasValidToken()
+        });
+
+        // ALWAYS try to handle any pending redirects first
+        console.log('🔄 Checking for pending redirects...');
+        const redirectResult = await msalInstance.handleRedirectPromise();
+        
+        if (redirectResult) {
+          console.log('✅ Handled redirect result:', redirectResult.account?.username);
+          // After handling redirect, accounts should be updated by MSAL automatically
+          setAuthCheckComplete(true);
+          return;
+        }
+
+        // If we have accounts from MSAL, we're good to go
+        if (accounts.length > 0) {
+          console.log('✅ MSAL has accounts, proceeding with app');
+          setAuthCheckComplete(true);
+          return;
+        }
+
+        // If we have cached tokens but no MSAL accounts after redirect check
+        if (tokenCache.hasValidToken()) {
+          console.log('⚠️ Have cached token but no MSAL accounts, clearing stale cache');
+          tokenCache.clearToken();
+        }
+
+        // No valid authentication, let MsalAuthenticationTemplate handle it
+        console.log('🔐 No valid authentication, using MsalAuthenticationTemplate');
+        setAuthCheckComplete(true);
+        
+      } catch (error) {
+        console.error('❌ Error during auth check:', error);
+        setAuthCheckComplete(true);
+      }
+    };
+
+    if (inProgress === 'none') {
+      checkAuthentication();
+    }
+  }, [accounts, inProgress, msalInstance]);
+
+  // Show loading while checking authentication
+  if (!authCheckComplete) {
+    return (
+      <div className="min-h-screen flex align-items-center justify-content-center">
+        <div className="text-center">
+          <ProgressSpinner style={{ width: '50px', height: '50px' }} />
+          <div className="mt-3">
+            <h3>Checking authentication...</h3>
+            <p className="text-600">Please wait</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // If we have accounts, render the app directly
+  if (accounts.length > 0) {
+    return <App />;
+  }
+
+  // Otherwise, use MsalAuthenticationTemplate for authentication
+  return (
+    <MsalAuthenticationTemplate 
+      interactionType={InteractionType.Redirect}
+      authenticationRequest={loginRequest}
+      loadingComponent={
+        () => (
+          <div className="min-h-screen flex align-items-center justify-content-center">
+            <div className="text-center">
+              <ProgressSpinner style={{ width: '50px', height: '50px' }} />
+              <div className="mt-3">
+                <h3>Authenticating...</h3>
+                <p className="text-600">Please wait while we authenticate you</p>
+              </div>
+            </div>
+          </div>
+        )
+      }
+      errorComponent={
+        () => (
+          <div className="min-h-screen flex align-items-center justify-content-center px-4">
+            <div className="max-w-md w-full">
+              <Message 
+                severity="error" 
+                text="Authentication failed" 
+                className="w-full mb-3"
+              />
+              <div className="text-center">
+                <h3 className="mt-0">Authentication Error</h3>
+                <p className="text-600 mb-4">
+                  Unable to authenticate. Please try refreshing the page.
+                </p>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    >
+      <App />
+    </MsalAuthenticationTemplate>
   );
 };

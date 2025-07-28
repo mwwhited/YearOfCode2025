@@ -146,6 +146,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
       icon: 'pi pi-cog',
       items: [
         {
+          label: 'Profile',
+          icon: 'pi pi-user',
+          command: () => navigate('/profile'),
+          visible: true
+        },
+        {
           label: 'Manage Users',
           icon: 'pi pi-users',
           command: () => navigate('/users/list'),

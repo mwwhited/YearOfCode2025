@@ -20,15 +20,11 @@ class ApplicationInsightsService {
     // Check if Application Insights configuration exists
     if (!config || !config.applicationInsights) {
       console.warn('⚠️ Application Insights configuration not found - using fallback telemetry');
-      console.log('🔧 Config object:', config);
-      console.log('🔧 ApplicationInsights property:', config?.applicationInsights);
       this.useFallback = true;
       return;
     }
 
     const aiConfig = config.applicationInsights;
-    console.log('🔧 AI Config extracted:', aiConfig);
-    
     // Skip initialization if no connection string provided
     if (!aiConfig.connectionString || aiConfig.connectionString.trim() === '') {
       console.warn('⚠️ Application Insights connection string not provided - using fallback telemetry');
