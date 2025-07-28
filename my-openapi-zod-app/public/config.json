@@ -1,0 +1,28 @@
+{
+  "azure": {
+    "clientId": "your-client-id-here",
+    "authority": "https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1_signupsignin",
+    "knownAuthorities": ["your-tenant.b2clogin.com"],
+    "redirectUri": "/",
+    "postLogoutRedirectUri": "/"
+  },
+  "api": {
+    "baseUrl": "https://your-api-url.com",
+    "scopes": ["openid", "profile"],
+    "timeout": 30000
+  },
+  "app": {
+    "name": "GreenOnion Application",
+    "version": "1.0.0",
+    "environment": "development",
+    "features": {
+      "monitoring": true,
+      "analytics": false
+    }
+  },
+  "ui": {
+    "theme": "saga-blue",
+    "sidebarCollapsed": false,
+    "itemsPerPage": 25
+  }
+}

@@ -1,0 +1,7 @@
+- Grids should take IEnumerable<TModel>
+- grids should follow the IQueryable<TModel> establisted with 
+  - search
+  - filter
+  - sort 
+  - page
+- grids should 

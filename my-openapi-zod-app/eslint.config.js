@@ -6,9 +6,10 @@ import tseslint from 'typescript-eslint'
 import { globalIgnores } from 'eslint/config'
 
 export default tseslint.config([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'src/api/GreenOnion/**/*', 'src/api/_ClientBase.ts']),
   {
     files: ['**/*.{ts,tsx}'],
+    ignores: ['src/api/GreenOnion/**/*', 'src/api/_ClientBase.ts'],
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
@@ -38,6 +39,10 @@ export default tseslint.config([
           prefer: 'type-imports',
           disallowTypeAnnotations: false,
         },
+      ],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
       ],
     },
   },

@@ -5,7 +5,12 @@ import type { MonitoringEvent, PerformanceMetric } from '../utils/monitoring';
 const MonitoringDashboard = () => {
   const [events, setEvents] = useState<MonitoringEvent[]>([]);
   const [metrics, setMetrics] = useState<PerformanceMetric[]>([]);
-  const [summary, setSummary] = useState<any>(null);
+  const [summary, setSummary] = useState<{
+    totalEvents: number;
+    errorCount: number;
+    warnCount: number;
+    totalMetrics: number;
+  } | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

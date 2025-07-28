@@ -1,19 +1,23 @@
-// App.js
+import { BrowserRouter } from 'react-router-dom';
 import { PrimeReactProvider } from 'primereact/api';
+import { AuthProvider } from './contexts/AuthContext';
+import { AppRoutes } from './routes/AppRoutes';
 import './App.css';
 
 // PrimeReact styles
-import 'primereact/resources/themes/saga-blue/theme.css'; // or any other theme
+import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
 
 function App() {
   return (
     <PrimeReactProvider>
-      <div className="App">
-        {/* Add your components here */}
-        <h1>Hello, PrimeReact!</h1>
-      </div>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </BrowserRouter>
     </PrimeReactProvider>
   );
 }
