@@ -11,7 +11,7 @@ interface TrackedButtonProps extends ButtonProps {
   disableTracking?: boolean;
 }
 
-const Button: React.FC<TrackedButtonProps> = ({
+export const Button: React.FC<TrackedButtonProps> = ({
   label,
   action,
   id,
@@ -51,4 +51,3 @@ const Button: React.FC<TrackedButtonProps> = ({
   );
 };
 
-export default Button;

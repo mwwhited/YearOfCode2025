@@ -84,9 +84,9 @@
 - [ ] Update config.json with Azure B2C settings
 
 ### Runtime Configuration Setup
-- [ ] Copy config.example.json to public/config.json
-- [ ] Configure Azure B2C settings in config.json
-- [ ] Configure API base URL
+- [x] Copy config.example.json to public/config.json
+- [x] Configure Azure B2C settings in config.json
+- [x] Configure API base URL
 - [ ] Set up environment-specific configurations
 - [ ] Test configuration loading and validation
 
