@@ -1,8 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
-import { ProgressSpinner } from 'primereact/progressspinner';
-import { Message } from 'primereact/message';
+import { ProgressSpinner, Message } from '@/components/controls';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;

@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { DataTable, DataTableFilterMeta } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { z, ZodObject, ZodRawShape } from "zod";
-import { InputText } from "primereact/inputtext";
-import { Dropdown } from "primereact/dropdown";
-import { Checkbox } from "primereact/checkbox";
+import { useState } from "react";
+import { DataTable, Column, InputText, Dropdown } from './';
+import type { DataTableFilterMeta } from "primereact/datatable";
+import { z, ZodObject, type ZodRawShape } from "zod";
 
 type GenericDataTableProps<T extends ZodObject<ZodRawShape>> = {
   schema: T;
@@ -53,7 +50,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
       <DataTable
         value={data}
         filters={filters}
-        onFilter={(e) => setFilters(e.filters)}
+        onFilter={(e: any) => setFilters(e.filters)}
         paginator
         rows={10}
         resizableColumns

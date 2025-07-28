@@ -2,13 +2,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { PrimeReactProvider } from 'primereact/api';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { AppRoutes } from '@/routes/AppRoutes';
-import './App.css';
 
 // PrimeReact styles
-import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/themes/lara-light-teal/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import './App.css';
 
 function App() {
   return (

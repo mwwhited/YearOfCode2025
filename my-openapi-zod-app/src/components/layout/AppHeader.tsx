@@ -1,10 +1,8 @@
 import React from 'react';
-import { Toolbar } from 'primereact/toolbar';
-import { Button } from 'primereact/button';
-import { Avatar } from 'primereact/avatar';
-import { Menu } from 'primereact/menu';
+import { Toolbar, Button, Avatar, Menu } from '@/components/controls';
 import { useRef } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import type { Menu as PrimeMenu } from 'primereact/menu';
 
 interface AppHeaderProps {
   onSidebarToggle: () => void;
@@ -13,7 +11,7 @@ interface AppHeaderProps {
 
 export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCollapsed }) => {
   const { user, logout, isAuthenticated } = useAuth();
-  const menuRef = useRef<Menu>(null);
+  const menuRef = useRef<PrimeMenu>(null);
 
   const userMenuItems = [
     {

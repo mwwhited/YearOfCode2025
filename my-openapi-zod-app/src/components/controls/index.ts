@@ -8,3 +8,6 @@ export { Message } from './Message';
 export { Toolbar } from './Toolbar';
 export { Avatar } from './Avatar';
 export { Menu } from './Menu';
+export { InputText } from './InputText';
+export { Dropdown } from './Dropdown';
+export { Checkbox } from './Checkbox';

@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { PublicClientApplication } from '@azure/msal-browser';
 import { MsalProvider } from '@azure/msal-react';
-import { ProgressSpinner } from 'primereact/progressspinner';
-import { Message } from 'primereact/message';
-import { Button } from '@/components/controls';
+import { Button, ProgressSpinner, Message } from '@/components/controls';
 import { configManager } from '@/config/appConfig';
 import { createMsalConfig } from '@/config/msalConfig';
 import { applicationInsights } from '@/services/applicationInsights';

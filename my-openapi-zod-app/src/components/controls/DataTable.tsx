@@ -1,10 +1,11 @@
+import React from 'react';
 import { DataTable as PrimeDataTable } from 'primereact/datatable';
-import type { DataTableProps as PrimeDataTableProps } from 'primereact/datatable';
 
-export interface DataTableProps extends PrimeDataTableProps {
-  // Add custom props if needed
+export interface DataTableProps {
+  children?: React.ReactNode;
+  [key: string]: any;
 }
 
-export const DataTable: React.FC<DataTableProps> = (props) => {
-  return <PrimeDataTable {...props} />;
+export const DataTable: React.FC<DataTableProps> = ({ children, ...props }) => {
+  return <PrimeDataTable {...props}>{children}</PrimeDataTable>;
 };

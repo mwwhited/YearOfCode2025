@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { AppHeader } from './AppHeader';
 import { AppSidebar } from './AppSidebar';
 import { AppFooter } from './AppFooter';
-import { ProgressSpinner } from 'primereact/progressspinner';
+import { ProgressSpinner } from '@/components/controls';
 import { useAuth } from '@/hooks/useAuth';
 
 export const AppLayout: React.FC = () => {

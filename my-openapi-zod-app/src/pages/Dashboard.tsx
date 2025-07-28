@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'primereact/card';
-import { Chart } from 'primereact/chart';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Button } from 'primereact/button';
+import { Card, Chart, DataTable, Column, Button } from '@/components/controls';
 import { useAuth } from '@/hooks/useAuth';
 import { useApplicationInsights } from '@/hooks/useApplicationInsights';
 

@@ -22,7 +22,8 @@
       "Bash(npm uninstall:*)",
       "Bash(rm:*)",
       "Bash(npm run lint)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(mv:*)"
     ],
     "deny": []
   }
