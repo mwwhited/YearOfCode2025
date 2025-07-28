@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-import { ZProductCheck } from "./ZProductCheck";
+import ZProductCheck from "./ZProductCheck";
 
 const ZSelectProductSaveCheckListRequestModel = z.object({
-    uniqueExcelFileId:z.string().optional(),
-    userOrDistrictId:z.number().int().optional(),
-    option:z.string().optional(),
-    productCheckList:z.array(ZProductCheck).optional(),
+    uniqueExcelFileId: z.string().optional(),
+    userOrDistrictId: z.number().int().optional(),
+    option: z.string().optional(),
+    productCheckList: z.array(ZProductCheck).optional(),
 });
 
 export default ZSelectProductSaveCheckListRequestModel;

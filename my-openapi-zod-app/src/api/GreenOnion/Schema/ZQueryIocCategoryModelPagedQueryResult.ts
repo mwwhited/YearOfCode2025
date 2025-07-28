@@ -8,15 +8,15 @@
 //
 
 import { z } from "zod";
-import { ZQueryIocCategoryModel } from "./ZQueryIocCategoryModel";
-import { ZResultMessage } from "./ZResultMessage";
+import ZQueryIocCategoryModel from "./ZQueryIocCategoryModel";
+import ZResultMessage from "./ZResultMessage";
 
 const ZQueryIocCategoryModelPagedQueryResult = z.object({
-    rows:z.array(ZQueryIocCategoryModel).optional().describe(`Gets the collection of items in the result.`),
-    messages:z.array(ZResultMessage).optional().describe(`Gets or sets the collection of result messages associated with the query result.`),
-    currentPage:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalPageCount:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalRowCount:z.number().int().optional().describe(`Gets the total number of rows.`),
+    rows: z.array(ZQueryIocCategoryModel).optional(),
+    messages: z.array(ZResultMessage).optional(),
+    currentPage: z.number().int().optional(),
+    totalPageCount: z.number().int().optional(),
+    totalRowCount: z.number().int().optional(),
 });
 
 export default ZQueryIocCategoryModelPagedQueryResult;

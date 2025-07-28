@@ -10,17 +10,17 @@
 import { z } from "zod";
 
 const ZQueryDefinedFilterModel = z.object({
-    definedFilterId:z.number().int().optional(),
-    createById:z.number().int().optional(),
-    updatedOn:z.string().optional(),
-    updatedById:z.number().int().optional(),
-    updatedBy:z.string().optional(),
-    createBy:z.string().optional(),
-    path:z.string().optional(),
-    name:z.string().optional(),
-    isActive:z.boolean().optional(),
-    createdOn:z.string().optional(),
-    state:z.string().optional(),
+    definedFilterId: z.number().int().optional(),
+    createById: z.number().int().optional(),
+    updatedOn: z.string().optional(),
+    updatedById: z.number().int().optional(),
+    updatedBy: z.string().optional(),
+    createBy: z.string().optional(),
+    path: z.string().optional(),
+    name: z.string().optional(),
+    isActive: z.boolean().optional(),
+    createdOn: z.string().optional(),
+    state: z.string().optional(),
 });
 
 export default ZQueryDefinedFilterModel;

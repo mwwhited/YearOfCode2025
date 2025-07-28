@@ -10,11 +10,11 @@
 import { z } from "zod";
 
 const ZSaveSubCategoryModel = z.object({
-    subCategoryId:z.number().int().optional(),
-    categoryId:z.number().int().optional(),
-    subCategoryName:z.string().optional(),
-    subCategoryCode:z.string().optional(),
-    isActive:z.boolean().optional(),
+    subCategoryId: z.number().int().optional(),
+    categoryId: z.number().int().optional(),
+    subCategoryName: z.string().optional(),
+    subCategoryCode: z.string().optional(),
+    isActive: z.boolean().optional(),
 });
 
 export default ZSaveSubCategoryModel;

@@ -10,16 +10,16 @@
 import { z } from "zod";
 
 const ZQueryDistributorModel = z.object({
-    distributorId:z.number().int().optional(),
-    distributorName:z.string().optional(),
-    distributorCode:z.string().optional(),
-    isActive:z.boolean().optional(),
-    createdOn:z.string().optional(),
-    createdById:z.number().int().optional(),
-    createdBy:z.string().optional(),
-    updatedOn:z.string().optional(),
-    updatedById:z.number().int().optional(),
-    updatedBy:z.string().optional(),
+    distributorId: z.number().int().optional(),
+    distributorName: z.string().optional(),
+    distributorCode: z.string().optional(),
+    isActive: z.boolean().optional(),
+    createdOn: z.string().optional(),
+    createdById: z.number().int().optional(),
+    createdBy: z.string().optional(),
+    updatedOn: z.string().optional(),
+    updatedById: z.number().int().optional(),
+    updatedBy: z.string().optional(),
 });
 
 export default ZQueryDistributorModel;

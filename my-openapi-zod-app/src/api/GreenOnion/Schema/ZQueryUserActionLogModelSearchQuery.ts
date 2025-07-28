@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQueryUserActionLogModelFilter } from "./ZQueryUserActionLogModelFilter";
-import { ZQueryUserActionLogModelOrderBy } from "./ZQueryUserActionLogModelOrderBy";
+import ZQueryUserActionLogModelFilter from "./ZQueryUserActionLogModelFilter";
+import ZQueryUserActionLogModelOrderBy from "./ZQueryUserActionLogModelOrderBy";
 
 const ZQueryUserActionLogModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** EventType; HttpMethod; EventDate; SessionId; RequestId; CorrelationId; RequestPath; User`),
-    filter:ZQueryUserActionLogModelFilter.optional(),
-    orderBy:ZQueryUserActionLogModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQueryUserActionLogModelFilter.optional(),
+    orderBy: ZQueryUserActionLogModelOrderBy.optional(),
 });
 
 export default ZQueryUserActionLogModelSearchQuery;

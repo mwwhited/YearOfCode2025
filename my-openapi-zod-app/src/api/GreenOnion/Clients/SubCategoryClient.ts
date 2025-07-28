@@ -8,7 +8,8 @@
 //
 
 // Interface
-import { ClientBase } from "../../_ClientBase";
+import { ClientBase, ApiException } from "../../_ClientBase";
+export { ApiException };
 import type ISubCategoryClient from "../ISubCategoryClient";
 
 // Models 
@@ -39,15 +40,15 @@ export type {
 export default class SubCategoryClient extends ClientBase implements ISubCategoryClient  {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+    protected jsonParseReviver: ((key: string, value: unknown) => unknown) | undefined = undefined;
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
         super();
-        this.http = http ? http : window as any;
+        this.http = http ? http : window as unknown;
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    /**
+    async     /**
     * Query **QuerySubCategoryModel**
     * @description Query **QuerySubCategoryModel**
     * @operationId SubCategory_Query
@@ -81,23 +82,26 @@ export default class SubCategoryClient extends ClientBase implements ISubCategor
         });
     }
 
-    protected processQuery(response: Response): Promise<IQuerySubCategoryModelPagedQueryResult | undefined>
+    protected async processQuery(response: Response): Promise<IQuerySubCategoryModelPagedQueryResult | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQuerySubCategoryModelPagedQueryResult.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQuerySubCategoryModelPagedQueryResult | undefined>(null as any);
     }
     /**
     * Get **QuerySubCategoryModel**
@@ -140,25 +144,28 @@ export default class SubCategoryClient extends ClientBase implements ISubCategor
         });
     }
 
-    protected processGet(response: Response): Promise<IQuerySubCategoryModel | undefined>
+    protected async processGet(response: Response): Promise<IQuerySubCategoryModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQuerySubCategoryModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQuerySubCategoryModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * Save **QuerySubCategoryModel**
     * @description Save **QuerySubCategoryModel**
     * @operationId SubCategory_Save
@@ -193,22 +200,25 @@ export default class SubCategoryClient extends ClientBase implements ISubCategor
         });
     }
 
-    protected processSave(response: Response): Promise<IQuerySubCategoryModel | undefined>
+    protected async processSave(response: Response): Promise<IQuerySubCategoryModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQuerySubCategoryModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQuerySubCategoryModel | undefined>(null as any);
     }
 }

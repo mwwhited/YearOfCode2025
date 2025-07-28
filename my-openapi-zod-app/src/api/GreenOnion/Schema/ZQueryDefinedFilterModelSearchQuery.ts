@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQueryDefinedFilterModelFilter } from "./ZQueryDefinedFilterModelFilter";
-import { ZQueryDefinedFilterModelOrderBy } from "./ZQueryDefinedFilterModelOrderBy";
+import ZQueryDefinedFilterModelFilter from "./ZQueryDefinedFilterModelFilter";
+import ZQueryDefinedFilterModelOrderBy from "./ZQueryDefinedFilterModelOrderBy";
 
 const ZQueryDefinedFilterModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** CreateById; UpdatedOn; UpdatedById; UpdatedBy; CreateBy; Path; Name; IsActive; CreatedOn; State`),
-    filter:ZQueryDefinedFilterModelFilter.optional(),
-    orderBy:ZQueryDefinedFilterModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQueryDefinedFilterModelFilter.optional(),
+    orderBy: ZQueryDefinedFilterModelOrderBy.optional(),
 });
 
 export default ZQueryDefinedFilterModelSearchQuery;

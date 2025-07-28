@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQuerySchoolDistrictModelFilter } from "./ZQuerySchoolDistrictModelFilter";
-import { ZQuerySchoolDistrictModelOrderBy } from "./ZQuerySchoolDistrictModelOrderBy";
+import ZQuerySchoolDistrictModelFilter from "./ZQuerySchoolDistrictModelFilter";
+import ZQuerySchoolDistrictModelOrderBy from "./ZQuerySchoolDistrictModelOrderBy";
 
 const ZQuerySchoolDistrictModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** SiteCode; DistrictName; PhoneNumber; Email; Country; State; City; DistrictLogo; FoodServiceOptions; ContractCompany; SchoolCoopName; CreatedBy; UpdatedBy`),
-    filter:ZQuerySchoolDistrictModelFilter.optional(),
-    orderBy:ZQuerySchoolDistrictModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQuerySchoolDistrictModelFilter.optional(),
+    orderBy: ZQuerySchoolDistrictModelOrderBy.optional(),
 });
 
 export default ZQuerySchoolDistrictModelSearchQuery;

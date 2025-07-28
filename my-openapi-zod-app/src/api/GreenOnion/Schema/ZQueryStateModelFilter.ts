@@ -8,11 +8,11 @@
 //
 
 import { z } from "zod";
-import { ZFilterParameter } from "./ZFilterParameter";
+import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryStateModelFilter = z.object({
-    stateId:ZFilterParameter.optional(),
-    stateName:ZFilterParameter.optional(),
+    stateId: ZFilterParameter.optional(),
+    stateName: ZFilterParameter.optional(),
 });
 
 export default ZQueryStateModelFilter;

@@ -8,20 +8,20 @@
 //
 
 import { z } from "zod";
-import { ZOrderDirections } from "./ZOrderDirections";
+import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryDefinedFilterModelOrderBy = z.object({
-    definedFilterId:ZOrderDirections.optional(),
-    createById:ZOrderDirections.optional(),
-    updatedOn:ZOrderDirections.optional(),
-    updatedById:ZOrderDirections.optional(),
-    updatedBy:ZOrderDirections.optional(),
-    createBy:ZOrderDirections.optional(),
-    path:ZOrderDirections.optional(),
-    name:ZOrderDirections.optional(),
-    isActive:ZOrderDirections.optional(),
-    createdOn:ZOrderDirections.optional(),
-    state:ZOrderDirections.optional(),
+    definedFilterId: ZOrderDirections.optional(),
+    createById: ZOrderDirections.optional(),
+    updatedOn: ZOrderDirections.optional(),
+    updatedById: ZOrderDirections.optional(),
+    updatedBy: ZOrderDirections.optional(),
+    createBy: ZOrderDirections.optional(),
+    path: ZOrderDirections.optional(),
+    name: ZOrderDirections.optional(),
+    isActive: ZOrderDirections.optional(),
+    createdOn: ZOrderDirections.optional(),
+    state: ZOrderDirections.optional(),
 });
 
 export default ZQueryDefinedFilterModelOrderBy;

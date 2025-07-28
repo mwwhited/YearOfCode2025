@@ -10,8 +10,8 @@
 import { z } from "zod";
 
 const ZFileStatus = z.object({
-    status:z.boolean().optional(),
-    reason:z.string().optional(),
+    status: z.boolean().optional(),
+    reason: z.string().optional(),
 });
 
 export default ZFileStatus;

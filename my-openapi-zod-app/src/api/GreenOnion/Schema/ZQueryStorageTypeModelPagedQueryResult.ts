@@ -8,15 +8,15 @@
 //
 
 import { z } from "zod";
-import { ZQueryStorageTypeModel } from "./ZQueryStorageTypeModel";
-import { ZResultMessage } from "./ZResultMessage";
+import ZQueryStorageTypeModel from "./ZQueryStorageTypeModel";
+import ZResultMessage from "./ZResultMessage";
 
 const ZQueryStorageTypeModelPagedQueryResult = z.object({
-    rows:z.array(ZQueryStorageTypeModel).optional().describe(`Gets the collection of items in the result.`),
-    messages:z.array(ZResultMessage).optional().describe(`Gets or sets the collection of result messages associated with the query result.`),
-    currentPage:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalPageCount:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalRowCount:z.number().int().optional().describe(`Gets the total number of rows.`),
+    rows: z.array(ZQueryStorageTypeModel).optional(),
+    messages: z.array(ZResultMessage).optional(),
+    currentPage: z.number().int().optional(),
+    totalPageCount: z.number().int().optional(),
+    totalRowCount: z.number().int().optional(),
 });
 
 export default ZQueryStorageTypeModelPagedQueryResult;

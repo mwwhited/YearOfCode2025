@@ -8,7 +8,8 @@
 //
 
 // Interface
-import { ClientBase } from "../../_ClientBase";
+import { ClientBase, ApiException } from "../../_ClientBase";
+export { ApiException };
 import type IDefinedFilterClient from "../IDefinedFilterClient";
 
 // Models 
@@ -39,15 +40,15 @@ export type {
 export default class DefinedFilterClient extends ClientBase implements IDefinedFilterClient  {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+    protected jsonParseReviver: ((key: string, value: unknown) => unknown) | undefined = undefined;
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
         super();
-        this.http = http ? http : window as any;
+        this.http = http ? http : window as unknown;
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    /**
+    async     /**
     * Query **QueryDefinedFilterModel**
     * @description Query **QueryDefinedFilterModel**
     * @operationId DefinedFilter_Query
@@ -81,23 +82,26 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
         });
     }
 
-    protected processQuery(response: Response): Promise<IQueryDefinedFilterModelPagedQueryResult | undefined>
+    protected async processQuery(response: Response): Promise<IQueryDefinedFilterModelPagedQueryResult | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQueryDefinedFilterModelPagedQueryResult.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQueryDefinedFilterModelPagedQueryResult | undefined>(null as any);
     }
     /**
     * Get **QueryDefinedFilterModel**
@@ -145,25 +149,28 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
         });
     }
 
-    protected processGet(response: Response): Promise<IQueryDefinedFilterModel | undefined>
+    protected async processGet(response: Response): Promise<IQueryDefinedFilterModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQueryDefinedFilterModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQueryDefinedFilterModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * Save **QueryDefinedFilterModel**
     * @description Save **QueryDefinedFilterModel**
     * @operationId DefinedFilter_Save
@@ -198,22 +205,25 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
         });
     }
 
-    protected processSave(response: Response): Promise<IQueryDefinedFilterModel | undefined>
+    protected async processSave(response: Response): Promise<IQueryDefinedFilterModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQueryDefinedFilterModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQueryDefinedFilterModel | undefined>(null as any);
     }
 }

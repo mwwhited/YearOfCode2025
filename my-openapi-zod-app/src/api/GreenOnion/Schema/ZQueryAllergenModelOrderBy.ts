@@ -8,12 +8,12 @@
 //
 
 import { z } from "zod";
-import { ZOrderDirections } from "./ZOrderDirections";
+import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryAllergenModelOrderBy = z.object({
-    allergenId:ZOrderDirections.optional(),
-    allergenName:ZOrderDirections.optional(),
-    allergenGroup:ZOrderDirections.optional(),
+    allergenId: ZOrderDirections.optional(),
+    allergenName: ZOrderDirections.optional(),
+    allergenGroup: ZOrderDirections.optional(),
 });
 
 export default ZQueryAllergenModelOrderBy;

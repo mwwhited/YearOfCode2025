@@ -10,9 +10,9 @@
 import { z } from "zod";
 
 const ZProductCheck = z.object({
-    ischeck:z.boolean().optional(),
-    headerName:z.string().optional(),
-    headerValue:z.string().optional(),
+    ischeck: z.boolean().optional(),
+    headerName: z.string().optional(),
+    headerValue: z.string().optional(),
 });
 
 export default ZProductCheck;

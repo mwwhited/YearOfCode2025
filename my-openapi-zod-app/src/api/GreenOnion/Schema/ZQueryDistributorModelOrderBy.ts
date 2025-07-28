@@ -8,19 +8,19 @@
 //
 
 import { z } from "zod";
-import { ZOrderDirections } from "./ZOrderDirections";
+import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryDistributorModelOrderBy = z.object({
-    distributorId:ZOrderDirections.optional(),
-    distributorName:ZOrderDirections.optional(),
-    distributorCode:ZOrderDirections.optional(),
-    isActive:ZOrderDirections.optional(),
-    createdOn:ZOrderDirections.optional(),
-    createdById:ZOrderDirections.optional(),
-    createdBy:ZOrderDirections.optional(),
-    updatedOn:ZOrderDirections.optional(),
-    updatedById:ZOrderDirections.optional(),
-    updatedBy:ZOrderDirections.optional(),
+    distributorId: ZOrderDirections.optional(),
+    distributorName: ZOrderDirections.optional(),
+    distributorCode: ZOrderDirections.optional(),
+    isActive: ZOrderDirections.optional(),
+    createdOn: ZOrderDirections.optional(),
+    createdById: ZOrderDirections.optional(),
+    createdBy: ZOrderDirections.optional(),
+    updatedOn: ZOrderDirections.optional(),
+    updatedById: ZOrderDirections.optional(),
+    updatedBy: ZOrderDirections.optional(),
 });
 
 export default ZQueryDistributorModelOrderBy;

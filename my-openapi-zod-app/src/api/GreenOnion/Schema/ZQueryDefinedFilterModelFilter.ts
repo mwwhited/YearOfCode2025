@@ -8,20 +8,20 @@
 //
 
 import { z } from "zod";
-import { ZFilterParameter } from "./ZFilterParameter";
+import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryDefinedFilterModelFilter = z.object({
-    definedFilterId:ZFilterParameter.optional(),
-    createById:ZFilterParameter.optional(),
-    updatedOn:ZFilterParameter.optional(),
-    updatedById:ZFilterParameter.optional(),
-    updatedBy:ZFilterParameter.optional(),
-    createBy:ZFilterParameter.optional(),
-    path:ZFilterParameter.optional(),
-    name:ZFilterParameter.optional(),
-    isActive:ZFilterParameter.optional(),
-    createdOn:ZFilterParameter.optional(),
-    state:ZFilterParameter.optional(),
+    definedFilterId: ZFilterParameter.optional(),
+    createById: ZFilterParameter.optional(),
+    updatedOn: ZFilterParameter.optional(),
+    updatedById: ZFilterParameter.optional(),
+    updatedBy: ZFilterParameter.optional(),
+    createBy: ZFilterParameter.optional(),
+    path: ZFilterParameter.optional(),
+    name: ZFilterParameter.optional(),
+    isActive: ZFilterParameter.optional(),
+    createdOn: ZFilterParameter.optional(),
+    state: ZFilterParameter.optional(),
 });
 
 export default ZQueryDefinedFilterModelFilter;

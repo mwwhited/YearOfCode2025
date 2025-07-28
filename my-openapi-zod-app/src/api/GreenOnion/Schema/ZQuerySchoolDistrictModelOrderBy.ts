@@ -8,32 +8,32 @@
 //
 
 import { z } from "zod";
-import { ZOrderDirections } from "./ZOrderDirections";
+import ZOrderDirections from "./ZOrderDirections";
 
 const ZQuerySchoolDistrictModelOrderBy = z.object({
-    schoolDistrictId:ZOrderDirections.optional(),
-    siteCode:ZOrderDirections.optional(),
-    districtName:ZOrderDirections.optional(),
-    phoneNumber:ZOrderDirections.optional(),
-    email:ZOrderDirections.optional(),
-    country:ZOrderDirections.optional(),
-    stateId:ZOrderDirections.optional(),
-    state:ZOrderDirections.optional(),
-    city:ZOrderDirections.optional(),
-    districtLogo:ZOrderDirections.optional(),
-    isActive:ZOrderDirections.optional(),
-    foodServiceOptions:ZOrderDirections.optional(),
-    contractCompany:ZOrderDirections.optional(),
-    isSchoolCoopMember:ZOrderDirections.optional(),
-    isSchoolCoop:ZOrderDirections.optional(),
-    schoolCoopId:ZOrderDirections.optional(),
-    schoolCoopName:ZOrderDirections.optional(),
-    createdOn:ZOrderDirections.optional(),
-    createdById:ZOrderDirections.optional(),
-    createdBy:ZOrderDirections.optional(),
-    updatedOn:ZOrderDirections.optional(),
-    updatedById:ZOrderDirections.optional(),
-    updatedBy:ZOrderDirections.optional(),
+    schoolDistrictId: ZOrderDirections.optional(),
+    siteCode: ZOrderDirections.optional(),
+    districtName: ZOrderDirections.optional(),
+    phoneNumber: ZOrderDirections.optional(),
+    email: ZOrderDirections.optional(),
+    country: ZOrderDirections.optional(),
+    stateId: ZOrderDirections.optional(),
+    state: ZOrderDirections.optional(),
+    city: ZOrderDirections.optional(),
+    districtLogo: ZOrderDirections.optional(),
+    isActive: ZOrderDirections.optional(),
+    foodServiceOptions: ZOrderDirections.optional(),
+    contractCompany: ZOrderDirections.optional(),
+    isSchoolCoopMember: ZOrderDirections.optional(),
+    isSchoolCoop: ZOrderDirections.optional(),
+    schoolCoopId: ZOrderDirections.optional(),
+    schoolCoopName: ZOrderDirections.optional(),
+    createdOn: ZOrderDirections.optional(),
+    createdById: ZOrderDirections.optional(),
+    createdBy: ZOrderDirections.optional(),
+    updatedOn: ZOrderDirections.optional(),
+    updatedById: ZOrderDirections.optional(),
+    updatedBy: ZOrderDirections.optional(),
 });
 
 export default ZQuerySchoolDistrictModelOrderBy;

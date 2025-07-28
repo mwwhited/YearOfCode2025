@@ -8,12 +8,12 @@
 //
 
 import { z } from "zod";
-import { ZOrderDirections } from "./ZOrderDirections";
+import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryIocCategoryModelOrderBy = z.object({
-    iocCategoryId:ZOrderDirections.optional(),
-    name:ZOrderDirections.optional(),
-    color:ZOrderDirections.optional(),
+    iocCategoryId: ZOrderDirections.optional(),
+    name: ZOrderDirections.optional(),
+    color: ZOrderDirections.optional(),
 });
 
 export default ZQueryIocCategoryModelOrderBy;

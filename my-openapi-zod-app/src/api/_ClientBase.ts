@@ -8,8 +8,7 @@
 //
 
 
-import _GlobalState from './_GlobalState';
-const GlobalState = _GlobalState;
+import GlobalState from './_GlobalState';
  
 import { v4 as uuidv4 } from 'uuid';
 
@@ -52,5 +51,36 @@ export abstract class ClientBase {
         options.headers = headers;
         
         return options;
+    }
+    
+    protected throwException(message: string, status: number, response: string, headers: { [key: string]: unknown; }, result?: unknown): unknown {
+        if (result !== null && result !== undefined)
+            throw result;
+        else
+            throw new ApiException(message, status, response, headers, null);
+    }
+}
+
+export class ApiException extends Error {
+    override message: string;
+    status: number;
+    response: string;
+    headers: { [key: string]: unknown; };
+    result: unknown;
+
+    constructor(message: string, status: number, response: string, headers: { [key: string]: unknown; }, result: unknown) {
+        super();
+
+        this.message = message;
+        this.status = status;
+        this.response = response;
+        this.headers = headers;
+        this.result = result;
+    }
+
+    protected isApiException = true;
+
+    static isApiException(obj: unknown): obj is ApiException {
+        return obj.isApiException === true;
     }
 }

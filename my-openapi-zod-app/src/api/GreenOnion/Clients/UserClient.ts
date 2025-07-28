@@ -8,7 +8,8 @@
 //
 
 // Interface
-import { ClientBase } from "../../_ClientBase";
+import { ClientBase, ApiException } from "../../_ClientBase";
+export { ApiException };
 import type IUserClient from "../IUserClient";
 
 // Models 
@@ -42,15 +43,15 @@ export type {
 export default class UserClient extends ClientBase implements IUserClient  {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+    protected jsonParseReviver: ((key: string, value: unknown) => unknown) | undefined = undefined;
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
         super();
-        this.http = http ? http : window as any;
+        this.http = http ? http : window as unknown;
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    /**
+    async     /**
     * Query **QueryUserModel**
     * @description Query **QueryUserModel**
     * @operationId User_Query
@@ -84,23 +85,26 @@ export default class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processQuery(response: Response): Promise<IQueryUserModelPagedQueryResult | undefined>
+    protected async processQuery(response: Response): Promise<IQueryUserModelPagedQueryResult | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQueryUserModelPagedQueryResult.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQueryUserModelPagedQueryResult | undefined>(null as any);
     }
     /**
     * Get **QueryUserModel**
@@ -148,25 +152,28 @@ export default class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processGet(response: Response): Promise<IQueryUserModel | undefined>
+    protected async processGet(response: Response): Promise<IQueryUserModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQueryUserModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQueryUserModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * Save **QueryUserModel**
     * @description Save **QueryUserModel**
     * @operationId User_Save
@@ -200,25 +207,28 @@ export default class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processSave(response: Response): Promise<IQueryUserModel | undefined>
+    protected async processSave(response: Response): Promise<IQueryUserModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZQueryUserModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IQueryUserModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * @operationId User_SendNewUserEmail
     * @tag User
     * @path /api/User/SendNewUserEmail 
@@ -248,21 +258,25 @@ export default class UserClient extends ClientBase implements IUserClient  {
         });
     }
 
-    protected processSendNewUserEmail(response: Response): Promise<void>
+    protected async processSendNewUserEmail(response: Response): Promise<unknown | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = JSON.parse(resultData200);            return result200;
-            });
+            result200 = JSON.parse(resultData200);
+            return result200;
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<void>(null as any);
     }
 }

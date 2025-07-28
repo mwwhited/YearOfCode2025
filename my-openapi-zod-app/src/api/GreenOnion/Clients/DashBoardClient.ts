@@ -8,7 +8,8 @@
 //
 
 // Interface
-import { ClientBase } from "../../_ClientBase";
+import { ClientBase, ApiException } from "../../_ClientBase";
+export { ApiException };
 import type IDashBoardClient from "../IDashBoardClient";
 
 // Models 
@@ -30,15 +31,15 @@ export type {
 export default class DashBoardClient extends ClientBase implements IDashBoardClient  {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+    protected jsonParseReviver: ((key: string, value: unknown) => unknown) | undefined = undefined;
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
         super();
-        this.http = http ? http : window as any;
+        this.http = http ? http : window as unknown;
         this.baseUrl = this.getBaseUrl("", baseUrl);
     }
 
-    /**
+    async     /**
     * @operationId DashBoard_GetDashBoardList
     * @tag DashBoard
     * @path /api/DashBoard/GetDashBoardProductList 
@@ -70,25 +71,28 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
         });
     }
 
-    protected processGetDashBoardList(response: Response): Promise<IDashBoardResponseModel | undefined>
+    protected async processGetDashBoardList(response: Response): Promise<IDashBoardResponseModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZDashBoardResponseModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IDashBoardResponseModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * @operationId DashBoard_GetDashBoardTotalCountList
     * @tag DashBoard
     * @path /api/DashBoard/GetDashBoardTotalCountList 
@@ -120,25 +124,28 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
         });
     }
 
-    protected processGetDashBoardTotalCountList(response: Response): Promise<IDashBoardResponseModel | undefined>
+    protected async processGetDashBoardTotalCountList(response: Response): Promise<IDashBoardResponseModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZDashBoardResponseModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IDashBoardResponseModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * @operationId DashBoard_GetDistrictFreeOfIOCProductList
     * @tag DashBoard
     * @path /api/DashBoard/GetDistrictFreeOfIOCProductList 
@@ -170,25 +177,28 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
         });
     }
 
-    protected processGetDistrictFreeOfIOCProductList(response: Response): Promise<IDashBoardResponseModel | undefined>
+    protected async processGetDistrictFreeOfIOCProductList(response: Response): Promise<IDashBoardResponseModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZDashBoardResponseModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IDashBoardResponseModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * @operationId DashBoard_GetDistrictFreeOfIOCProductReplacesList
     * @tag DashBoard
     * @path /api/DashBoard/GetDistrictFreeOfIOCProductReplacesList 
@@ -220,25 +230,28 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
         });
     }
 
-    protected processGetDistrictFreeOfIOCProductReplacesList(response: Response): Promise<IDashBoardResponseModel | undefined>
+    protected async processGetDistrictFreeOfIOCProductReplacesList(response: Response): Promise<IDashBoardResponseModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZDashBoardResponseModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IDashBoardResponseModel | undefined>(null as any);
     }
-    /**
+    async     /**
     * @operationId DashBoard_GetManufactureTotalProductChart
     * @tag DashBoard
     * @path /api/DashBoard/GetManufactureTotalProductChart 
@@ -264,22 +277,25 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
         });
     }
 
-    protected processGetManufactureTotalProductChart(response: Response): Promise<IDashBoardResponseModel | undefined>
+    protected async processGetManufactureTotalProductChart(response: Response): Promise<IDashBoardResponseModel | undefined>
     {
         const status = response.status;
-        const _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
         if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
+            const _responseText = await response.text();
+            let result200: unknown = null;
             const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ZDashBoardResponseModel.parse(resultData200);
+            result200 = JSON.parse(resultData200);
             return result200;
-            });
         } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return JSON.parse(resultData200);
+            }
         }
-        return Promise.resolve<IDashBoardResponseModel | undefined>(null as any);
     }
 }

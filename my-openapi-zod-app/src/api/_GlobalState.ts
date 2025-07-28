@@ -1,4 +1,4 @@
-const _GlobalState = {
+const GlobalState = {
   jwtToken: null as string | null,
   setJwtToken(token: string | null) {
     this.jwtToken = token;
@@ -40,4 +40,4 @@ const _GlobalState = {
   }
 };
 
-export default _GlobalState;
+export default GlobalState;

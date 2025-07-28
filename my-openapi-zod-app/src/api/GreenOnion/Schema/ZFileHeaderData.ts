@@ -10,9 +10,9 @@
 import { z } from "zod";
 
 const ZFileHeaderData = z.object({
-    headerDataId:z.number().int().optional(),
-    headerDataName:z.string().optional(),
-    headerDataValue:z.string().optional(),
+    headerDataId: z.number().int().optional(),
+    headerDataName: z.string().optional(),
+    headerDataValue: z.string().optional(),
 });
 
 export default ZFileHeaderData;

@@ -8,15 +8,15 @@
 //
 
 import { z } from "zod";
-import { ZQuerySchoolDistrictModel } from "./ZQuerySchoolDistrictModel";
-import { ZResultMessage } from "./ZResultMessage";
+import ZQuerySchoolDistrictModel from "./ZQuerySchoolDistrictModel";
+import ZResultMessage from "./ZResultMessage";
 
 const ZQuerySchoolDistrictModelPagedQueryResult = z.object({
-    rows:z.array(ZQuerySchoolDistrictModel).optional().describe(`Gets the collection of items in the result.`),
-    messages:z.array(ZResultMessage).optional().describe(`Gets or sets the collection of result messages associated with the query result.`),
-    currentPage:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalPageCount:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalRowCount:z.number().int().optional().describe(`Gets the total number of rows.`),
+    rows: z.array(ZQuerySchoolDistrictModel).optional(),
+    messages: z.array(ZResultMessage).optional(),
+    currentPage: z.number().int().optional(),
+    totalPageCount: z.number().int().optional(),
+    totalRowCount: z.number().int().optional(),
 });
 
 export default ZQuerySchoolDistrictModelPagedQueryResult;

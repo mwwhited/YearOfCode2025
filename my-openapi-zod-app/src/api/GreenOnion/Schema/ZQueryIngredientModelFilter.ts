@@ -8,13 +8,13 @@
 //
 
 import { z } from "zod";
-import { ZFilterParameter } from "./ZFilterParameter";
+import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryIngredientModelFilter = z.object({
-    ingredientId:ZFilterParameter.optional(),
-    ingredientName:ZFilterParameter.optional(),
-    group:ZFilterParameter.optional(),
-    iocGroup:ZFilterParameter.optional(),
+    ingredientId: ZFilterParameter.optional(),
+    ingredientName: ZFilterParameter.optional(),
+    group: ZFilterParameter.optional(),
+    iocGroup: ZFilterParameter.optional(),
 });
 
 export default ZQueryIngredientModelFilter;

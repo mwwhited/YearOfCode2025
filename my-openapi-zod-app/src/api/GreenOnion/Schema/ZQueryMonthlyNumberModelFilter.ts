@@ -8,27 +8,27 @@
 //
 
 import { z } from "zod";
-import { ZFilterParameter } from "./ZFilterParameter";
+import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryMonthlyNumberModelFilter = z.object({
-    id:ZFilterParameter.optional(),
-    schoolDistrictId:ZFilterParameter.optional(),
-    monthId:ZFilterParameter.optional(),
-    actualMonthId:ZFilterParameter.optional(),
-    year:ZFilterParameter.optional(),
-    enrollment:ZFilterParameter.optional(),
-    numberOfSites:ZFilterParameter.optional(),
-    numberOfDistricts:ZFilterParameter.optional(),
-    mealsServed:ZFilterParameter.optional(),
-    freeAndReducedPercent:ZFilterParameter.optional(),
-    isActive:ZFilterParameter.optional(),
-    regDate:ZFilterParameter.optional(),
-    createdOn:ZFilterParameter.optional(),
-    createdById:ZFilterParameter.optional(),
-    createdBy:ZFilterParameter.optional(),
-    updatedOn:ZFilterParameter.optional(),
-    updatedById:ZFilterParameter.optional(),
-    updatedBy:ZFilterParameter.optional(),
+    id: ZFilterParameter.optional(),
+    schoolDistrictId: ZFilterParameter.optional(),
+    monthId: ZFilterParameter.optional(),
+    actualMonthId: ZFilterParameter.optional(),
+    year: ZFilterParameter.optional(),
+    enrollment: ZFilterParameter.optional(),
+    numberOfSites: ZFilterParameter.optional(),
+    numberOfDistricts: ZFilterParameter.optional(),
+    mealsServed: ZFilterParameter.optional(),
+    freeAndReducedPercent: ZFilterParameter.optional(),
+    isActive: ZFilterParameter.optional(),
+    regDate: ZFilterParameter.optional(),
+    createdOn: ZFilterParameter.optional(),
+    createdById: ZFilterParameter.optional(),
+    createdBy: ZFilterParameter.optional(),
+    updatedOn: ZFilterParameter.optional(),
+    updatedById: ZFilterParameter.optional(),
+    updatedBy: ZFilterParameter.optional(),
 });
 
 export default ZQueryMonthlyNumberModelFilter;

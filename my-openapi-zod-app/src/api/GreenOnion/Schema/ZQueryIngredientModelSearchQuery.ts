@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQueryIngredientModelFilter } from "./ZQueryIngredientModelFilter";
-import { ZQueryIngredientModelOrderBy } from "./ZQueryIngredientModelOrderBy";
+import ZQueryIngredientModelFilter from "./ZQueryIngredientModelFilter";
+import ZQueryIngredientModelOrderBy from "./ZQueryIngredientModelOrderBy";
 
 const ZQueryIngredientModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** IngredientName; Group; IocGroup`),
-    filter:ZQueryIngredientModelFilter.optional(),
-    orderBy:ZQueryIngredientModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQueryIngredientModelFilter.optional(),
+    orderBy: ZQueryIngredientModelOrderBy.optional(),
 });
 
 export default ZQueryIngredientModelSearchQuery;

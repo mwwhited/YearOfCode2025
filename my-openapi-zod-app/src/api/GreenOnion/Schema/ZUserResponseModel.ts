@@ -8,18 +8,18 @@
 //
 
 import { z } from "zod";
-import { ZRoleMst } from "./ZRoleMst";
+import ZRoleMst from "./ZRoleMst";
 
 const ZUserResponseModel = z.object({
-    success:z.boolean().optional(),
-    message:z.string().optional(),
-    totalRecords:z.number().int().optional(),
-    payload:z.unknown().optional(),
-    isUpdate:z.boolean().optional(),
-    isAdded:z.boolean().optional(),
-    isDelete:z.boolean().optional(),
-    roleList:z.array(ZRoleMst).optional(),
-    isEmailExists:z.boolean().optional(),
+    success: z.boolean().optional(),
+    message: z.string().optional(),
+    totalRecords: z.number().int().optional(),
+    payload: z.unknown().optional(),
+    isUpdate: z.boolean().optional(),
+    isAdded: z.boolean().optional(),
+    isDelete: z.boolean().optional(),
+    roleList: z.array(ZRoleMst).optional(),
+    isEmailExists: z.boolean().optional(),
 });
 
 export default ZUserResponseModel;

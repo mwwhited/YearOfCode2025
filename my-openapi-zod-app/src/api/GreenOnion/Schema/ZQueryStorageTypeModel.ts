@@ -10,8 +10,8 @@
 import { z } from "zod";
 
 const ZQueryStorageTypeModel = z.object({
-    storageTypeId:z.number().int().optional(),
-    storageTypeName:z.string().optional(),
+    storageTypeId: z.number().int().optional(),
+    storageTypeName: z.string().optional(),
 });
 
 export default ZQueryStorageTypeModel;

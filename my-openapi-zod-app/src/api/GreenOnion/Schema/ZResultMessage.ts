@@ -8,14 +8,14 @@
 //
 
 import { z } from "zod";
-import { ZMessageLevels } from "./ZMessageLevels";
+import ZMessageLevels from "./ZMessageLevels";
 
 const ZResultMessage = z.object({
-    level:ZMessageLevels.optional(),
-    message:z.string().optional().describe(`Simple English message about issue.`),
-    messageCode:z.string().optional().describe(`unique code that may be used to assist in translating issue`),
-    context:z.string().optional().describe(`Property or path related to this message`),
-    metaData:z.unknown().optional().describe(`additional properties related to response`),
+    level: ZMessageLevels.optional(),
+    message: z.string().optional(),
+    messageCode: z.string().optional(),
+    context: z.string().optional(),
+    metaData: z.unknown().optional(),
 });
 
 export default ZResultMessage;

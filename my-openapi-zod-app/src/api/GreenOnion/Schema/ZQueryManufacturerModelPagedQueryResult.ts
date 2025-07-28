@@ -8,15 +8,15 @@
 //
 
 import { z } from "zod";
-import { ZQueryManufacturerModel } from "./ZQueryManufacturerModel";
-import { ZResultMessage } from "./ZResultMessage";
+import ZQueryManufacturerModel from "./ZQueryManufacturerModel";
+import ZResultMessage from "./ZResultMessage";
 
 const ZQueryManufacturerModelPagedQueryResult = z.object({
-    rows:z.array(ZQueryManufacturerModel).optional().describe(`Gets the collection of items in the result.`),
-    messages:z.array(ZResultMessage).optional().describe(`Gets or sets the collection of result messages associated with the query result.`),
-    currentPage:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalPageCount:z.number().int().optional().describe(`Gets the total number of pages.`),
-    totalRowCount:z.number().int().optional().describe(`Gets the total number of rows.`),
+    rows: z.array(ZQueryManufacturerModel).optional(),
+    messages: z.array(ZResultMessage).optional(),
+    currentPage: z.number().int().optional(),
+    totalPageCount: z.number().int().optional(),
+    totalRowCount: z.number().int().optional(),
 });
 
 export default ZQueryManufacturerModelPagedQueryResult;

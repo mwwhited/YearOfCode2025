@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQueryCategoryModelFilter } from "./ZQueryCategoryModelFilter";
-import { ZQueryCategoryModelOrderBy } from "./ZQueryCategoryModelOrderBy";
+import ZQueryCategoryModelFilter from "./ZQueryCategoryModelFilter";
+import ZQueryCategoryModelOrderBy from "./ZQueryCategoryModelOrderBy";
 
 const ZQueryCategoryModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** CategoryName; CategoryCode; IsActive; CreatedBy; UpdatedBy`),
-    filter:ZQueryCategoryModelFilter.optional(),
-    orderBy:ZQueryCategoryModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQueryCategoryModelFilter.optional(),
+    orderBy: ZQueryCategoryModelOrderBy.optional(),
 });
 
 export default ZQueryCategoryModelSearchQuery;

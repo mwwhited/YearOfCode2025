@@ -8,19 +8,19 @@
 //
 
 import { z } from "zod";
-import { ZOrderDirections } from "./ZOrderDirections";
+import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryCategoryModelOrderBy = z.object({
-    categoryId:ZOrderDirections.optional(),
-    categoryName:ZOrderDirections.optional(),
-    categoryCode:ZOrderDirections.optional(),
-    isActive:ZOrderDirections.optional(),
-    createdOn:ZOrderDirections.optional(),
-    createdById:ZOrderDirections.optional(),
-    createdBy:ZOrderDirections.optional(),
-    updatedOn:ZOrderDirections.optional(),
-    updatedById:ZOrderDirections.optional(),
-    updatedBy:ZOrderDirections.optional(),
+    categoryId: ZOrderDirections.optional(),
+    categoryName: ZOrderDirections.optional(),
+    categoryCode: ZOrderDirections.optional(),
+    isActive: ZOrderDirections.optional(),
+    createdOn: ZOrderDirections.optional(),
+    createdById: ZOrderDirections.optional(),
+    createdBy: ZOrderDirections.optional(),
+    updatedOn: ZOrderDirections.optional(),
+    updatedById: ZOrderDirections.optional(),
+    updatedBy: ZOrderDirections.optional(),
 });
 
 export default ZQueryCategoryModelOrderBy;

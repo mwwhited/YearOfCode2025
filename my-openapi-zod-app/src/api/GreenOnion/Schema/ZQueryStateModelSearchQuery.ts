@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQueryStateModelFilter } from "./ZQueryStateModelFilter";
-import { ZQueryStateModelOrderBy } from "./ZQueryStateModelOrderBy";
+import ZQueryStateModelFilter from "./ZQueryStateModelFilter";
+import ZQueryStateModelOrderBy from "./ZQueryStateModelOrderBy";
 
 const ZQueryStateModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** StateName`),
-    filter:ZQueryStateModelFilter.optional(),
-    orderBy:ZQueryStateModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQueryStateModelFilter.optional(),
+    orderBy: ZQueryStateModelOrderBy.optional(),
 });
 
 export default ZQueryStateModelSearchQuery;

@@ -8,6 +8,8 @@
 //
 
 
+export { ApiException } from "../../_ClientBase";
+
 // Clients
 export type { default as AllergenClient } from "./AllergenClient";  
 export type { default as CategoryClient } from "./CategoryClient";  

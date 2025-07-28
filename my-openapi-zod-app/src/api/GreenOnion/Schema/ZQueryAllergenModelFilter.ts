@@ -8,12 +8,12 @@
 //
 
 import { z } from "zod";
-import { ZFilterParameter } from "./ZFilterParameter";
+import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryAllergenModelFilter = z.object({
-    allergenId:ZFilterParameter.optional(),
-    allergenName:ZFilterParameter.optional(),
-    allergenGroup:ZFilterParameter.optional(),
+    allergenId: ZFilterParameter.optional(),
+    allergenName: ZFilterParameter.optional(),
+    allergenGroup: ZFilterParameter.optional(),
 });
 
 export default ZQueryAllergenModelFilter;

@@ -8,16 +8,16 @@
 //
 
 import { z } from "zod";
-import { ZQueryAllergenModelFilter } from "./ZQueryAllergenModelFilter";
-import { ZQueryAllergenModelOrderBy } from "./ZQueryAllergenModelOrderBy";
+import ZQueryAllergenModelFilter from "./ZQueryAllergenModelFilter";
+import ZQueryAllergenModelOrderBy from "./ZQueryAllergenModelOrderBy";
 
 const ZQueryAllergenModelSearchQuery = z.object({
-    currentPage:z.number().int().optional().describe(`Gets or sets the current page number.`),
-    pageSize:z.number().int().optional().describe(`**Default size:** ``10``, ``-1`` will disable paging`),
-    excludePageCount:z.boolean().optional().describe(```true`` will disable row/page counts and may decrease processing time without effecting paging functions`),
-    searchTerm:z.string().optional().describe(`**Searched Properties:** AllergenName; AllergenGroup`),
-    filter:ZQueryAllergenModelFilter.optional(),
-    orderBy:ZQueryAllergenModelOrderBy.optional(),
+    currentPage: z.number().int().optional(),
+    pageSize: z.number().int().optional(),
+    excludePageCount: z.boolean().optional(),
+    searchTerm: z.string().optional(),
+    filter: ZQueryAllergenModelFilter.optional(),
+    orderBy: ZQueryAllergenModelOrderBy.optional(),
 });
 
 export default ZQueryAllergenModelSearchQuery;

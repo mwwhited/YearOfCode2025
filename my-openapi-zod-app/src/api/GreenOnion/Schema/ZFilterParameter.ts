@@ -10,24 +10,13 @@
 import { z } from "zod";
 
 const ZFilterParameter = z.object({
-    eq:z.unknown().optional().describe(```Equal To``: pass in the value to match for a given property  
-
-If you are using string values you may also use wild cards  
-\*bc -> Ends with  
-\*b\* -> Contains  
-ab\* -> Starts with`),
-    neq:z.unknown().optional().describe(```Not Equal To``: pass in the value to match for a given property  
-
-If you are using string values you may also use wild cards  
-\*bc -> Ends with  
-\*b\* -> Contains  
-ab\* -> Starts with`),
-    in:z.array(z.unknown()).optional().describe(`This allows for providing a set of values where the value from the queries data must match at least 
-one of provided values`),
-    gt:z.unknown().optional().describe(```Greater than```),
-    gte:z.unknown().optional().describe(```Greater than or equal to```),
-    lt:z.unknown().optional().describe(```Less than```),
-    lte:z.unknown().optional().describe(```Less than or equal to```),
+    eq: z.unknown().optional(),
+    neq: z.unknown().optional(),
+    in: z.array(z.unknown()).optional(),
+    gt: z.unknown().optional(),
+    gte: z.unknown().optional(),
+    lt: z.unknown().optional(),
+    lte: z.unknown().optional(),
 });
 
 export default ZFilterParameter;

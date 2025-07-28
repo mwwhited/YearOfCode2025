@@ -8,19 +8,19 @@
 //
 
 import { z } from "zod";
-import { ZFilterParameter } from "./ZFilterParameter";
+import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryCategoryModelFilter = z.object({
-    categoryId:ZFilterParameter.optional(),
-    categoryName:ZFilterParameter.optional(),
-    categoryCode:ZFilterParameter.optional(),
-    isActive:ZFilterParameter.optional(),
-    createdOn:ZFilterParameter.optional(),
-    createdById:ZFilterParameter.optional(),
-    createdBy:ZFilterParameter.optional(),
-    updatedOn:ZFilterParameter.optional(),
-    updatedById:ZFilterParameter.optional(),
-    updatedBy:ZFilterParameter.optional(),
+    categoryId: ZFilterParameter.optional(),
+    categoryName: ZFilterParameter.optional(),
+    categoryCode: ZFilterParameter.optional(),
+    isActive: ZFilterParameter.optional(),
+    createdOn: ZFilterParameter.optional(),
+    createdById: ZFilterParameter.optional(),
+    createdBy: ZFilterParameter.optional(),
+    updatedOn: ZFilterParameter.optional(),
+    updatedById: ZFilterParameter.optional(),
+    updatedBy: ZFilterParameter.optional(),
 });
 
 export default ZQueryCategoryModelFilter;

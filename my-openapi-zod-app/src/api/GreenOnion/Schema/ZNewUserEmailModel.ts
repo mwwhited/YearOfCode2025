@@ -10,11 +10,11 @@
 import { z } from "zod";
 
 const ZNewUserEmailModel = z.object({
-    firstName:z.string().optional(),
-    lastName:z.string().optional(),
-    role:z.string().optional(),
-    email:z.string().optional(),
-    association:z.string().optional(),
+    firstName: z.string().optional(),
+    lastName: z.string().optional(),
+    role: z.string().optional(),
+    email: z.string().optional(),
+    association: z.string().optional(),
 });
 
 export default ZNewUserEmailModel;

@@ -10,8 +10,8 @@
 import { z } from "zod";
 
 const ZApproveSuggestProductRequestModel = z.object({
-    productId:z.number().int().optional(),
-    suggestedProductId:z.number().int().optional(),
+    productId: z.number().int().optional(),
+    suggestedProductId: z.number().int().optional(),
 });
 
 export default ZApproveSuggestProductRequestModel;

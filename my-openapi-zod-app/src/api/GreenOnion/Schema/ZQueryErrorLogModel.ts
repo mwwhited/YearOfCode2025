@@ -10,9 +10,9 @@
 import { z } from "zod";
 
 const ZQueryErrorLogModel = z.object({
-    errorLogId:z.number().int().optional(),
-    errorMessage:z.string().optional(),
-    errorPath:z.string().optional(),
+    errorLogId: z.number().int().optional(),
+    errorMessage: z.string().optional(),
+    errorPath: z.string().optional(),
 });
 
 export default ZQueryErrorLogModel;
