@@ -5,6 +5,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { useAuth } from '../hooks/useAuth';
+import { useApplicationInsights } from '@hooks/useApplicationInsights';
 
 interface DashboardData {
   totalProducts: number;
@@ -16,11 +17,20 @@ interface DashboardData {
 
 export const Dashboard: React.FC = () => {
   const { user } = useAuth();
+  const { trackPageView, trackFeatureUsage, trackPerformanceMetric, trackBusinessEvent } = useApplicationInsights();
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
 
   useEffect(() => {
     const fetchDashboardData = async () => {
+      const startTime = performance.now();
+      
       try {
+        // Track page view
+        trackPageView('Dashboard', '/dashboard', {
+          userId: user?.id,
+          userRoles: user?.roles?.join(','),
+        });
+
         // Mock data for now - replace with actual API call
         const mockData: DashboardData = {
           totalProducts: 1250,
@@ -31,13 +41,32 @@ export const Dashboard: React.FC = () => {
         };
         
         setDashboardData(mockData);
+
+        // Track successful data load
+        const loadTime = performance.now() - startTime;
+        trackPerformanceMetric('DashboardLoadTime', loadTime, {
+          dataPointsLoaded: '4',
+          userId: user?.id,
+        });
+
+        trackBusinessEvent('DashboardViewed', {
+          userId: user?.id,
+          userRoles: user?.roles?.join(','),
+          totalProducts: mockData.totalProducts.toString(),
+          loadTimeMs: loadTime.toString(),
+        });
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
+        const loadTime = performance.now() - startTime;
+        trackPerformanceMetric('DashboardLoadTime', loadTime, {
+          success: 'false',
+          userId: user?.id,
+        });
       }
     };
 
     fetchDashboardData();
-  }, []);
+  }, [user?.id, user?.roles, trackPageView, trackPerformanceMetric, trackBusinessEvent]);
 
   const chartData = {
     labels: ['Products', 'Categories', 'Ingredients', 'Allergens'],
@@ -140,9 +169,38 @@ export const Dashboard: React.FC = () => {
       <div className="mt-4">
         <Card title="Quick Actions">
           <div className="flex gap-2 flex-wrap">
-            <Button label="Add Product" icon="pi pi-plus" />
-            <Button label="Add Category" icon="pi pi-tags" className="p-button-secondary" />
-            <Button label="View Reports" icon="pi pi-chart-bar" className="p-button-outlined" />
+            <Button 
+              label="Add Product" 
+              icon="pi pi-plus" 
+              onClick={() => {
+                trackFeatureUsage('QuickAction.AddProduct', {
+                  userId: user?.id,
+                  source: 'dashboard',
+                });
+              }}
+            />
+            <Button 
+              label="Add Category" 
+              icon="pi pi-tags" 
+              className="p-button-secondary"
+              onClick={() => {
+                trackFeatureUsage('QuickAction.AddCategory', {
+                  userId: user?.id,
+                  source: 'dashboard',
+                });
+              }}
+            />
+            <Button 
+              label="View Reports" 
+              icon="pi pi-chart-bar" 
+              className="p-button-outlined"
+              onClick={() => {
+                trackFeatureUsage('QuickAction.ViewReports', {
+                  userId: user?.id,
+                  source: 'dashboard',
+                });
+              }}
+            />
           </div>
         </Card>
       </div>

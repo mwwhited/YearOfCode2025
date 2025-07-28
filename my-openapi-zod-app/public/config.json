@@ -22,8 +22,20 @@
     "environment": "development",
     "features": {
       "monitoring": true,
-      "analytics": false
+      "analytics": true
     }
+  },
+  "applicationInsights": {
+    "connectionString": "InstrumentationKey=365f904e-cea7-4ff5-8273-fd98e6f7b95f;IngestionEndpoint=http://localhost:7080/insight/ingest/;LiveEndpoint=http://localhost:7080/insight/live/;ApplicationId=c0f12ede-bc9a-4038-aa05-22130bc11ee0",
+    "enableAutoRouteTracking": true,
+    "enableRequestHeaderTracking": false,
+    "enableResponseHeaderTracking": false,
+    "enableAjaxErrorStatusText": true,
+    "enableAjaxPerfTracking": true,
+    "enableUnhandledPromiseRejectionTracking": true,
+    "enableCorsCorrelation": true,
+    "disableFetchTracking": false,
+    "enableDebug": true
   },
   "ui": {
     "theme": "saga-blue",

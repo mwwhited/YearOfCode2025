@@ -23,6 +23,19 @@ export interface AppConfig {
       analytics: boolean;
     };
   };
+  applicationInsights: {
+    connectionString: string;
+    instrumentationKey?: string;
+    enableAutoRouteTracking: boolean;
+    enableRequestHeaderTracking: boolean;
+    enableResponseHeaderTracking: boolean;
+    enableAjaxErrorStatusText: boolean;
+    enableAjaxPerfTracking: boolean;
+    enableUnhandledPromiseRejectionTracking: boolean;
+    enableCorsCorrelation: boolean;
+    disableFetchTracking: boolean;
+    enableDebug: boolean;
+  };
   ui: {
     theme: string;
     sidebarCollapsed: boolean;
@@ -95,6 +108,18 @@ class ConfigManager {
         console.warn(`⚠️ Configuration field '${field}' appears to be a placeholder`);
       }
     }
+
+    // Validate Application Insights configuration
+    if (!config.applicationInsights) {
+      console.warn('⚠️ Application Insights configuration is missing');
+    } else {
+      const aiConfig = config.applicationInsights;
+      if (!aiConfig.connectionString) {
+        console.warn('⚠️ Application Insights connection string is empty');
+      } else if (aiConfig.connectionString.includes('your-')) {
+        console.warn('⚠️ Application Insights connection string appears to be a placeholder');
+      }
+    }
   }
 
   private getNestedProperty(obj: any, path: string): any {
@@ -124,6 +149,18 @@ class ConfigManager {
           analytics: false
         }
       },
+      applicationInsights: {
+        connectionString: '',
+        enableAutoRouteTracking: true,
+        enableRequestHeaderTracking: false,
+        enableResponseHeaderTracking: false,
+        enableAjaxErrorStatusText: true,
+        enableAjaxPerfTracking: true,
+        enableUnhandledPromiseRejectionTracking: true,
+        enableCorsCorrelation: true,
+        disableFetchTracking: false,
+        enableDebug: false
+      },
       ui: {
         theme: 'saga-blue',
         sidebarCollapsed: false,
@@ -151,6 +188,10 @@ class ConfigManager {
 
   getUiConfig() {
     return this.config?.ui;
+  }
+
+  getApplicationInsightsConfig() {
+    return this.config?.applicationInsights;
   }
 
   // Reload configuration (useful for runtime updates)

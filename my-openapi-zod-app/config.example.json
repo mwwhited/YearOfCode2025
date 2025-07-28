@@ -25,6 +25,18 @@
       "analytics": true
     }
   },
+  "applicationInsights": {
+    "connectionString": "InstrumentationKey=your-instrumentation-key;IngestionEndpoint=https://your-region.in.applicationinsights.azure.com/;LiveEndpoint=https://your-region.livediagnostics.monitor.azure.com/",
+    "enableAutoRouteTracking": true,
+    "enableRequestHeaderTracking": false,
+    "enableResponseHeaderTracking": false,
+    "enableAjaxErrorStatusText": true,
+    "enableAjaxPerfTracking": true,
+    "enableUnhandledPromiseRejectionTracking": true,
+    "enableCorsCorrelation": true,
+    "disableFetchTracking": false,
+    "enableDebug": false
+  },
   "ui": {
     "theme": "saga-blue",
     "sidebarCollapsed": false,

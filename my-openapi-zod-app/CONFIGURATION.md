@@ -69,7 +69,33 @@ Customize application behavior:
 }
 ```
 
-### 5. UI Preferences
+### 5. Application Insights Configuration
+Configure Azure Application Insights for telemetry and monitoring:
+
+```json
+{
+  "applicationInsights": {
+    "connectionString": "InstrumentationKey=12345678-1234-1234-1234-123456789012;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/",
+    "enableAutoRouteTracking": true,
+    "enableRequestHeaderTracking": false,
+    "enableResponseHeaderTracking": false,
+    "enableAjaxErrorStatusText": true,
+    "enableAjaxPerfTracking": true,
+    "enableUnhandledPromiseRejectionTracking": true,
+    "enableCorsCorrelation": true,
+    "disableFetchTracking": false,
+    "enableDebug": false
+  }
+}
+```
+
+**Required Steps in Azure Portal:**
+1. Create an Application Insights resource
+2. Copy the connection string from the resource overview
+3. Configure data retention policies
+4. Set up alerts and dashboards
+
+### 6. UI Preferences
 Configure default UI settings:
 
 ```json
@@ -333,6 +359,19 @@ interface AppConfig {
       monitoring: boolean;     // Enable performance monitoring
       analytics: boolean;      // Enable usage analytics
     };
+  };
+  applicationInsights: {
+    connectionString: string;  // Application Insights connection string
+    instrumentationKey?: string; // Legacy instrumentation key (optional)
+    enableAutoRouteTracking: boolean; // Automatic page view tracking
+    enableRequestHeaderTracking: boolean; // Track HTTP request headers
+    enableResponseHeaderTracking: boolean; // Track HTTP response headers
+    enableAjaxErrorStatusText: boolean; // Include error text in telemetry
+    enableAjaxPerfTracking: boolean; // Track AJAX performance
+    enableUnhandledPromiseRejectionTracking: boolean; // Track promise rejections
+    enableCorsCorrelation: boolean; // Enable CORS correlation headers
+    disableFetchTracking: boolean; // Disable automatic fetch tracking
+    enableDebug: boolean;      // Enable debug logging
   };
   ui: {
     theme: string;             // PrimeReact theme name

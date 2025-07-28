@@ -6,6 +6,8 @@ import { Message } from 'primereact/message';
 import { Button } from 'primereact/button';
 import { configManager } from './config/appConfig';
 import { createMsalConfig } from './config/msalConfig';
+import { applicationInsights } from './services/applicationInsights';
+import './services/apiInterceptor'; // Initialize API interceptors
 import App from './App';
 
 export const AppWithConfig = () => {
@@ -20,6 +22,9 @@ export const AppWithConfig = () => {
 
       // Load configuration from public/config.json
       const config = await configManager.loadConfig();
+      
+      // Initialize Application Insights
+      applicationInsights.initialize(config);
       
       // Create MSAL configuration
       const msalConfig = createMsalConfig(config);

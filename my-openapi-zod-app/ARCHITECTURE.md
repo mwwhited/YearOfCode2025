@@ -225,6 +225,52 @@
 
 ---
 
+### 2025-07-28 - Application Insights Integration
+**Changes Made:**
+- Integrated Azure Application Insights for comprehensive telemetry
+- Added automatic API call tracking and error monitoring
+- Implemented custom business event tracking
+- Created performance monitoring infrastructure
+- Added user authentication and session tracking
+
+**Files Added:**
+- `src/services/applicationInsights.ts` - Application Insights service wrapper
+- `src/services/apiInterceptor.ts` - Automatic API call tracking
+- `src/hooks/useApplicationInsights.ts` - React hook for telemetry
+- `APPLICATION_INSIGHTS.md` - Comprehensive integration guide
+
+**Files Modified:**
+- `src/config/appConfig.ts` - Added Application Insights configuration schema
+- `src/AppWithConfig.tsx` - Initialize Application Insights with configuration
+- `src/contexts/AuthContext.tsx` - Track authentication events and user context
+- `src/pages/Dashboard.tsx` - Added telemetry tracking examples
+- `public/config.json` - Added Application Insights configuration
+- `config.example.json` - Added Application Insights template
+- `CONFIGURATION.md` - Added Application Insights setup instructions
+
+**Dependencies Added:**
+- `@microsoft/applicationinsights-web`: ^3.3.9 - Core Application Insights SDK
+- `@microsoft/applicationinsights-react-js`: ^19.3.7 - React integration
+- `history`: ^5.3.0 - Browser history for route tracking
+
+**Architecture Decisions:**
+- **Comprehensive Telemetry**: Track all user interactions, API calls, and errors
+- **Automatic Instrumentation**: Intercept fetch/XHR requests for automatic tracking
+- **Privacy-First**: No PII tracking, focus on business metrics and performance
+- **Custom Events**: Business-specific event tracking for analytics
+- **Performance Monitoring**: Track page load times, API response times
+- **Error Tracking**: Comprehensive error and exception handling
+
+**Impact:**
+- **Observability**: Full visibility into application performance and usage
+- **Business Intelligence**: Data-driven insights into feature usage and user behavior
+- **Performance Optimization**: Identify bottlenecks and optimization opportunities
+- **Error Monitoring**: Proactive error detection and resolution
+- **User Experience**: Track and improve user journey and satisfaction
+- **DevOps Integration**: Monitor deployment success and rollback triggers
+
+---
+
 ### Future Changes
 **IMPORTANT**: All future architecture changes MUST be documented here with:
 - Date and description of changes

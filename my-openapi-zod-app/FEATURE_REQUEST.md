@@ -5,3 +5,6 @@
   - sort 
   - page
 - grids should 
+
+
+- All UI Components should either originate or be wrapped in `@/components/controls`
