@@ -135,3 +135,49 @@ export class ApiException extends Error {
         return obj && (obj as any).isApiException && (obj as any).isApiException === true;
     }
 }
+
+import type { IFilterParameter, IOrderDirections, IResultMessage } from './GreenOnion';
+interface IQuery<
+    TFilter extends IFilter, 
+    TOrderBy extends IOrderBy, 
+    TQuery  extends ISearch<TFilter, TOrderBy>, 
+    TModel> {
+	Query(request:TQuery) : Promise<IPagedResult<TModel>>;
+}
+interface  ISave<TModel, TSave> {
+	Save(request:TSave) : Promise<TModel>
+}
+interface  IGet<TModel> {
+	Get(keys: Record<string, unknown>) : Promise<TModel>
+}
+interface IPagedResult<TModel> {
+    rows?: TModel[],
+    messages?: IResultMessage[],
+    currentPage?: number,
+    totalPageCount?: number,
+    totalRowCount?: number,
+}
+interface ISearch<TFilter extends IFilter, TOrderBy extends IOrderBy> 
+{
+    currentPage?: number,
+    pageSize?: number,
+    excludePageCount?: number,
+    searchTerm?: string,
+    filter: TFilter,
+    orderBy: TOrderBy,	
+}
+interface IFilter {
+    [key: string]: IFilterParameter;
+}
+interface IOrderBy {
+    [key: string]: IOrderDirections;
+}
+export type {
+    IQuery,
+    ISave,
+    IGet,
+    IPagedResult,
+    ISearch,
+    IFilter,
+    IOrderBy
+}

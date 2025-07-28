@@ -2,8 +2,9 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
-import { LoginPage } from '@/components/auth/LoginPage';
 import { Dashboard } from '@/pages/Dashboard';
+import UsersList from '@/pages/UsersList';
+import { UserRole, ROLE_GROUPS } from '@/types/roles';
 
 // Placeholder components for other routes
 const ProductsPage = () => <div className="p-4"><h1>Products</h1><p>Products page coming soon...</p></div>;
@@ -18,10 +19,7 @@ const NotFoundPage = () => <div className="p-4"><h1>404 - Page Not Found</h1><p>
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Public routes */}
-      <Route path="/login" element={<LoginPage />} />
-      
-      {/* Protected routes with layout */}
+      {/* All routes are protected and trigger B2C login automatically */}
       <Route 
         path="/" 
         element={
@@ -41,7 +39,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="products/add" 
           element={
-            <ProtectedRoute roles={['Admin', 'Manager']}>
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
               <ProductsPage />
             </ProtectedRoute>
           } 
@@ -49,7 +47,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="products/suggested" 
           element={
-            <ProtectedRoute roles={['Admin', 'Manager']}>
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
               <ProductsPage />
             </ProtectedRoute>
           } 
@@ -60,7 +58,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="categories/add" 
           element={
-            <ProtectedRoute roles={['Admin', 'Manager']}>
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
               <CategoriesPage />
             </ProtectedRoute>
           } 
@@ -71,7 +69,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="ingredients/add" 
           element={
-            <ProtectedRoute roles={['Admin', 'Manager']}>
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
               <IngredientsPage />
             </ProtectedRoute>
           } 
@@ -82,7 +80,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="allergens/add" 
           element={
-            <ProtectedRoute roles={['Admin', 'Manager']}>
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
               <AllergensPage />
             </ProtectedRoute>
           } 
@@ -92,8 +90,18 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="reports/*" 
           element={
-            <ProtectedRoute roles={['Admin', 'Manager']}>
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
               <ReportsPage />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* User management routes - Manager and Admin only */}
+        <Route 
+          path="users/list" 
+          element={
+            <ProtectedRoute roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <UsersList />
             </ProtectedRoute>
           } 
         />
@@ -102,7 +110,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="admin/users" 
           element={
-            <ProtectedRoute roles={['Admin']}>
+            <ProtectedRoute roles={ROLE_GROUPS.SUPER_ADMIN_ONLY}>
               <AdminUsersPage />
             </ProtectedRoute>
           } 
@@ -110,7 +118,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="admin/roles" 
           element={
-            <ProtectedRoute roles={['Admin']}>
+            <ProtectedRoute roles={ROLE_GROUPS.SUPER_ADMIN_ONLY}>
               <AdminRolesPage />
             </ProtectedRoute>
           } 
@@ -118,7 +126,7 @@ export const AppRoutes: React.FC = () => {
         <Route 
           path="admin/*" 
           element={
-            <ProtectedRoute roles={['Admin']}>
+            <ProtectedRoute roles={ROLE_GROUPS.SUPER_ADMIN_ONLY}>
               <AdminUsersPage />
             </ProtectedRoute>
           } 

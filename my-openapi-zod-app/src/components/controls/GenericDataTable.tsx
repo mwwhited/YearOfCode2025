@@ -1,21 +1,54 @@
-import { useState } from "react";
-import { DataTable, Column, InputText, Dropdown } from './';
+import { useState, useEffect } from "react";
+import { DataTable, Column, InputText, Dropdown, ProgressSpinner } from './';
 import type { DataTableFilterMeta } from "primereact/datatable";
 import { z, ZodObject, type ZodRawShape } from "zod";
 
 type GenericDataTableProps<T extends ZodObject<ZodRawShape>> = {
   schema: T;
-  data: z.infer<T>[];
+  data?: z.infer<T>[];
   columnOverrides?: Partial<Record<keyof z.infer<T>, { header?: string }>>;
+  client?: {
+    Query: (params: { body?: any }) => Promise<{ rows?: z.infer<T>[] } | undefined>;
+  };
 };
 
 export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   schema,
-  data,
+  data: initialData,
   columnOverrides = {},
+  client,
 }: GenericDataTableProps<T>) {
   const [filters, setFilters] = useState<DataTableFilterMeta>({});
   const [globalFilter, setGlobalFilter] = useState("");
+  const [data, setData] = useState<z.infer<T>[]>(initialData || []);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Load data from client if provided
+  useEffect(() => {
+    if (client && !initialData) {
+      const loadData = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+          const result = await client.Query({ body: {} });
+          if (result && result.rows) {
+            setData(result.rows);
+          } else {
+            setData([]);
+          }
+        } catch (err) {
+          console.error('Error loading data:', err);
+          setError(err instanceof Error ? err.message : 'Failed to load data');
+          setData([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+      loadData();
+    }
+  }, [client, initialData]);
 
   const shape = schema.shape;
 
@@ -45,6 +78,34 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
     );
   };
 
+  if (loading) {
+    return (
+      <div className="card">
+        <div className="flex justify-center align-items-center p-4">
+          <ProgressSpinner />
+          <span className="ml-2">Loading data...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <div className="p-4 text-center">
+          <i className="pi pi-exclamation-triangle text-red-500 text-2xl mb-2"></i>
+          <p className="text-red-500">Error loading data: {error}</p>
+          <button 
+            className="p-button p-button-text"
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="card">
       <DataTable
@@ -56,8 +117,13 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
         resizableColumns
         reorderableColumns
         globalFilterFields={Object.keys(shape)}
+        globalFilter={globalFilter}
+        emptyMessage="No data available"
         header={
-          <div className="flex justify-end">
+          <div className="flex justify-content-between align-items-center">
+            <div className="text-lg font-medium">
+              {data.length} record{data.length !== 1 ? 's' : ''} found
+            </div>
             <span className="p-input-icon-left">
               <i className="pi pi-search" />
               <InputText

@@ -15,13 +15,15 @@
 - **Hook**: `src/hooks/useAuth.ts` for component usage
 - **Role Claims**: Extracts roles from `extension_Role`, `roles`, or `groups` claims
 - **Token Management**: Automatic acquisition with fallback to redirect flow
+- **Login Flow**: Direct B2C redirect (no separate login page)
 
 ### Routing Architecture
 - **Router**: React Router DOM v7.7.1 with BrowserRouter
-- **Protection**: `ProtectedRoute` component with role-based guards
+- **Protection**: `ProtectedRoute` component with automatic B2C login trigger
 - **Routes**: Organized in `src/routes/AppRoutes.tsx`
-- **Deep Linking**: Full URL support with authentication checks
+- **Deep Linking**: Full URL support with automatic authentication
 - **Role-Based Access**: Admin, Manager, User hierarchy
+- **Login Flow**: All routes protected, automatic B2C redirect for unauthenticated users
 
 ### UI Components & Layout
 - **Framework**: PrimeReact 10.9.6 with Saga Blue theme
@@ -271,8 +273,17 @@ The application now uses runtime configuration instead of build-time environment
 - `src/components/controls/` - 12 PrimeReact wrapper components created
 - `CLAUDE.md` - Updated with API enhancement documentation
 
+### Modified Files (Authentication Flow Simplification)
+- `src/components/auth/ProtectedRoute.tsx` - Auto-trigger B2C login
+- `src/routes/AppRoutes.tsx` - Removed login route, all routes protected
+- `src/components/layout/AppHeader.tsx` - Simplified UI, removed login button
+
+### Modified Files (Application Insights Development Fix)
+- `src/services/applicationInsights.ts` - Development mode detection and conditional React plugin loading
+
 ### Removed Files
 - `.env.example` - Replaced with config.example.json
+- `src/components/auth/LoginPage.tsx` - Replaced with automatic B2C redirect
 
 ## Dependencies Added
 - `@azure/msal-browser`: ^4.16.0
@@ -354,6 +365,44 @@ The application now uses runtime configuration instead of build-time environment
 - Automatic authentication and correlation for all generated clients
 - Complete traceability from UI interactions to API requests
 - Perfect alignment with Application Insights telemetry data
+
+### Authentication Flow Simplification (2025-07-28)
+**Enhancement**: Removed separate login page for direct B2C authentication
+**Implementation**:
+- Removed LoginPage component and `/login` route
+- Updated ProtectedRoute to automatically trigger B2C login
+- Simplified AppHeader to only show user menu when authenticated
+- All routes now protected by default with automatic login redirect
+
+**Files Removed**:
+- `src/components/auth/LoginPage.tsx` - No longer needed
+
+**Files Modified**:
+- `src/components/auth/ProtectedRoute.tsx` - Auto-trigger login with useEffect
+- `src/routes/AppRoutes.tsx` - Removed login route, all routes protected
+- `src/components/layout/AppHeader.tsx` - Removed login button, simplified UI
+
+**User Experience**:
+- Users accessing any route are automatically redirected to B2C login
+- No intermediate login page, direct B2C authentication flow
+- Seamless return to intended route after authentication
+- Simplified UI with no redundant login elements
+
+### Application Insights Development Mode Fix (2025-07-28)
+**Issue**: Application Insights React plugin causing "Cannot redefine property: pathname" errors in development
+**Resolution**:
+- Disabled React plugin in development mode to avoid Vite/React Router conflicts
+- Enhanced error handling with graceful fallback to telemetry fallback system
+- Maintained full functionality in production while ensuring stable development experience
+- Added safer browser history creation with comprehensive error handling
+
+**Files Modified**:
+- `src/services/applicationInsights.ts` - Development mode detection and React plugin conditional loading
+
+**Technical Impact**:
+- Development environment now stable without Application Insights initialization errors
+- Production maintains full Application Insights functionality including auto-route tracking
+- Graceful degradation ensures core application functionality never affected by telemetry issues
 
 ## Dependencies Added (Complete List)
 - `@azure/msal-browser`: ^4.16.0

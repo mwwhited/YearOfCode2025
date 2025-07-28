@@ -36,6 +36,20 @@ export const AppWithConfig = () => {
       const msalInstance = new PublicClientApplication(msalConfig);
       await msalInstance.initialize();
       
+      // Handle redirect response immediately after initialization
+      try {
+        console.log('🔧 Handling redirect response during app initialization...');
+        const response = await msalInstance.handleRedirectPromise();
+        if (response) {
+          console.log('✅ Redirect response handled during initialization:', response.account?.username);
+        } else {
+          console.log('ℹ️ No redirect response to handle during initialization');
+        }
+      } catch (redirectError) {
+        console.warn('⚠️ Error handling redirect response during initialization:', redirectError);
+        // Don't fail app initialization for redirect errors
+      }
+      
       setMsalInstance(msalInstance);
       console.info('✅ Application initialized successfully');
     } catch (err) {

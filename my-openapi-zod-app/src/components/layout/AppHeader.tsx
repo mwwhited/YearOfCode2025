@@ -10,10 +10,22 @@ interface AppHeaderProps {
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCollapsed }) => {
-  const { user, logout, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated, getUserFullName, getUserRole } = useAuth();
   const menuRef = useRef<PrimeMenuType>(null);
 
   const userMenuItems = [
+    {
+      label: `${getUserFullName() || user?.username || 'User'}`,
+      icon: 'pi pi-user',
+      disabled: true,
+      template: (item: any) => (
+        <div className="p-menuitem-content" style={{ padding: '0.5rem 1rem' }}>
+          <div className="font-semibold">{item.label}</div>
+          <div className="text-xs text-500">{getUserRole() || 'No role assigned'}</div>
+        </div>
+      )
+    },
+    { separator: true },
     {
       label: 'Profile',
       icon: 'pi pi-user',
@@ -56,10 +68,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCo
 
   const endContent = (
     <div className="flex align-items-center">
-      {isAuthenticated ? (
+      {isAuthenticated && (
         <>
           <span className="mr-2 text-sm hidden md:inline">
-            Welcome, {user?.name || user?.username}
+            Welcome, {getUserFullName() || user?.name || user?.username}
           </span>
           <Menu 
             model={userMenuItems} 
@@ -74,16 +86,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCo
             onClick={(e) => menuRef.current?.toggle(e)}
           />
         </>
-      ) : (
-        <Button
-          label="Login"
-          icon="pi pi-sign-in"
-          className="p-button-outlined"
-          onClick={() => {
-            // This will be handled by the router/auth logic
-            console.log('Navigate to login');
-          }}
-        />
       )}
     </div>
   );

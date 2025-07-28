@@ -7,7 +7,7 @@ import { telemetryFallback } from './telemetryFallback';
 class ApplicationInsightsService {
   private appInsights: ApplicationInsights | null = null;
   private reactPlugin: ReactPlugin | null = null;
-  private browserHistory = createBrowserHistory({ window });
+  private browserHistory: any = null;
   private useFallback = false;
 
   private shouldUseFallback(): boolean {
@@ -50,19 +50,48 @@ class ApplicationInsightsService {
     }
 
     try {
-      console.log('🔧 Creating React plugin...');
-      // Create React plugin for route tracking
-      this.reactPlugin = new ReactPlugin();
-
       console.log('🔧 Creating Application Insights instance...');
+      
+      // In development, skip React plugin to avoid conflicts
+      let extensions: any[] = [];
+      let extensionConfig: any = {};
+      
+      const isDevelopment = config.app.environment === 'development';
+      
+      if (!isDevelopment) {
+        // Only try to create React plugin in production
+        try {
+          console.log('🔧 Creating browser history...');
+          this.browserHistory = createBrowserHistory({ window });
+          
+          console.log('🔧 Creating React plugin...');
+          this.reactPlugin = new ReactPlugin();
+          
+          extensions = [this.reactPlugin];
+          extensionConfig = {
+            [this.reactPlugin.identifier]: {
+              history: this.browserHistory,
+            },
+          };
+          console.log('✅ React plugin created successfully');
+        } catch (reactPluginError) {
+          console.warn('⚠️ Failed to create React plugin, continuing without it:', reactPluginError);
+          this.reactPlugin = null;
+          extensions = [];
+          extensionConfig = {};
+        }
+      } else {
+        console.log('🔧 Development mode: skipping React plugin to avoid conflicts');
+      }
+
       // Initialize Application Insights
       this.appInsights = new ApplicationInsights({
         config: {
           connectionString: aiConfig.connectionString,
           instrumentationKey: aiConfig.instrumentationKey,
           
-          // Performance and tracking settings
-          enableAutoRouteTracking: aiConfig.enableAutoRouteTracking,
+          // Performance and tracking settings (disable problematic features in development)
+          enableAutoRouteTracking: !isDevelopment && aiConfig.enableAutoRouteTracking && this.reactPlugin !== null,
           enableRequestHeaderTracking: aiConfig.enableRequestHeaderTracking,
           enableResponseHeaderTracking: aiConfig.enableResponseHeaderTracking,
           enableAjaxErrorStatusText: aiConfig.enableAjaxErrorStatusText,
@@ -76,33 +105,54 @@ class ApplicationInsightsService {
           loggingLevelConsole: aiConfig.enableDebug ? 2 : 0, // 2 = WARNING and above
           loggingLevelTelemetry: aiConfig.enableDebug ? 2 : 1, // 1 = CRITICAL only
           
-          // Custom properties (will be added via telemetry initializer)
-          
-          // Extensions
-          extensions: [this.reactPlugin],
-          extensionConfig: {
-            [this.reactPlugin.identifier]: {
-              history: this.browserHistory,
-            },
-          },
+          // Extensions (only if React plugin was created successfully)
+          extensions: extensions,
+          extensionConfig: extensionConfig,
         },
       });
 
       console.log('🔧 Loading Application Insights...');
-      // Load Application Insights
-      this.appInsights.loadAppInsights();
+      // Load Application Insights with additional error handling
+      try {
+        this.appInsights.loadAppInsights();
+        console.log('✅ Application Insights loaded successfully');
+      } catch (loadError) {
+        console.warn('⚠️ Failed to load Application Insights, but continuing:', loadError);
+        // Don't fail completely, just log the error
+      }
 
       console.log('🔧 Setting initial context...');
       // Set initial context
-      this.setInitialContext(config);
+      try {
+        this.setInitialContext(config);
+        console.log('✅ Initial context set successfully');
+      } catch (contextError) {
+        console.warn('⚠️ Failed to set initial context, but continuing:', contextError);
+        // Don't fail completely, just log the error
+      }
 
       console.info('✅ Application Insights initialized successfully');
     } catch (error) {
       console.error('❌ Failed to initialize Application Insights:', error);
-      console.error('❌ Error details:', error instanceof Error ? error.message : 'Unknown error');
-      console.error('❌ Stack trace:', error instanceof Error ? error.stack : 'No stack trace');
+      
+      // Try to extract more meaningful error information
+      if (error && typeof error === 'object') {
+        if ('message' in error) {
+          console.error('❌ Error message:', error.message);
+        }
+        if ('stack' in error) {
+          console.error('❌ Stack trace:', error.stack);
+        }
+        if ('messageId' in error) {
+          console.error('❌ Message ID:', error.messageId);
+        }
+      }
+      
+      console.warn('⚠️ Switching to fallback telemetry mode');
       // Set fallback mode on any initialization error
       this.useFallback = true;
+      this.appInsights = null;
+      this.reactPlugin = null;
     }
   }
 

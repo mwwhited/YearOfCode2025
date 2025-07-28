@@ -1,21 +1,26 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { ProgressSpinner, Message } from '@/components/controls';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
   roles?: string[];
-  fallbackPath?: string;
 }
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ 
   children, 
-  roles = [], 
-  fallbackPath = '/login' 
+  roles = []
 }) => {
-  const { isAuthenticated, isLoading, hasAnyRole } = useAuth();
-  const location = useLocation();
+  const { isAuthenticated, isLoading, hasAnyRole, login } = useAuth();
+
+  // Automatically trigger login if not authenticated
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      login().catch(error => {
+        console.error('Auto-login failed:', error);
+      });
+    }
+  }, [isLoading, isAuthenticated, login]);
 
   if (isLoading) {
     return (
@@ -26,8 +31,13 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   }
 
   if (!isAuthenticated) {
-    // Redirect to login with return URL
-    return <Navigate to={fallbackPath} state={{ from: location }} replace />;
+    // Show loading while redirecting to B2C
+    return (
+      <div className="loading-spinner">
+        <ProgressSpinner />
+        <p className="mt-2 text-center">Redirecting to login...</p>
+      </div>
+    );
   }
 
   if (roles.length > 0 && !hasAnyRole(roles)) {

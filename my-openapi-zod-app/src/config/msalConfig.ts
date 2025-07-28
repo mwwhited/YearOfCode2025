@@ -11,14 +11,23 @@ export const createMsalConfig = (config: AppConfig): Configuration => ({
     postLogoutRedirectUri: config.azure.postLogoutRedirectUri,
   },
   cache: {
-    cacheLocation: 'sessionStorage',
-    storeAuthStateInCookie: false,
+    cacheLocation: 'localStorage', // Use localStorage for better persistence
+    storeAuthStateInCookie: true, // Enable cookie fallback for B2C compatibility
+  },
+  system: {
+    windowHashTimeout: 60000, // Increase timeout for B2C flows
+    iframeHashTimeout: 6000,
+    loadFrameTimeout: 0,
   }
 });
 
 // Create login request from runtime config
 export const createLoginRequest = (config: AppConfig): RedirectRequest => ({
   scopes: config.api.scopes,
+  prompt: 'select_account', // Allow user to select account
+  extraQueryParameters: {
+    // Add B2C specific parameters if needed
+  },
 });
 
 // Create token request from runtime config

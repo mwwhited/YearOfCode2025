@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { UserRole, ROLE_GROUPS } from '@/types/roles';
 
 interface MenuItem {
   separator?: boolean;
@@ -39,22 +40,22 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           label: 'All Products',
           icon: 'pi pi-list',
           command: () => navigate('/products'),
-          visible: hasAnyRole(['Admin', 'Manager', 'User'])
+          visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
         },
         {
           label: 'Add Product',
           icon: 'pi pi-plus',
           command: () => navigate('/products/add'),
-          visible: hasAnyRole(['Admin', 'Manager'])
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         },
         {
           label: 'Suggested Products',
           icon: 'pi pi-lightbulb',
           command: () => navigate('/products/suggested'),
-          visible: hasAnyRole(['Admin', 'Manager'])
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         }
       ].filter(item => item.visible),
-      visible: hasAnyRole(['Admin', 'Manager', 'User'])
+      visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
     },
     {
       label: 'Categories',
@@ -64,16 +65,16 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           label: 'All Categories',
           icon: 'pi pi-list',
           command: () => navigate('/categories'),
-          visible: hasAnyRole(['Admin', 'Manager', 'User'])
+          visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
         },
         {
           label: 'Add Category',
           icon: 'pi pi-plus',
           command: () => navigate('/categories/add'),
-          visible: hasAnyRole(['Admin', 'Manager'])
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         }
       ].filter(item => item.visible),
-      visible: hasAnyRole(['Admin', 'Manager', 'User'])
+      visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
     },
     {
       label: 'Ingredients',
@@ -83,16 +84,16 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           label: 'All Ingredients',
           icon: 'pi pi-list',
           command: () => navigate('/ingredients'),
-          visible: hasAnyRole(['Admin', 'Manager', 'User'])
+          visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
         },
         {
           label: 'Add Ingredient',
           icon: 'pi pi-plus',
           command: () => navigate('/ingredients/add'),
-          visible: hasAnyRole(['Admin', 'Manager'])
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         }
       ].filter(item => item.visible),
-      visible: hasAnyRole(['Admin', 'Manager', 'User'])
+      visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
     },
     {
       label: 'Allergens',
@@ -102,20 +103,20 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           label: 'All Allergens',
           icon: 'pi pi-list',
           command: () => navigate('/allergens'),
-          visible: hasAnyRole(['Admin', 'Manager', 'User'])
+          visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
         },
         {
           label: 'Add Allergen',
           icon: 'pi pi-plus',
           command: () => navigate('/allergens/add'),
-          visible: hasAnyRole(['Admin', 'Manager'])
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         }
       ].filter(item => item.visible),
-      visible: hasAnyRole(['Admin', 'Manager', 'User'])
+      visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
     },
     {
       separator: true,
-      visible: hasAnyRole(['Admin', 'Manager'])
+      visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
     },
     {
       label: 'Reports',
@@ -125,16 +126,45 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           label: 'Product Activity',
           icon: 'pi pi-chart-line',
           command: () => navigate('/reports/product-activity'),
-          visible: hasAnyRole(['Admin', 'Manager'])
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         },
         {
           label: 'User Actions',
           icon: 'pi pi-users',
           command: () => navigate('/reports/user-actions'),
-          visible: hasRole('Admin')
+          visible: hasRole(UserRole.SUPER_ADMIN)
         }
       ].filter(item => item.visible),
-      visible: hasAnyRole(['Admin', 'Manager'])
+      visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
+    },
+    {
+      separator: true,
+      visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
+    },
+    {
+      label: 'Settings',
+      icon: 'pi pi-cog',
+      items: [
+        {
+          label: 'Manage Users',
+          icon: 'pi pi-users',
+          command: () => navigate('/users/list'),
+          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
+        },
+        {
+          label: 'Application Settings',
+          icon: 'pi pi-sliders-h',
+          command: () => console.log('Navigate to application settings'),
+          visible: true
+        },
+        {
+          label: 'System Settings',
+          icon: 'pi pi-server',
+          command: () => console.log('Navigate to system settings'),
+          visible: hasRole(UserRole.SUPER_ADMIN)
+        }
+      ].filter(item => item.visible),
+      visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
     },
     {
       separator: true,
@@ -142,31 +172,25 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
     },
     {
       label: 'Administration',
-      icon: 'pi pi-cog',
+      icon: 'pi pi-shield',
       items: [
         {
-          label: 'Users',
-          icon: 'pi pi-users',
-          command: () => navigate('/admin/users'),
-          visible: hasRole('Admin')
-        },
-        {
-          label: 'Roles',
+          label: 'User Roles',
           icon: 'pi pi-shield',
           command: () => navigate('/admin/roles'),
-          visible: hasRole('Admin')
+          visible: hasRole(UserRole.SUPER_ADMIN)
         },
         {
           label: 'School Districts',
           icon: 'pi pi-building',
           command: () => navigate('/admin/school-districts'),
-          visible: hasRole('Admin')
+          visible: hasRole(UserRole.SUPER_ADMIN)
         },
         {
           label: 'Error Logs',
           icon: 'pi pi-exclamation-circle',
           command: () => navigate('/admin/error-logs'),
-          visible: hasRole('Admin')
+          visible: hasRole(UserRole.SUPER_ADMIN)
         }
       ].filter(item => item.visible),
       visible: hasRole('Admin')
