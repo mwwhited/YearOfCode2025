@@ -11,6 +11,7 @@ import { useProfile } from '@/hooks/useProfile';
 import { tokenCache } from '@/services/tokenCache';
 import { logger } from '@/utils/logger';
 import type { IQueryUserModel } from '@/api/GreenOnion';
+import { MaintenanceMessage } from '@/components/auth/MaintenanceMessage';
 
 interface User {
   // B2C Account Information
@@ -51,7 +52,7 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const { instance, accounts, inProgress } = useMsal();
-  const { profile, isLoading: isLoadingProfile, hasValidProfile } = useProfile();
+  const { profile, isLoading: isLoadingProfile, hasValidProfile, isSystemMaintenance, clearProfile } = useProfile();
   
   // Get the active account 
   const activeAccount = accounts && accounts.length > 0 ? accounts[0] : null;
@@ -140,6 +141,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = async (): Promise<void> => {
     try {
+      // Clear user profile first
+      clearProfile();
+      
       // Clear Application Insights user context before logout
       applicationInsights.clearUserContext();
       
@@ -270,6 +274,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const getUserRole = (): string | null => {
     return profile?.roleName || null;
   };
+
+  // Show maintenance message if system is under maintenance
+  if (isSystemMaintenance) {
+    return <MaintenanceMessage />;
+  }
 
   const contextValue: AuthContextType = {
     user,

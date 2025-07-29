@@ -23,7 +23,7 @@ export const AppWithConfig = () => {
 
       // Load configuration from public/config.json
       const config = await configManager.loadConfig();
-      
+
       // Initialize Application Insights (with error handling)
       try {
         applicationInsights.initialize(config);
@@ -31,17 +31,17 @@ export const AppWithConfig = () => {
         console.warn('⚠️ Application Insights initialization failed:', aiError);
         // Continue with app initialization even if AI fails
       }
-      
+
       // Create MSAL configuration
       const msalConfig = createMsalConfig(config);
       const authRequest = createLoginRequest(config);
-      
+
       // Initialize MSAL instance
       const msalInstance = new PublicClientApplication(msalConfig);
       await msalInstance.initialize();
-      
+
       console.log('ℹ️ MSAL instance initialized, redirect handling will be done by AppWithAuthCheck');
-      
+
       setMsalInstance(msalInstance);
       setLoginRequest(authRequest);
       logger.success('Application initialized successfully');
@@ -82,9 +82,9 @@ export const AppWithConfig = () => {
     return (
       <div className="min-h-screen flex align-items-center justify-content-center px-4">
         <div className="max-w-md w-full">
-          <Message 
-            severity="error" 
-            text="Failed to load application configuration" 
+          <Message
+            severity="error"
+            text="Failed to load application configuration"
             className="w-full mb-3"
           />
           <div className="text-center">
@@ -101,9 +101,9 @@ export const AppWithConfig = () => {
                 <li>• Ensure API endpoints are reachable</li>
               </ul>
             </div>
-            <Button 
-              label="Retry" 
-              icon="pi pi-refresh" 
+            <Button
+              label="Retry"
+              icon="pi pi-refresh"
               onClick={retryInitialization}
               className="p-button-outlined"
             />
@@ -144,7 +144,7 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
         // ALWAYS try to handle any pending redirects first
         logger.loading('Checking for pending redirects...');
         const redirectResult = await msalInstance.handleRedirectPromise();
-        
+
         if (redirectResult) {
           logger.success('Handled redirect result:', redirectResult.account?.username);
           // After handling redirect, accounts should be updated by MSAL automatically
@@ -168,7 +168,7 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
         // No valid authentication, let MsalAuthenticationTemplate handle it
         logger.auth('No valid authentication, using MsalAuthenticationTemplate');
         setAuthCheckComplete(true);
-        
+
       } catch (error) {
         logger.error('Error during auth check:', error);
         setAuthCheckComplete(true);
@@ -202,12 +202,12 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
 
   // Otherwise, use MsalAuthenticationTemplate for authentication
   return (
-    <MsalAuthenticationTemplate 
+    <MsalAuthenticationTemplate
       interactionType={InteractionType.Redirect}
       authenticationRequest={loginRequest}
       loadingComponent={
         () => (
-          <div className="min-h-screen flex align-items-center justify-content-center">
+          <div className="flex justify-content-center align-items-center min-h-screen w-full">
             <div className="text-center">
               <ProgressSpinner style={{ width: '50px', height: '50px' }} />
               <div className="mt-3">
@@ -222,9 +222,9 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
         () => (
           <div className="min-h-screen flex align-items-center justify-content-center px-4">
             <div className="max-w-md w-full">
-              <Message 
-                severity="error" 
-                text="Authentication failed" 
+              <Message
+                severity="error"
+                text="Authentication failed"
                 className="w-full mb-3"
               />
               <div className="text-center">

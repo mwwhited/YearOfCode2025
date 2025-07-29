@@ -8,14 +8,19 @@ import { useMsal } from '@azure/msal-react';
 import { ProgressSpinner } from '@/components/controls';
 import { applicationInsights } from '@/services/applicationInsights';
 import { tokenCache } from '@/services/tokenCache';
+import { useProfile } from '@/hooks/useProfile';
 
 export const Logout: React.FC = () => {
   const { instance } = useMsal();
+  const { clearProfile } = useProfile();
 
   useEffect(() => {
     const performLogout = async () => {
       try {
         console.log('🚪 Forced logout initiated from /logout route');
+        
+        // Clear user profile first
+        clearProfile();
         
         // Clear Application Insights user context
         applicationInsights.clearUserContext();

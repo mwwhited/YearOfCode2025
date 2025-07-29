@@ -16,6 +16,9 @@ interface UseProfileReturn {
   isLoading: boolean;
   error: string | null;
   hasValidProfile: boolean;
+  isSystemMaintenance: boolean;
+  clearProfile: () => void;
+  refreshProfile: () => Promise<void>;
 }
 
 export const useProfile = (): UseProfileReturn => {
@@ -23,6 +26,43 @@ export const useProfile = (): UseProfileReturn => {
   const [profile, setProfile] = useState<IQueryUserModel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isSystemMaintenance, setIsSystemMaintenance] = useState(false);
+
+  /**
+   * Check if error indicates API timeout or system maintenance
+   */
+  const isTimeoutError = (error: any): boolean => {
+    if (!error) return false;
+    
+    const errorMessage = error.message || error.toString() || '';
+    const errorCode = error.code || error.status || 0;
+    
+    // Check for common timeout indicators
+    return (
+      errorMessage.toLowerCase().includes('timeout') ||
+      errorMessage.toLowerCase().includes('network error') ||
+      errorMessage.toLowerCase().includes('fetch failed') ||
+      errorMessage.toLowerCase().includes('connection') ||
+      errorCode === 408 || // Request Timeout
+      errorCode === 504 || // Gateway Timeout 
+      errorCode === 503 || // Service Unavailable
+      errorCode === 0      // Network error
+    );
+  };
+
+  /**
+   * Get current path for redirect URI, excluding login/logout paths
+   */
+  const getCurrentRedirectPath = (): string => {
+    const currentPath = window.location.pathname;
+    const excludedPaths = ['/login', '/logout', '/logoff'];
+    
+    if (excludedPaths.some(path => currentPath.toLowerCase().includes(path.toLowerCase()))) {
+      return '/'; // Default to home for excluded paths
+    }
+    
+    return currentPath + window.location.search; // Include query params
+  };
 
   useEffect(() => {
     const initializeProfile = async () => {
@@ -32,7 +72,8 @@ export const useProfile = (): UseProfileReturn => {
 
         // Check if we have accounts from MSAL
         if (accounts.length === 0) {
-          console.log('ℹ️ No MSAL accounts available yet');
+          console.log('ℹ️ No MSAL accounts available yet - clearing profile');
+          setProfile(null);
           return;
         }
 
@@ -58,6 +99,7 @@ export const useProfile = (): UseProfileReturn => {
         const errorMessage = err instanceof Error ? err.message : 'Failed to initialize profile';
         console.error('❌ Profile initialization error:', errorMessage);
         setError(errorMessage);
+        setProfile(null);
         
         // Track error
         applicationInsights.trackException(
@@ -116,18 +158,73 @@ export const useProfile = (): UseProfileReturn => {
     } catch (err) {
       console.error('❌ Failed to load user profile:', err);
       
-      // Like original app - if profile is invalid, we could logout
-      // For now, just set error state
+      // Check if this is a timeout/maintenance error
+      if (isTimeoutError(err)) {
+        console.log('🚧 API timeout detected - system appears to be under maintenance');
+        setIsSystemMaintenance(true);
+        setError('System Offline For Maintenance');
+        
+        // Track maintenance event
+        applicationInsights.trackEvent('SystemMaintenance', {
+          error: err instanceof Error ? err.message : String(err),
+          currentPath: window.location.pathname,
+          timestamp: new Date().toISOString()
+        });
+        
+        // Delay before logout to show maintenance message
+        setTimeout(async () => {
+          try {
+            const redirectPath = getCurrentRedirectPath();
+            console.log(`🔄 Redirecting to logout with return path: ${redirectPath}`);
+            
+            await instance.logoutRedirect({
+              postLogoutRedirectUri: window.location.origin + redirectPath,
+            });
+          } catch (logoutError) {
+            console.error('❌ Logout redirect failed:', logoutError);
+            // Fallback: redirect to root
+            window.location.href = '/';
+          }
+        }, 3000); // Show maintenance message for 3 seconds
+        
+        return; // Don't throw - let the maintenance UI show
+      }
+      
+      // For other errors, set error state but don't trigger maintenance mode
       const errorMessage = err instanceof Error ? err.message : 'Failed to load profile';
       setError(errorMessage);
       
-      // Could implement logout redirect like original:
-      // if (userData && !userData.objectId) {
-      //   console.log('Invalid profile, redirecting to logout');
-      //   await instance.logoutRedirect();
-      // }
-      
       throw err;
+    }
+  };
+
+  /**
+   * Clear profile data (used during logout)
+   */
+  const clearProfile = () => {
+    console.log('🧹 Clearing user profile');
+    setProfile(null);
+    setError(null);
+    setIsSystemMaintenance(false);
+  };
+
+  /**
+   * Refresh profile data from API
+   */
+  const refreshProfile = async () => {
+    if (accounts.length === 0) {
+      console.log('ℹ️ No accounts available for profile refresh');
+      return;
+    }
+    
+    try {
+      setIsLoading(true);
+      setError(null);
+      await loadUserProfile();
+    } catch (err) {
+      console.error('❌ Failed to refresh profile:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -135,6 +232,9 @@ export const useProfile = (): UseProfileReturn => {
     profile,
     isLoading,
     error,
-    hasValidProfile: profile !== null && !error
+    hasValidProfile: profile !== null && !error,
+    isSystemMaintenance,
+    clearProfile,
+    refreshProfile
   };
 };
