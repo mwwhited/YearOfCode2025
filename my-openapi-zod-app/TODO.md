@@ -76,24 +76,22 @@
 ## Configuration Required 🔧
 
 ### Azure B2C Setup
-- [ ] Create Azure B2C tenant
-- [ ] Configure user flows
-- [ ] Set up application registration
-- [ ] Configure redirect URIs
-- [ ] Set up custom attributes for roles
-- [ ] Update config.json with Azure B2C settings
+- [X] Create Azure B2C tenant
+- [X] Configure user flows
+- [X] Set up application registration
+- [X] Configure redirect URIs
+- [X] Update config.json with Azure B2C settings
 
 ### Runtime Configuration Setup
 - [x] Copy config.example.json to public/config.json
 - [x] Configure Azure B2C settings in config.json
 - [x] Configure API base URL
-- [ ] Set up environment-specific configurations
-- [ ] Test configuration loading and validation
+- [X] Set up environment-specific configurations
+- [X] Test configuration loading and validation
 
 ### Deployment Configuration
-- [ ] Create environment-specific config files
+- [X] Create environment-specific config files
 - [ ] Set up configuration injection for containers
-- [ ] Configure Kubernetes ConfigMaps (if applicable)
 - [ ] Document configuration management procedures
 
 ## Known Issues 🐛
