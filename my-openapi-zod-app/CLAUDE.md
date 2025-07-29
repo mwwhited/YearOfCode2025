@@ -383,6 +383,44 @@ The application now uses runtime configuration instead of build-time environment
 - Development experience improved with clear error messages
 - Flexible telemetry system works with cloud and local endpoints
 
+### Development-Only Logging System (2025-07-28)
+**Feature**: Environment-based logging system for development debugging
+**Implementation**:
+- Created comprehensive logger utility (`src/utils/logger.ts`)
+- Environment detection using `import.meta.env.DEV` and `NODE_ENV`
+- Specialized logging methods with emoji prefixes for visual clarity
+- Advanced console features (grouping, timing, tables, assertions)
+- Zero overhead in production builds (logs are completely disabled)
+
+**Files Created**:
+- `src/utils/logger.ts` - Main logging utility with full feature set
+
+**Files Modified**:
+- `src/AppWithConfig.tsx` - Replaced console.log with logger calls
+- `src/contexts/AuthContext.tsx` - Updated authentication logging
+- `src/services/tokenCache.ts` - Enhanced token management logging
+- `ARCHITECTURE.md` - Added logging system documentation
+
+**Key Features**:
+- **Development Only**: Automatically disabled in production
+- **Contextual Methods**: `logger.auth()`, `logger.api()`, `logger.storage()`, `logger.cleanup()`
+- **Visual Hierarchy**: Emoji prefixes (🔐 auth, 🌐 api, ✅ success, ❌ error)
+- **Advanced Console**: Groups, timers, tables, assertions
+- **Type Safety**: Full TypeScript support with configurable log levels
+
+**Usage Pattern**:
+```typescript
+logger.auth('User authentication started');
+logger.success('Token cached successfully');
+logger.error('API call failed', error);
+```
+
+**Architectural Impact**:
+- Clean production builds with zero logging overhead
+- Enhanced development debugging experience
+- Consistent visual logging patterns across application
+- Improved troubleshooting with contextual log categorization
+
 ### API Client MSAL Integration & Correlation Tracking (2025-07-28)
 **Enhancement**: Complete overhaul of API client authentication and request correlation
 **Implementation**:

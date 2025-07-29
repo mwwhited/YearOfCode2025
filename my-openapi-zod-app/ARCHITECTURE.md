@@ -3,19 +3,47 @@
 ## Technology Stack
 - **Frontend Framework**: React 19.1.0
 - **UI Library**: PrimeReact 10.9.6 with PrimeFlex utilities
-- **Authentication**: Azure B2C with MSAL React
+- **Authentication**: Azure B2C with MSAL React + MsalAuthenticationTemplate
 - **Routing**: React Router DOM 7.7.1
 - **Build Tool**: Vite 7.0.6
 - **Language**: TypeScript 5.8.3
 - **API Client**: Generated TypeScript client with Zod validation
 - **Charts**: Chart.js 4.5.0
 - **Styling**: CSS Variables + PrimeReact Saga Blue theme
+- **Logging**: Development-only logger with environment-based output
+- **Telemetry**: Application Insights with fallback system
 
 ## Authentication Architecture
-- **Provider**: Azure B2C with MSAL browser library
-- **Token Management**: Automatic token acquisition and refresh
-- **Role-Based Access**: Claims-based authorization from B2C tokens
-- **Session Management**: Browser session storage for MSAL cache
+
+### Core Authentication
+- **Provider**: Azure B2C with MSAL browser library (v4.16.0)
+- **Authentication Pattern**: MsalAuthenticationTemplate with AppWithAuthCheck wrapper
+- **Flow Type**: InteractionType.Redirect for B2C compatibility
+- **Configuration**: Runtime config.json for environment-specific settings
+
+### Token Management System
+- **Dual-Layer Caching**: MSAL native cache + custom tokenCache service
+- **Storage Strategy**: localStorage with automatic expiry handling
+- **Token Types**: idToken cached for API authentication
+- **Lifecycle**: Automatic refresh and cleanup on logout
+
+### Role-Based Authorization
+- **Role Source**: API-based roles from UserClient.Get() response (not B2C claims)
+- **Role Hierarchy**: 6-tier system (Manufacturer User → Super Admin)
+- **Implementation**: Enum-based with permission checking functions
+- **Route Protection**: RoleGuard components (replaced ProtectedRoute)
+
+### Authentication Flow
+1. **MsalAuthenticationTemplate** handles B2C authentication
+2. **AppWithAuthCheck** intelligently processes redirects and accounts
+3. **useProfile** hook loads complete user data from API
+4. **AuthContext** provides authentication state to components
+5. **RoleGuard** enforces role-based access on routes
+
+### Logout System
+- **Regular Logout**: Header menu → logout → B2C → redirect back to app
+- **Forced Logout**: `/logout` route → immediate logout → stay on B2C page
+- **Data Cleanup**: Comprehensive clearing of MSAL, localStorage, sessionStorage
 
 ## Application Structure
 
@@ -28,52 +56,73 @@
 │   │   │   ├── Models/              # TypeScript interfaces
 │   │   │   ├── Schema/              # Zod validation schemas
 │   │   │   └── index.ts             # Exports
-│   │   ├── _ClientBase.ts           # Base client functionality
+│   │   ├── _ClientBase.ts           # Base client with token management
 │   │   └── _GlobalState.ts          # Global API state
 │   ├── components/                   # React components
 │   │   ├── auth/                    # Authentication components
 │   │   │   ├── LoginPage.tsx        # Azure B2C login interface
-│   │   │   └── ProtectedRoute.tsx   # Route protection wrapper
+│   │   │   ├── ProtectedRoute.tsx   # Route protection wrapper
+│   │   │   └── RoleGuard.tsx        # Role-based access control
 │   │   ├── controls/                # Wrapped PrimeReact UI components
 │   │   │   ├── Button.tsx           # Custom Button wrapper
 │   │   │   ├── DataTable.tsx        # Custom DataTable wrapper
 │   │   │   ├── Dialog.tsx           # Custom Dialog wrapper
 │   │   │   ├── InputText.tsx        # Custom InputText wrapper
+│   │   │   ├── Message.tsx          # Custom Message wrapper
+│   │   │   ├── ProgressSpinner.tsx  # Custom ProgressSpinner wrapper
 │   │   │   └── index.ts             # Component exports
 │   │   └── layout/                  # Layout components
-│   │       ├── AppHeader.tsx        # Navigation header
-│   │       ├── AppSidebar.tsx       # Role-based sidebar
+│   │       ├── AppHeader.tsx        # Navigation header with user menu
+│   │       ├── AppSidebar.tsx       # Role-based sidebar navigation
 │   │       ├── AppFooter.tsx        # Application footer
 │   │       └── AppLayout.tsx        # Main layout wrapper
 │   ├── contexts/                    # React contexts
-│   │   └── AuthContext.tsx          # Authentication state management
+│   │   └── AuthContext.tsx          # Authentication & user state management
 │   ├── hooks/                       # Custom React hooks
-│   │   └── useAuth.ts              # Authentication hook
+│   │   ├── useAuth.ts              # Authentication hook
+│   │   ├── useProfile.ts           # User profile data hook
+│   │   └── useApplicationInsights.ts # Telemetry hook
 │   ├── pages/                       # Page components
-│   │   └── Dashboard.tsx            # Main dashboard with charts
+│   │   ├── Dashboard.tsx           # Main dashboard with charts
+│   │   ├── Profile.tsx             # User profile page
+│   │   └── Logout.tsx              # Forced logout page
 │   ├── routes/                      # Routing configuration
-│   │   └── AppRoutes.tsx           # Protected route definitions
+│   │   └── AppRoutes.tsx           # Role-based route definitions
 │   ├── styles/                      # Styling system
 │   │   └── variables.css           # CSS custom properties
+│   ├── types/                       # Type definitions
+│   │   └── roles.ts                # Role enumeration and permissions
 │   ├── utils/                       # Utility functions
+│   │   ├── logger.ts               # Development-only logging system
 │   │   └── monitoring.ts           # Performance monitoring
+│   ├── services/                    # Application services
+│   │   ├── tokenCache.ts           # JWT token caching service
+│   │   ├── applicationInsights.ts  # Azure Application Insights service
+│   │   ├── telemetryFallback.ts    # Console-based telemetry fallback
+│   │   └── apiInterceptor.ts       # Automatic API call monitoring
 │   ├── config/                      # Configuration files
-│   │   └── msalConfig.ts           # Azure B2C configuration
+│   │   ├── msalConfig.ts           # Azure B2C configuration factory
+│   │   ├── appConfig.ts            # Runtime configuration manager
+│   │   └── useConfig.ts            # Configuration React hook
+│   ├── AppWithConfig.tsx           # Configuration-aware app wrapper
 │   ├── App.tsx                      # Root application component
 │   ├── App.css                      # Global styles
 │   ├── main.tsx                     # Application entry point
 │   └── index.css                    # Base CSS
 ├── public/                          # Static assets
+│   └── config.json                 # Runtime configuration file
 ├── dist/                           # Build output
 ├── scripts/                        # Build and development scripts
-├── .env.example                    # Environment template
+├── config.example.json             # Configuration template
 ├── eslint.config.js                # ESLint configuration
 ├── vite.config.ts                  # Vite build configuration
 ├── tsconfig.json                   # TypeScript configuration
 ├── package.json                    # Dependencies and scripts
 ├── TODO.md                         # Task tracking
 ├── CLAUDE.md                       # AI assistant memory
-└── ARCHITECTURE.md                 # This file
+├── ARCHITECTURE.md                 # This file
+├── CONFIGURATION.md                # Configuration guide
+└── APPLICATION_INSIGHTS.md         # Telemetry integration guide
 ```
 
 ## Authentication Flow
@@ -91,11 +140,39 @@
 - **Deep Linking**: Full URL support with proper authentication checks
 - **Fallback Handling**: 404 pages and unauthorized access messages
 
+## Logging System
+- **Environment-Based**: Only active in development mode (NODE_ENV === 'development')
+- **Structured Logging**: Categorized log levels (debug, info, warn, error)
+- **Contextual Methods**: Specialized loggers (auth, api, storage, cleanup)
+- **Visual Indicators**: Emoji prefixes for easy log identification
+- **Production Safety**: Zero overhead in production builds
+- **Advanced Features**: Grouping, timing, table output, assertions
+
+### Usage Examples:
+```typescript
+import { logger } from '@/utils/logger';
+
+// Basic logging
+logger.info('Application started');
+logger.error('Authentication failed', error);
+
+// Contextual logging
+logger.auth('User login attempt');
+logger.api('API call completed');
+logger.storage('Token cached successfully');
+logger.cleanup('User data cleared');
+
+// Advanced features
+logger.group('Authentication Process');
+logger.time('API Call Duration');
+logger.table(userData);
+```
+
 ## State Management
 - **Authentication**: Context-based with MSAL integration
 - **API State**: Generated clients with built-in state management
 - **Local State**: React hooks for component-level state
-- **Persistent Storage**: MSAL session storage for auth state
+- **Persistent Storage**: localStorage + sessionStorage for auth state
 
 ## Styling System
 - **CSS Variables**: Centralized design tokens in `variables.css`

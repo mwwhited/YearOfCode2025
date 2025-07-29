@@ -9,17 +9,17 @@ import { ClientBase } from '@/api/_ClientBase';
 import { UserRole, hasRolePermission, hasAnyRolePermission } from '@/types/roles';
 import { useProfile } from '@/hooks/useProfile';
 import { tokenCache } from '@/services/tokenCache';
+import { logger } from '@/utils/logger';
 import type { IQueryUserModel } from '@/api/GreenOnion';
 
 interface User {
   // B2C Account Information
   id?: string;
-  username?: string;
-  email?: string;
-  name?: string;
   accountInfo?: AccountInfo;
   
   // API User Data (from UserClient.Get())
+  email?: string;
+  name?: string;
   apiUserData?: IQueryUserModel;
   
   // Derived convenience properties
@@ -58,11 +58,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const account = useAccount(activeAccount || {});
 
   const user: User | null = activeAccount && profile ? {
-    // B2C Account Information
+    // Use API user data as primary source
     id: activeAccount.homeAccountId,
-    username: activeAccount.username,
-    email: activeAccount.username,
-    name: activeAccount.name,
+    email: profile.email,
+    name: `${profile.firstName || ''} ${profile.lastName || ''}`.trim() || profile.email || 'Unknown User',
     accountInfo: activeAccount,
     
     // API User Data from useProfile
@@ -74,7 +73,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Debug logging
   React.useEffect(() => {
-    console.log('🔧 AuthProvider state:', {
+    logger.debug('AuthProvider state:', {
       accounts: accounts?.length || 0,
       activeAccount: activeAccount?.username || 'none',
       hasProfile: !!profile,
@@ -88,9 +87,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Track authentication state changes and initialize API client
   React.useEffect(() => {
+    logger.info("USER PROFILE", user);
     if (user && user.id) {
       applicationInsights.trackUserAuthentication(user.id, {
-        username: user.username,
+        username: user.email,
         email: user.email,
         roles: user.roles?.join(','),
         hasRoles: user.roles ? user.roles.length > 0 : false,
@@ -167,9 +167,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         // Also clear sessionStorage
         sessionStorage.clear();
         
-        console.log('🧹 Cleared all user data from storage');
+        logger.cleanup('Cleared all user data from storage');
       } catch (storageError) {
-        console.warn('⚠️ Error clearing storage:', storageError);
+        logger.warn('Error clearing storage:', storageError);
       }
       
       await instance.logoutRedirect({
@@ -296,4 +296,3 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 };
 
 export default AuthProvider;
-

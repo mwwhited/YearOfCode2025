@@ -4,6 +4,7 @@
  */
 
 import type { AccountInfo } from '@azure/msal-browser';
+import { logger } from '@/utils/logger';
 
 interface CachedToken {
   token: string;
@@ -33,7 +34,7 @@ class TokenCacheService {
    */
   public setTokenFromAccount(account: AccountInfo): void {
     if (!account.idToken) {
-      console.warn('⚠️ No idToken found in account');
+      logger.warn('No idToken found in account');
       return;
     }
 
@@ -53,14 +54,14 @@ class TokenCacheService {
       // Store in localStorage (like original app)
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cachedToken));
       
-      console.log('✅ Token cached successfully', {
+      logger.success('Token cached successfully', {
         username: account.username,
         expiresAt: new Date(expiresAt).toISOString(),
         tokenLength: account.idToken.length
       });
 
     } catch (error) {
-      console.error('❌ Error caching token:', error);
+      logger.error('Error caching token:', error);
     }
   }
 
@@ -75,7 +76,7 @@ class TokenCacheService {
     // Check if token is expired
     const now = Date.now();
     if (now >= this.cachedToken.expiresAt) {
-      console.log('⏰ Cached token expired, clearing cache');
+      logger.storage('Cached token expired, clearing cache');
       this.clearToken();
       return null;
     }
@@ -114,7 +115,7 @@ class TokenCacheService {
   public clearToken(): void {
     this.cachedToken = null;
     localStorage.removeItem(this.STORAGE_KEY);
-    console.log('🗑️ Token cache cleared');
+    logger.cleanup('Token cache cleared');
   }
 
   /**
@@ -146,17 +147,17 @@ class TokenCacheService {
       const now = Date.now();
       if (now < cachedToken.expiresAt) {
         this.cachedToken = cachedToken;
-        console.log('✅ Token restored from storage', {
+        logger.success('Token restored from storage', {
           username: cachedToken.account.username,
           expiresIn: Math.round((cachedToken.expiresAt - now) / 1000 / 60) + ' minutes'
         });
       } else {
         // Remove expired token
         localStorage.removeItem(this.STORAGE_KEY);
-        console.log('⏰ Stored token was expired, removed from storage');
+        logger.storage('Stored token was expired, removed from storage');
       }
     } catch (error) {
-      console.error('❌ Error restoring token from storage:', error);
+      logger.error('Error restoring token from storage:', error);
       localStorage.removeItem(this.STORAGE_KEY);
     }
   }
@@ -174,7 +175,7 @@ class TokenCacheService {
 
       return JSON.parse(jsonPayload);
     } catch (error) {
-      console.error('Error parsing JWT:', error);
+      logger.error('Error parsing JWT:', error);
       throw error;
     }
   }

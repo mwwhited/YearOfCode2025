@@ -6,6 +6,7 @@ import { configManager } from '@/config/appConfig';
 import { createMsalConfig, createLoginRequest } from '@/config/msalConfig';
 import { applicationInsights } from '@/services/applicationInsights';
 import { tokenCache } from '@/services/tokenCache';
+import { logger } from '@/utils/logger';
 import '@/services/apiInterceptor'; // Initialize API interceptors
 import App from '@/App';
 
@@ -43,11 +44,11 @@ export const AppWithConfig = () => {
       
       setMsalInstance(msalInstance);
       setLoginRequest(authRequest);
-      console.info('✅ Application initialized successfully');
+      logger.success('Application initialized successfully');
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to initialize application';
       setError(errorMessage);
-      console.error('❌ Application initialization failed:', err);
+      logger.error('Application initialization failed:', err);
     } finally {
       setIsLoading(false);
     }
@@ -134,18 +135,18 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        console.log('🔍 Checking authentication state...', {
+        logger.debug('Checking authentication state...', {
           accounts: accounts.length,
           inProgress,
           hasValidToken: tokenCache.hasValidToken()
         });
 
         // ALWAYS try to handle any pending redirects first
-        console.log('🔄 Checking for pending redirects...');
+        logger.loading('Checking for pending redirects...');
         const redirectResult = await msalInstance.handleRedirectPromise();
         
         if (redirectResult) {
-          console.log('✅ Handled redirect result:', redirectResult.account?.username);
+          logger.success('Handled redirect result:', redirectResult.account?.username);
           // After handling redirect, accounts should be updated by MSAL automatically
           setAuthCheckComplete(true);
           return;
@@ -153,23 +154,23 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
 
         // If we have accounts from MSAL, we're good to go
         if (accounts.length > 0) {
-          console.log('✅ MSAL has accounts, proceeding with app');
+          logger.success('MSAL has accounts, proceeding with app');
           setAuthCheckComplete(true);
           return;
         }
 
         // If we have cached tokens but no MSAL accounts after redirect check
         if (tokenCache.hasValidToken()) {
-          console.log('⚠️ Have cached token but no MSAL accounts, clearing stale cache');
+          logger.warn('Have cached token but no MSAL accounts, clearing stale cache');
           tokenCache.clearToken();
         }
 
         // No valid authentication, let MsalAuthenticationTemplate handle it
-        console.log('🔐 No valid authentication, using MsalAuthenticationTemplate');
+        logger.auth('No valid authentication, using MsalAuthenticationTemplate');
         setAuthCheckComplete(true);
         
       } catch (error) {
-        console.error('❌ Error during auth check:', error);
+        logger.error('Error during auth check:', error);
         setAuthCheckComplete(true);
       }
     };
