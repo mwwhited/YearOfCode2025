@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductClient from '@/api/GreenOnion/Clients/ProductClient';
 import ZQueryProductModel from '@/api/GreenOnion/Schema/ZQueryProductModel';
-import { Card, Button, InputText } from '@/components/controls';
+import { Card, Button, InputText, SidebarFilterEditor } from '@/components/controls';
 import { useAuth } from '@/hooks/useAuth';
 import { ROLE_GROUPS } from '@/types/roles';
 import type { z } from 'zod';
@@ -144,6 +144,11 @@ export const ProductsCardView: React.FC = () => {
   const navigate = useNavigate();
   const { hasAnyRole } = useAuth();
   const observer = useRef<IntersectionObserver | null>(null);
+  
+  // Sidebar filter state
+  const [sidebarFilterOpen, setSidebarFilterOpen] = useState(false);
+  const [stagedFilters, setStagedFilters] = useState<Record<string, any>>({});
+  const [appliedFilters, setAppliedFilters] = useState<Record<string, any>>({});
 
   const canEdit = hasAnyRole(ROLE_GROUPS.ADMIN_ROLES);
   const ITEMS_PER_PAGE = 12;
@@ -181,7 +186,7 @@ export const ProductsCardView: React.FC = () => {
 
   useEffect(() => {
     filterProducts();
-  }, [products, searchTerm]);
+  }, [products, searchTerm, appliedFilters, page]);
 
   const loadProducts = async () => {
     try {
@@ -209,9 +214,10 @@ export const ProductsCardView: React.FC = () => {
   const filterProducts = () => {
     let filtered = products;
     
+    // Apply search term
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      filtered = products.filter(product =>
+      filtered = filtered.filter(product =>
         product.name?.toLowerCase().includes(term) ||
         product.description?.toLowerCase().includes(term) ||
         product.manufacturerName?.toLowerCase().includes(term) ||
@@ -221,6 +227,34 @@ export const ProductsCardView: React.FC = () => {
         product.upc?.toLowerCase().includes(term)
       );
     }
+    
+    // Apply advanced filters
+    Object.values(appliedFilters).forEach((filter: any) => {
+      if (filter && filter.value !== null && filter.value !== undefined && filter.value !== '') {
+        filtered = filtered.filter(product => {
+          const fieldValue = (product as any)[filter.field];
+          
+          switch (filter.operator) {
+            case 'eq':
+              return fieldValue === filter.value;
+            case 'neq':
+              return fieldValue !== filter.value;
+            case 'gt':
+              return fieldValue > filter.value;
+            case 'gte':
+              return fieldValue >= filter.value;
+            case 'lt':
+              return fieldValue < filter.value;
+            case 'lte':
+              return fieldValue <= filter.value;
+            case 'in':
+              return Array.isArray(filter.value) ? filter.value.includes(fieldValue) : fieldValue === filter.value;
+            default:
+              return true;
+          }
+        });
+      }
+    });
     
     // Apply pagination to filtered results
     const endIndex = page * ITEMS_PER_PAGE;
@@ -237,6 +271,29 @@ export const ProductsCardView: React.FC = () => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setPage(1); // Reset pagination when searching
+  };
+
+  const handleFilterChange = (field: string, filter: any) => {
+    setStagedFilters(prev => {
+      const newFilters = { ...prev };
+      if (filter) {
+        newFilters[field] = filter;
+      } else {
+        delete newFilters[field];
+      }
+      return newFilters;
+    });
+  };
+
+  const handleApplyFilters = () => {
+    setAppliedFilters(stagedFilters);
+    setPage(1); // Reset pagination when applying filters
+  };
+
+  const handleClearFilters = () => {
+    setStagedFilters({});
+    setAppliedFilters({});
+    setPage(1);
   };
 
   if (loading) {
@@ -270,25 +327,64 @@ export const ProductsCardView: React.FC = () => {
         </div>
       </div>
 
-      {/* Search and Filters */}
-      <div className="mb-4">
-        <div className="flex gap-3 align-items-center">
-          <div className="flex-1">
-            <InputText
-              placeholder="Search products by name, description, manufacturer, category, GTIN, UPC..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="w-full"
+      <div className="flex gap-3">
+        {/* Sidebar Filter Editor */}
+        {sidebarFilterOpen && (
+          <div style={{ flexShrink: 0 }}>
+            <SidebarFilterEditor
+              schema={ZQueryProductModel}
+              columnOverrides={{
+                productId: { header: 'Product ID', filterType: 'number' },
+                name: { header: 'Product Name', filterType: 'text' },
+                manufacturerName: { header: 'Manufacturer', filterType: 'text' },
+                categoryName: { header: 'Category', filterType: 'text' },
+                isActive: { header: 'Status', filterType: 'boolean' },
+                createdOn: { header: 'Created Date', filterType: 'date' },
+                nutritionFacts: { hidden: true },
+                ingredients: { hidden: true },
+                allergens: { hidden: true }
+              }}
+              isOpen={sidebarFilterOpen}
+              onToggle={() => setSidebarFilterOpen(!sidebarFilterOpen)}
+              stagedFilters={stagedFilters}
+              appliedFilters={appliedFilters}
+              onFilterChange={handleFilterChange}
+              onApplyFilters={handleApplyFilters}
+              onClearFilters={handleClearFilters}
+              loading={loading}
             />
           </div>
-          <Button
-            icon="pi pi-refresh"
-            className="p-button-outlined"
-            onClick={loadProducts}
-            tooltip="Refresh products"
-          />
-        </div>
-      </div>
+        )}
+
+        {/* Main Content */}
+        <div className="flex-1">
+          {/* Search and Filters */}
+          <div className="mb-4">
+            <div className="flex gap-3 align-items-center">
+              <div className="flex-1">
+                <InputText
+                  placeholder="Search products by name, description, manufacturer, category, GTIN, UPC..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="w-full"
+                />
+              </div>
+              <Button
+                icon="pi pi-filter"
+                label={sidebarFilterOpen ? "Hide Filters" : "Show Filters"}
+                className={`p-button-outlined ${sidebarFilterOpen ? 'p-button-info' : ''}`}
+                onClick={() => setSidebarFilterOpen(!sidebarFilterOpen)}
+                badge={Object.keys(appliedFilters).length > 0 ? String(Object.keys(appliedFilters).length) : undefined}
+                tooltip="Toggle sidebar filter editor"
+              />
+              <Button
+                icon="pi pi-refresh"
+                className="p-button-outlined"
+                onClick={loadProducts}
+                tooltip="Refresh products"
+              />
+            </div>
+          </div>
 
       {error && (
         <div className="p-message p-message-error mb-4">
@@ -345,6 +441,8 @@ export const ProductsCardView: React.FC = () => {
           )}
         </>
       )}
+        </div>
+      </div>
     </div>
   );
 };

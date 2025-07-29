@@ -689,6 +689,65 @@ import { DataTable } from 'primereact/datatable';
 
 ---
 
+### 2025-07-29 - GenericDataTable Advanced Search & Pagination Enhancement
+**Changes Made:**
+- Enhanced GenericDataTable to support server-side search, filtering, sorting, and pagination
+- Implemented comprehensive API integration with searchquery and pagedresults functionality
+- Added support for all 7 filter operators (eq, neq, in, gt, gte, lt, lte)
+- Created intelligent mapping between PrimeReact filters and API search query format
+- Added debounced global search with server-side processing
+- Implemented proper pagination with 0-based page indexing
+
+**Files Modified:**
+- `src/components/controls/GenericDataTable.tsx` - Complete enhancement with server-side functionality
+
+**Architecture Decisions:**
+- **Backward Compatibility**: `enableServerSide` prop maintains existing client-side behavior by default
+- **API Mapping**: Direct mapping of PrimeReact filter operators to API FilterParameter structure
+- **Performance Optimization**: Debounced search (500ms) to prevent excessive API calls
+- **Flexible Configuration**: Column-level control over sorting, filtering, and filter types
+- **Zero-Based Pagination**: Proper handling of API's 0-based page indexing (page 1 = currentPage 0)
+- **Filter Operator Support**: Complete implementation of all API filter operators
+- **Response Handling**: Proper extraction of totalPageCount and totalRowCount from API responses
+
+**Technical Implementation:**
+- **SearchQuery Structure**: Full compliance with API searchquery format including currentPage, pageSize, excludePageCount, searchTerm, filter, and orderBy
+- **Filter Mapping**: Intelligent conversion of PrimeReact filter operators to API format (equals→eq, greaterThan→gt, etc.)
+- **Search Term Operators**: Dropdown selection for search patterns (Equal To, Contains, Starts With, Ends With) with automatic formatting
+- **Search Pattern Mapping**: Converts search operators to API format: equal→"{term}", contains→"*{term}*", startsWith→"{term}*", endsWith→"*{term}"
+- **Dropdown Filters**: Support for dropdown-based filtering with custom options or auto-generated boolean options
+- **Column Configuration**: Enhanced column override system with filterable, sortable, and filterType properties
+- **Loading States**: Comprehensive loading indicators and error handling
+- **Real-time Updates**: Automatic data refresh on search, filter, sort, and pagination changes
+
+**API Integration Features:**
+1. **Global Search**: Maps to API's `searchTerm` parameter with operator-based pattern formatting
+   - **Equal To**: Exact match - `"{searchTerm}"`
+   - **Contains**: Substring search - `"*{searchTerm}*"`
+   - **Starts With**: Prefix search - `"{searchTerm}*"`
+   - **Ends With**: Suffix search - `"*{searchTerm}"`
+2. **Column Filters**: Maps to API's `filter` object with field-specific FilterParameter structures
+3. **Sorting**: Maps to API's `orderBy` object using IOrderDirections enum (asc/desc)
+4. **Pagination**: Proper 0-based pagination with configurable page sizes and total record tracking
+5. **Performance**: `excludePageCount` option for optimized queries when total count isn't needed
+
+**Enhanced Props:**
+- `enableServerSide`: Boolean to enable/disable server-side processing
+- `defaultPageSize`: Configurable default page size (5, 10, 25, 50, 100 options)
+- `defaultSortField/defaultSortOrder`: Initial sorting configuration
+- `enableGlobalSearch/enableColumnFilters`: Feature toggles for search functionality
+- Enhanced `columnOverrides` with sorting, filtering, and filter type controls
+
+**Impact:**
+- **Performance**: Server-side processing enables handling of large datasets efficiently
+- **User Experience**: Real-time search, advanced filtering, and smooth pagination
+- **Developer Experience**: Simple prop-based configuration maintains ease of use
+- **API Compliance**: Full utilization of GreenOnion API's advanced query capabilities
+- **Scalability**: Supports datasets of any size through server-side processing
+- **Flexibility**: Both client-side and server-side modes available based on use case
+
+---
+
 ### Future Changes
 **IMPORTANT**: All future architecture changes MUST be documented here with:
 - Date and description of changes
