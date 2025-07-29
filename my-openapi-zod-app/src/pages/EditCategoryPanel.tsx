@@ -131,7 +131,7 @@ export const EditCategoryPanel: React.FC = () => {
             <div className="col-12 md:col-6">
               <div className="field">
                 <label htmlFor="categoryName" className="font-semibold">
-                  Category Name <span className="text-red-500">*</span>
+                  Category Name <span className="text-red-600">*</span>
                 </label>
                 <InputText
                   id="categoryName"
@@ -148,7 +148,7 @@ export const EditCategoryPanel: React.FC = () => {
             <div className="col-12 md:col-6">
               <div className="field">
                 <label htmlFor="categoryCode" className="font-semibold">
-                  Category Code <span className="text-red-500">*</span>
+                  Category Code <span className="text-red-600">*</span>
                 </label>
                 <InputText
                   id="categoryCode"

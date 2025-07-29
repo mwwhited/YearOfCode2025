@@ -176,7 +176,7 @@ export const EditProductPanel: React.FC = () => {
             <div className="col-12 md:col-6">
               <div className="field">
                 <label htmlFor="productName" className="font-semibold">
-                  Product Name <span className="text-red-500">*</span>
+                  Product Name <span className="text-red-600">*</span>
                 </label>
                 <InputText
                   id="productName"

@@ -649,6 +649,9 @@ logger.error('API call failed', error);
 ✅ **API Integration**: Fixed all client imports, methods, and response handling  
 ✅ **ARCHITECTURE Compliance**: All import paths corrected, all PrimeReact components wrapped  
 ✅ **API Client Enhancement**: MSAL authentication + comprehensive correlation tracking system  
+✅ **Combobox Controls**: 8 reusable API-integrated dropdown controls for all major entities  
+✅ **Style Consistency**: Complete conversion from Tailwind CSS to PrimeReact/PrimeFlex  
+✅ **Test Interface**: Admin test screen for validating all dropdown functionality  
 
 ## Latest Session Accomplishments (2025-07-29)
 ### Major Achievements
@@ -658,6 +661,9 @@ logger.error('API call failed', error);
 - ✅ **API Client Standardization**: Fixed import patterns and method calls across entire codebase
 - ✅ **Schema-Driven Architecture**: GenericDataTable and form patterns established
 - ✅ **Clean Codebase**: Removed all unused variables and properly typed all components
+- ✅ **Combobox Controls**: Created 8 reusable dropdown controls with API integration
+- ✅ **Tailwind Cleanup**: Converted all Tailwind CSS to PrimeReact/PrimeFlex equivalents
+- ✅ **Test Interface**: Built comprehensive admin test screen for all dropdown controls
 
 ### Technical Patterns Established
 - ✅ **Dual Editing Approaches**: Dynamic forms vs structured panels for flexibility
@@ -665,6 +671,97 @@ logger.error('API call failed', error);
 - ✅ **Infinite Scroll Implementation**: Client-side pagination with IntersectionObserver
 - ✅ **Multi-Field Search**: Comprehensive search across entity attributes
 - ✅ **API Response Handling**: Standardized patterns for .rows vs .isSuccess structures
+- ✅ **Combobox Pattern**: Consistent API-driven dropdown controls with error handling
+- ✅ **Style Consistency**: Full PrimeReact/PrimeFlex compliance without Tailwind dependencies
+
+## Comprehensive Combobox Control System (2025-07-29)
+### 8 Reusable Dropdown Controls Created
+**Following consistent patterns, created API-integrated dropdown controls for all major entities:**
+
+#### **CategoryCombobox**: Product category selection
+- **API Integration**: Uses CategoryClient.Query({}) for data loading
+- **Features**: Alphabetical sorting, empty option support, loading states
+- **Usage**: Product forms, filtering interfaces, category selection
+
+#### **SubCategoryCombobox**: Sub-category selection with filtering
+- **API Integration**: Uses SubCategoryClient.Query({}) with category filtering
+- **Features**: Category-based filtering, conditional enabling, dynamic options
+- **Usage**: Product forms when category is selected, hierarchical selection
+
+#### **ManufacturerCombobox**: Manufacturer selection
+- **API Integration**: Uses ManufacturerClient.Query({}) for data loading
+- **Features**: Sorted by name, company-wide manufacturer lists
+- **Usage**: Product forms, user assignments, filtering interfaces
+
+#### **SchoolDistrictCombobox**: Educational institution selection
+- **API Integration**: Uses SchoolDistrictClient.Query({}) for data loading
+- **Features**: District name sorting, geographical organization
+- **Usage**: User registration, location-based filtering
+
+#### **RoleCombobox**: User role assignment
+- **API Integration**: Uses RoleClient.Query({}) for data loading
+- **Features**: Role hierarchy display, permission-based selection
+- **Usage**: User management, role assignment forms
+
+#### **StateCombobox**: Geographic state selection
+- **API Integration**: Uses StateClient.Query({}) for data loading
+- **Features**: State name sorting, address forms
+- **Usage**: User profiles, address forms, location data
+
+#### **StorageTypeCombobox**: Product storage classification
+- **API Integration**: Uses StorageTypeClient.Query({}) for data loading
+- **Features**: Storage method categorization, product classification
+- **Usage**: Product forms, inventory management
+
+#### **AllergenCombobox**: Allergen information selection
+- **API Integration**: Uses AllergenClient.Query({}) for data loading
+- **Features**: Allergen type organization, food safety compliance
+- **Usage**: Product forms, dietary restriction filtering
+
+### Combobox Architecture Features
+#### **Consistent Interface Pattern**
+```typescript
+interface ComboboxProps extends Omit<DropdownProps, 'options' | 'optionLabel' | 'optionValue' | 'onError'> {
+  includeEmpty?: boolean;
+  emptyLabel?: string;
+  onLoadError?: (error: string) => void;
+}
+```
+
+#### **Standard Implementation Pattern**
+- **Data Loading**: useEffect with client.Query({}) pattern
+- **Error Handling**: Try/catch with optional error callback
+- **Loading States**: Visual loading indicators and placeholder text
+- **Empty Options**: Configurable empty/default selection
+- **Sorting**: Alphabetical sorting for consistent UX
+- **Type Safety**: Full TypeScript integration with proper interfaces
+
+#### **Advanced Features**
+- **Category Filtering**: SubCategoryCombobox filters by selected category
+- **Loading Management**: Individual loading states per combobox
+- **Error Recovery**: Graceful fallback to empty options on API failure
+- **Caching**: Component-level caching of loaded data
+- **Accessibility**: Proper ARIA labels and keyboard navigation
+
+### Admin Test Interface: ComboboxTest.tsx
+#### **Comprehensive Testing Screen**
+- **Live API Testing**: Real data loading from all 8 combobox controls
+- **Error Monitoring**: Individual error display for each dropdown type
+- **Selection Tracking**: Real-time display of all selected values
+- **Reset Functionality**: Clear all selections with single action
+- **Loading Status**: Visual feedback for each combobox loading state
+
+#### **Test Screen Features**
+- **Organized Layout**: Grouped by business function (Categories, Entities, User Management, Configuration)
+- **Dependent Dropdowns**: SubCategory depends on Category selection
+- **Error Display**: System-wide error message for failed API calls
+- **Selection Summary**: Two-column summary showing selections and loading status
+- **Interactive Testing**: Show selected values with alert dialog
+
+#### **Admin Access**
+- **Route**: `/admin/combobox-test` (Admin role required)
+- **Navigation**: Available in Administration menu under "Combobox Test"
+- **Purpose**: Development testing and validation of all dropdown controls
 
 ## Next Session Guidance
 If continuing development:

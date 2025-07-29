@@ -19,6 +19,7 @@ import { SubCategoriesList } from '@/pages/SubCategoriesList';
 import { ManufacturersList } from '@/pages/ManufacturersList';
 import { AllergensList } from '@/pages/AllergensList';
 import { DistrictsList } from '@/pages/DistrictsList';
+import { ComboboxTest } from '@/pages/ComboboxTest';
 import { ROLE_GROUPS } from '@/types/roles';
 
 // Placeholder components for other routes
@@ -181,6 +182,14 @@ export const AppRoutes: React.FC = () => {
           element={
             <RoleGuard roles={ROLE_GROUPS.SUPER_ADMIN_ONLY}>
               <AdminRolesPage />
+            </RoleGuard>
+          } 
+        />
+        <Route 
+          path="admin/combobox-test" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <ComboboxTest />
             </RoleGuard>
           } 
         />

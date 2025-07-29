@@ -210,7 +210,7 @@ const EditUserPanel: React.FC = () => {
   if (error && !user) {
     return (
       <div className="p-4">
-        <div className="max-w-md mx-auto">
+        <div className="max-w-30rem mx-auto">
           <Message severity="error" text={error} className="w-full mb-3" />
           <div className="text-center">
             <Button 
@@ -280,7 +280,7 @@ const EditUserPanel: React.FC = () => {
                     <div className="col-12 md:col-6">
                       <div className="field">
                         <label htmlFor="firstName" className="font-semibold">
-                          First Name <span className="text-red-500">*</span>
+                          First Name <span className="text-red-600">*</span>
                         </label>
                         <InputText
                           id="firstName"
@@ -296,7 +296,7 @@ const EditUserPanel: React.FC = () => {
                     <div className="col-12 md:col-6">
                       <div className="field">
                         <label htmlFor="lastName" className="font-semibold">
-                          Last Name <span className="text-red-500">*</span>
+                          Last Name <span className="text-red-600">*</span>
                         </label>
                         <InputText
                           id="lastName"
@@ -312,7 +312,7 @@ const EditUserPanel: React.FC = () => {
                     <div className="col-12 md:col-6">
                       <div className="field">
                         <label htmlFor="email" className="font-semibold">
-                          Email Address <span className="text-red-500">*</span>
+                          Email Address <span className="text-red-600">*</span>
                         </label>
                         <InputText
                           id="email"

@@ -99,8 +99,8 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
     return (
       <div className="card">
         <div className="p-4 text-center">
-          <i className="pi pi-exclamation-triangle text-red-500 text-2xl mb-2"></i>
-          <p className="text-red-500">Error loading data: {error}</p>
+          <i className="pi pi-exclamation-triangle text-red-600 text-2xl mb-2"></i>
+          <p className="text-red-600">Error loading data: {error}</p>
           <button 
             className="p-button p-button-text"
             onClick={() => window.location.reload()}

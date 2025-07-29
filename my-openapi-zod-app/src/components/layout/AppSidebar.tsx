@@ -223,6 +223,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           icon: 'pi pi-exclamation-circle',
           command: () => navigate('/admin/error-logs'),
           visible: hasRole(UserRole.SUPER_ADMIN)
+        },
+        {
+          label: 'Combobox Test',
+          icon: 'pi pi-code',
+          command: () => navigate('/admin/combobox-test'),
+          visible: hasRole('Admin')
         }
       ].filter(item => item.visible),
       visible: hasRole('Admin')

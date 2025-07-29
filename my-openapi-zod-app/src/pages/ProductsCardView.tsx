@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) =
             <img 
               src={product.images[0]} 
               alt={product.name || ''} 
-              className="max-w-full max-h-full border-round"
+              className="w-full h-full border-round"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';

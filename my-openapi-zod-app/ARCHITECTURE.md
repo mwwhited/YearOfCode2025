@@ -76,6 +76,14 @@
 │   │   │   ├── Message.tsx          # Custom Message wrapper
 │   │   │   ├── Panel.tsx            # Custom Panel wrapper
 │   │   │   ├── ProgressSpinner.tsx  # Custom ProgressSpinner wrapper
+│   │   │   ├── CategoryCombobox.tsx # Category dropdown with API data loading
+│   │   │   ├── SubCategoryCombobox.tsx # Sub-category dropdown with filtering
+│   │   │   ├── ManufacturerCombobox.tsx # Manufacturer dropdown
+│   │   │   ├── SchoolDistrictCombobox.tsx # School district dropdown
+│   │   │   ├── RoleCombobox.tsx     # Role dropdown
+│   │   │   ├── StateCombobox.tsx    # State dropdown
+│   │   │   ├── StorageTypeCombobox.tsx # Storage type dropdown  
+│   │   │   ├── AllergenCombobox.tsx # Allergen dropdown
 │   │   │   └── index.ts             # Component exports
 │   │   ├── forms/                   # Form components
 │   │   │   └── DynamicForm.tsx      # Schema-driven dynamic form generator
@@ -109,7 +117,8 @@
 │   │   ├── SubCategoriesList.tsx   # Sub-category management list
 │   │   ├── ManufacturersList.tsx   # Manufacturer management list
 │   │   ├── AllergensList.tsx       # Allergen management list
-│   │   └── DistrictsList.tsx       # School district management list
+│   │   ├── DistrictsList.tsx       # School district management list
+│   │   └── ComboboxTest.tsx        # Admin test screen for all dropdown controls
 │   ├── routes/                      # Routing configuration
 │   │   └── AppRoutes.tsx           # Role-based route definitions
 │   ├── styles/                      # Styling system
@@ -615,6 +624,68 @@ import { DataTable } from 'primereact/datatable';
 - **Type Safety**: Clean TypeScript build with comprehensive type checking
 - **Performance**: Efficient infinite scroll and search implementations
 - **Maintainability**: Consistent code patterns and API integration approaches
+
+---
+
+### 2025-07-29 - Combobox Controls & Tailwind Cleanup
+**Changes Made:**
+- Created comprehensive combobox controls for all API clients with Query() methods
+- Converted all Tailwind CSS classes to PrimeReact/PrimeFlex equivalents
+- Built admin test screen for all dropdown controls
+- Fixed TypeScript interface conflicts with PrimeReact components
+
+**Files Added:**
+- `src/components/controls/CategoryCombobox.tsx` - Category dropdown with API data loading
+- `src/components/controls/SubCategoryCombobox.tsx` - Sub-category dropdown with category filtering
+- `src/components/controls/ManufacturerCombobox.tsx` - Manufacturer dropdown with sorting
+- `src/components/controls/SchoolDistrictCombobox.tsx` - School district dropdown
+- `src/components/controls/RoleCombobox.tsx` - Role dropdown for user management
+- `src/components/controls/StateCombobox.tsx` - State dropdown for addresses
+- `src/components/controls/StorageTypeCombobox.tsx` - Storage type dropdown for products
+- `src/components/controls/AllergenCombobox.tsx` - Allergen dropdown for product configuration
+- `src/pages/ComboboxTest.tsx` - Admin test screen for all dropdown controls
+
+**Files Modified:**
+- `src/components/controls/index.ts` - Added exports for all new combobox controls
+- `src/routes/AppRoutes.tsx` - Added route for combobox test screen
+- `src/components/layout/AppSidebar.tsx` - Added navigation link to combobox test
+- Multiple files - Converted Tailwind CSS classes to PrimeFlex equivalents
+
+**Tailwind to PrimeFlex Conversions:**
+- **Color Classes**: `text-red-500` → `text-red-600` (PrimeReact design tokens)
+- **Spacing Classes**: `max-w-md` → `max-w-30rem` (PrimeFlex sizing)
+- **Layout Classes**: `max-w-full max-h-full` → `w-full h-full`
+- **Z-Index**: `z-6` → `z-5` (PrimeReact z-index system)
+
+**Architecture Decisions:**
+- **Combobox Pattern**: All dropdowns follow consistent API loading pattern with error handling
+- **Type Safety**: Resolved interface conflicts by excluding conflicting props and renaming `onError` → `onLoadError`
+- **Filtering Support**: SubCategoryCombobox supports category-based filtering
+- **Empty Options**: All comboboxes support optional empty/default options
+- **Loading States**: Visual loading indicators and placeholder text during API calls
+- **Error Handling**: Graceful error handling with callback support for parent components
+
+**Technical Implementation:**
+- **Consistent API**: All comboboxes use the same interface pattern extending DropdownProps
+- **Data Loading**: useEffect with client.Query({}) pattern for data fetching
+- **Sorting**: Alphabetical sorting of options for better UX
+- **Caching**: Component-level caching of loaded options
+- **TypeScript**: Full type safety with generic interfaces and proper prop typing
+
+**Test Screen Features:**
+- **Live Testing**: Real API data loading from all combobox controls
+- **Error Display**: Shows loading errors for each dropdown type
+- **Selection Summary**: Real-time display of selected values
+- **Reset Functionality**: Clear all selections with single button
+- **Visual Feedback**: Loading states, error messages, and success indicators
+
+**Impact:**
+- **Reusable Components**: 8 new dropdown controls ready for use across the application
+- **Consistent UX**: Standardized dropdown behavior and appearance
+- **Developer Experience**: Easy-to-use combobox components with built-in data loading
+- **Code Quality**: Removed all Tailwind CSS dependencies, full PrimeReact compliance
+- **Testing Capability**: Admin test screen for validating all dropdown functionality
+- **Maintainability**: Clear patterns for future dropdown components
 
 ---
 

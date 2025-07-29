@@ -14,3 +14,13 @@ export { Dropdown } from './Dropdown';
 export { Checkbox } from './Checkbox';
 export { Fieldset } from './Fieldset';
 export { Panel } from './Panel';
+
+// Combobox Controls
+export { CategoryCombobox } from './CategoryCombobox';
+export { SubCategoryCombobox } from './SubCategoryCombobox';
+export { ManufacturerCombobox } from './ManufacturerCombobox';
+export { SchoolDistrictCombobox } from './SchoolDistrictCombobox';
+export { RoleCombobox } from './RoleCombobox';
+export { StateCombobox } from './StateCombobox';
+export { StorageTypeCombobox } from './StorageTypeCombobox';
+export { AllergenCombobox } from './AllergenCombobox';

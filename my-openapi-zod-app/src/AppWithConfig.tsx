@@ -81,7 +81,7 @@ export const AppWithConfig = () => {
   if (error || !msalInstance) {
     return (
       <div className="min-h-screen flex align-items-center justify-content-center px-4">
-        <div className="max-w-md w-full">
+        <div className="max-w-30rem w-full">
           <Message
             severity="error"
             text="Failed to load application configuration"
@@ -221,7 +221,7 @@ const AppWithAuthCheck: React.FC<{ msalInstance: PublicClientApplication; loginR
       errorComponent={
         () => (
           <div className="min-h-screen flex align-items-center justify-content-center px-4">
-            <div className="max-w-md w-full">
+            <div className="max-w-30rem w-full">
               <Message
                 severity="error"
                 text="Authentication failed"

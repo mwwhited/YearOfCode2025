@@ -105,7 +105,7 @@ export const SimpleTooltip: React.FC<SimpleTooltipProps> = ({
 
       {isVisible && !disabled && content && (
         <div
-          className="fixed z-6 px-2 py-1 border-round shadow-2"
+          className="fixed z-5 px-2 py-1 border-round shadow-2"
           style={{
             top: `${position.top}px`,
             left: `${position.left}px`,

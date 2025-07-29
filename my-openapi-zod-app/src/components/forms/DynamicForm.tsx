@@ -196,7 +196,7 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
               />
               <label htmlFor={field.name} className="ml-2">
                 {field.label}
-                {field.required && <span className="text-red-500 ml-1">*</span>}
+                {field.required && <span className="text-red-600 ml-1">*</span>}
               </label>
             </div>
             {fieldError && (
@@ -210,7 +210,7 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
           <div key={field.name} className="field">
             <label htmlFor={field.name} className="font-semibold">
               {field.label}
-              {field.required && <span className="text-red-500 ml-1">*</span>}
+              {field.required && <span className="text-red-600 ml-1">*</span>}
             </label>
             <InputTextarea
               id={field.name}
@@ -232,7 +232,7 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
           <div key={field.name} className="field">
             <label htmlFor={field.name} className="font-semibold">
               {field.label}
-              {field.required && <span className="text-red-500 ml-1">*</span>}
+              {field.required && <span className="text-red-600 ml-1">*</span>}
             </label>
             <InputText
               id={field.name}
@@ -256,7 +256,7 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
           <div key={field.name} className="field">
             <label htmlFor={field.name} className="font-semibold">
               {field.label}
-              {field.required && <span className="text-red-500 ml-1">*</span>}
+              {field.required && <span className="text-red-600 ml-1">*</span>}
             </label>
             <InputText
               id={field.name}

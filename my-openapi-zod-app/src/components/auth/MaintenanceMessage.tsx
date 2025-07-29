@@ -13,9 +13,9 @@ interface MaintenanceMessageProps {
 export const MaintenanceMessage: React.FC<MaintenanceMessageProps> = ({ countdown }) => {
   return (
     <div className="min-h-screen flex align-items-center justify-content-center px-4">
-      <div className="max-w-md w-full text-center">
+      <div className="max-w-30rem w-full text-center">
         <div className="mb-4">
-          <i className="pi pi-exclamation-triangle text-6xl text-orange-500"></i>
+          <i className="pi pi-exclamation-triangle text-6xl text-orange-600"></i>
         </div>
         
         <Message 
