@@ -11,8 +11,8 @@
 import { z } from "zod";
 
 const ZQueryStateModel = z.object({
-    stateId: z.number().int().optional(),
-    stateName: z.string().optional(),
+    stateId: z.number().int().nullish(),
+    stateName: z.string().nullish(),
 });
 
 export default ZQueryStateModel;

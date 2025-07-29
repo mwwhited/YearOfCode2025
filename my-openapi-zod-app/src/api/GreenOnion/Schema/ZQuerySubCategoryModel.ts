@@ -11,17 +11,17 @@
 import { z } from "zod";
 
 const ZQuerySubCategoryModel = z.object({
-    subCategoryId: z.number().int().optional(),
-    categoryId: z.number().int().optional(),
-    subCategoryName: z.string().optional(),
-    subCategoryCode: z.string().optional(),
-    isActive: z.boolean().optional(),
-    createdOn: z.string().optional(),
-    createdById: z.number().int().optional(),
-    createdBy: z.string().optional(),
-    updatedOn: z.string().optional(),
-    updatedById: z.number().int().optional(),
-    updatedBy: z.string().optional(),
+    subCategoryId: z.number().int().nullish(),
+    categoryId: z.number().int().nullish(),
+    subCategoryName: z.string().nullish(),
+    subCategoryCode: z.string().nullish(),
+    isActive: z.boolean().nullish(),
+    createdOn: z.string().nullish(),
+    createdById: z.number().int().nullish(),
+    createdBy: z.string().nullish(),
+    updatedOn: z.string().nullish(),
+    updatedById: z.number().int().nullish(),
+    updatedBy: z.string().nullish(),
 });
 
 export default ZQuerySubCategoryModel;

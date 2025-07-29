@@ -13,12 +13,12 @@ import ZQueryCategoryModelFilter from "./ZQueryCategoryModelFilter";
 import ZQueryCategoryModelOrderBy from "./ZQueryCategoryModelOrderBy";
 
 const ZQueryCategoryModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQueryCategoryModelFilter.optional(),
-    orderBy: ZQueryCategoryModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQueryCategoryModelFilter.nullish(),
+    orderBy: ZQueryCategoryModelOrderBy.nullish(),
 });
 
 export default ZQueryCategoryModelSearchQuery;

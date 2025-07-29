@@ -13,11 +13,11 @@ import ZQueryOneWorldSyncProductModel from "./ZQueryOneWorldSyncProductModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryOneWorldSyncProductModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryOneWorldSyncProductModel).optional(),
-    messages: z.array(ZResultMessage).optional(),
-    currentPage: z.number().int().optional(),
-    totalPageCount: z.number().int().optional(),
-    totalRowCount: z.number().int().optional(),
+    rows: z.array(ZQueryOneWorldSyncProductModel).nullish(),
+    messages: z.array(ZResultMessage).nullish(),
+    currentPage: z.number().int().nullish(),
+    totalPageCount: z.number().int().nullish(),
+    totalRowCount: z.number().int().nullish(),
 });
 
 export default ZQueryOneWorldSyncProductModelPagedQueryResult;

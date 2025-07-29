@@ -12,15 +12,15 @@ import { z } from "zod";
 import ZRoleMst from "./ZRoleMst";
 
 const ZUserResponseModel = z.object({
-    success: z.boolean().optional(),
-    message: z.string().optional(),
-    totalRecords: z.number().int().optional(),
-    payload: z.unknown().optional(),
-    isUpdate: z.boolean().optional(),
-    isAdded: z.boolean().optional(),
-    isDelete: z.boolean().optional(),
-    roleList: z.array(ZRoleMst).optional(),
-    isEmailExists: z.boolean().optional(),
+    success: z.boolean().nullish(),
+    message: z.string().nullish(),
+    totalRecords: z.number().int().nullish(),
+    payload: z.unknown().nullish(),
+    isUpdate: z.boolean().nullish(),
+    isAdded: z.boolean().nullish(),
+    isDelete: z.boolean().nullish(),
+    roleList: z.array(ZRoleMst).nullish(),
+    isEmailExists: z.boolean().nullish(),
 });
 
 export default ZUserResponseModel;

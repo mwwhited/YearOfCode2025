@@ -11,13 +11,13 @@
 import { z } from "zod";
 
 const ZFilterParameter = z.object({
-    eq: z.unknown().optional(),
-    neq: z.unknown().optional(),
-    in: z.array(z.unknown()).optional(),
-    gt: z.unknown().optional(),
-    gte: z.unknown().optional(),
-    lt: z.unknown().optional(),
-    lte: z.unknown().optional(),
+    eq: z.unknown().nullish(),
+    neq: z.unknown().nullish(),
+    in: z.array(z.unknown()).nullish(),
+    gt: z.unknown().nullish(),
+    gte: z.unknown().nullish(),
+    lt: z.unknown().nullish(),
+    lte: z.unknown().nullish(),
 });
 
 export default ZFilterParameter;

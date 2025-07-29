@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZSaveIngredientModel = z.object({
-    ingredientId: z.number().int().optional(),
-    ingredientName: z.string().optional(),
-    group: z.string().optional(),
-    iocGroup: z.string().optional(),
+    ingredientId: z.number().int().nullish(),
+    ingredientName: z.string().nullish(),
+    group: z.string().nullish(),
+    iocGroup: z.string().nullish(),
 });
 
 export default ZSaveIngredientModel;

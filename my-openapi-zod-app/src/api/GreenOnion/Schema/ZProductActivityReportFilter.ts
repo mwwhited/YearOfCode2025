@@ -11,20 +11,20 @@
 import { z } from "zod";
 
 const ZProductActivityReportFilter = z.object({
-    pageNumber: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    schoolDistrictId: z.number().int().optional(),
-    iocCategoryId: z.number().int().optional(),
-    userId: z.number().int().optional(),
-    productId: z.number().int().optional(),
-    gtin: z.string().optional(),
-    upc: z.string().optional(),
-    startDate: z.string().optional(),
-    endDate: z.string().optional(),
-    productGtinId: z.number().int().optional(),
-    productUpcId: z.number().int().optional(),
-    cooperative: z.string().optional(),
-    manufactureId: z.number().int().optional(),
+    pageNumber: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    schoolDistrictId: z.number().int().nullish(),
+    iocCategoryId: z.number().int().nullish(),
+    userId: z.number().int().nullish(),
+    productId: z.number().int().nullish(),
+    gtin: z.string().nullish(),
+    upc: z.string().nullish(),
+    startDate: z.string().nullish(),
+    endDate: z.string().nullish(),
+    productGtinId: z.number().int().nullish(),
+    productUpcId: z.number().int().nullish(),
+    cooperative: z.string().nullish(),
+    manufactureId: z.number().int().nullish(),
 });
 
 export default ZProductActivityReportFilter;

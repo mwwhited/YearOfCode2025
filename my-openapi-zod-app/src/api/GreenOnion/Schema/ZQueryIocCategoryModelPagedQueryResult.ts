@@ -13,11 +13,11 @@ import ZQueryIocCategoryModel from "./ZQueryIocCategoryModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryIocCategoryModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryIocCategoryModel).optional(),
-    messages: z.array(ZResultMessage).optional(),
-    currentPage: z.number().int().optional(),
-    totalPageCount: z.number().int().optional(),
-    totalRowCount: z.number().int().optional(),
+    rows: z.array(ZQueryIocCategoryModel).nullish(),
+    messages: z.array(ZResultMessage).nullish(),
+    currentPage: z.number().int().nullish(),
+    totalPageCount: z.number().int().nullish(),
+    totalRowCount: z.number().int().nullish(),
 });
 
 export default ZQueryIocCategoryModelPagedQueryResult;

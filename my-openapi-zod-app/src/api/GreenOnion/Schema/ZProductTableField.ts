@@ -11,8 +11,8 @@
 import { z } from "zod";
 
 const ZProductTableField = z.object({
-    fieldID: z.number().int().optional(),
-    fieldName: z.string().optional(),
+    fieldID: z.number().int().nullish(),
+    fieldName: z.string().nullish(),
 });
 
 export default ZProductTableField;

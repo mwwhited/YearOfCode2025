@@ -12,16 +12,16 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryDistributorModelFilter = z.object({
-    distributorId: ZFilterParameter.optional(),
-    distributorName: ZFilterParameter.optional(),
-    distributorCode: ZFilterParameter.optional(),
-    isActive: ZFilterParameter.optional(),
-    createdOn: ZFilterParameter.optional(),
-    createdById: ZFilterParameter.optional(),
-    createdBy: ZFilterParameter.optional(),
-    updatedOn: ZFilterParameter.optional(),
-    updatedById: ZFilterParameter.optional(),
-    updatedBy: ZFilterParameter.optional(),
+    distributorId: ZFilterParameter.nullish(),
+    distributorName: ZFilterParameter.nullish(),
+    distributorCode: ZFilterParameter.nullish(),
+    isActive: ZFilterParameter.nullish(),
+    createdOn: ZFilterParameter.nullish(),
+    createdById: ZFilterParameter.nullish(),
+    createdBy: ZFilterParameter.nullish(),
+    updatedOn: ZFilterParameter.nullish(),
+    updatedById: ZFilterParameter.nullish(),
+    updatedBy: ZFilterParameter.nullish(),
 });
 
 export default ZQueryDistributorModelFilter;

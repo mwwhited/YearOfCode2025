@@ -12,17 +12,17 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryRoleModelFilter = z.object({
-    roleId: ZFilterParameter.optional(),
-    roleName: ZFilterParameter.optional(),
-    isActive: ZFilterParameter.optional(),
-    userCount: ZFilterParameter.optional(),
-    activeUserCount: ZFilterParameter.optional(),
-    createdOn: ZFilterParameter.optional(),
-    createdById: ZFilterParameter.optional(),
-    createdBy: ZFilterParameter.optional(),
-    updatedOn: ZFilterParameter.optional(),
-    updatedById: ZFilterParameter.optional(),
-    updatedBy: ZFilterParameter.optional(),
+    roleId: ZFilterParameter.nullish(),
+    roleName: ZFilterParameter.nullish(),
+    isActive: ZFilterParameter.nullish(),
+    userCount: ZFilterParameter.nullish(),
+    activeUserCount: ZFilterParameter.nullish(),
+    createdOn: ZFilterParameter.nullish(),
+    createdById: ZFilterParameter.nullish(),
+    createdBy: ZFilterParameter.nullish(),
+    updatedOn: ZFilterParameter.nullish(),
+    updatedById: ZFilterParameter.nullish(),
+    updatedBy: ZFilterParameter.nullish(),
 });
 
 export default ZQueryRoleModelFilter;

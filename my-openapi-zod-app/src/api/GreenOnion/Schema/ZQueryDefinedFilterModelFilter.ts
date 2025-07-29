@@ -12,17 +12,17 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryDefinedFilterModelFilter = z.object({
-    definedFilterId: ZFilterParameter.optional(),
-    createById: ZFilterParameter.optional(),
-    updatedOn: ZFilterParameter.optional(),
-    updatedById: ZFilterParameter.optional(),
-    updatedBy: ZFilterParameter.optional(),
-    createBy: ZFilterParameter.optional(),
-    path: ZFilterParameter.optional(),
-    name: ZFilterParameter.optional(),
-    isActive: ZFilterParameter.optional(),
-    createdOn: ZFilterParameter.optional(),
-    state: ZFilterParameter.optional(),
+    definedFilterId: ZFilterParameter.nullish(),
+    createById: ZFilterParameter.nullish(),
+    updatedOn: ZFilterParameter.nullish(),
+    updatedById: ZFilterParameter.nullish(),
+    updatedBy: ZFilterParameter.nullish(),
+    createBy: ZFilterParameter.nullish(),
+    path: ZFilterParameter.nullish(),
+    name: ZFilterParameter.nullish(),
+    isActive: ZFilterParameter.nullish(),
+    createdOn: ZFilterParameter.nullish(),
+    state: ZFilterParameter.nullish(),
 });
 
 export default ZQueryDefinedFilterModelFilter;

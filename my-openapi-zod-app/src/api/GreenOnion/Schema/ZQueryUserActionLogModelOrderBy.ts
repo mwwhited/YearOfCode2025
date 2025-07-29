@@ -12,16 +12,16 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryUserActionLogModelOrderBy = z.object({
-    userActionLogId: ZOrderDirections.optional(),
-    eventType: ZOrderDirections.optional(),
-    httpMethod: ZOrderDirections.optional(),
-    eventDate: ZOrderDirections.optional(),
-    sessionId: ZOrderDirections.optional(),
-    requestId: ZOrderDirections.optional(),
-    correlationId: ZOrderDirections.optional(),
-    requestPath: ZOrderDirections.optional(),
-    userId: ZOrderDirections.optional(),
-    user: ZOrderDirections.optional(),
+    userActionLogId: ZOrderDirections.nullish(),
+    eventType: ZOrderDirections.nullish(),
+    httpMethod: ZOrderDirections.nullish(),
+    eventDate: ZOrderDirections.nullish(),
+    sessionId: ZOrderDirections.nullish(),
+    requestId: ZOrderDirections.nullish(),
+    correlationId: ZOrderDirections.nullish(),
+    requestPath: ZOrderDirections.nullish(),
+    userId: ZOrderDirections.nullish(),
+    user: ZOrderDirections.nullish(),
 });
 
 export default ZQueryUserActionLogModelOrderBy;

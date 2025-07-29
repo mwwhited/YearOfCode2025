@@ -11,16 +11,16 @@
 import { z } from "zod";
 
 const ZQueryUserActionLogModel = z.object({
-    userActionLogId: z.number().int().optional(),
-    eventType: z.string().optional(),
-    httpMethod: z.string().optional(),
-    eventDate: z.string().optional(),
-    sessionId: z.string().optional(),
-    requestId: z.string().optional(),
-    correlationId: z.string().optional(),
-    requestPath: z.string().optional(),
-    userId: z.number().int().optional(),
-    user: z.string().optional(),
+    userActionLogId: z.number().int().nullish(),
+    eventType: z.string().nullish(),
+    httpMethod: z.string().nullish(),
+    eventDate: z.string().nullish(),
+    sessionId: z.string().nullish(),
+    requestId: z.string().nullish(),
+    correlationId: z.string().nullish(),
+    requestPath: z.string().nullish(),
+    userId: z.number().int().nullish(),
+    user: z.string().nullish(),
 });
 
 export default ZQueryUserActionLogModel;

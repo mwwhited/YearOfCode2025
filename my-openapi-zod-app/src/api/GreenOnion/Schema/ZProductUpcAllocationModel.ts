@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZProductUpcAllocationModel = z.object({
-    productId: z.number().int().optional(),
-    upc: z.string().optional(),
-    isActive: z.boolean().optional(),
-    createdBy: z.number().int().optional(),
+    productId: z.number().int().nullish(),
+    upc: z.string().nullish(),
+    isActive: z.boolean().nullish(),
+    createdBy: z.number().int().nullish(),
 });
 
 export default ZProductUpcAllocationModel;

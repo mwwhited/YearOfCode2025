@@ -12,10 +12,10 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryIngredientModelFilter = z.object({
-    ingredientId: ZFilterParameter.optional(),
-    ingredientName: ZFilterParameter.optional(),
-    group: ZFilterParameter.optional(),
-    iocGroup: ZFilterParameter.optional(),
+    ingredientId: ZFilterParameter.nullish(),
+    ingredientName: ZFilterParameter.nullish(),
+    group: ZFilterParameter.nullish(),
+    iocGroup: ZFilterParameter.nullish(),
 });
 
 export default ZQueryIngredientModelFilter;

@@ -13,12 +13,12 @@ import ZQueryRoleModelFilter from "./ZQueryRoleModelFilter";
 import ZQueryRoleModelOrderBy from "./ZQueryRoleModelOrderBy";
 
 const ZQueryRoleModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQueryRoleModelFilter.optional(),
-    orderBy: ZQueryRoleModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQueryRoleModelFilter.nullish(),
+    orderBy: ZQueryRoleModelOrderBy.nullish(),
 });
 
 export default ZQueryRoleModelSearchQuery;

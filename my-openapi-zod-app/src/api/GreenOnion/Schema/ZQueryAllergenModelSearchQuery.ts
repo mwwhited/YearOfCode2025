@@ -13,12 +13,12 @@ import ZQueryAllergenModelFilter from "./ZQueryAllergenModelFilter";
 import ZQueryAllergenModelOrderBy from "./ZQueryAllergenModelOrderBy";
 
 const ZQueryAllergenModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQueryAllergenModelFilter.optional(),
-    orderBy: ZQueryAllergenModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQueryAllergenModelFilter.nullish(),
+    orderBy: ZQueryAllergenModelOrderBy.nullish(),
 });
 
 export default ZQueryAllergenModelSearchQuery;

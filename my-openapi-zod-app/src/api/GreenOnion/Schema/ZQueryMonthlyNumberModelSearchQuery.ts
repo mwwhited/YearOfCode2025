@@ -13,12 +13,12 @@ import ZQueryMonthlyNumberModelFilter from "./ZQueryMonthlyNumberModelFilter";
 import ZQueryMonthlyNumberModelOrderBy from "./ZQueryMonthlyNumberModelOrderBy";
 
 const ZQueryMonthlyNumberModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQueryMonthlyNumberModelFilter.optional(),
-    orderBy: ZQueryMonthlyNumberModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQueryMonthlyNumberModelFilter.nullish(),
+    orderBy: ZQueryMonthlyNumberModelOrderBy.nullish(),
 });
 
 export default ZQueryMonthlyNumberModelSearchQuery;

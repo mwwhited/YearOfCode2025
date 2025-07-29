@@ -12,16 +12,16 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryCategoryModelOrderBy = z.object({
-    categoryId: ZOrderDirections.optional(),
-    categoryName: ZOrderDirections.optional(),
-    categoryCode: ZOrderDirections.optional(),
-    isActive: ZOrderDirections.optional(),
-    createdOn: ZOrderDirections.optional(),
-    createdById: ZOrderDirections.optional(),
-    createdBy: ZOrderDirections.optional(),
-    updatedOn: ZOrderDirections.optional(),
-    updatedById: ZOrderDirections.optional(),
-    updatedBy: ZOrderDirections.optional(),
+    categoryId: ZOrderDirections.nullish(),
+    categoryName: ZOrderDirections.nullish(),
+    categoryCode: ZOrderDirections.nullish(),
+    isActive: ZOrderDirections.nullish(),
+    createdOn: ZOrderDirections.nullish(),
+    createdById: ZOrderDirections.nullish(),
+    createdBy: ZOrderDirections.nullish(),
+    updatedOn: ZOrderDirections.nullish(),
+    updatedById: ZOrderDirections.nullish(),
+    updatedBy: ZOrderDirections.nullish(),
 });
 
 export default ZQueryCategoryModelOrderBy;

@@ -12,16 +12,16 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryUserActionLogModelFilter = z.object({
-    userActionLogId: ZFilterParameter.optional(),
-    eventType: ZFilterParameter.optional(),
-    httpMethod: ZFilterParameter.optional(),
-    eventDate: ZFilterParameter.optional(),
-    sessionId: ZFilterParameter.optional(),
-    requestId: ZFilterParameter.optional(),
-    correlationId: ZFilterParameter.optional(),
-    requestPath: ZFilterParameter.optional(),
-    userId: ZFilterParameter.optional(),
-    user: ZFilterParameter.optional(),
+    userActionLogId: ZFilterParameter.nullish(),
+    eventType: ZFilterParameter.nullish(),
+    httpMethod: ZFilterParameter.nullish(),
+    eventDate: ZFilterParameter.nullish(),
+    sessionId: ZFilterParameter.nullish(),
+    requestId: ZFilterParameter.nullish(),
+    correlationId: ZFilterParameter.nullish(),
+    requestPath: ZFilterParameter.nullish(),
+    userId: ZFilterParameter.nullish(),
+    user: ZFilterParameter.nullish(),
 });
 
 export default ZQueryUserActionLogModelFilter;

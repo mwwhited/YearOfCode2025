@@ -11,17 +11,17 @@
 import { z } from "zod";
 
 const ZQueryRoleModel = z.object({
-    roleId: z.number().int().optional(),
-    roleName: z.string().optional(),
-    isActive: z.boolean().optional(),
-    userCount: z.number().int().optional(),
-    activeUserCount: z.number().int().optional(),
-    createdOn: z.string().optional(),
-    createdById: z.number().int().optional(),
-    createdBy: z.string().optional(),
-    updatedOn: z.string().optional(),
-    updatedById: z.number().int().optional(),
-    updatedBy: z.string().optional(),
+    roleId: z.number().int().nullish(),
+    roleName: z.string().nullish(),
+    isActive: z.boolean().nullish(),
+    userCount: z.number().int().nullish(),
+    activeUserCount: z.number().int().nullish(),
+    createdOn: z.string().nullish(),
+    createdById: z.number().int().nullish(),
+    createdBy: z.string().nullish(),
+    updatedOn: z.string().nullish(),
+    updatedById: z.number().int().nullish(),
+    updatedBy: z.string().nullish(),
 });
 
 export default ZQueryRoleModel;

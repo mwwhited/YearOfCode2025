@@ -11,14 +11,14 @@
 import { z } from "zod";
 
 const ZRoleMst = z.object({
-    roleId: z.number().int().optional(),
-    roleName: z.string().optional(),
-    parentRoleId: z.number().int().optional(),
-    isActive: z.boolean().optional(),
-    createdOn: z.string().optional(),
-    createdByUserId: z.number().int().optional(),
-    updatedOn: z.string().optional(),
-    updatedByUserId: z.number().int().optional(),
+    roleId: z.number().int().nullish(),
+    roleName: z.string().nullish(),
+    parentRoleId: z.number().int().nullish(),
+    isActive: z.boolean().nullish(),
+    createdOn: z.string().nullish(),
+    createdByUserId: z.number().int().nullish(),
+    updatedOn: z.string().nullish(),
+    updatedByUserId: z.number().int().nullish(),
 });
 
 export default ZRoleMst;

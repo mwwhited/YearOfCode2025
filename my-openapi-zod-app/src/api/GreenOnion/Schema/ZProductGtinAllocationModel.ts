@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZProductGtinAllocationModel = z.object({
-    productId: z.number().int().optional(),
-    gtin: z.string().optional(),
-    isActive: z.boolean().optional(),
-    createdBy: z.number().int().optional(),
+    productId: z.number().int().nullish(),
+    gtin: z.string().nullish(),
+    isActive: z.boolean().nullish(),
+    createdBy: z.number().int().nullish(),
 });
 
 export default ZProductGtinAllocationModel;

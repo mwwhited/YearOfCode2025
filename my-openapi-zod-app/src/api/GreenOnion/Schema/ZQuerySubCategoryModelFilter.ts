@@ -12,17 +12,17 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQuerySubCategoryModelFilter = z.object({
-    subCategoryId: ZFilterParameter.optional(),
-    categoryId: ZFilterParameter.optional(),
-    subCategoryName: ZFilterParameter.optional(),
-    subCategoryCode: ZFilterParameter.optional(),
-    isActive: ZFilterParameter.optional(),
-    createdOn: ZFilterParameter.optional(),
-    createdById: ZFilterParameter.optional(),
-    createdBy: ZFilterParameter.optional(),
-    updatedOn: ZFilterParameter.optional(),
-    updatedById: ZFilterParameter.optional(),
-    updatedBy: ZFilterParameter.optional(),
+    subCategoryId: ZFilterParameter.nullish(),
+    categoryId: ZFilterParameter.nullish(),
+    subCategoryName: ZFilterParameter.nullish(),
+    subCategoryCode: ZFilterParameter.nullish(),
+    isActive: ZFilterParameter.nullish(),
+    createdOn: ZFilterParameter.nullish(),
+    createdById: ZFilterParameter.nullish(),
+    createdBy: ZFilterParameter.nullish(),
+    updatedOn: ZFilterParameter.nullish(),
+    updatedById: ZFilterParameter.nullish(),
+    updatedBy: ZFilterParameter.nullish(),
 });
 
 export default ZQuerySubCategoryModelFilter;

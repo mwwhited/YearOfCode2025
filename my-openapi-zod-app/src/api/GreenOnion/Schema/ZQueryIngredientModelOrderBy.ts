@@ -12,10 +12,10 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryIngredientModelOrderBy = z.object({
-    ingredientId: ZOrderDirections.optional(),
-    ingredientName: ZOrderDirections.optional(),
-    group: ZOrderDirections.optional(),
-    iocGroup: ZOrderDirections.optional(),
+    ingredientId: ZOrderDirections.nullish(),
+    ingredientName: ZOrderDirections.nullish(),
+    group: ZOrderDirections.nullish(),
+    iocGroup: ZOrderDirections.nullish(),
 });
 
 export default ZQueryIngredientModelOrderBy;

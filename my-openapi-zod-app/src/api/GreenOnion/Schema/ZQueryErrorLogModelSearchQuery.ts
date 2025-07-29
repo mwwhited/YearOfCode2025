@@ -13,12 +13,12 @@ import ZQueryErrorLogModelFilter from "./ZQueryErrorLogModelFilter";
 import ZQueryErrorLogModelOrderBy from "./ZQueryErrorLogModelOrderBy";
 
 const ZQueryErrorLogModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQueryErrorLogModelFilter.optional(),
-    orderBy: ZQueryErrorLogModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQueryErrorLogModelFilter.nullish(),
+    orderBy: ZQueryErrorLogModelOrderBy.nullish(),
 });
 
 export default ZQueryErrorLogModelSearchQuery;

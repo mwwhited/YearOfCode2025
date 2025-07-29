@@ -1,10 +1,12 @@
 curl --insecure https://localhost:7443/swagger/all/swagger.json --output greenonion-swagger.json
 npx openapi-zod-client ^
     ./greenonion-swagger.json ^
-    --output ./src/api/GreenOnionClient ^
+    --output ./src/api/GreenOnion ^
     --with-docs ^
     --client ^
-    --split
+    --split ^
+    --implicit-required=false ^
+    --export-schemas
     
 
 REM   npx openapi-zod-client ^

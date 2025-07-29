@@ -12,9 +12,9 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryErrorLogModelFilter = z.object({
-    errorLogId: ZFilterParameter.optional(),
-    errorMessage: ZFilterParameter.optional(),
-    errorPath: ZFilterParameter.optional(),
+    errorLogId: ZFilterParameter.nullish(),
+    errorMessage: ZFilterParameter.nullish(),
+    errorPath: ZFilterParameter.nullish(),
 });
 
 export default ZQueryErrorLogModelFilter;

@@ -13,12 +13,12 @@ import ZQueryManufacturerModelFilter from "./ZQueryManufacturerModelFilter";
 import ZQueryManufacturerModelOrderBy from "./ZQueryManufacturerModelOrderBy";
 
 const ZQueryManufacturerModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQueryManufacturerModelFilter.optional(),
-    orderBy: ZQueryManufacturerModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQueryManufacturerModelFilter.nullish(),
+    orderBy: ZQueryManufacturerModelOrderBy.nullish(),
 });
 
 export default ZQueryManufacturerModelSearchQuery;

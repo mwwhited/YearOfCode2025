@@ -13,12 +13,12 @@ import ZQuerySubCategoryModelFilter from "./ZQuerySubCategoryModelFilter";
 import ZQuerySubCategoryModelOrderBy from "./ZQuerySubCategoryModelOrderBy";
 
 const ZQuerySubCategoryModelSearchQuery = z.object({
-    currentPage: z.number().int().optional(),
-    pageSize: z.number().int().optional(),
-    excludePageCount: z.boolean().optional(),
-    searchTerm: z.string().optional(),
-    filter: ZQuerySubCategoryModelFilter.optional(),
-    orderBy: ZQuerySubCategoryModelOrderBy.optional(),
+    currentPage: z.number().int().nullish(),
+    pageSize: z.number().int().nullish(),
+    excludePageCount: z.boolean().nullish(),
+    searchTerm: z.string().nullish(),
+    filter: ZQuerySubCategoryModelFilter.nullish(),
+    orderBy: ZQuerySubCategoryModelOrderBy.nullish(),
 });
 
 export default ZQuerySubCategoryModelSearchQuery;

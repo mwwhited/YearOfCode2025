@@ -17,20 +17,20 @@ import ZProductTableField from "./ZProductTableField";
 import ZFileStatus from "./ZFileStatus";
 
 const ZFileUploadResponse = z.object({
-    manufacture: z.string().optional(),
-    distributer: z.string().optional(),
-    districtName: z.string().optional(),
-    mappingFieldList: z.array(ZMappingFieldData).optional(),
-    fileHeaderList: z.array(ZFileHeader).optional(),
-    fileDataList: z.array(ZFileHeaderData).optional(),
-    productList: z.array(ZProductUploadModel).optional(),
-    tableFieldList: z.array(ZProductTableField).optional(),
-    uniqueExcelFileId: z.string().optional(),
-    statusList: z.array(ZFileStatus).optional(),
-    absolutePath: z.string().optional(),
-    success: z.boolean().optional(),
-    message: z.string().optional(),
-    payload: z.unknown().optional(),
+    manufacture: z.string().nullish(),
+    distributer: z.string().nullish(),
+    districtName: z.string().nullish(),
+    mappingFieldList: z.array(ZMappingFieldData).nullish(),
+    fileHeaderList: z.array(ZFileHeader).nullish(),
+    fileDataList: z.array(ZFileHeaderData).nullish(),
+    productList: z.array(ZProductUploadModel).nullish(),
+    tableFieldList: z.array(ZProductTableField).nullish(),
+    uniqueExcelFileId: z.string().nullish(),
+    statusList: z.array(ZFileStatus).nullish(),
+    absolutePath: z.string().nullish(),
+    success: z.boolean().nullish(),
+    message: z.string().nullish(),
+    payload: z.unknown().nullish(),
 });
 
 export default ZFileUploadResponse;

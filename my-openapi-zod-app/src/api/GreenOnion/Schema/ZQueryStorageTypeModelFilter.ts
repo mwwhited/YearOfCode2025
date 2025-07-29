@@ -12,8 +12,8 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryStorageTypeModelFilter = z.object({
-    storageTypeId: ZFilterParameter.optional(),
-    storageTypeName: ZFilterParameter.optional(),
+    storageTypeId: ZFilterParameter.nullish(),
+    storageTypeName: ZFilterParameter.nullish(),
 });
 
 export default ZQueryStorageTypeModelFilter;

@@ -60,9 +60,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const user: User | null = activeAccount && profile ? {
     // Use API user data as primary source
-    id: activeAccount.homeAccountId,
-    email: profile.email,
-    name: `${profile.firstName || ''} ${profile.lastName || ''}`.trim() || profile.email || 'Unknown User',
+    id: profile.userId?.toString() || activeAccount.homeAccountId,
+    email: profile.email || activeAccount.username,
+    name: `${profile.firstName || ''} ${profile.lastName || ''}`.trim() || profile.email || activeAccount.name || 'Unknown User',
     accountInfo: activeAccount,
     
     // API User Data from useProfile
@@ -252,22 +252,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (firstName && lastName) {
       return `${firstName} ${lastName}`;
     }
-    return firstName || lastName || null;
+    return firstName || lastName || profile.email || 'Unknown User';
   };
 
   const getUserDistrict = () => {
     if (!profile) return null;
     return {
-      id: profile.schoolDistrictId,
-      name: profile.schoolDistrictName
+      id: profile.schoolDistrictId || undefined,
+      name: profile.schoolDistrictName || undefined
     };
   };
 
   const getUserManufacturer = () => {
     if (!profile) return null;
     return {
-      id: profile.manufacturerId,
-      name: profile.manufacturerName
+      id: profile.manufacturerId || undefined,
+      name: profile.manufacturerName || undefined
     };
   };
 

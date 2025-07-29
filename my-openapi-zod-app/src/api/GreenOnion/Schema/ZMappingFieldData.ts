@@ -11,11 +11,11 @@
 import { z } from "zod";
 
 const ZMappingFieldData = z.object({
-    mappingID: z.number().int().optional(),
-    isChecked: z.boolean().optional(),
-    fileFieldName: z.string().optional(),
-    tableFieldID: z.string().optional(),
-    tableFieldName: z.string().optional(),
+    mappingID: z.number().int().nullish(),
+    isChecked: z.boolean().nullish(),
+    fileFieldName: z.string().nullish(),
+    tableFieldID: z.string().nullish(),
+    tableFieldName: z.string().nullish(),
 });
 
 export default ZMappingFieldData;
