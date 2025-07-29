@@ -469,6 +469,77 @@ import { DataTable } from 'primereact/datatable';
 
 ---
 
+### 2025-07-29 - Edit User Screens & Property Editor Implementation
+**Changes Made:**
+- Created two comprehensive edit user screens with different approaches
+- Implemented dynamic form generation system
+- Added action columns to data tables
+- Enhanced UI component library with missing controls
+- Updated routing and navigation for user management
+
+**Files Added:**
+- `src/pages/EditUserDynamic.tsx` - Dynamic form-based user editing
+- `src/pages/EditUserPanel.tsx` - Panel-based structured user editing
+- `src/components/forms/DynamicForm.tsx` - Reusable schema-driven form generator
+- `src/components/controls/InputTextarea.tsx` - Textarea control wrapper
+- `src/components/controls/Fieldset.tsx` - Fieldset control wrapper
+- `src/components/controls/Panel.tsx` - Panel control wrapper
+
+**Files Modified:**
+- `src/pages/UsersList.tsx` - Added action buttons linking to both edit forms
+- `src/components/controls/GenericDataTable.tsx` - Added action column support
+- `src/components/controls/index.ts` - Added new control exports
+- `src/routes/AppRoutes.tsx` - Added routes for edit user screens
+- `src/api/GreenOnion/Schema/ZQueryUserModel.ts` - Fixed nullable field handling
+- `src/contexts/AuthContext.tsx` - Enhanced user object with username property
+
+**Architecture Decisions:**
+- **Dual Approach**: Implemented both dynamic and panel-based editing for comparison
+- **Schema-Driven Forms**: Used Zod schemas for automatic form generation and validation
+- **Component Wrapping**: Maintained PrimeReact component wrapping pattern
+- **Type Safety**: Enhanced type definitions to eliminate build errors
+- **Role-Based Access**: Protected edit functionality with admin role requirements
+
+**Impact:**
+- **User Management**: Complete CRUD functionality for user editing
+- **Development Patterns**: Established patterns for property editing in the application
+- **Flexibility**: Developers can choose between dynamic or structured form approaches
+- **Maintainability**: Reusable form components reduce development time
+- **Type Safety**: Improved TypeScript compliance across the application
+
+---
+
+### 2025-07-29 - Sidebar Hover Menus & Enhanced Navigation
+**Changes Made:**
+- Implemented sophisticated hover popup menus for collapsed sidebar
+- Created tooltip system for single menu items
+- Enhanced sidebar UX with animations and responsive design
+- Restructured navigation hierarchy for better usability
+
+**Files Added:**
+- `src/components/layout/SidebarHoverMenu.tsx` - Popup menu component for grouped items
+- `src/components/layout/SimpleTooltip.tsx` - Tooltip component for single items
+
+**Files Modified:**
+- `src/components/layout/AppSidebar.tsx` - Integrated hover functionality and restructured navigation
+- `src/App.css` - Added animations, styling, and responsive design for hover menus
+
+**Architecture Decisions:**
+- **Progressive Enhancement**: Hover functionality only active when sidebar is collapsed
+- **Intelligent Positioning**: Dynamic positioning to prevent screen cutoffs
+- **Responsive Design**: Mobile-first approach with hover functionality disabled on touch devices
+- **Performance Optimization**: Efficient event handling with proper cleanup
+- **Navigation Hierarchy**: Moved Users to top-level for better accessibility
+
+**Impact:**
+- **User Experience**: Significantly improved navigation in collapsed sidebar state
+- **Accessibility**: Better organization of menu items and clearer navigation paths
+- **Performance**: Smooth animations without affecting application performance
+- **Mobile Compatibility**: Responsive design ensures functionality across all devices
+- **Maintainability**: Clean component architecture for future navigation enhancements
+
+---
+
 ### Future Changes
 **IMPORTANT**: All future architecture changes MUST be documented here with:
 - Date and description of changes

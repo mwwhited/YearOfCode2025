@@ -380,6 +380,74 @@
   min-height: 200px;
 }
 
+/* Sidebar Hover Menu Styles */
+.sidebar-hover-menu {
+  animation: slideInRight 0.15s ease-out;
+  transform-origin: left center;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.sidebar-hover-menu .p-card {
+  border: 1px solid var(--surface-border);
+  background: var(--surface-card);
+}
+
+.sidebar-hover-menu .menu-item:hover {
+  background-color: var(--primary-50);
+  color: var(--primary-color);
+  transition: all 0.15s ease;
+}
+
+.sidebar-hover-menu .menu-item:hover i {
+  color: var(--primary-color);
+}
+
+/* Tooltip Styles */
+.sidebar-tooltip {
+  animation: fadeIn 0.2s ease-out;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Enhanced sidebar menu items for collapsed state */
+.app-sidebar.collapsed .menu-item {
+  position: relative;
+}
+
+.app-sidebar.collapsed .menu-link,
+.app-sidebar.collapsed .menu-group-header {
+  justify-content: center;
+  text-align: center;
+}
+
+.app-sidebar.collapsed .menu-link i,
+.app-sidebar.collapsed .menu-group-header i {
+  margin-right: 0;
+  font-size: 1.1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .app-sidebar {
@@ -396,5 +464,11 @@
   
   .app-content {
     padding: var(--spacing-md);
+  }
+
+  /* Hide hover menus on mobile */
+  .sidebar-hover-menu,
+  .sidebar-tooltip {
+    display: none !important;
   }
 }

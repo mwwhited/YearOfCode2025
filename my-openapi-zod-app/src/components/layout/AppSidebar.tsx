@@ -2,6 +2,8 @@ import React from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { UserRole, ROLE_GROUPS } from '@/types/roles';
+import { SidebarHoverMenu } from './SidebarHoverMenu';
+import { SimpleTooltip } from './SimpleTooltip';
 
 interface MenuItem {
   separator?: boolean;
@@ -142,6 +144,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
       visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
     },
     {
+      label: 'Users',
+      icon: 'pi pi-users',
+      command: () => navigate('/users'),
+      visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
+    },
+    {
       label: 'Settings',
       icon: 'pi pi-cog',
       items: [
@@ -150,12 +158,6 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           icon: 'pi pi-user',
           command: () => navigate('/profile'),
           visible: true
-        },
-        {
-          label: 'Manage Users',
-          icon: 'pi pi-users',
-          command: () => navigate('/users'),
-          visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         },
         {
           label: 'Application Settings',
@@ -218,25 +220,33 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
       return (
         <div key={index} className={`menu-item ${isActive ? 'active' : ''}`}>
           {item.items ? (
-            <div className="menu-group">
-              <div className="menu-group-header">
+            <SidebarHoverMenu item={item} collapsed={collapsed}>
+              <div className="menu-group">
+                <div className="menu-group-header p-2 cursor-pointer hover:bg-primary-50 border-round">
+                  <i className={`${item.icon} mr-2`} />
+                  {!collapsed && <span>{item.label}</span>}
+                </div>
+                {!collapsed && (
+                  <div className="menu-group-items ml-4">
+                    {renderMenuItems(item.items)}
+                  </div>
+                )}
+              </div>
+            </SidebarHoverMenu>
+          ) : (
+            <SimpleTooltip 
+              content={item.label || ''} 
+              disabled={!collapsed}
+              placement="right"
+            >
+              <div 
+                className="menu-link p-2 cursor-pointer hover:bg-primary-50 border-round"
+                onClick={item.command}
+              >
                 <i className={`${item.icon} mr-2`} />
                 {!collapsed && <span>{item.label}</span>}
               </div>
-              {!collapsed && (
-                <div className="menu-group-items ml-4">
-                  {renderMenuItems(item.items)}
-                </div>
-              )}
-            </div>
-          ) : (
-            <div 
-              className="menu-link p-2 cursor-pointer hover:bg-primary-50 border-round"
-              onClick={item.command}
-            >
-              <i className={`${item.icon} mr-2`} />
-              {!collapsed && <span>{item.label}</span>}
-            </div>
+            </SimpleTooltip>
           )}
         </div>
       );
