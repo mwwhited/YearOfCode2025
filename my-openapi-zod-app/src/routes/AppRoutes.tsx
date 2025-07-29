@@ -6,6 +6,8 @@ import { Dashboard } from '@/pages/Dashboard';
 import { Profile } from '@/pages/Profile';
 import { Logout } from '@/pages/Logout';
 import UsersList from '@/pages/UsersList';
+import EditUserDynamic from '@/pages/EditUserDynamic';
+import EditUserPanel from '@/pages/EditUserPanel';
 import { ROLE_GROUPS } from '@/types/roles';
 
 // Placeholder components for other routes
@@ -99,10 +101,26 @@ export const AppRoutes: React.FC = () => {
         
         {/* User management routes - Manager and Admin only */}
         <Route 
-          path="users/list" 
+          path="users" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
               <UsersList />
+            </RoleGuard>
+          } 
+        />
+        <Route 
+          path="users/:userId/edit-dynamic" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <EditUserDynamic />
+            </RoleGuard>
+          } 
+        />
+        <Route 
+          path="users/:userId/edit-panel" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <EditUserPanel />
             </RoleGuard>
           } 
         />

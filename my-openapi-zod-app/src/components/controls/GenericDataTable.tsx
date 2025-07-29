@@ -8,7 +8,12 @@ type GenericDataTableProps<T extends ZodObject<ZodRawShape>> = {
   data?: z.infer<T>[];
   columnOverrides?: Partial<Record<keyof z.infer<T>, { header?: string }>>;
   client?: {
-    Query: (params: { body?: any }) => Promise<{ rows?: z.infer<T>[] } | undefined>;
+    Query: (params: { body?: any }) => Promise<{ rows?: z.infer<T>[] | null } | undefined>;
+  };
+  actionColumn?: {
+    header?: string;
+    body: (rowData: z.infer<T>) => React.ReactNode;
+    style?: React.CSSProperties;
   };
 };
 
@@ -17,6 +22,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   data: initialData,
   columnOverrides = {},
   client,
+  actionColumn,
 }: GenericDataTableProps<T>) {
   const [filters, setFilters] = useState<DataTableFilterMeta>({});
   const [globalFilter, setGlobalFilter] = useState("");
@@ -32,7 +38,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
         setError(null);
         try {
           const result = await client.Query({ body: {} });
-          if (result && result.rows) {
+          if (result && result.rows && Array.isArray(result.rows)) {
             setData(result.rows);
           } else {
             setData([]);
@@ -151,6 +157,15 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
             />
           );
         })}
+        {actionColumn && (
+          <Column
+            header={actionColumn.header || 'Actions'}
+            body={actionColumn.body}
+            style={actionColumn.style || { width: '120px' }}
+            frozen
+            alignFrozen="right"
+          />
+        )}
       </DataTable>
     </div>
   );

@@ -16,6 +16,7 @@ import { MaintenanceMessage } from '@/components/auth/MaintenanceMessage';
 interface User {
   // B2C Account Information
   id?: string;
+  username?: string;
   accountInfo?: AccountInfo;
   
   // API User Data (from UserClient.Get())
@@ -61,6 +62,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const user: User | null = activeAccount && profile ? {
     // Use API user data as primary source
     id: profile.userId?.toString() || activeAccount.homeAccountId,
+    username: profile.email || activeAccount.username,
     email: profile.email || activeAccount.username,
     name: `${profile.firstName || ''} ${profile.lastName || ''}`.trim() || profile.email || activeAccount.name || 'Unknown User',
     accountInfo: activeAccount,

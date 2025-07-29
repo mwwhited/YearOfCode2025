@@ -154,7 +154,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
         {
           label: 'Manage Users',
           icon: 'pi pi-users',
-          command: () => navigate('/users/list'),
+          command: () => navigate('/users'),
           visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
         },
         {
