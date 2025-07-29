@@ -1,5 +1,5 @@
 curl --insecure https://localhost:7443/swagger/all/swagger.json --output greenonion-swagger.json
-@REM npx openapi-zod-client ^
+@REM custom code generator ^
 @REM     ./greenonion-swagger.json ^
 @REM     --output ./src/api/GreenOnion ^
 @REM     --with-docs ^
@@ -9,7 +9,7 @@ curl --insecure https://localhost:7443/swagger/all/swagger.json --output greenon
 @REM     --export-schemas
     
 
-REM   npx openapi-zod-client ^
+REM   custom code generator ^
 REM   ./greenonion-swagger.json ^
 REM   --output ./src/api/GreenOnionClient.ts ^
 REM   --with-docs
@@ -19,4 +19,4 @@ REM   --with-docs
     REM --media-type-expr application/json
 
 
-REM npx openapi-zod-client generate --input https://localhost:7443/swagger/all/swagger.json --output src/api --no-validate
+REM custom code generator --input https://localhost:7443/swagger/all/swagger.json --output src/api --no-validate

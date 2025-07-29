@@ -65,17 +65,27 @@
 │   │   │   └── RoleGuard.tsx        # Role-based access control
 │   │   ├── controls/                # Wrapped PrimeReact UI components
 │   │   │   ├── Button.tsx           # Custom Button wrapper
+│   │   │   ├── Card.tsx             # Custom Card wrapper
 │   │   │   ├── DataTable.tsx        # Custom DataTable wrapper
 │   │   │   ├── Dialog.tsx           # Custom Dialog wrapper
+│   │   │   ├── Dropdown.tsx         # Custom Dropdown wrapper
+│   │   │   ├── Fieldset.tsx         # Custom Fieldset wrapper
+│   │   │   ├── GenericDataTable.tsx # Schema-driven data table component
 │   │   │   ├── InputText.tsx        # Custom InputText wrapper
+│   │   │   ├── InputTextarea.tsx    # Custom InputTextarea wrapper
 │   │   │   ├── Message.tsx          # Custom Message wrapper
+│   │   │   ├── Panel.tsx            # Custom Panel wrapper
 │   │   │   ├── ProgressSpinner.tsx  # Custom ProgressSpinner wrapper
 │   │   │   └── index.ts             # Component exports
+│   │   ├── forms/                   # Form components
+│   │   │   └── DynamicForm.tsx      # Schema-driven dynamic form generator
 │   │   └── layout/                  # Layout components
 │   │       ├── AppHeader.tsx        # Navigation header with user menu
-│   │       ├── AppSidebar.tsx       # Role-based sidebar navigation
+│   │       ├── AppSidebar.tsx       # Role-based sidebar navigation with hover menus
 │   │       ├── AppFooter.tsx        # Application footer
-│   │       └── AppLayout.tsx        # Main layout wrapper
+│   │       ├── AppLayout.tsx        # Main layout wrapper
+│   │       ├── SidebarHoverMenu.tsx # Popup menu for collapsed sidebar
+│   │       └── SimpleTooltip.tsx    # Tooltip component for single items
 │   ├── contexts/                    # React contexts
 │   │   └── AuthContext.tsx          # Authentication & user state management
 │   ├── hooks/                       # Custom React hooks
@@ -85,7 +95,21 @@
 │   ├── pages/                       # Page components
 │   │   ├── Dashboard.tsx           # Main dashboard with charts
 │   │   ├── Profile.tsx             # User profile page
-│   │   └── Logout.tsx              # Forced logout page
+│   │   ├── Logout.tsx              # Forced logout page
+│   │   ├── UsersList.tsx           # User management list view
+│   │   ├── EditUserDynamic.tsx     # Dynamic form-based user editing
+│   │   ├── EditUserPanel.tsx       # Panel-based structured user editing
+│   │   ├── ProductsList.tsx        # Product management list view
+│   │   ├── ProductsCardView.tsx    # Product shopping cart view with infinite scroll
+│   │   ├── EditProductDynamic.tsx  # Dynamic form-based product editing
+│   │   ├── EditProductPanel.tsx    # Panel-based structured product editing
+│   │   ├── CategoriesList.tsx      # Category management list view
+│   │   ├── EditCategoryDynamic.tsx # Dynamic form-based category editing
+│   │   ├── EditCategoryPanel.tsx   # Panel-based structured category editing
+│   │   ├── SubCategoriesList.tsx   # Sub-category management list
+│   │   ├── ManufacturersList.tsx   # Manufacturer management list
+│   │   ├── AllergensList.tsx       # Allergen management list
+│   │   └── DistrictsList.tsx       # School district management list
 │   ├── routes/                      # Routing configuration
 │   │   └── AppRoutes.tsx           # Role-based route definitions
 │   ├── styles/                      # Styling system
@@ -537,6 +561,60 @@ import { DataTable } from 'primereact/datatable';
 - **Performance**: Smooth animations without affecting application performance
 - **Mobile Compatibility**: Responsive design ensures functionality across all devices
 - **Maintainability**: Clean component architecture for future navigation enhancements
+
+---
+
+### 2025-07-29 - Comprehensive Entity Management System
+**Changes Made:**
+- Created complete CRUD management system for products, categories, subcategories, manufacturers, allergens, and districts
+- Implemented shopping cart view for products with infinite scroll pagination
+- Added dual editing approaches (dynamic forms vs structured panels) for all entities
+- Fixed extensive TypeScript build issues and API integration
+- Established schema-driven data table patterns
+
+**Files Added:**
+- `src/pages/ProductsList.tsx` - Product management with data table
+- `src/pages/ProductsCardView.tsx` - Shopping cart view with infinite scroll and search
+- `src/pages/EditProductDynamic.tsx` - Dynamic form-based product editing
+- `src/pages/EditProductPanel.tsx` - Panel-based structured product editing
+- `src/pages/CategoriesList.tsx` - Category management list view
+- `src/pages/EditCategoryDynamic.tsx` - Dynamic category editing
+- `src/pages/EditCategoryPanel.tsx` - Structured category editing
+- `src/pages/SubCategoriesList.tsx` - Sub-category management
+- `src/pages/ManufacturersList.tsx` - Manufacturer management
+- `src/pages/AllergensList.tsx` - Allergen management
+- `src/pages/DistrictsList.tsx` - School district management
+
+**Files Modified:**
+- `src/routes/AppRoutes.tsx` - Added comprehensive routing for all entity management
+- `src/components/layout/AppSidebar.tsx` - Updated navigation with new entity pages
+- `src/components/controls/GenericDataTable.tsx` - Enhanced with action columns and schema-driven interface
+- Multiple API client usage fixes - corrected import patterns and method calls
+
+**Architecture Decisions:**
+- **Entity Management Patterns**: Standardized CRUD operations following user management patterns
+- **Dual Editing Approaches**: Dynamic forms for quick editing, panels for structured complex editing
+- **Schema-Driven Tables**: Used Zod schemas for automatic column generation and validation
+- **API Client Integration**: Fixed client imports (default imports) and method naming (capitalized)
+- **Infinite Scroll**: Implemented client-side pagination with IntersectionObserver
+- **Search Functionality**: Multi-field search across product attributes
+- **Role-Based Access**: Admin-only access to management functions
+
+**Technical Fixes:**
+- **Client Imports**: Changed from named imports to default imports (`import ProductClient from`)
+- **API Methods**: Capitalized method names (`Query({})`, `Get()`, `Save()`)
+- **Response Structure**: Used `response.rows` instead of `response.isSuccess/result`
+- **Type Safety**: Fixed form data types and removed unsupported DynamicForm field types
+- **Dependency Issues**: Fixed React hook dependencies and useRef initialization
+- **Unused Variables**: Removed unused handlers and imports for clean build
+
+**Impact:**
+- **Complete Entity Management**: Full CRUD functionality for all major business entities
+- **User Experience**: Shopping cart view provides intuitive product browsing
+- **Developer Experience**: Established reusable patterns for future entity management
+- **Type Safety**: Clean TypeScript build with comprehensive type checking
+- **Performance**: Efficient infinite scroll and search implementations
+- **Maintainability**: Consistent code patterns and API integration approaches
 
 ---
 

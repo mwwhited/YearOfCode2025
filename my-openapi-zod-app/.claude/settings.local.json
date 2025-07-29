@@ -23,7 +23,8 @@
       "Bash(rm:*)",
       "Bash(npm run lint)",
       "Bash(curl:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(grep:*)"
     ],
     "deny": []
   }

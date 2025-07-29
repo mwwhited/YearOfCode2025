@@ -1,7 +1,7 @@
 # API Client Generation Guide
 
 ## Overview
-The GreenOnion API client is auto-generated from the Swagger/OpenAPI specification using `openapi-zod-client`.
+The GreenOnion API client is auto-generated from the Swagger/OpenAPI specification using a custom code generator.
 
 ## Regenerating the Client
 
