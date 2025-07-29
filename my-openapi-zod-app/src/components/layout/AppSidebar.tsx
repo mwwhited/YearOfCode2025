@@ -45,6 +45,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
         },
         {
+          label: 'Card View',
+          icon: 'pi pi-th-large',
+          command: () => navigate('/products/cards'),
+          visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
+        },
+        {
           label: 'Add Product',
           icon: 'pi pi-plus',
           command: () => navigate('/products/add'),
@@ -115,6 +121,24 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
         }
       ].filter(item => item.visible),
       visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
+    },
+    {
+      label: 'Sub Categories',
+      icon: 'pi pi-tag',
+      command: () => navigate('/subcategories'),
+      visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
+    },
+    {
+      label: 'Manufacturers',
+      icon: 'pi pi-building',
+      command: () => navigate('/manufacturers'),
+      visible: hasAnyRole(ROLE_GROUPS.ALL_USERS)
+    },
+    {
+      label: 'Districts',
+      icon: 'pi pi-home',
+      command: () => navigate('/districts'),
+      visible: hasAnyRole(ROLE_GROUPS.ADMIN_ROLES)
     },
     {
       separator: true,

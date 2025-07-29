@@ -8,13 +8,21 @@ import { Logout } from '@/pages/Logout';
 import UsersList from '@/pages/UsersList';
 import EditUserDynamic from '@/pages/EditUserDynamic';
 import EditUserPanel from '@/pages/EditUserPanel';
+import { ProductsList } from '@/pages/ProductsList';
+import { EditProductDynamic } from '@/pages/EditProductDynamic';
+import { EditProductPanel } from '@/pages/EditProductPanel';
+import { ProductsCardView } from '@/pages/ProductsCardView';
+import { CategoriesList } from '@/pages/CategoriesList';
+import { EditCategoryDynamic } from '@/pages/EditCategoryDynamic';
+import { EditCategoryPanel } from '@/pages/EditCategoryPanel';
+import { SubCategoriesList } from '@/pages/SubCategoriesList';
+import { ManufacturersList } from '@/pages/ManufacturersList';
+import { AllergensList } from '@/pages/AllergensList';
+import { DistrictsList } from '@/pages/DistrictsList';
 import { ROLE_GROUPS } from '@/types/roles';
 
 // Placeholder components for other routes
-const ProductsPage = () => <div className="p-4"><h1>Products</h1><p>Products page coming soon...</p></div>;
-const CategoriesPage = () => <div className="p-4"><h1>Categories</h1><p>Categories page coming soon...</p></div>;
 const IngredientsPage = () => <div className="p-4"><h1>Ingredients</h1><p>Ingredients page coming soon...</p></div>;
-const AllergensPage = () => <div className="p-4"><h1>Allergens</h1><p>Allergens page coming soon...</p></div>;
 const ReportsPage = () => <div className="p-4"><h1>Reports</h1><p>Reports page coming soon...</p></div>;
 const AdminUsersPage = () => <div className="p-4"><h1>User Management</h1><p>Admin users page coming soon...</p></div>;
 const AdminRolesPage = () => <div className="p-4"><h1>Role Management</h1><p>Admin roles page coming soon...</p></div>;
@@ -38,12 +46,29 @@ export const AppRoutes: React.FC = () => {
         <Route path="profile" element={<Profile />} />
         
         {/* Product routes - accessible to all authenticated users */}
-        <Route path="products" element={<ProductsPage />} />
+        <Route path="products" element={<ProductsList />} />
+        <Route path="products/cards" element={<ProductsCardView />} />
+        <Route 
+          path="products/edit-dynamic/:id" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <EditProductDynamic />
+            </RoleGuard>
+          } 
+        />
+        <Route 
+          path="products/edit-panel/:id" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <EditProductPanel />
+            </RoleGuard>
+          } 
+        />
         <Route 
           path="products/add" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <ProductsPage />
+              <EditProductDynamic />
             </RoleGuard>
           } 
         />
@@ -51,21 +76,43 @@ export const AppRoutes: React.FC = () => {
           path="products/suggested" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <ProductsPage />
+              <ProductsList />
             </RoleGuard>
           } 
         />
         
         {/* Category routes */}
-        <Route path="categories" element={<CategoriesPage />} />
+        <Route path="categories" element={<CategoriesList />} />
+        <Route 
+          path="categories/edit-dynamic/:id" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <EditCategoryDynamic />
+            </RoleGuard>
+          } 
+        />
+        <Route 
+          path="categories/edit-panel/:id" 
+          element={
+            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
+              <EditCategoryPanel />
+            </RoleGuard>
+          } 
+        />
         <Route 
           path="categories/add" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <CategoriesPage />
+              <EditCategoryDynamic />
             </RoleGuard>
           } 
         />
+
+        {/* Sub Category routes */}
+        <Route path="subcategories" element={<SubCategoriesList />} />
+        
+        {/* Manufacturer routes */}
+        <Route path="manufacturers" element={<ManufacturersList />} />
         
         {/* Ingredient routes */}
         <Route path="ingredients" element={<IngredientsPage />} />
@@ -79,15 +126,10 @@ export const AppRoutes: React.FC = () => {
         />
         
         {/* Allergen routes */}
-        <Route path="allergens" element={<AllergensPage />} />
-        <Route 
-          path="allergens/add" 
-          element={
-            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <AllergensPage />
-            </RoleGuard>
-          } 
-        />
+        <Route path="allergens" element={<AllergensList />} />
+        
+        {/* District routes */}
+        <Route path="districts" element={<DistrictsList />} />
         
         {/* Reports routes - Manager and Admin only */}
         <Route 
