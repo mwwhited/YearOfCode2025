@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Card, Button } from '@/components/controls';
+import { Card, Button, ProgressSpinner } from '@/components/controls';
 import { useAuth } from '@/hooks/useAuth';
 
 export const Profile: React.FC = () => {
@@ -13,14 +13,37 @@ export const Profile: React.FC = () => {
     getUserFullName, 
     getUserRole, 
     getUserDistrict, 
-    getUserManufacturer 
+    getUserManufacturer,
+    isLoading,
+    error
   } = useAuth();
 
   const district = getUserDistrict();
   const manufacturer = getUserManufacturer();
 
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="p-4">
+        <Card title="Loading Profile" className="text-center">
+          <ProgressSpinner style={{ width: '50px', height: '50px' }} />
+          <p className="mt-3">Loading your profile information...</p>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="p-4">
+      {error && (
+        <div className="col-12 mb-3">
+          <div className="p-3 bg-yellow-100 text-yellow-800 border border-yellow-200 border-round">
+            <i className="pi pi-exclamation-triangle mr-2"></i>
+            Profile loading issue: {error}. Your information may be partially available.
+          </div>
+        </div>
+      )}
+      
       <div className="grid">
         <div className="col-12 md:col-8 lg:col-6">
           <Card title="User Profile" className="mb-4">

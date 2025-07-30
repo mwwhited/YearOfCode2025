@@ -16,24 +16,35 @@ export default defineConfig({
     // Bundle optimization settings
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Vendor chunk for large libraries
-          vendor: ['react', 'react-dom'],
-          // PrimeReact components in separate chunk
-          primereact: ['primereact/api', 'primereact/datatable', 'primereact/dialog'],
-          // Chart library in separate chunk (lazy loaded)
-          charts: ['primereact/chart'],
-          // API clients in separate chunk
-          api: ['@azure/msal-react', '@azure/msal-browser'],
-          // Utility libraries
-          utils: ['zod', 'react-router-dom']
+        manualChunks(id) {
+          // Separate generated API files into their own chunks
+          if (id.includes('/api/GreenOnion/')) {
+            if (id.includes('/Schema/')) return 'api-schemas';
+            if (id.includes('/Models/')) return 'api-models';
+            if (id.includes('/Clients/')) return 'api-clients';
+          }
+          
+          // Vendor libraries
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) return 'react-vendor';
+            if (id.includes('primereact') || id.includes('primeicons')) return 'primereact-vendor';
+            if (id.includes('@azure/msal')) return 'msal-vendor';
+            if (id.includes('zod')) return 'zod-vendor';
+            return 'vendor';
+          }
         }
-      }
+      },
+      // Force single-threaded to prevent memory issues
+      maxParallelFileOps: 1
     },
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
-    // Enable minification
-    minify: 'terser',
+    // Use esbuild minifier (more memory efficient than terser)
+    minify: 'esbuild',
+    // Reduce memory usage during build
+    sourcemap: false,
+    // Optimize asset inlining threshold
+    assetsInlineLimit: 4096,
   },
   // Performance optimizations
   optimizeDeps: {

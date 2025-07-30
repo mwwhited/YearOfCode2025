@@ -65,6 +65,9 @@ export const useProfile = (): UseProfileReturn => {
   };
 
   useEffect(() => {
+    let retryCount = 0;
+    const maxRetries = 3;
+    
     const initializeProfile = async () => {
       try {
         setIsLoading(true);
@@ -80,32 +83,49 @@ export const useProfile = (): UseProfileReturn => {
         const account = accounts[0];
         console.log('🔍 Processing account for profile:', account.username);
 
-        // Extract and cache idToken (like original useProfile.ts:27-38)
+        // Extract and cache idToken if available, otherwise proceed with account
         if (account.idToken) {
           tokenCache.setTokenFromAccount(account);
-          
-          // Initialize API client with MSAL instance and account
-          ClientBase.initialize(instance, account);
-          
-          console.log('✅ Token cached, loading profile...');
-          
-          // Load profile from API (like original useProfile.ts:63-87)
-          await loadUserProfile();
+          console.log('✅ Token cached from idToken');
         } else {
-          throw new Error('No idToken available in account');
+          // No idToken available yet, but we can still initialize with the account
+          console.log('⚠️ No idToken available, but proceeding with account authentication');
         }
+        
+        // Initialize API client with MSAL instance and account (always proceed)
+        ClientBase.initialize(instance, account);
+        
+        console.log('✅ API client initialized, loading profile...');
+        
+        // Load profile from API - this should work even without cached idToken
+        await loadUserProfile();
 
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'Failed to initialize profile';
         console.error('❌ Profile initialization error:', errorMessage);
         setError(errorMessage);
-        setProfile(null);
         
-        // Track error
+        // Don't set profile to null immediately - keep trying
+        // The user profile should never be null according to requirements
+        if (!profile && retryCount < maxRetries) {
+          retryCount++;
+          console.log(`⚠️ Profile initialization failed, retrying (${retryCount}/${maxRetries}) in 2 seconds...`);
+          
+          setTimeout(() => {
+            initializeProfile();
+          }, 2000 * retryCount); // Exponential backoff
+          return;
+        }
+        
+        if (!profile) {
+          console.log('⚠️ Profile initialization failed after all retries, but keeping existing profile if available');
+        }
+        
+        // Track error but don't force logout
         applicationInsights.trackException(
           err instanceof Error ? err : new Error(errorMessage),
           2,
-          { context: 'useProfile_initialize' }
+          { context: 'useProfile_initialize', forceLogout: false, retryCount }
         );
       } finally {
         setIsLoading(false);

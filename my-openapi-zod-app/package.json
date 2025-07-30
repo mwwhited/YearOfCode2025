@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "CHOKIDAR_USEPOLLING=true vite --host 0.0.0.0",
-    "build": "tsc -b && vite build",
+    "build": "NODE_OPTIONS='--max-old-space-size=16384' tsc -b && NODE_OPTIONS='--max-old-space-size=16384' vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "generate-client": "./scripts/generate-client.sh",

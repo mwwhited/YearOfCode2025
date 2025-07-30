@@ -16,7 +16,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onSidebarToggle, sidebarCo
   const menuRef = useRef<PrimeMenuType>(null);
 
   // Get display name from user context
-  const displayName = getUserFullName() || user?.name || user?.username || 'User';
+  const displayName = getUserFullName() || user?.name || user?.email || 'User';
   const userRole = getUserRole() || 'No role assigned';
 
   const userMenuItems = [

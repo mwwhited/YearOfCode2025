@@ -38,6 +38,9 @@ interface AuthContextType {
   hasAnyRole: (roleNames: string[]) => boolean;
   getAccessToken: () => Promise<string | null>;
   
+  // Profile loading state
+  error: string | null;
+  
   // Convenience methods for accessing user data
   getUserFullName: () => string | null;
   getUserDistrict: () => { id: number | undefined; name: string | undefined } | null;
@@ -53,7 +56,7 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const { instance, accounts, inProgress } = useMsal();
-  const { profile, isLoading: isLoadingProfile, hasValidProfile, isSystemMaintenance, clearProfile } = useProfile();
+  const { profile, isLoading: isLoadingProfile, hasValidProfile, isSystemMaintenance, clearProfile, error: profileError } = useProfile();
   
   // Get the active account 
   const activeAccount = accounts && accounts.length > 0 ? accounts[0] : null;
@@ -308,6 +311,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     hasRole,
     hasAnyRole,
     getAccessToken,
+    error: profileError,
     getUserFullName,
     getUserDistrict,
     getUserManufacturer,
