@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { z, type ZodObject, type ZodRawShape } from "zod";
+import type { z, ZodObject, ZodRawShape } from "zod";
 import { GenericDataTable } from './GenericDataTable';
 import { BulkEditModal, type BulkEditResult } from '../BulkEditModal';
 import { Button } from './Button';

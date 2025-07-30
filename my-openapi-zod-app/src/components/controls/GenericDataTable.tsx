@@ -4,7 +4,7 @@ import { AdvancedColumnFilter, type FilterRule } from './AdvancedColumnFilter';
 import { SidebarFilterEditor } from './SidebarFilterEditor';
 import { ExportModal } from '../ExportModal';
 import type { DataTableFilterMeta } from "primereact/datatable";
-import { z, type ZodObject, type ZodRawShape } from "zod";
+import type { z, ZodObject, ZodRawShape } from "zod";
 
 // Types for API search functionality
 interface FilterParameter {
