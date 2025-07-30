@@ -31,13 +31,13 @@ export const CategoryCombobox: React.FC<CategoryComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const categoryOptions: CategoryOption[] = response.rows
-            .filter(category => category.categoryName && category.categoryId)
-            .map(category => ({
+          const categoryOptions: CategoryOption[] = (response.rows as any[])
+            .filter((category: any) => category.categoryName && category.categoryId)
+            .map((category: any) => ({
               label: category.categoryName!,
               value: category.categoryId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: CategoryOption, b: CategoryOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             categoryOptions.unshift({ label: emptyLabel, value: 0 });

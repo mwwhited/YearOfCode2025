@@ -102,14 +102,14 @@ export const Profile: React.FC = () => {
               <>
                 <div className="mb-3">
                   <label className="block text-sm font-medium mb-1">User ID</label>
-                  <div className="text-sm text-600">{user.apiUserData.userId || 'Not available'}</div>
+                  <div className="text-sm text-600">{(user.apiUserData.userId as any) || 'Not available'}</div>
                 </div>
 
                 {user.apiUserData.createdOn && (
                   <div className="mb-3">
                     <label className="block text-sm font-medium mb-1">Account Created</label>
                     <div className="text-sm text-600">
-                      {new Date(user.apiUserData.createdOn).toLocaleDateString()}
+                      {new Date(user.apiUserData.createdOn as any).toLocaleDateString()}
                     </div>
                   </div>
                 )}
@@ -118,7 +118,7 @@ export const Profile: React.FC = () => {
                   <div className="mb-3">
                     <label className="block text-sm font-medium mb-1">Last Modified</label>
                     <div className="text-sm text-600">
-                      {new Date(user.apiUserData.updatedOn).toLocaleDateString()}
+                      {new Date(user.apiUserData.updatedOn as any).toLocaleDateString()}
                     </div>
                   </div>
                 )}

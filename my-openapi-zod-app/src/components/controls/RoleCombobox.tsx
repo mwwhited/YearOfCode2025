@@ -31,13 +31,13 @@ export const RoleCombobox: React.FC<RoleComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const roleOptions: RoleOption[] = response.rows
-            .filter(role => role.roleName && role.roleId)
-            .map(role => ({
+          const roleOptions: RoleOption[] = (response.rows as any[])
+            .filter((role: any) => role.roleName && role.roleId)
+            .map((role: any) => ({
               label: role.roleName!,
               value: role.roleId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: RoleOption, b: RoleOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             roleOptions.unshift({ label: emptyLabel, value: 0 });

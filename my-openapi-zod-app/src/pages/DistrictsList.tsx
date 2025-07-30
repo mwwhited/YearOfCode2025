@@ -27,7 +27,7 @@ export const DistrictsList: React.FC = () => {
       const response = await client.Query({});
       
       if (response && response.rows) {
-        setDistricts(response.rows || []);
+        setDistricts((response.rows as any) || []);
       } else {
         console.error('Failed to load districts');
         setDistricts([]);

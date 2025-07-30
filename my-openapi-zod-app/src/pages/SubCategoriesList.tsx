@@ -27,7 +27,7 @@ export const SubCategoriesList: React.FC = () => {
       const response = await client.Query({});
       
       if (response && response.rows) {
-        setSubCategories(response.rows || []);
+        setSubCategories((response.rows as any) || []);
       } else {
         console.error('Failed to load subcategories');
         setSubCategories([]);

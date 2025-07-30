@@ -31,19 +31,19 @@ export const EditProductDynamic: React.FC = () => {
       
       if (response) {
         const formData: Record<string, string | number | boolean | null | undefined> = {
-          productId: response.productId,
-          productName: response.name,
-          gtin: response.gtin,
-          upc: response.upc,
-          categoryId: response.categoryId,
-          subCategoryId: response.subCategoryId,
-          iocCategoryId: response.iocCategoryId,
-          ingredients: response.ingredients,
-          brandName: response.name,
-          description: response.description,
-          manufacturerId: response.manufacturerId,
-          storageTypeId: response.storageTypeId,
-          isActive: response.isActive
+          productId: response.productId as any,
+          productName: response.name as any,
+          gtin: response.gtin as any,
+          upc: response.upc as any,
+          categoryId: response.categoryId as any,
+          subCategoryId: response.subCategoryId as any,
+          iocCategoryId: response.iocCategoryId as any,
+          ingredients: response.ingredients as any,
+          brandName: response.name as any,
+          description: response.description as any,
+          manufacturerId: response.manufacturerId as any,
+          storageTypeId: response.storageTypeId as any,
+          isActive: response.isActive as any
         };
         setInitialData(formData);
       } else {

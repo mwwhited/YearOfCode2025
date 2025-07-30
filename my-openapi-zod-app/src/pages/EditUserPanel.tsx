@@ -121,17 +121,17 @@ const EditUserPanel: React.FC = () => {
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof ISaveUserModel, string>> = {};
 
-    if (!formData.firstName?.trim()) {
+    if (!(formData.firstName as any)?.trim()) {
       newErrors.firstName = 'First name is required';
     }
 
-    if (!formData.lastName?.trim()) {
+    if (!(formData.lastName as any)?.trim()) {
       newErrors.lastName = 'Last name is required';
     }
 
-    if (!formData.email?.trim()) {
+    if (!(formData.email as any)?.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((formData.email as any))) {
       newErrors.email = 'Please enter a valid email address';
     }
 
@@ -233,7 +233,7 @@ const EditUserPanel: React.FC = () => {
             Edit User - Panel Form
           </h1>
           <p className="text-600">
-            Editing: {user?.firstName} {user?.lastName} ({user?.email})
+            Editing: {(user?.firstName as any)} {(user?.lastName as any)} ({(user?.email as any)})
           </p>
         </div>
         <div className="flex gap-2">
@@ -284,7 +284,7 @@ const EditUserPanel: React.FC = () => {
                         </label>
                         <InputText
                           id="firstName"
-                          value={formData.firstName || ''}
+                          value={(formData.firstName as any) || ''}
                           onChange={(e) => handleFieldChange('firstName', e.target.value)}
                           className={errors.firstName ? 'p-invalid w-full' : 'w-full'}
                           placeholder="Enter first name"
@@ -300,7 +300,7 @@ const EditUserPanel: React.FC = () => {
                         </label>
                         <InputText
                           id="lastName"
-                          value={formData.lastName || ''}
+                          value={(formData.lastName as any) || ''}
                           onChange={(e) => handleFieldChange('lastName', e.target.value)}
                           className={errors.lastName ? 'p-invalid w-full' : 'w-full'}
                           placeholder="Enter last name"
@@ -317,7 +317,7 @@ const EditUserPanel: React.FC = () => {
                         <InputText
                           id="email"
                           type="email"
-                          value={formData.email || ''}
+                          value={(formData.email as any) || ''}
                           onChange={(e) => handleFieldChange('email', e.target.value)}
                           className={errors.email ? 'p-invalid w-full' : 'w-full'}
                           placeholder="Enter email address"
@@ -331,7 +331,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="mobile" className="font-semibold">Mobile Phone</label>
                         <InputText
                           id="mobile"
-                          value={formData.mobile || ''}
+                          value={(formData.mobile as any) || ''}
                           onChange={(e) => handleFieldChange('mobile', e.target.value)}
                           className="w-full"
                           placeholder="Enter mobile number"
@@ -366,7 +366,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="addressLine1" className="font-semibold">Address Line 1</label>
                         <InputText
                           id="addressLine1"
-                          value={formData.addressLine1 || ''}
+                          value={(formData.addressLine1 as any) || ''}
                           onChange={(e) => handleFieldChange('addressLine1', e.target.value)}
                           className="w-full"
                           placeholder="Enter street address"
@@ -379,7 +379,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="addressLine2" className="font-semibold">Address Line 2</label>
                         <InputText
                           id="addressLine2"
-                          value={formData.addressLine2 || ''}
+                          value={(formData.addressLine2 as any) || ''}
                           onChange={(e) => handleFieldChange('addressLine2', e.target.value)}
                           className="w-full"
                           placeholder="Enter apartment, suite, etc."
@@ -392,7 +392,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="city" className="font-semibold">City</label>
                         <InputText
                           id="city"
-                          value={formData.city || ''}
+                          value={(formData.city as any) || ''}
                           onChange={(e) => handleFieldChange('city', e.target.value)}
                           className="w-full"
                           placeholder="Enter city"
@@ -405,7 +405,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="zipCode" className="font-semibold">ZIP Code</label>
                         <InputText
                           id="zipCode"
-                          value={formData.zipCode || ''}
+                          value={(formData.zipCode as any) || ''}
                           onChange={(e) => handleFieldChange('zipCode', e.target.value)}
                           className="w-full"
                           placeholder="Enter ZIP code"
@@ -418,7 +418,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="country" className="font-semibold">Country</label>
                         <InputText
                           id="country"
-                          value={formData.country || ''}
+                          value={(formData.country as any) || ''}
                           onChange={(e) => handleFieldChange('country', e.target.value)}
                           className="w-full"
                           placeholder="Enter country"
@@ -438,7 +438,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="profileImage" className="font-semibold">Profile Image URL</label>
                         <InputText
                           id="profileImage"
-                          value={formData.profileImage || ''}
+                          value={(formData.profileImage as any) || ''}
                           onChange={(e) => handleFieldChange('profileImage', e.target.value)}
                           className="w-full"
                           placeholder="Enter profile image URL"
@@ -451,7 +451,7 @@ const EditUserPanel: React.FC = () => {
                         <label htmlFor="coverImage" className="font-semibold">Cover Image URL</label>
                         <InputText
                           id="coverImage"
-                          value={formData.coverImage || ''}
+                          value={(formData.coverImage as any) || ''}
                           onChange={(e) => handleFieldChange('coverImage', e.target.value)}
                           className="w-full"
                           placeholder="Enter cover image URL"
@@ -484,56 +484,56 @@ const EditUserPanel: React.FC = () => {
             <div className="field-group">
               <div className="field">
                 <label className="font-semibold">User ID:</label>
-                <p className="text-600 mt-1">{user?.userId || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.userId as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Object ID:</label>
-                <p className="text-600 mt-1">{user?.objectId || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.objectId as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Role:</label>
-                <p className="text-600 mt-1">{user?.roleName || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.roleName as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">School District:</label>
-                <p className="text-600 mt-1">{user?.schoolDistrictName || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.schoolDistrictName as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Manufacturer:</label>
-                <p className="text-600 mt-1">{user?.manufacturerName || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.manufacturerName as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">State:</label>
-                <p className="text-600 mt-1">{user?.state || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.state as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Created On:</label>
                 <p className="text-600 mt-1">
-                  {user?.createdOn ? new Date(user.createdOn).toLocaleDateString() : 'N/A'}
+                  {(user?.createdOn as any) ? new Date((user!.createdOn as any)).toLocaleDateString() : 'N/A'}
                 </p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Created By:</label>
-                <p className="text-600 mt-1">{user?.createdBy || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.createdBy as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Last Updated:</label>
                 <p className="text-600 mt-1">
-                  {user?.updatedOn ? new Date(user.updatedOn).toLocaleDateString() : 'N/A'}
+                  {(user?.updatedOn as any) ? new Date((user!.updatedOn as any)).toLocaleDateString() : 'N/A'}
                 </p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Updated By:</label>
-                <p className="text-600 mt-1">{user?.updatedBy || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.updatedBy as any) || 'N/A'}</p>
               </div>
             </div>
           </Panel>

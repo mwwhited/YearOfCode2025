@@ -27,7 +27,7 @@ export const CategoriesList: React.FC = () => {
       const response = await client.Query({});
       
       if (response && response.rows) {
-        setCategories(response.rows || []);
+        setCategories((response.rows as any) || []);
       } else {
         setCategories([]);
       }

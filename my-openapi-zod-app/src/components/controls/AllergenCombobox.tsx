@@ -31,13 +31,13 @@ export const AllergenCombobox: React.FC<AllergenComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const allergenOptions: AllergenOption[] = response.rows
-            .filter(allergen => allergen.allergenName && allergen.allergenId)
-            .map(allergen => ({
+          const allergenOptions: AllergenOption[] = (response.rows as any[])
+            .filter((allergen: any) => allergen.allergenName && allergen.allergenId)
+            .map((allergen: any) => ({
               label: allergen.allergenName!,
               value: allergen.allergenId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: AllergenOption, b: AllergenOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             allergenOptions.unshift({ label: emptyLabel, value: 0 });

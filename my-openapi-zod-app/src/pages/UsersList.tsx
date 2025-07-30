@@ -16,11 +16,11 @@ const userClientAdapter = {
     
     // Convert null values to undefined for compatibility
     return {
-      rows: response.rows || undefined,
-      currentPage: response.currentPage ?? undefined,
-      totalPageCount: response.totalPageCount ?? undefined,
-      totalRowCount: response.totalRowCount ?? undefined,
-      messages: response.messages || undefined
+      rows: (response.rows as any) || undefined,
+      currentPage: (response.currentPage as any) ?? undefined,
+      totalPageCount: (response.totalPageCount as any) ?? undefined,
+      totalRowCount: (response.totalRowCount as any) ?? undefined,
+      messages: (response.messages as any) || undefined
     };
   }
 };

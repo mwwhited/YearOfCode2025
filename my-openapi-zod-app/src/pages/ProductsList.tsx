@@ -20,11 +20,11 @@ const productClientAdapter = {
     
     // Convert null values to undefined for compatibility
     return {
-      rows: response.rows || undefined,
-      currentPage: response.currentPage ?? undefined,
-      totalPageCount: response.totalPageCount ?? undefined,
-      totalRowCount: response.totalRowCount ?? undefined,
-      messages: response.messages || undefined
+      rows: (response.rows as any) || undefined,
+      currentPage: (response.currentPage as any) ?? undefined,
+      totalPageCount: (response.totalPageCount as any) ?? undefined,
+      totalRowCount: (response.totalRowCount as any) ?? undefined,
+      messages: (response.messages as any) || undefined
     };
   }
 };
@@ -36,11 +36,11 @@ export const ProductsList: React.FC = () => {
   const canEdit = hasAnyRole(ROLE_GROUPS.ADMIN_ROLES);
 
   const handleEditDynamic = (product: Product) => {
-    navigate(`/products/edit-dynamic/${product.productId}`);
+    navigate(`/products/edit-dynamic/${product.productId as any}`);
   };
 
   const handleEditPanel = (product: Product) => {
-    navigate(`/products/edit-panel/${product.productId}`);
+    navigate(`/products/edit-panel/${product.productId as any}`);
   };
 
   const handleViewCard = () => {

@@ -27,7 +27,7 @@ export const AllergensList: React.FC = () => {
       const response = await client.Query({});
       
       if (response && response.rows) {
-        setAllergens(response.rows || []);
+        setAllergens((response.rows as any) || []);
       } else {
         setAllergens([]);
       }

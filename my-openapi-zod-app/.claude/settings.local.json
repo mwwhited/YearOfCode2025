@@ -24,7 +24,8 @@
       "Bash(npm run lint)",
       "Bash(curl:*)",
       "Bash(mv:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": []
   }

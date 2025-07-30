@@ -31,13 +31,13 @@ export const StateCombobox: React.FC<StateComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const stateOptions: StateOption[] = response.rows
-            .filter(state => state.stateName && state.stateId)
-            .map(state => ({
+          const stateOptions: StateOption[] = (response.rows as any[])
+            .filter((state: any) => state.stateName && state.stateId)
+            .map((state: any) => ({
               label: state.stateName!,
               value: state.stateId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: StateOption, b: StateOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             stateOptions.unshift({ label: emptyLabel, value: 0 });

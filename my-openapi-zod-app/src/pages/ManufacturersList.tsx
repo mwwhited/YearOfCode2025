@@ -27,7 +27,7 @@ export const ManufacturersList: React.FC = () => {
       const response = await client.Query({});
       
       if (response && response.rows) {
-        setManufacturers(response.rows || []);
+        setManufacturers((response.rows as any) || []);
       } else {
         console.error('Failed to load manufacturers');
         setManufacturers([]);

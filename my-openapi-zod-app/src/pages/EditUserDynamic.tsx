@@ -230,7 +230,7 @@ const EditUserDynamic: React.FC = () => {
             Edit User - Dynamic Form
           </h1>
           <p className="text-600">
-            Editing: {user?.firstName} {user?.lastName} ({user?.email})
+            Editing: {(user?.firstName as any)} {(user?.lastName as any)} ({(user?.email as any)})
           </p>
         </div>
         <div className="flex gap-2">
@@ -286,56 +286,56 @@ const EditUserDynamic: React.FC = () => {
             <div className="field-group">
               <div className="field">
                 <label className="font-semibold">User ID:</label>
-                <p className="text-600 mt-1">{user?.userId || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.userId as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Object ID:</label>
-                <p className="text-600 mt-1">{user?.objectId || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.objectId as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Role:</label>
-                <p className="text-600 mt-1">{user?.roleName || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.roleName as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">School District:</label>
-                <p className="text-600 mt-1">{user?.schoolDistrictName || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.schoolDistrictName as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Manufacturer:</label>
-                <p className="text-600 mt-1">{user?.manufacturerName || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.manufacturerName as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">State:</label>
-                <p className="text-600 mt-1">{user?.state || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.state as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Created On:</label>
                 <p className="text-600 mt-1">
-                  {user?.createdOn ? new Date(user.createdOn).toLocaleDateString() : 'N/A'}
+                  {(user?.createdOn as any) ? new Date((user!.createdOn as any)).toLocaleDateString() : 'N/A'}
                 </p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Created By:</label>
-                <p className="text-600 mt-1">{user?.createdBy || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.createdBy as any) || 'N/A'}</p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Last Updated:</label>
                 <p className="text-600 mt-1">
-                  {user?.updatedOn ? new Date(user.updatedOn).toLocaleDateString() : 'N/A'}
+                  {(user?.updatedOn as any) ? new Date((user!.updatedOn as any)).toLocaleDateString() : 'N/A'}
                 </p>
               </div>
               
               <div className="field">
                 <label className="font-semibold">Updated By:</label>
-                <p className="text-600 mt-1">{user?.updatedBy || 'N/A'}</p>
+                <p className="text-600 mt-1">{(user?.updatedBy as any) || 'N/A'}</p>
               </div>
             </div>
           </Panel>

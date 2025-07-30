@@ -61,17 +61,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const user: User | null = activeAccount && profile ? {
     // Use API user data as primary source
-    id: profile.userId?.toString() || activeAccount.homeAccountId,
-    username: profile.email || activeAccount.username,
-    email: profile.email || activeAccount.username,
-    name: `${profile.firstName || ''} ${profile.lastName || ''}`.trim() || profile.email || activeAccount.name || 'Unknown User',
+    id: (profile.userId as any)?.toString() || activeAccount.homeAccountId,
+    username: (profile.email as any) || activeAccount.username,
+    email: (profile.email as any) || activeAccount.username,
+    name: `${(profile.firstName as any) || ''} ${(profile.lastName as any) || ''}`.trim() || (profile.email as any) || activeAccount.name || 'Unknown User',
     accountInfo: activeAccount,
     
     // API User Data from useProfile
     apiUserData: profile,
     
     // Derived convenience properties
-    roles: profile.roleName ? [profile.roleName] : [],
+    roles: (profile.roleName as any) ? [(profile.roleName as any)] : [],
   } : null;
 
   // Debug logging
@@ -249,32 +249,32 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // Convenience methods for accessing user data
   const getUserFullName = (): string | null => {
     if (!profile) return null;
-    const firstName = profile.firstName?.trim();
-    const lastName = profile.lastName?.trim();
+    const firstName = (profile.firstName as any)?.trim();
+    const lastName = (profile.lastName as any)?.trim();
     if (firstName && lastName) {
       return `${firstName} ${lastName}`;
     }
-    return firstName || lastName || profile.email || 'Unknown User';
+    return firstName || lastName || (profile.email as any) || 'Unknown User';
   };
 
   const getUserDistrict = () => {
     if (!profile) return null;
     return {
-      id: profile.schoolDistrictId || undefined,
-      name: profile.schoolDistrictName || undefined
+      id: (profile.schoolDistrictId as any) || undefined,
+      name: (profile.schoolDistrictName as any) || undefined
     };
   };
 
   const getUserManufacturer = () => {
     if (!profile) return null;
     return {
-      id: profile.manufacturerId || undefined,
-      name: profile.manufacturerName || undefined
+      id: (profile.manufacturerId as any) || undefined,
+      name: (profile.manufacturerName as any) || undefined
     };
   };
 
   const getUserRole = (): string | null => {
-    return profile?.roleName || null;
+    return (profile?.roleName as any) || null;
   };
 
   // Show maintenance message if system is under maintenance

@@ -45,15 +45,15 @@ export const EditProductPanel: React.FC = () => {
       ]);
 
       setOptions({
-        categories: categoriesResp?.rows?.map((cat: any) => ({ 
+        categories: (categoriesResp?.rows as any)?.map((cat: any) => ({ 
           label: cat.categoryName || '', 
           value: cat.categoryId || 0 
         })) || [],
-        subCategories: subCategoriesResp?.rows?.map((sub: any) => ({ 
+        subCategories: (subCategoriesResp?.rows as any)?.map((sub: any) => ({ 
           label: sub.subCategoryName || '', 
           value: sub.subCategoryId || 0 
         })) || [],
-        manufacturers: manufacturersResp?.rows?.map((mfr: any) => ({ 
+        manufacturers: (manufacturersResp?.rows as any)?.map((mfr: any) => ({ 
           label: mfr.manufacturerName || '', 
           value: mfr.manufacturerId || 0 
         })) || []
@@ -109,7 +109,7 @@ export const EditProductPanel: React.FC = () => {
   const validateForm = (): boolean => {
     const newErrors: ValidationErrors = {};
 
-    if (!formData.productName?.trim()) {
+    if (!(formData.productName as any)?.trim()) {
       newErrors.productName = 'Product name is required';
     }
 
@@ -180,7 +180,7 @@ export const EditProductPanel: React.FC = () => {
                 </label>
                 <InputText
                   id="productName"
-                  value={formData.productName || ''}
+                  value={(formData.productName as any) || ''}
                   onChange={(e) => handleFieldChange('productName', e.target.value)}
                   className={errors.productName ? 'p-invalid w-full' : 'w-full'}
                   placeholder="Enter product name"
@@ -195,7 +195,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="brandName" className="font-semibold">Brand Name</label>
                 <InputText
                   id="brandName"
-                  value={formData.brandName || ''}
+                  value={(formData.brandName as any) || ''}
                   onChange={(e) => handleFieldChange('brandName', e.target.value)}
                   className="w-full"
                   placeholder="Enter brand name"
@@ -207,7 +207,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="description" className="font-semibold">Description</label>
                 <InputTextarea
                   id="description"
-                  value={formData.description || ''}
+                  value={(formData.description as any) || ''}
                   onChange={(e) => handleFieldChange('description', e.target.value)}
                   className="w-full"
                   placeholder="Enter product description"
@@ -225,7 +225,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="gtin" className="font-semibold">GTIN</label>
                 <InputText
                   id="gtin"
-                  value={formData.gtin || ''}
+                  value={(formData.gtin as any) || ''}
                   onChange={(e) => handleFieldChange('gtin', e.target.value)}
                   className="w-full"
                   placeholder="Enter GTIN"
@@ -237,7 +237,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="upc" className="font-semibold">UPC</label>
                 <InputText
                   id="upc"
-                  value={formData.upc || ''}
+                  value={(formData.upc as any) || ''}
                   onChange={(e) => handleFieldChange('upc', e.target.value)}
                   className="w-full"
                   placeholder="Enter UPC"
@@ -249,7 +249,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="manufacturerProductCode" className="font-semibold">Manufacturer Product Code</label>
                 <InputText
                   id="manufacturerProductCode"
-                  value={formData.manufacturerProductCode || ''}
+                  value={(formData.manufacturerProductCode as any) || ''}
                   onChange={(e) => handleFieldChange('manufacturerProductCode', e.target.value)}
                   className="w-full"
                   placeholder="Enter manufacturer product code"
@@ -310,7 +310,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="ingredients" className="font-semibold">Ingredients</label>
                 <InputTextarea
                   id="ingredients"
-                  value={formData.ingredients || ''}
+                  value={(formData.ingredients as any) || ''}
                   onChange={(e) => handleFieldChange('ingredients', e.target.value)}
                   className="w-full"
                   placeholder="Enter ingredients list"
@@ -323,7 +323,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="allergenKeywords" className="font-semibold">Allergen Keywords</label>
                 <InputText
                   id="allergenKeywords"
-                  value={formData.allergenKeywords || ''}
+                  value={(formData.allergenKeywords as any) || ''}
                   onChange={(e) => handleFieldChange('allergenKeywords', e.target.value)}
                   className="w-full"
                   placeholder="Enter allergen keywords"
@@ -335,7 +335,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="vendor" className="font-semibold">Vendor</label>
                 <InputText
                   id="vendor"
-                  value={formData.vendor || ''}
+                  value={(formData.vendor as any) || ''}
                   onChange={(e) => handleFieldChange('vendor', e.target.value)}
                   className="w-full"
                   placeholder="Enter vendor"
@@ -347,7 +347,7 @@ export const EditProductPanel: React.FC = () => {
                 <label htmlFor="productLabelPdfUrl" className="font-semibold">Product Label PDF URL</label>
                 <InputText
                   id="productLabelPdfUrl"
-                  value={formData.productLabelPdfUrl || ''}
+                  value={(formData.productLabelPdfUrl as any) || ''}
                   onChange={(e) => handleFieldChange('productLabelPdfUrl', e.target.value)}
                   className="w-full"
                   placeholder="Enter PDF URL"
@@ -361,7 +361,7 @@ export const EditProductPanel: React.FC = () => {
           <div className="field-checkbox">
             <Checkbox
               id="isActive"
-              checked={formData.isActive || false}
+              checked={(formData.isActive as any) || false}
               onChange={(e) => handleFieldChange('isActive', e.checked)}
             />
             <label htmlFor="isActive" className="font-semibold ml-2">Active</label>

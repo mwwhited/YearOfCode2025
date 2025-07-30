@@ -31,10 +31,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) =
         {/* Product Image Placeholder */}
         <div className="product-image-container mb-3 flex align-items-center justify-content-center border-1 border-dashed surface-border border-round"
              style={{ height: '200px', backgroundColor: '#f8f9fa' }}>
-          {product.images && product.images.length > 0 ? (
+          {product.images && (product.images as any).length > 0 ? (
             <img 
-              src={product.images[0]} 
-              alt={product.name || ''} 
+              src={(product.images as any)[0]} 
+              alt={(product.name as any) || ''} 
               className="w-full h-full border-round"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) =
               }}
             />
           ) : null}
-          <div className="flex align-items-center justify-content-center text-500" style={{ display: product.images?.length ? 'none' : 'flex' }}>
+          <div className="flex align-items-center justify-content-center text-500" style={{ display: (product.images as any)?.length ? 'none' : 'flex' }}>
             <i className="pi pi-image text-4xl"></i>
           </div>
         </div>
@@ -53,54 +53,54 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) =
         <div className="flex-1 flex flex-column">
           <div className="flex justify-content-between align-items-start mb-2">
             <h3 className="text-lg font-semibold text-900 m-0 line-height-3" style={{ wordBreak: 'break-word' }}>
-              {product.name || 'Unnamed Product'}
+              {(product.name as any) || 'Unnamed Product'}
             </h3>
-            <span className={`p-badge p-badge-sm ${product.isActive ? 'badge-active' : 'badge-inactive'}`}>
-              {product.isActive ? 'Active' : 'Inactive'}
+            <span className={`p-badge p-badge-sm ${(product.isActive as any) ? 'badge-active' : 'badge-inactive'}`}>
+              {(product.isActive as any) ? 'Active' : 'Inactive'}
             </span>
           </div>
 
-          {product.description && (
+          {(product.description as any) && (
             <p className="text-sm text-600 mb-3 line-height-3" style={{ 
               display: '-webkit-box',
               WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden'
             }}>
-              {product.description}
+              {product.description as any}
             </p>
           )}
 
           <div className="flex-1">
             <div className="grid text-sm">
-              {product.manufacturerName && (
+              {(product.manufacturerName as any) && (
                 <div className="col-12 mb-2">
                   <span className="font-semibold text-700">Manufacturer:</span>
-                  <span className="ml-2 text-600">{product.manufacturerName}</span>
+                  <span className="ml-2 text-600">{product.manufacturerName as any}</span>
                 </div>
               )}
-              {product.category && (
+              {(product.category as any) && (
                 <div className="col-6 mb-2">
                   <span className="font-semibold text-700">Category:</span>
-                  <div className="text-600">{product.category}</div>
+                  <div className="text-600">{product.category as any}</div>
                 </div>
               )}
-              {product.subCategory && (
+              {(product.subCategory as any) && (
                 <div className="col-6 mb-2">
                   <span className="font-semibold text-700">Sub Category:</span>
-                  <div className="text-600">{product.subCategory}</div>
+                  <div className="text-600">{product.subCategory as any}</div>
                 </div>
               )}
-              {product.gtin && (
+              {(product.gtin as any) && (
                 <div className="col-6 mb-2">
                   <span className="font-semibold text-700">GTIN:</span>
-                  <div className="text-600 font-mono">{product.gtin}</div>
+                  <div className="text-600 font-mono">{product.gtin as any}</div>
                 </div>
               )}
-              {product.upc && (
+              {(product.upc as any) && (
                 <div className="col-6 mb-2">
                   <span className="font-semibold text-700">UPC:</span>
-                  <div className="text-600 font-mono">{product.upc}</div>
+                  <div className="text-600 font-mono">{product.upc as any}</div>
                 </div>
               )}
             </div>
@@ -121,7 +121,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) =
                 className="p-button-sm p-button-info flex-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/products/edit-panel/${product.productId}`);
+                  navigate(`/products/edit-panel/${product.productId as any}`);
                 }}
               />
             </div>
@@ -197,7 +197,7 @@ export const ProductsCardView: React.FC = () => {
       const response = await client.Query({});
       
       if (response && response.rows) {
-        const allProducts = response.rows || [];
+        const allProducts = (response.rows as any) || [];
         setProducts(allProducts);
         setPage(1);
         setHasMore(allProducts.length > ITEMS_PER_PAGE);
@@ -218,13 +218,13 @@ export const ProductsCardView: React.FC = () => {
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = filtered.filter(product =>
-        product.name?.toLowerCase().includes(term) ||
-        product.description?.toLowerCase().includes(term) ||
-        product.manufacturerName?.toLowerCase().includes(term) ||
-        product.category?.toLowerCase().includes(term) ||
-        product.subCategory?.toLowerCase().includes(term) ||
-        product.gtin?.toLowerCase().includes(term) ||
-        product.upc?.toLowerCase().includes(term)
+        (product.name as any)?.toLowerCase().includes(term) ||
+        (product.description as any)?.toLowerCase().includes(term) ||
+        (product.manufacturerName as any)?.toLowerCase().includes(term) ||
+        (product.category as any)?.toLowerCase().includes(term) ||
+        (product.subCategory as any)?.toLowerCase().includes(term) ||
+        (product.gtin as any)?.toLowerCase().includes(term) ||
+        (product.upc as any)?.toLowerCase().includes(term)
       );
     }
     
@@ -265,7 +265,7 @@ export const ProductsCardView: React.FC = () => {
   };
 
   const handleEdit = (product: Product) => {
-    navigate(`/products/edit-dynamic/${product.productId}`);
+    navigate(`/products/edit-dynamic/${product.productId as any}`);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -410,7 +410,7 @@ export const ProductsCardView: React.FC = () => {
           <div className="grid">
             {filteredProducts.map((product, index) => (
               <div 
-                key={product.productId} 
+                key={product.productId as any} 
                 className="col-12 lg:col-4 xl:col-3 mb-4"
                 ref={index === filteredProducts.length - 1 ? lastProductElementRef : null}
               >

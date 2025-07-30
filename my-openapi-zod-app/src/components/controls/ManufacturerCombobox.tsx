@@ -31,13 +31,13 @@ export const ManufacturerCombobox: React.FC<ManufacturerComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const manufacturerOptions: ManufacturerOption[] = response.rows
-            .filter(manufacturer => manufacturer.manufacturerName && manufacturer.manufacturerId)
-            .map(manufacturer => ({
+          const manufacturerOptions: ManufacturerOption[] = (response.rows as any[])
+            .filter((manufacturer: any) => manufacturer.manufacturerName && manufacturer.manufacturerId)
+            .map((manufacturer: any) => ({
               label: manufacturer.manufacturerName!,
               value: manufacturer.manufacturerId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: ManufacturerOption, b: ManufacturerOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             manufacturerOptions.unshift({ label: emptyLabel, value: 0 });

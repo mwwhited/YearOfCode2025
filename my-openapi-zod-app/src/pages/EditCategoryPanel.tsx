@@ -60,11 +60,11 @@ export const EditCategoryPanel: React.FC = () => {
   const validateForm = (): boolean => {
     const newErrors: ValidationErrors = {};
 
-    if (!formData.categoryName?.trim()) {
+    if (!(formData.categoryName as any)?.trim()) {
       newErrors.categoryName = 'Category name is required';
     }
 
-    if (!formData.categoryCode?.trim()) {
+    if (!(formData.categoryCode as any)?.trim()) {
       newErrors.categoryCode = 'Category code is required';
     }
 
@@ -135,7 +135,7 @@ export const EditCategoryPanel: React.FC = () => {
                 </label>
                 <InputText
                   id="categoryName"
-                  value={formData.categoryName || ''}
+                  value={(formData.categoryName as any) || ''}
                   onChange={(e) => handleFieldChange('categoryName', e.target.value)}
                   className={errors.categoryName ? 'p-invalid w-full' : 'w-full'}
                   placeholder="Enter category name"
@@ -152,7 +152,7 @@ export const EditCategoryPanel: React.FC = () => {
                 </label>
                 <InputText
                   id="categoryCode"
-                  value={formData.categoryCode || ''}
+                  value={(formData.categoryCode as any) || ''}
                   onChange={(e) => handleFieldChange('categoryCode', e.target.value)}
                   className={errors.categoryCode ? 'p-invalid w-full' : 'w-full'}
                   placeholder="Enter category code"
@@ -169,7 +169,7 @@ export const EditCategoryPanel: React.FC = () => {
           <div className="field-checkbox">
             <Checkbox
               id="isActive"
-              checked={formData.isActive || false}
+              checked={(formData.isActive as any) || false}
               onChange={(e) => handleFieldChange('isActive', e.checked)}
             />
             <label htmlFor="isActive" className="font-semibold ml-2">Active</label>

@@ -31,13 +31,13 @@ export const StorageTypeCombobox: React.FC<StorageTypeComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const storageTypeOptions: StorageTypeOption[] = response.rows
-            .filter(storageType => storageType.storageTypeName && storageType.storageTypeId)
-            .map(storageType => ({
+          const storageTypeOptions: StorageTypeOption[] = (response.rows as any[])
+            .filter((storageType: any) => storageType.storageTypeName && storageType.storageTypeId)
+            .map((storageType: any) => ({
               label: storageType.storageTypeName!,
               value: storageType.storageTypeId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: StorageTypeOption, b: StorageTypeOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             storageTypeOptions.unshift({ label: emptyLabel, value: 0 });

@@ -31,13 +31,13 @@ export const SchoolDistrictCombobox: React.FC<SchoolDistrictComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          const districtOptions: SchoolDistrictOption[] = response.rows
-            .filter(district => district.districtName && district.schoolDistrictId)
-            .map(district => ({
+          const districtOptions: SchoolDistrictOption[] = (response.rows as any[])
+            .filter((district: any) => district.districtName && district.schoolDistrictId)
+            .map((district: any) => ({
               label: district.districtName!,
               value: district.schoolDistrictId!
             }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            .sort((a: SchoolDistrictOption, b: SchoolDistrictOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             districtOptions.unshift({ label: emptyLabel, value: 0 });

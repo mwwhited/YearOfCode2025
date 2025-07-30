@@ -33,22 +33,22 @@ export const SubCategoryCombobox: React.FC<SubCategoryComboboxProps> = ({
         const response = await client.Query({});
         
         if (response && response.rows) {
-          let subCategoryOptions: SubCategoryOption[] = response.rows
-            .filter(subCategory => subCategory.subCategoryName && subCategory.subCategoryId)
-            .map(subCategory => ({
+          let subCategoryOptions: SubCategoryOption[] = (response.rows as any[])
+            .filter((subCategory: any) => subCategory.subCategoryName && subCategory.subCategoryId)
+            .map((subCategory: any) => ({
               label: subCategory.subCategoryName!,
               value: subCategory.subCategoryId!
             }));
 
           // Filter by category if provided
           if (categoryId && categoryId > 0) {
-            subCategoryOptions = subCategoryOptions.filter(option => {
-              const subCategory = response.rows!.find(sc => sc.subCategoryId === option.value);
+            subCategoryOptions = subCategoryOptions.filter((option: SubCategoryOption) => {
+              const subCategory = (response.rows! as any[]).find((sc: any) => sc.subCategoryId === option.value);
               return subCategory?.categoryId === categoryId;
             });
           }
 
-          subCategoryOptions.sort((a, b) => a.label.localeCompare(b.label));
+          subCategoryOptions.sort((a: SubCategoryOption, b: SubCategoryOption) => a.label.localeCompare(b.label));
 
           if (includeEmpty) {
             subCategoryOptions.unshift({ label: emptyLabel, value: 0 });
