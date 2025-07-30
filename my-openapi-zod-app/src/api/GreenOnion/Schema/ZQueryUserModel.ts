@@ -12,8 +12,7 @@ import { z } from "zod";
 
 const ZQueryUserModel = z.object({
     userId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
-    isActive: z.boolean().meta({}).nullish(),
-    username: z.string().meta({}).nullish(),  
+    isActive: z.boolean().meta({}).nullish(),  
     firstName: z.string().meta({}).nullish(),  
     lastName: z.string().meta({}).nullish(),  
     objectId: z.string().meta({}).nullish(),  
@@ -30,8 +29,7 @@ const ZQueryUserModel = z.object({
     state: z.string().meta({}).nullish(),  
     roleId: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryRoleModel',}).nullish(),  
     roleName: z.string().meta({}).nullish(),  
-    schoolDistrictId: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QuerySchoolDistrictModel',}).nullish(),
-    districtId: z.number().int().meta({}).nullish(),  
+    schoolDistrictId: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QuerySchoolDistrictModel',}).nullish(),  
     schoolDistrictName: z.string().meta({}).nullish(),  
     manufacturerId: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryManufacturerModel',}).nullish(),  
     manufacturerName: z.string().meta({}).nullish(),  

@@ -13,9 +13,7 @@ import ZNutritionalInformationModel from "./ZNutritionalInformationModel";
 
 const ZSaveProductModel = z.object({
     productId: z.number().int().meta({}).nullish(),  
-    productName: z.string().meta({}).nullish(),
-    unitPrice: z.number().meta({}).nullish(),
-    unitsInStock: z.number().int().meta({}).nullish(),  
+    productName: z.string().meta({}).nullish(),  
     gtin: z.string().meta({}).nullish(),  
     upc: z.string().meta({}).nullish(),  
     categoryId: z.number().int().meta({}).nullish(),  

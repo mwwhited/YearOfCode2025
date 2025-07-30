@@ -13,8 +13,7 @@ import { z } from "zod";
 const ZQueryCategoryModel = z.object({
     categoryId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
     categoryName: z.string().meta({}).nullish(),  
-    categoryCode: z.string().meta({}).nullish(),
-    description: z.string().meta({}).nullish(),  
+    categoryCode: z.string().meta({}).nullish(),  
     isActive: z.boolean().meta({}).nullish(),  
     createdOn: z.string().meta({}).nullish(),  
     createdById: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}).nullish(),  

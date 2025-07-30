@@ -13,10 +13,7 @@ import ZNutritionalInformationModel from "./ZNutritionalInformationModel";
 
 const ZQueryProductModel = z.object({
     productId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
-    name: z.string().meta({}).nullish(),
-    productName: z.string().meta({}).nullish(),
-    unitPrice: z.number().meta({}).nullish(),
-    unitsInStock: z.number().int().meta({}).nullish(),  
+    name: z.string().meta({}).nullish(),  
     description: z.string().meta({}).nullish(),  
     gtin: z.string().meta({}).nullish(),  
     upc: z.string().meta({}).nullish(),  

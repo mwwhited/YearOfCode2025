@@ -13,9 +13,7 @@ import { z } from "zod";
 const ZQueryAllergenModel = z.object({
     allergenId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
     allergenName: z.string().meta({}).nullish(),  
-    allergenGroup: z.string().meta({}).nullish(),
-    description: z.string().meta({}).nullish(),
-    isActive: z.boolean().meta({}).nullish(),  
+    allergenGroup: z.string().meta({}).nullish(),  
 });
 
 export default ZQueryAllergenModel;
