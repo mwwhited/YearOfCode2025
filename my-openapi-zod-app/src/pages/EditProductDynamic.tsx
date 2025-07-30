@@ -4,6 +4,7 @@ import ProductClient from '@/api/GreenOnion/Clients/ProductClient';
 import ZSaveProductModel from '@/api/GreenOnion/Schema/ZSaveProductModel';
 import { DynamicForm } from '@/components/forms/DynamicForm';
 import { Card } from '@/components/controls';
+import { auditLogger } from '@/utils/auditLogger';
 import type { z } from 'zod';
 
 
@@ -18,10 +19,18 @@ export const EditProductDynamic: React.FC = () => {
   const isNew = id === 'new';
 
   useEffect(() => {
+    // Log page view
+    auditLogger.logSuccess({
+      action: 'VIEW',
+      entityType: 'EditProductDynamic',
+      entityId: isNew ? undefined : id,
+      details: { page: 'edit-product-dynamic', isNew }
+    });
+
     if (!isNew && id) {
       loadProduct();
     }
-  }, [id]);
+  }, [id, isNew]);
 
   const loadProduct = async () => {
     try {
@@ -30,6 +39,14 @@ export const EditProductDynamic: React.FC = () => {
       const response = await client.Get({ id: Number(id) });
       
       if (response) {
+        // Log successful data retrieval
+        await auditLogger.logSuccess({
+          action: 'READ',
+          entityType: 'Product',
+          entityId: id,
+          details: { action: 'load-for-edit' }
+        });
+
         const formData: Record<string, string | number | boolean | null | undefined> = {
           productId: response.productId as any,
           productName: response.name as any,
@@ -47,9 +64,21 @@ export const EditProductDynamic: React.FC = () => {
         };
         setInitialData(formData);
       } else {
+        await auditLogger.logError({
+          action: 'READ',
+          entityType: 'Product',
+          entityId: id,
+          details: { action: 'load-for-edit' }
+        }, 'Failed to load product - no response');
         setError('Failed to load product');
       }
     } catch (err) {
+      await auditLogger.logError({
+        action: 'READ',
+        entityType: 'Product',
+        entityId: id,
+        details: { action: 'load-for-edit' }
+      }, err as Error);
       setError(err instanceof Error ? err.message : 'Failed to load product');
     } finally {
       setLoading(false);
@@ -57,6 +86,9 @@ export const EditProductDynamic: React.FC = () => {
   };
 
   const handleSubmit = async (data: Record<string, string | number | boolean | null | undefined>) => {
+    const action = isNew ? 'CREATE' : 'UPDATE';
+    const entityId = isNew ? undefined : id;
+
     try {
       setLoading(true);
       setError(null);
@@ -86,11 +118,35 @@ export const EditProductDynamic: React.FC = () => {
       const response = await client.Save({ body: saveData });
 
       if (response) {
+        // Log successful save
+        await auditLogger.logSuccess({
+          action,
+          entityType: 'Product',
+          entityId: entityId || response.productId?.toString(),
+          details: { 
+            productName: saveData.productName,
+            formType: 'dynamic',
+            changes: Object.keys(data).filter(key => data[key] !== initialData[key])
+          }
+        });
+
         navigate('/products');
       } else {
+        await auditLogger.logError({
+          action,
+          entityType: 'Product',
+          entityId,
+          details: { productName: saveData.productName, formType: 'dynamic' }
+        }, 'Failed to save product - no response');
         setError('Failed to save product');
       }
     } catch (err) {
+      await auditLogger.logError({
+        action,
+        entityType: 'Product',
+        entityId,
+        details: { productName: data.productName as string, formType: 'dynamic' }
+      }, err as Error);
       setError(err instanceof Error ? err.message : 'Failed to save product');
     } finally {
       setLoading(false);

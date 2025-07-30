@@ -4,7 +4,9 @@ import { PrimeReactProvider } from 'primereact/api';
 import { useMsal } from '@azure/msal-react';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { CorrelationProvider } from '@/contexts/CorrelationContext';
+import { ToastProvider } from '@/contexts/ToastContext';
 import { AppRoutes } from '@/routes/AppRoutes';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 // PrimeReact styles
 import 'primereact/resources/themes/lara-light-teal/theme.css';
@@ -41,15 +43,19 @@ function App() {
   }, [instance]);
 
   return (
-    <PrimeReactProvider>
-      <BrowserRouter>
-        <CorrelationProvider>
-          <AuthProvider>
-            <AppRoutes />
-          </AuthProvider>
-        </CorrelationProvider>
-      </BrowserRouter>
-    </PrimeReactProvider>
+    <ErrorBoundary>
+      <PrimeReactProvider>
+        <BrowserRouter>
+          <ToastProvider>
+            <CorrelationProvider>
+              <AuthProvider>
+                <AppRoutes />
+              </AuthProvider>
+            </CorrelationProvider>
+          </ToastProvider>
+        </BrowserRouter>
+      </PrimeReactProvider>
+    </ErrorBoundary>
   );
 }
 

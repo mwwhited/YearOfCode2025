@@ -225,6 +225,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ collapsed }) => {
           visible: hasRole(UserRole.SUPER_ADMIN)
         },
         {
+          label: 'Audit Logs',
+          icon: 'pi pi-eye',
+          command: () => navigate('/admin/audit-logs'),
+          visible: hasRole(UserRole.SUPER_ADMIN)
+        },
+        {
           label: 'Combobox Test',
           icon: 'pi pi-code',
           command: () => navigate('/admin/combobox-test'),

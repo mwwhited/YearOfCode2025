@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { DataTable, Column, InputText, Dropdown, Button } from './';
 import { AdvancedColumnFilter, type FilterRule } from './AdvancedColumnFilter';
 import { SidebarFilterEditor } from './SidebarFilterEditor';
+import { ExportModal } from '../ExportModal';
 import type { DataTableFilterMeta } from "primereact/datatable";
 import { z, type ZodObject, type ZodRawShape } from "zod";
 
@@ -61,6 +62,7 @@ type GenericDataTableProps<T extends ZodObject<ZodRawShape>> = {
   enableColumnFilters?: boolean; // Basic input filters below column headers
   enableAdvancedFilters?: boolean; // Advanced filter buttons in column headers with flyout panels
   enableSidebarFilters?: boolean; // Sidebar filter editor panel
+  enableExport?: boolean; // Export functionality
 };
 
 export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
@@ -77,6 +79,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   enableColumnFilters = true,
   enableAdvancedFilters = false,
   enableSidebarFilters = false,
+  enableExport = false,
 }: GenericDataTableProps<T>) {
   // Client-side filtering state
   const [filters, setFilters] = useState<DataTableFilterMeta>({});
@@ -105,6 +108,9 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   
   // Sidebar filter state
   const [sidebarFilterOpen, setSidebarFilterOpen] = useState(false);
+  
+  // Export state
+  const [exportModalVisible, setExportModalVisible] = useState(false);
   
   // Debounce search term
   const searchTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
@@ -508,6 +514,16 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
                 tooltip="Toggle sidebar filter editor"
               />
             )}
+            {enableExport && (
+              <Button
+                icon="pi pi-download"
+                label="Export"
+                className="p-button-outlined p-button-sm"
+                onClick={() => setExportModalVisible(true)}
+                tooltip="Export Data"
+                disabled={data.length === 0}
+              />
+            )}
             {enableAdvancedFilters && (hasActiveAdvancedFilters || hasPendingFilterChanges) && (
               <div className="flex gap-2">
                 {hasActiveAdvancedFilters && (
@@ -670,6 +686,19 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
         </DataTable>
       </div>
       </div>
+      
+      {/* Export Modal */}
+      {enableExport && (
+        <ExportModal
+          visible={exportModalVisible}
+          onHide={() => setExportModalVisible(false)}
+          data={data}
+          availableColumns={Object.keys(schema.shape)}
+          columnOverrides={columnOverrides}
+          defaultFilename={`export_${new Date().toISOString().split('T')[0]}`}
+          title="Export Data"
+        />
+      )}
     </div>
   );
 }

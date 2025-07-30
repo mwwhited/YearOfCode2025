@@ -101,9 +101,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       // Initialize API ClientBase with MSAL instance and account
       ClientBase.initialize(instance, account);
+
+      // Set user context for audit logging
+      if (typeof window !== 'undefined') {
+        (window as any).__AUDIT_USER_CONTEXT__ = {
+          id: user.id,
+          name: user.name,
+          username: user.username || user.email,
+          roles: user.roles || []
+        };
+      }
     } else {
       // Clear API ClientBase when user is not authenticated
       ClientBase.initialize(instance, null);
+
+      // Clear audit user context
+      if (typeof window !== 'undefined') {
+        delete (window as any).__AUDIT_USER_CONTEXT__;
+      }
     }
   }, [user, instance, account]);
 

@@ -1,0 +1,24 @@
+
+export const IAllergenClient = Symbol("IAllergenClient");
+export const ICategoryClient = Symbol("ICategoryClient");
+export const IDashBoardClient = Symbol("IDashBoardClient");
+export const IDataMigrationThroughApiClient = Symbol("IDataMigrationThroughApiClient");
+export const IDefinedFilterClient = Symbol("IDefinedFilterClient");
+export const IDistributorClient = Symbol("IDistributorClient");
+export const IErrorLogClient = Symbol("IErrorLogClient");
+export const IIIocCategoryClient = Symbol("IIIocCategoryClient");
+export const IIngredientClient = Symbol("IIngredientClient");
+export const IManufacturerClient = Symbol("IManufacturerClient");
+export const IMonthlyNumberClient = Symbol("IMonthlyNumberClient");
+export const IOneWorldSyncProductClient = Symbol("IOneWorldSyncProductClient");
+export const IProductClient = Symbol("IProductClient");
+export const IReportClient = Symbol("IReportClient");
+export const IRoleClient = Symbol("IRoleClient");
+export const ISchoolDistrictClient = Symbol("ISchoolDistrictClient");
+export const IStateClient = Symbol("IStateClient");
+export const IStorageTypeClient = Symbol("IStorageTypeClient");
+export const ISubCategoryClient = Symbol("ISubCategoryClient");
+export const ISuggestedProductClient = Symbol("ISuggestedProductClient");
+export const IUserClient = Symbol("IUserClient");
+export const IUserActionLogClient = Symbol("IUserActionLogClient");
+export const IApiHealthClient = Symbol("IApiHealthClient");
