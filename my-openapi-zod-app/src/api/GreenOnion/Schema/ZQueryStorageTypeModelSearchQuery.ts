@@ -13,12 +13,12 @@ import ZQueryStorageTypeModelFilter from "./ZQueryStorageTypeModelFilter";
 import ZQueryStorageTypeModelOrderBy from "./ZQueryStorageTypeModelOrderBy";
 
 const ZQueryStorageTypeModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    excludePageCount: z.boolean().nullish(),
-    searchTerm: z.string().nullish(),
-    filter: ZQueryStorageTypeModelFilter.nullish(),
-    orderBy: ZQueryStorageTypeModelOrderBy.nullish(),
+    currentPage: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    excludePageCount: z.boolean().nullish().meta({}),  
+    searchTerm: z.string().nullish().meta({}),  
+    filter: ZQueryStorageTypeModelFilter.nullish(),  
+    orderBy: ZQueryStorageTypeModelOrderBy.nullish(),  
 });
 
 export default ZQueryStorageTypeModelSearchQuery;

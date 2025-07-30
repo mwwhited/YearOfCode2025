@@ -12,9 +12,9 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryIocCategoryModelFilter = z.object({
-    iocCategoryId: ZFilterParameter.nullish(),
-    name: ZFilterParameter.nullish(),
-    color: ZFilterParameter.nullish(),
+    iocCategoryId: ZFilterParameter.nullish(),  
+    name: ZFilterParameter.nullish(),  
+    color: ZFilterParameter.nullish(),  
 });
 
 export default ZQueryIocCategoryModelFilter;

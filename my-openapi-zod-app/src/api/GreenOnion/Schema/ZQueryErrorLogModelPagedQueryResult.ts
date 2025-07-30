@@ -13,11 +13,11 @@ import ZQueryErrorLogModel from "./ZQueryErrorLogModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryErrorLogModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryErrorLogModel).nullish(),
-    messages: z.array(ZResultMessage).nullish(),
-    currentPage: z.number().int().nullish(),
-    totalPageCount: z.number().int().nullish(),
-    totalRowCount: z.number().int().nullish(),
+    rows: z.array(ZQueryErrorLogModel).nullish().meta({}),  
+    messages: z.array(ZResultMessage).nullish().meta({}),  
+    currentPage: z.number().int().nullish().meta({}),  
+    totalPageCount: z.number().int().nullish().meta({}),  
+    totalRowCount: z.number().int().nullish().meta({}),  
 });
 
 export default ZQueryErrorLogModelPagedQueryResult;

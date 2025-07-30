@@ -17,20 +17,20 @@ import ZProductTableField from "./ZProductTableField";
 import ZFileStatus from "./ZFileStatus";
 
 const ZFileUploadResponse = z.object({
-    manufacture: z.string().nullish(),
-    distributer: z.string().nullish(),
-    districtName: z.string().nullish(),
-    mappingFieldList: z.array(ZMappingFieldData).nullish(),
-    fileHeaderList: z.array(ZFileHeader).nullish(),
-    fileDataList: z.array(ZFileHeaderData).nullish(),
-    productList: z.array(ZProductUploadModel).nullish(),
-    tableFieldList: z.array(ZProductTableField).nullish(),
-    uniqueExcelFileId: z.string().nullish(),
-    statusList: z.array(ZFileStatus).nullish(),
-    absolutePath: z.string().nullish(),
-    success: z.boolean().nullish(),
-    message: z.string().nullish(),
-    payload: z.unknown().nullish(),
+    manufacture: z.string().nullish().meta({}),  
+    distributer: z.string().nullish().meta({}),  
+    districtName: z.string().nullish().meta({}),  
+    mappingFieldList: z.array(ZMappingFieldData).nullish().meta({}),  
+    fileHeaderList: z.array(ZFileHeader).nullish().meta({}),  
+    fileDataList: z.array(ZFileHeaderData).nullish().meta({}),  
+    productList: z.array(ZProductUploadModel).nullish().meta({}),  
+    tableFieldList: z.array(ZProductTableField).nullish().meta({}),  
+    uniqueExcelFileId: z.string().nullish().meta({}),  
+    statusList: z.array(ZFileStatus).nullish().meta({}),  
+    absolutePath: z.string().nullish().meta({}),  
+    success: z.boolean().nullish().meta({}),  
+    message: z.string().nullish().meta({}),  
+    payload: z.unknown().nullish().meta({}),  
 });
 
 export default ZFileUploadResponse;

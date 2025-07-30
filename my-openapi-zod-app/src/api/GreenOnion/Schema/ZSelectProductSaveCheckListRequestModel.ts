@@ -12,10 +12,10 @@ import { z } from "zod";
 import ZProductCheck from "./ZProductCheck";
 
 const ZSelectProductSaveCheckListRequestModel = z.object({
-    uniqueExcelFileId: z.string().nullish(),
-    userOrDistrictId: z.number().int().nullish(),
-    option: z.string().nullish(),
-    productCheckList: z.array(ZProductCheck).nullish(),
+    uniqueExcelFileId: z.string().nullish().meta({}),  
+    userOrDistrictId: z.number().int().nullish().meta({}),  
+    option: z.string().nullish().meta({}),  
+    productCheckList: z.array(ZProductCheck).nullish().meta({}),  
 });
 
 export default ZSelectProductSaveCheckListRequestModel;

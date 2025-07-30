@@ -11,17 +11,17 @@
 import { z } from "zod";
 
 const ZQueryRoleModel = z.object({
-    roleId: z.number().int().nullish(),
-    roleName: z.string().nullish(),
-    isActive: z.boolean().nullish(),
-    userCount: z.number().int().nullish(),
-    activeUserCount: z.number().int().nullish(),
-    createdOn: z.string().nullish(),
-    createdById: z.number().int().nullish(),
-    createdBy: z.string().nullish(),
-    updatedOn: z.string().nullish(),
-    updatedById: z.number().int().nullish(),
-    updatedBy: z.string().nullish(),
+    roleId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
+    roleName: z.string().nullish().meta({}),  
+    isActive: z.boolean().nullish().meta({}),  
+    userCount: z.number().int().nullish().meta({}),  
+    activeUserCount: z.number().int().nullish().meta({}),  
+    createdOn: z.string().nullish().meta({}),  
+    createdById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
+    createdBy: z.string().nullish().meta({}),  
+    updatedOn: z.string().nullish().meta({}),  
+    updatedById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
+    updatedBy: z.string().nullish().meta({}),  
 });
 
 export default ZQueryRoleModel;

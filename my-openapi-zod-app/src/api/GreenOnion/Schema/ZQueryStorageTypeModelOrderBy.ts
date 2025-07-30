@@ -12,8 +12,8 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryStorageTypeModelOrderBy = z.object({
-    storageTypeId: ZOrderDirections.nullish(),
-    storageTypeName: ZOrderDirections.nullish(),
+    storageTypeId: ZOrderDirections.nullish(),  
+    storageTypeName: ZOrderDirections.nullish(),  
 });
 
 export default ZQueryStorageTypeModelOrderBy;

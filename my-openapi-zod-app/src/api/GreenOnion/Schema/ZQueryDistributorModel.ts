@@ -11,16 +11,16 @@
 import { z } from "zod";
 
 const ZQueryDistributorModel = z.object({
-    distributorId: z.number().int().nullish(),
-    distributorName: z.string().nullish(),
-    distributorCode: z.string().nullish(),
-    isActive: z.boolean().nullish(),
-    createdOn: z.string().nullish(),
-    createdById: z.number().int().nullish(),
-    createdBy: z.string().nullish(),
-    updatedOn: z.string().nullish(),
-    updatedById: z.number().int().nullish(),
-    updatedBy: z.string().nullish(),
+    distributorId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
+    distributorName: z.string().nullish().meta({}),  
+    distributorCode: z.string().nullish().meta({}),  
+    isActive: z.boolean().nullish().meta({}),  
+    createdOn: z.string().nullish().meta({}),  
+    createdById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
+    createdBy: z.string().nullish().meta({}),  
+    updatedOn: z.string().nullish().meta({}),  
+    updatedById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
+    updatedBy: z.string().nullish().meta({}),  
 });
 
 export default ZQueryDistributorModel;

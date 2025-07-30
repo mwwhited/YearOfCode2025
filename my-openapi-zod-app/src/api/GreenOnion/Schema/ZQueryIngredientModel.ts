@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZQueryIngredientModel = z.object({
-    ingredientId: z.number().int().nullish(),
-    ingredientName: z.string().nullish(),
-    group: z.string().nullish(),
-    iocGroup: z.string().nullish(),
+    ingredientId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
+    ingredientName: z.string().nullish().meta({}),  
+    group: z.string().nullish().meta({}),  
+    iocGroup: z.string().nullish().meta({}),  
 });
 
 export default ZQueryIngredientModel;

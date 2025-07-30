@@ -12,16 +12,16 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryDistributorModelOrderBy = z.object({
-    distributorId: ZOrderDirections.nullish(),
-    distributorName: ZOrderDirections.nullish(),
-    distributorCode: ZOrderDirections.nullish(),
-    isActive: ZOrderDirections.nullish(),
-    createdOn: ZOrderDirections.nullish(),
-    createdById: ZOrderDirections.nullish(),
-    createdBy: ZOrderDirections.nullish(),
-    updatedOn: ZOrderDirections.nullish(),
-    updatedById: ZOrderDirections.nullish(),
-    updatedBy: ZOrderDirections.nullish(),
+    distributorId: ZOrderDirections.nullish(),  
+    distributorName: ZOrderDirections.nullish(),  
+    distributorCode: ZOrderDirections.nullish(),  
+    isActive: ZOrderDirections.nullish(),  
+    createdOn: ZOrderDirections.nullish(),  
+    createdById: ZOrderDirections.nullish(),  
+    createdBy: ZOrderDirections.nullish(),  
+    updatedOn: ZOrderDirections.nullish(),  
+    updatedById: ZOrderDirections.nullish(),  
+    updatedBy: ZOrderDirections.nullish(),  
 });
 
 export default ZQueryDistributorModelOrderBy;

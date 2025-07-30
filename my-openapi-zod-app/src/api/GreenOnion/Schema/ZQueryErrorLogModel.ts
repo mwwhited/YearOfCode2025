@@ -11,9 +11,9 @@
 import { z } from "zod";
 
 const ZQueryErrorLogModel = z.object({
-    errorLogId: z.number().int().nullish(),
-    errorMessage: z.string().nullish(),
-    errorPath: z.string().nullish(),
+    errorLogId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
+    errorMessage: z.string().nullish().meta({}),  
+    errorPath: z.string().nullish().meta({}),  
 });
 
 export default ZQueryErrorLogModel;

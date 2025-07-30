@@ -12,17 +12,17 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryRoleModelOrderBy = z.object({
-    roleId: ZOrderDirections.nullish(),
-    roleName: ZOrderDirections.nullish(),
-    isActive: ZOrderDirections.nullish(),
-    userCount: ZOrderDirections.nullish(),
-    activeUserCount: ZOrderDirections.nullish(),
-    createdOn: ZOrderDirections.nullish(),
-    createdById: ZOrderDirections.nullish(),
-    createdBy: ZOrderDirections.nullish(),
-    updatedOn: ZOrderDirections.nullish(),
-    updatedById: ZOrderDirections.nullish(),
-    updatedBy: ZOrderDirections.nullish(),
+    roleId: ZOrderDirections.nullish(),  
+    roleName: ZOrderDirections.nullish(),  
+    isActive: ZOrderDirections.nullish(),  
+    userCount: ZOrderDirections.nullish(),  
+    activeUserCount: ZOrderDirections.nullish(),  
+    createdOn: ZOrderDirections.nullish(),  
+    createdById: ZOrderDirections.nullish(),  
+    createdBy: ZOrderDirections.nullish(),  
+    updatedOn: ZOrderDirections.nullish(),  
+    updatedById: ZOrderDirections.nullish(),  
+    updatedBy: ZOrderDirections.nullish(),  
 });
 
 export default ZQueryRoleModelOrderBy;

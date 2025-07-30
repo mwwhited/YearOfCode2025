@@ -13,12 +13,12 @@ import ZQueryIngredientModelFilter from "./ZQueryIngredientModelFilter";
 import ZQueryIngredientModelOrderBy from "./ZQueryIngredientModelOrderBy";
 
 const ZQueryIngredientModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    excludePageCount: z.boolean().nullish(),
-    searchTerm: z.string().nullish(),
-    filter: ZQueryIngredientModelFilter.nullish(),
-    orderBy: ZQueryIngredientModelOrderBy.nullish(),
+    currentPage: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    excludePageCount: z.boolean().nullish().meta({}),  
+    searchTerm: z.string().nullish().meta({}),  
+    filter: ZQueryIngredientModelFilter.nullish(),  
+    orderBy: ZQueryIngredientModelOrderBy.nullish(),  
 });
 
 export default ZQueryIngredientModelSearchQuery;

@@ -13,12 +13,12 @@ import ZQueryUserActionLogModelFilter from "./ZQueryUserActionLogModelFilter";
 import ZQueryUserActionLogModelOrderBy from "./ZQueryUserActionLogModelOrderBy";
 
 const ZQueryUserActionLogModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    excludePageCount: z.boolean().nullish(),
-    searchTerm: z.string().nullish(),
-    filter: ZQueryUserActionLogModelFilter.nullish(),
-    orderBy: ZQueryUserActionLogModelOrderBy.nullish(),
+    currentPage: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    excludePageCount: z.boolean().nullish().meta({}),  
+    searchTerm: z.string().nullish().meta({}),  
+    filter: ZQueryUserActionLogModelFilter.nullish(),  
+    orderBy: ZQueryUserActionLogModelOrderBy.nullish(),  
 });
 
 export default ZQueryUserActionLogModelSearchQuery;

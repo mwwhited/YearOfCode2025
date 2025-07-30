@@ -12,8 +12,8 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryStateModelOrderBy = z.object({
-    stateId: ZOrderDirections.nullish(),
-    stateName: ZOrderDirections.nullish(),
+    stateId: ZOrderDirections.nullish(),  
+    stateName: ZOrderDirections.nullish(),  
 });
 
 export default ZQueryStateModelOrderBy;

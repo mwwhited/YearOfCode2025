@@ -13,12 +13,12 @@ import ZQuerySchoolDistrictModelFilter from "./ZQuerySchoolDistrictModelFilter";
 import ZQuerySchoolDistrictModelOrderBy from "./ZQuerySchoolDistrictModelOrderBy";
 
 const ZQuerySchoolDistrictModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    excludePageCount: z.boolean().nullish(),
-    searchTerm: z.string().nullish(),
-    filter: ZQuerySchoolDistrictModelFilter.nullish(),
-    orderBy: ZQuerySchoolDistrictModelOrderBy.nullish(),
+    currentPage: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    excludePageCount: z.boolean().nullish().meta({}),  
+    searchTerm: z.string().nullish().meta({}),  
+    filter: ZQuerySchoolDistrictModelFilter.nullish(),  
+    orderBy: ZQuerySchoolDistrictModelOrderBy.nullish(),  
 });
 
 export default ZQuerySchoolDistrictModelSearchQuery;

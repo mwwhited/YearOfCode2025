@@ -11,17 +11,17 @@
 import { z } from "zod";
 
 const ZSaveMonthlyNumberModel = z.object({
-    id: z.number().int().nullish(),
-    schoolDistrictId: z.number().int().nullish(),
-    monthId: z.number().int().nullish(),
-    actualMonthId: z.number().int().nullish(),
-    year: z.string().nullish(),
-    enrollment: z.number().int().nullish(),
-    numberOfSites: z.number().int().nullish(),
-    numberOfDistricts: z.number().int().nullish(),
-    mealsServed: z.number().int().nullish(),
-    freeAndReducedPercent: z.number().int().nullish(),
-    isActive: z.boolean().nullish(),
+    id: z.number().int().nullish().meta({}),  
+    schoolDistrictId: z.number().int().nullish().meta({}),  
+    monthId: z.number().int().nullish().meta({}),  
+    actualMonthId: z.number().int().nullish().meta({}),  
+    year: z.string().nullish().meta({}),  
+    enrollment: z.number().int().nullish().meta({}),  
+    numberOfSites: z.number().int().nullish().meta({}),  
+    numberOfDistricts: z.number().int().nullish().meta({}),  
+    mealsServed: z.number().int().nullish().meta({}),  
+    freeAndReducedPercent: z.number().int().nullish().meta({}),  
+    isActive: z.boolean().nullish().meta({}),  
 });
 
 export default ZSaveMonthlyNumberModel;

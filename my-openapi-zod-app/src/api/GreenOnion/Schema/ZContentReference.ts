@@ -11,9 +11,9 @@
 import { z } from "zod";
 
 const ZContentReference = z.object({
-    content: z.string().nullish(),
-    contentType: z.string().nullish(),
-    fileName: z.string().nullish(),
+    content: z.string().nullish().meta({}),  
+    contentType: z.string().nullish().meta({}),  
+    fileName: z.string().nullish().meta({}),  
 });
 
 export default ZContentReference;

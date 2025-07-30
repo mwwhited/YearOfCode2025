@@ -12,9 +12,9 @@ import { z } from "zod";
 import ZOrderDirections from "./ZOrderDirections";
 
 const ZQueryErrorLogModelOrderBy = z.object({
-    errorLogId: ZOrderDirections.nullish(),
-    errorMessage: ZOrderDirections.nullish(),
-    errorPath: ZOrderDirections.nullish(),
+    errorLogId: ZOrderDirections.nullish(),  
+    errorMessage: ZOrderDirections.nullish(),  
+    errorPath: ZOrderDirections.nullish(),  
 });
 
 export default ZQueryErrorLogModelOrderBy;

@@ -11,9 +11,9 @@
 import { z } from "zod";
 
 const ZProductCheck = z.object({
-    ischeck: z.boolean().nullish(),
-    headerName: z.string().nullish(),
-    headerValue: z.string().nullish(),
+    ischeck: z.boolean().nullish().meta({}),  
+    headerName: z.string().nullish().meta({}),  
+    headerValue: z.string().nullish().meta({}),  
 });
 
 export default ZProductCheck;

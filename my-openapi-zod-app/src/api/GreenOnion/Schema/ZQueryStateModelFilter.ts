@@ -12,8 +12,8 @@ import { z } from "zod";
 import ZFilterParameter from "./ZFilterParameter";
 
 const ZQueryStateModelFilter = z.object({
-    stateId: ZFilterParameter.nullish(),
-    stateName: ZFilterParameter.nullish(),
+    stateId: ZFilterParameter.nullish(),  
+    stateName: ZFilterParameter.nullish(),  
 });
 
 export default ZQueryStateModelFilter;

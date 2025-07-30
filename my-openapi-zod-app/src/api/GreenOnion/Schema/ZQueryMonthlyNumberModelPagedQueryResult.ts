@@ -13,11 +13,11 @@ import ZQueryMonthlyNumberModel from "./ZQueryMonthlyNumberModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryMonthlyNumberModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryMonthlyNumberModel).nullish(),
-    messages: z.array(ZResultMessage).nullish(),
-    currentPage: z.number().int().nullish(),
-    totalPageCount: z.number().int().nullish(),
-    totalRowCount: z.number().int().nullish(),
+    rows: z.array(ZQueryMonthlyNumberModel).nullish().meta({}),  
+    messages: z.array(ZResultMessage).nullish().meta({}),  
+    currentPage: z.number().int().nullish().meta({}),  
+    totalPageCount: z.number().int().nullish().meta({}),  
+    totalRowCount: z.number().int().nullish().meta({}),  
 });
 
 export default ZQueryMonthlyNumberModelPagedQueryResult;

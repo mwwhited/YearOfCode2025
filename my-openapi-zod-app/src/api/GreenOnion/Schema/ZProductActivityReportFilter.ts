@@ -11,20 +11,20 @@
 import { z } from "zod";
 
 const ZProductActivityReportFilter = z.object({
-    pageNumber: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    schoolDistrictId: z.number().int().nullish(),
-    iocCategoryId: z.number().int().nullish(),
-    userId: z.number().int().nullish(),
-    productId: z.number().int().nullish(),
-    gtin: z.string().nullish(),
-    upc: z.string().nullish(),
-    startDate: z.string().nullish(),
-    endDate: z.string().nullish(),
-    productGtinId: z.number().int().nullish(),
-    productUpcId: z.number().int().nullish(),
-    cooperative: z.string().nullish(),
-    manufactureId: z.number().int().nullish(),
+    pageNumber: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    schoolDistrictId: z.number().int().nullish().meta({}),  
+    iocCategoryId: z.number().int().nullish().meta({}),  
+    userId: z.number().int().nullish().meta({}),  
+    productId: z.number().int().nullish().meta({}),  
+    gtin: z.string().nullish().meta({}),  
+    upc: z.string().nullish().meta({}),  
+    startDate: z.string().nullish().meta({}),  
+    endDate: z.string().nullish().meta({}),  
+    productGtinId: z.number().int().nullish().meta({}),  
+    productUpcId: z.number().int().nullish().meta({}),  
+    cooperative: z.string().nullish().meta({}),  
+    manufactureId: z.number().int().nullish().meta({}),  
 });
 
 export default ZProductActivityReportFilter;

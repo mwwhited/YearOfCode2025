@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZBaseResponseModel = z.object({
-    success: z.boolean().nullish(),
-    message: z.string().nullish(),
-    totalRecords: z.number().int().nullish(),
-    payload: z.unknown().nullish(),
+    success: z.boolean().nullish().meta({}),  
+    message: z.string().nullish().meta({}),  
+    totalRecords: z.number().int().nullish().meta({}),  
+    payload: z.unknown().nullish().meta({}),  
 });
 
 export default ZBaseResponseModel;

@@ -11,7 +11,7 @@
 import { z } from "zod";
 
 const ZSelectPrdFileupload = z.object({
-    importFile: z.string().nullish(),
+    importFile: z.string().nullish().meta({}),  
 });
 
 export default ZSelectPrdFileupload;

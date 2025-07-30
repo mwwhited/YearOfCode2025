@@ -13,12 +13,12 @@ import ZQueryOneWorldSyncProductModelFilter from "./ZQueryOneWorldSyncProductMod
 import ZQueryOneWorldSyncProductModelOrderBy from "./ZQueryOneWorldSyncProductModelOrderBy";
 
 const ZQueryOneWorldSyncProductModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    excludePageCount: z.boolean().nullish(),
-    searchTerm: z.string().nullish(),
-    filter: ZQueryOneWorldSyncProductModelFilter.nullish(),
-    orderBy: ZQueryOneWorldSyncProductModelOrderBy.nullish(),
+    currentPage: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    excludePageCount: z.boolean().nullish().meta({}),  
+    searchTerm: z.string().nullish().meta({}),  
+    filter: ZQueryOneWorldSyncProductModelFilter.nullish(),  
+    orderBy: ZQueryOneWorldSyncProductModelOrderBy.nullish(),  
 });
 
 export default ZQueryOneWorldSyncProductModelSearchQuery;

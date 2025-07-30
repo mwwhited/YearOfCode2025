@@ -12,11 +12,11 @@ import { z } from "zod";
 import ZMessageLevels from "./ZMessageLevels";
 
 const ZResultMessage = z.object({
-    level: ZMessageLevels.nullish(),
-    message: z.string().nullish(),
-    messageCode: z.string().nullish(),
-    context: z.string().nullish(),
-    metaData: z.unknown().nullish(),
+    level: ZMessageLevels.nullish(),  
+    message: z.string().nullish().meta({}),  
+    messageCode: z.string().nullish().meta({}),  
+    context: z.string().nullish().meta({}),  
+    metaData: z.unknown().nullish().meta({}),  
 });
 
 export default ZResultMessage;

@@ -13,12 +13,12 @@ import ZQueryDefinedFilterModelFilter from "./ZQueryDefinedFilterModelFilter";
 import ZQueryDefinedFilterModelOrderBy from "./ZQueryDefinedFilterModelOrderBy";
 
 const ZQueryDefinedFilterModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish(),
-    pageSize: z.number().int().nullish(),
-    excludePageCount: z.boolean().nullish(),
-    searchTerm: z.string().nullish(),
-    filter: ZQueryDefinedFilterModelFilter.nullish(),
-    orderBy: ZQueryDefinedFilterModelOrderBy.nullish(),
+    currentPage: z.number().int().nullish().meta({}),  
+    pageSize: z.number().int().nullish().meta({}),  
+    excludePageCount: z.boolean().nullish().meta({}),  
+    searchTerm: z.string().nullish().meta({}),  
+    filter: ZQueryDefinedFilterModelFilter.nullish(),  
+    orderBy: ZQueryDefinedFilterModelOrderBy.nullish(),  
 });
 
 export default ZQueryDefinedFilterModelSearchQuery;

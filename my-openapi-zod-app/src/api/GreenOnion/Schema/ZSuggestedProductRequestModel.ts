@@ -11,13 +11,13 @@
 import { z } from "zod";
 
 const ZSuggestedProductRequestModel = z.object({
-    suggestionId: z.number().int().nullish(),
-    productId: z.number().int().nullish(),
-    suggestedProductId: z.number().int().nullish(),
-    suggestionDate: z.string().nullish(),
-    suggestedByUserId: z.number().int().nullish(),
-    isActive: z.boolean().nullish(),
-    suggestedByDistrictId: z.number().int().nullish(),
+    suggestionId: z.number().int().nullish().meta({}),  
+    productId: z.number().int().nullish().meta({}),  
+    suggestedProductId: z.number().int().nullish().meta({}),  
+    suggestionDate: z.string().nullish().meta({}),  
+    suggestedByUserId: z.number().int().nullish().meta({}),  
+    isActive: z.boolean().nullish().meta({}),  
+    suggestedByDistrictId: z.number().int().nullish().meta({}),  
 });
 
 export default ZSuggestedProductRequestModel;
