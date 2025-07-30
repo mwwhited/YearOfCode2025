@@ -67,9 +67,7 @@ export function BulkEditDataTable<T extends ZodObject<ZodRawShape>>({
   const [selectedRows, setSelectedRows] = useState<z.infer<T>[]>([]);
   const [bulkEditVisible, setBulkEditVisible] = useState(false);
 
-  const handleSelectionChange = useCallback((selectedItems: z.infer<T>[]) => {
-    setSelectedRows(selectedItems);
-  }, []);
+  // Selection change is handled directly in checkbox onChange
 
   const handleBulkEdit = useCallback(() => {
     if (selectedRows.length > 0) {

@@ -6,12 +6,12 @@ import {
   SchoolDistrictCombobox, 
   RoleCombobox, 
   StateCombobox, 
-  StorageTypeCombobox, 
-  AllergenCombobox,
+  StorageTypeCombobox,
   Panel,
   Button,
   Message
 } from '@/components/controls';
+import { AllergenCombobox } from '@/components/controls/AllergenCombobox';
 
 export const ComboboxTest: React.FC = () => {
   const [selectedValues, setSelectedValues] = useState({

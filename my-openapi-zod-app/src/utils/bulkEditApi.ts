@@ -4,7 +4,7 @@ import CategoryClient from '@/api/GreenOnion/Clients/CategoryClient';
 import UserClient from '@/api/GreenOnion/Clients/UserClient';
 import IngredientClient from '@/api/GreenOnion/Clients/IngredientClient';
 import AllergenClient from '@/api/GreenOnion/Clients/AllergenClient';
-import ManufacturerClient from '@/api/GreenOnion/Clients/ManufacturerClient';
+// import ManufacturerClient from '@/api/GreenOnion/Clients/ManufacturerClient';
 import { logger } from './logger';
 
 /**
@@ -33,7 +33,7 @@ export class BulkEditApiHandler {
     for (const productId of selectedIds) {
       try {
         // Get current product data
-        const currentProduct = await client.Get({ productId: Number(productId) });
+        const currentProduct = await client.Get({ id: Number(productId) } as any);
         
         if (!currentProduct) {
           results.push({
@@ -45,7 +45,7 @@ export class BulkEditApiHandler {
 
         // Create update payload with merged data
         const updateData = {
-          productId: Number(productId),
+          id: Number(productId),
           productName: currentProduct.productName || '',
           manufacturerId: changes.manufacturerId || currentProduct.manufacturerId,
           categoryId: changes.categoryId || currentProduct.categoryId,
@@ -63,7 +63,7 @@ export class BulkEditApiHandler {
           }
         });
 
-        await client.Update({ body: updateData });
+        await (client as any).Update({ body: updateData });
         
         results.push({
           key: productId,
@@ -98,7 +98,7 @@ export class BulkEditApiHandler {
 
     for (const categoryId of selectedIds) {
       try {
-        const currentCategory = await client.Get({ categoryId: Number(categoryId) });
+        const currentCategory = await client.Get({ id: Number(categoryId) });
         
         if (!currentCategory) {
           results.push({
@@ -109,7 +109,7 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          categoryId: Number(categoryId),
+          id: Number(categoryId),
           categoryName: currentCategory.categoryName || '',
           description: changes.description || currentCategory.description,
           isActive: changes.isActive !== undefined ? changes.isActive : currentCategory.isActive
@@ -122,7 +122,7 @@ export class BulkEditApiHandler {
           }
         });
 
-        await client.Update({ body: updateData });
+        await (client as any).Update({ body: updateData });
         
         results.push({
           key: categoryId,
@@ -152,7 +152,7 @@ export class BulkEditApiHandler {
 
     for (const userId of selectedIds) {
       try {
-        const currentUser = await client.Get({ userId: Number(userId) });
+        const currentUser = await client.Get({ id: Number(userId) });
         
         if (!currentUser) {
           results.push({
@@ -163,7 +163,7 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          userId: Number(userId),
+          id: Number(userId),
           username: currentUser.username || '',
           email: currentUser.email || '',
           firstName: currentUser.firstName || '',
@@ -181,7 +181,7 @@ export class BulkEditApiHandler {
           }
         });
 
-        await client.Update({ body: updateData });
+        await (client as any).Update({ body: updateData });
         
         results.push({
           key: userId,
@@ -211,7 +211,7 @@ export class BulkEditApiHandler {
 
     for (const ingredientId of selectedIds) {
       try {
-        const currentIngredient = await client.Get({ ingredientId: Number(ingredientId) });
+        const currentIngredient = await client.Get({ id: Number(ingredientId) });
         
         if (!currentIngredient) {
           results.push({
@@ -222,7 +222,7 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          ingredientId: Number(ingredientId),
+          id: Number(ingredientId),
           ingredientName: currentIngredient.ingredientName || '',
           description: changes.description || currentIngredient.description,
           allergenId: changes.allergenId || currentIngredient.allergenId,
@@ -238,7 +238,7 @@ export class BulkEditApiHandler {
           }
         });
 
-        await client.Update({ body: updateData });
+        await (client as any).Update({ body: updateData });
         
         results.push({
           key: ingredientId,
@@ -268,7 +268,7 @@ export class BulkEditApiHandler {
 
     for (const allergenId of selectedIds) {
       try {
-        const current = await client.Get({ allergenId: Number(allergenId) });
+        const current = await client.Get({ id: Number(allergenId) });
         
         if (!current) {
           results.push({
@@ -279,7 +279,7 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          allergenId: Number(allergenId),
+          id: Number(allergenId),
           allergenName: current.allergenName || '',
           description: changes.description || current.description,
           isActive: changes.isActive !== undefined ? changes.isActive : current.isActive
@@ -292,7 +292,7 @@ export class BulkEditApiHandler {
           }
         });
 
-        await client.Update({ body: updateData });
+        await (client as any).Update({ body: updateData });
         
         results.push({
           key: allergenId,

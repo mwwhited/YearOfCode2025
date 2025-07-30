@@ -206,7 +206,7 @@ export function validatePartial<T>(
   partialData: Partial<T>,
   requiredFields?: (keyof T)[]
 ): ValidationResult<Partial<T>> {
-  const partialSchema = schema.partial();
+  const partialSchema = (schema as any).partial();
   
   // If there are required fields, check them
   if (requiredFields && requiredFields.length > 0) {

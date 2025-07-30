@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Dropdown } from './Dropdown';
 import IngredientClient from '@/api/GreenOnion/Clients/IngredientClient';
-import type { QueryIngredientModel } from '@/api/GreenOnion/Models';
+import type { IQueryIngredientModel } from '@/api/GreenOnion/Models';
 
 interface IngredientComboboxProps {
   value?: number | null;
@@ -28,7 +28,7 @@ export const IngredientCombobox: React.FC<IngredientComboboxProps> = ({
   emptyFilterMessage = 'No ingredients found',
   required = false
 }) => {
-  const [ingredients, setIngredients] = useState<QueryIngredientModel[]>([]);
+  const [ingredients, setIngredients] = useState<IQueryIngredientModel[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export const IngredientCombobox: React.FC<IngredientComboboxProps> = ({
         });
         
         if (response && response.rows) {
-          setIngredients(response.rows.filter(i => i.ingredientId != null) as QueryIngredientModel[]);
+          setIngredients((response.rows as IQueryIngredientModel[]).filter((i: any) => i.ingredientId != null));
         }
       } catch (error) {
         console.error('Failed to load ingredients:', error);

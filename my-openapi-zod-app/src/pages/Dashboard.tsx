@@ -45,7 +45,7 @@ export const Dashboard: React.FC = () => {
         // Fetch dashboard data from API
         const dashboardClient = new DashBoardClient();
         const dashboardResponse = await dashboardClient.GetDashBoardTotalCountList({
-          userId: user?.id
+          userId: user?.id ? Number(user.id) : undefined
         });
 
         if (dashboardResponse?.success && dashboardResponse.payload) {
@@ -109,7 +109,7 @@ export const Dashboard: React.FC = () => {
       try {
         const client = new ProductClient();
         const response = await client.Query({ body: { pageSize: 1 } });
-        return response?.totalRowCount || 0;
+        return Number(response?.totalRowCount) || 0;
       } catch {
         return 0;
       }
@@ -119,7 +119,7 @@ export const Dashboard: React.FC = () => {
       try {
         const client = new CategoryClient();
         const response = await client.Query({ body: { pageSize: 1 } });
-        return response?.totalRowCount || 0;
+        return Number(response?.totalRowCount) || 0;
       } catch {
         return 0;
       }
@@ -129,7 +129,7 @@ export const Dashboard: React.FC = () => {
       try {
         const client = new IngredientClient();
         const response = await client.Query({ body: { pageSize: 1 } });
-        return response?.totalRowCount || 0;
+        return Number(response?.totalRowCount) || 0;
       } catch {
         return 0;
       }
@@ -139,7 +139,7 @@ export const Dashboard: React.FC = () => {
       try {
         const client = new AllergenClient();
         const response = await client.Query({ body: { pageSize: 1 } });
-        return response?.totalRowCount || 0;
+        return Number(response?.totalRowCount) || 0;
       } catch {
         return 0;
       }

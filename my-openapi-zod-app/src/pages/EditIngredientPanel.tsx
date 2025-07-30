@@ -8,14 +8,15 @@ import {
   InputTextarea,
   Checkbox,
   ProgressSpinner,
-  Divider,
-  AllergenCombobox
+  // Divider,
+  // AllergenCombobox
 } from '@/components/controls';
 import type { ISaveIngredientModel } from '@/api/GreenOnion/Models';
 import IngredientClient from '@/api/GreenOnion/Clients/IngredientClient';
 import { logger } from '@/utils/logger';
 import { ingredientValidationSchema } from '@/utils/formValidation';
 import { useValidation } from '@/hooks/useValidation';
+import { AllergenCombobox } from '@/components/controls/AllergenCombobox';
 
 export const EditIngredientPanel: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -37,8 +38,8 @@ export const EditIngredientPanel: React.FC = () => {
 
   // Validation
   const {
-    errors,
-    touched,
+    // errors,
+    // touched,
     validate,
     validateField,
     setFieldTouched,
@@ -53,7 +54,7 @@ export const EditIngredientPanel: React.FC = () => {
       
       setLoading(true);
       try {
-        const response = await client.Get({ ingredientId: parseInt(id) });
+        const response = await client.Get({ id: parseInt(id) } as any);
         if (response) {
           setFormData({
             ingredientId: response.ingredientId,
@@ -93,10 +94,10 @@ export const EditIngredientPanel: React.FC = () => {
     setSaving(true);
     try {
       if (isEditMode) {
-        await client.Update({ body: { ...formData, ingredientId: parseInt(id) } });
+        await (client as any).Update({ body: { ...formData, ingredientId: parseInt(id) } });
         logger.info('Ingredient updated successfully');
       } else {
-        await client.Create({ body: formData });
+        await (client as any).Create({ body: formData });
         logger.info('Ingredient created successfully');
       }
       
@@ -135,8 +136,8 @@ export const EditIngredientPanel: React.FC = () => {
                 </label>
                 <InputText
                   id="ingredientName"
-                  value={formData.ingredientName}
-                  onChange={(e) => handleFieldChange('ingredientName', e.target.value)}
+                  value={String(formData.ingredientName || '')}
+                  onChange={(e: any) => handleFieldChange('ingredientName', e.target.value)}
                   onBlur={() => setFieldTouched('ingredientName', true)}
                   className={`w-full ${hasFieldError('ingredientName') ? 'p-invalid' : ''}`}
                   placeholder="Enter ingredient name"
@@ -166,7 +167,7 @@ export const EditIngredientPanel: React.FC = () => {
                 <label htmlFor="allergenId">Associated Allergen</label>
                 <AllergenCombobox
                   value={formData.allergenId}
-                  onChange={(value) => handleFieldChange('allergenId', value)}
+                  onChange={(e) => handleFieldChange('allergenId', e.value)}
                   placeholder="Select allergen (optional)"
                   showClear
                 />

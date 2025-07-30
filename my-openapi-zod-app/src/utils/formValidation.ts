@@ -6,8 +6,8 @@ import type {
   ISaveAllergenModel,
   ISaveIngredientModel,
   ISaveManufacturerModel,
-  ISaveDistributorModel,
-  ISaveSchoolDistrictModel
+  // ISaveDistributorModel,
+  // ISaveSchoolDistrictModel
 } from '@/api/GreenOnion/Models';
 
 /**

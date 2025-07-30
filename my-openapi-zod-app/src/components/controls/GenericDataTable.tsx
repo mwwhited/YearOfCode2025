@@ -4,7 +4,8 @@ import { AdvancedColumnFilter, type FilterRule } from './AdvancedColumnFilter';
 import { SidebarFilterEditor } from './SidebarFilterEditor';
 import { ExportModal } from '../ExportModal';
 import type { DataTableFilterMeta } from "primereact/datatable";
-import type { z, ZodObject, ZodRawShape } from "zod";
+import { z } from "zod";
+import type { ZodObject, ZodRawShape } from "zod";
 
 // Types for API search functionality
 interface FilterParameter {
@@ -693,8 +694,8 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
           visible={exportModalVisible}
           onHide={() => setExportModalVisible(false)}
           data={data}
-          availableColumns={Object.keys(schema.shape)}
-          columnOverrides={columnOverrides}
+          availableColumns={Object.keys((schema as any).shape || {})}
+          columnOverrides={columnOverrides as Record<string, { header?: string; hidden?: boolean }>}
           defaultFilename={`export_${new Date().toISOString().split('T')[0]}`}
           title="Export Data"
         />

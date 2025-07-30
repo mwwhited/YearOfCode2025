@@ -4,7 +4,9 @@ import {
   validateData, 
   validateForm, 
   validatePartial,
-  createErrorFormatter,
+  createErrorFormatter
+} from '@/utils/validation';
+import type {
   ValidationResult,
   ValidationError
 } from '@/utils/validation';
@@ -61,7 +63,7 @@ export function useValidation<T>(
   ): string | null => {
     try {
       // Try to get the field schema
-      const fieldSchema = schema.shape?.[fieldName as string];
+      const fieldSchema = (schema as any).shape?.[fieldName as string];
       
       if (fieldSchema) {
         fieldSchema.parse(value);
@@ -101,8 +103,8 @@ export function useValidation<T>(
   
   // Set all fields as touched
   const setAllTouched = useCallback(() => {
-    if (schema.shape) {
-      const allTouched = Object.keys(schema.shape).reduce(
+    if ((schema as any).shape) {
+      const allTouched = Object.keys((schema as any).shape).reduce(
         (acc, key) => ({ ...acc, [key]: true }),
         {}
       );
