@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductClient from '@/api/GreenOnion/Clients/ProductClient';
 import ZQueryProductModel from '@/api/GreenOnion/Schema/ZQueryProductModel';
-import { GenericDataTable, SidebarFilterEditor } from '@/components/controls';
+import { GenericDataTable } from '@/components/controls';
 import { Button } from '@/components/controls';
 import { useAuth } from '@/hooks/useAuth';
 import { ROLE_GROUPS } from '@/types/roles';
@@ -10,12 +10,30 @@ import type { z } from 'zod';
 
 type Product = z.infer<typeof ZQueryProductModel>;
 
+// Type adapter to convert API response to GenericDataTable expected format
+const productClientAdapter = {
+  Query: async (params: { body?: unknown }) => {
+    const client = new ProductClient();
+    const response = await client.Query(params as any);
+    
+    if (!response) return undefined;
+    
+    // Convert null values to undefined for compatibility
+    return {
+      rows: response.rows || undefined,
+      currentPage: response.currentPage ?? undefined,
+      totalPageCount: response.totalPageCount ?? undefined,
+      totalRowCount: response.totalRowCount ?? undefined,
+      messages: response.messages || undefined
+    };
+  }
+};
+
 export const ProductsList: React.FC = () => {
   const navigate = useNavigate();
   const { hasAnyRole } = useAuth();
 
   const canEdit = hasAnyRole(ROLE_GROUPS.ADMIN_ROLES);
-  const productClient = new ProductClient();
 
   const handleEditDynamic = (product: Product) => {
     navigate(`/products/edit-dynamic/${product.productId}`);
@@ -52,7 +70,7 @@ export const ProductsList: React.FC = () => {
 
       <GenericDataTable
         schema={ZQueryProductModel}
-        client={productClient}
+        client={productClientAdapter}
         enableServerSide={true}
         enableColumnFilters={true}
         enableAdvancedFilters={true}
@@ -64,16 +82,16 @@ export const ProductsList: React.FC = () => {
           productId: { header: 'ID', filterType: 'number' },
           name: { header: 'Product Name', filterType: 'text' },
           manufacturerName: { header: 'Manufacturer', filterType: 'text' },
-          categoryName: { header: 'Category', filterType: 'text' },
+          category: { header: 'Category', filterType: 'text' },
           isActive: { 
             header: 'Status', 
             filterType: 'boolean'
           },
           createdOn: { header: 'Created', filterType: 'date' },
           // Hide complex object fields that aren't suitable for table display
-          nutritionFacts: { hidden: true },
+          nutritionalInformation: { hidden: true },
           ingredients: { hidden: true },
-          allergens: { hidden: true }
+          hasAllergens: { hidden: true }
         }}
         actionColumn={canEdit ? {
           header: 'Actions',

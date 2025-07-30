@@ -337,12 +337,12 @@ export const ProductsCardView: React.FC = () => {
                 productId: { header: 'Product ID', filterType: 'number' },
                 name: { header: 'Product Name', filterType: 'text' },
                 manufacturerName: { header: 'Manufacturer', filterType: 'text' },
-                categoryName: { header: 'Category', filterType: 'text' },
+                category: { header: 'Category', filterType: 'text' },
                 isActive: { header: 'Status', filterType: 'boolean' },
                 createdOn: { header: 'Created Date', filterType: 'date' },
-                nutritionFacts: { hidden: true },
+                nutritionalInformation: { hidden: true },
                 ingredients: { hidden: true },
-                allergens: { hidden: true }
+                hasAllergens: { hidden: true }
               }}
               isOpen={sidebarFilterOpen}
               onToggle={() => setSidebarFilterOpen(!sidebarFilterOpen)}

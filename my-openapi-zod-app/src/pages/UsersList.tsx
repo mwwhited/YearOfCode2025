@@ -4,14 +4,29 @@ import { GenericDataTable } from '@/components/controls/GenericDataTable';
 import { Button } from '@/components/controls';
 import ZQueryUserModel from '@/api/GreenOnion/Schema/ZQueryUserModel';
 import UserClient from '@/api/GreenOnion/Clients/UserClient';
-import type IUserClient from '@/api/GreenOnion/IUserClient';
 import type { IQueryUserModel } from '@/api/GreenOnion';
+
+// Type adapter to convert API response to GenericDataTable expected format
+const userClientAdapter = {
+  Query: async (params: { body?: unknown }) => {
+    const client = new UserClient();
+    const response = await client.Query(params as any);
+    
+    if (!response) return undefined;
+    
+    // Convert null values to undefined for compatibility
+    return {
+      rows: response.rows || undefined,
+      currentPage: response.currentPage ?? undefined,
+      totalPageCount: response.totalPageCount ?? undefined,
+      totalRowCount: response.totalRowCount ?? undefined,
+      messages: response.messages || undefined
+    };
+  }
+};
 
 const UsersList: React.FC = () => {
   const navigate = useNavigate();
-  
-  // Create an instance of UserClient
-  const userClient: IUserClient = new UserClient();
 
   // Custom column headers for better user experience
   const columnOverrides = {
@@ -60,7 +75,7 @@ const UsersList: React.FC = () => {
         <GenericDataTable
           schema={ZQueryUserModel}
           columnOverrides={columnOverrides}
-          client={userClient}
+          client={userClientAdapter}
           actionColumn={{
             header: 'Actions',
             body: actionTemplate,

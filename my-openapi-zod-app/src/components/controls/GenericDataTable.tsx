@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { DataTable, Column, InputText, Dropdown, ProgressSpinner, Button } from './';
+import { DataTable, Column, InputText, Dropdown, Button } from './';
 import { AdvancedColumnFilter, type FilterRule } from './AdvancedColumnFilter';
 import { SidebarFilterEditor } from './SidebarFilterEditor';
-import type { DataTableFilterMeta, DataTableSortMeta } from "primereact/datatable";
-import { z, ZodObject, type ZodRawShape } from "zod";
+import type { DataTableFilterMeta } from "primereact/datatable";
+import { z, type ZodObject, type ZodRawShape } from "zod";
 
 // Types for API search functionality
 interface FilterParameter {
@@ -107,7 +107,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   const [sidebarFilterOpen, setSidebarFilterOpen] = useState(false);
   
   // Debounce search term
-  const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  const searchTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   // Load data function
   const loadData = useCallback(async (searchQuery?: Partial<SearchQuery>) => {
@@ -200,7 +200,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
     } finally {
       setLoading(false);
     }
-  }, [client, enableServerSide, currentPage, pageSize, searchTerm, serverFilters, sortField, sortOrder, appliedAdvancedFilters]);
+  }, [client, enableServerSide, currentPage, pageSize, searchTerm, serverFilters, sortField, sortOrder, appliedAdvancedFilters, searchOperator, data.length]);
   
   // Load data on mount and when dependencies change
   useEffect(() => {
@@ -232,7 +232,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   const shape = schema.shape;
 
   // Handle server-side pagination
-  const onPage = (event: any) => {
+  const onPage = (event: { page?: number; rows?: number }) => {
     if (!enableServerSide) return;
     
     setCurrentPage(event.page || 0);
@@ -240,7 +240,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   };
   
   // Handle server-side sorting
-  const onSort = (event: any) => {
+  const onSort = (event: { sortField?: string; sortOrder?: number }) => {
     if (!enableServerSide) return;
     
     setSortField(event.sortField || undefined);
@@ -266,7 +266,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   };
   
   // Handle server-side filtering
-  const onFilter = (event: any) => {
+  const onFilter = (event: { filters: DataTableFilterMeta }) => {
     if (!enableServerSide) {
       setFilters(event.filters);
       return;
@@ -274,8 +274,8 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
     
     const newServerFilters: Record<string, FilterParameter> = {};
     
-    Object.entries(event.filters).forEach(([fieldName, filterMeta]: [string, any]) => {
-      if (filterMeta && filterMeta.value !== null && filterMeta.value !== undefined && filterMeta.value !== '') {
+    Object.entries(event.filters).forEach(([fieldName, filterMeta]) => {
+      if (filterMeta && 'value' in filterMeta && filterMeta.value !== null && filterMeta.value !== undefined && filterMeta.value !== '') {
         const operator = convertFilterOperator(filterMeta.matchMode || 'equals');
         newServerFilters[fieldName] = {
           [operator]: filterMeta.value
@@ -326,16 +326,16 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   const hasPendingFilterChanges = JSON.stringify(stagedAdvancedFilters) !== JSON.stringify(appliedAdvancedFilters);
   const hasActiveAdvancedFilters = Object.keys(appliedAdvancedFilters).length > 0;
   
-  const renderFilter = (field: string, zodType: any, columnConfig?: any) => {
+  const renderFilter = (field: string, zodType: z.ZodTypeAny, columnConfig?: { filterType?: string; dropdownOptions?: { label: string; value: unknown }[] }) => {
     const filterType = columnConfig?.filterType || 'text';
     
     if (filterType === 'dropdown' && columnConfig?.dropdownOptions) {
-      return (options: any) => (
+      return (options: { value: unknown; filterApplyCallback: (value: unknown) => void }) => (
         <Dropdown
           value={options.value}
           options={[
             { label: 'All', value: null },
-            ...columnConfig.dropdownOptions
+            ...(columnConfig.dropdownOptions || [])
           ]}
           onChange={(e) => options.filterApplyCallback(e.value)}
           placeholder="Select"
@@ -345,7 +345,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
     }
     
     if (zodType instanceof z.ZodBoolean || filterType === 'boolean') {
-      return (options: any) => (
+      return (options: { value: unknown; filterApplyCallback: (value: unknown) => void }) => (
         <Dropdown
           value={options.value}
           options={[
@@ -360,7 +360,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
       );
     }
 
-    return (options: any) => (
+    return (options: { value: string; filterApplyCallback: (value: string) => void }) => (
       <InputText
         value={options.value || ""}
         onChange={(e) => options.filterApplyCallback(e.target.value)}

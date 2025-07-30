@@ -7,13 +7,23 @@ import {
   Dropdown, 
   MultiSelect, 
   Calendar, 
-  Checkbox, 
   Divider 
 } from './';
 import { z } from 'zod';
 
 // Filter operators mapping to API operators
-export const FILTER_OPERATORS = {
+type FilterOperator = {
+  label: string;
+  value: string;
+  apiOperator: string;
+  requiresPattern?: boolean;
+  pattern?: string;
+  noValue?: boolean;
+  fixedValue?: unknown;
+  allowMultiple?: boolean;
+};
+
+export const FILTER_OPERATORS: Record<string, FilterOperator[]> = {
   text: [
     { label: 'Contains', value: 'eq', apiOperator: 'eq', requiresPattern: true, pattern: '*{value}*' },
     { label: 'Equals', value: 'eq', apiOperator: 'eq' },
@@ -61,18 +71,18 @@ export const FILTER_OPERATORS = {
 export interface FilterRule {
   field: string;
   operator: string;
-  value: any;
+  value: unknown;
   type: 'text' | 'number' | 'date' | 'boolean' | 'dropdown';
-  dropdownOptions?: { label: string; value: any }[];
+  dropdownOptions?: { label: string; value: unknown }[];
 }
 
 export interface AdvancedColumnFilterProps {
   field: string;
   header: string;
-  zodType: any;
+  zodType: z.ZodTypeAny;
   columnConfig?: {
     filterType?: 'text' | 'number' | 'boolean' | 'date' | 'dropdown';
-    dropdownOptions?: { label: string; value: any }[];
+    dropdownOptions?: { label: string; value: unknown }[];
   };
   currentFilter?: FilterRule;
   appliedFilter?: FilterRule;
@@ -87,8 +97,7 @@ export function AdvancedColumnFilter({
   columnConfig,
   currentFilter,
   appliedFilter,
-  onFilterChange,
-  onFilterApply
+  onFilterChange
 }: AdvancedColumnFilterProps) {
   const overlayRef = useRef<any>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -141,7 +150,7 @@ export function AdvancedColumnFilter({
     setLocalFilter(newFilter);
   };
 
-  const handleValueChange = (value: any) => {
+  const handleValueChange = (value: unknown) => {
     setLocalFilter({
       ...localFilter,
       value
@@ -158,7 +167,7 @@ export function AdvancedColumnFilter({
 
     // Apply pattern transformation if needed
     let finalValue = localFilter.value;
-    if (operatorConfig?.requiresPattern && operatorConfig.pattern && finalValue) {
+    if (operatorConfig?.requiresPattern && operatorConfig.pattern && finalValue && typeof finalValue === 'string') {
       finalValue = operatorConfig.pattern.replace('{value}', finalValue);
     }
 
@@ -200,7 +209,7 @@ export function AdvancedColumnFilter({
       case 'text':
         return (
           <InputText
-            value={localFilter.value || ''}
+            value={(localFilter.value as string) || ''}
             onChange={(e) => handleValueChange(e.target.value)}
             placeholder={`Enter ${header.toLowerCase()}...`}
             className="w-full"
@@ -210,7 +219,7 @@ export function AdvancedColumnFilter({
       case 'number':
         return (
           <InputNumber
-            value={localFilter.value}
+            value={localFilter.value as number | null | undefined}
             onChange={(e) => handleValueChange(e.value)}
             placeholder={`Enter ${header.toLowerCase()}...`}
             className="w-full"
@@ -220,7 +229,7 @@ export function AdvancedColumnFilter({
       case 'date':
         return (
           <Calendar
-            value={localFilter.value}
+            value={localFilter.value as Date | null | undefined}
             onChange={(e) => handleValueChange(e.value)}
             placeholder={`Select ${header.toLowerCase()}...`}
             className="w-full"
@@ -304,7 +313,6 @@ export function AdvancedColumnFilter({
       />
       
       <OverlayPanel
-        ref={overlayRef}
         onShow={() => setIsOpen(true)}
         onHide={() => setIsOpen(false)}
         className="advanced-filter-panel"

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Panel, Button, Divider, InputText, Dropdown, Calendar, InputNumber, MultiSelect } from './';
+import { useState, useEffect } from 'react';
+import { Panel, Button, Divider, InputText, Dropdown, Calendar, InputNumber } from './';
 import type { FilterRule } from './AdvancedColumnFilter';
 import { z, ZodObject, type ZodRawShape } from 'zod';
 
@@ -9,7 +9,7 @@ interface SidebarFilterEditorProps<T extends ZodObject<ZodRawShape>> {
     header?: string;
     filterable?: boolean;
     filterType?: 'text' | 'number' | 'boolean' | 'date' | 'dropdown';
-    dropdownOptions?: { label: string; value: any }[];
+    dropdownOptions?: { label: string; value: unknown }[];
     hidden?: boolean;
   }>>;
   isOpen: boolean;
@@ -68,7 +68,8 @@ export function SidebarFilterEditor<T extends ZodObject<ZodRawShape>>({
       field: fieldName,
       operator: defaultOperator,
       value: '',
-      label: override?.header || fieldName
+      type: override?.filterType || 'text',
+      dropdownOptions: override?.dropdownOptions
     });
   };
 
@@ -91,7 +92,6 @@ export function SidebarFilterEditor<T extends ZodObject<ZodRawShape>>({
   const renderFilterInput = (fieldName: string, filter: FilterRule) => {
     const override = columnOverrides[fieldName as keyof typeof shape];
     const filterType = override?.filterType || 'text';
-    const zodType = shape[fieldName as keyof typeof shape];
 
     switch (filterType) {
       case 'boolean':
@@ -111,7 +111,7 @@ export function SidebarFilterEditor<T extends ZodObject<ZodRawShape>>({
       case 'number':
         return (
           <InputNumber
-            value={filter.value}
+            value={filter.value as number | null | undefined}
             onChange={(e) => updateFilter(fieldName, { value: e.value })}
             placeholder="Enter number"
             className="w-full"
@@ -121,7 +121,7 @@ export function SidebarFilterEditor<T extends ZodObject<ZodRawShape>>({
       case 'date':
         return (
           <Calendar
-            value={filter.value}
+            value={filter.value as Date | null | undefined}
             onChange={(e) => updateFilter(fieldName, { value: e.value })}
             placeholder="Select date"
             className="w-full"
@@ -140,12 +140,20 @@ export function SidebarFilterEditor<T extends ZodObject<ZodRawShape>>({
             />
           );
         }
-        // Fall through to text if no dropdown options
+        // If no dropdown options, render as text input
+        return (
+          <InputText
+            value={(filter.value as string) || ''}
+            onChange={(e) => updateFilter(fieldName, { value: e.target.value })}
+            placeholder="Enter value"
+            className="w-full"
+          />
+        );
 
       default:
         return (
           <InputText
-            value={filter.value || ''}
+            value={(filter.value as string) || ''}
             onChange={(e) => updateFilter(fieldName, { value: e.target.value })}
             placeholder="Enter value"
             className="w-full"
@@ -215,7 +223,7 @@ export function SidebarFilterEditor<T extends ZodObject<ZodRawShape>>({
               <div className="text-sm font-medium text-700 mb-2">Add Filter Field</div>
               <Dropdown
                 value={null}
-                options={availableFields.map(([key, zodType]) => ({
+                options={availableFields.map(([key]) => ({
                   label: columnOverrides[key as keyof typeof shape]?.header || key,
                   value: key
                 }))}
