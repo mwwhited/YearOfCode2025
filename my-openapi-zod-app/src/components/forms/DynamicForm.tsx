@@ -162,11 +162,11 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
       // Validate with Zod schema
       const validatedData = config.schema.parse(formData);
       logger.info('Form submitted with validated data:', validatedData);
-      onSubmit(validatedData);
+      onSubmit(validatedData as Record<string, string | number | boolean | null | undefined>);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const zodErrors: Record<string, string> = {};
-        error.errors.forEach(err => {
+        error.issues.forEach(err => {
           if (err.path.length > 0) {
             zodErrors[err.path[0] as string] = err.message;
           }

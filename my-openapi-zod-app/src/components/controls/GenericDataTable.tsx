@@ -333,7 +333,7 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
   const hasPendingFilterChanges = JSON.stringify(stagedAdvancedFilters) !== JSON.stringify(appliedAdvancedFilters);
   const hasActiveAdvancedFilters = Object.keys(appliedAdvancedFilters).length > 0;
   
-  const renderFilter = (field: string, zodType: z.ZodTypeAny, columnConfig?: { filterType?: string; dropdownOptions?: { label: string; value: unknown }[] }) => {
+  const renderFilter = (field: string, zodType: any, columnConfig?: { filterType?: string; dropdownOptions?: { label: string; value: unknown }[] }) => {
     const filterType = columnConfig?.filterType || 'text';
     
     if (filterType === 'dropdown' && columnConfig?.dropdownOptions) {

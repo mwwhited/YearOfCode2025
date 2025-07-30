@@ -84,7 +84,7 @@ export function useValidation<T>(
       return null;
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return error.errors[0]?.message || 'Validation error';
+        return error.issues[0]?.message || 'Validation error';
       }
       return 'Validation error';
     }

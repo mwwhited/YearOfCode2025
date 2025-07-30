@@ -25,7 +25,8 @@
       "Bash(curl:*)",
       "Bash(mv:*)",
       "Bash(grep:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npm view:*)"
     ],
     "deny": []
   }

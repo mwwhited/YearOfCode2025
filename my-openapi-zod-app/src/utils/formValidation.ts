@@ -123,7 +123,7 @@ export const allergenValidationSchema = z.object({
     .max(200, 'Description must be less than 200 characters')
     .optional(),
   severity: z.enum(['Low', 'Medium', 'High'], {
-    errorMap: () => ({ message: 'Please select a severity level' })
+    message: 'Please select a severity level'
   }).optional(),
   isActive: z.boolean().optional()
 });
@@ -134,6 +134,8 @@ export const ingredientValidationSchema = z.object({
   ingredientName: z.string()
     .min(2, 'Ingredient name must be at least 2 characters')
     .max(100, 'Ingredient name must be less than 100 characters'),
+  group: z.string().optional(),
+  iocGroup: z.string().optional(),
   description: z.string()
     .max(500, 'Description must be less than 500 characters')
     .optional(),

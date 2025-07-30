@@ -79,7 +79,7 @@ export interface FilterRule {
 export interface AdvancedColumnFilterProps {
   field: string;
   header: string;
-  zodType: z.ZodTypeAny;
+  zodType: any;
   columnConfig?: {
     filterType?: 'text' | 'number' | 'boolean' | 'date' | 'dropdown';
     dropdownOptions?: { label: string; value: unknown }[];

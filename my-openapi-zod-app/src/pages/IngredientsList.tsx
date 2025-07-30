@@ -198,11 +198,6 @@ export const IngredientsList: React.FC = () => {
             header: 'Allergen ID',
             hidden: true
           },
-          allergenName: {
-            header: 'Associated Allergen',
-            sortable: true,
-            filterable: true
-          },
           isOrganic: {
             header: 'Organic',
             sortable: true,
@@ -220,16 +215,6 @@ export const IngredientsList: React.FC = () => {
             sortable: false,
             filterable: false
           },
-          createdDate: {
-            header: 'Created',
-            sortable: true,
-            filterable: false
-          },
-          modifiedDate: {
-            header: 'Modified',
-            sortable: true,
-            filterable: false
-          }
         }}
         actionColumn={isAdmin ? {
           header: 'Actions',
