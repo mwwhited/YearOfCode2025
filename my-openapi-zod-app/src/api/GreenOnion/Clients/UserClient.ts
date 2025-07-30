@@ -33,7 +33,6 @@ import {
 // Exports
 export type { 
     IUserClient,
-
     IQueryUserModelSearchQuery,
     IQueryUserModelPagedQueryResult,
     IQueryUserModel,

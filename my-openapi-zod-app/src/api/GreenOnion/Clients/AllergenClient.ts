@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IAllergenClient,
-
     IQueryAllergenModelSearchQuery,
     IQueryAllergenModelPagedQueryResult,
     IQueryAllergenModel,

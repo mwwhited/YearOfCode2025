@@ -12,10 +12,10 @@
 import type {
     IDashBoardResponseModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IDashBoardResponseModel,
- };
+};
 
 export default interface IDashBoardClient {
     

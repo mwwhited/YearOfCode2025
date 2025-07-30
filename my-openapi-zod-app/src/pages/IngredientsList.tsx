@@ -189,31 +189,15 @@ export const IngredientsList: React.FC = () => {
             sortable: true,
             filterable: true 
           },
-          description: {
-            header: 'Description',
-            sortable: false,
+          group: {
+            header: 'Group',
+            sortable: true,
             filterable: true
           },
-          allergenId: {
-            header: 'Allergen ID',
-            hidden: true
-          },
-          isOrganic: {
-            header: 'Organic',
+          iocGroup: {
+            header: 'IOC Group',
             sortable: true,
-            filterable: true,
-            filterType: 'boolean'
-          },
-          isGMOFree: {
-            header: 'GMO Free',
-            sortable: true,
-            filterable: true,
-            filterType: 'boolean'
-          },
-          nutritionalInfo: {
-            header: 'Nutritional Info',
-            sortable: false,
-            filterable: false
+            filterable: true
           },
         }}
         actionColumn={isAdmin ? {

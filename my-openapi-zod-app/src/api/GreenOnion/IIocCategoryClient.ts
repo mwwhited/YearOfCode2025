@@ -13,21 +13,21 @@ import type {
     IQueryIocCategoryModelSearchQuery,
     IQueryIocCategoryModelPagedQueryResult,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryIocCategoryModelSearchQuery,
     IQueryIocCategoryModelPagedQueryResult,
- };
+};
 
-export default interface IIIocCategoryClient {
+export default interface IIocCategoryClient {
     
     /**
     * Query **QueryIocCategoryModel**
     * @description Query **QueryIocCategoryModel**
-    * @operationId IIocCategory_Query
-    * @tag IIocCategory
+    * @operationId IocCategory_Query
+    * @tag IocCategory
     * @tag model-query
-    * @path /api/IIocCategory/Query 
+    * @path /api/IocCategory/Query 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryIocCategoryModel
     */

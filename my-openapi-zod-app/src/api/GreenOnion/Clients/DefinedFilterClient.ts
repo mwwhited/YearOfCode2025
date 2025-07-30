@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IDefinedFilterClient,
-
     IQueryDefinedFilterModelSearchQuery,
     IQueryDefinedFilterModelPagedQueryResult,
     IQueryDefinedFilterModel,

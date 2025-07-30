@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IDistributorClient,
-
     IQueryDistributorModelSearchQuery,
     IQueryDistributorModelPagedQueryResult,
     IQueryDistributorModel,

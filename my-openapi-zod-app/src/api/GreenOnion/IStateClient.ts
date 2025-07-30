@@ -13,11 +13,11 @@ import type {
     IQueryStateModelSearchQuery,
     IQueryStateModelPagedQueryResult,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryStateModelSearchQuery,
     IQueryStateModelPagedQueryResult,
- };
+};
 
 export default interface IStateClient {
     

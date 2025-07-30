@@ -5,18 +5,13 @@ import {
   Panel, 
   Button, 
   InputText, 
-  InputTextarea,
-  Checkbox,
-  ProgressSpinner,
-  // Divider,
-  // AllergenCombobox
+  ProgressSpinner
 } from '@/components/controls';
 import type { ISaveIngredientModel } from '@/api/GreenOnion/Models';
 import IngredientClient from '@/api/GreenOnion/Clients/IngredientClient';
 import { logger } from '@/utils/logger';
 import { ingredientValidationSchema } from '@/utils/formValidation';
 import { useValidation } from '@/hooks/useValidation';
-import { AllergenCombobox } from '@/components/controls/AllergenCombobox';
 
 export const EditIngredientPanel: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,10 +25,8 @@ export const EditIngredientPanel: React.FC = () => {
   // Form state
   const [formData, setFormData] = useState<ISaveIngredientModel>({
     ingredientName: '',
-    description: '',
-    nutritionalInfo: '',
-    isOrganic: false,
-    isGMOFree: false
+    group: '',
+    iocGroup: ''
   });
 
   // Validation

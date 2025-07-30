@@ -27,7 +27,6 @@ import {
 // Exports
 export type { 
     IErrorLogClient,
-
     IQueryErrorLogModelSearchQuery,
     IQueryErrorLogModelPagedQueryResult,
 };

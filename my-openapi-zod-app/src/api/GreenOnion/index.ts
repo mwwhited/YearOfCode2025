@@ -15,8 +15,8 @@ export type { default as IDataMigrationThroughApiClient } from "./IDataMigration
 export type { default as IDefinedFilterClient } from "./IDefinedFilterClient";  
 export type { default as IDistributorClient } from "./IDistributorClient";  
 export type { default as IErrorLogClient } from "./IErrorLogClient";  
-export type { default as IIIocCategoryClient } from "./IIIocCategoryClient";  
 export type { default as IIngredientClient } from "./IIngredientClient";  
+export type { default as IIocCategoryClient } from "./IIocCategoryClient";  
 export type { default as IManufacturerClient } from "./IManufacturerClient";  
 export type { default as IMonthlyNumberClient } from "./IMonthlyNumberClient";  
 export type { default as IOneWorldSyncProductClient } from "./IOneWorldSyncProductClient";  

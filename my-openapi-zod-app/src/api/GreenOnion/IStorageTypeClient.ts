@@ -15,13 +15,13 @@ import type {
     IQueryStorageTypeModel,
     ISaveStorageTypeModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryStorageTypeModelSearchQuery,
     IQueryStorageTypeModelPagedQueryResult,
     IQueryStorageTypeModel,
     ISaveStorageTypeModel,
- };
+};
 
 export default interface IStorageTypeClient {
     
@@ -48,7 +48,7 @@ export default interface IStorageTypeClient {
     * @path /api/StorageType/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

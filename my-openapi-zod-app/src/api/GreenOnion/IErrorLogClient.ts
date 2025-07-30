@@ -13,11 +13,11 @@ import type {
     IQueryErrorLogModelSearchQuery,
     IQueryErrorLogModelPagedQueryResult,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryErrorLogModelSearchQuery,
     IQueryErrorLogModelPagedQueryResult,
- };
+};
 
 export default interface IErrorLogClient {
     

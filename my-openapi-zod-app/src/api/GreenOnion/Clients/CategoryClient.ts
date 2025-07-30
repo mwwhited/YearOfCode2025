@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     ICategoryClient,
-
     IQueryCategoryModelSearchQuery,
     IQueryCategoryModelPagedQueryResult,
     IQueryCategoryModel,

@@ -12,10 +12,10 @@
 import type {
     IDataMigrationThroughApiResponseModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IDataMigrationThroughApiResponseModel,
- };
+};
 
 export default interface IDataMigrationThroughApiClient {
     

@@ -11,7 +11,7 @@
 // Interface
 import { ClientBase, ApiException } from "../../_ClientBase";
 export { ApiException };
-import type IIIocCategoryClient from "../IIIocCategoryClient";
+import type IIocCategoryClient from "../IIocCategoryClient";
 
 // Models 
 import type {
@@ -26,13 +26,12 @@ import {
 
 // Exports
 export type { 
-    IIIocCategoryClient,
-
+    IIocCategoryClient,
     IQueryIocCategoryModelSearchQuery,
     IQueryIocCategoryModelPagedQueryResult,
 };
 
-export default class IIocCategoryClient extends ClientBase implements IIIocCategoryClient  {
+export default class IocCategoryClient extends ClientBase implements IIocCategoryClient  {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: unknown) => unknown) | undefined = undefined;
@@ -46,10 +45,10 @@ export default class IIocCategoryClient extends ClientBase implements IIIocCateg
     /**
     * Query **QueryIocCategoryModel**
     * @description Query **QueryIocCategoryModel**
-    * @operationId IIocCategory_Query
-    * @tag IIocCategory
+    * @operationId IocCategory_Query
+    * @tag IocCategory
     * @tag model-query
-    * @path /api/IIocCategory/Query 
+    * @path /api/IocCategory/Query 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryIocCategoryModel
     */
@@ -57,7 +56,7 @@ export default class IIocCategoryClient extends ClientBase implements IIIocCateg
         body?: IQueryIocCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIocCategoryModelSearchQuery        
     }): Promise<IQueryIocCategoryModelPagedQueryResult | undefined> 
     { 
-        let url_ = this.baseUrl + "/api/IIocCategory/Query?";
+        let url_ = this.baseUrl + "/api/IocCategory/Query?";
         url_ = url_.replace(/[?&]$/, "");
         const { body } = params;
         const content_ = JSON.stringify(body);

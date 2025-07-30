@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     ISubCategoryClient,
-
     IQuerySubCategoryModelSearchQuery,
     IQuerySubCategoryModelPagedQueryResult,
     IQuerySubCategoryModel,

@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IIngredientClient,
-
     IQueryIngredientModelSearchQuery,
     IQueryIngredientModelPagedQueryResult,
     IQueryIngredientModel,

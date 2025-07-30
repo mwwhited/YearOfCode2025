@@ -15,13 +15,13 @@ import type {
     IQueryIngredientModel,
     ISaveIngredientModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryIngredientModelSearchQuery,
     IQueryIngredientModelPagedQueryResult,
     IQueryIngredientModel,
     ISaveIngredientModel,
- };
+};
 
 export default interface IIngredientClient {
     
@@ -48,7 +48,7 @@ export default interface IIngredientClient {
     * @path /api/Ingredient/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryIngredientModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             keyword?: string | undefined;

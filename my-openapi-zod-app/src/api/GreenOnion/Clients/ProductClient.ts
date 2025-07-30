@@ -47,7 +47,6 @@ import {
 // Exports
 export type { 
     IProductClient,
-
     IQueryProductModelSearchQuery,
     IQueryProductModelPagedQueryResult,
     IQueryProductModel,

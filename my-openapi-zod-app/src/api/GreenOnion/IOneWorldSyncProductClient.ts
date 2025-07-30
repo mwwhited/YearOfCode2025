@@ -15,13 +15,13 @@ import type {
     IQueryOneWorldSyncProductModel,
     ISaveOneWorldSyncProductModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryOneWorldSyncProductModelSearchQuery,
     IQueryOneWorldSyncProductModelPagedQueryResult,
     IQueryOneWorldSyncProductModel,
     ISaveOneWorldSyncProductModel,
- };
+};
 
 export default interface IOneWorldSyncProductClient {
     
@@ -48,7 +48,7 @@ export default interface IOneWorldSyncProductClient {
     * @path /api/OneWorldSyncProduct/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryOneWorldSyncProductModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             gtin?: string | undefined;

@@ -15,13 +15,13 @@ import type {
     IQuerySubCategoryModel,
     ISaveSubCategoryModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQuerySubCategoryModelSearchQuery,
     IQuerySubCategoryModelPagedQueryResult,
     IQuerySubCategoryModel,
     ISaveSubCategoryModel,
- };
+};
 
 export default interface ISubCategoryClient {
     
@@ -48,7 +48,7 @@ export default interface ISubCategoryClient {
     * @path /api/SubCategory/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

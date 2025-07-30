@@ -15,13 +15,13 @@ import type {
     IQueryDefinedFilterModel,
     ISaveDefinedFilterModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryDefinedFilterModelSearchQuery,
     IQueryDefinedFilterModelPagedQueryResult,
     IQueryDefinedFilterModel,
     ISaveDefinedFilterModel,
- };
+};
 
 export default interface IDefinedFilterClient {
     
@@ -48,7 +48,7 @@ export default interface IDefinedFilterClient {
     * @path /api/DefinedFilter/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

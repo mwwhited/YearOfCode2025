@@ -15,13 +15,13 @@ import type {
     IQueryAllergenModel,
     ISaveAllergenModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryAllergenModelSearchQuery,
     IQueryAllergenModelPagedQueryResult,
     IQueryAllergenModel,
     ISaveAllergenModel,
- };
+};
 
 export default interface IAllergenClient {
     
@@ -48,7 +48,7 @@ export default interface IAllergenClient {
     * @path /api/Allergen/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

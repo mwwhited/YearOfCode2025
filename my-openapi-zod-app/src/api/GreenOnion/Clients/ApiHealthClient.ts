@@ -23,7 +23,6 @@ import {
 // Exports
 export type { 
     IApiHealthClient,
-
 };
 
 export default class ApiHealthClient extends ClientBase implements IApiHealthClient  {

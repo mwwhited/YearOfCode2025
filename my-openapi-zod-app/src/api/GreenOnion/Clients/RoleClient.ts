@@ -27,7 +27,6 @@ import {
 // Exports
 export type { 
     IRoleClient,
-
     IQueryRoleModelSearchQuery,
     IQueryRoleModelPagedQueryResult,
 };

@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IOneWorldSyncProductClient,
-
     IQueryOneWorldSyncProductModelSearchQuery,
     IQueryOneWorldSyncProductModelPagedQueryResult,
     IQueryOneWorldSyncProductModel,

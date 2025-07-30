@@ -15,13 +15,13 @@ import type {
     IQueryManufacturerModel,
     ISaveManufacturerModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryManufacturerModelSearchQuery,
     IQueryManufacturerModelPagedQueryResult,
     IQueryManufacturerModel,
     ISaveManufacturerModel,
- };
+};
 
 export default interface IManufacturerClient {
     
@@ -48,7 +48,7 @@ export default interface IManufacturerClient {
     * @path /api/Manufacturer/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryManufacturerModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             gln?: string | undefined;

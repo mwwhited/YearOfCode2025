@@ -11,9 +11,9 @@
 // Models 
 import type {
  } from "./Models";
- 
-export type {
- };
+
+export type { 
+};
 
 export default interface IApiHealthClient {
     
@@ -21,6 +21,6 @@ export default interface IApiHealthClient {
     * @operationId Health
     * @tag ApiHealth
     * @path /health 
-    */ 
+    */
     Health(): Promise<object | undefined>;
 }

@@ -16,14 +16,14 @@ import type {
     ISaveUserModel,
     INewUserEmailModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryUserModelSearchQuery,
     IQueryUserModelPagedQueryResult,
     IQueryUserModel,
     ISaveUserModel,
     INewUserEmailModel,
- };
+};
 
 export default interface IUserClient {
     
@@ -50,7 +50,7 @@ export default interface IUserClient {
     * @path /api/User/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryUserModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             email?: string | undefined;

@@ -29,7 +29,6 @@ import {
 // Exports
 export type { 
     ISuggestedProductClient,
-
     ISuggestedProductRequestModel,
     ISuggestedProductResponseModel,
 };

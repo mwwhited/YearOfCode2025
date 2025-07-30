@@ -15,13 +15,13 @@ import type {
     IQueryDistributorModel,
     ISaveDistributorModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryDistributorModelSearchQuery,
     IQueryDistributorModelPagedQueryResult,
     IQueryDistributorModel,
     ISaveDistributorModel,
- };
+};
 
 export default interface IDistributorClient {
     
@@ -48,7 +48,7 @@ export default interface IDistributorClient {
     * @path /api/Distributor/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

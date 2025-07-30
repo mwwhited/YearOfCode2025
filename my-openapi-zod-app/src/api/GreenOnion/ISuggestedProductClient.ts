@@ -12,12 +12,13 @@
 import type {
     ISuggestedProductRequestModel,
     ISuggestedProductResponseModel,
+    IApproveSuggestProductRequestModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     ISuggestedProductRequestModel,
     ISuggestedProductResponseModel,
- };
+};
 
 export default interface ISuggestedProductClient {
     

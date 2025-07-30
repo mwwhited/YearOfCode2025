@@ -25,7 +25,6 @@ import {
 // Exports
 export type { 
     IDashBoardClient,
-
     IDashBoardResponseModel,
 };
 

@@ -23,8 +23,8 @@ import type {
     ISelectProductSaveCheckListRequestModel,
     IBaseResponseModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryProductModelSearchQuery,
     IQueryProductModelPagedQueryResult,
     IQueryProductModel,
@@ -37,7 +37,7 @@ export type {
     IFileUploadResponse,
     ISelectProductSaveCheckListRequestModel,
     IBaseResponseModel,
- };
+};
 
 export default interface IProductClient {
     
@@ -64,7 +64,7 @@ export default interface IProductClient {
     * @path /api/Product/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryProductModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             gtin?: string | undefined;
@@ -91,7 +91,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/Pdfs/{id} 
     * @anonymous false
-    */ 
+    */
     Pdfs(params: {
             id?: string | undefined;
             download?: boolean | undefined;
@@ -110,7 +110,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductDataByID 
     * @anonymous false
-    */ 
+    */
     GetProductDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -120,7 +120,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/DeleteProductData 
     * @anonymous false
-    */ 
+    */
     DeleteProductData(params: {
             ProductId?: number | undefined;
             schoolDistrictId?: number | undefined;
@@ -151,7 +151,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductAllGtin 
     * @anonymous false
-    */ 
+    */
     GetProductAllGtin(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -161,7 +161,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductAllUpc 
     * @anonymous false
-    */ 
+    */
     GetProductAllUpc(params: {
             productId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -216,7 +216,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/GetProductBeforeApproveDataByID 
     * @anonymous false
-    */ 
+    */
     GetProductBeforeApproveDataByID(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
@@ -226,7 +226,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/DeleteProductGtin 
     * @anonymous false
-    */ 
+    */
     DeleteProductGtin(params: {
             productId?: number | undefined;
             gtin?: string | undefined;
@@ -237,7 +237,7 @@ export default interface IProductClient {
     * @tag Product
     * @path /api/Product/DeleteProductUpc 
     * @anonymous false
-    */ 
+    */
     DeleteProductUpc(params: {
             productId?: number | undefined;
             upc?: string | undefined;
@@ -249,7 +249,7 @@ export default interface IProductClient {
     * @path /api/Product/DeleteProductPermanently 
     * @anonymous false
     * @role Super Admin
-    */ 
+    */
     DeleteProductPermanently(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;

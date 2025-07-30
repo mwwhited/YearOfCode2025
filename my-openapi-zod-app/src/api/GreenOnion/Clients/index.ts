@@ -18,8 +18,8 @@ export { default as DataMigrationThroughApiClient } from "./DataMigrationThrough
 export { default as DefinedFilterClient } from "./DefinedFilterClient";  
 export { default as DistributorClient } from "./DistributorClient";  
 export { default as ErrorLogClient } from "./ErrorLogClient";  
-export { default as IIocCategoryClient } from "./IIocCategoryClient";  
 export { default as IngredientClient } from "./IngredientClient";  
+export { default as IocCategoryClient } from "./IocCategoryClient";  
 export { default as ManufacturerClient } from "./ManufacturerClient";  
 export { default as MonthlyNumberClient } from "./MonthlyNumberClient";  
 export { default as OneWorldSyncProductClient } from "./OneWorldSyncProductClient";  
@@ -43,8 +43,8 @@ export type {
     IDefinedFilterClient,
     IDistributorClient,
     IErrorLogClient,
-    IIIocCategoryClient,
     IIngredientClient,
+    IIocCategoryClient,
     IManufacturerClient,
     IMonthlyNumberClient,
     IOneWorldSyncProductClient,

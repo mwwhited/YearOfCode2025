@@ -15,13 +15,13 @@ import type {
     IQueryMonthlyNumberModel,
     ISaveMonthlyNumberModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryMonthlyNumberModelSearchQuery,
     IQueryMonthlyNumberModelPagedQueryResult,
     IQueryMonthlyNumberModel,
     ISaveMonthlyNumberModel,
- };
+};
 
 export default interface IMonthlyNumberClient {
     
@@ -48,7 +48,7 @@ export default interface IMonthlyNumberClient {
     * @path /api/MonthlyNumber/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             schoolDistrictId?: number | undefined;

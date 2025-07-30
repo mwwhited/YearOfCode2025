@@ -15,13 +15,13 @@ import type {
     IQuerySchoolDistrictModel,
     ISaveSchoolDistrictModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQuerySchoolDistrictModelSearchQuery,
     IQuerySchoolDistrictModelPagedQueryResult,
     IQuerySchoolDistrictModel,
     ISaveSchoolDistrictModel,
- };
+};
 
 export default interface ISchoolDistrictClient {
     
@@ -48,7 +48,7 @@ export default interface ISchoolDistrictClient {
     * @path /api/SchoolDistrict/Get 
     * @anonymous false
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
-    */ 
+    */
     Get(params: {
             id?: number | undefined;
             name?: string | undefined;

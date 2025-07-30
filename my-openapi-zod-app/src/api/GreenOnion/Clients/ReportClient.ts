@@ -27,7 +27,6 @@ import {
 // Exports
 export type { 
     IReportClient,
-
     IProductActivityReportFilter,
     IUserResponseModel,
 };

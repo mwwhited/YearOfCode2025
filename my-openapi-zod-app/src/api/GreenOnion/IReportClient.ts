@@ -13,11 +13,11 @@ import type {
     IProductActivityReportFilter,
     IUserResponseModel,
  } from "./Models";
- 
-export type {
+
+export type { 
     IProductActivityReportFilter,
     IUserResponseModel,
- };
+};
 
 export default interface IReportClient {
     

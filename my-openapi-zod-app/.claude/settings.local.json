@@ -26,7 +26,9 @@
       "Bash(mv:*)",
       "Bash(grep:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm view:*)"
+      "Bash(npm view:*)",
+      "Bash(npm update)",
+      "Bash(npm outdated)"
     ],
     "deny": []
   }

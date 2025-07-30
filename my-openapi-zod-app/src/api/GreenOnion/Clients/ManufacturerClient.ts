@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IManufacturerClient,
-
     IQueryManufacturerModelSearchQuery,
     IQueryManufacturerModelPagedQueryResult,
     IQueryManufacturerModel,

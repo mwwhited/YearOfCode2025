@@ -13,11 +13,11 @@ import type {
     IQueryRoleModelSearchQuery,
     IQueryRoleModelPagedQueryResult,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryRoleModelSearchQuery,
     IQueryRoleModelPagedQueryResult,
- };
+};
 
 export default interface IRoleClient {
     

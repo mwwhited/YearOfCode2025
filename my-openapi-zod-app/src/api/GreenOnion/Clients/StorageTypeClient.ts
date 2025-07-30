@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IStorageTypeClient,
-
     IQueryStorageTypeModelSearchQuery,
     IQueryStorageTypeModelPagedQueryResult,
     IQueryStorageTypeModel,

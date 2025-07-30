@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     ISchoolDistrictClient,
-
     IQuerySchoolDistrictModelSearchQuery,
     IQuerySchoolDistrictModelPagedQueryResult,
     IQuerySchoolDistrictModel,

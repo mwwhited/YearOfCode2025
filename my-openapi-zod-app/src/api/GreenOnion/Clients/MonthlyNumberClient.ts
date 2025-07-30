@@ -31,7 +31,6 @@ import {
 // Exports
 export type { 
     IMonthlyNumberClient,
-
     IQueryMonthlyNumberModelSearchQuery,
     IQueryMonthlyNumberModelPagedQueryResult,
     IQueryMonthlyNumberModel,

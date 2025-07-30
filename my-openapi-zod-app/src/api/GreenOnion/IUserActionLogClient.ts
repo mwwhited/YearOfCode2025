@@ -13,11 +13,11 @@ import type {
     IQueryUserActionLogModelSearchQuery,
     IQueryUserActionLogModelPagedQueryResult,
  } from "./Models";
- 
-export type {
+
+export type { 
     IQueryUserActionLogModelSearchQuery,
     IQueryUserActionLogModelPagedQueryResult,
- };
+};
 
 export default interface IUserActionLogClient {
     
