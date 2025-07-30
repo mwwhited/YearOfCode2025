@@ -59,11 +59,8 @@ export const EditIngredientPanel: React.FC = () => {
           setFormData({
             ingredientId: response.ingredientId,
             ingredientName: response.ingredientName || '',
-            description: response.description || '',
-            allergenId: response.allergenId,
-            isOrganic: response.isOrganic || false,
-            isGMOFree: response.isGMOFree || false,
-            nutritionalInfo: response.nutritionalInfo || ''
+            group: response.group || '',
+            iocGroup: response.iocGroup || ''
           });
         }
       } catch (error) {
@@ -147,79 +144,39 @@ export const EditIngredientPanel: React.FC = () => {
                 )}
               </div>
 
-              <div className="field col-12">
-                <label htmlFor="description">Description</label>
-                <InputTextarea
-                  id="description"
-                  value={formData.description || ''}
-                  onChange={(e) => handleFieldChange('description', e.target.value)}
-                  onBlur={() => setFieldTouched('description', true)}
-                  className={`w-full ${hasFieldError('description') ? 'p-invalid' : ''}`}
-                  rows={3}
-                  placeholder="Enter description"
+              <div className="field col-12 md:col-6">
+                <label htmlFor="group">Group</label>
+                <InputText
+                  id="group"
+                  value={String(formData.group || '')}
+                  onChange={(e: any) => handleFieldChange('group', e.target.value)}
+                  onBlur={() => setFieldTouched('group', true)}
+                  className={`w-full ${hasFieldError('group') ? 'p-invalid' : ''}`}
+                  placeholder="Enter group"
                 />
-                {getFieldError('description') && (
-                  <small className="p-error">{getFieldError('description')}</small>
+                {getFieldError('group') && (
+                  <small className="p-error">{getFieldError('group')}</small>
                 )}
               </div>
 
               <div className="field col-12 md:col-6">
-                <label htmlFor="allergenId">Associated Allergen</label>
-                <AllergenCombobox
-                  value={formData.allergenId}
-                  onChange={(e) => handleFieldChange('allergenId', e.value)}
-                  placeholder="Select allergen (optional)"
-                  showClear
+                <label htmlFor="iocGroup">IOC Group</label>
+                <InputText
+                  id="iocGroup"
+                  value={String(formData.iocGroup || '')}
+                  onChange={(e: any) => handleFieldChange('iocGroup', e.target.value)}
+                  onBlur={() => setFieldTouched('iocGroup', true)}
+                  className={`w-full ${hasFieldError('iocGroup') ? 'p-invalid' : ''}`}
+                  placeholder="Enter IOC group"
                 />
-              </div>
-            </div>
-          </Panel>
-
-          <Panel header="Nutritional Information" className="mb-3">
-            <div className="formgrid grid">
-              <div className="field col-12">
-                <label htmlFor="nutritionalInfo">Nutritional Details</label>
-                <InputTextarea
-                  id="nutritionalInfo"
-                  value={formData.nutritionalInfo || ''}
-                  onChange={(e) => handleFieldChange('nutritionalInfo', e.target.value)}
-                  onBlur={() => setFieldTouched('nutritionalInfo', true)}
-                  className={`w-full ${hasFieldError('nutritionalInfo') ? 'p-invalid' : ''}`}
-                  rows={5}
-                  placeholder="Enter nutritional information"
-                />
-                {getFieldError('nutritionalInfo') && (
-                  <small className="p-error">{getFieldError('nutritionalInfo')}</small>
+                {getFieldError('iocGroup') && (
+                  <small className="p-error">{getFieldError('iocGroup')}</small>
                 )}
               </div>
             </div>
           </Panel>
 
-          <Panel header="Attributes" className="mb-3">
-            <div className="formgrid grid">
-              <div className="field col-12 md:col-6">
-                <div className="flex align-items-center">
-                  <Checkbox
-                    inputId="isOrganic"
-                    checked={formData.isOrganic || false}
-                    onChange={(e) => handleFieldChange('isOrganic', e.checked)}
-                  />
-                  <label htmlFor="isOrganic" className="ml-2">Organic</label>
-                </div>
-              </div>
 
-              <div className="field col-12 md:col-6">
-                <div className="flex align-items-center">
-                  <Checkbox
-                    inputId="isGMOFree"
-                    checked={formData.isGMOFree || false}
-                    onChange={(e) => handleFieldChange('isGMOFree', e.checked)}
-                  />
-                  <label htmlFor="isGMOFree" className="ml-2">GMO Free</label>
-                </div>
-              </div>
-            </div>
-          </Panel>
         </div>
 
         <div className="col-12 lg:col-4">

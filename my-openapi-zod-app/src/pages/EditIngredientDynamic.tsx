@@ -87,11 +87,8 @@ export const EditIngredientDynamic: React.FC = () => {
           const ingredientData: ISaveIngredientModel = {
             ingredientId: response.ingredientId,
             ingredientName: response.ingredientName || '',
-            description: response.description || '',
-            allergenId: response.allergenId,
-            isOrganic: response.isOrganic || false,
-            isGMOFree: response.isGMOFree || false,
-            nutritionalInfo: response.nutritionalInfo || ''
+            group: response.group || '',
+            iocGroup: response.iocGroup || ''
           };
           setInitialData(ingredientData);
         } else {

@@ -45,13 +45,11 @@ export class BulkEditApiHandler {
 
         // Create update payload with merged data
         const updateData = {
-          id: Number(productId),
-          productName: currentProduct.productName || '',
+          productId: Number(productId),
+          name: currentProduct.name || '',
           manufacturerId: changes.manufacturerId || currentProduct.manufacturerId,
           categoryId: changes.categoryId || currentProduct.categoryId,
           isActive: changes.isActive !== undefined ? changes.isActive : currentProduct.isActive,
-          unitPrice: changes.unitPrice || currentProduct.unitPrice,
-          unitsInStock: changes.unitsInStock || currentProduct.unitsInStock,
           description: changes.description || currentProduct.description
         };
 
@@ -109,9 +107,9 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          id: Number(categoryId),
+          categoryId: Number(categoryId),
           categoryName: currentCategory.categoryName || '',
-          description: changes.description || currentCategory.description,
+          categoryCode: changes.categoryCode || currentCategory.categoryCode,
           isActive: changes.isActive !== undefined ? changes.isActive : currentCategory.isActive
         };
 
@@ -164,12 +162,11 @@ export class BulkEditApiHandler {
 
         const updateData = {
           id: Number(userId),
-          username: currentUser.username || '',
           email: currentUser.email || '',
           firstName: currentUser.firstName || '',
           lastName: currentUser.lastName || '',
           roleId: changes.roleId || currentUser.roleId,
-          districtId: changes.districtId || currentUser.districtId,
+          schoolDistrictId: changes.schoolDistrictId || currentUser.schoolDistrictId,
           manufacturerId: changes.manufacturerId || currentUser.manufacturerId,
           isActive: changes.isActive !== undefined ? changes.isActive : currentUser.isActive
         };
@@ -222,13 +219,10 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          id: Number(ingredientId),
+          ingredientId: Number(ingredientId),
           ingredientName: currentIngredient.ingredientName || '',
-          description: changes.description || currentIngredient.description,
-          allergenId: changes.allergenId || currentIngredient.allergenId,
-          isOrganic: changes.isOrganic !== undefined ? changes.isOrganic : currentIngredient.isOrganic,
-          isGMOFree: changes.isGMOFree !== undefined ? changes.isGMOFree : currentIngredient.isGMOFree,
-          nutritionalInfo: changes.nutritionalInfo || currentIngredient.nutritionalInfo
+          group: changes.group || currentIngredient.group,
+          iocGroup: changes.iocGroup || currentIngredient.iocGroup
         };
 
         Object.keys(updateData).forEach(key => {
@@ -279,10 +273,9 @@ export class BulkEditApiHandler {
         }
 
         const updateData = {
-          id: Number(allergenId),
+          allergenId: Number(allergenId),
           allergenName: current.allergenName || '',
-          description: changes.description || current.description,
-          isActive: changes.isActive !== undefined ? changes.isActive : current.isActive
+          allergenGroup: changes.allergenGroup || current.allergenGroup
         };
 
         Object.keys(updateData).forEach(key => {

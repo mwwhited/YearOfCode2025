@@ -135,16 +135,7 @@ export const ingredientValidationSchema = z.object({
     .min(2, 'Ingredient name must be at least 2 characters')
     .max(100, 'Ingredient name must be less than 100 characters'),
   group: z.string().optional(),
-  iocGroup: z.string().optional(),
-  description: z.string()
-    .max(500, 'Description must be less than 500 characters')
-    .optional(),
-  allergenId: z.number().optional(),
-  isOrganic: z.boolean().optional(),
-  isGMOFree: z.boolean().optional(),
-  nutritionalInfo: z.string()
-    .max(1000, 'Nutritional information must be less than 1000 characters')
-    .optional()
+  iocGroup: z.string().optional()
 });
 
 // Manufacturer validation schema
