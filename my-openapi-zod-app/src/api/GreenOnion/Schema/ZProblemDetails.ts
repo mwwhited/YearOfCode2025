@@ -11,11 +11,11 @@
 import { z } from "zod";
 
 const ZProblemDetails = z.object({
-    type: z.string().nullish().meta({}),  
-    title: z.string().nullish().meta({}),  
-    status: z.number().int().nullish().meta({}),  
-    detail: z.string().nullish().meta({}),  
-    instance: z.string().nullish().meta({}),  
+    type: z.string().meta({}).nullish(),  
+    title: z.string().meta({}).nullish(),  
+    status: z.number().int().meta({}).nullish(),  
+    detail: z.string().meta({}).nullish(),  
+    instance: z.string().meta({}).nullish(),  
 });
 
 export default ZProblemDetails;

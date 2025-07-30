@@ -11,13 +11,13 @@
 import { z } from "zod";
 
 const ZDashBoardResponseModel = z.object({
-    success: z.boolean().nullish().meta({}),  
-    message: z.string().nullish().meta({}),  
-    totalRecords: z.number().int().nullish().meta({}),  
-    payload: z.any().nullish().meta({}),  
-    isUpdate: z.boolean().nullish().meta({}),  
-    isAdded: z.boolean().nullish().meta({}),  
-    isDelete: z.boolean().nullish().meta({}),  
+    success: z.boolean().meta({}).nullish(),  
+    message: z.string().meta({}).nullish(),  
+    totalRecords: z.number().int().meta({}).nullish(),  
+    payload: z.any().meta({}).nullish(),  
+    isUpdate: z.boolean().meta({}).nullish(),  
+    isAdded: z.boolean().meta({}).nullish(),  
+    isDelete: z.boolean().meta({}).nullish(),  
 });
 
 export default ZDashBoardResponseModel;

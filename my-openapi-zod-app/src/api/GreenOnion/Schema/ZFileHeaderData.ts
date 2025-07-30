@@ -11,9 +11,9 @@
 import { z } from "zod";
 
 const ZFileHeaderData = z.object({
-    headerDataId: z.number().int().nullish().meta({}),  
-    headerDataName: z.string().nullish().meta({}),  
-    headerDataValue: z.string().nullish().meta({}),  
+    headerDataId: z.number().int().meta({}).nullish(),  
+    headerDataName: z.string().meta({}).nullish(),  
+    headerDataValue: z.string().meta({}).nullish(),  
 });
 
 export default ZFileHeaderData;

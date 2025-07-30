@@ -11,17 +11,17 @@
 import { z } from "zod";
 
 const ZQueryRoleModel = z.object({
-    roleId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
-    roleName: z.string().nullish().meta({}),  
-    isActive: z.boolean().nullish().meta({}),  
-    userCount: z.number().int().nullish().meta({}),  
-    activeUserCount: z.number().int().nullish().meta({}),  
-    createdOn: z.string().nullish().meta({}),  
-    createdById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
-    createdBy: z.string().nullish().meta({}),  
-    updatedOn: z.string().nullish().meta({}),  
-    updatedById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
-    updatedBy: z.string().nullish().meta({}),  
+    roleId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
+    roleName: z.string().meta({}).nullish(),  
+    isActive: z.boolean().meta({}).nullish(),  
+    userCount: z.number().int().meta({}).nullish(),  
+    activeUserCount: z.number().int().meta({}).nullish(),  
+    createdOn: z.string().meta({}).nullish(),  
+    createdById: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}).nullish(),  
+    createdBy: z.string().meta({}).nullish(),  
+    updatedOn: z.string().meta({}).nullish(),  
+    updatedById: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}).nullish(),  
+    updatedBy: z.string().meta({}).nullish(),  
 });
 
 export default ZQueryRoleModel;

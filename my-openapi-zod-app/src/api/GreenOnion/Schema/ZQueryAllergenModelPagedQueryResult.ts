@@ -13,11 +13,11 @@ import ZQueryAllergenModel from "./ZQueryAllergenModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryAllergenModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryAllergenModel).nullish().meta({}),  
-    messages: z.array(ZResultMessage).nullish().meta({}),  
-    currentPage: z.number().int().nullish().meta({}),  
-    totalPageCount: z.number().int().nullish().meta({}),  
-    totalRowCount: z.number().int().nullish().meta({}),  
+    rows: z.array(ZQueryAllergenModel).meta({}).nullish(),  
+    messages: z.array(ZResultMessage).meta({}).nullish(),  
+    currentPage: z.number().int().meta({}).nullish(),  
+    totalPageCount: z.number().int().meta({}).nullish(),  
+    totalRowCount: z.number().int().meta({}).nullish(),  
 });
 
 export default ZQueryAllergenModelPagedQueryResult;

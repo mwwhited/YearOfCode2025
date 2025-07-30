@@ -11,8 +11,8 @@
 import { z } from "zod";
 
 const ZFileStatus = z.object({
-    status: z.boolean().nullish().meta({}),  
-    reason: z.string().nullish().meta({}),  
+    status: z.boolean().meta({}).nullish(),  
+    reason: z.string().meta({}).nullish(),  
 });
 
 export default ZFileStatus;

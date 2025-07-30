@@ -17,20 +17,20 @@ import ZProductTableField from "./ZProductTableField";
 import ZFileStatus from "./ZFileStatus";
 
 const ZFileUploadResponse = z.object({
-    manufacture: z.string().nullish().meta({}),  
-    distributer: z.string().nullish().meta({}),  
-    districtName: z.string().nullish().meta({}),  
-    mappingFieldList: z.array(ZMappingFieldData).nullish().meta({}),  
-    fileHeaderList: z.array(ZFileHeader).nullish().meta({}),  
-    fileDataList: z.array(ZFileHeaderData).nullish().meta({}),  
-    productList: z.array(ZProductUploadModel).nullish().meta({}),  
-    tableFieldList: z.array(ZProductTableField).nullish().meta({}),  
-    uniqueExcelFileId: z.string().nullish().meta({}),  
-    statusList: z.array(ZFileStatus).nullish().meta({}),  
-    absolutePath: z.string().nullish().meta({}),  
-    success: z.boolean().nullish().meta({}),  
-    message: z.string().nullish().meta({}),  
-    payload: z.any().nullish().meta({}),  
+    manufacture: z.string().meta({}).nullish(),  
+    distributer: z.string().meta({}).nullish(),  
+    districtName: z.string().meta({}).nullish(),  
+    mappingFieldList: z.array(ZMappingFieldData).meta({}).nullish(),  
+    fileHeaderList: z.array(ZFileHeader).meta({}).nullish(),  
+    fileDataList: z.array(ZFileHeaderData).meta({}).nullish(),  
+    productList: z.array(ZProductUploadModel).meta({}).nullish(),  
+    tableFieldList: z.array(ZProductTableField).meta({}).nullish(),  
+    uniqueExcelFileId: z.string().meta({}).nullish(),  
+    statusList: z.array(ZFileStatus).meta({}).nullish(),  
+    absolutePath: z.string().meta({}).nullish(),  
+    success: z.boolean().meta({}).nullish(),  
+    message: z.string().meta({}).nullish(),  
+    payload: z.any().meta({}).nullish(),  
 });
 
 export default ZFileUploadResponse;

@@ -13,11 +13,11 @@ import ZQueryStateModel from "./ZQueryStateModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryStateModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryStateModel).nullish().meta({}),  
-    messages: z.array(ZResultMessage).nullish().meta({}),  
-    currentPage: z.number().int().nullish().meta({}),  
-    totalPageCount: z.number().int().nullish().meta({}),  
-    totalRowCount: z.number().int().nullish().meta({}),  
+    rows: z.array(ZQueryStateModel).meta({}).nullish(),  
+    messages: z.array(ZResultMessage).meta({}).nullish(),  
+    currentPage: z.number().int().meta({}).nullish(),  
+    totalPageCount: z.number().int().meta({}).nullish(),  
+    totalRowCount: z.number().int().meta({}).nullish(),  
 });
 
 export default ZQueryStateModelPagedQueryResult;

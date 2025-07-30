@@ -11,8 +11,8 @@
 import { z } from "zod";
 
 const ZSaveStorageTypeModel = z.object({
-    storageTypeId: z.number().int().nullish().meta({}),  
-    storageTypeName: z.string().nullish().meta({}),  
+    storageTypeId: z.number().int().meta({}).nullish(),  
+    storageTypeName: z.string().meta({}).nullish(),  
 });
 
 export default ZSaveStorageTypeModel;

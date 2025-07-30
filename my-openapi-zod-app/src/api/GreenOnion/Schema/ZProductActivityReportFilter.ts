@@ -11,20 +11,20 @@
 import { z } from "zod";
 
 const ZProductActivityReportFilter = z.object({
-    pageNumber: z.number().int().nullish().meta({}),  
-    pageSize: z.number().int().nullish().meta({}),  
-    schoolDistrictId: z.number().int().nullish().meta({}),  
-    iocCategoryId: z.number().int().nullish().meta({}),  
-    userId: z.number().int().nullish().meta({}),  
-    productId: z.number().int().nullish().meta({}),  
-    gtin: z.string().nullish().meta({}),  
-    upc: z.string().nullish().meta({}),  
-    startDate: z.string().nullish().meta({}),  
-    endDate: z.string().nullish().meta({}),  
-    productGtinId: z.number().int().nullish().meta({}),  
-    productUpcId: z.number().int().nullish().meta({}),  
-    cooperative: z.string().nullish().meta({}),  
-    manufactureId: z.number().int().nullish().meta({}),  
+    pageNumber: z.number().int().meta({}).nullish(),  
+    pageSize: z.number().int().meta({}).nullish(),  
+    schoolDistrictId: z.number().int().meta({}).nullish(),  
+    iocCategoryId: z.number().int().meta({}).nullish(),  
+    userId: z.number().int().meta({}).nullish(),  
+    productId: z.number().int().meta({}).nullish(),  
+    gtin: z.string().meta({}).nullish(),  
+    upc: z.string().meta({}).nullish(),  
+    startDate: z.string().meta({}).nullish(),  
+    endDate: z.string().meta({}).nullish(),  
+    productGtinId: z.number().int().meta({}).nullish(),  
+    productUpcId: z.number().int().meta({}).nullish(),  
+    cooperative: z.string().meta({}).nullish(),  
+    manufactureId: z.number().int().meta({}).nullish(),  
 });
 
 export default ZProductActivityReportFilter;

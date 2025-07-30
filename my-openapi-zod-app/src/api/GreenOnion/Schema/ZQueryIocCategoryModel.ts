@@ -11,9 +11,9 @@
 import { z } from "zod";
 
 const ZQueryIocCategoryModel = z.object({
-    iocCategoryId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
-    name: z.string().nullish().meta({}),  
-    color: z.string().nullish().meta({}),  
+    iocCategoryId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
+    name: z.string().meta({}).nullish(),  
+    color: z.string().meta({}).nullish(),  
 });
 
 export default ZQueryIocCategoryModel;

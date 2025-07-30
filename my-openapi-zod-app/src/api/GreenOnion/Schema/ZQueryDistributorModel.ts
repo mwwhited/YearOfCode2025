@@ -11,16 +11,16 @@
 import { z } from "zod";
 
 const ZQueryDistributorModel = z.object({
-    distributorId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
-    distributorName: z.string().nullish().meta({}),  
-    distributorCode: z.string().nullish().meta({}),  
-    isActive: z.boolean().nullish().meta({}),  
-    createdOn: z.string().nullish().meta({}),  
-    createdById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
-    createdBy: z.string().nullish().meta({}),  
-    updatedOn: z.string().nullish().meta({}),  
-    updatedById: z.number().int().nullish().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}),  
-    updatedBy: z.string().nullish().meta({}),  
+    distributorId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
+    distributorName: z.string().meta({}).nullish(),  
+    distributorCode: z.string().meta({}).nullish(),  
+    isActive: z.boolean().meta({}).nullish(),  
+    createdOn: z.string().meta({}).nullish(),  
+    createdById: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}).nullish(),  
+    createdBy: z.string().meta({}).nullish(),  
+    updatedOn: z.string().meta({}).nullish(),  
+    updatedById: z.number().int().meta({'x-navigation-target':'GreenOnion.Common.Models.QueryUserModel',}).nullish(),  
+    updatedBy: z.string().meta({}).nullish(),  
 });
 
 export default ZQueryDistributorModel;

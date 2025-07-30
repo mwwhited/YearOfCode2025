@@ -11,8 +11,8 @@
 import { z } from "zod";
 
 const ZQueryStorageTypeModel = z.object({
-    storageTypeId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
-    storageTypeName: z.string().nullish().meta({}),  
+    storageTypeId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
+    storageTypeName: z.string().meta({}).nullish(),  
 });
 
 export default ZQueryStorageTypeModel;

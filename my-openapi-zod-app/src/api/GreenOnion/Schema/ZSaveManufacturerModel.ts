@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZSaveManufacturerModel = z.object({
-    manufacturerId: z.number().int().nullish().meta({}),  
-    manufacturerName: z.string().nullish().meta({}),  
-    glnNumber: z.string().nullish().meta({}),  
-    isActive: z.boolean().nullish().meta({}),  
+    manufacturerId: z.number().int().meta({}).nullish(),  
+    manufacturerName: z.string().meta({}).nullish(),  
+    glnNumber: z.string().meta({}).nullish(),  
+    isActive: z.boolean().meta({}).nullish(),  
 });
 
 export default ZSaveManufacturerModel;

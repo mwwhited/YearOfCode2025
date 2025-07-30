@@ -13,11 +13,11 @@ import ZQueryDistributorModel from "./ZQueryDistributorModel";
 import ZResultMessage from "./ZResultMessage";
 
 const ZQueryDistributorModelPagedQueryResult = z.object({
-    rows: z.array(ZQueryDistributorModel).nullish().meta({}),  
-    messages: z.array(ZResultMessage).nullish().meta({}),  
-    currentPage: z.number().int().nullish().meta({}),  
-    totalPageCount: z.number().int().nullish().meta({}),  
-    totalRowCount: z.number().int().nullish().meta({}),  
+    rows: z.array(ZQueryDistributorModel).meta({}).nullish(),  
+    messages: z.array(ZResultMessage).meta({}).nullish(),  
+    currentPage: z.number().int().meta({}).nullish(),  
+    totalPageCount: z.number().int().meta({}).nullish(),  
+    totalRowCount: z.number().int().meta({}).nullish(),  
 });
 
 export default ZQueryDistributorModelPagedQueryResult;

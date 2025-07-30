@@ -13,10 +13,10 @@ import ZQueryStateModelFilter from "./ZQueryStateModelFilter";
 import ZQueryStateModelOrderBy from "./ZQueryStateModelOrderBy";
 
 const ZQueryStateModelSearchQuery = z.object({
-    currentPage: z.number().int().nullish().meta({}),  
-    pageSize: z.number().int().nullish().meta({}),  
-    excludePageCount: z.boolean().nullish().meta({}),  
-    searchTerm: z.string().nullish().meta({}),  
+    currentPage: z.number().int().meta({}).nullish(),  
+    pageSize: z.number().int().meta({}).nullish(),  
+    excludePageCount: z.boolean().meta({}).nullish(),  
+    searchTerm: z.string().meta({}).nullish(),  
     filter: ZQueryStateModelFilter.nullish(),  
     orderBy: ZQueryStateModelOrderBy.nullish(),  
 });

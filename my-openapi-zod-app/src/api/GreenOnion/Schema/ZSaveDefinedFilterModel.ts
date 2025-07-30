@@ -11,11 +11,11 @@
 import { z } from "zod";
 
 const ZSaveDefinedFilterModel = z.object({
-    definedFilterId: z.number().int().nullish().meta({'x-navigation-key':'True',}),  
-    path: z.string().nullish().meta({}),  
-    name: z.string().nullish().meta({}),  
-    isActive: z.boolean().nullish().meta({}),  
-    state: z.string().nullish().meta({}),  
+    definedFilterId: z.number().int().meta({'x-navigation-key':'True',}).nullish(),  
+    path: z.string().meta({}).nullish(),  
+    name: z.string().meta({}).nullish(),  
+    isActive: z.boolean().meta({}).nullish(),  
+    state: z.string().meta({}).nullish(),  
 });
 
 export default ZSaveDefinedFilterModel;

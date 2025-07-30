@@ -11,10 +11,10 @@
 import { z } from "zod";
 
 const ZSaveCategoryModel = z.object({
-    categoryId: z.number().int().nullish().meta({}),  
-    categoryName: z.string().nullish().meta({}),  
-    categoryCode: z.string().nullish().meta({}),  
-    isActive: z.boolean().nullish().meta({}),  
+    categoryId: z.number().int().meta({}).nullish(),  
+    categoryName: z.string().meta({}).nullish(),  
+    categoryCode: z.string().meta({}).nullish(),  
+    isActive: z.boolean().meta({}).nullish(),  
 });
 
 export default ZSaveCategoryModel;
