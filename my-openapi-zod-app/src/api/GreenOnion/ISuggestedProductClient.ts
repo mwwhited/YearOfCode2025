@@ -41,5 +41,7 @@ export default interface ISuggestedProductClient {
     * @anonymous false
     * @role Super Admin
     */
-    ApproveSuggestedProduct(): Promise<ISuggestedProductResponseModel | undefined>;
+    ApproveSuggestedProduct(params: {
+        body?: IApproveSuggestProductRequestModel[] | undefined;
+    }): Promise<ISuggestedProductResponseModel | undefined>;
 }

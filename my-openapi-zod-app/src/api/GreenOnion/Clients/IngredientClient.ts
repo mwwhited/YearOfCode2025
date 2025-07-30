@@ -120,9 +120,9 @@ export default class IngredientClient extends ClientBase implements IIngredientC
         let url_ = this.baseUrl + "/api/Ingredient/Get?";
         const { id, keyword,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (keyword !== undefined)
-            url_ += "keyword=" + encodeURIComponent(keyword) + "&";
+            url_ += "keyword=" + encodeURIComponent("" + keyword) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

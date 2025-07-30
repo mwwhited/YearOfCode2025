@@ -17,11 +17,13 @@ import type ISuggestedProductClient from "../ISuggestedProductClient";
 import type {
     ISuggestedProductRequestModel,
     ISuggestedProductResponseModel,
+    IApproveSuggestProductRequestModel,
 } from "../Models";
 
 import {
     ZSuggestedProductRequestModel,
     ZSuggestedProductResponseModel,
+    ZApproveSuggestProductRequestModel,
 } from "../Schema";
 
 // Exports
@@ -102,11 +104,16 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
     * @anonymous false
     * @role Super Admin
     */
-    async ApproveSuggestedProduct(): Promise<ISuggestedProductResponseModel | undefined> 
+    async ApproveSuggestedProduct(params: {
+        body?: IApproveSuggestProductRequestModel[] | undefined;
+    }): Promise<ISuggestedProductResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SuggestedProduct/ApproveSuggestedProduct?";
         url_ = url_.replace(/[?&]$/, "");
+        const { body } = params;
+        const content_ = JSON.stringify(body);
         const options_: RequestInit = {
+            body: content_,
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

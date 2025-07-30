@@ -14,7 +14,7 @@ const ZDataMigrationThroughApiResponseModel = z.object({
     success: z.boolean().nullish().meta({}),  
     message: z.string().nullish().meta({}),  
     totalRecords: z.number().int().nullish().meta({}),  
-    payload: z.unknown().nullish().meta({}),  
+    payload: z.any().nullish().meta({}),  
     isUpdate: z.boolean().nullish().meta({}),  
     isAdded: z.boolean().nullish().meta({}),  
     isDelete: z.boolean().nullish().meta({}),  

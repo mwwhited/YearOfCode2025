@@ -145,11 +145,11 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/Get?";
         const { id, gtin, upc,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (gtin !== undefined)
-            url_ += "gtin=" + encodeURIComponent(gtin) + "&";
+            url_ += "gtin=" + encodeURIComponent("" + gtin) + "&";
         if (upc !== undefined)
-            url_ += "upc=" + encodeURIComponent(upc) + "&";
+            url_ += "upc=" + encodeURIComponent("" + upc) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -254,9 +254,9 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/Pdfs/{id}?";
         const { id, download,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (download !== undefined)
-            url_ += "download=" + encodeURIComponent(download) + "&";
+            url_ += "download=" + encodeURIComponent("" + download) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -350,7 +350,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/GetProductDataByID?";
         const { ProductId,  } = params;
         if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
+            url_ += "ProductId=" + encodeURIComponent("" + ProductId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -401,9 +401,9 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/DeleteProductData?";
         const { ProductId, schoolDistrictId,  } = params;
         if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
+            url_ += "ProductId=" + encodeURIComponent("" + ProductId) + "&";
         if (schoolDistrictId !== undefined)
-            url_ += "schoolDistrictId=" + encodeURIComponent(schoolDistrictId) + "&";
+            url_ += "schoolDistrictId=" + encodeURIComponent("" + schoolDistrictId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",
@@ -551,7 +551,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/GetProductAllGtin?";
         const { productId,  } = params;
         if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent(productId) + "&";
+            url_ += "productId=" + encodeURIComponent("" + productId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -601,7 +601,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/GetProductAllUpc?";
         const { productId,  } = params;
         if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent(productId) + "&";
+            url_ += "productId=" + encodeURIComponent("" + productId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -657,11 +657,11 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/CreateSelectProductUpload?";
         const { schoolDistrictId, UserId, Option,  } = params;
         if (schoolDistrictId !== undefined)
-            url_ += "schoolDistrictId=" + encodeURIComponent(schoolDistrictId) + "&";
+            url_ += "schoolDistrictId=" + encodeURIComponent("" + schoolDistrictId) + "&";
         if (UserId !== undefined)
-            url_ += "UserId=" + encodeURIComponent(UserId) + "&";
+            url_ += "UserId=" + encodeURIComponent("" + UserId) + "&";
         if (Option !== undefined)
-            url_ += "Option=" + encodeURIComponent(Option) + "&";
+            url_ += "Option=" + encodeURIComponent("" + Option) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const { body } = params;
         const content_ = JSON.stringify(body);
@@ -853,7 +853,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/GetProductBeforeApproveDataByID?";
         const { ProductId,  } = params;
         if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
+            url_ += "ProductId=" + encodeURIComponent("" + ProductId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -904,9 +904,9 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/DeleteProductGtin?";
         const { productId, gtin,  } = params;
         if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent(productId) + "&";
+            url_ += "productId=" + encodeURIComponent("" + productId) + "&";
         if (gtin !== undefined)
-            url_ += "gtin=" + encodeURIComponent(gtin) + "&";
+            url_ += "gtin=" + encodeURIComponent("" + gtin) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",
@@ -957,9 +957,9 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/DeleteProductUpc?";
         const { productId, upc,  } = params;
         if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent(productId) + "&";
+            url_ += "productId=" + encodeURIComponent("" + productId) + "&";
         if (upc !== undefined)
-            url_ += "upc=" + encodeURIComponent(upc) + "&";
+            url_ += "upc=" + encodeURIComponent("" + upc) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",
@@ -1010,7 +1010,7 @@ export default class ProductClient extends ClientBase implements IProductClient 
         let url_ = this.baseUrl + "/api/Product/DeleteProductPermanently?";
         const { ProductId,  } = params;
         if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
+            url_ += "ProductId=" + encodeURIComponent("" + ProductId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",

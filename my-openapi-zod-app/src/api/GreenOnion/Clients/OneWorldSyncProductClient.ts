@@ -121,11 +121,11 @@ export default class OneWorldSyncProductClient extends ClientBase implements IOn
         let url_ = this.baseUrl + "/api/OneWorldSyncProduct/Get?";
         const { id, gtin, upc,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (gtin !== undefined)
-            url_ += "gtin=" + encodeURIComponent(gtin) + "&";
+            url_ += "gtin=" + encodeURIComponent("" + gtin) + "&";
         if (upc !== undefined)
-            url_ += "upc=" + encodeURIComponent(upc) + "&";
+            url_ += "upc=" + encodeURIComponent("" + upc) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

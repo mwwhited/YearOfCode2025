@@ -124,11 +124,11 @@ export default class UserClient extends ClientBase implements IUserClient  {
         let url_ = this.baseUrl + "/api/User/Get?";
         const { id, email, objectid,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (email !== undefined)
-            url_ += "email=" + encodeURIComponent(email) + "&";
+            url_ += "email=" + encodeURIComponent("" + email) + "&";
         if (objectid !== undefined)
-            url_ += "objectid=" + encodeURIComponent(objectid) + "&";
+            url_ += "objectid=" + encodeURIComponent("" + objectid) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

@@ -30,7 +30,7 @@ const ZFileUploadResponse = z.object({
     absolutePath: z.string().nullish().meta({}),  
     success: z.boolean().nullish().meta({}),  
     message: z.string().nullish().meta({}),  
-    payload: z.unknown().nullish().meta({}),  
+    payload: z.any().nullish().meta({}),  
 });
 
 export default ZFileUploadResponse;

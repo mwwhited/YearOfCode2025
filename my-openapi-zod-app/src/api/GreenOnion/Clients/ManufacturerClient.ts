@@ -120,9 +120,9 @@ export default class ManufacturerClient extends ClientBase implements IManufactu
         let url_ = this.baseUrl + "/api/Manufacturer/Get?";
         const { id, gln,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (gln !== undefined)
-            url_ += "gln=" + encodeURIComponent(gln) + "&";
+            url_ += "gln=" + encodeURIComponent("" + gln) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

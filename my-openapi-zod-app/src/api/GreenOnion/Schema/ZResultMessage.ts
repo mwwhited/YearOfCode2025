@@ -16,7 +16,7 @@ const ZResultMessage = z.object({
     message: z.string().nullish().meta({}),  
     messageCode: z.string().nullish().meta({}),  
     context: z.string().nullish().meta({}),  
-    metaData: z.unknown().nullish().meta({}),  
+    metaData: z.any().nullish().meta({}),  
 });
 
 export default ZResultMessage;

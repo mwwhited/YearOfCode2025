@@ -121,11 +121,11 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
         let url_ = this.baseUrl + "/api/MonthlyNumber/Get?";
         const { id, schoolDistrictId, year,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (schoolDistrictId !== undefined)
-            url_ += "schoolDistrictId=" + encodeURIComponent(schoolDistrictId) + "&";
+            url_ += "schoolDistrictId=" + encodeURIComponent("" + schoolDistrictId) + "&";
         if (year !== undefined)
-            url_ += "year=" + encodeURIComponent(year) + "&";
+            url_ += "year=" + encodeURIComponent("" + year) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

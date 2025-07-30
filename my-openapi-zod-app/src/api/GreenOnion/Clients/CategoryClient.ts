@@ -120,9 +120,9 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
         let url_ = this.baseUrl + "/api/Category/Get?";
         const { id, name,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (name !== undefined)
-            url_ += "name=" + encodeURIComponent(name) + "&";
+            url_ += "name=" + encodeURIComponent("" + name) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

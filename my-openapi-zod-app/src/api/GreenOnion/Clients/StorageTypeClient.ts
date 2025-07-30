@@ -120,9 +120,9 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
         let url_ = this.baseUrl + "/api/StorageType/Get?";
         const { id, name,  } = params;
         if (id !== undefined)
-            url_ += "id=" + encodeURIComponent(id) + "&";
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
         if (name !== undefined)
-            url_ += "name=" + encodeURIComponent(name) + "&";
+            url_ += "name=" + encodeURIComponent("" + name) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
