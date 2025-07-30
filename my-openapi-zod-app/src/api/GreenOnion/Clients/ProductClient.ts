@@ -400,6 +400,63 @@ export default class ProductClient extends ClientBase implements IProductClient 
     }
     
     /**
+    * @operationId Product_DeleteProductData
+    * @tag Product
+    * @path /api/Product/DeleteProductData 
+    * @anonymous false
+    */
+    async DeleteProductData(params: {
+            ProductId?: number | undefined;
+            schoolDistrictId?: number | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
+        let url_ = this.baseUrl + "/api/Product/DeleteProductData?";
+        const { ProductId, schoolDistrictId,  } = params;
+        if (ProductId === null)
+            throw new Error("The parameter 'ProductId' cannot be null.");
+        else if (ProductId !== undefined)
+            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
+        if (schoolDistrictId === null)
+            throw new Error("The parameter 'schoolDistrictId' cannot be null.");
+        else if (schoolDistrictId !== undefined)
+            url_ += "schoolDistrictId=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+        const options_: RequestInit = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            }
+        };
+
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processDeleteProductData(response);
+        return processed;
+    }
+
+    protected async processDeleteProductData(response: Response): Promise<IProductResponse | undefined>
+    {
+        const status = response.status;
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
+        if (status === 200) {
+            const _responseText = await response.text();
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const result200 = ZProductResponse.parse(resultData200);
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return resultData200;
+            }
+        }
+    }
+    
+    /**
     * @operationId Product_CreateUpdateGtinAllocation
     * @tag Product
     * @path /api/Product/CreateUpdateGtinAllocation 
@@ -841,6 +898,173 @@ export default class ProductClient extends ClientBase implements IProductClient 
     }
 
     protected async processGetProductBeforeApproveDataByID(response: Response): Promise<IProductResponse | undefined>
+    {
+        const status = response.status;
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
+        if (status === 200) {
+            const _responseText = await response.text();
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const result200 = ZProductResponse.parse(resultData200);
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return resultData200;
+            }
+        }
+    }
+    
+    /**
+    * @operationId Product_DeleteProductGtin
+    * @tag Product
+    * @path /api/Product/DeleteProductGtin 
+    * @anonymous false
+    */
+    async DeleteProductGtin(params: {
+            productId?: number | undefined;
+            gtin?: string | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
+        let url_ = this.baseUrl + "/api/Product/DeleteProductGtin?";
+        const { productId, gtin,  } = params;
+        if (productId === null)
+            throw new Error("The parameter 'productId' cannot be null.");
+        else if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent("" + id) + "&";
+        if (gtin === null)
+            throw new Error("The parameter 'gtin' cannot be null.");
+        else if (gtin !== undefined)
+            url_ += "gtin=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+        const options_: RequestInit = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            }
+        };
+
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processDeleteProductGtin(response);
+        return processed;
+    }
+
+    protected async processDeleteProductGtin(response: Response): Promise<IProductResponse | undefined>
+    {
+        const status = response.status;
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
+        if (status === 200) {
+            const _responseText = await response.text();
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const result200 = ZProductResponse.parse(resultData200);
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return resultData200;
+            }
+        }
+    }
+    
+    /**
+    * @operationId Product_DeleteProductUpc
+    * @tag Product
+    * @path /api/Product/DeleteProductUpc 
+    * @anonymous false
+    */
+    async DeleteProductUpc(params: {
+            productId?: number | undefined;
+            upc?: string | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
+        let url_ = this.baseUrl + "/api/Product/DeleteProductUpc?";
+        const { productId, upc,  } = params;
+        if (productId === null)
+            throw new Error("The parameter 'productId' cannot be null.");
+        else if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent("" + id) + "&";
+        if (upc === null)
+            throw new Error("The parameter 'upc' cannot be null.");
+        else if (upc !== undefined)
+            url_ += "upc=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+        const options_: RequestInit = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            }
+        };
+
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processDeleteProductUpc(response);
+        return processed;
+    }
+
+    protected async processDeleteProductUpc(response: Response): Promise<IProductResponse | undefined>
+    {
+        const status = response.status;
+        const _headers: Record<string, unknown> = {};
+        if (response.headers && response.headers.forEach) {
+            response.headers.forEach((v: unknown, k: string) => _headers[k] = v); 
+        };
+        if (status === 200) {
+            const _responseText = await response.text();
+            const resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            const result200 = ZProductResponse.parse(resultData200);
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = await response.text();
+            if (_responseText !== "") {
+                const resultData200 = JSON.parse(_responseText, this.jsonParseReviver);
+                return resultData200;
+            }
+        }
+    }
+    
+    /**
+    * @operationId Product_DeleteProductPermanently
+    * @tag Product
+    * @path /api/Product/DeleteProductPermanently 
+    * @anonymous false
+    * @role Super Admin
+    */
+    async DeleteProductPermanently(params: {
+            ProductId?: number | undefined;
+    }): Promise<IProductResponse | undefined> 
+    { 
+        let url_ = this.baseUrl + "/api/Product/DeleteProductPermanently?";
+        const { ProductId,  } = params;
+        if (ProductId === null)
+            throw new Error("The parameter 'ProductId' cannot be null.");
+        else if (ProductId !== undefined)
+            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+        const options_: RequestInit = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "text/plain"
+            }
+        };
+
+        const transformedOptions = await this.transformOptions(options_);
+        const response = await  this.http.fetch(url_, transformedOptions);
+        const processed = await this.processDeleteProductPermanently(response);
+        return processed;
+    }
+
+    protected async processDeleteProductPermanently(response: Response): Promise<IProductResponse | undefined>
     {
         const status = response.status;
         const _headers: Record<string, unknown> = {};

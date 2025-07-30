@@ -116,6 +116,17 @@ export default interface IProductClient {
     }): Promise<IProductResponse | undefined>;
     
     /**
+    * @operationId Product_DeleteProductData
+    * @tag Product
+    * @path /api/Product/DeleteProductData 
+    * @anonymous false
+    */ 
+    DeleteProductData(params: {
+            ProductId?: number | undefined;
+            schoolDistrictId?: number | undefined;
+    }): Promise<IProductResponse | undefined>;
+    
+    /**
     * @operationId Product_CreateUpdateGtinAllocation
     * @tag Product
     * @path /api/Product/CreateUpdateGtinAllocation 
@@ -207,6 +218,39 @@ export default interface IProductClient {
     * @anonymous false
     */ 
     GetProductBeforeApproveDataByID(params: {
+            ProductId?: number | undefined;
+    }): Promise<IProductResponse | undefined>;
+    
+    /**
+    * @operationId Product_DeleteProductGtin
+    * @tag Product
+    * @path /api/Product/DeleteProductGtin 
+    * @anonymous false
+    */ 
+    DeleteProductGtin(params: {
+            productId?: number | undefined;
+            gtin?: string | undefined;
+    }): Promise<IProductResponse | undefined>;
+    
+    /**
+    * @operationId Product_DeleteProductUpc
+    * @tag Product
+    * @path /api/Product/DeleteProductUpc 
+    * @anonymous false
+    */ 
+    DeleteProductUpc(params: {
+            productId?: number | undefined;
+            upc?: string | undefined;
+    }): Promise<IProductResponse | undefined>;
+    
+    /**
+    * @operationId Product_DeleteProductPermanently
+    * @tag Product
+    * @path /api/Product/DeleteProductPermanently 
+    * @anonymous false
+    * @role Super Admin
+    */ 
+    DeleteProductPermanently(params: {
             ProductId?: number | undefined;
     }): Promise<IProductResponse | undefined>;
 }
