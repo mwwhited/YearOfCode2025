@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZDataMigrationThroughApiResponseModel from "../Schema/ZDataMigrationThroughApiResponseModel";
-type DataMigrationThroughApiResponseModel = z.infer<typeof ZDataMigrationThroughApiResponseModel>;
 type IDataMigrationThroughApiResponseModel = z.infer<typeof ZDataMigrationThroughApiResponseModel>;
-export type { DataMigrationThroughApiResponseModel, IDataMigrationThroughApiResponseModel };
+export type { IDataMigrationThroughApiResponseModel };
 export { ZDataMigrationThroughApiResponseModel };

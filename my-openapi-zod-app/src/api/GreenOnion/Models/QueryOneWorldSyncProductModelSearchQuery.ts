@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryOneWorldSyncProductModelSearchQuery from "../Schema/ZQueryOneWorldSyncProductModelSearchQuery";
-type QueryOneWorldSyncProductModelSearchQuery = z.infer<typeof ZQueryOneWorldSyncProductModelSearchQuery>;
 type IQueryOneWorldSyncProductModelSearchQuery = z.infer<typeof ZQueryOneWorldSyncProductModelSearchQuery>;
-export type { QueryOneWorldSyncProductModelSearchQuery, IQueryOneWorldSyncProductModelSearchQuery };
+export type { IQueryOneWorldSyncProductModelSearchQuery };
 export { ZQueryOneWorldSyncProductModelSearchQuery };

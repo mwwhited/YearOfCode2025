@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQuerySubCategoryModel from "../Schema/ZQuerySubCategoryModel";
-type QuerySubCategoryModel = z.infer<typeof ZQuerySubCategoryModel>;
 type IQuerySubCategoryModel = z.infer<typeof ZQuerySubCategoryModel>;
-export type { QuerySubCategoryModel, IQuerySubCategoryModel };
+export type { IQuerySubCategoryModel };
 export { ZQuerySubCategoryModel };

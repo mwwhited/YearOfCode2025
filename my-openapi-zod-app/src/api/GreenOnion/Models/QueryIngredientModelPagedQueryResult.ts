@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryIngredientModelPagedQueryResult from "../Schema/ZQueryIngredientModelPagedQueryResult";
-type QueryIngredientModelPagedQueryResult = z.infer<typeof ZQueryIngredientModelPagedQueryResult>;
 type IQueryIngredientModelPagedQueryResult = z.infer<typeof ZQueryIngredientModelPagedQueryResult>;
-export type { QueryIngredientModelPagedQueryResult, IQueryIngredientModelPagedQueryResult };
+export type { IQueryIngredientModelPagedQueryResult };
 export { ZQueryIngredientModelPagedQueryResult };

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZMappingFieldData from "../Schema/ZMappingFieldData";
-type MappingFieldData = z.infer<typeof ZMappingFieldData>;
 type IMappingFieldData = z.infer<typeof ZMappingFieldData>;
-export type { MappingFieldData, IMappingFieldData };
+export type { IMappingFieldData };
 export { ZMappingFieldData };

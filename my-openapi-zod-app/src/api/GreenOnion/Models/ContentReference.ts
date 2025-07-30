@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZContentReference from "../Schema/ZContentReference";
-type ContentReference = z.infer<typeof ZContentReference>;
 type IContentReference = z.infer<typeof ZContentReference>;
-export type { ContentReference, IContentReference };
+export type { IContentReference };
 export { ZContentReference };

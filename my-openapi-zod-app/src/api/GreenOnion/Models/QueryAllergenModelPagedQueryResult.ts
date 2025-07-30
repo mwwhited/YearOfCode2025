@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryAllergenModelPagedQueryResult from "../Schema/ZQueryAllergenModelPagedQueryResult";
-type QueryAllergenModelPagedQueryResult = z.infer<typeof ZQueryAllergenModelPagedQueryResult>;
 type IQueryAllergenModelPagedQueryResult = z.infer<typeof ZQueryAllergenModelPagedQueryResult>;
-export type { QueryAllergenModelPagedQueryResult, IQueryAllergenModelPagedQueryResult };
+export type { IQueryAllergenModelPagedQueryResult };
 export { ZQueryAllergenModelPagedQueryResult };

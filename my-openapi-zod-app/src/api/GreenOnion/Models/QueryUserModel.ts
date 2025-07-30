@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryUserModel from "../Schema/ZQueryUserModel";
-type QueryUserModel = z.infer<typeof ZQueryUserModel>;
 type IQueryUserModel = z.infer<typeof ZQueryUserModel>;
-export type { QueryUserModel, IQueryUserModel };
+export type { IQueryUserModel };
 export { ZQueryUserModel };

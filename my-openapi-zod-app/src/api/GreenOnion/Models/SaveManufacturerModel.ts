@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveManufacturerModel from "../Schema/ZSaveManufacturerModel";
-type SaveManufacturerModel = z.infer<typeof ZSaveManufacturerModel>;
 type ISaveManufacturerModel = z.infer<typeof ZSaveManufacturerModel>;
-export type { SaveManufacturerModel, ISaveManufacturerModel };
+export type { ISaveManufacturerModel };
 export { ZSaveManufacturerModel };

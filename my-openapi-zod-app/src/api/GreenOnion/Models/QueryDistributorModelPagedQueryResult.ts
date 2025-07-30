@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryDistributorModelPagedQueryResult from "../Schema/ZQueryDistributorModelPagedQueryResult";
-type QueryDistributorModelPagedQueryResult = z.infer<typeof ZQueryDistributorModelPagedQueryResult>;
 type IQueryDistributorModelPagedQueryResult = z.infer<typeof ZQueryDistributorModelPagedQueryResult>;
-export type { QueryDistributorModelPagedQueryResult, IQueryDistributorModelPagedQueryResult };
+export type { IQueryDistributorModelPagedQueryResult };
 export { ZQueryDistributorModelPagedQueryResult };

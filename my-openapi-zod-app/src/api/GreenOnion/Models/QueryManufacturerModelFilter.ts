@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryManufacturerModelFilter from "../Schema/ZQueryManufacturerModelFilter";
-type QueryManufacturerModelFilter = z.infer<typeof ZQueryManufacturerModelFilter>;
 type IQueryManufacturerModelFilter = z.infer<typeof ZQueryManufacturerModelFilter>;
-export type { QueryManufacturerModelFilter, IQueryManufacturerModelFilter };
+export type { IQueryManufacturerModelFilter };
 export { ZQueryManufacturerModelFilter };

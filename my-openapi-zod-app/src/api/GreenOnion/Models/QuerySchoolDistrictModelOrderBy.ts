@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQuerySchoolDistrictModelOrderBy from "../Schema/ZQuerySchoolDistrictModelOrderBy";
-type QuerySchoolDistrictModelOrderBy = z.infer<typeof ZQuerySchoolDistrictModelOrderBy>;
 type IQuerySchoolDistrictModelOrderBy = z.infer<typeof ZQuerySchoolDistrictModelOrderBy>;
-export type { QuerySchoolDistrictModelOrderBy, IQuerySchoolDistrictModelOrderBy };
+export type { IQuerySchoolDistrictModelOrderBy };
 export { ZQuerySchoolDistrictModelOrderBy };

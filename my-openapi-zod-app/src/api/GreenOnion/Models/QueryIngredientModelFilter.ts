@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryIngredientModelFilter from "../Schema/ZQueryIngredientModelFilter";
-type QueryIngredientModelFilter = z.infer<typeof ZQueryIngredientModelFilter>;
 type IQueryIngredientModelFilter = z.infer<typeof ZQueryIngredientModelFilter>;
-export type { QueryIngredientModelFilter, IQueryIngredientModelFilter };
+export type { IQueryIngredientModelFilter };
 export { ZQueryIngredientModelFilter };

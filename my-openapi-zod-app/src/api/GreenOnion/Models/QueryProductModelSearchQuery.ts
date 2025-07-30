@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryProductModelSearchQuery from "../Schema/ZQueryProductModelSearchQuery";
-type QueryProductModelSearchQuery = z.infer<typeof ZQueryProductModelSearchQuery>;
 type IQueryProductModelSearchQuery = z.infer<typeof ZQueryProductModelSearchQuery>;
-export type { QueryProductModelSearchQuery, IQueryProductModelSearchQuery };
+export type { IQueryProductModelSearchQuery };
 export { ZQueryProductModelSearchQuery };

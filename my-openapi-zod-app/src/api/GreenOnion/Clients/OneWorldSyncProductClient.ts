@@ -120,18 +120,12 @@ export default class OneWorldSyncProductClient extends ClientBase implements IOn
     { 
         let url_ = this.baseUrl + "/api/OneWorldSyncProduct/Get?";
         const { id, gtin, upc,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (gtin === null)
-            throw new Error("The parameter 'gtin' cannot be null.");
-        else if (gtin !== undefined)
-            url_ += "gtin=" + encodeURIComponent("" + id) + "&";
-        if (upc === null)
-            throw new Error("The parameter 'upc' cannot be null.");
-        else if (upc !== undefined)
-            url_ += "upc=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (gtin !== undefined)
+            url_ += "gtin=" + encodeURIComponent(gtin) + "&";
+        if (upc !== undefined)
+            url_ += "upc=" + encodeURIComponent(upc) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

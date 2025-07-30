@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQuerySchoolDistrictModelSearchQuery from "../Schema/ZQuerySchoolDistrictModelSearchQuery";
-type QuerySchoolDistrictModelSearchQuery = z.infer<typeof ZQuerySchoolDistrictModelSearchQuery>;
 type IQuerySchoolDistrictModelSearchQuery = z.infer<typeof ZQuerySchoolDistrictModelSearchQuery>;
-export type { QuerySchoolDistrictModelSearchQuery, IQuerySchoolDistrictModelSearchQuery };
+export type { IQuerySchoolDistrictModelSearchQuery };
 export { ZQuerySchoolDistrictModelSearchQuery };

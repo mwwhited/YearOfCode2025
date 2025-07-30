@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryIngredientModelOrderBy from "../Schema/ZQueryIngredientModelOrderBy";
-type QueryIngredientModelOrderBy = z.infer<typeof ZQueryIngredientModelOrderBy>;
 type IQueryIngredientModelOrderBy = z.infer<typeof ZQueryIngredientModelOrderBy>;
-export type { QueryIngredientModelOrderBy, IQueryIngredientModelOrderBy };
+export type { IQueryIngredientModelOrderBy };
 export { ZQueryIngredientModelOrderBy };

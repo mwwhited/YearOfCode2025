@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStorageTypeModelOrderBy from "../Schema/ZQueryStorageTypeModelOrderBy";
-type QueryStorageTypeModelOrderBy = z.infer<typeof ZQueryStorageTypeModelOrderBy>;
 type IQueryStorageTypeModelOrderBy = z.infer<typeof ZQueryStorageTypeModelOrderBy>;
-export type { QueryStorageTypeModelOrderBy, IQueryStorageTypeModelOrderBy };
+export type { IQueryStorageTypeModelOrderBy };
 export { ZQueryStorageTypeModelOrderBy };

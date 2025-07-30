@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStateModel from "../Schema/ZQueryStateModel";
-type QueryStateModel = z.infer<typeof ZQueryStateModel>;
 type IQueryStateModel = z.infer<typeof ZQueryStateModel>;
-export type { QueryStateModel, IQueryStateModel };
+export type { IQueryStateModel };
 export { ZQueryStateModel };

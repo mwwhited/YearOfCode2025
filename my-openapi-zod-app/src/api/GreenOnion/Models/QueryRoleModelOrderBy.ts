@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryRoleModelOrderBy from "../Schema/ZQueryRoleModelOrderBy";
-type QueryRoleModelOrderBy = z.infer<typeof ZQueryRoleModelOrderBy>;
 type IQueryRoleModelOrderBy = z.infer<typeof ZQueryRoleModelOrderBy>;
-export type { QueryRoleModelOrderBy, IQueryRoleModelOrderBy };
+export type { IQueryRoleModelOrderBy };
 export { ZQueryRoleModelOrderBy };

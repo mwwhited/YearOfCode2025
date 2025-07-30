@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZApproveSuggestProductRequestModel from "../Schema/ZApproveSuggestProductRequestModel";
-type ApproveSuggestProductRequestModel = z.infer<typeof ZApproveSuggestProductRequestModel>;
 type IApproveSuggestProductRequestModel = z.infer<typeof ZApproveSuggestProductRequestModel>;
-export type { ApproveSuggestProductRequestModel, IApproveSuggestProductRequestModel };
+export type { IApproveSuggestProductRequestModel };
 export { ZApproveSuggestProductRequestModel };

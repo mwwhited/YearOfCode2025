@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStorageTypeModel from "../Schema/ZQueryStorageTypeModel";
-type QueryStorageTypeModel = z.infer<typeof ZQueryStorageTypeModel>;
 type IQueryStorageTypeModel = z.infer<typeof ZQueryStorageTypeModel>;
-export type { QueryStorageTypeModel, IQueryStorageTypeModel };
+export type { IQueryStorageTypeModel };
 export { ZQueryStorageTypeModel };

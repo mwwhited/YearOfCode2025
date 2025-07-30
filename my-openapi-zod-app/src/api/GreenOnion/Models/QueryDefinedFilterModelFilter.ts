@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryDefinedFilterModelFilter from "../Schema/ZQueryDefinedFilterModelFilter";
-type QueryDefinedFilterModelFilter = z.infer<typeof ZQueryDefinedFilterModelFilter>;
 type IQueryDefinedFilterModelFilter = z.infer<typeof ZQueryDefinedFilterModelFilter>;
-export type { QueryDefinedFilterModelFilter, IQueryDefinedFilterModelFilter };
+export type { IQueryDefinedFilterModelFilter };
 export { ZQueryDefinedFilterModelFilter };

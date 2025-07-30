@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryDefinedFilterModelPagedQueryResult from "../Schema/ZQueryDefinedFilterModelPagedQueryResult";
-type QueryDefinedFilterModelPagedQueryResult = z.infer<typeof ZQueryDefinedFilterModelPagedQueryResult>;
 type IQueryDefinedFilterModelPagedQueryResult = z.infer<typeof ZQueryDefinedFilterModelPagedQueryResult>;
-export type { QueryDefinedFilterModelPagedQueryResult, IQueryDefinedFilterModelPagedQueryResult };
+export type { IQueryDefinedFilterModelPagedQueryResult };
 export { ZQueryDefinedFilterModelPagedQueryResult };

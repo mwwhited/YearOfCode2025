@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryErrorLogModelSearchQuery from "../Schema/ZQueryErrorLogModelSearchQuery";
-type QueryErrorLogModelSearchQuery = z.infer<typeof ZQueryErrorLogModelSearchQuery>;
 type IQueryErrorLogModelSearchQuery = z.infer<typeof ZQueryErrorLogModelSearchQuery>;
-export type { QueryErrorLogModelSearchQuery, IQueryErrorLogModelSearchQuery };
+export type { IQueryErrorLogModelSearchQuery };
 export { ZQueryErrorLogModelSearchQuery };

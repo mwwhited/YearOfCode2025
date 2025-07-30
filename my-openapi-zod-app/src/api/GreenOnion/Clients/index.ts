@@ -11,26 +11,52 @@
 export { ApiException } from "../../_ClientBase";
 
 // Clients
-export type { default as AllergenClient } from "./AllergenClient";  
-export type { default as CategoryClient } from "./CategoryClient";  
-export type { default as DashBoardClient } from "./DashBoardClient";  
-export type { default as DataMigrationThroughApiClient } from "./DataMigrationThroughApiClient";  
-export type { default as DefinedFilterClient } from "./DefinedFilterClient";  
-export type { default as DistributorClient } from "./DistributorClient";  
-export type { default as ErrorLogClient } from "./ErrorLogClient";  
-export type { default as IIocCategoryClient } from "./IIocCategoryClient";  
-export type { default as IngredientClient } from "./IngredientClient";  
-export type { default as ManufacturerClient } from "./ManufacturerClient";  
-export type { default as MonthlyNumberClient } from "./MonthlyNumberClient";  
-export type { default as OneWorldSyncProductClient } from "./OneWorldSyncProductClient";  
-export type { default as ProductClient } from "./ProductClient";  
-export type { default as ReportClient } from "./ReportClient";  
-export type { default as RoleClient } from "./RoleClient";  
-export type { default as SchoolDistrictClient } from "./SchoolDistrictClient";  
-export type { default as StateClient } from "./StateClient";  
-export type { default as StorageTypeClient } from "./StorageTypeClient";  
-export type { default as SubCategoryClient } from "./SubCategoryClient";  
-export type { default as SuggestedProductClient } from "./SuggestedProductClient";  
-export type { default as UserClient } from "./UserClient";  
-export type { default as UserActionLogClient } from "./UserActionLogClient";  
-export type { default as ApiHealthClient } from "./ApiHealthClient";  
+export { default as AllergenClient } from "./AllergenClient";  
+export { default as CategoryClient } from "./CategoryClient";  
+export { default as DashBoardClient } from "./DashBoardClient";  
+export { default as DataMigrationThroughApiClient } from "./DataMigrationThroughApiClient";  
+export { default as DefinedFilterClient } from "./DefinedFilterClient";  
+export { default as DistributorClient } from "./DistributorClient";  
+export { default as ErrorLogClient } from "./ErrorLogClient";  
+export { default as IIocCategoryClient } from "./IIocCategoryClient";  
+export { default as IngredientClient } from "./IngredientClient";  
+export { default as ManufacturerClient } from "./ManufacturerClient";  
+export { default as MonthlyNumberClient } from "./MonthlyNumberClient";  
+export { default as OneWorldSyncProductClient } from "./OneWorldSyncProductClient";  
+export { default as ProductClient } from "./ProductClient";  
+export { default as ReportClient } from "./ReportClient";  
+export { default as RoleClient } from "./RoleClient";  
+export { default as SchoolDistrictClient } from "./SchoolDistrictClient";  
+export { default as StateClient } from "./StateClient";  
+export { default as StorageTypeClient } from "./StorageTypeClient";  
+export { default as SubCategoryClient } from "./SubCategoryClient";  
+export { default as SuggestedProductClient } from "./SuggestedProductClient";  
+export { default as UserClient } from "./UserClient";  
+export { default as UserActionLogClient } from "./UserActionLogClient";  
+export { default as ApiHealthClient } from "./ApiHealthClient";  
+
+export type {
+    IAllergenClient,
+    ICategoryClient,
+    IDashBoardClient,
+    IDataMigrationThroughApiClient,
+    IDefinedFilterClient,
+    IDistributorClient,
+    IErrorLogClient,
+    IIIocCategoryClient,
+    IIngredientClient,
+    IManufacturerClient,
+    IMonthlyNumberClient,
+    IOneWorldSyncProductClient,
+    IProductClient,
+    IReportClient,
+    IRoleClient,
+    ISchoolDistrictClient,
+    IStateClient,
+    IStorageTypeClient,
+    ISubCategoryClient,
+    ISuggestedProductClient,
+    IUserClient,
+    IUserActionLogClient,
+    IApiHealthClient,
+} from '../'

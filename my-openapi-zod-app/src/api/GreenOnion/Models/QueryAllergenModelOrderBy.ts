@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryAllergenModelOrderBy from "../Schema/ZQueryAllergenModelOrderBy";
-type QueryAllergenModelOrderBy = z.infer<typeof ZQueryAllergenModelOrderBy>;
 type IQueryAllergenModelOrderBy = z.infer<typeof ZQueryAllergenModelOrderBy>;
-export type { QueryAllergenModelOrderBy, IQueryAllergenModelOrderBy };
+export type { IQueryAllergenModelOrderBy };
 export { ZQueryAllergenModelOrderBy };

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZProductActivityReportFilter from "../Schema/ZProductActivityReportFilter";
-type ProductActivityReportFilter = z.infer<typeof ZProductActivityReportFilter>;
 type IProductActivityReportFilter = z.infer<typeof ZProductActivityReportFilter>;
-export type { ProductActivityReportFilter, IProductActivityReportFilter };
+export type { IProductActivityReportFilter };
 export { ZProductActivityReportFilter };

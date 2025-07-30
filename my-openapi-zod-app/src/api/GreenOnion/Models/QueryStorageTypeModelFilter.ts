@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStorageTypeModelFilter from "../Schema/ZQueryStorageTypeModelFilter";
-type QueryStorageTypeModelFilter = z.infer<typeof ZQueryStorageTypeModelFilter>;
 type IQueryStorageTypeModelFilter = z.infer<typeof ZQueryStorageTypeModelFilter>;
-export type { QueryStorageTypeModelFilter, IQueryStorageTypeModelFilter };
+export type { IQueryStorageTypeModelFilter };
 export { ZQueryStorageTypeModelFilter };

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZProblemDetails from "../Schema/ZProblemDetails";
-type ProblemDetails = z.infer<typeof ZProblemDetails>;
 type IProblemDetails = z.infer<typeof ZProblemDetails>;
-export type { ProblemDetails, IProblemDetails };
+export type { IProblemDetails };
 export { ZProblemDetails };

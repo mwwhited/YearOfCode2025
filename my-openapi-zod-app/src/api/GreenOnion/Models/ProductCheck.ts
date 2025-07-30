@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZProductCheck from "../Schema/ZProductCheck";
-type ProductCheck = z.infer<typeof ZProductCheck>;
 type IProductCheck = z.infer<typeof ZProductCheck>;
-export type { ProductCheck, IProductCheck };
+export type { IProductCheck };
 export { ZProductCheck };

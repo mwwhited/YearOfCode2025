@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZUserResponseModel from "../Schema/ZUserResponseModel";
-type UserResponseModel = z.infer<typeof ZUserResponseModel>;
 type IUserResponseModel = z.infer<typeof ZUserResponseModel>;
-export type { UserResponseModel, IUserResponseModel };
+export type { IUserResponseModel };
 export { ZUserResponseModel };

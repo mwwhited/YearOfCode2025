@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZRoleMst from "../Schema/ZRoleMst";
-type RoleMst = z.infer<typeof ZRoleMst>;
 type IRoleMst = z.infer<typeof ZRoleMst>;
-export type { RoleMst, IRoleMst };
+export type { IRoleMst };
 export { ZRoleMst };

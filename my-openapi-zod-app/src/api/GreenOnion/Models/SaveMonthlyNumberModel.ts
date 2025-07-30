@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveMonthlyNumberModel from "../Schema/ZSaveMonthlyNumberModel";
-type SaveMonthlyNumberModel = z.infer<typeof ZSaveMonthlyNumberModel>;
 type ISaveMonthlyNumberModel = z.infer<typeof ZSaveMonthlyNumberModel>;
-export type { SaveMonthlyNumberModel, ISaveMonthlyNumberModel };
+export type { ISaveMonthlyNumberModel };
 export { ZSaveMonthlyNumberModel };

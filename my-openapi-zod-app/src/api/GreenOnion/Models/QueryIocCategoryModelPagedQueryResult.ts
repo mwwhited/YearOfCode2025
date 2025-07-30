@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryIocCategoryModelPagedQueryResult from "../Schema/ZQueryIocCategoryModelPagedQueryResult";
-type QueryIocCategoryModelPagedQueryResult = z.infer<typeof ZQueryIocCategoryModelPagedQueryResult>;
 type IQueryIocCategoryModelPagedQueryResult = z.infer<typeof ZQueryIocCategoryModelPagedQueryResult>;
-export type { QueryIocCategoryModelPagedQueryResult, IQueryIocCategoryModelPagedQueryResult };
+export type { IQueryIocCategoryModelPagedQueryResult };
 export { ZQueryIocCategoryModelPagedQueryResult };

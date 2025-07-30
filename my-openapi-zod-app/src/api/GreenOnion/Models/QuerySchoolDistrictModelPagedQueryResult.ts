@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQuerySchoolDistrictModelPagedQueryResult from "../Schema/ZQuerySchoolDistrictModelPagedQueryResult";
-type QuerySchoolDistrictModelPagedQueryResult = z.infer<typeof ZQuerySchoolDistrictModelPagedQueryResult>;
 type IQuerySchoolDistrictModelPagedQueryResult = z.infer<typeof ZQuerySchoolDistrictModelPagedQueryResult>;
-export type { QuerySchoolDistrictModelPagedQueryResult, IQuerySchoolDistrictModelPagedQueryResult };
+export type { IQuerySchoolDistrictModelPagedQueryResult };
 export { ZQuerySchoolDistrictModelPagedQueryResult };

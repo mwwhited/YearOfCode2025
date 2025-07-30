@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStateModelOrderBy from "../Schema/ZQueryStateModelOrderBy";
-type QueryStateModelOrderBy = z.infer<typeof ZQueryStateModelOrderBy>;
 type IQueryStateModelOrderBy = z.infer<typeof ZQueryStateModelOrderBy>;
-export type { QueryStateModelOrderBy, IQueryStateModelOrderBy };
+export type { IQueryStateModelOrderBy };
 export { ZQueryStateModelOrderBy };

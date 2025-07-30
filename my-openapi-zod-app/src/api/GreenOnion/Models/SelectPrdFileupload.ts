@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSelectPrdFileupload from "../Schema/ZSelectPrdFileupload";
-type SelectPrdFileupload = z.infer<typeof ZSelectPrdFileupload>;
 type ISelectPrdFileupload = z.infer<typeof ZSelectPrdFileupload>;
-export type { SelectPrdFileupload, ISelectPrdFileupload };
+export type { ISelectPrdFileupload };
 export { ZSelectPrdFileupload };

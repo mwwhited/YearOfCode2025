@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStorageTypeModelPagedQueryResult from "../Schema/ZQueryStorageTypeModelPagedQueryResult";
-type QueryStorageTypeModelPagedQueryResult = z.infer<typeof ZQueryStorageTypeModelPagedQueryResult>;
 type IQueryStorageTypeModelPagedQueryResult = z.infer<typeof ZQueryStorageTypeModelPagedQueryResult>;
-export type { QueryStorageTypeModelPagedQueryResult, IQueryStorageTypeModelPagedQueryResult };
+export type { IQueryStorageTypeModelPagedQueryResult };
 export { ZQueryStorageTypeModelPagedQueryResult };

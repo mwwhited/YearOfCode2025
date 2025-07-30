@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryManufacturerModel from "../Schema/ZQueryManufacturerModel";
-type QueryManufacturerModel = z.infer<typeof ZQueryManufacturerModel>;
 type IQueryManufacturerModel = z.infer<typeof ZQueryManufacturerModel>;
-export type { QueryManufacturerModel, IQueryManufacturerModel };
+export type { IQueryManufacturerModel };
 export { ZQueryManufacturerModel };

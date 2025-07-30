@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveDefinedFilterModel from "../Schema/ZSaveDefinedFilterModel";
-type SaveDefinedFilterModel = z.infer<typeof ZSaveDefinedFilterModel>;
 type ISaveDefinedFilterModel = z.infer<typeof ZSaveDefinedFilterModel>;
-export type { SaveDefinedFilterModel, ISaveDefinedFilterModel };
+export type { ISaveDefinedFilterModel };
 export { ZSaveDefinedFilterModel };

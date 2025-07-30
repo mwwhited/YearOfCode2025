@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryMonthlyNumberModelPagedQueryResult from "../Schema/ZQueryMonthlyNumberModelPagedQueryResult";
-type QueryMonthlyNumberModelPagedQueryResult = z.infer<typeof ZQueryMonthlyNumberModelPagedQueryResult>;
 type IQueryMonthlyNumberModelPagedQueryResult = z.infer<typeof ZQueryMonthlyNumberModelPagedQueryResult>;
-export type { QueryMonthlyNumberModelPagedQueryResult, IQueryMonthlyNumberModelPagedQueryResult };
+export type { IQueryMonthlyNumberModelPagedQueryResult };
 export { ZQueryMonthlyNumberModelPagedQueryResult };

@@ -120,18 +120,12 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
     { 
         let url_ = this.baseUrl + "/api/MonthlyNumber/Get?";
         const { id, schoolDistrictId, year,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (schoolDistrictId === null)
-            throw new Error("The parameter 'schoolDistrictId' cannot be null.");
-        else if (schoolDistrictId !== undefined)
-            url_ += "schoolDistrictId=" + encodeURIComponent("" + id) + "&";
-        if (year === null)
-            throw new Error("The parameter 'year' cannot be null.");
-        else if (year !== undefined)
-            url_ += "year=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (schoolDistrictId !== undefined)
+            url_ += "schoolDistrictId=" + encodeURIComponent(schoolDistrictId) + "&";
+        if (year !== undefined)
+            url_ += "year=" + encodeURIComponent(year) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryCategoryModelFilter from "../Schema/ZQueryCategoryModelFilter";
-type QueryCategoryModelFilter = z.infer<typeof ZQueryCategoryModelFilter>;
 type IQueryCategoryModelFilter = z.infer<typeof ZQueryCategoryModelFilter>;
-export type { QueryCategoryModelFilter, IQueryCategoryModelFilter };
+export type { IQueryCategoryModelFilter };
 export { ZQueryCategoryModelFilter };

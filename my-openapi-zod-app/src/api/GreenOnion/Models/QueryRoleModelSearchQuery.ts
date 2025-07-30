@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryRoleModelSearchQuery from "../Schema/ZQueryRoleModelSearchQuery";
-type QueryRoleModelSearchQuery = z.infer<typeof ZQueryRoleModelSearchQuery>;
 type IQueryRoleModelSearchQuery = z.infer<typeof ZQueryRoleModelSearchQuery>;
-export type { QueryRoleModelSearchQuery, IQueryRoleModelSearchQuery };
+export type { IQueryRoleModelSearchQuery };
 export { ZQueryRoleModelSearchQuery };

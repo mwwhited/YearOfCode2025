@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveStorageTypeModel from "../Schema/ZSaveStorageTypeModel";
-type SaveStorageTypeModel = z.infer<typeof ZSaveStorageTypeModel>;
 type ISaveStorageTypeModel = z.infer<typeof ZSaveStorageTypeModel>;
-export type { SaveStorageTypeModel, ISaveStorageTypeModel };
+export type { ISaveStorageTypeModel };
 export { ZSaveStorageTypeModel };

@@ -104,10 +104,8 @@ export default class ReportClient extends ClientBase implements IReportClient  {
     { 
         let url_ = this.baseUrl + "/api/Report/GetItemDetailByProductIdReport?";
         const { productId,  } = params;
-        if (productId === null)
-            throw new Error("The parameter 'productId' cannot be null.");
-        else if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent("" + id) + "&";
+        if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent(productId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "POST",

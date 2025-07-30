@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryUserActionLogModelOrderBy from "../Schema/ZQueryUserActionLogModelOrderBy";
-type QueryUserActionLogModelOrderBy = z.infer<typeof ZQueryUserActionLogModelOrderBy>;
 type IQueryUserActionLogModelOrderBy = z.infer<typeof ZQueryUserActionLogModelOrderBy>;
-export type { QueryUserActionLogModelOrderBy, IQueryUserActionLogModelOrderBy };
+export type { IQueryUserActionLogModelOrderBy };
 export { ZQueryUserActionLogModelOrderBy };

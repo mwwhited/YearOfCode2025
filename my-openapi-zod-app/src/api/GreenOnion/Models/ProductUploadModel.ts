@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZProductUploadModel from "../Schema/ZProductUploadModel";
-type ProductUploadModel = z.infer<typeof ZProductUploadModel>;
 type IProductUploadModel = z.infer<typeof ZProductUploadModel>;
-export type { ProductUploadModel, IProductUploadModel };
+export type { IProductUploadModel };
 export { ZProductUploadModel };

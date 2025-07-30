@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryErrorLogModelFilter from "../Schema/ZQueryErrorLogModelFilter";
-type QueryErrorLogModelFilter = z.infer<typeof ZQueryErrorLogModelFilter>;
 type IQueryErrorLogModelFilter = z.infer<typeof ZQueryErrorLogModelFilter>;
-export type { QueryErrorLogModelFilter, IQueryErrorLogModelFilter };
+export type { IQueryErrorLogModelFilter };
 export { ZQueryErrorLogModelFilter };

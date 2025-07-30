@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZProductGtinAllocationModel from "../Schema/ZProductGtinAllocationModel";
-type ProductGtinAllocationModel = z.infer<typeof ZProductGtinAllocationModel>;
 type IProductGtinAllocationModel = z.infer<typeof ZProductGtinAllocationModel>;
-export type { ProductGtinAllocationModel, IProductGtinAllocationModel };
+export type { IProductGtinAllocationModel };
 export { ZProductGtinAllocationModel };

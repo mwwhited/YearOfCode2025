@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryIocCategoryModel from "../Schema/ZQueryIocCategoryModel";
-type QueryIocCategoryModel = z.infer<typeof ZQueryIocCategoryModel>;
 type IQueryIocCategoryModel = z.infer<typeof ZQueryIocCategoryModel>;
-export type { QueryIocCategoryModel, IQueryIocCategoryModel };
+export type { IQueryIocCategoryModel };
 export { ZQueryIocCategoryModel };

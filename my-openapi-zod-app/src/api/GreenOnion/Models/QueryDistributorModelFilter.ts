@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryDistributorModelFilter from "../Schema/ZQueryDistributorModelFilter";
-type QueryDistributorModelFilter = z.infer<typeof ZQueryDistributorModelFilter>;
 type IQueryDistributorModelFilter = z.infer<typeof ZQueryDistributorModelFilter>;
-export type { QueryDistributorModelFilter, IQueryDistributorModelFilter };
+export type { IQueryDistributorModelFilter };
 export { ZQueryDistributorModelFilter };

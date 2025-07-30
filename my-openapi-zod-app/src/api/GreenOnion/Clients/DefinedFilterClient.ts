@@ -120,18 +120,12 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
     { 
         let url_ = this.baseUrl + "/api/DefinedFilter/Get?";
         const { id, name, path,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (name === null)
-            throw new Error("The parameter 'name' cannot be null.");
-        else if (name !== undefined)
-            url_ += "name=" + encodeURIComponent("" + id) + "&";
-        if (path === null)
-            throw new Error("The parameter 'path' cannot be null.");
-        else if (path !== undefined)
-            url_ += "path=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (name !== undefined)
+            url_ += "name=" + encodeURIComponent(name) + "&";
+        if (path !== undefined)
+            url_ += "path=" + encodeURIComponent(path) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

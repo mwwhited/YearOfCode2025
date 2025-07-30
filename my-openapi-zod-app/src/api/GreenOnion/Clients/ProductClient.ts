@@ -144,18 +144,12 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/Get?";
         const { id, gtin, upc,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (gtin === null)
-            throw new Error("The parameter 'gtin' cannot be null.");
-        else if (gtin !== undefined)
-            url_ += "gtin=" + encodeURIComponent("" + id) + "&";
-        if (upc === null)
-            throw new Error("The parameter 'upc' cannot be null.");
-        else if (upc !== undefined)
-            url_ += "upc=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (gtin !== undefined)
+            url_ += "gtin=" + encodeURIComponent(gtin) + "&";
+        if (upc !== undefined)
+            url_ += "upc=" + encodeURIComponent(upc) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -259,14 +253,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/Pdfs/{id}?";
         const { id, download,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (download === null)
-            throw new Error("The parameter 'download' cannot be null.");
-        else if (download !== undefined)
-            url_ += "download=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (download !== undefined)
+            url_ += "download=" + encodeURIComponent(download) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -359,10 +349,8 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/GetProductDataByID?";
         const { ProductId,  } = params;
-        if (ProductId === null)
-            throw new Error("The parameter 'ProductId' cannot be null.");
-        else if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
+        if (ProductId !== undefined)
+            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -412,14 +400,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/DeleteProductData?";
         const { ProductId, schoolDistrictId,  } = params;
-        if (ProductId === null)
-            throw new Error("The parameter 'ProductId' cannot be null.");
-        else if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
-        if (schoolDistrictId === null)
-            throw new Error("The parameter 'schoolDistrictId' cannot be null.");
-        else if (schoolDistrictId !== undefined)
-            url_ += "schoolDistrictId=" + encodeURIComponent("" + id) + "&";
+        if (ProductId !== undefined)
+            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
+        if (schoolDistrictId !== undefined)
+            url_ += "schoolDistrictId=" + encodeURIComponent(schoolDistrictId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",
@@ -566,10 +550,8 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/GetProductAllGtin?";
         const { productId,  } = params;
-        if (productId === null)
-            throw new Error("The parameter 'productId' cannot be null.");
-        else if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent("" + id) + "&";
+        if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent(productId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -618,10 +600,8 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/GetProductAllUpc?";
         const { productId,  } = params;
-        if (productId === null)
-            throw new Error("The parameter 'productId' cannot be null.");
-        else if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent("" + id) + "&";
+        if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent(productId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -676,18 +656,12 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/CreateSelectProductUpload?";
         const { schoolDistrictId, UserId, Option,  } = params;
-        if (schoolDistrictId === null)
-            throw new Error("The parameter 'schoolDistrictId' cannot be null.");
-        else if (schoolDistrictId !== undefined)
-            url_ += "schoolDistrictId=" + encodeURIComponent("" + id) + "&";
-        if (UserId === null)
-            throw new Error("The parameter 'UserId' cannot be null.");
-        else if (UserId !== undefined)
-            url_ += "UserId=" + encodeURIComponent("" + id) + "&";
-        if (Option === null)
-            throw new Error("The parameter 'Option' cannot be null.");
-        else if (Option !== undefined)
-            url_ += "Option=" + encodeURIComponent("" + id) + "&";
+        if (schoolDistrictId !== undefined)
+            url_ += "schoolDistrictId=" + encodeURIComponent(schoolDistrictId) + "&";
+        if (UserId !== undefined)
+            url_ += "UserId=" + encodeURIComponent(UserId) + "&";
+        if (Option !== undefined)
+            url_ += "Option=" + encodeURIComponent(Option) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const { body } = params;
         const content_ = JSON.stringify(body);
@@ -878,10 +852,8 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/GetProductBeforeApproveDataByID?";
         const { ProductId,  } = params;
-        if (ProductId === null)
-            throw new Error("The parameter 'ProductId' cannot be null.");
-        else if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
+        if (ProductId !== undefined)
+            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",
@@ -931,14 +903,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/DeleteProductGtin?";
         const { productId, gtin,  } = params;
-        if (productId === null)
-            throw new Error("The parameter 'productId' cannot be null.");
-        else if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent("" + id) + "&";
-        if (gtin === null)
-            throw new Error("The parameter 'gtin' cannot be null.");
-        else if (gtin !== undefined)
-            url_ += "gtin=" + encodeURIComponent("" + id) + "&";
+        if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent(productId) + "&";
+        if (gtin !== undefined)
+            url_ += "gtin=" + encodeURIComponent(gtin) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",
@@ -988,14 +956,10 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/DeleteProductUpc?";
         const { productId, upc,  } = params;
-        if (productId === null)
-            throw new Error("The parameter 'productId' cannot be null.");
-        else if (productId !== undefined)
-            url_ += "productId=" + encodeURIComponent("" + id) + "&";
-        if (upc === null)
-            throw new Error("The parameter 'upc' cannot be null.");
-        else if (upc !== undefined)
-            url_ += "upc=" + encodeURIComponent("" + id) + "&";
+        if (productId !== undefined)
+            url_ += "productId=" + encodeURIComponent(productId) + "&";
+        if (upc !== undefined)
+            url_ += "upc=" + encodeURIComponent(upc) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",
@@ -1045,10 +1009,8 @@ export default class ProductClient extends ClientBase implements IProductClient 
     { 
         let url_ = this.baseUrl + "/api/Product/DeleteProductPermanently?";
         const { ProductId,  } = params;
-        if (ProductId === null)
-            throw new Error("The parameter 'ProductId' cannot be null.");
-        else if (ProductId !== undefined)
-            url_ += "ProductId=" + encodeURIComponent("" + id) + "&";
+        if (ProductId !== undefined)
+            url_ += "ProductId=" + encodeURIComponent(ProductId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "DELETE",

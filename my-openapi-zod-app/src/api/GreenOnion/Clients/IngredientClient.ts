@@ -119,14 +119,10 @@ export default class IngredientClient extends ClientBase implements IIngredientC
     { 
         let url_ = this.baseUrl + "/api/Ingredient/Get?";
         const { id, keyword,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (keyword === null)
-            throw new Error("The parameter 'keyword' cannot be null.");
-        else if (keyword !== undefined)
-            url_ += "keyword=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (keyword !== undefined)
+            url_ += "keyword=" + encodeURIComponent(keyword) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryDefinedFilterModelOrderBy from "../Schema/ZQueryDefinedFilterModelOrderBy";
-type QueryDefinedFilterModelOrderBy = z.infer<typeof ZQueryDefinedFilterModelOrderBy>;
 type IQueryDefinedFilterModelOrderBy = z.infer<typeof ZQueryDefinedFilterModelOrderBy>;
-export type { QueryDefinedFilterModelOrderBy, IQueryDefinedFilterModelOrderBy };
+export type { IQueryDefinedFilterModelOrderBy };
 export { ZQueryDefinedFilterModelOrderBy };

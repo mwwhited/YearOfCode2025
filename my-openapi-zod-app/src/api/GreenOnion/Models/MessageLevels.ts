@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZMessageLevels from "../Schema/ZMessageLevels";
-type MessageLevels = z.infer<typeof ZMessageLevels>;
 type IMessageLevels = z.infer<typeof ZMessageLevels>;
-export type { MessageLevels, IMessageLevels };
+export type { IMessageLevels };
 export { ZMessageLevels };

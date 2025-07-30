@@ -123,18 +123,12 @@ export default class UserClient extends ClientBase implements IUserClient  {
     { 
         let url_ = this.baseUrl + "/api/User/Get?";
         const { id, email, objectid,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (email === null)
-            throw new Error("The parameter 'email' cannot be null.");
-        else if (email !== undefined)
-            url_ += "email=" + encodeURIComponent("" + id) + "&";
-        if (objectid === null)
-            throw new Error("The parameter 'objectid' cannot be null.");
-        else if (objectid !== undefined)
-            url_ += "objectid=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (email !== undefined)
+            url_ += "email=" + encodeURIComponent(email) + "&";
+        if (objectid !== undefined)
+            url_ += "objectid=" + encodeURIComponent(objectid) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZOrderDirections from "../Schema/ZOrderDirections";
-type OrderDirections = z.infer<typeof ZOrderDirections>;
 type IOrderDirections = z.infer<typeof ZOrderDirections>;
-export type { OrderDirections, IOrderDirections };
+export type { IOrderDirections };
 export { ZOrderDirections };

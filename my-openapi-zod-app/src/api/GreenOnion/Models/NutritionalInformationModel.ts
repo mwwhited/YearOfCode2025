@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZNutritionalInformationModel from "../Schema/ZNutritionalInformationModel";
-type NutritionalInformationModel = z.infer<typeof ZNutritionalInformationModel>;
 type INutritionalInformationModel = z.infer<typeof ZNutritionalInformationModel>;
-export type { NutritionalInformationModel, INutritionalInformationModel };
+export type { INutritionalInformationModel };
 export { ZNutritionalInformationModel };

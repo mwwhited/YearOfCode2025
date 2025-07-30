@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryAllergenModelSearchQuery from "../Schema/ZQueryAllergenModelSearchQuery";
-type QueryAllergenModelSearchQuery = z.infer<typeof ZQueryAllergenModelSearchQuery>;
 type IQueryAllergenModelSearchQuery = z.infer<typeof ZQueryAllergenModelSearchQuery>;
-export type { QueryAllergenModelSearchQuery, IQueryAllergenModelSearchQuery };
+export type { IQueryAllergenModelSearchQuery };
 export { ZQueryAllergenModelSearchQuery };

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZFileStatus from "../Schema/ZFileStatus";
-type FileStatus = z.infer<typeof ZFileStatus>;
 type IFileStatus = z.infer<typeof ZFileStatus>;
-export type { FileStatus, IFileStatus };
+export type { IFileStatus };
 export { ZFileStatus };

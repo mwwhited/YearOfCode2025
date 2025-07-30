@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveCategoryModel from "../Schema/ZSaveCategoryModel";
-type SaveCategoryModel = z.infer<typeof ZSaveCategoryModel>;
 type ISaveCategoryModel = z.infer<typeof ZSaveCategoryModel>;
-export type { SaveCategoryModel, ISaveCategoryModel };
+export type { ISaveCategoryModel };
 export { ZSaveCategoryModel };

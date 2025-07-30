@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZProductTableField from "../Schema/ZProductTableField";
-type ProductTableField = z.infer<typeof ZProductTableField>;
 type IProductTableField = z.infer<typeof ZProductTableField>;
-export type { ProductTableField, IProductTableField };
+export type { IProductTableField };
 export { ZProductTableField };

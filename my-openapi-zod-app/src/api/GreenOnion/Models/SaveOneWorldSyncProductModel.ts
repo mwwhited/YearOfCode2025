@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveOneWorldSyncProductModel from "../Schema/ZSaveOneWorldSyncProductModel";
-type SaveOneWorldSyncProductModel = z.infer<typeof ZSaveOneWorldSyncProductModel>;
 type ISaveOneWorldSyncProductModel = z.infer<typeof ZSaveOneWorldSyncProductModel>;
-export type { SaveOneWorldSyncProductModel, ISaveOneWorldSyncProductModel };
+export type { ISaveOneWorldSyncProductModel };
 export { ZSaveOneWorldSyncProductModel };

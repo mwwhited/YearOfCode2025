@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQuerySubCategoryModelPagedQueryResult from "../Schema/ZQuerySubCategoryModelPagedQueryResult";
-type QuerySubCategoryModelPagedQueryResult = z.infer<typeof ZQuerySubCategoryModelPagedQueryResult>;
 type IQuerySubCategoryModelPagedQueryResult = z.infer<typeof ZQuerySubCategoryModelPagedQueryResult>;
-export type { QuerySubCategoryModelPagedQueryResult, IQuerySubCategoryModelPagedQueryResult };
+export type { IQuerySubCategoryModelPagedQueryResult };
 export { ZQuerySubCategoryModelPagedQueryResult };

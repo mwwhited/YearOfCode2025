@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryOneWorldSyncProductModelPagedQueryResult from "../Schema/ZQueryOneWorldSyncProductModelPagedQueryResult";
-type QueryOneWorldSyncProductModelPagedQueryResult = z.infer<typeof ZQueryOneWorldSyncProductModelPagedQueryResult>;
 type IQueryOneWorldSyncProductModelPagedQueryResult = z.infer<typeof ZQueryOneWorldSyncProductModelPagedQueryResult>;
-export type { QueryOneWorldSyncProductModelPagedQueryResult, IQueryOneWorldSyncProductModelPagedQueryResult };
+export type { IQueryOneWorldSyncProductModelPagedQueryResult };
 export { ZQueryOneWorldSyncProductModelPagedQueryResult };

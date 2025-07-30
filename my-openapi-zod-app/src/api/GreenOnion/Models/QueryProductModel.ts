@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryProductModel from "../Schema/ZQueryProductModel";
-type QueryProductModel = z.infer<typeof ZQueryProductModel>;
 type IQueryProductModel = z.infer<typeof ZQueryProductModel>;
-export type { QueryProductModel, IQueryProductModel };
+export type { IQueryProductModel };
 export { ZQueryProductModel };

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryUserActionLogModelSearchQuery from "../Schema/ZQueryUserActionLogModelSearchQuery";
-type QueryUserActionLogModelSearchQuery = z.infer<typeof ZQueryUserActionLogModelSearchQuery>;
 type IQueryUserActionLogModelSearchQuery = z.infer<typeof ZQueryUserActionLogModelSearchQuery>;
-export type { QueryUserActionLogModelSearchQuery, IQueryUserActionLogModelSearchQuery };
+export type { IQueryUserActionLogModelSearchQuery };
 export { ZQueryUserActionLogModelSearchQuery };

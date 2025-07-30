@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryCategoryModelOrderBy from "../Schema/ZQueryCategoryModelOrderBy";
-type QueryCategoryModelOrderBy = z.infer<typeof ZQueryCategoryModelOrderBy>;
 type IQueryCategoryModelOrderBy = z.infer<typeof ZQueryCategoryModelOrderBy>;
-export type { QueryCategoryModelOrderBy, IQueryCategoryModelOrderBy };
+export type { IQueryCategoryModelOrderBy };
 export { ZQueryCategoryModelOrderBy };

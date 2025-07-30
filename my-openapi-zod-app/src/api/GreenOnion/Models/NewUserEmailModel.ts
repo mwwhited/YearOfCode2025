@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZNewUserEmailModel from "../Schema/ZNewUserEmailModel";
-type NewUserEmailModel = z.infer<typeof ZNewUserEmailModel>;
 type INewUserEmailModel = z.infer<typeof ZNewUserEmailModel>;
-export type { NewUserEmailModel, INewUserEmailModel };
+export type { INewUserEmailModel };
 export { ZNewUserEmailModel };

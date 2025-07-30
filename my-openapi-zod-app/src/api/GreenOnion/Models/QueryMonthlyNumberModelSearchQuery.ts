@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryMonthlyNumberModelSearchQuery from "../Schema/ZQueryMonthlyNumberModelSearchQuery";
-type QueryMonthlyNumberModelSearchQuery = z.infer<typeof ZQueryMonthlyNumberModelSearchQuery>;
 type IQueryMonthlyNumberModelSearchQuery = z.infer<typeof ZQueryMonthlyNumberModelSearchQuery>;
-export type { QueryMonthlyNumberModelSearchQuery, IQueryMonthlyNumberModelSearchQuery };
+export type { IQueryMonthlyNumberModelSearchQuery };
 export { ZQueryMonthlyNumberModelSearchQuery };

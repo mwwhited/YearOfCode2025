@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryUserActionLogModel from "../Schema/ZQueryUserActionLogModel";
-type QueryUserActionLogModel = z.infer<typeof ZQueryUserActionLogModel>;
 type IQueryUserActionLogModel = z.infer<typeof ZQueryUserActionLogModel>;
-export type { QueryUserActionLogModel, IQueryUserActionLogModel };
+export type { IQueryUserActionLogModel };
 export { ZQueryUserActionLogModel };

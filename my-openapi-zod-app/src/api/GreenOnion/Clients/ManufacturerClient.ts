@@ -119,14 +119,10 @@ export default class ManufacturerClient extends ClientBase implements IManufactu
     { 
         let url_ = this.baseUrl + "/api/Manufacturer/Get?";
         const { id, gln,  } = params;
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        if (gln === null)
-            throw new Error("The parameter 'gln' cannot be null.");
-        else if (gln !== undefined)
-            url_ += "gln=" + encodeURIComponent("" + id) + "&";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent(id) + "&";
+        if (gln !== undefined)
+            url_ += "gln=" + encodeURIComponent(gln) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "GET",

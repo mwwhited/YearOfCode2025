@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryUserModelPagedQueryResult from "../Schema/ZQueryUserModelPagedQueryResult";
-type QueryUserModelPagedQueryResult = z.infer<typeof ZQueryUserModelPagedQueryResult>;
 type IQueryUserModelPagedQueryResult = z.infer<typeof ZQueryUserModelPagedQueryResult>;
-export type { QueryUserModelPagedQueryResult, IQueryUserModelPagedQueryResult };
+export type { IQueryUserModelPagedQueryResult };
 export { ZQueryUserModelPagedQueryResult };

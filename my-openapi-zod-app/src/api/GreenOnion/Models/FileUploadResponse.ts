@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZFileUploadResponse from "../Schema/ZFileUploadResponse";
-type FileUploadResponse = z.infer<typeof ZFileUploadResponse>;
 type IFileUploadResponse = z.infer<typeof ZFileUploadResponse>;
-export type { FileUploadResponse, IFileUploadResponse };
+export type { IFileUploadResponse };
 export { ZFileUploadResponse };

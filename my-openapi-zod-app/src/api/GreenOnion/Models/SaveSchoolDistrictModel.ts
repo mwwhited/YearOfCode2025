@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveSchoolDistrictModel from "../Schema/ZSaveSchoolDistrictModel";
-type SaveSchoolDistrictModel = z.infer<typeof ZSaveSchoolDistrictModel>;
 type ISaveSchoolDistrictModel = z.infer<typeof ZSaveSchoolDistrictModel>;
-export type { SaveSchoolDistrictModel, ISaveSchoolDistrictModel };
+export type { ISaveSchoolDistrictModel };
 export { ZSaveSchoolDistrictModel };

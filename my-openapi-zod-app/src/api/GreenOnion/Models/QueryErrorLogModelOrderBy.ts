@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryErrorLogModelOrderBy from "../Schema/ZQueryErrorLogModelOrderBy";
-type QueryErrorLogModelOrderBy = z.infer<typeof ZQueryErrorLogModelOrderBy>;
 type IQueryErrorLogModelOrderBy = z.infer<typeof ZQueryErrorLogModelOrderBy>;
-export type { QueryErrorLogModelOrderBy, IQueryErrorLogModelOrderBy };
+export type { IQueryErrorLogModelOrderBy };
 export { ZQueryErrorLogModelOrderBy };

@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZFileHeaderData from "../Schema/ZFileHeaderData";
-type FileHeaderData = z.infer<typeof ZFileHeaderData>;
 type IFileHeaderData = z.infer<typeof ZFileHeaderData>;
-export type { FileHeaderData, IFileHeaderData };
+export type { IFileHeaderData };
 export { ZFileHeaderData };

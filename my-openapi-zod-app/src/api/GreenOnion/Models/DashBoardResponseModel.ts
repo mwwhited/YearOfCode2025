@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZDashBoardResponseModel from "../Schema/ZDashBoardResponseModel";
-type DashBoardResponseModel = z.infer<typeof ZDashBoardResponseModel>;
 type IDashBoardResponseModel = z.infer<typeof ZDashBoardResponseModel>;
-export type { DashBoardResponseModel, IDashBoardResponseModel };
+export type { IDashBoardResponseModel };
 export { ZDashBoardResponseModel };

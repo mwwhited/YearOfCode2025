@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZFilterParameter from "../Schema/ZFilterParameter";
-type FilterParameter = z.infer<typeof ZFilterParameter>;
 type IFilterParameter = z.infer<typeof ZFilterParameter>;
-export type { FilterParameter, IFilterParameter };
+export type { IFilterParameter };
 export { ZFilterParameter };

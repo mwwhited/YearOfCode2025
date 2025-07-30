@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSuggestedProductResponseModel from "../Schema/ZSuggestedProductResponseModel";
-type SuggestedProductResponseModel = z.infer<typeof ZSuggestedProductResponseModel>;
 type ISuggestedProductResponseModel = z.infer<typeof ZSuggestedProductResponseModel>;
-export type { SuggestedProductResponseModel, ISuggestedProductResponseModel };
+export type { ISuggestedProductResponseModel };
 export { ZSuggestedProductResponseModel };

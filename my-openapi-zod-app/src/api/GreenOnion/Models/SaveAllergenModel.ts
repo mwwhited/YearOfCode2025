@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSaveAllergenModel from "../Schema/ZSaveAllergenModel";
-type SaveAllergenModel = z.infer<typeof ZSaveAllergenModel>;
 type ISaveAllergenModel = z.infer<typeof ZSaveAllergenModel>;
-export type { SaveAllergenModel, ISaveAllergenModel };
+export type { ISaveAllergenModel };
 export { ZSaveAllergenModel };

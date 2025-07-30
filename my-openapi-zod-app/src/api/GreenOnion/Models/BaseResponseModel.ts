@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZBaseResponseModel from "../Schema/ZBaseResponseModel";
-type BaseResponseModel = z.infer<typeof ZBaseResponseModel>;
 type IBaseResponseModel = z.infer<typeof ZBaseResponseModel>;
-export type { BaseResponseModel, IBaseResponseModel };
+export type { IBaseResponseModel };
 export { ZBaseResponseModel };

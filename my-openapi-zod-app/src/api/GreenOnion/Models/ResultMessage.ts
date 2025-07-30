@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZResultMessage from "../Schema/ZResultMessage";
-type ResultMessage = z.infer<typeof ZResultMessage>;
 type IResultMessage = z.infer<typeof ZResultMessage>;
-export type { ResultMessage, IResultMessage };
+export type { IResultMessage };
 export { ZResultMessage };

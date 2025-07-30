@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZSelectProductSaveCheckListRequestModel from "../Schema/ZSelectProductSaveCheckListRequestModel";
-type SelectProductSaveCheckListRequestModel = z.infer<typeof ZSelectProductSaveCheckListRequestModel>;
 type ISelectProductSaveCheckListRequestModel = z.infer<typeof ZSelectProductSaveCheckListRequestModel>;
-export type { SelectProductSaveCheckListRequestModel, ISelectProductSaveCheckListRequestModel };
+export type { ISelectProductSaveCheckListRequestModel };
 export { ZSelectProductSaveCheckListRequestModel };

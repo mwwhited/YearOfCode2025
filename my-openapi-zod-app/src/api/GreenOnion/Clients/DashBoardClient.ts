@@ -52,10 +52,8 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
     { 
         let url_ = this.baseUrl + "/api/DashBoard/GetDashBoardProductList?";
         const { userId,  } = params;
-        if (userId === null)
-            throw new Error("The parameter 'userId' cannot be null.");
-        else if (userId !== undefined)
-            url_ += "userId=" + encodeURIComponent("" + id) + "&";
+        if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent(userId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "POST",
@@ -103,10 +101,8 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
     { 
         let url_ = this.baseUrl + "/api/DashBoard/GetDashBoardTotalCountList?";
         const { userId,  } = params;
-        if (userId === null)
-            throw new Error("The parameter 'userId' cannot be null.");
-        else if (userId !== undefined)
-            url_ += "userId=" + encodeURIComponent("" + id) + "&";
+        if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent(userId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "POST",
@@ -154,10 +150,8 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
     { 
         let url_ = this.baseUrl + "/api/DashBoard/GetDistrictFreeOfIOCProductList?";
         const { userId,  } = params;
-        if (userId === null)
-            throw new Error("The parameter 'userId' cannot be null.");
-        else if (userId !== undefined)
-            url_ += "userId=" + encodeURIComponent("" + id) + "&";
+        if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent(userId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "POST",
@@ -205,10 +199,8 @@ export default class DashBoardClient extends ClientBase implements IDashBoardCli
     { 
         let url_ = this.baseUrl + "/api/DashBoard/GetDistrictFreeOfIOCProductReplacesList?";
         const { userId,  } = params;
-        if (userId === null)
-            throw new Error("The parameter 'userId' cannot be null.");
-        else if (userId !== undefined)
-            url_ += "userId=" + encodeURIComponent("" + id) + "&";
+        if (userId !== undefined)
+            url_ += "userId=" + encodeURIComponent(userId) + "&";
         url_ = url_.replace(/[?&]$/, "");
         const options_: RequestInit = {
             method: "POST",

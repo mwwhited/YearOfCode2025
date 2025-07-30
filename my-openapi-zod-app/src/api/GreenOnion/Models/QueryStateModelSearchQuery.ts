@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryStateModelSearchQuery from "../Schema/ZQueryStateModelSearchQuery";
-type QueryStateModelSearchQuery = z.infer<typeof ZQueryStateModelSearchQuery>;
 type IQueryStateModelSearchQuery = z.infer<typeof ZQueryStateModelSearchQuery>;
-export type { QueryStateModelSearchQuery, IQueryStateModelSearchQuery };
+export type { IQueryStateModelSearchQuery };
 export { ZQueryStateModelSearchQuery };

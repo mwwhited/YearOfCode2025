@@ -11,7 +11,6 @@
 import type { z } from "zod";
 
 import ZQueryMonthlyNumberModelOrderBy from "../Schema/ZQueryMonthlyNumberModelOrderBy";
-type QueryMonthlyNumberModelOrderBy = z.infer<typeof ZQueryMonthlyNumberModelOrderBy>;
 type IQueryMonthlyNumberModelOrderBy = z.infer<typeof ZQueryMonthlyNumberModelOrderBy>;
-export type { QueryMonthlyNumberModelOrderBy, IQueryMonthlyNumberModelOrderBy };
+export type { IQueryMonthlyNumberModelOrderBy };
 export { ZQueryMonthlyNumberModelOrderBy };
