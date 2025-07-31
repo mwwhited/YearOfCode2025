@@ -7,8 +7,7 @@ import { Button } from '@/components/controls';
 import { useAuth } from '@/hooks/useAuth';
 import { ROLE_GROUPS } from '@/types/roles';
 import type { z } from 'zod';
-import type { BulkEditResult } from '@/components/BulkEditModal';
-import type { FieldConfig } from '@/components/forms/DynamicForm';
+import type { BulkEditResult, FieldConfig } from '@/components/BulkEditModal';
 import { BulkEditApiHandler } from '@/utils/bulkEditApi';
 import { auditLogger } from '@/utils/auditLogger';
 
@@ -47,24 +46,14 @@ export const ProductsList: React.FC = () => {
     });
   }, []);
 
-  const handleEditDynamic = (product: Product) => {
-    auditLogger.logSuccess({
-      action: 'VIEW',
-      entityType: 'Product',
-      entityId: String(product.productId),
-      details: { action: 'navigate-to-edit', editType: 'dynamic' }
-    });
-    navigate(`/products/edit-dynamic/${product.productId as any}`);
-  };
-
-  const handleEditPanel = (product: Product) => {
+  const handleEdit = (product: Product) => {
     auditLogger.logSuccess({
       action: 'VIEW',
       entityType: 'Product',
       entityId: String(product.productId),
       details: { action: 'navigate-to-edit', editType: 'panel' }
     });
-    navigate(`/products/edit-panel/${product.productId as any}`);
+    navigate(`/products/edit/${product.productId as any}`);
   };
 
   const handleViewCard = () => {
@@ -79,33 +68,33 @@ export const ProductsList: React.FC = () => {
   // Bulk edit configuration
   const bulkEditFields: FieldConfig[] = [
     {
-      name: 'manufacturerId',
+      key: 'manufacturerId',
       label: 'Manufacturer',
-      type: 'number',
-      placeholder: 'Leave empty to keep current manufacturer'
+      type: 'text'
     },
     {
-      name: 'categoryId',
+      key: 'categoryId',
       label: 'Category',
-      type: 'number',
-      placeholder: 'Leave empty to keep current category'
+      type: 'text'
     },
     {
-      name: 'isActive',
+      key: 'isActive',
       label: 'Active Status',
-      type: 'boolean'
+      type: 'dropdown',
+      options: [
+        { label: 'Active', value: true },
+        { label: 'Inactive', value: false }
+      ]
     },
     {
-      name: 'unitPrice',
+      key: 'unitPrice',
       label: 'Unit Price',
-      type: 'number',
-      placeholder: 'Leave empty to keep current price'
+      type: 'text'
     },
     {
-      name: 'unitsInStock',
+      key: 'unitsInStock',
       label: 'Units in Stock',
-      type: 'number',
-      placeholder: 'Leave empty to keep current stock'
+      type: 'text'
     }
   ];
 
@@ -165,7 +154,7 @@ export const ProductsList: React.FC = () => {
             <Button
               label="Add Product"
               icon="pi pi-plus"
-              onClick={() => navigate('/products/edit-dynamic/new')}
+              onClick={() => navigate('/products/add')}
             />
           )}
         </div>
@@ -205,20 +194,12 @@ export const ProductsList: React.FC = () => {
         actionColumn={canEdit ? {
           header: 'Actions',
           body: (rowData: Product) => (
-            <div className="flex gap-1">
-              <Button
-                label="Edit"
-                icon="pi pi-pencil"
-                className="p-button-sm p-button-success"
-                onClick={() => handleEditDynamic(rowData)}
-              />
-              <Button
-                label="Panel"
-                icon="pi pi-cog"
-                className="p-button-sm p-button-info"
-                onClick={() => handleEditPanel(rowData)}
-              />
-            </div>
+            <Button
+              label="Edit"
+              icon="pi pi-pencil"
+              className="p-button-sm p-button-success"
+              onClick={() => handleEdit(rowData)}
+            />
           )
         } : undefined}
       />

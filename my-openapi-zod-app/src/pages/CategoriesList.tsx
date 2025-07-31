@@ -37,12 +37,8 @@ export const CategoriesList: React.FC = () => {
     }
   };
 
-  const handleEditDynamic = (category: Category) => {
-    navigate(`/categories/edit-dynamic/${category.categoryId}`);
-  };
-
-  const handleEditPanel = (category: Category) => {
-    navigate(`/categories/edit-panel/${category.categoryId}`);
+  const handleEdit = (category: Category) => {
+    navigate(`/categories/edit/${category.categoryId}`);
   };
 
   return (
@@ -54,7 +50,7 @@ export const CategoriesList: React.FC = () => {
             <Button
               label="Add Category"
               icon="pi pi-plus"
-              onClick={() => navigate('/categories/edit-dynamic/new')}
+              onClick={() => navigate('/categories/add')}
             />
           )}
         </div>
@@ -74,20 +70,12 @@ export const CategoriesList: React.FC = () => {
         actionColumn={canEdit ? {
           header: 'Actions',
           body: (rowData: Category) => (
-            <div className="flex gap-1">
-              <Button
-                label="Edit"
-                icon="pi pi-pencil"
-                className="p-button-sm p-button-success"
-                onClick={() => handleEditDynamic(rowData)}
-              />
-              <Button
-                label="Panel"
-                icon="pi pi-cog"
-                className="p-button-sm p-button-info"
-                onClick={() => handleEditPanel(rowData)}
-              />
-            </div>
+            <Button
+              label="Edit"
+              icon="pi pi-pencil"
+              className="p-button-sm p-button-success"
+              onClick={() => handleEdit(rowData)}
+            />
           )
         } : undefined}
       />

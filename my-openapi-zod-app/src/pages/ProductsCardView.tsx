@@ -17,8 +17,6 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) => {
-  const navigate = useNavigate();
-
   const handleEditClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onEdit) {
@@ -111,19 +109,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onEdit, canEdit }) =
           {canEdit && (
             <div className="flex gap-2 mt-3 pt-3 border-top-1 surface-border">
               <Button
-                label="Edit Dynamic"
+                label="Edit"
                 icon="pi pi-pencil"
                 className="p-button-sm p-button-success flex-1"
                 onClick={handleEditClick}
-              />
-              <Button
-                label="Edit Panel"
-                icon="pi pi-cog"
-                className="p-button-sm p-button-info flex-1"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/products/edit-panel/${product.productId as any}`);
-                }}
               />
             </div>
           )}
@@ -266,7 +255,7 @@ export const ProductsCardView: React.FC = () => {
   };
 
   const handleEdit = (product: Product) => {
-    navigate(`/products/edit-dynamic/${product.productId as any}`);
+    navigate(`/products/edit/${product.productId as any}`);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -322,7 +311,7 @@ export const ProductsCardView: React.FC = () => {
             <Button
               label="Add Product"
               icon="pi pi-plus"
-              onClick={() => navigate('/products/edit-dynamic/new')}
+              onClick={() => navigate('/products/add')}
             />
           )}
         </div>

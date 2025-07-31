@@ -45,22 +45,13 @@ const UsersList: React.FC = () => {
   // Action buttons for each user row
   const actionTemplate = (rowData: IQueryUserModel) => {
     return (
-      <div className="flex gap-2">
-        <Button
-          icon="pi pi-cog"
-          size="small"
-          className="p-button-rounded p-button-text p-button-secondary"
-          tooltip="Edit with Dynamic Form"
-          onClick={() => navigate(`/users/${rowData.userId}/edit-dynamic`)}
-        />
-        <Button
-          icon="pi pi-list"
-          size="small"
-          className="p-button-rounded p-button-text p-button-info"
-          tooltip="Edit with Panel Form"
-          onClick={() => navigate(`/users/${rowData.userId}/edit-panel`)}
-        />
-      </div>
+      <Button
+        icon="pi pi-pencil"
+        size="small"
+        className="p-button-rounded p-button-text p-button-primary"
+        tooltip="Edit User"
+        onClick={() => navigate(`/users/${rowData.userId}/edit`)}
+      />
     );
   };
 

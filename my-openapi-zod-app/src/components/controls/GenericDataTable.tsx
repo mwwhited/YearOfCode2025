@@ -592,6 +592,15 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
         scrollable
         scrollHeight="flex"
       >
+        {actionColumn && (
+          <Column
+            header={actionColumn.header || 'Actions'}
+            body={actionColumn.body}
+            style={actionColumn.style || { width: '120px' }}
+            frozen
+            alignFrozen="right"
+          />
+        )}
         {Object.entries(shape).map(([key, zodType]) => {
           const override = columnOverrides[key as keyof typeof shape] || {};
           
@@ -675,15 +684,6 @@ export function GenericDataTable<T extends ZodObject<ZodRawShape>>({
             />
           );
         })}
-        {actionColumn && (
-          <Column
-            header={actionColumn.header || 'Actions'}
-            body={actionColumn.body}
-            style={actionColumn.style || { width: '120px' }}
-            frozen
-            alignFrozen="right"
-          />
-        )}
         </DataTable>
       </div>
       </div>

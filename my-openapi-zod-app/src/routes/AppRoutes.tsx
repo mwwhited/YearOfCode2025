@@ -11,14 +11,11 @@ const Dashboard = lazy(() => import('@/pages/Dashboard').then(m => ({ default: m
 const Profile = lazy(() => import('@/pages/Profile').then(m => ({ default: m.Profile })));
 const Logout = lazy(() => import('@/pages/Logout').then(m => ({ default: m.Logout })));
 const UsersList = lazy(() => import('@/pages/UsersList'));
-const EditUserDynamic = lazy(() => import('@/pages/EditUserDynamic'));
 const EditUserPanel = lazy(() => import('@/pages/EditUserPanel'));
 const ProductsList = lazy(() => import('@/pages/ProductsList').then(m => ({ default: m.ProductsList })));
-const EditProductDynamic = lazy(() => import('@/pages/EditProductDynamic').then(m => ({ default: m.EditProductDynamic })));
 const EditProductPanel = lazy(() => import('@/pages/EditProductPanel').then(m => ({ default: m.EditProductPanel })));
 const ProductsCardView = lazy(() => import('@/pages/ProductsCardView').then(m => ({ default: m.ProductsCardView })));
 const CategoriesList = lazy(() => import('@/pages/CategoriesList').then(m => ({ default: m.CategoriesList })));
-const EditCategoryDynamic = lazy(() => import('@/pages/EditCategoryDynamic').then(m => ({ default: m.EditCategoryDynamic })));
 const EditCategoryPanel = lazy(() => import('@/pages/EditCategoryPanel').then(m => ({ default: m.EditCategoryPanel })));
 const SubCategoriesList = lazy(() => import('@/pages/SubCategoriesList').then(m => ({ default: m.SubCategoriesList })));
 const ManufacturersList = lazy(() => import('@/pages/ManufacturersList').then(m => ({ default: m.ManufacturersList })));
@@ -26,7 +23,6 @@ const AllergensList = lazy(() => import('@/pages/AllergensList').then(m => ({ de
 const DistrictsList = lazy(() => import('@/pages/DistrictsList').then(m => ({ default: m.DistrictsList })));
 const ComboboxTest = lazy(() => import('@/pages/ComboboxTest').then(m => ({ default: m.ComboboxTest })));
 const IngredientsList = lazy(() => import('@/pages/IngredientsList').then(m => ({ default: m.IngredientsList })));
-const EditIngredientDynamic = lazy(() => import('@/pages/EditIngredientDynamic').then(m => ({ default: m.EditIngredientDynamic })));
 const EditIngredientPanel = lazy(() => import('@/pages/EditIngredientPanel').then(m => ({ default: m.EditIngredientPanel })));
 const AuditLogsPage = lazy(() => import('@/pages/admin/AuditLogsPage').then(m => ({ default: m.AuditLogsPage })));
 
@@ -71,15 +67,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="products" element={<ProductsList />} />
         <Route path="products/cards" element={<ProductsCardView />} />
         <Route 
-          path="products/edit-dynamic/:id" 
-          element={
-            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditProductDynamic />
-            </RoleGuard>
-          } 
-        />
-        <Route 
-          path="products/edit-panel/:id" 
+          path="products/edit/:id" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
               <EditProductPanel />
@@ -90,7 +78,7 @@ export const AppRoutes: React.FC = () => {
           path="products/add" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditProductDynamic />
+              <EditProductPanel />
             </RoleGuard>
           } 
         />
@@ -106,15 +94,7 @@ export const AppRoutes: React.FC = () => {
         {/* Category routes */}
         <Route path="categories" element={<CategoriesList />} />
         <Route 
-          path="categories/edit-dynamic/:id" 
-          element={
-            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditCategoryDynamic />
-            </RoleGuard>
-          } 
-        />
-        <Route 
-          path="categories/edit-panel/:id" 
+          path="categories/edit/:id" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
               <EditCategoryPanel />
@@ -125,7 +105,7 @@ export const AppRoutes: React.FC = () => {
           path="categories/add" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditCategoryDynamic />
+              <EditCategoryPanel />
             </RoleGuard>
           } 
         />
@@ -142,20 +122,12 @@ export const AppRoutes: React.FC = () => {
           path="ingredients/add" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditIngredientDynamic />
+              <EditIngredientPanel />
             </RoleGuard>
           } 
         />
         <Route 
           path="ingredients/edit/:id" 
-          element={
-            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditIngredientDynamic />
-            </RoleGuard>
-          } 
-        />
-        <Route 
-          path="ingredients/edit-panel/:id" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
               <EditIngredientPanel />
@@ -189,15 +161,7 @@ export const AppRoutes: React.FC = () => {
           } 
         />
         <Route 
-          path="users/:userId/edit-dynamic" 
-          element={
-            <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
-              <EditUserDynamic />
-            </RoleGuard>
-          } 
-        />
-        <Route 
-          path="users/:userId/edit-panel" 
+          path="users/:userId/edit" 
           element={
             <RoleGuard roles={ROLE_GROUPS.ADMIN_ROLES}>
               <EditUserPanel />

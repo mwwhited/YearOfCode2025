@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import type { z, ZodObject, ZodRawShape } from 'zod';
 import { Button, Panel, ProgressSpinner } from '@/components/controls';
-import { DynamicForm, type FieldConfig, type FormConfig } from '@/components/forms/DynamicForm';
+import { InputText, Dropdown } from '@/components/controls';
 import { logger } from '@/utils/logger';
 import { useGlobalToast } from '@/contexts/ToastContext';
 
@@ -12,11 +12,18 @@ export interface BulkEditResult {
   error?: string;
 }
 
+export interface FieldConfig {
+  key: string;
+  label: string;
+  type: 'text' | 'number' | 'boolean' | 'dropdown';
+  options?: { label: string; value: any }[];
+}
+
+
 interface BulkEditModalProps<T extends ZodObject<ZodRawShape>> {
   visible: boolean;
   onHide: () => void;
   selectedItems: z.infer<T>[];
-  schema: T;
   editableFields: FieldConfig[];
   onSave: (changes: Record<string, unknown>, selectedIds: (string | number)[]) => Promise<BulkEditResult[]>;
   keyField: keyof z.infer<T>;
@@ -27,7 +34,6 @@ export function BulkEditModal<T extends ZodObject<ZodRawShape>>({
   visible,
   onHide,
   selectedItems,
-  schema,
   editableFields,
   onSave,
   keyField,
@@ -37,12 +43,9 @@ export function BulkEditModal<T extends ZodObject<ZodRawShape>>({
   const [results, setResults] = useState<BulkEditResult[] | null>(null);
   const toast = useGlobalToast();
 
-  const formConfig: FormConfig = {
-    schema: schema.partial(),
-    fields: editableFields
-  };
+  const [changes, setChanges] = useState<Record<string, unknown>>({});
 
-  const handleSubmit = async (changes: Record<string, unknown>) => {
+  const handleSubmit = async () => {
     setSaving(true);
     setResults(null);
     
@@ -173,13 +176,41 @@ export function BulkEditModal<T extends ZodObject<ZodRawShape>>({
       </div>
 
       {!results && (
-        <DynamicForm
-          config={formConfig}
-          onSubmit={handleSubmit}
-          loading={saving}
-          submitLabel={`Update ${selectedItems.length} Items`}
-          submitIcon="pi pi-save"
-        />
+        <div className="formgrid grid">
+          {editableFields.map((field) => (
+            <div key={field.key} className="field col-12 md:col-6">
+              <label htmlFor={field.key}>{field.label}</label>
+              {field.type === 'text' && (
+                <InputText
+                  id={field.key}
+                  value={String(changes[field.key] || '')}
+                  onChange={(e) => setChanges({ ...changes, [field.key]: e.target.value })}
+                  className="w-full"
+                />
+              )}
+              {field.type === 'dropdown' && field.options && (
+                <Dropdown
+                  id={field.key}
+                  value={changes[field.key]}
+                  options={field.options}
+                  onChange={(e) => setChanges({ ...changes, [field.key]: e.value })}
+                  className="w-full"
+                  placeholder={`Select ${field.label}`}
+                />
+              )}
+            </div>
+          ))}
+          <div className="field col-12">
+            <Button
+              label={`Update ${selectedItems.length} Items`}
+              icon="pi pi-save"
+              onClick={handleSubmit}
+              disabled={saving}
+              loading={saving}
+              className="w-full"
+            />
+          </div>
+        </div>
       )}
 
       {saving && !results && (

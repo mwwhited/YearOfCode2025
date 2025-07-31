@@ -3,7 +3,7 @@ import type { z, ZodObject, ZodRawShape } from "zod";
 import { GenericDataTable } from './GenericDataTable';
 import { BulkEditModal, type BulkEditResult } from '../BulkEditModal';
 import { Button } from './Button';
-import type { FieldConfig } from '../forms/DynamicForm';
+import type { FieldConfig } from '../BulkEditModal';
 
 // Extended props for bulk edit functionality
 interface BulkEditDataTableProps<T extends ZodObject<ZodRawShape>> {
@@ -196,7 +196,6 @@ export function BulkEditDataTable<T extends ZodObject<ZodRawShape>>({
           visible={bulkEditVisible}
           onHide={() => setBulkEditVisible(false)}
           selectedItems={selectedRows}
-          schema={schema}
           editableFields={bulkEditFields}
           onSave={handleBulkEditSave}
           keyField={keyField}

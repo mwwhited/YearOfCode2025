@@ -5,6 +5,24 @@ import { useLocation } from 'react-router-dom';
 import { applicationInsights } from '@/services/applicationInsights';
 import { useCorrelation } from '@/contexts/CorrelationContext';
 
+// Hook to safely get location, returns null if not in router context
+const useSafeLocation = () => {
+  try {
+    return useLocation();
+  } catch {
+    return null;
+  }
+};
+
+// Hook to safely get correlation, returns null if not in context
+const useSafeCorrelation = () => {
+  try {
+    return useCorrelation();
+  } catch {
+    return { startUserAction: () => {} };
+  }
+};
+
 // Extend PrimeReact's ButtonProps with telemetry-related props
 interface TrackedButtonProps extends ButtonProps {
   action?: string;
@@ -21,9 +39,9 @@ export const Button: React.FC<TrackedButtonProps> = ({
   disableTracking = false,
   ...props
 }) => {
-  const location = useLocation();
-  const { startUserAction } = useCorrelation();
-  const page = location.pathname.replace(/^\/+|\/+$/g, '').split('/').join('-') || 'home';
+  const location = useSafeLocation();
+  const { startUserAction } = useSafeCorrelation();
+  const page = location?.pathname.replace(/^\/+|\/+$/g, '').split('/').join('-') || 'unknown';
   const inferredAction = action || (typeof label === 'string' ? label : 'click');
   const computedLabel = `${page}-${inferredAction}`.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
   const computedId = id || `btn-${computedLabel}`;

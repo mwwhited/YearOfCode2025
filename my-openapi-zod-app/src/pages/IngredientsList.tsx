@@ -7,8 +7,7 @@ import IngredientClient from '@/api/GreenOnion/Clients/IngredientClient';
 import type { IQueryIngredientModel } from '@/api/GreenOnion/Models';
 import { useAuth } from '@/hooks/useAuth';
 import { UserRole } from '@/types/roles';
-import type { BulkEditResult } from '@/components/BulkEditModal';
-import type { FieldConfig } from '@/components/forms/DynamicForm';
+import type { BulkEditResult, FieldConfig } from '@/components/BulkEditModal';
 import { BulkEditApiHandler } from '@/utils/bulkEditApi';
 import { auditLogger } from '@/utils/auditLogger';
 
@@ -82,34 +81,37 @@ export const IngredientsList: React.FC = () => {
   // Bulk edit configuration
   const bulkEditFields: FieldConfig[] = [
     {
-      name: 'description',
+      key: 'description',
       label: 'Description',
-      type: 'textarea',
-      placeholder: 'Leave empty to keep current description',
-      rows: 3
+      type: 'text'
     },
     {
-      name: 'allergenId',
+      key: 'allergenId',
       label: 'Associated Allergen ID',
-      type: 'number',
-      placeholder: 'Leave empty to keep current allergen'
+      type: 'text'
     },
     {
-      name: 'isOrganic',
+      key: 'isOrganic',
       label: 'Organic',
-      type: 'boolean'
+      type: 'dropdown',
+      options: [
+        { label: 'Yes', value: true },
+        { label: 'No', value: false }
+      ]
     },
     {
-      name: 'isGMOFree',
+      key: 'isGMOFree',
       label: 'GMO Free',
-      type: 'boolean'
+      type: 'dropdown',
+      options: [
+        { label: 'Yes', value: true },
+        { label: 'No', value: false }
+      ]
     },
     {
-      name: 'nutritionalInfo',
+      key: 'nutritionalInfo',
       label: 'Nutritional Information',
-      type: 'textarea',
-      placeholder: 'Leave empty to keep current nutritional info',
-      rows: 4
+      type: 'text'
     }
   ];
 
