@@ -36,7 +36,7 @@ export default interface IMonthlyNumberClient {
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     Query(params: {
-        body?: IQueryMonthlyNumberModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelSearchQuery        
+        body?: IQueryMonthlyNumberModelSearchQuery | undefined;
     }): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined>;
     
     /**
@@ -67,6 +67,6 @@ export default interface IMonthlyNumberClient {
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     Save(params: {
-        body?: ISaveMonthlyNumberModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveMonthlyNumberModel        
+        body?: ISaveMonthlyNumberModel | undefined;
     }): Promise<IQueryMonthlyNumberModel | undefined>;
 }

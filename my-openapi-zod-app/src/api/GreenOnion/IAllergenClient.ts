@@ -36,7 +36,7 @@ export default interface IAllergenClient {
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     Query(params: {
-        body?: IQueryAllergenModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelSearchQuery        
+        body?: IQueryAllergenModelSearchQuery | undefined;
     }): Promise<IQueryAllergenModelPagedQueryResult | undefined>;
     
     /**
@@ -66,6 +66,6 @@ export default interface IAllergenClient {
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     Save(params: {
-        body?: ISaveAllergenModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveAllergenModel        
+        body?: ISaveAllergenModel | undefined;
     }): Promise<IQueryAllergenModel | undefined>;
 }

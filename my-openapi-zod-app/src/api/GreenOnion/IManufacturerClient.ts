@@ -36,7 +36,7 @@ export default interface IManufacturerClient {
     * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     Query(params: {
-        body?: IQueryManufacturerModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModelSearchQuery        
+        body?: IQueryManufacturerModelSearchQuery | undefined;
     }): Promise<IQueryManufacturerModelPagedQueryResult | undefined>;
     
     /**
@@ -67,6 +67,6 @@ export default interface IManufacturerClient {
     * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     Save(params: {
-        body?: ISaveManufacturerModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveManufacturerModel        
+        body?: ISaveManufacturerModel | undefined;
     }): Promise<IQueryManufacturerModel | undefined>;
 }

@@ -36,7 +36,7 @@ export default interface IIngredientClient {
     * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Query(params: {
-        body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery        
+        body?: IQueryIngredientModelSearchQuery | undefined;
     }): Promise<IQueryIngredientModelPagedQueryResult | undefined>;
     
     /**
@@ -66,6 +66,6 @@ export default interface IIngredientClient {
     * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     Save(params: {
-        body?: ISaveIngredientModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveIngredientModel        
+        body?: ISaveIngredientModel | undefined;
     }): Promise<IQueryIngredientModel | undefined>;
 }

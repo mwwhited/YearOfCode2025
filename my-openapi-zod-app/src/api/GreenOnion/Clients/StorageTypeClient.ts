@@ -59,7 +59,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     async Query(params: {
-        body?: IQueryStorageTypeModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelSearchQuery        
+        body?: IQueryStorageTypeModelSearchQuery | undefined;
     }): Promise<IQueryStorageTypeModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/StorageType/Query?";
@@ -170,7 +170,7 @@ export default class StorageTypeClient extends ClientBase implements IStorageTyp
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     async Save(params: {
-        body?: ISaveStorageTypeModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveStorageTypeModel        
+        body?: ISaveStorageTypeModel | undefined;
     }): Promise<IQueryStorageTypeModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/StorageType/Save?";

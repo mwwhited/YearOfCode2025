@@ -62,7 +62,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     async Query(params: {
-        body?: IQueryUserModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserModelSearchQuery        
+        body?: IQueryUserModelSearchQuery | undefined;
     }): Promise<IQueryUserModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/User/Query?";
@@ -175,7 +175,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     async Save(params: {
-        body?: ISaveUserModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveUserModel        
+        body?: ISaveUserModel | undefined;
     }): Promise<IQueryUserModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/User/Save?";
@@ -224,7 +224,7 @@ export default class UserClient extends ClientBase implements IUserClient  {
     * @anonymous false
     */
     async SendNewUserEmail(params: {
-        body?: INewUserEmailModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Users.NewUserEmailModel        
+        body?: INewUserEmailModel | undefined;
     }): Promise<void> 
     { 
         let url_ = this.baseUrl + "/api/User/SendNewUserEmail?";

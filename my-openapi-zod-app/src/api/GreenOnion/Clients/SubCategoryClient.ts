@@ -59,7 +59,7 @@ export default class SubCategoryClient extends ClientBase implements ISubCategor
     * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     async Query(params: {
-        body?: IQuerySubCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySubCategoryModelSearchQuery        
+        body?: IQuerySubCategoryModelSearchQuery | undefined;
     }): Promise<IQuerySubCategoryModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SubCategory/Query?";
@@ -170,7 +170,7 @@ export default class SubCategoryClient extends ClientBase implements ISubCategor
     * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     async Save(params: {
-        body?: ISaveSubCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSubCategoryModel        
+        body?: ISaveSubCategoryModel | undefined;
     }): Promise<IQuerySubCategoryModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SubCategory/Save?";

@@ -52,7 +52,7 @@ export default interface IProductClient {
     * @querySet GreenOnion.Common.Models.QueryProductModel
     */
     Query(params: {
-        body?: IQueryProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryProductModelSearchQuery        
+        body?: IQueryProductModelSearchQuery | undefined;
     }): Promise<IQueryProductModelPagedQueryResult | undefined>;
     
     /**
@@ -83,7 +83,7 @@ export default interface IProductClient {
     * @querySet GreenOnion.Common.Models.QueryProductModel
     */
     Save(params: {
-        body?: ISaveProductModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveProductModel        
+        body?: ISaveProductModel | undefined;
     }): Promise<IQueryProductModel | undefined>;
     
     /**
@@ -133,7 +133,7 @@ export default interface IProductClient {
     * @anonymous false
     */
     CreateUpdateGtinAllocation(params: {
-        body?: IProductGtinAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductGtinAllocationModel        
+        body?: IProductGtinAllocationModel | undefined;
     }): Promise<IProductResponse | undefined>;
     
     /**
@@ -143,7 +143,7 @@ export default interface IProductClient {
     * @anonymous false
     */
     CreateUpdateUpcAllocation(params: {
-        body?: IProductUpcAllocationModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.ProductUpcAllocationModel        
+        body?: IProductUpcAllocationModel | undefined;
     }): Promise<IProductResponse | undefined>;
     
     /**
@@ -179,7 +179,7 @@ export default interface IProductClient {
             schoolDistrictId?: number | undefined;
             UserId?: number | undefined;
             Option?: string | undefined;
-        body?: ISelectPrdFileupload | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectPrdFileupload        
+        body?: ISelectPrdFileupload | undefined;
     }): Promise<IFileUploadResponse | undefined>;
     
     /**
@@ -192,7 +192,7 @@ export default interface IProductClient {
     * @role District Admin
     */
     SaveSelectProductUpload(params: {
-        body?: ISelectProductSaveCheckListRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Product.SelectProductSaveCheckListRequestModel        
+        body?: ISelectProductSaveCheckListRequestModel | undefined;
     }): Promise<IFileUploadResponse | undefined>;
     
     /**

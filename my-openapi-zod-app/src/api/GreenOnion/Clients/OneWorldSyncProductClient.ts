@@ -59,7 +59,7 @@ export default class OneWorldSyncProductClient extends ClientBase implements IOn
     * @querySet GreenOnion.Common.Models.QueryOneWorldSyncProductModel
     */
     async Query(params: {
-        body?: IQueryOneWorldSyncProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryOneWorldSyncProductModelSearchQuery        
+        body?: IQueryOneWorldSyncProductModelSearchQuery | undefined;
     }): Promise<IQueryOneWorldSyncProductModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/OneWorldSyncProduct/Query?";
@@ -173,7 +173,7 @@ export default class OneWorldSyncProductClient extends ClientBase implements IOn
     * @querySet GreenOnion.Common.Models.QueryOneWorldSyncProductModel
     */
     async Save(params: {
-        body?: ISaveOneWorldSyncProductModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveOneWorldSyncProductModel        
+        body?: ISaveOneWorldSyncProductModel | undefined;
     }): Promise<IQueryOneWorldSyncProductModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/OneWorldSyncProduct/Save?";

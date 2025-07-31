@@ -54,7 +54,7 @@ export default class SuggestedProductClient extends ClientBase implements ISugge
     * @role Cooperative Admin
     */
     async CreateSuggestedProduct(params: {
-        body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel        
+        body?: ISuggestedProductRequestModel | undefined;
     }): Promise<ISuggestedProductResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SuggestedProduct/CreateSuggestedProduct?";

@@ -53,7 +53,7 @@ export default class UserActionLogClient extends ClientBase implements IUserActi
     * @querySet GreenOnion.Common.Models.QueryUserActionLogModel
     */
     async Query(params: {
-        body?: IQueryUserActionLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserActionLogModelSearchQuery        
+        body?: IQueryUserActionLogModelSearchQuery | undefined;
     }): Promise<IQueryUserActionLogModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/UserActionLog/Query?";

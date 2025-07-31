@@ -28,7 +28,7 @@ export default interface IReportClient {
     * @anonymous false
     */
     GetProductActivityReportFilter(params: {
-        body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter        
+        body?: IProductActivityReportFilter | undefined;
     }): Promise<IUserResponseModel | undefined>;
     
     /**

@@ -53,7 +53,7 @@ export default class RoleClient extends ClientBase implements IRoleClient  {
     * @querySet GreenOnion.Common.Models.QueryRoleModel
     */
     async Query(params: {
-        body?: IQueryRoleModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryRoleModelSearchQuery        
+        body?: IQueryRoleModelSearchQuery | undefined;
     }): Promise<IQueryRoleModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Role/Query?";

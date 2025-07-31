@@ -59,7 +59,7 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
     * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     async Query(params: {
-        body?: IQueryCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryCategoryModelSearchQuery        
+        body?: IQueryCategoryModelSearchQuery | undefined;
     }): Promise<IQueryCategoryModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Category/Query?";
@@ -170,7 +170,7 @@ export default class CategoryClient extends ClientBase implements ICategoryClien
     * @querySet GreenOnion.Common.Models.QueryCategoryModel
     */
     async Save(params: {
-        body?: ISaveCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveCategoryModel        
+        body?: ISaveCategoryModel | undefined;
     }): Promise<IQueryCategoryModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Category/Save?";

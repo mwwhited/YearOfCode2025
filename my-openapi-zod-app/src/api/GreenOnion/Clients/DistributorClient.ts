@@ -59,7 +59,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     async Query(params: {
-        body?: IQueryDistributorModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelSearchQuery        
+        body?: IQueryDistributorModelSearchQuery | undefined;
     }): Promise<IQueryDistributorModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Distributor/Query?";
@@ -170,7 +170,7 @@ export default class DistributorClient extends ClientBase implements IDistributo
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     async Save(params: {
-        body?: ISaveDistributorModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDistributorModel        
+        body?: ISaveDistributorModel | undefined;
     }): Promise<IQueryDistributorModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Distributor/Save?";

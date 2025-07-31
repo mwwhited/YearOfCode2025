@@ -38,7 +38,7 @@ export default interface IUserClient {
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     Query(params: {
-        body?: IQueryUserModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserModelSearchQuery        
+        body?: IQueryUserModelSearchQuery | undefined;
     }): Promise<IQueryUserModelPagedQueryResult | undefined>;
     
     /**
@@ -68,7 +68,7 @@ export default interface IUserClient {
     * @querySet GreenOnion.Common.Models.QueryUserModel
     */
     Save(params: {
-        body?: ISaveUserModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveUserModel        
+        body?: ISaveUserModel | undefined;
     }): Promise<IQueryUserModel | undefined>;
     
     /**
@@ -78,6 +78,6 @@ export default interface IUserClient {
     * @anonymous false
     */
     SendNewUserEmail(params: {
-        body?: INewUserEmailModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Users.NewUserEmailModel        
+        body?: INewUserEmailModel | undefined;
     }): Promise<void>;
 }

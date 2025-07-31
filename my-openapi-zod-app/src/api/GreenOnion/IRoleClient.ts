@@ -32,6 +32,6 @@ export default interface IRoleClient {
     * @querySet GreenOnion.Common.Models.QueryRoleModel
     */
     Query(params: {
-        body?: IQueryRoleModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryRoleModelSearchQuery        
+        body?: IQueryRoleModelSearchQuery | undefined;
     }): Promise<IQueryRoleModelPagedQueryResult | undefined>;
 }

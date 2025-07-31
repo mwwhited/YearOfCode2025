@@ -49,7 +49,7 @@ export default class ReportClient extends ClientBase implements IReportClient  {
     * @anonymous false
     */
     async GetProductActivityReportFilter(params: {
-        body?: IProductActivityReportFilter | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.Reports.ProductActivityReportFilter        
+        body?: IProductActivityReportFilter | undefined;
     }): Promise<IUserResponseModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Report/GetProductActivityReportFilter?";

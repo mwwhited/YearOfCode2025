@@ -36,7 +36,7 @@ export default interface ISchoolDistrictClient {
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     Query(params: {
-        body?: IQuerySchoolDistrictModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelSearchQuery        
+        body?: IQuerySchoolDistrictModelSearchQuery | undefined;
     }): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined>;
     
     /**
@@ -66,6 +66,6 @@ export default interface ISchoolDistrictClient {
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     Save(params: {
-        body?: ISaveSchoolDistrictModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSchoolDistrictModel        
+        body?: ISaveSchoolDistrictModel | undefined;
     }): Promise<IQuerySchoolDistrictModel | undefined>;
 }

@@ -59,7 +59,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     async Query(params: {
-        body?: IQueryMonthlyNumberModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryMonthlyNumberModelSearchQuery        
+        body?: IQueryMonthlyNumberModelSearchQuery | undefined;
     }): Promise<IQueryMonthlyNumberModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/MonthlyNumber/Query?";
@@ -173,7 +173,7 @@ export default class MonthlyNumberClient extends ClientBase implements IMonthlyN
     * @querySet GreenOnion.Common.Models.QueryMonthlyNumberModel
     */
     async Save(params: {
-        body?: ISaveMonthlyNumberModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveMonthlyNumberModel        
+        body?: ISaveMonthlyNumberModel | undefined;
     }): Promise<IQueryMonthlyNumberModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/MonthlyNumber/Save?";

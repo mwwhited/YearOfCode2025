@@ -33,6 +33,6 @@ export default interface IErrorLogClient {
     * @querySet GreenOnion.Common.Models.QueryErrorLogModel
     */
     Query(params: {
-        body?: IQueryErrorLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryErrorLogModelSearchQuery        
+        body?: IQueryErrorLogModelSearchQuery | undefined;
     }): Promise<IQueryErrorLogModelPagedQueryResult | undefined>;
 }

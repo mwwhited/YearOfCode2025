@@ -32,7 +32,7 @@ export default interface ISuggestedProductClient {
     * @role Cooperative Admin
     */
     CreateSuggestedProduct(params: {
-        body?: ISuggestedProductRequestModel | undefined; // #/components/schemas/GreenOnion.Common.GreenOnionModel.RequestModel.SuggestedProduct.SuggestedProductRequestModel        
+        body?: ISuggestedProductRequestModel | undefined;
     }): Promise<ISuggestedProductResponseModel | undefined>;
     
     /**

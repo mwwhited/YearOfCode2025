@@ -32,6 +32,6 @@ export default interface IUserActionLogClient {
     * @querySet GreenOnion.Common.Models.QueryUserActionLogModel
     */
     Query(params: {
-        body?: IQueryUserActionLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryUserActionLogModelSearchQuery        
+        body?: IQueryUserActionLogModelSearchQuery | undefined;
     }): Promise<IQueryUserActionLogModelPagedQueryResult | undefined>;
 }

@@ -59,7 +59,7 @@ export default class IngredientClient extends ClientBase implements IIngredientC
     * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     async Query(params: {
-        body?: IQueryIngredientModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIngredientModelSearchQuery        
+        body?: IQueryIngredientModelSearchQuery | undefined;
     }): Promise<IQueryIngredientModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Ingredient/Query?";
@@ -170,7 +170,7 @@ export default class IngredientClient extends ClientBase implements IIngredientC
     * @querySet GreenOnion.Common.Models.QueryIngredientModel
     */
     async Save(params: {
-        body?: ISaveIngredientModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveIngredientModel        
+        body?: ISaveIngredientModel | undefined;
     }): Promise<IQueryIngredientModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Ingredient/Save?";

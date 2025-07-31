@@ -36,7 +36,7 @@ export default interface IDefinedFilterClient {
     * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     Query(params: {
-        body?: IQueryDefinedFilterModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDefinedFilterModelSearchQuery        
+        body?: IQueryDefinedFilterModelSearchQuery | undefined;
     }): Promise<IQueryDefinedFilterModelPagedQueryResult | undefined>;
     
     /**
@@ -67,6 +67,6 @@ export default interface IDefinedFilterClient {
     * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     Save(params: {
-        body?: ISaveDefinedFilterModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDefinedFilterModel        
+        body?: ISaveDefinedFilterModel | undefined;
     }): Promise<IQueryDefinedFilterModel | undefined>;
 }

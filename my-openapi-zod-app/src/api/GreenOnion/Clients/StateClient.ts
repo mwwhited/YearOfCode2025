@@ -53,7 +53,7 @@ export default class StateClient extends ClientBase implements IStateClient  {
     * @querySet GreenOnion.Common.Models.QueryStateModel
     */
     async Query(params: {
-        body?: IQueryStateModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelSearchQuery        
+        body?: IQueryStateModelSearchQuery | undefined;
     }): Promise<IQueryStateModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/State/Query?";

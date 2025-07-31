@@ -53,7 +53,7 @@ export default class IocCategoryClient extends ClientBase implements IIocCategor
     * @querySet GreenOnion.Common.Models.QueryIocCategoryModel
     */
     async Query(params: {
-        body?: IQueryIocCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIocCategoryModelSearchQuery        
+        body?: IQueryIocCategoryModelSearchQuery | undefined;
     }): Promise<IQueryIocCategoryModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/IocCategory/Query?";

@@ -54,7 +54,7 @@ export default class ErrorLogClient extends ClientBase implements IErrorLogClien
     * @querySet GreenOnion.Common.Models.QueryErrorLogModel
     */
     async Query(params: {
-        body?: IQueryErrorLogModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryErrorLogModelSearchQuery        
+        body?: IQueryErrorLogModelSearchQuery | undefined;
     }): Promise<IQueryErrorLogModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/ErrorLog/Query?";

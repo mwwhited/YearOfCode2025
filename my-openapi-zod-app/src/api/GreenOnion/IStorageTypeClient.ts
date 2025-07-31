@@ -36,7 +36,7 @@ export default interface IStorageTypeClient {
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     Query(params: {
-        body?: IQueryStorageTypeModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStorageTypeModelSearchQuery        
+        body?: IQueryStorageTypeModelSearchQuery | undefined;
     }): Promise<IQueryStorageTypeModelPagedQueryResult | undefined>;
     
     /**
@@ -66,6 +66,6 @@ export default interface IStorageTypeClient {
     * @querySet GreenOnion.Common.Models.QueryStorageTypeModel
     */
     Save(params: {
-        body?: ISaveStorageTypeModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveStorageTypeModel        
+        body?: ISaveStorageTypeModel | undefined;
     }): Promise<IQueryStorageTypeModel | undefined>;
 }

@@ -59,7 +59,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     async Query(params: {
-        body?: IQuerySchoolDistrictModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySchoolDistrictModelSearchQuery        
+        body?: IQuerySchoolDistrictModelSearchQuery | undefined;
     }): Promise<IQuerySchoolDistrictModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SchoolDistrict/Query?";
@@ -170,7 +170,7 @@ export default class SchoolDistrictClient extends ClientBase implements ISchoolD
     * @querySet GreenOnion.Common.Models.QuerySchoolDistrictModel
     */
     async Save(params: {
-        body?: ISaveSchoolDistrictModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSchoolDistrictModel        
+        body?: ISaveSchoolDistrictModel | undefined;
     }): Promise<IQuerySchoolDistrictModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/SchoolDistrict/Save?";

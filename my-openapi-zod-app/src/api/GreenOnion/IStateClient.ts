@@ -32,6 +32,6 @@ export default interface IStateClient {
     * @querySet GreenOnion.Common.Models.QueryStateModel
     */
     Query(params: {
-        body?: IQueryStateModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryStateModelSearchQuery        
+        body?: IQueryStateModelSearchQuery | undefined;
     }): Promise<IQueryStateModelPagedQueryResult | undefined>;
 }

@@ -59,7 +59,7 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
     * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     async Query(params: {
-        body?: IQueryDefinedFilterModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDefinedFilterModelSearchQuery        
+        body?: IQueryDefinedFilterModelSearchQuery | undefined;
     }): Promise<IQueryDefinedFilterModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/DefinedFilter/Query?";
@@ -173,7 +173,7 @@ export default class DefinedFilterClient extends ClientBase implements IDefinedF
     * @querySet GreenOnion.Common.Models.QueryDefinedFilterModel
     */
     async Save(params: {
-        body?: ISaveDefinedFilterModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDefinedFilterModel        
+        body?: ISaveDefinedFilterModel | undefined;
     }): Promise<IQueryDefinedFilterModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/DefinedFilter/Save?";

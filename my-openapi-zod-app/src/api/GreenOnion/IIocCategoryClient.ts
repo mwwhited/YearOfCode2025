@@ -32,6 +32,6 @@ export default interface IIocCategoryClient {
     * @querySet GreenOnion.Common.Models.QueryIocCategoryModel
     */
     Query(params: {
-        body?: IQueryIocCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryIocCategoryModelSearchQuery        
+        body?: IQueryIocCategoryModelSearchQuery | undefined;
     }): Promise<IQueryIocCategoryModelPagedQueryResult | undefined>;
 }

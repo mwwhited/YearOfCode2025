@@ -36,7 +36,7 @@ export default interface IDistributorClient {
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     Query(params: {
-        body?: IQueryDistributorModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryDistributorModelSearchQuery        
+        body?: IQueryDistributorModelSearchQuery | undefined;
     }): Promise<IQueryDistributorModelPagedQueryResult | undefined>;
     
     /**
@@ -66,6 +66,6 @@ export default interface IDistributorClient {
     * @querySet GreenOnion.Common.Models.QueryDistributorModel
     */
     Save(params: {
-        body?: ISaveDistributorModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveDistributorModel        
+        body?: ISaveDistributorModel | undefined;
     }): Promise<IQueryDistributorModel | undefined>;
 }

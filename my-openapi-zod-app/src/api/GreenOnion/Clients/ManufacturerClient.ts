@@ -59,7 +59,7 @@ export default class ManufacturerClient extends ClientBase implements IManufactu
     * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     async Query(params: {
-        body?: IQueryManufacturerModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryManufacturerModelSearchQuery        
+        body?: IQueryManufacturerModelSearchQuery | undefined;
     }): Promise<IQueryManufacturerModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Manufacturer/Query?";
@@ -171,7 +171,7 @@ export default class ManufacturerClient extends ClientBase implements IManufactu
     * @querySet GreenOnion.Common.Models.QueryManufacturerModel
     */
     async Save(params: {
-        body?: ISaveManufacturerModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveManufacturerModel        
+        body?: ISaveManufacturerModel | undefined;
     }): Promise<IQueryManufacturerModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Manufacturer/Save?";

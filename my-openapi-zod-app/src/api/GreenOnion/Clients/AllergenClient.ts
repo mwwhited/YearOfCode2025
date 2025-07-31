@@ -59,7 +59,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     async Query(params: {
-        body?: IQueryAllergenModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryAllergenModelSearchQuery        
+        body?: IQueryAllergenModelSearchQuery | undefined;
     }): Promise<IQueryAllergenModelPagedQueryResult | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Allergen/Query?";
@@ -170,7 +170,7 @@ export default class AllergenClient extends ClientBase implements IAllergenClien
     * @querySet GreenOnion.Common.Models.QueryAllergenModel
     */
     async Save(params: {
-        body?: ISaveAllergenModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveAllergenModel        
+        body?: ISaveAllergenModel | undefined;
     }): Promise<IQueryAllergenModel | undefined> 
     { 
         let url_ = this.baseUrl + "/api/Allergen/Save?";

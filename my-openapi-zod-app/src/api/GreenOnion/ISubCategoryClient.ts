@@ -36,7 +36,7 @@ export default interface ISubCategoryClient {
     * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     Query(params: {
-        body?: IQuerySubCategoryModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QuerySubCategoryModelSearchQuery        
+        body?: IQuerySubCategoryModelSearchQuery | undefined;
     }): Promise<IQuerySubCategoryModelPagedQueryResult | undefined>;
     
     /**
@@ -66,6 +66,6 @@ export default interface ISubCategoryClient {
     * @querySet GreenOnion.Common.Models.QuerySubCategoryModel
     */
     Save(params: {
-        body?: ISaveSubCategoryModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveSubCategoryModel        
+        body?: ISaveSubCategoryModel | undefined;
     }): Promise<IQuerySubCategoryModel | undefined>;
 }

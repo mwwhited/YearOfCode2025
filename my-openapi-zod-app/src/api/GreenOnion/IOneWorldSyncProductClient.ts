@@ -36,7 +36,7 @@ export default interface IOneWorldSyncProductClient {
     * @querySet GreenOnion.Common.Models.QueryOneWorldSyncProductModel
     */
     Query(params: {
-        body?: IQueryOneWorldSyncProductModelSearchQuery | undefined; // #/components/schemas/GreenOnion.Common.Models.QueryOneWorldSyncProductModelSearchQuery        
+        body?: IQueryOneWorldSyncProductModelSearchQuery | undefined;
     }): Promise<IQueryOneWorldSyncProductModelPagedQueryResult | undefined>;
     
     /**
@@ -67,6 +67,6 @@ export default interface IOneWorldSyncProductClient {
     * @querySet GreenOnion.Common.Models.QueryOneWorldSyncProductModel
     */
     Save(params: {
-        body?: ISaveOneWorldSyncProductModel | undefined; // #/components/schemas/GreenOnion.Common.Models.SaveOneWorldSyncProductModel        
+        body?: ISaveOneWorldSyncProductModel | undefined;
     }): Promise<IQueryOneWorldSyncProductModel | undefined>;
 }
