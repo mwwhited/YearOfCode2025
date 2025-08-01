@@ -142,11 +142,24 @@ export const useProfile = (): UseProfileReturn => {
     try {
       const userClient = new UserClient();
       
-      console.log("SPECIAL!");
-      // Call UserClient.get() without parameters to get current user
-      const userData = await userClient.Get({});
+      // Get the current user's objectId from MSAL account
+      const account = accounts.length > 0 ? accounts[0] : null;
+      if (!account) {
+        throw new Error('No MSAL account available for profile lookup');
+      }
       
-      console.log("SPECIAL!", userData);
+      // Use the homeAccountId or localAccountId as the objectId
+      const objectId = account.localAccountId || account.homeAccountId;
+      if (!objectId) {
+        throw new Error('No objectId available from MSAL account');
+      }
+      
+      console.log('🔍 Loading profile for objectId:', objectId);
+      
+      // Call UserClient.Get() with the user's objectId
+      const userData = await userClient.Get({ objectid: objectId });
+      
+      console.log('📋 Profile data received:', userData);
       
       if (userData) {
         // Validate user exists in system (like original objectId check)
