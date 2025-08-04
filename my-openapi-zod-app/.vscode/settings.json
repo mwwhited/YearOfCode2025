@@ -1,9 +1,0 @@
-{
-  "eslint.rules.customizations": [
-    {
-      "rule": "@typescript-eslint/no-unused-vars",
-      "severity": "info"
-    }
-  ],
-  "eslint.validate": ["typescript", "typescriptreact"]
-}
